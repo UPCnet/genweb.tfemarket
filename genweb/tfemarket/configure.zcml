@@ -16,7 +16,6 @@
       directory="profiles/default"
       description="Installs the genweb.tfemarket add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.post_install"
       />
 
   <genericsetup:registerProfile
@@ -25,7 +24,6 @@
       directory="profiles/uninstall"
       description="Uninstalls the genweb.tfemarket add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.uninstall"
       />
 
   <utility
