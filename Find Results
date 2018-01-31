@@ -1,0 +1,10 @@
+Searching 43 files for "genweb.tfemarket.proposal" (case sensitive)
+
+/home/corina.riba/plone/genweb-tfe/src/genweb.tfemarket/genweb/tfemarket/profiles/default/types.xml:
+    1  <?xml version="1.0" encoding="UTF-8"?>
+    2  <object name="portal_types" meta_type="Plone Types Tool">
+    3:     <object name="Proposal" meta_type="Dexterity FTI"/>
+    4  </object>
+    5
+
+1 match in 1 file
