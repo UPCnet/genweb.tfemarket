@@ -3,14 +3,16 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">market</property>
  <property name="description" i18n:translate=""></property>
- <property name="icon_expr">string:${portal_url}/document_icon.png</property>
+ <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
  <property name="factory">market</property>
  <property name="add_view_expr">string:${folder_url}/++add++market</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
- <property name="filter_content_types">False</property>
- <property name="allowed_content_types"/>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+   <element value="offer" />
+ </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">view</property>
  <property name="view_methods">
@@ -21,7 +23,6 @@
  <property name="klass">plone.dexterity.content.Container</property>
  <property name="behaviors">
   <element value="plone.app.dexterity.behaviors.metadata.IDublinCore" />
-  <element value="Products.CMFPlone.interfaces.constrains.ISelectableConstrainTypes" />
   <element value="plone.app.content.interfaces.INameFromTitle"/>
  </property>
  <property name="schema">genweb.tfemarket.content.market.IMarket</property>
