@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-02-01 10:31+0000\n"
+"POT-Creation-Date: 2018-02-09 09:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,73 +17,101 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb.tfemarket\n"
 
-#: ../controlpanel.py:84
-msgid "Cancel"
+#: ../content/offer.py:19
+msgid "A"
 msgstr ""
 
-#: ../controlpanel.py:81
-msgid "Changes saved"
+#: ../content/offer.py:20
+msgid "B"
 msgstr ""
 
-#: ../content/offer.py:73
+#: ../content/application.py:40
+msgid "Body"
+msgstr ""
+
+#: ../content/offer.py:21
+msgid "C"
+msgstr ""
+
+#: ../content/offer.py:127
 msgid "Company Contact"
 msgstr ""
 
-#: ../content/application.py:19
-#: ../content/market.py:19
+#: ../content/offer.py:53
 msgid "Description"
 msgstr ""
 
-#: ../controlpanel.py:87
-msgid "Edit cancelled"
-msgstr ""
-
-#: ../content/offer.py:83
-msgid "Entry date"
+#: ../content/application.py:30
+msgid "Identification number"
 msgstr ""
 
 #: ../configure.zcml:26
 msgid "Installs the genweb.tfemarket add-on."
 msgstr ""
 
-#: ../content/offer.py:78
+#: ../content/application.py:35
+msgid "Name and surname"
+msgstr ""
+
+#: ../content/offer.py:132
 msgid "Number of students"
 msgstr ""
 
-#: ../controlpanel.py:54
-msgid "Paràmetres de configuració de Genweb Mercat TFE"
+#: ../content/offer.py:133
+msgid "Number of students for the TFE (1 to 10)"
 msgstr ""
 
-#: ../controlpanel.py:25
-msgid "Professors"
+#: ../content/application.py:19
+#: ../content/offer.py:43
+msgid "Offer id"
 msgstr ""
 
-#: ../controlpanel.py:72
-msgid "Save"
+#: ../content/application.py:25
+msgid "Offer title"
 msgstr ""
 
-#: ../content/offer.py:63
+#: ../controlpanel.py:41
+msgid "Review State"
+msgstr ""
+
+#: ../controlpanel.py:43
+msgid "Select if you want to add \"Reviewer\" role"
+msgstr ""
+
+#: ../controlpanel.py:19
+msgid "Settings"
+msgstr ""
+
+#: ../content/offer.py:112
 msgid "TFEteacher"
 msgstr ""
 
 #: ../controlpanel.py:31
+msgid "Tags"
+msgstr ""
+
+#: ../controlpanel.py:37
 msgid "Temes"
 msgstr ""
 
-#: ../content/application.py:14
-#: ../content/market.py:14
+#: ../content/offer.py:48
 msgid "Title"
 msgstr ""
 
-#: ../controlpanel.py:19
-msgid "Titulacions"
+#: ../controlpanel.py:25
+msgid "Topics"
+msgstr ""
+
+#: ../controlpanel.py:48
+msgid "Topics of the TFE"
 msgstr ""
 
 #: ../configure.zcml:26
+#: ../controlpanel.py:66
 msgid "UPC Mercat TFE"
 msgstr ""
 
-#: ../controlpanel.py:36
+#: ../controlpanel.py:53
 msgid "URL del servei web"
 msgstr ""
 
@@ -91,50 +119,62 @@ msgstr ""
 msgid "Uninstalls the genweb.tfemarket add-on."
 msgstr ""
 
-#: ../content/offer.py:68
+#: ../content/offer.py:117
+msgid "University department"
+msgstr ""
+
+#: ../content/offer.py:122
 msgid "company"
 msgstr ""
 
-#: ../content/offer.py:88
+#: ../content/offer.py:141
 msgid "confidential"
 msgstr ""
 
-#: ../content/offer.py:53
+#: ../content/offer.py:100
 msgid "degree"
 msgstr ""
 
-#: ../content/offer.py:43
+#: ../content/offer.py:32
+msgid "dos"
+msgstr ""
+
+#: ../content/offer.py:87
 msgid "grant"
 msgstr ""
 
-#: ../content/offer.py:13
-msgid "idoffer"
-msgstr ""
-
-#: ../content/offer.py:28
+#: ../content/offer.py:68
 msgid "keys"
 msgstr ""
 
-#: ../content/offer.py:58
+#: ../content/offer.py:105
 msgid "modality"
 msgstr ""
 
-#: ../content/offer.py:48
+#: ../content/offer.py:94
 msgid "offer_center"
 msgstr ""
 
-#: ../content/offer.py:18
+#: ../content/offer.py:58
 msgid "offer_features"
 msgstr ""
 
-#: ../content/offer.py:23
+#: ../content/offer.py:63
 msgid "offer_topic"
 msgstr ""
 
-#: ../content/offer.py:33
+#: ../content/offer.py:74
 msgid "requirements"
 msgstr ""
 
-#: ../content/offer.py:38
+#: ../content/offer.py:79
 msgid "tfe_lang"
+msgstr ""
+
+#: ../content/offer.py:33
+msgid "tres"
+msgstr ""
+
+#: ../content/offer.py:31
+msgid "uno"
 msgstr ""

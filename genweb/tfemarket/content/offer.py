@@ -3,9 +3,8 @@
 from five import grok
 from plone.directives import form
 from zope import schema
-
 from genweb.tfemarket import _
-
+from plone.autoform import directives
 from zope.schema.interfaces import IContextSourceBinder
 from plone.app.textfield import RichText as RichTextField
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
@@ -39,8 +38,9 @@ def possibleTopics(context):
 class IOffer(form.Schema):
     """ Folder that contains information about a TFE and its applications
     """
-    id_offer = schema.TextLine(
-        title=_(u'idoffer'),
+    directives.mode(offer_id="display")
+    offer_id = schema.TextLine(
+        title=_(u'Offer id'),
         required=False,
     )
 
@@ -70,23 +70,29 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    requirements = schema.TextLine(
+    requirements = RichTextField(
         title=_(u'requirements'),
         required=False,
     )
 
-    lang = schema.TextLine(
+    lang = schema.Choice(
         title=_(u'tfe_lang'),
+        values=[u"Català",
+                u"Español",
+                u"English"],
         required=False,
     )
 
-    grant = schema.TextLine(
+    grant = schema.Bool(
         title=_(u'grant'),
         required=False,
+        default=False,
     )
 
+    form.mode(center='display')
     center = schema.TextLine(
         title=_(u'offer_center'),
+        default=u"el centro",
         required=False,
     )
 
@@ -95,13 +101,20 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    modality = schema.TextLine(
+    modality = schema.Choice(
         title=_(u'modality'),
+        values=[u'Universitat',
+                u'Empresa'],
         required=False,
     )
 
     teacher_manager = schema.TextLine(
         title=_(u'TFEteacher'),
+        required=False,
+    )
+
+    dept = schema.TextLine(
+        title=_(u'University department'),
         required=False,
     )
 
@@ -115,17 +128,17 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    num_students = schema.TextLine(
+    num_students = schema.Int(
         title=_(u'Number of students'),
+        description=_(u'Number of students for the TFE (1 to 10)'),
+        default=1,
+        min=1,
+        max=10,
         required=False,
     )
 
-    entry_date = schema.TextLine(
-        title=_(u'Entry date'),
-        required=False,
-    )
-
-    confidential = schema.TextLine(
+    confidential = schema.Bool(
         title=_(u'confidential'),
+        default=False,
         required=False,
     )
