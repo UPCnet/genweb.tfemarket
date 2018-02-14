@@ -50,3 +50,8 @@ class Add(dexterity.AddForm):
         super(Add, self).updateWidgets()
 
         self.widgets["dni"].value = 'lalalala'
+
+
+class View(grok.View):
+    grok.context(IApplication)
+    grok.template('application_view')
