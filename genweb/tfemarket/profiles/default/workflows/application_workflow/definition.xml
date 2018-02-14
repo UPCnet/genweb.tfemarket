@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="application_workflow" title="Application Workflow" description="" state_variable="review_state" initial_state="requested" manager_bypass="True">
+ <permission>Access contents information</permission>
+ <permission>Change portal events</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="accepted" title="Acceptada">
+  <exit-transition transition_id="renounce"/>
+  <exit-transition transition_id="confirm"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="cancelled" title="Anul·lada">
+  <exit-transition transition_id="request"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="confirmed" title="Confirmada">
+  <exit-transition transition_id="request"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="rejected" title="Rebutjada">
+  <description>El professor ha rebutjat la sol·licitud</description>
+  <exit-transition transition_id="request"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="renounced" title="Renunciada">
+  <exit-transition transition_id="request"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="requested" title="Sol·licitada">
+  <exit-transition transition_id="accept"/>
+  <exit-transition transition_id="reject"/>
+  <exit-transition transition_id="cancel"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="accept" title="accept" new_state="accepted" trigger="USER" before_script="" after_script="">
+  <description>El professor accepta la sol·licitud</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=accept" category="workflow" icon="">Accepta</action>
+  <guard>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Teacher</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="cancel" title="cancel" new_state="cancelled" trigger="USER" before_script="" after_script="">
+  <description>L'estudiant retira la sol·licitud a un TFE</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=cancel" category="workflow" icon="">Cancel·la</action>
+  <guard>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Student</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="confirm" title="confirm" new_state="confirmed" trigger="USER" before_script="" after_script="">
+  <description>L'estudiant confirma el TFE que li ha assignat el professor.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=confirm" category="workflow" icon="">Confirma</action>
+  <guard>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Student</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="reject" title="rebutja" new_state="rejected" trigger="USER" before_script="" after_script="">
+  <description>El professor rebutja la sol·licitud</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=reject" category="workflow" icon="">Rebutja</action>
+  <guard>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Teacher</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="renounce" title="renounce" new_state="renounced" trigger="USER" before_script="" after_script="">
+  <description>L'estudiant renuncia al TFE que li ha assignat el professor.</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=renounce" category="workflow" icon="">Renuncia</action>
+  <guard>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Student</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="request" title="request" new_state="requested" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=request" category="workflow" icon="">Sol·licita</action>
+  <guard>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+   
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the previous transition</description>
+  <default>
+   
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+   
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+   
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

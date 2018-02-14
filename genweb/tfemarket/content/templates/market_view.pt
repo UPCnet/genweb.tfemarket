@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="ca"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+    <body>
+        <metal:content-core fill-slot="content-core">
+            <metal:block define-macro="content-core"
+                                tal:define="offers view/getOffers">
+                <div metal:use-macro="context/batch_macros/macros/navigation" />
+                <div tal:repeat="item offers">
+                    <p>
+                        <tal:tit content="item/title">Title</tal:tit>
+                        <span>..........................</span>
+                        <tal:stat content="item/state">State</tal:stat>
+                    </p>
+                    <div tal:define="applications python:view.getApplications(item)" tal:repeat="item applications">
+                            <p>
+                                <tal:tit content="item/title">Title</tal:tit>
+                                <span>..........................</span>
+                                <tal:stat content="item/state">State</tal:stat>
+                            </p>
+                    </div>
+                </div>
+            </metal:block>
+        </metal:content-core>
+
+    </body>
+</html>

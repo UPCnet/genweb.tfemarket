@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object meta_type="Plone Workflow Tool" name="portal_workflow">
+    <object meta_type="Workflow" name="offer_workflow"/>
+    <object meta_type="Workflow" name="offer_review_workflow"/>
+    <object meta_type="Workflow" name="application_workflow"/>
+<bindings>
+    <type type_id="application">
+        <bound-workflow workflow_id="application_workflow"/>
+    </type>
+    <type type_id="offer">
+        <bound-workflow workflow_id="offer_workflow"/>
+    </type>
+</bindings>
+</object>
