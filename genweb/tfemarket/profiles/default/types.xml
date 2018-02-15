@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="portal_types" meta_type="Plone Types Tool">
-    <object name="market" meta_type="Dexterity FTI"/>
-    <object name="offer" meta_type="Dexterity FTI"/>
-    <object name="application" meta_type="Dexterity FTI"/>
+    <object meta_type="Dexterity FTI" name="genweb.tfemarket.market"/>
+    <object meta_type="Dexterity FTI" name="genweb.tfemarket.offer"/>
+    <object meta_type="Dexterity FTI" name="genweb.tfemarket.application"/>
 </object>

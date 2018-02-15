@@ -7,26 +7,39 @@
       i18n:domain="genweb.tfemarket">
 
     <body>
-        <metal:content-core fill-slot="content-core">
-            <metal:block define-macro="content-core"
-                                tal:define="offers view/getOffers">
-                <div metal:use-macro="context/batch_macros/macros/navigation" />
-                <div tal:repeat="item offers">
-                    <p>
-                        <tal:tit content="item/title">Title</tal:tit>
-                        <span>..........................</span>
-                        <tal:stat content="item/state">State</tal:stat>
-                    </p>
-                    <div tal:define="applications python:view.getApplications(item)" tal:repeat="item applications">
-                            <p>
-                                <tal:tit content="item/title">Title</tal:tit>
-                                <span>..........................</span>
-                                <tal:stat content="item/state">State</tal:stat>
-                            </p>
-                    </div>
-                </div>
-            </metal:block>
-        </metal:content-core>
+      <metal:content-core fill-slot="content-core">
+        <metal:block define-macro="content-core"
+                            tal:define="offers view/getOffers">
+            <div metal:use-macro="context/batch_macros/macros/navigation" />
+
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <th> Title </th>
+              <th> State</th>
+              <th> Join </th>
+            </tr>
+          </thead>
+          <tbody>
+            <div tal:repeat="item offers">
+                <tr>
+                    <td>
+                      <a tal:attributes="href item/url" tal:content="item/title">Title</a>
+                      <div tal:define="applications python:view.getApplications(item)" tal:repeat="item applications">
+                        <p>
+                          <a tal:attributes="href item/url" tal:content="item/title">Title</a>
+                          <tal:tit content="item/title">Title</tal:tit>
+                          <tal:stat content="item/state">State</tal:stat>
+                        </p>
+                      </div>
+                    </td>
+                    <td tal:content="item/state">State</td>
+                    <td> Join </td>
+                </tr>
+            </div>
+          </tbody>
+        </metal:block>
+      </metal:content-core>
 
     </body>
 </html>

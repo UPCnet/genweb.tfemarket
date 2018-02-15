@@ -27,26 +27,27 @@ class View(grok.View):
 
         results = []
 
-        market_path = "/".join(self.context.getPhysicalPath())
-        values = catalog(path=market_path, object_provides=IOffer.__identifier__)
+        values = catalog(query={'path': self.context, 'depth': 1}, object_provides=IOffer.__identifier__)
 
         for item in values:
             results.append(dict(title=item.Title,
                                 state=item.review_state,
-                                path=item.getPhysicalPath))
+                                url=item.getURL(),
+                                path=item.getPath(),
+                                ))
 
         return results
 
     def getApplications(self, offer):
         catalog = self.getCatalog()
-
         results = []
-
-        offer_path = "/".join(offer.getPhysicalPath())
-        values = catalog(path=offer_path, object_provides=IApplication.__identifier__)
+        path = offer['path']
+        values = catalog(query={'path': path, 'depth': 1}, object_provides=IApplication.__identifier__)
 
         for item in values:
             results.append(dict(title=item.Title,
-                                state=item.review_state))
+                                state=item.review_state,
+                                url=item.getURL(),
+                                ))
 
         return results

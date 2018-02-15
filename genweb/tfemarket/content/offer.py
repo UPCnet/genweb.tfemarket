@@ -15,13 +15,6 @@ from zope.schema.interfaces import IVocabularyFactory
 class KeysVocabulary(object):
     grok.implements(IVocabularyFactory)
 
-    def __call__(self, context):
-        topics = SimpleVocabulary([SimpleTerm(value=u'Bill', title=_(u'A')),
-                                   SimpleTerm(value=u'Bob', title=_(u'B')),
-                                   SimpleTerm(value=u'Jim', title=_(u'C'))
-                                   ])
-        return topics
-
 
 grok.global_utility(KeysVocabulary, name=u"genweb.tfemarket.Keys")
 

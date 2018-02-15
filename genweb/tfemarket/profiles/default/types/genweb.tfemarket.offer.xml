@@ -1,29 +1,43 @@
 <?xml version="1.0"?>
-<object name="market" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="genweb.tfemarket.offer" meta_type="Dexterity FTI" i18n:domain="plone"
 xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-    <property name="title" i18n:translate="">market</property>
+    <property name="title" i18n:translate="">offer</property>
     <property name="description" i18n:translate=""></property>
     <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
-    <property name="factory">market</property>
-    <property name="add_view_expr">string:${folder_url}/++add++market</property>
+    <property name="factory">offer</property>
+    <property name="add_view_expr">string:${folder_url}/++add++genweb.tfemarket.offer</property>
     <property name="link_target"></property>
-    <property name="immediate_view">view</property>
-    <property name="global_allow">True</property>
+    <property name="immediate_view">folder_listing</property>
+    <property name="global_allow">False</property>
     <property name="filter_content_types">True</property>
     <property name="allowed_content_types">
-        <element value="offer" />
+        <element value="genweb.tfemarket.application"/>
+        <element value="Document"/>
+        <element value="File"/>
     </property>
     <property name="allow_discussion">False</property>
+    <property name="default_view">folder_listing</property>
+    <property name="view_methods">
+        <element value="folder_summary_view"/>
+        <element value="folder_full_view"/>
+        <element value="folder_tabular_view"/>
+        <element value="atct_album_view"/>
+        <element value="folder_listing"/>
+    </property>
     <property name="default_view_fallback">False</property>
     <property name="add_permission">cmf.AddPortalContent</property>
     <property name="klass">plone.dexterity.content.Container</property>
     <property name="behaviors">
-        <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-        <element value="plone.app.dexterity.behaviors.metadata.IDublinCore" />
+        <element value="plone.app.dexterity.behaviors.metadata.ICategorization" />
+        <element value="plone.app.dexterity.behaviors.metadata.IOwnership" />
+        <element value="plone.app.dexterity.behaviors.metadata.IPublication" />
+        <element value="plone.app.relationfield.behavior.IRelatedItems" />
+        <element value="Products.CMFPlone.interfaces.constrains.ISelectableConstrainTypes" />
         <element value="plone.app.content.interfaces.INameFromTitle"/>
     </property>
-    <property name="schema">genweb.tfemarket.content.market.IMarket</property>
-    <property name="model_source">&lt;model xmlns="http://namespaces.plone.org/supermodel/schema"&gt;
+    <property name="schema">genweb.tfemarket.content.offer.IOffer</property>
+    <property
+    name="model_source">&lt;model xmlns="http://namespaces.plone.org/supermodel/schema"&gt;
     &lt;schema /&gt;
     &lt;/model&gt;</property>
     <property name="model_file"></property>
