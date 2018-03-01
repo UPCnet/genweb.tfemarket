@@ -17,5 +17,9 @@
         <role name="WebMaster"/>
     </roles>
     <permissions>
+        <permission name="Genweb TFEMarket: Add Market" acquire="True">
+            <role name="Manager" />
+            <role name="WebMaster" />
+        </permission>
     </permissions>
 </rolemap>

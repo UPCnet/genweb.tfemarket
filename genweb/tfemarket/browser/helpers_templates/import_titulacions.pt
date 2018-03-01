@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+<head>
+    <metal:block fill-slot="top_slot"/>
+</head>
+
+<body>
+
+<metal:main fill-slot="content">
+    <tal:main-macro metal:define-macro="main">
+
+     <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+         Status message
+     </div>
+
+      <form method="post" enctype="multipart/form-data" action="import_titulacions">
+        Afegeix el fitxer .csv separat per ; amb les titulacions per escola:
+        <input name="titulacionsfile" type="file" />
+        <button name="save" type="submit">Importa totes les titulacions</button>
+      </form>
+
+    </tal:main-macro>
+
+</metal:main>
+
+</body>
+</html>

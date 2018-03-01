@@ -1,0 +1,141 @@
+@media print {
+
+  body {
+    width: 210mm; height: 297mm;
+    margin: 0mm 2mm 20mm 5mm;
+  }
+
+  html, body {
+    font-size: 15pt!important;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 130% !important;
+  }
+
+li {
+    line-height: 130% !important;
+  }
+
+  nav#portal-breadcrumbs,
+  .nav-collapse-eines,
+  #portal-personaltools-wrapper,
+  #portal-globalnav,
+  #portal-column-one,
+  .alert,
+  #edit-bar,
+  #viewlet-below-content-title,
+  #viewlet-above-content-title,
+  .header-image,
+  #cookies,
+  .extraInfo,
+  #commenting,
+  #viewlet-below-content > a,
+  input[type="submit"],
+  #content-core > button,
+  .linkNotificacions,
+  .btnActa,
+  #peu > div > div.row-fluid,
+  .reply-to-comment-button,
+  .bannerOrgans {
+    display: none !important;
+  }
+
+  #portal-column-content {
+      margin:0 !important;
+      width:100% !important;
+  }
+
+  #peu .span8 {
+      width:100% !important;
+  }
+
+  div.pageBreak {
+      page-break-before: always !important;
+  }
+
+  #portal-breadcrumbs {
+    display: inline !important;
+  }
+
+/*    #content a:link:after,
+  #content a:visited:after {
+     content: " [" attr() "] " !important;
+  }*/
+
+  a:hover {
+    text-decoration:none;
+  }
+
+  a {
+    text-decoration:underline;
+    color: black;
+  }
+
+  .plain a {
+    color:#555555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+  }
+
+  h1, h2, h3 {
+    color: #557C95;
+    margin-top: 27px;
+  }
+
+  h1 {
+    font-size: 24pt;
+  }
+
+  h1 > span{
+    color: #557C95;
+  }
+
+  h2 {
+    margin-bottom: 20px !important;
+    font-size: 20pt;
+  }
+
+  h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18pt;
+  }
+
+  h4 {
+    font-size:15pt !important;
+  }
+
+  .caixa {
+    width: 9cm;
+    vertical-align: top;
+  }
+
+  table {
+    font-size: 15pt !important;
+    line-height: : 120% !important;
+  }
+
+  h1.h1Print {
+    text-align: left;
+    font-size: 24pt;
+  }
+
+  .h4Print {color: #557C95; }
+
+  tbody > tr {
+    height: auto!important;
+  }
+
+  header#portal-header,
+  footer#peu {
+    border: 0px;
+  }
+
+  section#content-area {
+    margin-top: 0px;
+  }
+
+  tbody {
+    font-size: 15pt !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    line-height: 130% !important;}
+
+}

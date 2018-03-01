@@ -18,16 +18,14 @@ class View(grok.View):
     grok.context(IMarket)
     grok.template('market_view')
 
-    def getCatalog(self):
-        catalog = api.portal.get_tool(name='portal_catalog')
-        return catalog
-
     def getOffers(self):
-        catalog = self.getCatalog()
-
+        catalog = api.portal.get_tool(name='portal_catalog')
         results = []
 
-        values = catalog(query={'path': self.context, 'depth': 1}, object_provides=IOffer.__identifier__)
+        path = self.context.getPhysicalPath()
+        path = "/".join(path)
+        values = catalog(path={'query': path, 'depth': 1},
+                         object_provides=IOffer.__identifier__)
 
         for item in values:
             results.append(dict(title=item.Title,
@@ -35,19 +33,18 @@ class View(grok.View):
                                 url=item.getURL(),
                                 path=item.getPath(),
                                 ))
-
         return results
 
     def getApplications(self, offer):
-        catalog = self.getCatalog()
+        catalog = api.portal.get_tool(name='portal_catalog')
         results = []
         path = offer['path']
-        values = catalog(query={'path': path, 'depth': 1}, object_provides=IApplication.__identifier__)
+        values = catalog(path={'query': path, 'depth': 1},
+                         object_provides=IApplication.__identifier__)
 
         for item in values:
             results.append(dict(title=item.Title,
                                 state=item.review_state,
                                 url=item.getURL(),
                                 ))
-
         return results

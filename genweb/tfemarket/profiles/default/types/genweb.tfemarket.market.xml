@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<object name="genweb.tfemarket.market" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="genweb.tfemarket.market" meta_type="Dexterity FTI" i18n:domain="genweb.tfemarket"
 xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-    <property name="title" i18n:translate="">market</property>
-    <property name="description" i18n:translate=""></property>
-    <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
+    <property name="title" i18n:translate="market">market</property>
+    <property name="description" i18n:translate="market_description"></property>
+    <property name="icon_expr"></property>
     <property name="factory">market</property>
     <property name="add_view_expr">string:${folder_url}/++add++genweb.tfemarket.market</property>
     <property name="link_target"></property>

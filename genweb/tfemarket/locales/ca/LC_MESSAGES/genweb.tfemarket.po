@@ -1,180 +1,180 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-02-12 12:30+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-02-20 11:06+0000\n"
+"PO-Revision-Date: 2018-02-20 12:18+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
+"Language: ca\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: ../content/offer.py:19
-msgid "A"
-msgstr ""
-
-#: ../content/offer.py:20
-msgid "B"
-msgstr ""
+#: ../content/templates/market_view.pt:16
+msgid "All TFE's"
+msgstr "Tots els Treballs Fi d'Estudis"
 
 #: ../content/application.py:40
 msgid "Body"
-msgstr ""
-
-#: ../content/offer.py:21
-msgid "C"
-msgstr ""
+msgstr "Cos de la sol·licitud"
 
 #: ../content/offer.py:127
 msgid "Company Contact"
-msgstr ""
+msgstr "Dades de contacte de l'empresa"
 
 #: ../content/offer.py:53
 msgid "Description"
-msgstr ""
+msgstr "Descripció"
+
+#: ../content/templates/market_view.pt:18
+msgid "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
+msgstr "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 
 #: ../content/application.py:30
 msgid "Identification number"
-msgstr ""
+msgstr "Identificador"
 
 #: ../configure.zcml:26
 msgid "Installs the genweb.tfemarket add-on."
-msgstr ""
+msgstr "Instal·lar Genweb Mercat de  TFE"
 
 #: ../content/application.py:35
 msgid "Name and surname"
-msgstr ""
+msgstr "Cognoms, Nom"
 
 #: ../content/offer.py:132
 msgid "Number of students"
-msgstr ""
+msgstr "Nombre d'estudiants"
 
 #: ../content/offer.py:133
 msgid "Number of students for the TFE (1 to 10)"
-msgstr ""
+msgstr "Nombre d'estudiants (1 fins a 10)"
 
-#: ../content/application.py:19
-#: ../content/offer.py:43
+#: ../content/application.py:19 ../content/offer.py:43
 msgid "Offer id"
-msgstr ""
+msgstr "Identificador de l'oferta"
 
 #: ../content/application.py:25
 msgid "Offer title"
-msgstr ""
+msgstr "Títol de l'oferta"
+
+#: ../content/templates/market_view.pt:19
+msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
+msgstr "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 
 #: ../controlpanel.py:41
 msgid "Review State"
-msgstr ""
+msgstr "Estat de revisió actiu"
 
 #: ../controlpanel.py:43
 msgid "Select if you want to add \"Reviewer\" role"
-msgstr ""
+msgstr "Seleccionar si és necessari el rol de revisió"
 
 #: ../controlpanel.py:19
 msgid "Settings"
-msgstr ""
+msgstr "Configuració"
 
 #: ../content/offer.py:112
 msgid "TFEteacher"
-msgstr ""
+msgstr "Professor"
 
 #: ../controlpanel.py:31
 msgid "Tags"
-msgstr ""
+msgstr "Llistat de paraules clau"
 
 #: ../controlpanel.py:37
 msgid "Temes"
-msgstr ""
+msgstr "Temàtica principal"
 
 #: ../content/offer.py:48
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: ../controlpanel.py:25
 msgid "Topics"
-msgstr ""
+msgstr "Paraules clau"
 
 #: ../controlpanel.py:48
 msgid "Topics of the TFE"
-msgstr ""
+msgstr "Temàtiques principals dels TFE's"
 
-#: ../configure.zcml:26
-#: ../controlpanel.py:66
+#: ../configure.zcml:26 ../controlpanel.py:66
 msgid "UPC Mercat TFE"
-msgstr ""
+msgstr "Mercat de treballs final d'estudis de la UPC"
 
 #: ../controlpanel.py:53
 msgid "URL del servei web"
-msgstr ""
+msgstr "URL del servei web"
 
 #: ../configure.zcml:34
 msgid "Uninstalls the genweb.tfemarket add-on."
-msgstr ""
+msgstr "Desinstal·lar el Mercat de TFE"
 
 #: ../content/offer.py:117
 msgid "University department"
-msgstr ""
+msgstr "Departament"
+
+#. Default: "Application"
+#: ../profiles/default/types/genweb.tfemarket.application.xml
+msgid "application"
+msgstr "Sol·licitud"
 
 #: ../content/offer.py:122
 msgid "company"
-msgstr ""
+msgstr "Empresa"
 
 #: ../content/offer.py:141
 msgid "confidential"
-msgstr ""
+msgstr "Confidencial"
 
 #: ../content/offer.py:100
 msgid "degree"
-msgstr ""
-
-#: ../content/offer.py:32
-msgid "dos"
-msgstr ""
+msgstr "Grau"
 
 #: ../content/offer.py:87
 msgid "grant"
-msgstr ""
+msgstr "Possibilitat de beca"
 
 #: ../content/offer.py:68
 msgid "keys"
-msgstr ""
+msgstr "Paraules clau"
+
+#. Default: "market"
+#: ../profiles/default/types/genweb.tfemarket.market.xml
+msgid "market"
+msgstr "Mercat"
 
 #: ../content/offer.py:105
 msgid "modality"
-msgstr ""
+msgstr "Modalitat"
+
+#. Default: "offer"
+#: ../profiles/default/types/genweb.tfemarket.offer.xml
+msgid "offer"
+msgstr "Oferta"
 
 #: ../content/offer.py:94
 msgid "offer_center"
-msgstr ""
+msgstr "Centre"
 
 #: ../content/offer.py:58
 msgid "offer_features"
-msgstr ""
+msgstr "Característiques"
 
 #: ../content/offer.py:63
 msgid "offer_topic"
-msgstr ""
+msgstr "Temàtica principal"
 
 #: ../content/offer.py:74
 msgid "requirements"
-msgstr ""
+msgstr "Requisits"
 
 #: ../content/offer.py:79
 msgid "tfe_lang"
-msgstr ""
-
-#: ../content/offer.py:33
-msgid "tres"
-msgstr ""
-
-#: ../content/offer.py:31
-msgid "uno"
-msgstr ""
-
-msgid "accepted"
-msgstr "Acceptada"
+msgstr "Idioma del treball"

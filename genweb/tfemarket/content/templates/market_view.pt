@@ -9,37 +9,126 @@
     <body>
       <metal:content-core fill-slot="content-core">
         <metal:block define-macro="content-core"
-                            tal:define="offers view/getOffers">
+                     tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
-
-        <table class="table table-bordered table-condensed table-hover">
-          <thead>
-            <tr>
-              <th> Title </th>
-              <th> State</th>
-              <th> Join </th>
-            </tr>
-          </thead>
-          <tbody>
-            <div tal:repeat="item offers">
-                <tr>
-                    <td>
-                      <a tal:attributes="href item/url" tal:content="item/title">Title</a>
-                      <div tal:define="applications python:view.getApplications(item)" tal:repeat="item applications">
-                        <p>
-                          <a tal:attributes="href item/url" tal:content="item/title">Title</a>
-                          <tal:tit content="item/title">Title</tal:tit>
-                          <tal:stat content="item/state">State</tal:stat>
-                        </p>
-                      </div>
-                    </td>
-                    <td tal:content="item/state">State</td>
-                    <td> Join </td>
-                </tr>
-            </div>
-          </tbody>
+            <div tal:condition="offers" class="">
+                <div class="clearfix"></div>
+                <h2 style="margin-top:0px; text-align: left; float: left;" i18n:translate="">All TFE's</h2>
+                <div style="float:right;" class="documentDescription">
+                    <span id="expandAll" i18n:translate="">Desplega tot <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                    <span id="collapseAll" i18n:translate="">Plega tot <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                </div>
+                <div class="clearfix"></div>
+                <ul id="offerslist">
+                    <tal:offers repeat="offer offers">
+                        <li class="unstyled offer">
+                            <div class="puntTitle span12">
+                                <div class="span1 fletxaSpan">
+                                    <button type="button" class="expand""
+                                            data-original-title="Expand">
+                                        <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="notexpand"
+                                            data-original-title="Collapse">
+                                        <i  style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="span9 titleSpan">
+                                    <a tal:attributes="href offer/url">
+                                        <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
+                                    </a>
+                                </div>
+                                <div class="span1 boleta">
+                                    <span class="btn label disabled" style="padding:3px; float: right;">
+                                        <i class="fa fa-circle" aria-hidden="true"></i>&nbsp;<span tal:content="offer/state"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="sortable2 offerdata">
+                                <p>Descripción: The project aims to develop an Energy Management Dystem (EMS) for microgrids based on renewable energies. An optimization problem will be formulated taking into account a given electrical microgrid with a number of electrical constraints. The EMS will schedule the power set-points for the different nodes considering the energy production and demand forecasts as long as the considered constraints. The developed EMS can be tested in an experimental microgrid.</p>
+                                    <div><p>Requisitos mínimos:</p>
+                                        <ul>
+                                            <li>MSc RENE - Renewable Energy</li>
+                                            <li>MSc Energy for Smart Cities</li>
+                                            <li>MSc SENSE - Smart Electrical Networks and Systems</li>
+                                            <li>MSc SELECT - Environomical Pathways for Sustainable Energy Systems</li>
+                                        </ul>
+                                    </div>
+                            </div>
+                            <div tal:define="applications python:view.getApplications(offer)"
+                                 tal:condition="applications"
+                                 class="sortable2 applications">
+                                <tal:applications repeat="app applications">
+                                    <ol>
+                                        <div>
+                                            <div class="span9">
+                                                <a tal:attributes="href app/url">
+                                                    <tal:omit-tag tal:content="app/title">Item Title</tal:omit-tag>
+                                                </a>
+                                            </div>
+                                            <div class="span2">
+                                                  <i class="fa fa-circle" aria-hidden="true"></i>
+                                                <tal:block tal:define="estat app/state">
+                                                    <span class="btn label disabled" style="padding:3px; float: right;">
+                                                    <i class="fa fa-circle" aria-hidden="true"></i>&nbsp;<span tal:content="estat"></span>
+                                                    </span>
+                                                </tal:block>
+                                            </div>
+                                        </div>
+                                    </ol>
+                                </tal:applications>
+                            </div>
+                        </li>
+                    </tal:offers>
+            </ul>
+        </div>
         </metal:block>
-      </metal:content-core>
 
-    </body>
+
+
+  <script type="text/javascript">
+    $(function() {
+        $(this).find('.sortable2').hide()
+        $(this).find('.notexpand').hide()
+        $('.expand').click(function(e){
+               e.stopPropagation();
+               $(this).parent().parent().find('.expand').hide()
+               $(this).parent().parent().find('.expand').slideUp()
+               $(this).parent().parent().find('.notexpand').show()
+               $(this).parent().parent().parent().find('.sortable2').slideDown()
+        });
+
+        $('.notexpand').click(function(e){
+               e.stopPropagation();
+               $(this).parent().parent().find('.notexpand').hide()
+               $(this).parent().parent().find('.expand').show()
+               $(this).parent().parent().parent().find('.sortable2').slideUp()
+        });
+    });
+  </script>
+
+  <script type="text/javascript">
+    $("#collapseAll").hide()
+    $("#expandAll").click(function(){
+      $(".expand").parent().parent().parent().slideDown();
+      $(".expand").hide();
+      $(".notexpand").show();
+      $(".expand").parent().parent().parent().find('.sortable2').slideDown();
+      $("#expandAll").hide();
+      $("#collapseAll").show();
+    })
+
+    $("#collapseAll").click(function(){
+      $(".notexpand").slideUp();
+      $(".notexpand").hide();
+      $(".expand").show();
+
+      $(".expand").parent().parent().parent().find('.sortable2').slideUp();
+      $("#expandAll").show();
+      $("#collapseAll").hide();
+    })
+  </script>
+
+</metal:content-core>
+</body>
 </html>

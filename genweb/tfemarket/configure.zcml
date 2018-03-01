@@ -17,6 +17,11 @@
 
     <grok:grok package="." />
 
+    <permission
+        id="genweb.tfemarket.add.market"
+        title="Genweb TFEMarket: Add Market"
+    />
+
     <genericsetup:registerProfile
         name="default"
         title="UPC Mercat TFE"

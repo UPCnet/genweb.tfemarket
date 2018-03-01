@@ -4,18 +4,24 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="genweb.tfemarket">
 
-  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
-  <include package="z3c.jbot" file="meta.zcml" />
-  <browser:jbot
-      directory="overrides"
-      layer="genweb.tfemarket.interfaces.IGenwebTfemarketLayer"
-      />
+    <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+    <include package="z3c.jbot" file="meta.zcml" />
+    <browser:jbot
+        directory="overrides"
+        layer="genweb.tfemarket.interfaces.IGenwebTfemarketLayer"
+        />
 
-  <!-- Publish static files -->
-  <plone:static
-      name="genweb.tfemarket"
-      type="plone"
-      directory="static"
-      />
+    <!-- Publish static files ++genweb++tfemarket -->
+    <plone:static
+        directory="static"
+        type="genweb"
+        name="tfemarket"
+        />
+
+    <!-- ++resource++genweb.tfemarket.stylesheets/genweb_tfemarket.css -->
+    <browser:resourceDirectory
+        name="genweb.tfemarket.stylesheets"
+        directory="stylesheets"
+        />
 
 </configure>

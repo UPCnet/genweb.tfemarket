@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-02-12 12:30+0000\n"
+"POT-Creation-Date: 2018-02-20 11:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,20 +14,12 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ../content/offer.py:19
-msgid "A"
-msgstr ""
-
-#: ../content/offer.py:20
-msgid "B"
+#: ../content/templates/market_view.pt:16
+msgid "All TFE's"
 msgstr ""
 
 #: ../content/application.py:40
 msgid "Body"
-msgstr ""
-
-#: ../content/offer.py:21
-msgid "C"
 msgstr ""
 
 #: ../content/offer.py:127
@@ -36,6 +28,10 @@ msgstr ""
 
 #: ../content/offer.py:53
 msgid "Description"
+msgstr ""
+
+#: ../content/templates/market_view.pt:18
+msgid "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 msgstr ""
 
 #: ../content/application.py:30
@@ -65,6 +61,10 @@ msgstr ""
 
 #: ../content/application.py:25
 msgid "Offer title"
+msgstr ""
+
+#: ../content/templates/market_view.pt:19
+msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr ""
 
 #: ../controlpanel.py:41
@@ -120,6 +120,16 @@ msgstr ""
 msgid "University department"
 msgstr ""
 
+#. Default: "Application"
+#: ../profiles/default/types/genweb.tfemarket.application.xml
+msgid "application"
+msgstr ""
+
+#. Default: "Description"
+#: ../profiles/default/types/genweb.tfemarket.application.xml
+msgid "application_description"
+msgstr ""
+
 #: ../content/offer.py:122
 msgid "company"
 msgstr ""
@@ -132,10 +142,6 @@ msgstr ""
 msgid "degree"
 msgstr ""
 
-#: ../content/offer.py:32
-msgid "dos"
-msgstr ""
-
 #: ../content/offer.py:87
 msgid "grant"
 msgstr ""
@@ -144,8 +150,18 @@ msgstr ""
 msgid "keys"
 msgstr ""
 
+#. Default: "market"
+#: ../profiles/default/types/genweb.tfemarket.market.xml
+msgid "market"
+msgstr ""
+
 #: ../content/offer.py:105
 msgid "modality"
+msgstr ""
+
+#. Default: "offer"
+#: ../profiles/default/types/genweb.tfemarket.offer.xml
+msgid "offer"
 msgstr ""
 
 #: ../content/offer.py:94
@@ -166,12 +182,4 @@ msgstr ""
 
 #: ../content/offer.py:79
 msgid "tfe_lang"
-msgstr ""
-
-#: ../content/offer.py:33
-msgid "tres"
-msgstr ""
-
-#: ../content/offer.py:31
-msgid "uno"
 msgstr ""

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<object name="portal_css" meta_type="Stylesheets Registry">
+
+<stylesheet title="" applyPrefix="False" authenticated="False" bundle=""
+    cacheable="False" compression="none" conditionalcomment="" cookable="False"
+    enabled="True" expression=""
+    id="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600" media="" rel="stylesheet" rendering="import"/>
+
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++genweb.tfemarket.stylesheets/genweb_tfemarket.css"
+    insert-after="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600"
+    media="" rel="stylesheet" rendering="import"/>
+
+
+</object>

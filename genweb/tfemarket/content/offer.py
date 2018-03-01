@@ -15,15 +15,22 @@ from zope.schema.interfaces import IVocabularyFactory
 class KeysVocabulary(object):
     grok.implements(IVocabularyFactory)
 
+    def __call__(self, context):
+        topics = SimpleVocabulary([SimpleTerm(value=u'Bill', title=(u'A')),
+                                   SimpleTerm(value=u'Bob', title=(u'B')),
+                                   SimpleTerm(value=u'Jim', title=(u'C'))
+                                   ])
+        return topics
+
 
 grok.global_utility(KeysVocabulary, name=u"genweb.tfemarket.Keys")
 
 
 @grok.provider(IContextSourceBinder)
 def possibleTopics(context):
-    topics = SimpleVocabulary([SimpleTerm(value=u'Bill', title=_(u'uno')),
-                               SimpleTerm(value=u'Bob', title=_(u'dos')),
-                               SimpleTerm(value=u'Jim', title=_(u'tres'))
+    topics = SimpleVocabulary([SimpleTerm(value=u'Bill', title=(u'uno')),
+                               SimpleTerm(value=u'Bob', title=(u'dos')),
+                               SimpleTerm(value=u'Jim', title=(u'tres'))
                                ])
     return topics
 
@@ -42,7 +49,7 @@ class IOffer(form.Schema):
         required=True,
     )
 
-    description = RichTextField(
+    description = schema.Text(
         title=_(u'Description'),
         required=False,
     )
