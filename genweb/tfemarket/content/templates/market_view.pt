@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="sortable2 offerdata">
-                                <p>Descripción: The project aims to develop an Energy Management Dystem (EMS) for microgrids based on renewable energies. An optimization problem will be formulated taking into account a given electrical microgrid with a number of electrical constraints. The EMS will schedule the power set-points for the different nodes considering the energy production and demand forecasts as long as the considered constraints. The developed EMS can be tested in an experimental microgrid.</p>
+                                <p class="offerdesc">Descripción: The project aims to develop an Energy Management Dystem (EMS) for microgrids based on renewable energies. An optimization problem will be formulated taking into account a given electrical microgrid with a number of electrical constraints. The EMS will schedule the power set-points for the different nodes considering the energy production and demand forecasts as long as the considered constraints. The developed EMS can be tested in an experimental microgrid.</p>
                                     <div><p>Requisitos mínimos:</p>
                                         <ul>
                                             <li>MSc RENE - Renewable Energy</li>

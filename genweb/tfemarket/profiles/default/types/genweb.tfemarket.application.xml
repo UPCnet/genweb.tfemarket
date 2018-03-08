@@ -15,7 +15,7 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n">
         <element value="view"/>
     </property>
     <property name="default_view_fallback">False</property>
-    <property name="add_permission">cmf.AddPortalContent</property>
+    <property name="add_permission">genweb.tfemarket.add.application</property>
     <property name="klass">plone.dexterity.content.Item</property>
     <property name="behaviors">
         <element value="plone.app.dexterity.behaviors.metadata.ICategorization" />

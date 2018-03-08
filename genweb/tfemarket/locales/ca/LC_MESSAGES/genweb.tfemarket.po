@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-02-20 11:06+0000\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "PO-Revision-Date: 2018-02-20 12:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,11 +24,35 @@ msgstr "Tots els Treballs Fi d'Estudis"
 msgid "Body"
 msgstr "Cos de la sol·licitud"
 
-#: ../content/offer.py:127
+#: ../content/offer.py:121
+msgid "Catalan"
+msgstr "Català"
+
+#: ../controlpanel.py:98
+msgid "Centre code"
+msgstr "Codi del centre"
+
+#: ../content/offer.py:156
+msgid "CoManager"
+msgstr "Codirector"
+
+#: ../content/offer.py:161
+msgid "Company"
+msgstr "Empresa"
+
+#: ../content/offer.py:166
 msgid "Company Contact"
 msgstr "Dades de contacte de l'empresa"
 
-#: ../content/offer.py:53
+#: ../content/offer.py:171
+msgid "Company Email"
+msgstr "Adreça de correu de l'empresa"
+
+#: ../controlpanel.py:19
+msgid "Degree code at PRISMA"
+msgstr "Codi del grau a PRISMA"
+
+#: ../content/offer.py:90
 msgid "Description"
 msgstr "Descripció"
 
@@ -36,27 +60,48 @@ msgstr "Descripció"
 msgid "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 msgstr "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 
+#: ../controlpanel.py:28
+msgid "E-mail"
+msgstr "Adreça de correu"
+
+#: ../content/offer.py:123
+msgid "English"
+msgstr "Anglès"
+
+#: ../content/offer.py:191
+msgid "Environmental Theme"
+msgstr "Temàtica ambiental"
+
 #: ../content/application.py:30
 msgid "Identification number"
 msgstr "Identificador"
 
-#: ../configure.zcml:26
+#: ../configure.zcml:41
 msgid "Installs the genweb.tfemarket add-on."
 msgstr "Instal·lar Genweb Mercat de  TFE"
+
+#: ../controlpanel.py:33
+msgid "MEC code"
+msgstr "Codi MEC"
+
+#: ../controlpanel.py:35
+msgid "MEC degree code"
+msgstr "Codi MEC del Grau"
 
 #: ../content/application.py:35
 msgid "Name and surname"
 msgstr "Cognoms, Nom"
 
-#: ../content/offer.py:132
+#: ../content/offer.py:176
 msgid "Number of students"
 msgstr "Nombre d'estudiants"
 
-#: ../content/offer.py:133
+#: ../content/offer.py:177
 msgid "Number of students for the TFE (1 to 10)"
 msgstr "Nombre d'estudiants (1 fins a 10)"
 
-#: ../content/application.py:19 ../content/offer.py:43
+#: ../content/application.py:19
+#: ../content/offer.py:80
 msgid "Offer id"
 msgstr "Identificador de l'oferta"
 
@@ -64,59 +109,80 @@ msgstr "Identificador de l'oferta"
 msgid "Offer title"
 msgstr "Títol de l'oferta"
 
+#: ../controlpanel.py:17
+msgid "PRISMA code"
+msgstr "Codi PRISMA"
+
+#: ../controlpanel.py:39
+msgid "Plan year"
+msgstr "Any del plà"
+
 #: ../content/templates/market_view.pt:19
 msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 
-#: ../controlpanel.py:41
+#: ../controlpanel.py:23
+msgid "Program type"
+msgstr "Tipus de programa"
+
+#: ../controlpanel.py:103
 msgid "Review State"
 msgstr "Estat de revisió actiu"
 
-#: ../controlpanel.py:43
+#: ../content/offer.py:197
+msgid "Scope of cooperation"
+msgstr "Ambit de cooperació"
+
+#: ../controlpanel.py:105
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr "Seleccionar si és necessari el rol de revisió"
 
-#: ../controlpanel.py:19
+#: ../controlpanel.py:69
 msgid "Settings"
 msgstr "Configuració"
 
-#: ../content/offer.py:112
+#: ../content/offer.py:122
+msgid "Spanish"
+msgstr "Espanyol"
+
+#: ../content/offer.py:146
 msgid "TFEteacher"
 msgstr "Professor"
 
-#: ../controlpanel.py:31
+#: ../controlpanel.py:81
 msgid "Tags"
 msgstr "Llistat de paraules clau"
 
-#: ../controlpanel.py:37
+#: ../controlpanel.py:87
 msgid "Temes"
 msgstr "Temàtica principal"
 
-#: ../content/offer.py:48
+#: ../content/offer.py:85
 msgid "Title"
 msgstr "Título"
 
-#: ../controlpanel.py:25
+#: ../controlpanel.py:44
+msgid "Titulacions"
+msgstr "Titulacions"
+
+#: ../controlpanel.py:75
 msgid "Topics"
 msgstr "Paraules clau"
 
-#: ../controlpanel.py:48
+#: ../controlpanel.py:110
 msgid "Topics of the TFE"
 msgstr "Temàtiques principals dels TFE's"
 
-#: ../configure.zcml:26 ../controlpanel.py:66
+#: ../configure.zcml:41
+#: ../controlpanel.py:137
 msgid "UPC Mercat TFE"
 msgstr "Mercat de treballs final d'estudis de la UPC"
 
-#: ../controlpanel.py:53
+#: ../controlpanel.py:115
 msgid "URL del servei web"
 msgstr "URL del servei web"
 
-#: ../configure.zcml:34
-msgid "Uninstalls the genweb.tfemarket add-on."
-msgstr "Desinstal·lar el Mercat de TFE"
-
-#: ../content/offer.py:117
+#: ../content/offer.py:151
 msgid "University department"
 msgstr "Departament"
 
@@ -125,23 +191,29 @@ msgstr "Departament"
 msgid "application"
 msgstr "Sol·licitud"
 
-#: ../content/offer.py:122
-msgid "company"
-msgstr "Empresa"
+#. Default: "Description"
+#: ../profiles/default/types/genweb.tfemarket.application.xml
+msgid "application_description"
+msgstr "Dades per a la sol·licitud d'un TFE"
 
-#: ../content/offer.py:141
+#: ../content/offer.py:185
 msgid "confidential"
 msgstr "Confidencial"
 
-#: ../content/offer.py:100
+#: ../content/offer.py:134
 msgid "degree"
 msgstr "Grau"
 
-#: ../content/offer.py:87
+#: ../content/offer.py:128
 msgid "grant"
 msgstr "Possibilitat de beca"
 
-#: ../content/offer.py:68
+#. Default: "Imported dades from csv"
+#: ../controlpanel.py:126
+msgid "help_titulacions_table"
+msgstr "Dades importades mitjançant un fitxer csv"
+
+#: ../content/offer.py:203
 msgid "keys"
 msgstr "Paraules clau"
 
@@ -150,7 +222,7 @@ msgstr "Paraules clau"
 msgid "market"
 msgstr "Mercat"
 
-#: ../content/offer.py:105
+#: ../content/offer.py:139
 msgid "modality"
 msgstr "Modalitat"
 
@@ -159,22 +231,34 @@ msgstr "Modalitat"
 msgid "offer"
 msgstr "Oferta"
 
-#: ../content/offer.py:94
+#: ../content/offer.py:73
 msgid "offer_center"
 msgstr "Centre"
 
-#: ../content/offer.py:58
+#: ../content/offer.py:105
 msgid "offer_features"
 msgstr "Característiques"
 
-#: ../content/offer.py:63
+#: ../content/offer.py:95
+msgid "offer_targets"
+msgstr "Objectius"
+
+#: ../content/offer.py:110
 msgid "offer_topic"
 msgstr "Temàtica principal"
 
-#: ../content/offer.py:74
+#: ../content/offer.py:100
+msgid "offer_workload"
+msgstr "Càrrega de treball"
+
+#: ../content/offer.py:115
 msgid "requirements"
 msgstr "Requisits"
 
-#: ../content/offer.py:79
+#: ../content/offer.py:120
 msgid "tfe_lang"
 msgstr "Idioma del treball"
+
+#: ../controlpanel.py:128
+msgid "titulacionstable"
+msgstr "XXXXXXXXXXX"

@@ -1,12 +1,54 @@
-.portaltype-genweb-organs-organgovern div.tab-pane.active,
-.portaltype-genweb-organs-sessio div.tab-pane.active,
-.portaltype-genweb-organs-acta div.tab-pane.active {
-    padding-top: 20px;
-    background-color: #f0f0f0;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    padding-right: 20px;
+/*CSS DAVID*/
+
+li.unstyled.offer {
+    background-color: #f5f4f4;
+    float: left;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    width: 96%;
 }
+.sortable2.applications {
+    padding-top: 40px;
+}
+button.expand {
+    padding: 3px;
+}
+#content-core ul {
+    margin-left: 0px;
+}
+.span1.fletxaSpan .expand {
+    margin-top: 0px!important;
+    padding-top: 2px!important;
+    padding: 2px 6px;
+}
+ul {
+    list-style: none;
+}
+.span1.boleta {
+    float: right;
+    margin-right: 15px;
+}
+.span9.titleSpan {
+    padding-top: 3px;
+}
+.sortable2.offerdata p {
+    margin-top: 20px;
+}
+
+
+/*FIN CSS DAVID*/
+
+/*KO CSS*/
+
+li {
+    list-style: none;
+}
+
+/*FIN KO CSS*/
+
+
+/*ROB CSS*/
 
 ul#tabs.nav.nav-tabs {
     margin: 0px;
@@ -1560,3 +1602,5 @@ div#previewModal {
     width: 1000px;
     right: 20%;
 }
+
+/*FIN ROB CSS*/

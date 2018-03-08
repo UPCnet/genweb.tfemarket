@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="ca"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+    <body>
+        <metal:content-core fill-slot="content-core">
+            <metal:block define-macro="content-core">
+                <div metal:use-macro="context/batch_macros/macros/navigation" />
+                <div class="">
+
+                    <!-- SUMMARY INFO -->
+                    <div class="informacioTFE">
+                        <p>
+                            <b>Identificador:</b> 661215899 AP <br>
+                            <b>Centre:</b> 0111-Q <br>
+                            <b>Departament:</b> 37 <br>
+                            <br>
+                        </p>
+                        <div class="fechas">
+                            <p>
+                                <b>Data Creació:</b> 2018/01/29<br>
+                                <b>Data Creació:</b> 2018/01/29<br>
+                            </p>
+                        </div>
+                        <p>
+                            <b>Profesor director:</b> Aureli Condogvia<br>
+                            <b>Titulacions:</b> Titulación 1 y Titulación 2<br>
+                            <b>Modalitat:</b> Modalidad<br>
+                            <br>
+                            <b>Descripció:</b> La zona de prova, els sistemes de subjecció de les màquines,sistemes de seguretat, disseny del quadre elèctric per a poder treball a diferents voltatges, freqüències, potències de motors, etc. amb un sistema integrat de registre amb la finalitat d`obtenir traçabilitat dels productes veirficats, aplicant les normatives vigents corresponents de màquines, elèctricitat i riscos laborals.<br>
+                            <br>
+                            <b>Característiques:</b> Amb un sistema integrat de registre amb la finalitat d`obtenir traçabilitat dels productes veirficats, aplicant les normatives vigents corresponents de màquines, elèctricitat i riscos laborals.<br>
+                            <br>
+                            <b>Paraules clau:</b> Zona, Sistemes, Subjecció, Màquines.<br>
+                            <b>Llengües elaboració treball:</b> Català<br>
+                            <b>Temàtica principal:</b> Temàtica abierta<br>
+                            <b>Requisits:</b> Cap<br>
+                            <b>Possibilitat beca:</b> No<br>
+                        </p>
+                    </div>
+
+                    <!-- APLLICATIONS TABLE -->
+                    <div id="parent-fieldname-text">
+                        <h3>Sol·licitud</h3>
+                        <table class="taulaRegistres" summary="Detall d'estructura de la taula de registres">
+                        <tbody>
+                        <tr class="cap">
+                        <td>DNI</td>
+                        <td>Nom</td>
+                        <td>Centre</td>
+                        <td>Titulació</td>
+                        <td>Identificador Oferta TFE</td>
+                        <td>Teléfono Móvil</td>
+                        <td>Estado de la solicitud</td>
+                        </tr>
+                        <tr>
+                        <td class="fonsDestacat1">47780321Y</td>
+                        <td>Caballero Alonso, David</td>
+                        <td>CITM</td>
+                        <td>Multimedia</td>
+                        <td>155598732A</td>
+                        <td>659478123</td>
+                        <td>En espera</td>
+                        </tr>
+                        <tr>
+                        <td class="fonsDestacat1">45876624A</td>
+                        <td>Calvet Escribano, Marc</td>
+                        <td>ETSEIAT</td>
+                        <td>Enginyeria de Camins</td>
+                        <td>564321388V</td>
+                        <td>688956325</td>
+                        <td>En espera</td>
+                        </tr>
+                        <tr>
+                        <td class="fonsDestacat1">41254663Q</td>
+                        <td>Prieto Martínez, Manel</td>
+                        <td>ETB</td>
+                        <td>Enginyeria Aeronáutica</td>
+                        <td>985666224Q</td>
+                        <td>684212147</td>
+                        <td>Candidatura Aprobada</td>
+                        </tr>
+                        <tr>
+                        <td class="fonsDestacat1">40298653V</td>
+                        <td>Fernández Perez, Alexis</td>
+                        <td>FINB</td>
+                        <td>Psicologia</td>
+                        <td>562316811G</td>
+                        <td>699932154</td>
+                        <td>Rechazada</td>
+                        </tr>
+                        <tr>
+                        <td class="fonsDestacat1">49823221O</td>
+                        <td>Gil Delgado, Joel</td>
+                        <td>FLO</td>
+                        <td>Enginyeria en Sistemes&nbsp;</td>
+                        <td>669985474M</td>
+                        <td>652812113</td>
+                        <td>Candidatura Aprobada</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <p>&nbsp;</p>
+                        <p>
+                        <script id="protect-script" src="../++resource++protect.js" type="mce-application/javascript" data-token="5b5be370710b983ea3aaef39aa18e2c2aff26703" data-site-url="http://pc60045.estacions.upcnet.es:8080/market2"></script>
+                        </p>
+                    </div>
+                </div>
+            </metal:block>
+        </metal:content-core>
+    </body>
+</html>
+

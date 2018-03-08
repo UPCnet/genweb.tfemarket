@@ -125,7 +125,7 @@ class ITfemarketSettings(model.Schema):
     titulacions_table = schema.List(title=_(u'Titulacions'),
                                     description=_(u'help_titulacions_table',
                                     default=u'Imported dades from csv'),
-                                    value_type=DictRow(title=_(u'help_titulacions_table'),
+                                    value_type=DictRow(title=_(u'titulacionstable'),
                                                        schema=ITableTitulacions),
                                     required=False
                                     )

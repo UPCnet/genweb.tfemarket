@@ -22,19 +22,21 @@
         title="Genweb TFEMarket: Add Market"
     />
 
+    <permission
+        id="genweb.tfemarket.add.offer"
+        title="Genweb TFEMarket: Add Offer"
+    />
+
+    <permission
+        id="genweb.tfemarket.add.application"
+        title="Genweb TFEMarket: Add Application"
+    />
+
     <genericsetup:registerProfile
         name="default"
         title="UPC Mercat TFE"
         directory="profiles/default"
         description="Installs the genweb.tfemarket add-on."
-        provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
-    <genericsetup:registerProfile
-        name="uninstall"
-        title="UPC Mercat TFE"
-        directory="profiles/uninstall"
-        description="Uninstalls the genweb.tfemarket add-on."
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 

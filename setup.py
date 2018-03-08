@@ -39,6 +39,7 @@ setup(
         'plone.app.dexterity',
         'five.grok',
         'collective.dexteritytextindexer',
+        'plone.schema'
     ],
     extras_require={
         'test': [

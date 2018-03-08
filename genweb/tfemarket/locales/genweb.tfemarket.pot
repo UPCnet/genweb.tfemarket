@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-02-20 11:16+0000\n"
+"POT-Creation-Date: 2018-03-08 15:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: genweb.tfemarket\n"
 
+#: ../content/offer.py:52
+#: ../controlpanel.py:45
+msgid ""
+msgstr ""
+
 #: ../content/templates/market_view.pt:16
 msgid "All TFE's"
 msgstr ""
@@ -25,11 +30,35 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: ../content/offer.py:127
+#: ../content/offer.py:121
+msgid "Catalan"
+msgstr ""
+
+#: ../controlpanel.py:98
+msgid "Centre code"
+msgstr ""
+
+#: ../content/offer.py:156
+msgid "CoManager"
+msgstr ""
+
+#: ../content/offer.py:161
+msgid "Company"
+msgstr ""
+
+#: ../content/offer.py:166
 msgid "Company Contact"
 msgstr ""
 
-#: ../content/offer.py:53
+#: ../content/offer.py:171
+msgid "Company Email"
+msgstr ""
+
+#: ../controlpanel.py:19
+msgid "Degree code at PRISMA"
+msgstr ""
+
+#: ../content/offer.py:90
 msgid "Description"
 msgstr ""
 
@@ -37,28 +66,48 @@ msgstr ""
 msgid "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 msgstr ""
 
+#: ../controlpanel.py:28
+msgid "E-mail"
+msgstr ""
+
+#: ../content/offer.py:123
+msgid "English"
+msgstr ""
+
+#: ../content/offer.py:191
+msgid "Environmental Theme"
+msgstr ""
+
 #: ../content/application.py:30
 msgid "Identification number"
 msgstr ""
 
-#: ../configure.zcml:26
+#: ../configure.zcml:41
 msgid "Installs the genweb.tfemarket add-on."
+msgstr ""
+
+#: ../controlpanel.py:33
+msgid "MEC code"
+msgstr ""
+
+#: ../controlpanel.py:35
+msgid "MEC degree code"
 msgstr ""
 
 #: ../content/application.py:35
 msgid "Name and surname"
 msgstr ""
 
-#: ../content/offer.py:132
+#: ../content/offer.py:176
 msgid "Number of students"
 msgstr ""
 
-#: ../content/offer.py:133
+#: ../content/offer.py:177
 msgid "Number of students for the TFE (1 to 10)"
 msgstr ""
 
 #: ../content/application.py:19
-#: ../content/offer.py:43
+#: ../content/offer.py:80
 msgid "Offer id"
 msgstr ""
 
@@ -66,60 +115,80 @@ msgstr ""
 msgid "Offer title"
 msgstr ""
 
+#: ../controlpanel.py:17
+msgid "PRISMA code"
+msgstr ""
+
+#: ../controlpanel.py:39
+msgid "Plan year"
+msgstr ""
+
 #: ../content/templates/market_view.pt:19
 msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr ""
 
-#: ../controlpanel.py:41
+#: ../controlpanel.py:23
+msgid "Program type"
+msgstr ""
+
+#: ../controlpanel.py:103
 msgid "Review State"
 msgstr ""
 
-#: ../controlpanel.py:43
+#: ../content/offer.py:197
+msgid "Scope of cooperation"
+msgstr ""
+
+#: ../controlpanel.py:105
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr ""
 
-#: ../controlpanel.py:19
+#: ../controlpanel.py:69
 msgid "Settings"
 msgstr ""
 
-#: ../content/offer.py:112
+#: ../content/offer.py:122
+msgid "Spanish"
+msgstr ""
+
+#: ../content/offer.py:146
 msgid "TFEteacher"
 msgstr ""
 
-#: ../controlpanel.py:31
+#: ../controlpanel.py:81
 msgid "Tags"
 msgstr ""
 
-#: ../controlpanel.py:37
+#: ../controlpanel.py:87
 msgid "Temes"
 msgstr ""
 
-#: ../content/offer.py:48
+#: ../content/offer.py:85
 msgid "Title"
 msgstr ""
 
-#: ../controlpanel.py:25
+#: ../controlpanel.py:44
+msgid "Titulacions"
+msgstr ""
+
+#: ../controlpanel.py:75
 msgid "Topics"
 msgstr ""
 
-#: ../controlpanel.py:48
+#: ../controlpanel.py:110
 msgid "Topics of the TFE"
 msgstr ""
 
-#: ../configure.zcml:26
-#: ../controlpanel.py:66
+#: ../configure.zcml:41
+#: ../controlpanel.py:137
 msgid "UPC Mercat TFE"
 msgstr ""
 
-#: ../controlpanel.py:53
+#: ../controlpanel.py:115
 msgid "URL del servei web"
 msgstr ""
 
-#: ../configure.zcml:34
-msgid "Uninstalls the genweb.tfemarket add-on."
-msgstr ""
-
-#: ../content/offer.py:117
+#: ../content/offer.py:151
 msgid "University department"
 msgstr ""
 
@@ -132,23 +201,24 @@ msgstr ""
 msgid "application_description"
 msgstr ""
 
-#: ../content/offer.py:122
-msgid "company"
-msgstr ""
-
-#: ../content/offer.py:141
+#: ../content/offer.py:185
 msgid "confidential"
 msgstr ""
 
-#: ../content/offer.py:100
+#: ../content/offer.py:134
 msgid "degree"
 msgstr ""
 
-#: ../content/offer.py:87
+#: ../content/offer.py:128
 msgid "grant"
 msgstr ""
 
-#: ../content/offer.py:68
+#. Default: "Imported dades from csv"
+#: ../controlpanel.py:126
+msgid "help_titulacions_table"
+msgstr ""
+
+#: ../content/offer.py:203
 msgid "keys"
 msgstr ""
 
@@ -157,7 +227,7 @@ msgstr ""
 msgid "market"
 msgstr ""
 
-#: ../content/offer.py:105
+#: ../content/offer.py:139
 msgid "modality"
 msgstr ""
 
@@ -165,22 +235,34 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
-#: ../content/offer.py:94
+#: ../content/offer.py:73
 msgid "offer_center"
 msgstr ""
 
-#: ../content/offer.py:58
+#: ../content/offer.py:105
 msgid "offer_features"
 msgstr ""
 
-#: ../content/offer.py:63
+#: ../content/offer.py:95
+msgid "offer_targets"
+msgstr ""
+
+#: ../content/offer.py:110
 msgid "offer_topic"
 msgstr ""
 
-#: ../content/offer.py:74
+#: ../content/offer.py:100
+msgid "offer_workload"
+msgstr ""
+
+#: ../content/offer.py:115
 msgid "requirements"
 msgstr ""
 
-#: ../content/offer.py:79
+#: ../content/offer.py:120
 msgid "tfe_lang"
+msgstr ""
+
+#: ../controlpanel.py:128
+msgid "titulacionstable"
 msgstr ""

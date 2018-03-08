@@ -7,7 +7,7 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n">
     <property name="factory">offer</property>
     <property name="add_view_expr">string:${folder_url}/++add++genweb.tfemarket.offer</property>
     <property name="link_target"></property>
-    <property name="immediate_view">folder_listing</property>
+    <property name="immediate_view">view</property>
     <property name="global_allow">False</property>
     <property name="filter_content_types">True</property>
     <property name="allowed_content_types">
@@ -16,16 +16,8 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n">
         <element value="File"/>
     </property>
     <property name="allow_discussion">False</property>
-    <property name="default_view">folder_listing</property>
-    <property name="view_methods">
-        <element value="folder_summary_view"/>
-        <element value="folder_full_view"/>
-        <element value="folder_tabular_view"/>
-        <element value="atct_album_view"/>
-        <element value="folder_listing"/>
-    </property>
     <property name="default_view_fallback">False</property>
-    <property name="add_permission">cmf.AddPortalContent</property>
+    <property name="add_permission">genweb.tfemarket.add.offer</property>
     <property name="klass">plone.dexterity.content.Container</property>
     <property name="behaviors">
         <element value="plone.app.dexterity.behaviors.metadata.ICategorization" />

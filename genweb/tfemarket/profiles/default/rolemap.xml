@@ -21,5 +21,13 @@
             <role name="Manager" />
             <role name="WebMaster" />
         </permission>
+        <permission name="Genweb TFEMarket: Add Offer" acquire="True">
+            <role name="Manager" />
+            <role name="Teacher" />
+        </permission>
+        <permission name="Genweb TFEMarket: Add Application" acquire="True">
+            <role name="Manager" />
+            <role name="Student" />
+        </permission>
     </permissions>
 </rolemap>

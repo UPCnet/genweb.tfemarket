@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
-from plone.directives import form
+from plone.directives import form, dexterity
 from zope import schema
 from genweb.tfemarket import _
 from plone.autoform import directives
 from zope.schema.interfaces import IContextSourceBinder
 from plone.app.textfield import RichText as RichTextField
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+from plone.schema import Email
+from plone.supermodel.directives import fieldset
 
 from zope.schema.interfaces import IVocabularyFactory
+
+grok.templatedir("templates")
 
 
 class KeysVocabulary(object):
@@ -38,7 +42,40 @@ def possibleTopics(context):
 class IOffer(form.Schema):
     """ Folder that contains information about a TFE and its applications
     """
-    directives.mode(offer_id="display")
+
+    # fieldset('data',
+    #          label=_(u''),
+    #          fields=['degree', 'offer_id', 'title', 'description', 'targets', 'workload', 'features', 'topic']
+    #          )
+
+    fieldset('direccio',
+             label=_(u''),
+             fields=['teacher_manager', 'dept']
+             )
+
+    fieldset('requisits',
+             label=_(u''),
+             fields=['requirements', 'lang', 'num_students']
+             )
+
+    fieldset('options',
+             label=_(u''),
+             fields=['grant', 'modality', 'confidential', 'environmental_theme', 'scope_cooperation', 'keys']
+             )
+
+    fieldset('modalitat',
+             label=_(u''),
+             fields=['modality', 'co_manager', 'company', 'company_contact', 'company_email']
+             )
+
+    form.mode(center='hidden')
+    center = schema.TextLine(
+        title=_(u'offer_center'),
+        default=u"el centro",
+        required=False,
+    )
+
+    directives.mode(offer_id="hidden")
     offer_id = schema.TextLine(
         title=_(u'Offer id'),
         required=False,
@@ -54,6 +91,16 @@ class IOffer(form.Schema):
         required=False,
     )
 
+    targets = RichTextField(
+        title=_(u'offer_targets'),
+        required=False,
+    )
+
+    workload = schema.Text(
+        title=_(u'offer_workload'),
+        required=False,
+    )
+
     features = RichTextField(
         title=_(u'offer_features'),
         required=False,
@@ -64,12 +111,6 @@ class IOffer(form.Schema):
         source=possibleTopics,
         required=False)
 
-    keys = schema.Choice(
-        title=_(u'keys'),
-        vocabulary=u"genweb.tfemarket.Keys",
-        required=False,
-    )
-
     requirements = RichTextField(
         title=_(u'requirements'),
         required=False,
@@ -77,9 +118,9 @@ class IOffer(form.Schema):
 
     lang = schema.Choice(
         title=_(u'tfe_lang'),
-        values=[u"Català",
-                u"Español",
-                u"English"],
+        values=[_(u"Catalan"),
+                _(u"Spanish"),
+                _(u"English")],
         required=False,
     )
 
@@ -87,13 +128,6 @@ class IOffer(form.Schema):
         title=_(u'grant'),
         required=False,
         default=False,
-    )
-
-    form.mode(center='display')
-    center = schema.TextLine(
-        title=_(u'offer_center'),
-        default=u"el centro",
-        required=False,
     )
 
     degree = schema.TextLine(
@@ -118,13 +152,23 @@ class IOffer(form.Schema):
         required=False,
     )
 
+    co_manager = schema.TextLine(
+        title=_(u'CoManager'),
+        required=False,
+    )
+
     company = schema.TextLine(
-        title=_(u'company'),
+        title=_(u'Company'),
         required=False,
     )
 
     company_contact = schema.TextLine(
         title=_(u'Company Contact'),
+        required=False,
+    )
+
+    company_email = Email(
+        title=_(u'Company Email'),
         required=False,
     )
 
@@ -142,3 +186,34 @@ class IOffer(form.Schema):
         default=False,
         required=False,
     )
+
+    environmental_theme = schema.Bool(
+        title=_(u'Environmental Theme'),
+        default=False,
+        required=False,
+    )
+
+    scope_cooperation = schema.Bool(
+        title=_(u'Scope of cooperation'),
+        default=False,
+        required=False,
+    )
+
+    keys = schema.Choice(
+        title=_(u'keys'),
+        vocabulary=u"genweb.tfemarket.Keys",
+        required=False,
+    )
+
+
+class View(dexterity.DisplayForm):
+    """The view. May will a template from <modulename>_templates/view.pt,
+    and will be called 'view' unless otherwise stated.
+    """
+    grok.require('zope2.View')
+    grok.context(IOffer)
+    grok.template('offer_view')
+
+
+class AddForm(dexterity.AddForm):
+    grok.context(IOffer)
