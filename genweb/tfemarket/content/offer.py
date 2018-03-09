@@ -217,3 +217,4 @@ class View(dexterity.DisplayForm):
 
 class AddForm(dexterity.AddForm):
     grok.context(IOffer)
+    grok.name('offer')
