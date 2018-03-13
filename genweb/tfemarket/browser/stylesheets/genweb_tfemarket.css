@@ -1,53 +1,3 @@
-/*CSS DAVID*/
-
-li.unstyled.offer {
-    background-color: #f5f4f4;
-    float: left;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    width: 96%;
-}
-.sortable2.applications {
-    padding-top: 40px;
-}
-button.expand {
-    padding: 3px;
-}
-#content-core ul {
-    margin-left: 0px;
-}
-.span1.fletxaSpan .expand {
-    margin-top: 0px!important;
-    padding-top: 2px!important;
-    padding: 2px 6px;
-}
-ul {
-    list-style: none;
-}
-.span1.boleta {
-    float: right;
-    margin-right: 15px;
-}
-.span9.titleSpan {
-    padding-top: 3px;
-}
-.sortable2.offerdata p {
-    margin-top: 20px;
-}
-
-
-/*FIN CSS DAVID*/
-
-/*KO CSS*/
-
-li {
-    list-style: none;
-}
-
-/*FIN KO CSS*/
-
-
 /*ROB CSS*/
 
 ul#tabs.nav.nav-tabs {
@@ -1092,7 +1042,6 @@ div.containerIcons a img.link_blank { display: none }
 
 .span1.fletxaSpan{
 	margin-top:0px!important;
-	width: 2.52147%!important;
 	margin-bottom: 0px!important;
 }
 
@@ -1339,14 +1288,6 @@ span.barra {
     display: none!important;
 }
 
-.span9.titleSpan {
-    margin-bottom: 0px!important;
-}
-
-.span9.titleSpan {
-    margin-top: 2px!important;
-}
-
 .row-fluid .puntTitle.span12 , .row-fluid  .span1.numberSpan , .row-fluid .span1.fletxaSpan {
     min-height: 10px!important;
 }
@@ -1379,11 +1320,6 @@ span.barra {
     text-align: right;
     min-height: 10px;
     margin-top: 2px!important;
-}
-
-.span9.titleSpan {
-    margin-bottom: 0px!important;
-    margin-left: 2%!important;
 }
 
 .portaltype-genweb-organs-sessio .row-fluid [class*="span"] {min-height: 10px!important;}
@@ -1604,3 +1540,160 @@ div#previewModal {
 }
 
 /*FIN ROB CSS*/
+
+/*CSS DAVID*/
+
+.sortable2.applications {
+  padding-top: 40px;
+}
+
+/*FIN CSS DAVID*/
+
+/*KO & IAGO CSS*/
+
+#offers {
+  display: grid;
+}
+
+#offers .puntTitle.span12 .span1.fletxaSpan {
+  width: 6%;
+}
+
+#offers .puntTitle.span12 .span10.titleSpan {
+  width: 83.33%;
+}
+
+#offers .puntTitle.span12 .span1.boleta {
+  width: 8.33%;
+  margin-left: 0px;
+  float: right;
+}
+
+#offers button.expand {
+  padding: 3px;
+}
+
+#offers .span1.fletxaSpan .expand {
+  margin-top: 0px!important;
+  padding-top: 2px!important;
+  padding: 2px 6px;
+}
+
+#headerSearchOffers {
+  display: inline;
+}
+
+#headerSearchOffers h2 {
+  float: left;
+}
+
+#offers .sortable2.offerdata, #searchOffers {
+  background-color: #f5f4f4;
+  float: left;
+  border-radius: 5px;
+  border: 1px solid #666666;
+}
+
+#offers .sortable2.offerdata {
+  padding: 10px 20px;
+}
+
+#searchOffers {
+  width: 96%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+#searchOffers span {
+  color: #557C95;
+  font-weight: bold;
+}
+
+#searchOffers label {
+  float: left;
+  width: 100%;
+  padding-right: 24px;
+}
+
+#searchOffers input[type='text'] {
+  float: left;
+  width: calc(100% - 14px);
+}
+
+#searchOffers input[type='checkbox'] {
+  float: left;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+
+#searchOffers select {
+  float: left;
+  width: 100%;
+}
+
+#searchOffers button {
+  float: right;
+  background: #007BC0;
+}
+
+#searchOffers button span {
+  color: #FFF;
+  font-weight: normal;
+}
+
+#searchOffers .multicheckLine {
+  margin: 5px 0px;
+}
+
+#searchOffers .multicheckLine label {
+  width: auto;
+  padding-right: 20px;
+}
+
+#searchOffers .multicheckLine input[type='checkbox'],
+#searchOffers .multicheckLine input[type='radio'] {
+  float: none;
+  margin-right: 2px;
+  margin-top: 0px;
+}
+
+#searchOffers .multicheckLine span {
+  margin-right: 20px;
+}
+
+#offers ul#offersList {
+  margin: 0px;
+}
+
+#offers #collapseSearch,
+#offers form#searchOffers,
+#offers #collapseAll,
+#offers .sortable2,
+#offers .notexpand {
+  display: none;
+}
+
+#offers li.unstyled.offer {
+  list-style: none;
+  margin: 0px;
+  margin-bottom: 10px;
+  display: grid;
+}
+
+#offers .puntTitle.span12 {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+#offers .span10.titleSpan h3 {
+  margin: 5px 0px !important;
+}
+
+#offers .span1.fletxaSpan,  #offers .span10.titleSpan {
+  margin: 0px !important;
+}
+
+#offers .offerdesc {
+  text-align: justify;
+}
+/*FIN KO & IAGO CSS*/
