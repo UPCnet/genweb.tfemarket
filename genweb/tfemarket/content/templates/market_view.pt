@@ -11,20 +11,95 @@
         <metal:block define-macro="content-core"
                      tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
-            <div tal:condition="offers" class="">
-                <div class="clearfix"></div>
-                <h2 style="margin-top:0px; text-align: left; float: left;" i18n:translate="">All TFE's</h2>
-                <div style="float:right;" class="documentDescription">
-                    <span id="expandAll" i18n:translate="">Desplega tot <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                    <span id="collapseAll" i18n:translate="">Plega tot <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
+            <div id="offers" tal:condition="offers">
+                <div id="contentSearchOffers">
+                  <div id="headerSearchOffers">
+                    <h2 style="margin-top:0px; text-align: left;" i18n:translate="">Search</h2>
+                    <div style="float:right;" class="documentDescription">
+                        <span id="expandSearch"><span i18n:translate="">Show</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span id="collapseSearch"><span i18n:translate="">Hide</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                    </div>
+                  </div>
+                  <form id="searchOffers" name="searchOffers" action="" method="post">
+                    <label i18n:translate="">Text to search</label>
+                    <input type="text" id="searchTitle" name="title" />
+
+                    <label i18n:translate="">Certification</label>
+                    <select id="searchCertification" name="certification">
+                      <option value="all">All</option>
+                      <!-- <tal:block tal:repeat="certification view/listCertifications">
+                        <option value="certification" tal:content="certification">Certification</option>
+                      </tal:block> -->
+                    </select>
+
+                    <label i18n:translate="">Departament</label>
+                    <select id="searchDepartament" name="departament">
+                      <option value="all">All</option>
+                      <!-- <tal:block tal:repeat="certification view/listCertifications">
+                        <option value="certification" tal:content="certification">Certification</option>
+                      </tal:block> -->
+                    </select>
+
+                    <label i18n:translate="">Company</label>
+                    <select id="searchCompany" name="company">
+                      <option value="all" i18n:translate="">All</option>
+                      <!-- <tal:block tal:repeat="certification view/listCertifications">
+                        <option value="certification" tal:content="certification">Certification</option>
+                      </tal:block> -->
+                    </select>
+
+                    <label i18n:translate="">Date</label>
+                    <select id="searchDate" name="date">
+                      <tal:block tal:repeat="date view/getDates">
+                        <option tal:attributes="value date" tal:content="date">Date</option>
+                      </tal:block>
+                    </select>
+
+                    <label i18n:translate="">Keywords</label>
+                    <br>
+                    <br>
+
+                    <input type="checkbox" id="searchGrant" name="grant" />
+                    <span i18n:translate="">With the possibility of offering grant/financing</span>
+
+                    <div class="multicheckLine" id="searchLanguage">
+                      <label i18n:translate="">Developer language</label>
+                      <tal:block tal:repeat="lang view/getLanguages">
+                        <input type="checkbox" name="language"
+                               tal:attributes="value lang;" />
+                        <span tal:content="lang">Language</span>
+                      </tal:block>
+                    </div>
+
+                    <div class="multicheckLine" id="searchModality">
+                      <label i18n:translate="">Modality</label>
+                      <tal:block tal:repeat="modality view/getModalities">
+                        <input type="checkbox" name="modality"
+                               tal:attributes="value modality;" />
+                        <span tal:content="modality">Modality</span>
+                      </tal:block>
+                    </div>
+
+                    <button id="offersFilter" form="offersFilter">
+                      <span class="fa fa-search"></span>
+                      <span i18n:translate="">Search</span>
+                    </button>
+                  </form>
                 </div>
                 <div class="clearfix"></div>
-                <ul id="offerslist">
+                <div id="headerOffers">
+                  <h2 style="margin-top:0px; text-align: left; float: left;" i18n:translate="">All TFE's</h2>
+                  <div style="float:right;" class="documentDescription">
+                      <span id="expandAll" i18n:translate="">Desplega tot <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                      <span id="collapseAll" i18n:translate="">Plega tot <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                  </div>
+                </div>
+                <ul id="offersList">
                     <tal:offers repeat="offer offers">
                         <li class="unstyled offer">
                             <div class="puntTitle span12">
                                 <div class="span1 fletxaSpan">
-                                    <button type="button" class="expand""
+                                    <button type="button" class="expand"
                                             data-original-title="Expand">
                                         <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
                                     </button>
@@ -33,10 +108,10 @@
                                         <i  style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                                <div class="span9 titleSpan">
-                                    <a tal:attributes="href offer/url">
+                                <div class="span10 titleSpan">
+                                    <h3><a tal:attributes="href offer/url">
                                         <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
-                                    </a>
+                                    </a></h3>
                                 </div>
                                 <div class="span1 boleta">
                                     <span class="btn label disabled" style="padding:3px; float: right;">
@@ -80,7 +155,7 @@
                             </div>
                         </li>
                     </tal:offers>
-            </ul>
+                </ul>
         </div>
         </metal:block>
 
@@ -88,47 +163,74 @@
 
   <script type="text/javascript">
     $(function() {
-        $(this).find('.sortable2').hide()
-        $(this).find('.notexpand').hide()
-        $('.expand').click(function(e){
-               e.stopPropagation();
-               $(this).parent().parent().find('.expand').hide()
-               $(this).parent().parent().find('.expand').slideUp()
-               $(this).parent().parent().find('.notexpand').show()
-               $(this).parent().parent().parent().find('.sortable2').slideDown()
+        $('.expand').click(function(){
+           $(this).hide();
+           $(this).parent().find('.notexpand').show();
+           $(this).parent().parent().parent().find('.sortable2').slideDown();
         });
 
-        $('.notexpand').click(function(e){
-               e.stopPropagation();
-               $(this).parent().parent().find('.notexpand').hide()
-               $(this).parent().parent().find('.expand').show()
-               $(this).parent().parent().parent().find('.sortable2').slideUp()
+        $('.notexpand').click(function(){
+           $(this).hide();
+           $(this).parent().find('.expand').show();
+           $(this).parent().parent().parent().find('.sortable2').slideUp();
         });
+
+        $("#headerSearchOffers").click(function(){
+          if( $("#collapseSearch").is(":visible") ){
+            $("#searchOffers").slideUp();
+            $("#expandSearch").show();
+            $("#collapseSearch").hide();
+          }else{
+            $("#searchOffers").slideDown();
+            $("#expandSearch").hide();
+            $("#collapseSearch").show();
+          }
+        });
+
+        $("#expandAll").click(function(){
+          $(".expand").parent().parent().parent().slideDown();
+          $(".expand").hide();
+          $(".notexpand").show();
+          $(".expand").parent().parent().parent().find('.sortable2').slideDown();
+          $("#expandAll").hide();
+          $("#collapseAll").show();
+        })
+
+        $("#collapseAll").click(function(){
+          $(".notexpand").slideUp();
+          $(".notexpand").hide();
+          $(".expand").show();
+          $(".expand").parent().parent().parent().find('.sortable2').slideUp();
+          $("#expandAll").show();
+          $("#collapseAll").hide();
+        })
+
+        $('input[name="language"]').prop('checked', true);
+        $('input[name="modality"]').prop('checked', true);
     });
   </script>
 
-  <script type="text/javascript">
-    $("#collapseAll").hide()
-    $("#expandAll").click(function(){
-      $(".expand").parent().parent().parent().slideDown();
-      $(".expand").hide();
-      $(".notexpand").show();
-      $(".expand").parent().parent().parent().find('.sortable2').slideDown();
-      $("#expandAll").hide();
-      $("#collapseAll").show();
-    })
-
-    $("#collapseAll").click(function(){
-      $(".notexpand").slideUp();
-      $(".notexpand").hide();
-      $(".expand").show();
-
-      $(".expand").parent().parent().parent().find('.sortable2').slideUp();
-      $("#expandAll").show();
-      $("#collapseAll").hide();
-    })
-  </script>
-
+  <!-- <script type="text/javascript">
+    $(function() {
+      $('#offersFilter').on('click', function(){
+        $.ajax({
+            method: 'POST',
+            url: location.href,
+            data: {
+                    title : $('#searchTitle').val(),
+                    certification : $('#searchCertification').val(),
+                    departament : $('#searchDepartament').val(),
+                    company : $('#searchCompany').val(),
+                    date : $('#searchDate').val(),
+                    grant : $('#searchGrant').prop('checked'),
+                    languages : $('input[name="language"]:checked').map(function(){ return this.value; }).get().join(','),
+                    modalities : $('input[name="modality"]:checked').map(function(){ return this.value; }).get().join(','),
+                  },
+            success: function(){}
+        });
+      });
+    });
+  </script> -->
 </metal:content-core>
 </body>
 </html>
