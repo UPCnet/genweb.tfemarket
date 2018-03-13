@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from datetime import date
+from datetime import datetime
 from plone.directives import form
 from plone import api
 from five import grok
@@ -22,18 +24,37 @@ class View(grok.View):
     def filterResults(self, results):
         filters = self.request.form
         delete = []
-        # import ipdb; ipdb.set_trace()
-        for item in results:
+        import ipdb; ipdb.set_trace()
+        for index, item in enumerate(results, start=0):
             if len(filters['title']) > 2 and not item['title'].lower().startswith(filters['title'].lower()):
-               delete.append(item)
+               delete.append(index)
                continue
 
-            if not filters['certification'] == 'all' and not filters['certification'] == item:
-                delete.append(item)
+            # if not filters['degree'] == 'all' and not filters['degree'] in user.certifications:
+            #     delete.append(index)
+            #     continue
+
+            if not filters['departament'] == 'all' and not item['dept'] == filters['departament']:
+                delete.append(index)
                 continue
 
-        # for item in delete:
-        #     results.pop(item)
+            # if not filters['company'] == 'all' and not filters['company'] in companies:
+            #     delete.append(index)
+            #     continue
+
+            # today = date.today()
+            # creation_date = datetime.strptime(item['creation_date'], '%Y/%m/%d').date()
+            # diff_days = today - creation_date
+            # if not filters['date'] == 'all':
+            #     if filters['date'] == 'a' and diff_days >= 1
+            #     or filters['date'] == 'w' and diff_days >= 7
+            #     or filters['date'] == 'm' and diff_days >= 30:
+            #         delete.append(index)
+            #         continue
+
+        delete.reverse()
+        for item in delete:
+            results.pop(item)
 
         return results
 
@@ -47,10 +68,24 @@ class View(grok.View):
 
         results = []
         for item in values:
+            offer = item.getObject()
             results.append(dict(title=item.Title,
                                 state=item.review_state,
                                 url=item.getURL(),
                                 path=item.getPath(),
+                                UID=item.UID,
+                                dept=offer.dept,
+                                creation_date=offer.creation_date.strftime('%Y/%m/%d'),
+                                expiration_date=offer.expiration_date.strftime('%Y/%m/%d') if offer.expiration_date else None,
+                                teacher_manager=offer.teacher_manager,
+                                modality=offer.modality,
+                                description=offer.description,
+                                features=offer.features.raw if hasattr(offer.features, 'raw') else offer.features,
+                                lang=offer.lang,
+                                environmental_theme=offer.environmental_theme,
+                                requirements=offer.requirements,
+                                grant=offer.grant,
+                                keywords=offer.keys,
                                 ))
 
         if not self.request.form == {}:
@@ -79,4 +114,15 @@ class View(grok.View):
         return [_(u"University"), _(u"Company")]
 
     def getDates(self):
-        return [_(u"Day"), _(u"Week"), _(u"Month")]
+        return [{'id' : 'a', 'lit' : _(u"All")},
+                {'id' : 'd', 'lit' : _(u"Day")},
+                {'id' : 'w', 'lit' : _(u"Week")},
+                {'id' : 'm', 'lit' : _(u"Month")}]
+
+    def saveFilters(self):
+        filters = self.request.form
+        return filters
+
+    def isSeletectedDate(self):
+        import ipdb; ipdb.set_trace()
+        pass

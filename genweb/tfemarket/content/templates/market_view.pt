@@ -11,7 +11,7 @@
         <metal:block define-macro="content-core"
                      tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
-            <div id="offers" tal:condition="offers">
+            <div id="offers">
                 <div id="contentSearchOffers">
                   <div id="headerSearchOffers">
                     <h2 style="margin-top:0px; text-align: left;" i18n:translate="">Search</h2>
@@ -20,12 +20,13 @@
                         <span id="collapseSearch"><span i18n:translate="">Hide</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
                     </div>
                   </div>
-                  <form id="searchOffers" name="searchOffers" action="" method="post">
+                  <form id="searchOffers" name="searchOffers" action="" method="post"
+                        tal:define="save view/saveFilters">
                     <label i18n:translate="">Text to search</label>
-                    <input type="text" id="searchTitle" name="title" />
+                    <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
 
-                    <label i18n:translate="">Certification</label>
-                    <select id="searchCertification" name="certification">
+                    <label i18n:translate="">Degree</label>
+                    <select id="searchDegree" name="degree" tal:attributes="value save/degree|nothing">
                       <option value="all">All</option>
                       <!-- <tal:block tal:repeat="certification view/listCertifications">
                         <option value="certification" tal:content="certification">Certification</option>
@@ -33,7 +34,7 @@
                     </select>
 
                     <label i18n:translate="">Departament</label>
-                    <select id="searchDepartament" name="departament">
+                    <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
                       <option value="all">All</option>
                       <!-- <tal:block tal:repeat="certification view/listCertifications">
                         <option value="certification" tal:content="certification">Certification</option>
@@ -41,7 +42,7 @@
                     </select>
 
                     <label i18n:translate="">Company</label>
-                    <select id="searchCompany" name="company">
+                    <select id="searchCompany" name="company" tal:attributes="value save/company|nothing">
                       <option value="all" i18n:translate="">All</option>
                       <!-- <tal:block tal:repeat="certification view/listCertifications">
                         <option value="certification" tal:content="certification">Certification</option>
@@ -51,7 +52,14 @@
                     <label i18n:translate="">Date</label>
                     <select id="searchDate" name="date">
                       <tal:block tal:repeat="date view/getDates">
-                        <option tal:attributes="value date" tal:content="date">Date</option>
+                        <tal:block tal:define="selected python: save.has_key('date') and date == save['date']">
+                          <option tal:attributes="value date" tal:condition="selected" tal:content="date" selected>
+                            Date
+                          </option>
+                          <option tal:attributes="value date" tal:condition="not:selected" tal:content="date">
+                            Date
+                          </option>
+                        </tal:block>
                       </tal:block>
                     </select>
 
@@ -80,21 +88,21 @@
                       </tal:block>
                     </div>
 
-                    <button id="offersFilter" form="offersFilter">
+                    <button type="submit" id="offersFilter" form="offersFilter">
                       <span class="fa fa-search"></span>
                       <span i18n:translate="">Search</span>
                     </button>
                   </form>
                 </div>
                 <div class="clearfix"></div>
-                <div id="headerOffers">
+                <div id="headerOffers" tal:condition="offers">
                   <h2 style="margin-top:0px; text-align: left; float: left;" i18n:translate="">All TFE's</h2>
                   <div style="float:right;" class="documentDescription">
                       <span id="expandAll" i18n:translate="">Desplega tot <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
                       <span id="collapseAll" i18n:translate="">Plega tot <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
                   </div>
                 </div>
-                <ul id="offersList">
+                <ul id="offersList" tal:condition="offers">
                     <tal:offers repeat="offer offers">
                         <li class="unstyled offer">
                             <div class="puntTitle span12">
@@ -120,15 +128,83 @@
                                 </div>
                             </div>
                             <div class="sortable2 offerdata">
-                                <p class="offerdesc">Descripción: The project aims to develop an Energy Management Dystem (EMS) for microgrids based on renewable energies. An optimization problem will be formulated taking into account a given electrical microgrid with a number of electrical constraints. The EMS will schedule the power set-points for the different nodes considering the energy production and demand forecasts as long as the considered constraints. The developed EMS can be tested in an experimental microgrid.</p>
-                                    <div><p>Requisitos mínimos:</p>
-                                        <ul>
-                                            <li>MSc RENE - Renewable Energy</li>
-                                            <li>MSc Energy for Smart Cities</li>
-                                            <li>MSc SENSE - Smart Electrical Networks and Systems</li>
-                                            <li>MSc SELECT - Environomical Pathways for Sustainable Energy Systems</li>
-                                        </ul>
-                                    </div>
+                              <div class="informacioTFE">
+                                <div class="leftInfoOffer">
+                                  <p class="identifier">
+                                    <span class="field"><span i18n:translate="">Identifier</span>: </span>
+                                    <span tal:content="offer/UID">123456 AB</span>
+                                  </p>
+                                  <p class="center">
+                                    <span class="field"><span i18n:translate="">Center</span>: </span>
+                                    <span>0111-Q</span>
+                                  </p>
+                                  <p class="departament">
+                                    <span class="field"><span i18n:translate="">Departament</span>: </span>
+                                    <span tal:content="offer/dept">37</span>
+                                  </p>
+                                </div>
+                                <div class="rightInfoOffer">
+                                  <p class="creationDate">
+                                    <span class="field"><span i18n:translate="">Creation date</span>: </span>
+                                    <span tal:content="offer/creation_date">2018/01/29</span>
+                                  </p>
+                                  <p class="expirationDate" tal:condition="offer/expiration_date">
+                                    <span class="field"><span i18n:translate="">Expiration date</span>: </span>
+                                    <span tal:content="offer/expiration_date">2018/04/29</span>
+                                  </p>
+                                </div>
+                                <div class="leftInfoOffer">
+                                  <p class="teacher">
+                                    <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
+                                    <span tal:content="offer/teacher_manager">Aureli Condogvia</span>
+                                  </p>
+                                  <p class="degrees">
+                                    <span class="field"><span i18n:translate="">Degress</span>: </span>
+                                    <span>Degree 1 - Degree 2</span>
+                                  </p>
+                                  <p class="modality">
+                                    <span class="field"><span i18n:translate="">Modality</span>: </span>
+                                    <span tal:content="offer/modality">Modalitat</span>
+                                  </p>
+                                </div>
+                                <div class="leftInfoOffer">
+                                  <p class="description">
+                                    <span class="field"><span i18n:translate="">Description</span>: </span>
+                                    <span tal:content="offer/description">Nam fermentum tellus vel tellus imperdiet, consectetur finibus sem mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur eu maximus nulla, vitae rhoncus sem. Pellentesque efficitur, tellus vel luctus dictum, nunc tellus cursus nulla, eget aliquam lacus lacus non lectus. Nam molestie ex dolor, quis pulvinar tortor volutpat rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec ligula sit amet quam hendrerit vestibulum. Nunc ut mauris lorem. Praesent non sollicitudin eros, non vestibulum erat. Nulla facilisi.</span>
+                                  </p>
+                                </div>
+                                <div class="leftInfoOffer">
+                                  <p class="features">
+                                    <span class="field"><span i18n:translate="">Features</span>: </span>
+                                    <span class="raw" tal:content="offer/features">Sed quis pretium urna. Aenean at elit non est posuere vestibulum a sit amet nisl. Integer efficitur aliquam arcu sit amet pulvinar. Phasellus tincidunt elementum tortor egestas tincidunt. Aenean elementum nec massa aliquam porttitor.</span>
+                                  </p>
+                                </div>
+                                <div class="leftInfoOffer">
+                                  <p class="language">
+                                    <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
+                                    <span tal:content="offer/lang">Català</span>
+                                  </p>
+                                  <p class="environmentalTheme">
+                                    <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
+                                    <span tal:content="offer/environmental_theme">Temàtica oberta</span>
+                                  </p>
+                                  <p class="requirements">
+                                    <span class="field"><span i18n:translate="">Requirements</span>: </span>
+                                    <span tal:content="offer/requirements">Cap</span>
+                                  </p>
+                                  <p class="grant">
+                                    <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
+                                    <span tal:condition="offer/grant" i18n:translate="">Yes</span>
+                                    <span tal:condition="offer/grant" i18n:translate="">No</span>
+                                  </p>
+                                  <p class="keywords">
+                                    <span class="field"><span i18n:translate="">Keywords</span>: </span>
+                                    <tal:block tal:repeat="keyword offer/keywords">
+                                      <span class="keyword" tal:content="keyword">Keyword</span>
+                                    </tal:block>
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                             <div tal:define="applications python:view.getApplications(offer)"
                                  tal:condition="applications"
@@ -163,6 +239,10 @@
 
   <script type="text/javascript">
     $(function() {
+        $('p.features span.raw').each(function(){
+          $(this).html( $(this).text() );
+        });
+
         $('.expand').click(function(){
            $(this).hide();
            $(this).parent().find('.notexpand').show();
@@ -210,27 +290,13 @@
     });
   </script>
 
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     $(function() {
       $('#offersFilter').on('click', function(){
-        $.ajax({
-            method: 'POST',
-            url: location.href,
-            data: {
-                    title : $('#searchTitle').val(),
-                    certification : $('#searchCertification').val(),
-                    departament : $('#searchDepartament').val(),
-                    company : $('#searchCompany').val(),
-                    date : $('#searchDate').val(),
-                    grant : $('#searchGrant').prop('checked'),
-                    languages : $('input[name="language"]:checked').map(function(){ return this.value; }).get().join(','),
-                    modalities : $('input[name="modality"]:checked').map(function(){ return this.value; }).get().join(','),
-                  },
-            success: function(){}
-        });
+        $('#searchOffers').submit()
       });
     });
-  </script> -->
+  </script>
 </metal:content-core>
 </body>
 </html>
