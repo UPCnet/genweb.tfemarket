@@ -16,11 +16,16 @@ msgstr ""
 "Language: ca\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: ../content/templates/market_view.pt:45
+#: ../browser/helpers_templates/import_titulacions.pt:23
+msgid "Add the .csv file separated by , with the degrees by school:"
+msgstr "Afegeix el fitxer .csv separat per , amb les titulacions per escola:"
+
+#: ../content/market.py:124
+#: ../content/templates/market_view.pt:50
 msgid "All"
 msgstr "Totes"
 
-#: ../content/templates/market_view.pt:92
+#: ../content/templates/market_view.pt:100
 msgid "All TFE's"
 msgstr "Tots els Treballs Fi d'Estudis"
 
@@ -28,27 +33,22 @@ msgstr "Tots els Treballs Fi d'Estudis"
 msgid "Body"
 msgstr "Cos de la sol·licitud"
 
-#: ../content/market.py:54
+#: ../content/market.py:118
 #: ../content/offer.py:121
 msgid "Catalan"
 msgstr "Català"
 
-
-#: ../controlpanel.py:98
-msgid "Centre code"
+#: ../controlpanel.py:88
+msgid "Center code"
 msgstr "Codi del centre"
-
-#: ../content/templates/market_view.pt:139
-msgid "Center"
-msgstr "Centre"
 
 #: ../content/offer.py:156
 msgid "CoManager"
 msgstr "Codirector"
 
-#: ../content/market.py:57
+#: ../content/market.py:121
 #: ../content/offer.py:161
-#: ../content/templates/market_view.pt:43
+#: ../content/templates/market_view.pt:48
 msgid "Company"
 msgstr "Empresa"
 
@@ -60,28 +60,23 @@ msgstr "Dades de contacte de l'empresa"
 msgid "Company Email"
 msgstr "Adreça de correu de l'empresa"
 
-msgid "Creation date"
-msgstr ""
-
 #: ../content/templates/market_view.pt:56
 msgid "Date"
 msgstr "Data"
 
-#: ../content/market.py:60
+#: ../content/market.py:125
 msgid "Day"
 msgstr "Día"
 
-
 #: ../content/templates/market_view.pt:32
 msgid "Degree"
-msgstr ""
-
+msgstr "Titulació"
 
 #: ../controlpanel.py:19
 msgid "Degree code at PRISMA"
 msgstr "Codi del grau a PRISMA"
 
-#: ../content/templates/market_view.pt:35
+#: ../content/templates/market_view.pt:40
 msgid "Departament"
 msgstr "Departament"
 
@@ -89,11 +84,11 @@ msgstr "Departament"
 msgid "Description"
 msgstr "Descripció"
 
-#: ../content/templates/market_view.pt:94
+#: ../content/templates/market_view.pt:102
 msgid "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 msgstr "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 
-#: ../content/templates/market_view.pt:67
+#: ../content/templates/market_view.pt:75
 msgid "Developer language"
 msgstr "Llenguage de desenvolupament"
 
@@ -101,7 +96,7 @@ msgstr "Llenguage de desenvolupament"
 msgid "E-mail"
 msgstr "Adreça de correu"
 
-#: ../content/market.py:54
+#: ../content/market.py:118
 #: ../content/offer.py:123
 msgid "English"
 msgstr "Anglès"
@@ -109,19 +104,6 @@ msgstr "Anglès"
 #: ../content/offer.py:191
 msgid "Environmental Theme"
 msgstr "Temàtica ambiental"
-
-
-#: ../content/templates/market_view.pt:193
-msgid "Environmental theme"
-msgstr ""
-
-#: ../content/templates/market_view.pt:153
-msgid "Expiration date"
-msgstr ""
-
-#: ../content/templates/market_view.pt:179
-msgid "Features"
-msgstr ""
 
 #: ../content/templates/market_view.pt:23
 msgid "Hide"
@@ -131,18 +113,17 @@ msgstr "Amagar"
 msgid "Identification number"
 msgstr "Identificador"
 
+#: ../browser/helpers_templates/import_titulacions.pt:25
+msgid "Import the degrees"
+msgstr "Importa totes les titulacions"
+
 #: ../configure.zcml:41
 msgid "Installs the genweb.tfemarket add-on."
 msgstr "Instal·lar Genweb Mercat de  TFE"
 
-#: ../content/templates/market_view.pt:59
+#: ../content/templates/market_view.pt:67
 msgid "Keywords"
 msgstr "Paraules clau"
-
-#: ../content/templates/market_view.pt:185
-msgid "Language work elaboration"
-msgstr ""
-
 
 #: ../controlpanel.py:33
 msgid "MEC code"
@@ -152,11 +133,11 @@ msgstr "Codi MEC"
 msgid "MEC degree code"
 msgstr "Codi MEC del Grau"
 
-#: ../content/templates/market_view.pt:76
+#: ../content/templates/market_view.pt:84
 msgid "Modality"
 msgstr "Modalitat"
 
-#: ../content/market.py:60
+#: ../content/market.py:127
 msgid "Month"
 msgstr "Mes"
 
@@ -166,12 +147,7 @@ msgstr "Cognoms, Nom"
 
 #: ../controlpanel.py:94
 msgid "Name center"
-msgstr ""
-
-#: ../content/templates/market_view.pt:195
-msgid "No"
-msgstr "No"
-
+msgstr "Nom del centre"
 
 #: ../content/offer.py:176
 msgid "Number of students"
@@ -198,26 +174,13 @@ msgstr "Codi PRISMA"
 msgid "Plan year"
 msgstr "Any del plà"
 
-#: ../content/templates/market_view.pt:95
+#: ../content/templates/market_view.pt:103
 msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
-
-#: ../content/templates/market_view.pt:198
-msgid "Possibility of scholarship"
-msgstr ""
 
 #: ../controlpanel.py:23
 msgid "Program type"
 msgstr "Tipus de programa"
-
-#: ../content/templates/market_view.pt:27
-msgid "Certification"
-msgstr "Titulació"
-
-#: ../content/templates/market_view.pt:189
-msgid "Requirements"
-msgstr "Requisits"
-
 
 #: ../controlpanel.py:98
 msgid "Review State"
@@ -239,11 +202,11 @@ msgstr "Seleccionar si és necessari el rol de revisió"
 msgid "Settings"
 msgstr "Configuració"
 
-#: ../content/templates/market_view.pt:19
+#: ../content/templates/market_view.pt:20
 msgid "Show"
 msgstr "Mostrar"
 
-#: ../content/market.py:54
+#: ../content/market.py:118
 #: ../content/offer.py:122
 msgid "Spanish"
 msgstr "Espanyol"
@@ -256,16 +219,7 @@ msgstr "Professor"
 msgid "Tags"
 msgstr "Llistat de paraules clau"
 
-#: ../controlpanel.py:87
-msgid "Temes"
-msgstr "Temàtica principal"
-
-#: ../content/templates/market_view.pt:159
-msgid "Teacher manager"
-msgstr ""
-
-
-#: ../content/templates/market_view.pt:24
+#: ../content/templates/market_view.pt:29
 msgid "Text to search"
 msgstr "Text a cercar"
 
@@ -279,15 +233,15 @@ msgstr "Titulacions"
 
 #: ../controlpanel.py:50
 msgid "Titulacions CA"
-msgstr ""
+msgstr "Titulacions CA"
 
 #: ../controlpanel.py:56
 msgid "Titulacions EN"
-msgstr ""
+msgstr "Titulacions EN"
 
 #: ../controlpanel.py:44
 msgid "Titulacions ES"
-msgstr ""
+msgstr "Titulacions ES"
 
 #: ../controlpanel.py:117
 msgid "Topics of the TFE"
@@ -298,7 +252,7 @@ msgstr "Temàtiques principals dels TFE's"
 msgid "UPC Mercat TFE"
 msgstr "Mercat de treballs final d'estudis de la UPC"
 
-#: ../content/market.py:57
+#: ../content/market.py:121
 msgid "University"
 msgstr "Universitat"
 
@@ -306,17 +260,13 @@ msgstr "Universitat"
 msgid "University department"
 msgstr "Departament"
 
-#: ../content/market.py:60
+#: ../content/market.py:126
 msgid "Week"
 msgstr "Semana"
 
-#: ../content/templates/market_view.pt:64
+#: ../content/templates/market_view.pt:72
 msgid "With the possibility of offering grant/financing"
 msgstr "Amb posibilitat d'oferir beca o financament"
-
-#: ../content/templates/market_view.pt:194
-msgid "Yes"
-msgstr ""
 
 #. Default: "Application"
 #: ../profiles/default/types/genweb.tfemarket.application.xml
@@ -330,7 +280,7 @@ msgstr "Dades per a la sol·licitud d'un TFE"
 
 #: ../controlpanel.py:75
 msgid "classifications"
-msgstr ""
+msgstr "Classificacions"
 
 #: ../content/offer.py:185
 msgid "confidential"
@@ -347,7 +297,7 @@ msgstr "Possibilitat de beca"
 #. Default: "Imported dades from csv"
 #: ../controlpanel.py:130
 msgid "help_titulacions_table"
-msgstr "Dades importades mitjançant un fitxer csv"
+msgstr "Dades importades mitjançant un fitxer .csv. Por importar les titulacions desde el següent <a href=\"import_titulacions\">enllaç</a>."
 
 #: ../content/offer.py:203
 msgid "keys"

@@ -14,6 +14,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ../browser/helpers_templates/import_titulacions.pt:23
+msgid "Add the .csv file separated by , with the degrees by school:"
+msgstr ""
+
 #: ../content/market.py:124
 #: ../content/templates/market_view.pt:50
 msgid "All"
@@ -32,12 +36,8 @@ msgstr ""
 msgid "Catalan"
 msgstr ""
 
-#: ../content/templates/market_view.pt:139
-msgid "Center"
-msgstr ""
-
-#: ../controlpanel.py:98
-msgid "Centre code"
+#: ../controlpanel.py:88
+msgid "Center code"
 msgstr ""
 
 #: ../content/offer.py:156
@@ -58,10 +58,6 @@ msgstr ""
 msgid "Company Email"
 msgstr ""
 
-#: ../content/templates/market_view.pt:149
-msgid "Creation date"
-msgstr ""
-
 #: ../content/templates/market_view.pt:56
 msgid "Date"
 msgstr ""
@@ -78,16 +74,11 @@ msgstr ""
 msgid "Degree code at PRISMA"
 msgstr ""
 
-#: ../content/templates/market_view.pt:163
-msgid "Degrees"
-msgstr ""
-
 #: ../content/templates/market_view.pt:40
 msgid "Departament"
 msgstr ""
 
 #: ../content/offer.py:90
-#: ../content/templates/market_view.pt:173
 msgid "Description"
 msgstr ""
 
@@ -112,18 +103,6 @@ msgstr ""
 msgid "Environmental Theme"
 msgstr ""
 
-#: ../content/templates/market_view.pt:189
-msgid "Environmental theme"
-msgstr ""
-
-#: ../content/templates/market_view.pt:153
-msgid "Expiration date"
-msgstr ""
-
-#: ../content/templates/market_view.pt:179
-msgid "Features"
-msgstr ""
-
 #: ../content/templates/market_view.pt:23
 msgid "Hide"
 msgstr ""
@@ -132,8 +111,8 @@ msgstr ""
 msgid "Identification number"
 msgstr ""
 
-#: ../content/templates/market_view.pt:135
-msgid "Identifier"
+#: ../browser/helpers_templates/import_titulacions.pt:25
+msgid "Import the degrees"
 msgstr ""
 
 #: ../configure.zcml:41
@@ -142,10 +121,6 @@ msgstr ""
 
 #: ../content/templates/market_view.pt:67
 msgid "Keywords"
-msgstr ""
-
-#: ../content/templates/market_view.pt:185
-msgid "Language work elaboration"
 msgstr ""
 
 #: ../controlpanel.py:33
@@ -168,8 +143,8 @@ msgstr ""
 msgid "Name and surname"
 msgstr ""
 
-#: ../content/templates/market_view.pt:199
-msgid "No"
+#: ../controlpanel.py:94
+msgid "Name center"
 msgstr ""
 
 #: ../content/offer.py:176
@@ -201,19 +176,11 @@ msgstr ""
 msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr ""
 
-#: ../content/templates/market_view.pt:197
-msgid "Possibility of scholarship"
-msgstr ""
-
 #: ../controlpanel.py:23
 msgid "Program type"
 msgstr ""
 
-#: ../content/templates/market_view.pt:193
-msgid "Requirements"
-msgstr ""
-
-#: ../controlpanel.py:103
+#: ../controlpanel.py:98
 msgid "Review State"
 msgstr ""
 
@@ -225,7 +192,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ../controlpanel.py:105
+#: ../controlpanel.py:100
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr ""
 
@@ -246,16 +213,8 @@ msgstr ""
 msgid "TFEteacher"
 msgstr ""
 
-#: ../controlpanel.py:81
+#: ../controlpanel.py:122
 msgid "Tags"
-msgstr ""
-
-#: ../content/templates/market_view.pt:159
-msgid "Teacher manager"
-msgstr ""
-
-#: ../controlpanel.py:87
-msgid "Temes"
 msgstr ""
 
 #: ../content/templates/market_view.pt:29
@@ -266,25 +225,29 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ../controlpanel.py:44
+#: ../controlpanel.py:81
 msgid "Titulacions"
 msgstr ""
 
-#: ../controlpanel.py:75
-msgid "Topics"
+#: ../controlpanel.py:50
+msgid "Titulacions CA"
 msgstr ""
 
-#: ../controlpanel.py:110
+#: ../controlpanel.py:56
+msgid "Titulacions EN"
+msgstr ""
+
+#: ../controlpanel.py:44
+msgid "Titulacions ES"
+msgstr ""
+
+#: ../controlpanel.py:117
 msgid "Topics of the TFE"
 msgstr ""
 
 #: ../configure.zcml:41
-#: ../controlpanel.py:137
+#: ../controlpanel.py:141
 msgid "UPC Mercat TFE"
-msgstr ""
-
-#: ../controlpanel.py:115
-msgid "URL del servei web"
 msgstr ""
 
 #: ../content/market.py:121
@@ -303,10 +266,6 @@ msgstr ""
 msgid "With the possibility of offering grant/financing"
 msgstr ""
 
-#: ../content/templates/market_view.pt:198
-msgid "Yes"
-msgstr ""
-
 #. Default: "Application"
 #: ../profiles/default/types/genweb.tfemarket.application.xml
 msgid "application"
@@ -315,6 +274,10 @@ msgstr ""
 #. Default: "Description"
 #: ../profiles/default/types/genweb.tfemarket.application.xml
 msgid "application_description"
+msgstr ""
+
+#: ../controlpanel.py:75
+msgid "classifications"
 msgstr ""
 
 #: ../content/offer.py:185
@@ -330,7 +293,7 @@ msgid "grant"
 msgstr ""
 
 #. Default: "Imported dades from csv"
-#: ../controlpanel.py:126
+#: ../controlpanel.py:130
 msgid "help_titulacions_table"
 msgstr ""
 
@@ -380,6 +343,6 @@ msgstr ""
 msgid "tfe_lang"
 msgstr ""
 
-#: ../controlpanel.py:128
+#: ../controlpanel.py:132
 msgid "titulacionstable"
 msgstr ""

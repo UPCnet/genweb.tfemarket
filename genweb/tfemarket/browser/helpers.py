@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 from five import grok
 from plone import api
+from plone.registry.interfaces import IRegistry
 from zope.interface import Interface
+from zope.component import queryUtility
+from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from souper.soup import get_soup
 import unicodedata
 import json
 import csv
+import transaction
 
 from Products.statusmessages.interfaces import IStatusMessage
 from genweb.core.gwuuid import IGWUUID
@@ -21,47 +25,38 @@ class migrateGroups(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def update(self):
-        self.roles = ''
         if self.request.environ['REQUEST_METHOD'] == 'POST':
-            if self.request.form['titulacionsfile'].filename != '':
-                fitxer = self.request.form['titulacionsfile']
-                titulacions = {}
-                for line in fitxer:
-                    row = line.strip().split(';')
+            fitxer = self.request.form['titulacionsfile']
+            filename = fitxer.filename
 
-                    name_old = row[0].decode("utf-8")
-                    name_new = row[1].decode("utf-8")
+            if filename != '' and filename.endswith('.csv'):
+                registry = queryUtility(IRegistry)
+                tfe_tool = registry.forInterface(ITfemarketSettings)
+                tfe_tool.titulacions_table = []
 
-                pc = api.portal.get_tool(name='portal_catalog')
+                csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
+                csv_file.next() # Ignore header for csv
 
-                self.context.plone_log('Buscant objectes a migrar')
-                results = pc.searchResults()
-                roles_anteriors = {}
-                for num, item in enumerate(results):
-                    self.context.plone_log('Processant {} de {}'.format(num, len(results)))
-                    obj = item.getObject()
-                    roles = obj.get_local_roles()
-                    roles_anteriors[item.getPath()] = roles
-                    new_roles = dict([(groups.get(rolename, rolename), roleslist) for rolename, roleslist in roles])
-                    obj.__ac_local_roles__ = new_roles
-                    obj.reindexObjectSecurity()
+                for row in csv_file:
 
-                roles_anteriors_comunitats = {}
-                self.context.plone_log('Buscant permisos comunitats a migrar')
-                comunnities = pc.searchResults(portal_type="ulearn.community")
-                for num, community in enumerate(comunnities):
-                    self.context.plone_log('Processant {} de {}'.format(num, len(comunnities)))
-                    obj = community.getObject()
-                    gwuuid = IGWUUID(obj).get()
-                    portal = api.portal.get()
-                    soup = get_soup('communities_acl', portal)
+                    codi_centre =  int(row[0].decode("utf-8"))
+                    if not codi_centre == tfe_tool.center_code:
+                        continue
 
-                    records = [r for r in soup.query(Eq('gwuuid', gwuuid))]
+                    data = {
+                            'codi_prisma' : int(row[1].decode("utf-8")),
+                            'progam_type' : row[2].decode("utf-8"),
+                            'codi_mec' : int(row[3].decode("utf-8")),
+                            'plan_year' : int(row[4].decode("utf-8")),
+                            'titulacio_es' : row[5].decode("utf-8"),
+                            'titulacio_ca' : row[7].decode("utf-8"),
+                            'titulacio_en' : row[9].decode("utf-8"),
+                    }
 
-                message = (u"La migració ha finalitzat.")
-                IStatusMessage(self.request).addStatusMessage(message, type='info')
+                    tfe_tool.titulacions_table.append(data)
 
-                self.roles = json.dumps(roles_anteriors)
+                transaction.commit()
+                self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
             else:
-                message = (u"Falta afegir el fitxer.")
+                message = (u"Falta afegir el fitxer csv.")
                 IStatusMessage(self.request).addStatusMessage(message, type='error')

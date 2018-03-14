@@ -24,11 +24,6 @@ class ITableTitulacions(form.Schema):
         required=False
     )
 
-    email = schema.TextLine(
-        title=_(u'E-mail'),
-        required=False
-    )
-
     codi_mec = schema.Int(
         title=_(u'MEC code'),
         required=False,

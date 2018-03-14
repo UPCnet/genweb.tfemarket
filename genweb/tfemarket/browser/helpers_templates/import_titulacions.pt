@@ -20,9 +20,9 @@
      </div>
 
       <form method="post" enctype="multipart/form-data" action="import_titulacions">
-        Afegeix el fitxer .csv separat per ; amb les titulacions per escola:
+        <p i18n:translate="">Add the .csv file separated by , with the degrees by school:</p>
         <input name="titulacionsfile" type="file" />
-        <button name="save" type="submit">Importa totes les titulacions</button>
+        <button name="save" type="submit" i18n:translate="">Import the degrees</button>
       </form>
 
     </tal:main-macro>
