@@ -12,16 +12,20 @@
                      tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
             <div id="offers">
-                <div id="contentSearchOffers">
+                <div id="contentSearchOffers" tal:define="save view/saveFilters">
                   <div id="headerSearchOffers">
                     <h2 style="margin-top:0px; text-align: left;" i18n:translate="">Search</h2>
                     <div style="float:right;" class="documentDescription">
-                        <span id="expandSearch"><span i18n:translate="">Show</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                        <span id="collapseSearch"><span i18n:translate="">Hide</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        <span id="expandSearch" tal:attributes="style python: 'display:none' if save else 'display:display'">
+                          <span i18n:translate="">Show</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
+                        </span>
+                        <span id="collapseSearch" tal:attributes="style python: 'display:block' if save else 'display:none'">
+                          <span i18n:translate="">Hide</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
+                        </span>
                     </div>
                   </div>
                   <form id="searchOffers" name="searchOffers" action="" method="post"
-                        tal:define="save view/saveFilters">
+                        tal:attributes="style python: 'display:block' if save else 'display:none'">
                     <label i18n:translate="">Text to search</label>
                     <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
 
@@ -52,11 +56,8 @@
                     <label i18n:translate="">Date</label>
                     <select id="searchDate" name="date">
                       <tal:block tal:repeat="date view/getDates">
-                        <tal:block tal:define="selected python: save.has_key('date') and date == save['date']">
-                          <option tal:attributes="value date" tal:condition="selected" tal:content="date" selected>
-                            Date
-                          </option>
-                          <option tal:attributes="value date" tal:condition="not:selected" tal:content="date">
+                        <tal:block tal:define="selected python: save.has_key('date') and date['id'] == save['date']">
+                          <option tal:attributes="value date/id; selected python: True if selected else False" tal:content="date/lit">
                             Date
                           </option>
                         </tal:block>
@@ -67,7 +68,7 @@
                     <br>
                     <br>
 
-                    <input type="checkbox" id="searchGrant" name="grant" />
+                    <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
                     <span i18n:translate="">With the possibility of offering grant/financing</span>
 
                     <div class="multicheckLine" id="searchLanguage">
@@ -159,7 +160,7 @@
                                     <span tal:content="offer/teacher_manager">Aureli Condogvia</span>
                                   </p>
                                   <p class="degrees">
-                                    <span class="field"><span i18n:translate="">Degress</span>: </span>
+                                    <span class="field"><span i18n:translate="">Degrees</span>: </span>
                                     <span>Degree 1 - Degree 2</span>
                                   </p>
                                   <p class="modality">
@@ -184,18 +185,19 @@
                                     <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
                                     <span tal:content="offer/lang">Català</span>
                                   </p>
-                                  <p class="environmentalTheme">
-                                    <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
-                                    <span tal:content="offer/environmental_theme">Temàtica oberta</span>
-                                  </p>
                                   <p class="requirements">
                                     <span class="field"><span i18n:translate="">Requirements</span>: </span>
                                     <span tal:content="offer/requirements">Cap</span>
                                   </p>
+                                  <p class="environmentalTheme">
+                                    <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
+                                    <span tal:condition="offer/environmental_theme" i18n:translate="">Yes</span>
+                                    <span tal:condition="not: offer/environmental_theme" i18n:translate="">No</span>
+                                  </p>
                                   <p class="grant">
                                     <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
                                     <span tal:condition="offer/grant" i18n:translate="">Yes</span>
-                                    <span tal:condition="offer/grant" i18n:translate="">No</span>
+                                    <span tal:condition="not: offer/grant" i18n:translate="">No</span>
                                   </p>
                                   <p class="keywords">
                                     <span class="field"><span i18n:translate="">Keywords</span>: </span>
