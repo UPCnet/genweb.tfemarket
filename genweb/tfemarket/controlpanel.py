@@ -41,19 +41,19 @@ class ITableTitulacions(form.Schema):
     )
 
     titulacio_es = schema.TextLine(
-        title=_(u'Titulacions'),
+        title=_(u'Titulacions ES'),
         description=_(u''),
         required=False
     )
 
     titulacio_ca = schema.TextLine(
-        title=_(u'Titulacions'),
+        title=_(u'Titulacions CA'),
         description=_(u''),
         required=False
     )
 
     titulacio_en = schema.TextLine(
-        title=_(u'Titulacions'),
+        title=_(u'Titulacions EN'),
         description=_(u''),
         required=False
     )
@@ -67,25 +67,13 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Settings',
         _(u'Settings'),
-        fields=['centre_code', 'review_state'],
+        fields=['center_code', 'center_name', 'review_state'],
     )
 
     model.fieldset(
         'TopicTFE',
-        _(u'Topics'),
-        fields=['topics'],
-    )
-
-    model.fieldset(
-        'TFE Tags',
-        _(u'Tags'),
-        fields=['tags'],
-    )
-
-    model.fieldset(
-        'Temes',
-        _(u'Temes'),
-        fields=['field3'],
+        _(u'classifications'),
+        fields=['topics', 'tags'],
     )
 
     model.fieldset(
@@ -94,10 +82,17 @@ class ITfemarketSettings(model.Schema):
         fields=['titulacions_table'],
     )
 
-    centre_code = schema.Int(
-        title=_(u'Centre code'),
+    # SETTINGS
+
+    center_code = schema.Int(
+        title=_(u'Center code'),
         required=False,
-        description=_(u'Centre code')
+        description=_(u'Center code')
+    )
+
+    center_name = schema.TextLine(
+        title=_(u"Name center"),
+        required=False,
     )
 
     review_state = schema.Bool(title=_(u"Review State"),
@@ -106,20 +101,29 @@ class ITfemarketSettings(model.Schema):
                                required=False,
                                )
 
+    # languages = schema.Text(
+    #     title=_(u"available_languages",
+    #             default=u"Available languages"),
+    #     description=_(u"help_available_languages",
+    #                   default=u"Languages develop TFE"),
+    #     value_type=schema.Choice(vocabulary='plone.app.vocabularies.SupportedContentLanguages'),
+    #     required=False,
+    #     default=['ca']
+    # )
+
+    # CLASSIFICATIONS
+
     topics = schema.TextLine(
         title=_(u"Topics of the TFE"),
         required=False,
     )
 
     tags = schema.TextLine(
-        title=_(u"URL del servei web"),
+        title=_(u"Tags"),
         required=False,
     )
 
-    field3 = schema.TextLine(
-        title=_(u"URL del servei web"),
-        required=False,
-    )
+    # TITULACIONS
 
     form.widget(titulacions_table=DataGridFieldFactory)
     titulacions_table = schema.List(title=_(u'Titulacions'),

@@ -27,7 +27,6 @@ class migrateGroups(grok.View):
                 fitxer = self.request.form['titulacionsfile']
                 titulacions = {}
                 for line in fitxer:
-                    import ipdb; ipdb.set_trace()
                     row = line.strip().split(';')
 
                     name_old = row[0].decode("utf-8")
