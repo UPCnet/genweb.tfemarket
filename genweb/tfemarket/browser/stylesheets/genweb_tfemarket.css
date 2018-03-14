@@ -1547,6 +1547,130 @@ div#previewModal {
   padding-top: 40px;
 }
 
+#content-core .informacioTFE {
+    position: relative;
+}
+#content-core .informacioTFE .fechas {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.sortable2.offerdata p {
+    margin-top: 0px;
+}
+li.unstyled.offer {
+    background-color: white !important;
+    float: left;
+    border-bottom: 1px solid #cecece;
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+}
+.documentDescription {
+    font-size: 100%;
+    color: #444;
+    margin-bottom: 18px;
+}
+.span9.titleSpan {
+    font-size: 20px;
+}
+.span9.titleSpan a {
+    color: #009cf3;
+}
+.informacioTFE {
+    position: relative;
+}
+.fechas {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.informacioTFE {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 4px !important;
+}
+#parent-fieldname-text {
+    margin-top: 30px;
+}
+h1, h2, h3 {
+    color: #007bc0;
+}
+.template-view.portaltype-genweb-tfemarket-market.site-ca.section-estudis.subsection-tfe.subsection-tfe-mercat-de-tfe.icons-off.userrole-anonymous h1, .template-view.portaltype-genweb-tfemarket-market.site-ca.section-estudis.subsection-tfe.subsection-tfe-mercat-de-tfe.icons-off.userrole-anonymous h2, .template-view.portaltype-genweb-tfemarket-market.site-ca.section-estudis.subsection-tfe.subsection-tfe-mercat-de-tfe.icons-off.userrole-anonymous h3 {
+    color: #007bc0;
+}
+a.btn.btn-small.btn-block {
+    padding: 14px;
+    font-size: 16px;
+    width: 200px;
+    text-align: center;
+    margin: 0px auto 0px auto;
+}
+a.etiquetes {
+    color: white;
+    font-weight: bold;
+    background-color: #398ce3;
+    padding: 2px 10px;
+    border-radius: 6px !important;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+#popup {
+    visibility: hidden;
+    opacity: 0;
+    margin-top: -300px;
+}
+#popup:target {
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    z-index: 999;
+    transition: all 1s;
+}
+.popup-contenedor {
+    position: relative;
+    margin: 7% auto;
+    padding: 30px 50px;
+    background-color: #fafafa;
+    color: #333;
+    border-radius: 3px;
+    width: 50%;
+}
+a.popup-cerrar {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-color: #333;
+    padding: 7px 10px;
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 1;
+    color: #fff;
+}
+span.btn.label.disabled {
+    position: absolute;
+    right: 45px !important;
+    width: 105px !important;
+    padding: 5px !important;
+    border-radius: 2px !important;
+}
+.sortable2.offerdata {
+    margin-bottom: 20px;
+    background-color: #e8e8e8;
+    padding: 20px 20px !important;
+    border-radius: 4px !important;
+    margin-top: 50px;
+}
+li.unstyled.offer {
+    margin-bottom: 5px;
+}
+
+
 /*FIN CSS DAVID*/
 
 /*KO & IAGO CSS*/

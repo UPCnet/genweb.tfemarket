@@ -4,7 +4,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 "POT-Creation-Date: 2018-03-14 08:59+0000\n"
+=======
+<<<<<<< Updated upstream
+"POT-Creation-Date: 2018-03-13 07:31+0000\n"
+=======
+"POT-Creation-Date: 2018-03-14 10:00+0000\n"
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,12 +48,24 @@ msgstr ""
 msgid "Catalan"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:139
 msgid "Center"
 msgstr ""
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> Translations and functions
 #: ../controlpanel.py:98
 msgid "Centre code"
+=======
+#: ../content/templates/market_view.pt:139
+msgid "Center"
+msgstr ""
+
+#: ../controlpanel.py:88
+msgid "Center code"
+>>>>>>> Stashed changes
 msgstr ""
 
 #: ../content/offer.py:156
@@ -120,7 +140,14 @@ msgstr ""
 msgid "Environmental Theme"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:189
+=======
+<<<<<<< Updated upstream
+#: ../content/templates/market_view.pt:20
+=======
+#: ../content/templates/market_view.pt:193
+>>>>>>> Translations and functions
 msgid "Environmental theme"
 msgstr ""
 
@@ -133,6 +160,10 @@ msgid "Features"
 msgstr ""
 
 #: ../content/templates/market_view.pt:23
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
+=======
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 msgid "Hide"
 msgstr ""
 
@@ -176,10 +207,24 @@ msgstr ""
 msgid "Name and surname"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:199
 msgid "No"
 msgstr ""
 
+=======
+<<<<<<< Updated upstream
+=======
+#: ../controlpanel.py:94
+msgid "Name center"
+msgstr ""
+
+#: ../content/templates/market_view.pt:195
+msgid "No"
+msgstr ""
+
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 #: ../content/offer.py:176
 msgid "Number of students"
 msgstr ""
@@ -209,19 +254,39 @@ msgstr ""
 msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:197
 msgid "Possibility of scholarship"
 msgstr ""
 
+=======
+<<<<<<< Updated upstream
+=======
+#: ../content/templates/market_view.pt:198
+msgid "Possibility of scholarship"
+msgstr ""
+
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 #: ../controlpanel.py:23
 msgid "Program type"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:193
 msgid "Requirements"
+=======
+<<<<<<< Updated upstream
+#: ../content/templates/market_view.pt:27
+msgid "Qualification"
+=======
+#: ../content/templates/market_view.pt:189
+msgid "Requirements"
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 msgstr ""
 
-#: ../controlpanel.py:103
+#: ../controlpanel.py:98
 msgid "Review State"
 msgstr ""
 
@@ -233,7 +298,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ../controlpanel.py:105
+#: ../controlpanel.py:100
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr ""
 
@@ -254,19 +319,34 @@ msgstr ""
 msgid "TFEteacher"
 msgstr ""
 
-#: ../controlpanel.py:81
+#: ../controlpanel.py:122
 msgid "Tags"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:159
 msgid "Teacher manager"
 msgstr ""
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> Translations and functions
 #: ../controlpanel.py:87
 msgid "Temes"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:29
+=======
+#: ../content/templates/market_view.pt:24
+=======
+#: ../content/templates/market_view.pt:159
+msgid "Teacher manager"
+msgstr ""
+
+#: ../content/templates/market_view.pt:29
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 msgid "Text to search"
 msgstr ""
 
@@ -274,28 +354,44 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ../controlpanel.py:44
+#: ../controlpanel.py:81
 msgid "Titulacions"
 msgstr ""
 
-#: ../controlpanel.py:75
-msgid "Topics"
+#: ../controlpanel.py:50
+msgid "Titulacions CA"
 msgstr ""
 
-#: ../controlpanel.py:110
+#: ../controlpanel.py:56
+msgid "Titulacions EN"
+msgstr ""
+
+#: ../controlpanel.py:44
+msgid "Titulacions ES"
+msgstr ""
+
+#: ../controlpanel.py:117
 msgid "Topics of the TFE"
 msgstr ""
 
 #: ../configure.zcml:41
-#: ../controlpanel.py:137
+#: ../controlpanel.py:141
 msgid "UPC Mercat TFE"
 msgstr ""
 
+<<<<<<< Updated upstream
 #: ../controlpanel.py:115
 msgid "URL del servei web"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/market.py:121
+=======
+#: ../content/market.py:57
+=======
+#: ../content/market.py:121
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 msgid "University"
 msgstr ""
 
@@ -311,10 +407,20 @@ msgstr ""
 msgid "With the possibility of offering grant/financing"
 msgstr ""
 
+<<<<<<< e53e04ca0323a421f0f7d7a8351d02f8bfb89bbf
 #: ../content/templates/market_view.pt:198
 msgid "Yes"
 msgstr ""
 
+=======
+<<<<<<< Updated upstream
+=======
+#: ../content/templates/market_view.pt:194
+msgid "Yes"
+msgstr ""
+
+>>>>>>> Stashed changes
+>>>>>>> Translations and functions
 #: ../profiles/default/types/genweb.tfemarket.application.xml
 msgid "application"
 msgstr ""
@@ -322,6 +428,10 @@ msgstr ""
 #. Default: "Description"
 #: ../profiles/default/types/genweb.tfemarket.application.xml
 msgid "application_description"
+msgstr ""
+
+#: ../controlpanel.py:75
+msgid "classifications"
 msgstr ""
 
 #: ../content/offer.py:185
@@ -337,7 +447,7 @@ msgid "grant"
 msgstr ""
 
 #. Default: "Imported dades from csv"
-#: ../controlpanel.py:126
+#: ../controlpanel.py:130
 msgid "help_titulacions_table"
 msgstr ""
 
@@ -386,6 +496,6 @@ msgstr ""
 msgid "tfe_lang"
 msgstr ""
 
-#: ../controlpanel.py:128
+#: ../controlpanel.py:132
 msgid "titulacionstable"
 msgstr ""
