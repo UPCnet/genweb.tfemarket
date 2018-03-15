@@ -6,7 +6,6 @@ from plone import api
 from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
 from plone.directives import form, dexterity
-from plone.schema import Email
 from plone.supermodel.directives import fieldset
 from plone.registry.interfaces import IRegistry
 from zope import schema
@@ -19,8 +18,15 @@ from zope.schema.vocabulary import SimpleTerm
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 
+from zope.schema import ValidationError
+from Products.CMFDefault.utils import checkEmailAddress
+from Products.CMFDefault.exceptions import EmailAddressInvalid
 
 grok.templatedir("templates")
+
+
+class InvalidEmailAddress(ValidationError):
+    "Invalid email address"
 
 
 class KeysVocabulary(object):
@@ -45,6 +51,7 @@ def possibleTopics(context):
                                ])
     return topics
 
+
 @grok.provider(IContextSourceBinder)
 def possibleDegrees(context):
     registry = queryUtility(IRegistry)
@@ -55,13 +62,13 @@ def possibleDegrees(context):
     for item in tfe_tool.titulacions_table:
         titulacio = str(item['plan_year']) + " - "
         if current_language == 'ca':
-            titulacio +=  item['titulacio_ca']
+            titulacio += item['titulacio_ca']
         elif current_language == 'es':
             titulacio += item['titulacio_es']
         else:
             titulacio += item['titulacio_en']
 
-        result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
+        result.append({'id': item['codi_prisma'], 'lit': titulacio})
 
     result = sorted(result, key=itemgetter('lit'))
 
@@ -70,6 +77,14 @@ def possibleDegrees(context):
         titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
 
     return SimpleVocabulary(titulacions)
+
+
+def validateaddress(value):
+    try:
+        checkEmailAddress(value)
+    except EmailAddressInvalid:
+        raise InvalidEmailAddress(value)
+    return True
 
 
 class IOffer(form.Schema):
@@ -202,9 +217,10 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    company_email = Email(
+    company_email = schema.TextLine(
         title=_(u'Company Email'),
         required=False,
+        constraint=validateaddress,
     )
 
     num_students = schema.Int(
