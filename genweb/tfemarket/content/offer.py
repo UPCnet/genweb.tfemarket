@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
-from plone.directives import form, dexterity
-from zope import schema
-from genweb.tfemarket import _
-from plone.autoform import directives
-from zope.schema.interfaces import IContextSourceBinder
+from operator import itemgetter
+from plone import api
 from plone.app.textfield import RichText as RichTextField
-from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+from plone.autoform import directives
+from plone.directives import form, dexterity
 from plone.schema import Email
 from plone.supermodel.directives import fieldset
-
+from plone.registry.interfaces import IRegistry
+from zope import schema
+from zope.component import queryUtility
+from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm
+
+from genweb.tfemarket import _
+from genweb.tfemarket.controlpanel import ITfemarketSettings
+
 
 grok.templatedir("templates")
 
@@ -37,6 +44,32 @@ def possibleTopics(context):
                                SimpleTerm(value=u'Jim', title=(u'tres'))
                                ])
     return topics
+
+@grok.provider(IContextSourceBinder)
+def possibleDegrees(context):
+    registry = queryUtility(IRegistry)
+    tfe_tool = registry.forInterface(ITfemarketSettings)
+    current_language = api.portal.get_current_language()
+
+    result = []
+    for item in tfe_tool.titulacions_table:
+        titulacio = str(item['plan_year']) + " - "
+        if current_language == 'ca':
+            titulacio +=  item['titulacio_ca']
+        elif current_language == 'es':
+            titulacio += item['titulacio_es']
+        else:
+            titulacio += item['titulacio_en']
+
+        result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
+
+    result = sorted(result, key=itemgetter('lit'))
+
+    titulacions = []
+    for item in result:
+        titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
+
+    return SimpleVocabulary(titulacions)
 
 
 class IOffer(form.Schema):
@@ -109,7 +142,8 @@ class IOffer(form.Schema):
     topic = schema.Choice(
         title=_(u'offer_topic'),
         source=possibleTopics,
-        required=False)
+        required=False
+    )
 
     requirements = RichTextField(
         title=_(u'requirements'),
@@ -130,8 +164,9 @@ class IOffer(form.Schema):
         default=False,
     )
 
-    degree = schema.TextLine(
+    degree = schema.Choice(
         title=_(u'degree'),
+        source=possibleDegrees,
         required=False,
     )
 

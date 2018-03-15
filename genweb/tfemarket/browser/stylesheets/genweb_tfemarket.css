@@ -229,7 +229,6 @@ span.label.nomarginLeft  {
     color: black;
     font-size:13px;
     font-weight: bold;
-    font-color: black;
     padding-top: 5px;
 }
 .subpuntTitle {
@@ -259,7 +258,6 @@ div.modal-body.presentation {
 div.modal-header.presentation {
     font-size: 16px;
     font-weight: bold;
-    font-color: black;
 }
 
 div#modalSession.modal.fade.modalSession.in {
@@ -1592,19 +1590,6 @@ li.unstyled.offer {
 #parent-fieldname-text {
     margin-top: 30px;
 }
-h1, h2, h3 {
-    color: #007bc0;
-}
-.template-view.portaltype-genweb-tfemarket-market.site-ca.section-estudis.subsection-tfe.subsection-tfe-mercat-de-tfe.icons-off.userrole-anonymous h1, .template-view.portaltype-genweb-tfemarket-market.site-ca.section-estudis.subsection-tfe.subsection-tfe-mercat-de-tfe.icons-off.userrole-anonymous h2, .template-view.portaltype-genweb-tfemarket-market.site-ca.section-estudis.subsection-tfe.subsection-tfe-mercat-de-tfe.icons-off.userrole-anonymous h3 {
-    color: #007bc0;
-}
-a.btn.btn-small.btn-block {
-    padding: 14px;
-    font-size: 16px;
-    width: 200px;
-    text-align: center;
-    margin: 0px auto 0px auto;
-}
 a.etiquetes {
     color: white;
     font-weight: bold;
@@ -1653,18 +1638,16 @@ a.popup-cerrar {
     color: #fff;
 }
 span.btn.label.disabled {
-    position: absolute;
-    right: 45px !important;
     width: 105px !important;
     padding: 5px !important;
     border-radius: 2px !important;
 }
 .sortable2.offerdata {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background-color: #e8e8e8;
     padding: 20px 20px !important;
     border-radius: 4px !important;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 li.unstyled.offer {
     margin-bottom: 5px;
@@ -1679,16 +1662,16 @@ li.unstyled.offer {
   display: grid;
 }
 
-#offers .puntTitle.span12 .span1.fletxaSpan {
-  width: 6%;
+#offers .puntTitle .fletxaSpan {
+  float: left;
+  margin-right: 10px;
 }
 
-#offers .puntTitle.span12 .span10.titleSpan {
-  width: 83.33%;
+#offers .puntTitle .titleSpan {
+  float: left;
 }
 
-#offers .puntTitle.span12 .span1.boleta {
-  width: 8.33%;
+#offers .puntTitle .boleta {
   margin-left: 0px;
   float: right;
 }
@@ -1697,7 +1680,7 @@ li.unstyled.offer {
   padding: 3px;
 }
 
-#offers .span1.fletxaSpan .expand {
+#offers .fletxaSpan .expand {
   margin-top: 0px!important;
   padding-top: 2px!important;
   padding: 2px 6px;
@@ -1798,24 +1781,22 @@ li.unstyled.offer {
 #offers li.unstyled.offer {
   list-style: none;
   margin: 0px;
-  margin-bottom: 10px;
   display: grid;
 }
 
-#offers .puntTitle.span12 {
-  margin: 0px !important;
+#offers .puntTitle {
   padding: 0px !important;
 }
 
-#offers .span10.titleSpan h3 {
+#offers .titleSpan h3 {
   margin: 5px 0px !important;
-}
-
-#offers .span1.fletxaSpan,  #offers .span10.titleSpan {
-  margin: 0px !important;
 }
 
 #offers .offerdesc {
   text-align: justify;
+}
+
+.portaltype-genweb-tfemarket-market #viewlet-below-content {
+  margin-top: 35px;
 }
 /*FIN KO & IAGO CSS*/
