@@ -57,4 +57,10 @@
         class=".controlpanel.TfemarketSettingsControlPanel"
         permission="cmf.ManagePortal"/>
 
+    <subscriber
+      for=".content.application.IApplication
+           Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+      handler=".browser.events.change.application_changed"
+    />
+
 </configure>
