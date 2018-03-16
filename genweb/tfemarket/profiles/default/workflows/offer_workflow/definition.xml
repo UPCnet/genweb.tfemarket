@@ -65,6 +65,7 @@
  <state state_id="offered" title="Proposta">
   <exit-transition transition_id="publicaloferta"/>
   <exit-transition transition_id="publicaalintranet"/>
+  <exit-transition transition_id="sendtorreview"/>
   <permission-map name="Access contents information" acquired="True">
   </permission-map>
   <permission-map name="Change portal events" acquired="True">
@@ -85,6 +86,11 @@
   </permission-map>
  </state>
  <state state_id="okprismaintranet" title="Ok PRISMA (intranet)">
+ </state>
+ <state state_id="pending" title="Pending">
+  <exit-transition transition_id="publicaalintranet"/>
+  <exit-transition transition_id="publicaloferta"/>
+  <exit-transition transition_id="retiraaesborrany"/>
  </state>
  <state state_id="public" title="Pública">
   <exit-transition transition_id="caducaloferta"/>
@@ -134,7 +140,7 @@
    <guard-role>Teacher</guard-role>
   </guard>
  </transition>
- <transition transition_id="caducaloferta" title="Caduca l'oferta" new_state="expired" trigger="USER" before_script="" after_script="">
+ <transition transition_id="caducaloferta" title="Caduca l'oferta" new_state="expired" trigger="AUTOMATIC" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=caducaloferta" category="workflow" icon="">Caduca l'oferta</action>
   <guard>
   </guard>
@@ -176,6 +182,11 @@
  </transition>
  <transition transition_id="retiraaesborrany" title="Retira a esborrany" new_state="offered" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=retiraaesborrany" category="workflow" icon="">Retira a esborrany</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="sendtorreview" title="" new_state="pending" trigger="USER" before_script="" after_script="">
+  
   <guard>
   </guard>
  </transition>
