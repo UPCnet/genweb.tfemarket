@@ -17,17 +17,19 @@
         <role name="WebMaster"/>
     </roles>
     <permissions>
+        <permission name="Genweb TFEMarket: Add Application" acquire="True">
+          <role name="Manager"/>
+          <role name="Student"/>
+        </permission>
         <permission name="Genweb TFEMarket: Add Market" acquire="True">
-            <role name="Manager" />
-            <role name="WebMaster" />
+          <role name="Manager"/>
+          <role name="Market Manager"/>
+          <role name="WebMaster"/>
         </permission>
         <permission name="Genweb TFEMarket: Add Offer" acquire="True">
-            <role name="Manager" />
-            <role name="Teacher" />
-        </permission>
-        <permission name="Genweb TFEMarket: Add Application" acquire="True">
-            <role name="Manager" />
-            <role name="Student" />
+          <role name="Manager"/>
+          <role name="Market Manager"/>
+          <role name="Teacher"/>
         </permission>
     </permissions>
 </rolemap>
