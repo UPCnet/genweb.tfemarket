@@ -141,16 +141,17 @@ class View(grok.View):
         current_language = api.portal.get_current_language()
 
         result = []
-        for item in tfe_tool.titulacions_table:
-            titulacio = str(item['plan_year']) + " - "
-            if current_language == 'ca':
-                titulacio +=  item['titulacio_ca']
-            elif current_language == 'es':
-                titulacio += item['titulacio_es']
-            else:
-                titulacio += item['titulacio_en']
+        if tfe_tool.titulacions_table:
+            for item in tfe_tool.titulacions_table:
+                titulacio = str(item['plan_year']) + " - "
+                if current_language == 'ca':
+                    titulacio +=  item['titulacio_ca']
+                elif current_language == 'es':
+                    titulacio += item['titulacio_es']
+                else:
+                    titulacio += item['titulacio_en']
 
-            result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
+                result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
 
         result = sorted(result, key=itemgetter('lit'))
         result.insert(0, {'id' : 'a', 'lit' : _(u"All")})
