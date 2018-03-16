@@ -9,7 +9,7 @@ def application_changed(application, event):
     """ If genweb.tfemarket.application change WF, sends email.
     """
 
-    fromMsg = toMsg = subject = msg = ''
+    fromMsg = toMsg = subject = msg = portalMsg = ''
     if event.transition is None:
         fromMsg = 'Estudiant'
         toMsg = 'Professor'
@@ -36,11 +36,13 @@ def application_changed(application, event):
             toMsg = 'Professor'
             subject = 'Confirma'
             msg = 'M4'
+            portalMsg = _(u'A3: Confirm offer')
         elif event.transition.id == 'renounce':
             fromMsg = 'Estudiant'
             toMsg = 'Professor'
             subject = 'Renuncia'
             msg = 'M5'
+            portalMsg = _(u'A4: Renounce offer')
         elif event.transition.id == 'cancel':
             fromMsg = 'Estudiant'
             toMsg = 'Professor'
@@ -49,3 +51,6 @@ def application_changed(application, event):
 
     if not fromMsg == '':
         sendMessage(application, fromMsg, toMsg, subject, msg)
+
+    if not portalMsg == '':
+        application.plone_utils.addPortalMessage(portalMsg, 'info')
