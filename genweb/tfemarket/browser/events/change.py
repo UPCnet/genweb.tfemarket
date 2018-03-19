@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
+from datetime import date
+from datetime import datetime
+from plone import api
+from zExceptions import Redirect
+from Products.CMFCore.utils import getToolByName
+
 from genweb.tfemarket.utils import sendMessage
 from genweb.tfemarket import _
+
 import transaction
-from plone import api
 
 
 def application_changed(application, event):
@@ -54,3 +60,22 @@ def application_changed(application, event):
 
     if not portalMsg == '':
         application.plone_utils.addPortalMessage(portalMsg, 'info')
+
+
+def offer_changed(offer, event):
+    """ If genweb.tfemarket.offer change WF, checks if expired.
+    """
+
+    if not event.transition is None:
+        if event.transition.id == 'publicaalintranet' or event.transition.id == 'publicaloferta':
+            wftool = getToolByName(offer, 'portal_workflow')
+            if offer.expiration_date:
+                today = date.today()
+                expiration_date = datetime.strptime(offer.expiration_date.Date(), '%Y/%m/%d').date()
+                diff_days = expiration_date - today
+                if diff_days.days < 0:
+                    wftool.doActionFor(offer, 'caducaloferta')
+                    transaction.commit()
+            else:
+                wftool.doActionFor(offer, 'caducaloferta')
+                transaction.commit()

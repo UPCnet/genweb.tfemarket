@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="application_workflow" title="Application Workflow" description="" state_variable="review_state" initial_state="requested" manager_bypass="True">
+<dc-workflow workflow_id="tfemarket_application_workflow" title="Application Workflow" description="" state_variable="review_state" initial_state="requested" manager_bypass="True">
  <permission>Access contents information</permission>
  <permission>Change portal events</permission>
  <permission>Modify portal content</permission>
@@ -11,23 +11,30 @@
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
-   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
-   <permission-role>Student</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="cancelled" title="Anul·lada">
@@ -35,20 +42,30 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="confirmed" title="Confirmada">
@@ -56,20 +73,31 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="rejected" title="Rebutjada">
@@ -78,20 +106,30 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
-   <permission-role>Student</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="renounced" title="Renunciada">
@@ -99,20 +137,30 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="requested" title="Sol·licitada">
@@ -122,26 +170,31 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
-   <permission-role>Student</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
-   <permission-role>Student</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
-   <permission-role>Student</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
-   <permission-role>Student</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
    <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <transition transition_id="accept" title="accept" new_state="accepted" trigger="USER" before_script="" after_script="">

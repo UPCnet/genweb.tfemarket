@@ -1,120 +1,446 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="offer_workflow" title="Offer Workflow" description="" state_variable="review_state" initial_state="offered" manager_bypass="True">
+<dc-workflow workflow_id="tfemarket_offer_workflow" title="Offer Workflow" description="" state_variable="review_state" initial_state="offered" manager_bypass="True">
  <permission>Access contents information</permission>
+ <permission>Add portal content</permission>
  <permission>Change portal events</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <state state_id="assignadaintranet" title="Assignada (intranet)">
+  <exit-transition transition_id="publicaalintranet"/>
   <exit-transition transition_id="registralofertaintranet"/>
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="assigned" title="Assignada">
   <exit-transition transition_id="register"/>
   <exit-transition transition_id="publicaloferta"/>
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="expired" title="Caducada">
   <exit-transition transition_id="publicaloferta"/>
   <exit-transition transition_id="publicaalintranet"/>
   <exit-transition transition_id="retiraaesborrany"/>
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="inscritaintranet" title="Inscrita (intranet)">
   <exit-transition transition_id="totcorrecteprimaintranet"/>
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="intranet" title="Intranet">
   <exit-transition transition_id="assignalofertaintranet"/>
-  <permission-map name="Access contents information" acquired="True">
+  <exit-transition transition_id="caducaloferta"/>
+  <exit-transition transition_id="retiraaesborrany"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="offered" title="Proposta">
-  <exit-transition transition_id="publicaloferta"/>
   <exit-transition transition_id="publicaalintranet"/>
+  <exit-transition transition_id="publicaloferta"/>
   <exit-transition transition_id="sendtorreview"/>
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="okprisma" title="Ok PRISMA">
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="okprismaintranet" title="Ok PRISMA (intranet)">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
  </state>
  <state state_id="pending" title="Pending">
   <exit-transition transition_id="publicaalintranet"/>
   <exit-transition transition_id="publicaloferta"/>
   <exit-transition transition_id="retiraaesborrany"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
  </state>
  <state state_id="public" title="Pública">
+  <exit-transition transition_id="assign"/>
   <exit-transition transition_id="caducaloferta"/>
   <exit-transition transition_id="retiraaesborrany"/>
-  <exit-transition transition_id="assign"/>
-  <exit-transition transition_id="publicaalintranet"/>
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <state state_id="registered" title="Inscrita">
   <exit-transition transition_id="prisma_ok"/>
-  <permission-map name="Access contents information" acquired="True">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Change portal events" acquired="True">
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="True">
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
-  <permission-map name="View" acquired="True">
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
  <transition transition_id="assign" title="Assigna l'oferta" new_state="assigned" trigger="USER" before_script="" after_script="">
@@ -127,27 +453,44 @@
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
    <guard-role>Market Manager</guard-role>
-   <guard-role>Teacher</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="assignalofertaintranet" title="Assigna l'oferta (intranet)" new_state="assignadaintranet" trigger="USER" before_script="" after_script="">
   <description>El professor assigna una sol·licitud  a l'oferta.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=assignalofertaintranet" category="workflow" icon="">Assigna l'oferta (intranet)</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
    <guard-role>Market Manager</guard-role>
-   <guard-role>Teacher</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
- <transition transition_id="caducaloferta" title="Caduca l'oferta" new_state="expired" trigger="AUTOMATIC" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=caducaloferta" category="workflow" icon="">Caduca l'oferta</action>
+ <transition transition_id="caducaloferta" title="Caduca l'oferta" new_state="expired" trigger="USER" before_script="" after_script="">
+  
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="prisma_ok" title="Tot correcte a PRISMA" new_state="okprisma" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=prisma_ok" category="workflow" icon="">prisma_ok</action>
+  <action url="%(content_url)s/content_status_modify?workflow_action=prisma_ok" category="workflow" icon="">Tot correcte a PRISMA</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="publicaalintranet" title="Publica a l'intranet" new_state="intranet" trigger="USER" before_script="" after_script="">
@@ -159,17 +502,31 @@
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
    <guard-role>Market Manager</guard-role>
-   <guard-role>Teacher</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="publicaloferta" title="Publica l'oferta" new_state="public" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=publicaloferta" category="workflow" icon="">Publica l'oferta</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="register" title="Registra l'oferta" new_state="registered" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=register" category="workflow" icon="">register</action>
+  <action url="%(content_url)s/content_status_modify?workflow_action=register" category="workflow" icon="">Registra l'oferta</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="registralofertaintranet" title="Registra l'oferta (intranet)" new_state="inscritaintranet" trigger="USER" before_script="" after_script="">
@@ -178,21 +535,46 @@
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
    <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="retiraaesborrany" title="Retira a esborrany" new_state="offered" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=retiraaesborrany" category="workflow" icon="">Retira a esborrany</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="sendtorreview" title="" new_state="pending" trigger="USER" before_script="" after_script="">
   
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <transition transition_id="totcorrecteprimaintranet" title="Tot correcte PRISMA (intranet)" new_state="okprismaintranet" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=totcorrecteprimaintranet" category="workflow" icon="">Tot correcte PRIMA (intranet)</action>
   <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
   </guard>
  </transition>
  <worklist worklist_id="reviewer_queue" title="">
@@ -250,4 +632,5 @@
   <guard>
   </guard>
  </variable>
+ <script script_id="expired_offer" type="Script (Python)" filename="workflows/tfemarket_offer_workflow/scripts/expired_offer.py" module="" function=""/>
 </dc-workflow>

@@ -63,4 +63,10 @@
       handler=".browser.events.change.application_changed"
     />
 
+    <subscriber
+      for=".content.offer.IOffer
+           Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+      handler=".browser.events.change.offer_changed"
+    />
+
 </configure>
