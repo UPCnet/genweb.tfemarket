@@ -124,7 +124,9 @@ class View(grok.View):
         return results
 
     def getLanguages(self):
-        return [_(u"Catalan"), _(u"Spanish"), _(u"English")]
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        return tfe_tool.languages.split('\n')
 
     def getModalities(self):
         return [_(u"University"), _(u"Company")]
@@ -135,7 +137,7 @@ class View(grok.View):
                 {'id' : 'w', 'lit' : _(u"Week")},
                 {'id' : 'm', 'lit' : _(u"Month")}]
 
-    def getDegrees(context):
+    def getDegrees(self):
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
         current_language = api.portal.get_current_language()
