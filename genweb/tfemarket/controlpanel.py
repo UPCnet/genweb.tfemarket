@@ -62,7 +62,7 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Settings',
         _(u'Settings'),
-        fields=['center_code', 'center_name', 'review_state'],
+        fields=['center_code', 'center_name', 'review_state', 'languages'],
     )
 
     model.fieldset(
@@ -96,25 +96,23 @@ class ITfemarketSettings(model.Schema):
                                required=False,
                                )
 
-    # languages = schema.Text(
-    #     title=_(u"available_languages",
-    #             default=u"Available languages"),
-    #     description=_(u"help_available_languages",
-    #                   default=u"Languages develop TFE"),
-    #     value_type=schema.Choice(vocabulary='plone.app.vocabularies.SupportedContentLanguages'),
-    #     required=False,
-    #     default=['ca']
-    # )
+    languages = schema.Text(title=_(u"Development languages"),
+                            default=_(u"Catalan"),
+                            description=_(u'Add languages one per line'),
+                            required=False,
+                            )
 
     # CLASSIFICATIONS
 
-    topics = schema.TextLine(
+    topics = schema.Text(
         title=_(u"Topics of the TFE"),
+        description=_(u'Add topics one per line'),
         required=False,
     )
 
-    tags = schema.TextLine(
+    tags = schema.Text(
         title=_(u"Tags"),
+        description=_(u'Add tags one per line'),
         required=False,
     )
 
