@@ -10,7 +10,6 @@ from plone.supermodel.directives import fieldset
 from plone.registry.interfaces import IRegistry
 from zope import schema
 from zope.component import queryUtility
-from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
@@ -22,6 +21,11 @@ from zope.schema import ValidationError
 from Products.CMFDefault.utils import checkEmailAddress
 from Products.CMFDefault.exceptions import EmailAddressInvalid
 
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
+
+from z3c.form.browser.checkbox import CheckBoxFieldWidget
+
+
 grok.templatedir("templates")
 
 
@@ -29,54 +33,94 @@ class InvalidEmailAddress(ValidationError):
     "Invalid email address"
 
 
+class LangsVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        results = ()
+        languages = []
+
+        langs = tfe_tool.languages
+        results = langs.split("\r\n")
+        for item in results:
+            languages.append(SimpleTerm(item))
+        return SimpleVocabulary(languages)
+
+
+grok.global_utility(LangsVocabulary, name=u"genweb.tfemarket.Langs")
+
+
 class KeysVocabulary(object):
     grok.implements(IVocabularyFactory)
 
     def __call__(self, context):
-        topics = SimpleVocabulary([SimpleTerm(value=u'Bill', title=(u'A')),
-                                   SimpleTerm(value=u'Bob', title=(u'B')),
-                                   SimpleTerm(value=u'Jim', title=(u'C'))
-                                   ])
-        return topics
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        results = []
+        tags = []
+
+        keys = tfe_tool.tags
+        results = keys.split("\r\n")
+        for item in results:
+            tags.append(SimpleTerm(item))
+        return SimpleVocabulary(tags)
 
 
 grok.global_utility(KeysVocabulary, name=u"genweb.tfemarket.Keys")
 
 
-@grok.provider(IContextSourceBinder)
-def possibleTopics(context):
-    topics = SimpleVocabulary([SimpleTerm(value=u'Bill', title=(u'uno')),
-                               SimpleTerm(value=u'Bob', title=(u'dos')),
-                               SimpleTerm(value=u'Jim', title=(u'tres'))
-                               ])
-    return topics
+class TopicsVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        results = []
+        topic = []
+
+        topics = tfe_tool.topics
+        results = topics.split("\r\n")
+
+        for item in results:
+            topic.append(SimpleTerm(item))
+        return SimpleVocabulary(topic)
 
 
-@grok.provider(IContextSourceBinder)
-def possibleDegrees(context):
-    registry = queryUtility(IRegistry)
-    tfe_tool = registry.forInterface(ITfemarketSettings)
-    current_language = api.portal.get_current_language()
+grok.global_utility(TopicsVocabulary, name=u"genweb.tfemarket.Topics")
 
-    result = []
-    for item in tfe_tool.titulacions_table:
-        titulacio = str(item['plan_year']) + " - "
-        if current_language == 'ca':
-            titulacio += item['titulacio_ca']
-        elif current_language == 'es':
-            titulacio += item['titulacio_es']
-        else:
-            titulacio += item['titulacio_en']
 
-        result.append({'id': item['codi_prisma'], 'lit': titulacio})
+class DegreesVocabulary(object):
+    grok.implements(IVocabularyFactory)
 
-    result = sorted(result, key=itemgetter('lit'))
+    def __call__(self, context):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        current_language = api.portal.get_current_language()
 
-    titulacions = []
-    for item in result:
-        titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
+        result = []
+        for item in tfe_tool.titulacions_table:
+            titulacio = str(item['plan_year']) + " - "
+            if current_language == 'ca':
+                titulacio += item['titulacio_ca']
+            elif current_language == 'es':
+                titulacio += item['titulacio_es']
+            else:
+                titulacio += item['titulacio_en']
 
-    return SimpleVocabulary(titulacions)
+            result.append({'id': item['codi_prisma'], 'lit': titulacio})
+
+        result = sorted(result, key=itemgetter('lit'))
+
+        titulacions = []
+        for item in result:
+            titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
+
+        return SimpleVocabulary(titulacions)
+
+
+grok.global_utility(DegreesVocabulary, name=u"genweb.tfemarket.Titulacions")
 
 
 def validateaddress(value):
@@ -108,7 +152,7 @@ class IOffer(form.Schema):
 
     fieldset('options',
              label=_(u''),
-             fields=['grant', 'modality', 'confidential', 'environmental_theme', 'scope_cooperation', 'keys']
+             fields=['grant', 'confidential', 'environmental_theme', 'scope_cooperation', 'keys']
              )
 
     fieldset('modalitat',
@@ -156,7 +200,7 @@ class IOffer(form.Schema):
 
     topic = schema.Choice(
         title=_(u'offer_topic'),
-        source=possibleTopics,
+        vocabulary=u"genweb.tfemarket.Topics",
         required=False
     )
 
@@ -165,11 +209,10 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    lang = schema.Choice(
+    form.widget(lang=CheckBoxFieldWidget)
+    lang = schema.List(
+        value_type=schema.Choice(source=u"genweb.tfemarket.Langs"),
         title=_(u'tfe_lang'),
-        values=[_(u"Catalan"),
-                _(u"Spanish"),
-                _(u"English")],
         required=False,
     )
 
@@ -179,9 +222,9 @@ class IOffer(form.Schema):
         default=False,
     )
 
-    degree = schema.Choice(
+    degree = schema.List(
+        value_type=schema.Choice(source=u"genweb.tfemarket.Titulacions"),
         title=_(u'degree'),
-        source=possibleDegrees,
         required=False,
     )
 
@@ -255,6 +298,22 @@ class IOffer(form.Schema):
         vocabulary=u"genweb.tfemarket.Keys",
         required=False,
     )
+
+
+@grok.subscribe(IOffer, IObjectAddedEvent)
+def numOfferDefaultValue(offer, event):
+    total_offers = len(
+        api.content.find(
+            portal_type='genweb.tfemarket.offer')
+    )
+
+    registry = queryUtility(IRegistry)
+    tfe_tool = registry.forInterface(ITfemarketSettings)
+    center = tfe_tool.center_code
+    total = total_offers
+
+    offer.offer_id = str(center) + '-' + str(total).zfill(5)
+    offer.reindexObject()
 
 
 class View(dexterity.DisplayForm):

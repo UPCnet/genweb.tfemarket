@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
 from five import grok
-from plone import api
 from plone.registry.interfaces import IRegistry
 from zope.interface import Interface
 from zope.component import queryUtility
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
-from souper.soup import get_soup
-import unicodedata
-import json
 import csv
 import transaction
 
 from Products.statusmessages.interfaces import IStatusMessage
-from genweb.core.gwuuid import IGWUUID
-from repoze.catalog.query import Eq
 
 
-class migrateGroups(grok.View):
+class importTitulacions(grok.View):
     """ Import Titulacions from csv file """
     grok.name('import_titulacions')
     grok.context(Interface)
@@ -35,22 +29,22 @@ class migrateGroups(grok.View):
                 tfe_tool.titulacions_table = []
 
                 csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
-                csv_file.next() # Ignore header for csv
+                csv_file.next()  # Ignore header for csv
 
                 for row in csv_file:
 
-                    codi_centre =  int(row[0].decode("utf-8"))
+                    codi_centre = int(row[0].decode("utf-8"))
                     if not codi_centre == tfe_tool.center_code:
                         continue
 
                     data = {
-                            'codi_prisma' : int(row[1].decode("utf-8")),
-                            'progam_type' : row[2].decode("utf-8"),
-                            'codi_mec' : int(row[3].decode("utf-8")),
-                            'plan_year' : int(row[4].decode("utf-8")),
-                            'titulacio_es' : row[5].decode("utf-8"),
-                            'titulacio_ca' : row[7].decode("utf-8"),
-                            'titulacio_en' : row[9].decode("utf-8"),
+                        'codi_prisma': int(row[1].decode("utf-8")),
+                        'progam_type': row[2].decode("utf-8"),
+                        'codi_mec': int(row[3].decode("utf-8")),
+                        'plan_year': int(row[4].decode("utf-8")),
+                        'titulacio_es': row[5].decode("utf-8"),
+                        'titulacio_ca': row[7].decode("utf-8"),
+                        'titulacio_en': row[9].decode("utf-8"),
                     }
 
                     tfe_tool.titulacions_table.append(data)

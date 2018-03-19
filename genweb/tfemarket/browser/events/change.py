@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
+
 from datetime import date
 from datetime import datetime
-from plone import api
-from zExceptions import Redirect
 from Products.CMFCore.utils import getToolByName
 
 from genweb.tfemarket.utils import sendMessage
@@ -65,8 +64,7 @@ def application_changed(application, event):
 def offer_changed(offer, event):
     """ If genweb.tfemarket.offer change WF, checks if expired.
     """
-
-    if not event.transition is None:
+    if event.transition is not None:
         if event.transition.id == 'publicaalintranet' or event.transition.id == 'publicaloferta':
             wftool = getToolByName(offer, 'portal_workflow')
             if offer.expiration_date:
