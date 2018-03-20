@@ -223,7 +223,7 @@
                                     </div>
                                     <div class="moreInformation">
                                       <p>
-                                        <a tal:attributes="href offer/url">More information</a>
+                                        <a tal:attributes="href offer/url" i18n:translate="">More information</a>
                                       </p>
                                     </div>
                                   </div>
