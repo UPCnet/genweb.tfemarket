@@ -43,7 +43,9 @@ class LangsVocabulary(object):
         languages = []
 
         langs = tfe_tool.languages
-        results = langs.split("\r\n")
+        if langs:
+            results = langs.split("\r\n")
+
         for item in results:
             languages.append(SimpleTerm(item))
         return SimpleVocabulary(languages)
@@ -62,7 +64,9 @@ class KeysVocabulary(object):
         tags = []
 
         keys = tfe_tool.tags
-        results = keys.split("\r\n")
+        if keys:
+            results = keys.split("\r\n")
+
         for item in results:
             tags.append(SimpleTerm(item))
         return SimpleVocabulary(tags)
@@ -81,7 +85,8 @@ class TopicsVocabulary(object):
         topic = []
 
         topics = tfe_tool.topics
-        results = topics.split("\r\n")
+        if topics:
+            results = topics.split("\r\n")
 
         for item in results:
             topic.append(SimpleTerm(item))
