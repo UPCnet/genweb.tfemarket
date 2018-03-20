@@ -284,4 +284,22 @@ li.unstyled.offer {
   margin-top: 35px;
 }
 
+#listing-table a.contenttype-genweb-tfemarket-application:before, #listing-table a.contenttype-document:before, #listing-table span.contenttype-genweb-tfemarket-application:before, #listing-table span.contenttype-document:before, .template-tabular_view .listing a.contenttype-genweb-tfemarket-application:before, .template-tabular_view .listing a.contenttype-document:before, .template-tabular_view .listing span.contenttype-genweb-tfemarket-application:before, .template-tabular_view .listing span.contenttype-document:before, .contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-application:before, .contenttreeWidget > .navTree a.contenttype-document:before, .contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-application:before, .contenttreeWidget > .navTree span.contenttype-document:before, .collage-content-menu a.contenttype-genweb-tfemarket-application:before, .collage-content-menu a.contenttype-document:before, .collage-content-menu span.contenttype-genweb-tfemarket-application:before, .collage-content-menu span.contenttype-document:before,span.icon-genweb-tfemarket-application{
+    background-position: -192px -143px;
+    width: 14px;
+    height: 14px;
+}
+
+#listing-table a.contenttype-genweb-tfemarket-offer:before, #listing-table a.contenttype-document:before, #listing-table span.contenttype-genweb-tfemarket-offer:before, #listing-table span.contenttype-document:before, .template-tabular_view .listing a.contenttype-genweb-tfemarket-offer:before, .template-tabular_view .listing a.contenttype-document:before, .template-tabular_view .listing span.contenttype-genweb-tfemarket-offer:before, .template-tabular_view .listing span.contenttype-document:before, .contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-offer:before, .contenttreeWidget > .navTree a.contenttype-document:before, .contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-offer:before, .contenttreeWidget > .navTree span.contenttype-document:before, .collage-content-menu a.contenttype-genweb-tfemarket-offer:before, .collage-content-menu a.contenttype-document:before, .collage-content-menu span.contenttype-genweb-tfemarket-offer:before, .collage-content-menu span.contenttype-document:before, span.icon-genweb-tfemarket-offer{
+    background-position: -120px -168px;
+    width: 14px;
+    height: 14px;
+}
+
+#listing-table a.contenttype-genweb-tfemarket-market:before, #listing-table a.contenttype-document:before, #listing-table span.contenttype-genweb-tfemarket-market:before, #listing-table span.contenttype-document:before, .template-tabular_view .listing a.contenttype-genweb-tfemarket-market:before, .template-tabular_view .listing a.contenttype-document:before, .template-tabular_view .listing span.contenttype-genweb-tfemarket-market:before, .template-tabular_view .listing span.contenttype-document:before, .contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-market:before, .contenttreeWidget > .navTree a.contenttype-document:before, .contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-market:before, .contenttreeWidget > .navTree span.contenttype-document:before, .collage-content-menu a.contenttype-genweb-tfemarket-market:before, .collage-content-menu a.contenttype-document:before, .collage-content-menu span.contenttype-genweb-tfemarket-market:before, .collage-content-menu span.contenttype-document:before,span.icon-genweb-tfemarket-market{
+    background-position: -433px -144px;
+    width: 14px;
+    height: 14px;
+}
+
 /*FIN KO & IAGO CSS*/
