@@ -1,1547 +1,6 @@
-/*ROB CSS*/
-
-ul#tabs.nav.nav-tabs {
-    margin: 0px;
-}
-
-#contentOrgan #tabs li a,
-#contentSessio #tabs li a,
-#contentActa #tabs li a {
-    background-color: #ddd;
-    background-image: none;
-    border: medium none;
-    color: #555;
-    margin-right: 5px;
-    min-width: 85px;
-    padding: 8px 20px;
-    text-align: center;
-    outline: medium none;
-}
-
-#contentOrgan #tabs li.active a,
-#contentSessio #tabs li.active a,
-#contentActa #tabs li.active a  {
-    background-image: none;
-    background-color: #f0f0f0;
-    border: none;
-    font-weight: bold;
-}
-
-.nav-tabs {
-    border-bottom: 0px solid #B2B2B2 !important;
-}
-
-#contentSessio #tabs > li.dropdown.open > ul > li > a {
-    background-color: white;
-    color: black;
-}
-
-#dadesTab li,
-#multimediaTab li,
-#actaTab li
- {
-    border-bottom: 1px solid white;
-    list-style: outside none;
-    padding-bottom: 8px;
-    padding-top: 8px;
-}
-
-#dadesTab ul,
-#multimediaTab ul,
-#actaTab ul {
-    margin-left:0px;
-}
-
-a.collapsed .icon-chevron-down{
-    background-position: -456px -72px;
-}
-
-table th {
-    background-color: #F7F7F7!important;
-}
-
-.containerIcons {
-    text-align: center;
-    padding: 10px;
-}
-
-.containerIcons > i {
-    position:relative;
-    top: calc(50% - 10px); /* 50% - 3/4 of icon height */
-}
-.containerIcons .fa {
-    color: #557c95;
-    font-size: 25px;
-}
-.containerIcons span {
-    color: #557c95;
-}
-
-/* CSS  modal afegir punts massivament */
-#form-widgets-message {
-    height: 165px;
- }
-
-/* add 98% to width */
-input#form-widgets-title,
-input#form-widgets-llocConvocatoria,
-input#form-widgets-horaInici,
-input#form-widgets-horaFi,
-input#form-widgets-IBasic-title,
-input#form-widgets-acronim,
-input#form-widgets-fromMail ,
-input#form-widgets-adrecaLlista ,
-input#form-widgets-any,
-input#form-widgets-numSessio,
-input#form-widgets-enllacVideo,
-input#form-widgets-enllacAudio,
-input#form-widgets-proposalPoint,
-input#form-widgets-agreement,
-input#form-widgets-recipients,
-input#form-widgets-fromTitle {width: 98%;}
-
-/*  Hide view action tab */
-.portaltype-genweb-organs-organsfolder #plone-contentmenu-display,
-.portaltype-genweb-organs-acta #plone-contentmenu-display,
-.portaltype-genweb-organs-organgovern #plone-contentmenu-display,
-.portaltype-genweb-organs-punt #plone-contentmenu-display,
-.portaltype-genweb-organs-sessio #plone-contentmenu-display,
-.portaltype-genweb-organs-acord #plone-contentmenu-display
- {display:none;}
-
-.label-danger {
-    background-color: #d9534f !important;
-}
-
-.ul_items {
-    margin-left: 5px;
-}
-
-#contentOrgan {}
-
-/* editable */
-#sortable {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width:auto;
-}
-
-
-span.proposalNumber {
-    color: #007BC0;
-    font-size: 20px;
-}
-.DADES > h2 {
-    margin-bottom: 15px;
-    margin-top: 40px;
-}
-
-.DADES ul, .DADES ol {
-    margin: 5px 0;
-}
-
-span.proposalNumberSubpunt {
-    color: #007BC0;
-    margin-left: 0;
-    font-weight: 800!important;
- }
-
-#sortable .ui-state-highlight {
-    height: 1.5em;
-    line-height: 1.2em;
-    background: #f0f0f0;
-}
-
-#sortable .ui-state-highlight2 {
-    height: 1.5em;
-    line-height: 1.2em;
-    background: red;
-}
-
-.textFloating {
-    font-size:18px;
-    font-weight: bold;
-    padding-left: 20px;
-    border-color: black;
-}
-
-.ui-state-grey, .ui-state-grey-not_move, .ui-state-grey-impersonate {
-    border: 1px solid #eee;
-    position: relative;
-    font-weight: normal;
-    color: black;
-}
-
-.ui-state-grey:hover {
-    background: #f9f9f9 none repeat scroll 0 0;
-    cursor: move;
-    position: relative;
-}
-
-.ui-state-grey:hover:before {
-    font-family: FontAwesome;
-    cursor: move;
-    color: #007BC0;
-   position: absolute;
-   font-size: 15px;
-   bottom: 10px;
-   left:10px;
-}
-
-.llistaAfegir {
-    margin-top:10px;
-    color: #333;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 11px;
-    line-height: 18px;
-    text-align:right;
-}
-
-.llistaAfegir a {
-    padding: 1px 4px 2px;
-}
-
-.llistaAfegir a:hover {
-    background-color: #D4D4D4;
-    color: black;
-    padding: 1px 4px 2px;
-}
-
-.editTitle.editable.subtitleSize {
-    color: #555;
-    font-weight: normal;
-}
-.titleSize {
-    color: #555;
-    font-weight: normal;
-}
-
-span.label.nomarginLeft  {
-    margin-left: 10px !important;
-    margin-right: 5px;
-    position: initial !important;
-    float: right;
-    font-size:10px;
-}
-
-.puntTitle {
-    color: black;
-    font-size:13px;
-    font-weight: bold;
-    padding-top: 5px;
-}
-.subpuntTitle {
-    font-size: 13px;
-    padding-left: 50px!important;
-    /*line-height: 21px;*/
-}
-
-#modalSession {
-    width: 85%;
-    height: 700px;
-    right: 30%;
-    left: 30% !important;
-}
-
-#myModal {
-    width: 65%;
-    height: 525px;
-    right: 30%;
-    left: 40% !important;
-}
-
-div.modal-body.presentation {
-    max-height: 100% !important;
-}
-
-div.modal-header.presentation {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-div#modalSession.modal.fade.modalSession.in {
-    top: 35%;
-}
-
-#modalSessionView {
-    list-style-type: none;
-    margin: 0 3px 3px 3px;
-    padding: 0.4em;
-    padding-left: 1.5em;
-    width:auto;
-    border: 1px solid #D4D4D4;
-    font-weight: normal;
-    color: black;
-}
-
-
-.fa {
-    font-family: Arial, Helvetica, sans-serif!important;
-}
-
-
-.fa:before {
-    content: "\f067";
-    font-family: FontAwesome;
-}
-
-.editable-click, a.editable-click, a.editable-click:hover {
-    text-decoration: none;
-    border-bottom: dotted 1px #2c95b4 !important;
-}
-
-
-label.label.label-default {
-    color: #777777;
-    font-weight: 500;
-    background-color: #eee;
-    margin-right: 3px;
-    text-shadow:none!important;
-}
-
-label.label.label-default{padding: 2px 4px!important;}
-
-.btn-group {
-    margin-top: 0px;
-    margin-right: 5px;
-}
-
-.btn-group a {
-    margin: 1px;
-}
-
-ul:empty {
-   padding: 0px!important;
-}
-
-a.addinsubpunt {
-    background-color: orange!important;
-}
-a.remove{background-color: #e8003d!important}
-
-.filesinTable .fa {
-    margin-right: 4px;
-}
-.filesinTable .fa-trash-o {
-
-    margin-right: 0;
-}
-.filesinTable > a {
-    color: #555;
-    font-weight: normal;
-}
-
-.subpuntTitle:hover:before {
-    cursor: move;
-    font-family: FontAwesome;
-    color: #ccc;
-   font-size: 13px;
-   font-weight: 300;
-       left: 15px;
-    position: absolute;
-
-}
-
-.ui-state-grey:hover:before {
-    font-family: FontAwesome;
-    cursor: move;
-    color: #ccc;
-   position: absolute;
-   font-size: 14px;
-   bottom: 5px;
-   left:5px;
-}
-
-
-#sortable .ui-state-highlight2 {
-   height: 2em;
-   line-height: 1.2em;
-   background-color: transparent!important;
-   border:2px dotted red!important;
-   border-radius: 5px;
-}
-
-.DADES button {
-    background-color:white;
-    border: 1px solid #557c95;
-    color: #557c95;
-    margin: 1px !important;
-    padding: 2px 6px 3px;
-    text-shadow: none;
-    vertical-align: top;
-}
-.DADES button:hover {
-
-}
-.DADES .remove:hover {
-    background: #d14836 none repeat scroll 0 0;
-     border-color: #d14836;
-    color: white;
-}
-
-.DADES .caret {
-    border-top: 4px solid #557c95;
-    vertical-align: middle;
-}
-
-.DADES .edit.label:hover { background-color: #007bc0; color:white; }
-.DADES .edit.label a{ color:white!important; }
-
-.btn-info, .link-parent {
-    background-image: linear-gradient(to bottom, #007bc0, #007bc0)!important;
-    background-repeat: repeat-x;
-    border-color: transparent;
-    border-radius: 3px!important;
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-.btn-info:hover, .link-parent:hover, .btn-info:active, .link-parent:active, .btn-info.active, .btn-info.selected, .selected.link-parent, .contentViews .btn-info.selected:hover, .contentViews .selected.link-parent:hover, .active.link-parent, .btn-info.disabled, .disabled.link-parent, .btn-info[disabled], .link-parent[disabled] {
-    background-color: #0273b3!important;
-    border-color: transparent;
-    color: #fff;
-}
-#sortable .dropdown-menu {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    z-index: 10000!important;
-}
-#sortable .dropdown-menu li{
-    border:0;
-    border-bottom: 1px solid #ddd;
-    border-radius: 0;
-    font-size: 13px;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-}
-#sortable .dropdown-menu li:last-child {
-    border-bottom: 0;
-}
-#sortable .dropdown-menu li:hover {
-    background: #f5f5f5;
-}
-#sortable .dropdown-menu li a:hover {
-background-color: transparent;
-    background-image: none;
-    background-repeat: repeat-x;
-    color: black;
-    text-decoration: none;
-}
-.listFiles {
-    list-style: none;
-    padding-left: 0px!important;
-    padding-top: 10px;
-}
-.DADES .expand, .DADES .notexpand, .DADES .expand:hover, .DADES .notexpand:hover {
-    background: transparent none repeat scroll 0 0;
-    color: #007bc0;
-}
-.DADES .expand, .DADES .notexpand {
-    border: 0;
-}
-
-#sortable .filesinTable:last-child {
-    border-bottom: 0px solid #ececec !important;
-}
-
-.caixaPunts {
-    background-color: whitesmoke;
-    float: left;
-    list-style: outside none none;
-    margin-top: 10px;
-    padding: 15px;
-    width: 96%;
-    margin-bottom: 15px;
-}
-
-.editable-error-block.ui-state-error {
-    margin-left: 5px;
-}
-
-.agreement.editable-container.editable-inline  input[type="text"] {
-    width: 30px;
-}
-
-.presentationModal {
-    font-size: 15px;
-    color: #557C95;
-    font-weight: bold;
-    }
-
-.logoOrgan {
-    max-height: 60px;
-    width: auto;
-    display: block;
-
-}
-
-.agreement.editable.editable-click {
-    border: 0 none !important;
-    font-weight: normal;
-    font-size: 13px;
-    color: #555;
-}
-.editableform .editable-input {
-    left: 0;
-}
-
-/* amplada camp de text d'edit del titol */
-.editableform .editable-input > input {
-    font-size: 16px;
-    width: 30em;
-}
-.btn.label.disabled {
-    background: #ccc none repeat scroll 0 0;
-    border-color: #ccc;
-    color: #111;
-}
-.btn.label.disabled:hover {
-    background: #ccc none repeat scroll 0 0;
-    border-color: #ccc;
-    color: #111;
-}
-#estats a {
-    color: #557c95;
-}
-.DADES .acord {
-    background-image: linear-gradient(to bottom, #007bc0, #007bc0) ;
-    background-repeat: repeat-x;
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-.DADES .acord:hover {
-background-image: linear-gradient(to bottom, #006fae, #007bc0);
-}
-.dropdown-menu.estatsToggle a {
-    padding-left: 10px;
-}
-.dropdown-menu.estatsToggle a span {
-    margin-left: 5px;
-}
-.label.dropdown-toggle > a {
-    color: #557c95;
-}
-.label.dropdown-toggle:hover {
-    border-color: #007bc0;
-}
-
-.bodyPresentation span.proposalNumber {
-    color: #CCC;
-    font-size: 30px;
-}
-
-.bodyPresentation span.proposalNumberSubpunt {
-    color: #CCC;
-    font-size: 23px;
-}
-
-.bodyPresentation .agreement.editable.editable-click{
-    font-size: 20px;
-}
-
-.bodyPresentation .affix {
-    padding-right: 20px;
-    position: fixed;
-    top: 30px;
-}
-
-.bodyPresentation .puntTitle {
-    font-size: 24px;
-    font-weight: normal;
-    margin-bottom: 0px!important;
-    color: #557C95;
-    padding-top: 0px;
-    padding-left: 15px;
-    margin-top: 0px!important;
-}
-
-.bodyPresentation .editTitle.editable.subtitleSize {
-    color: #555;
-    font-size: 23px;
-}
-
-.bodyPresentation .DADES ul, .DADES ol {
-    margin: 5px 0;
-    padding-top: 10px;
-    padding-right: 0px;
-    padding-bottom: 10px;
-}
-
-.bodyPresentation .btn-group.open .dropdown-toggle {
-    width: 35px;
-    height: 30px;
-}
-
-.bodyPresentation .DADES button {
-    height: 30px;
-    width: 35px;
-    line-height: 35px;
-}
-
-.bodyPresentation .label.dropdown-toggle:hover {
-    width: 35px;
-}
-
-.bodyPresentation .label.dropdown-toggle:hover {
-    border-color: rgb(120, 174, 248);
-    background-color: rgba(33, 154, 224, 0.29);
-    width: 35px;
-    }
-
- .bulletPuntPresentation {
-    padding-right: 25px;
-}
-
-.bodyPresentation .fa-arrow-up:before {
-    color: #aaa;
-}
-
-.bodyPresentation .fa-chevron-up:before {
-    color: #aaa;
-}
-
-.bodyPresentation .fa-chevron-down:before {
-    color: #aaa;
-}
-
-.bodyPresentation .fa-arrow-down:before {
-    color: #aaa;
-}
-
-.bodyPresentation .label.dropdown-toggle {
-    font-size: 15px;
-}
-
-.bodyPresentation .titleSize {
-    line-height: 30px;
-    font-size: 28px;
-}
-
-.bodyPresentation #sortable li {
-    margin: none;
-    padding: none;
-    box-shadow: none;
-    margin-top: 0px;
-     }
-
-.bodyPresentation .dropdown-menu {
-    margin: none;
-    padding:  none;
-    box-shadow:  none;
-    width: 100%;
-}
-
-.bodyPresentation .bannerOrgansPresentation.clearfix {
-    height: 91%;
-    padding-left: 10%;
-    width: auto;
-    padding-right: 10%;
-}
-
-.bodyPresentation .bannerOrgansPresentation .bannerTitle {
-    font-size: 40px;
-    left: 0px;
-    margin-left: 0;
-    padding-left: 12%;
-    top: 72px;
-}
-
-.bodyPresentation h1{
-    font-size:215%
-}
-
-.bodyPresentation .li {
-    line-height: 25px;
-}
-
-.bodyPresentation .presentation_template {
-    width: 100%!important;
-}
-
-.bodyPresentation hr {
-    border-top: 3px solid #557c95;
-}
-
-
-.bodyPresentation .subpuntTitle {
-    line-height:30px;
-}
-
-.bodyPresentation a:hover {
-    color: #007BC0;
-    text-decoration: underline;
-    line-height: 30px;
-}
-
-.bodyPresentation .fa-3x {
-    font-size: 4em;
-}
-
-.bodyPresentation .fa-home:before {
-    color: #DDD;
-}
-
-.bodyPresentation .listFiles a {
-    font-size: 20px;
-}
-
-.bodyPresentation .btn-group {
-    margin-right: 0px;
-}
-
-.bodyPresentation .label.dropdown-toggle > a {
-    color: #002237;
-    font-size: 16px;
-    line-height: 30px;
-}
-
-.bodyPresentation .dropdown-menu.estatsToggle a {
-    padding-left: 10px;
-}
-
-.bodyPresentation  .dropdown-menu.estatsToggle a span {
-    margin-left: 5px;
-}
-
-.bodyPresentation #sortable .filesinTable {
-    margin-top: 10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    line-height: 30px;
-    padding-left: 20px;
-    background: transparent;
-}
-
-.bodyPresentation .dropdown-menu a {
-    display: block;
-    padding: 2px 9px;
-    clear: both;
-    font-weight: normal;
-    line-height: 30px;
-    color: #000;
-    white-space: nowrap;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.bodyPresentation #sortable .dropdown-menu{
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 0px;
-    min-width: 175px;
-}
-
-.bodyPresentation #sortable .dropdown-menu li{
-    margin-top: 0px !important;
-}
-
-.bodyPresentation #sortable .dropdown-menu li{
-    line-height: 25px !important;
-}
-.bodyPresentation .DADES button {
-padding: 0px 0px 32px 0px !important;
-}
-.portaltype-genweb-organs-organsfolder a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-organgovern a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-punt a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-subpunt a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-file a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-document a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-acta a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-audio a#plone-contentmenu-workflow.dropdown-toggle,
-.portaltype-genweb-organs-acord a#plone-contentmenu-workflow.dropdown-toggle
- {display: none;}
-
-.portaltype-genweb-organs-organsfolder a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-organgovern a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-sessio a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-punt a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-subpunt a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-file a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-document a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-acta a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-audio a#plone-contentmenu-multilingual.dropdown-toggle,
-.portaltype-genweb-organs-acord a#plone-contentmenu-multilingual.dropdown-toggle
- {display: none;}
-
-.popover {
-    z-index: 2060 !important;
-}
-
-.bannerOrgans {padding-top: 20px;position: relative;}
-.bannerTitle {
-    bottom: 20px;
-    color: white;
-    font-size: 22px;
-    font-weight: 600;
-    height: 0;
-    left: 20px;
-    margin-left: 0;
-    padding-bottom: 30px;
-    padding-left: 0;
-    padding-top: 15px;
-    position: absolute;
-    text-align: left;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-    text-transform: uppercase;
-    top: 30px;
-    z-index: 10;
-}
-
-div.formControls {
-    padding-top: 0px;}
-
-div#formfield-form-widgets-message.field {margin-bottom: 0px;}
-
-.portaltype-genweb-organs-sessio .listFiles {
-    padding-left: 50px!important;
-   }
-
-.portaltype-genweb-organs-sessio .subpuntTitle {
-    padding-left: 75px!important;
-}
-
-.portaltype-genweb-organs-sessio .span1 {
-    margin-bottom: 0px!important;
-}
-
-.portaltype-genweb-organs-sessio .span2.boleta {
-    margin-left: 39px!important;
-}
-
-.portaltype-genweb-organs-sessio ol li.filesinTable {
-    width: 585px!important;
-    margin-left: 35px!important;
-}
-
-.listFiles {
-    list-style: none;
-    padding-bottom: 5px;
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
-.listFiles a {font-size: 13px;}
-
-span.label.label-default,
-span.label.label-danger {float: right;}
-
-.presentation_template {
-    margin-right: auto;
-    margin-left: auto;
-    width: 768px;
-    background-color: white;
-    padding-top: 25px;
-    min-height: 600px;
-}
-
-body, .smooth-container { scroll-behavior: smooth }
-
-#sessionTabs {padding-bottom: 20px;}
-
-
-dt.ontenttype-genweb-organs-historicfolder:before,
-i.icon-genweb-organs-historicfolder,
-#listing-table a.ontenttype-genweb-organs-historicfolder:before,
-.template-folder_tabular_view .listing a.ontenttype-genweb-organs-historicfolder:before
-{
-    background-position: -242px -168px !important;
-}
-
-dt.contenttype-genweb-organs-organgovern:before,
-i.icon-genweb-organs-organgovern,
-#listing-table a.contenttype-genweb-organs-organgovern:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-organgovern:before
-{
-    background-position: -48px -48px !important;
-}
-
-dt.contenttype-genweb-organs-sessio:before,
-i.icon-genweb-organs-sessio,
-#listing-table a.contenttype-genweb-organs-sessio:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-sessio:before
-{
-    background-position: -312px -168px !important;
-}
-
-dt.contenttype-genweb-organs-document:before,
-i.icon-genweb-organs-document,
-#listing-table a.contenttype-genweb-organs-document:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-document:before
-{
-    background-position: -24px -24px !important;
-}
-
-dt.contenttype-genweb-organs-acta:before,
-i.icon-genweb-organs-acta,
-#listing-table a.contenttype-genweb-organs-acta:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-acta:before
-{
-    background-position: -24px -24px !important;
-}
-
-dt.contenttype-genweb-organs-punt:before,
-i.icon-genweb-organs-punt,
-#listing-table a.contenttype-genweb-organs-punt:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-punt:before
-{
-    background-position: -384px -168px !important;
-}
-
-dt.contenttype-genweb-organs-audio:before,
-i.icon-genweb-organs-audio,
-#listing-table a.contenttype-genweb-organs-audio:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-audio:before
-{
-    background-position: -24px -0px !important;
-}
-
-dt.contenttype-genweb-organs-file:before,
-i.icon-genweb-organs-file,
-#listing-table a.contenttype-genweb-organs-file:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-file:before
-{
-    background-position: -168px -168px !important;
-}
-
-dt.contenttype-genweb-organs-subpunt:before,
-i.icon-genweb-organs-subpunt,
-#listing-table a.contenttype-genweb-organs-subpunt:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-subpunt:before
-{
-    background-position: -384px -168px !important;
-}
-
-dt.contenttype-genweb-organs-organsfolder:before,
-i.icon-genweb-organs-organsfolder,
-#listing-table a.contenttype-genweb-organs-organsfolder:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-organsfolder:before
-{
-    background-position: -384px -120px !important;
-}
-
-dt.contenttype-genweb-organs-acord:before,
-i.icon-genweb-organs-acord,
-#listing-table a.contenttype-genweb-organs-acord:before,
-.template-folder_tabular_view .listing a.contenttype-genweb-organs-acord:before
-{
-    background-position: -288px 0px !important;
-}
-
-.share_popover {display: none;}
-
-h1.logoPresentation {padding-left: 10%;}
-
-.massivePuntsModal {
-    left:45% !important;
-    width: 780px !important;
-}
-
-.codiText {
-    padding-left: 29px;
-    font-size: 13px;
-    color: #555;
-}
-
-input#acordNumber {width: 159px;}
-
-.bodyPresentation .subpuntTitle {padding-left:50px;}
-
-.bodyPresentation #sortable ol.li_subgrups div.subpuntTitle ul li.filesinTable {    padding: 0px!important;}
-
-.agreementClass , .agreementSubClass  {
-    color: #999;
-}
-
-li.filesinTable {color: #555;}
-
-ul.nav.nav-tabs {margin-bottom: 0px;}
-
-div.tab-pane.fade.active.in {background-color: white;
-border: 1px solid #b2b2b2;}
-
-.panel-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 16px;
-    color: inherit;
-}
-
-.panel-default>.panel-heading {
-    color: #333;
-    background-color: #f5f5f5;
-    border-color: #ddd;
-}
-
-.panel-default {
-    border-color: #ddd;
-    }
-
-span.agreementClassPunt {
-    font-size: 11px;
-    font-weight: bold;
-}
-
-.logFont {
-    background-color: white;
-    color: black;
-}
-
-#workflow-transition-convocar {
-    display: none;
-}
-
-#contentActionMenus li ul li.actionSeparator {display: none;}
-
-.expand {
-    padding-left: 0px;
-}
-
-.puntTitle .span1, .puntTitle .span11 {
-   margin: 10px 0 0;
-}
-
-div.containerIcons a img.link_blank { display: none }
-
-.puntTitle.span12 {
-    margin-left: 5px!important;
-}
-
-.bodyPresentation .puntTitle.span12{margin-left: 0px!important;}
-
-.span1.numberSpan {
-    margin-left: 0px!important;
-    margin-top: 0px;
-    margin-bottom: 5px!important;
-}
-
-.span6.agreementSpan{margin-bottom:0px!important;}
-
-.span6.einesSpan{margin-bottom:0px!important;}
-
-.DADES button {
-   border: 1px solid #ddd;
-   }
-
-#sortable li {
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 13px;
-    margin: -1px 0px 0px 0px;
-    padding: 0.3em 0.3em 0.3em 0.1em;
-    float: left;
-    width: 99%;
-}
-
-.span10.titleSpan {
-    margin-left: 10px!important;
-}
-
-.span1.fletxaSpan{
-	margin-top:0px!important;
-	margin-bottom: 0px!important;
-}
-
-.span1.fletxaSpan .expand {
-    margin-top: 0px!important;
-    padding-top: 0px!important;
-}
-
-.agreementClass {
-    padding-left: 5px!important;
-    font-weight: 500;
-}
-
-.subpuntTitle .span11 {
-    padding-left: 0px!important;
-    margin-left: 0px!important;
-    margin-bottom: 0px!important;
-}
-
-.li_subgrups .span6 {
-    margin-bottom: 0px!important;
-    padding-bottom: 0px!important;
-}
-
-[class^="span"] {
-    margin-bottom: 15px!important;
-}
-
-.span1.fletxaSpan button{font-size: 14px!important;}
-
-.bodyPresentation .DADES ul, .DADES ol {
-    padding-top: 5px!important;
-    padding-bottom: 5px!important;
-}
-
-.bodyPresentation #sortable li {
-     width: 100%!important;
-}
-
-html {
-    background: #fff!important;
-}
-
-.bodyPresentation #sortable li {
-    width: 100%!important;
-    border-top: none!important;
-    border-left: none!important;
-    border-right: none!important;
-    padding-bottom: 15px!important;
-}
-
-.span6.einesSpan{
-    padding-right: 4px!important;
-}
-
- .bodyPresentation .span1 {width: 3.982905982905983%!important; text-align: right; }
- .bodyPresentation .span10{width:82.34188034188033%!important;}
- .bodyPresentation .span12{width:100%!important;}
- .bodyPresentation  .listFiles {
-    list-style: none;
-    padding-top: 10px;
-}
- .bodyPresentation .puntTitle .span1, .bodyPresentation .puntTitle .span11 {
-    margin: 0px 0 0;
-}
-
-ol.li_subgrups {
-    display: inline-block!important;
-    clear: both!important;
-    width: 100%!important;
-}
-
- .bodyPresentation .span1.numberSpan {
-    margin-top: 5px!important;
-    text-align: right!important;
-}
-
-.bodyPresentation #sortable ol.li_subgrups div.subpuntTitle ul li.filesinTable {
-    padding-left: 0px!important;
-    list-style-type: disc!important;
-    font-size:130%!important;
-}
-
-.bodyPresentation #sortable .filesinTable {
-	padding: 0px!important;
-    list-style-type: disc!important;
-    font-size:80%!important;
-    margin-left: 20px;
-}
-
-.bodyPresentation .filelist {
-    margin-bottom: 5px!important;
-}
-
-.bodyPresentation #sortable .filesinTable {border-bottom: none!important}
-
-.bodyPresentation .filesinTable.span12 .span9{margin: 0px!important;}
-
-.bodyPresentation .subpuntTitle.span12 .span10{margin-left:20px!important;}
-
-.bodyPresentation span.fitxerReservat {
-    display: inline-block;
-    color: red;
-    font-weight: 300!important;
-    margin-bottom: 10px;
-}
-
-.bodyPresentation #sortable .filesinTable {
-    line-height: 20px!important;
-    }
-
-.bodyPresentation #sortable .filesinTable a{
-	color:#555!important;
-	    font-weight: 300!important;
-}
-
-.bodyPresentation #sortable .filesinTable a:hover {
-    line-height: 20px!important;
-    font-weight: 300!important;
-    color: #007BC0!important;
-}
-
-.bodyPresentation #sortable li {
-    width: 100%!important;
-    border-top: none!important;
-    border-left: none!important;
-    border-right: none!important;
-    background-color: #fff;
-    padding-left: 0px!important;
-    padding-right: 0px!important;
-    padding-top: 25px!important;
-    padding-bottom: 5px!important;
-    border-radius: 0px!important;
-    margin-bottom: 0px!important;
-    margin-top: 0px!important;
-    border-bottom: 1px solid #e8e8e8;
-}
-
-.bodyPresentation #sortable ul.dropdown-menu li{
-	background-color: #fff;
-	padding-top: 5px;
-    padding-bottom: 5px!important;
-}
-
-.bodyPresentation #sortable ul.dropdown-menu li.defaultValue{
-    background-color: #fff;
-    padding-top: 5px!important;
-    padding-bottom: 5px!important;
-}
-
-.bodyPresentation span.proposalNumber, .bodyPresentation span.proposalNumberSubpunt {
-    margin-right: 15px;
-	color: #0087C9!important;
-}
-
-.bodyPresentation img.link_blank {
-    display: none; width: 0px!important; height: 0px!important; margin:0px!important; padding:0px!important;
-}
-
-.portaltype-genweb-organs-sessio img.link_blank {
-    display: none; width: 0px!important; height: 0px!important; margin:0px!important; padding:0px!important;
-}
-
-.bodyPresentation .bulletPuntPresentation {
-    padding-right: 10px!important;
-}
-
-.bodyPresentation .container {
-height: 91%;
-    padding-left: 10%;
-    width: auto;
-    padding-right: 10%;}
-
-
-.bodyPresentation .nav > li > a:hover i:before, .bodyPresentation .nav > li > a:hover {
-    text-decoration: none;
-    background-color: transparent!important;
-    color: #0087C9!important;
-}
-
-span.barra {
-    margin: 0px 5px;
-    color: #aaa;
-    font-weight: 300!important;
-}
-
-.bodyPresentation #sortable li.defaultValue {
-    margin-bottom: 0px!important;
-    padding-bottom: 0px!important;
-}
-
-.Afectat #sortable li {
-    width: 97%!important
-}
-
-.presentation_template li.punt.picked{ background:#e5f7ff !important; }
-.bodyPresentation .picked .filesinTable:hover {
-    background:#e5f7ff !important;
-}
-
-.portaltype-genweb-organs-sessio li.ui-state-grey.picked{ background:#e5f7ff !important; }
-
-.bodyPresentation .agreementPuntPresentation, .bodyPresentation .agreementSubPuntPresentation {
-    font-size: 15px;
-    color: #888;
-}
-
-.bodyPresentation .subpuntTitle.span12{margin-left:0px!important; padding-left: 115px!important;}
-
-.bodyPresentation .subpuntTitle {
-    padding-left: 50px!important;
-}
-
-.bodyPresentation span.proposalNumberSubpunt {
-    color: #ccc;
-    margin-left: 0;
-    margin-right: 0!important;
-    font-weight: 500!important;
- }
-
-.bodyPresentation ul.dropdown-menu {
-    text-align: left;
-}
-
-.bodyPresentation .puntTitle.span12 > .span1 {
-    text-align: left;
-}
-
-.span6.einesSpan {
-    position: absolute!important;
-    right: 0px!important;
-    background: rgba(229,247,255,0);
-    background: -moz-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(229,247,255,0)), color-stop(50%, rgba(229,247,255,1)), color-stop(100%, rgba(229,247,255,1)));
-    background: -webkit-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: -o-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: -ms-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: linear-gradient(to right, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5f7ff', endColorstr='#e5f7ff', GradientType=1 );
-    display: none!important;
-}
-
-.span6.agreementSpan {
-    display: none!important;
-}
-
-.row-fluid .puntTitle.span12 , .row-fluid  .span1.numberSpan , .row-fluid .span1.fletxaSpan {
-    min-height: 10px!important;
-}
-
-.span1.fletxaSpan i {
-    color: #aaa!important;
-}
-
-#sortable .filesinTable {
-    background: transparent none repeat scroll 0 0;
-    border: 0!important;
-    border-bottom: 1px solid #ddd!important;
-    box-shadow: none;
-    margin-bottom: 5px;
-    padding: 0 0 2px;
-}
-
-.span1.boleta {
-    margin-bottom: 0px!important;
-    width: 10%!important;
-    text-align: right;
-    min-height: 10px;
-    margin-top: 2px!important;
-    z-index: -1!important;
-}
-
-.span2.boleta {
-    margin-bottom: 0px!important;
-    width: 10%!important;
-    text-align: right;
-    min-height: 10px;
-    margin-top: 2px!important;
-}
-
-.portaltype-genweb-organs-sessio .row-fluid [class*="span"] {min-height: 10px!important;}
-
-.picked {
-    display: block!important;
-    min-height: 30px!important;
-}
-
-.show {
-    position: absolute!important;
-    right: 9px!important;
-    background: rgba(229,247,255,0);
-    background: -moz-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(229,247,255,0)), color-stop(50%, rgba(229,247,255,1)), color-stop(100%, rgba(229,247,255,1)));
-    background: -webkit-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: -o-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: -ms-linear-gradient(left, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    background: linear-gradient(to right, rgba(229,247,255,0) 0%, rgba(229,247,255,1) 50%, rgba(229,247,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5f7ff', endColorstr='#e5f7ff', GradientType=1 );
-    display: block!important;
-}
-
-.subpuntTitle.span12 .span1 {
-    width: 5%!important;
-    margin-right: 15px;
-}
-
-.editable-input input{font-size: 13px!important;}
-
-.DADES .span12 .span12 , .DADES .span12 .span9, .DADES .span9 , .DADES .span12 .span12 .span12 , .DADES .span12{margin-bottom: 3px!important; min-height: 0px!important;}
-
-.DADES ol.li_subgrups {
-    display: inline-block!important;
-    clear: both!important;
-    width: 100%!important;
-    min-width: 0px!important;
-    margin: 0px!important;
-    padding: 0px!important;
-    /*height: 21px;*/
-}
-
-.subpuntTitle .span9 {
-    margin-left: 2.06748%!important;
-}
-
-span.estatpunt {
-    display: inline-table;
-    font-size: 12px;
-    background: #f1f1f1;
-    padding: 0px 10px;
-    border-radius: 15px;
-    vertical-align: middle;
-}
-
-.template-edit.portaltype-genweb-organs-sessio li.formTab.lastFormTab,
-.template-genweb-organs-sessio li.formTab.lastFormTab {
-    display: none!important;
-}
-
-.bodyPresentation .modal{
-  position:absolute;
-  top:50% !important;
-  transform: translate(0, -50%) !important;
-  -ms-transform: translate(0, -50%) !important;
-  -webkit-transform: translate(0, -50%) !important;
-  margin:auto 5%!important;
-  width:90%;
-  left:0!important;
-  height:80%;
-  z-index: 99999;
-  overflow: hidden!important;
-  background-color: white!important;
-}
-
-.bodyPresentation .modal-content {
-  min-height:100%!important;
-   overflow: hidden!important;
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.bodyPresentation .modal-body {
-  position:absolute;
-  top:53px; /* height of header */
-  bottom:45px;  /* height of footer */
-  left:0;
-  right:0;
-  overflow-y: auto;
-  max-height: 82%!important;
-}
-
-.bodyPresentation .modal-footer {
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-}
-
-.scrollit {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-height: 400px;
-}
-
-.num_acta ol {
-  counter-reset: item;
-}
-
-.num_acta li {
-  display: block;
-}
-
-.num_acta ol li:before {
-  content: counters(item, ".") ".";
-  counter-increment: item;
-  padding-right:10px;
-  margin-left:-20px;
-}
-
-.convocada, .label-convocada {
-    background-color: #8952ab !important;
-    padding: 1px 4px 2px !important;
-    border-radius: 3px !important;
-    font-weight: bold !important;
-    line-height: 14px !important;
-    color: white !important;
-    vertical-align: baseline !important;
-    white-space: nowrap !important;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
-    text-align: center !important;
-}
-
-.tancada, .label-tancada {
-    background-color: #007bc0 !important;
-    padding: 1px 4px 2px !important;
-    border-radius: 3px !important;
-    font-weight: bold !important;
-    line-height: 14px !important;
-    color: white !important;
-    vertical-align: baseline !important;
-    white-space: nowrap !important;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
-    text-align: center !important;
-}
-
-.realitzada, .label-realitzada,
-.open_organ, .label-open_organ,
-.Obert, .label-Obert
-{
-    background-color: #456211 !important;
-    padding: 1px 4px 2px !important;
-    border-radius: 3px !important;
-    font-weight: bold !important;
-    line-height: 14px !important;
-    color: white !important;
-    vertical-align: baseline !important;
-    white-space: nowrap !important;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
-    text-align: center !important;
-}
-
-.planificada, .label-planificada {
-    background-color: #FFA500 !important;
-    padding: 1px 4px 2px !important;
-    border-radius: 3px !important;
-    font-weight: bold !important;
-    line-height: 14px !important;
-    color: white !important;
-    vertical-align: baseline !important;
-    white-space: nowrap !important;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
-    text-align: center !important;
-}
-
-.restricted_to_affected_organ, .label-restricted_to_affected_organ {
-    background-color: #FF5733 !important;
-    padding: 1px 4px 2px !important;
-    border-radius: 3px !important;
-    font-weight: bold !important;
-    line-height: 14px !important;
-    color: white !important;
-    vertical-align: baseline !important;
-    white-space: nowrap !important;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
-    text-align: center !important;
-}
-
-
-.en_correccio, .label-en_correccio,
-.restricted_to_members_organ, .label-restricted_to_members_organ
- {
-    background-color:  #a62e1f !important;
-    padding: 1px 4px 2px !important;
-    border-radius: 3px !important;
-    font-weight: bold !important;
-    line-height: 14px !important;
-    color: white !important;
-    vertical-align: baseline !important;
-    white-space: nowrap !important;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
-    text-align: center !important;
-}
-
-#expandAll , #collapseAll {cursor:pointer;}
-
-li#contentview-view.active {display: none;}
-
-ul#contentActionMenus > li.dropdown > span.noMenuAction {display:none;}
-
-div#previewModal {
-    left: 34%;
-    width: 1000px;
-    right: 20%;
-}
-
-/*FIN ROB CSS*/
-
 /*CSS DAVID*/
 
-.sortable2.applications {
+.applications {
   padding-top: 40px;
 }
 
@@ -1553,7 +12,7 @@ div#previewModal {
     right: 20px;
     top: 20px;
 }
-.sortable2.offerdata p {
+.offerData p {
     margin-top: 0px;
 }
 li.unstyled.offer {
@@ -1567,12 +26,6 @@ li.unstyled.offer {
     font-size: 100%;
     color: #444;
     margin-bottom: 18px;
-}
-.span9.titleSpan {
-    font-size: 20px;
-}
-.span9.titleSpan a {
-    color: #009cf3;
 }
 .informacioTFE {
     position: relative;
@@ -1642,13 +95,6 @@ span.btn.label.disabled {
     padding: 5px !important;
     border-radius: 2px !important;
 }
-.sortable2.offerdata {
-    margin-bottom: 10px;
-    background-color: #e8e8e8;
-    padding: 20px 20px !important;
-    border-radius: 4px !important;
-    margin-top: 20px;
-}
 li.unstyled.offer {
     margin-bottom: 5px;
 }
@@ -1658,32 +104,67 @@ li.unstyled.offer {
 
 /*KO & IAGO CSS*/
 
-#offers {
+#offersList {
   display: grid;
 }
 
-#offers .puntTitle .fletxaSpan {
+#offersList .nav.nav-tabs {
+  margin-bottom: 0px;
+}
+
+#offersList .puntTitle .fletxaSpan {
   float: left;
   margin-right: 10px;
 }
 
-#offers .puntTitle .titleSpan {
+#offersList .puntTitle .titleSpan {
   float: left;
 }
 
-#offers .puntTitle .boleta {
+#offersList .puntTitle .boleta {
   margin-left: 0px;
   float: right;
 }
 
-#offers button.expand {
+#offersList button.expand {
   padding: 3px;
 }
 
-#offers .fletxaSpan .expand {
+#offersList .fletxaSpan .expand {
   margin-top: 0px!important;
   padding-top: 2px!important;
   padding: 2px 6px;
+}
+
+#offersList #list {
+  margin: 0px;
+}
+
+.informacioTFE .leftInfoOffer {
+  margin-bottom: 20px;
+}
+
+.informacioTFE .rightInfoOffer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+.informacioTFE p {
+  margin: 0px 0px 2px 0px;
+}
+
+.informacioTFE .field {
+  font-weight: bold;
+}
+
+.informacioTFE .keyword {
+    background-color: #fcfbfb;
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 1px solid #666666;
+    margin-left: 5px;
 }
 
 #headerSearchOffers {
@@ -1694,109 +175,113 @@ li.unstyled.offer {
   float: left;
 }
 
-#offers .sortable2.offerdata, #searchOffers {
+#offersList .offerData .data,
+#offersList .offerData .applications,
+#formSearchOffers {
   background-color: #f5f4f4;
   float: left;
   border-radius: 5px;
   border: 1px solid #666666;
+  width: 99%;
 }
 
-#offers .sortable2.offerdata {
-  padding: 10px 20px;
+#offersList .offerData {
+  margin-top: 10px;
 }
 
-#searchOffers {
+#formSearchOffers {
   width: 96%;
   margin-bottom: 20px;
   padding: 20px;
 }
 
-#searchOffers span {
+#formSearchOffers span {
   color: #557C95;
   font-weight: bold;
 }
 
-#searchOffers label {
+#formSearchOffers label {
   float: left;
   width: 100%;
   padding-right: 24px;
 }
 
-#searchOffers input[type='text'] {
+#formSearchOffers input[type='text'] {
   float: left;
   width: calc(100% - 14px);
 }
 
-#searchOffers input[type='checkbox'] {
+#formSearchOffers input[type='checkbox'] {
   float: left;
   margin-top: 2px;
   margin-right: 10px;
 }
 
-#searchOffers select {
+#formSearchOffers select {
   float: left;
   width: 100%;
 }
 
-#searchOffers button {
+#formSearchOffers button {
   float: right;
   background: #007BC0;
 }
 
-#searchOffers button span {
+#formSearchOffers button span {
   color: #FFF;
   font-weight: normal;
 }
 
-#searchOffers .multicheckLine {
+#formSearchOffers .multicheckLine {
   margin: 5px 0px;
 }
 
-#searchOffers .multicheckLine label {
+#formSearchOffers .multicheckLine label {
   width: auto;
   padding-right: 20px;
 }
 
-#searchOffers .multicheckLine input[type='checkbox'],
-#searchOffers .multicheckLine input[type='radio'] {
+#formSearchOffers .multicheckLine input[type='checkbox'],
+#formSearchOffers .multicheckLine input[type='radio'] {
   float: none;
   margin-right: 2px;
   margin-top: 0px;
 }
 
-#searchOffers .multicheckLine span {
+#formSearchOffers .multicheckLine span {
   margin-right: 20px;
 }
 
-#offers ul#offersList {
+#offersList ul#offersList {
   margin: 0px;
 }
 
-#offers #collapseAll,
-#offers .sortable2,
-#offers .notexpand {
+#offersList #collapseAll,
+#offersList .offerData,
+#offersList .notexpand {
   display: none;
 }
 
-#offers li.unstyled.offer {
+#offersList li.unstyled.offer {
   list-style: none;
   margin: 0px;
   display: grid;
 }
 
-#offers .puntTitle {
+#offersList .puntTitle {
   padding: 0px !important;
 }
 
-#offers .titleSpan h3 {
+#offersList .titleSpan h3 {
   margin: 5px 0px !important;
 }
 
-#offers .offerdesc {
+#offersList .offerdesc {
   text-align: justify;
 }
 
 .portaltype-genweb-tfemarket-market #viewlet-below-content {
   margin-top: 35px;
 }
+
 /*FIN KO & IAGO CSS*/

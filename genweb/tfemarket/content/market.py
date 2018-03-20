@@ -90,18 +90,22 @@ class View(grok.View):
                                 path=item.getPath(),
                                 UID=item.UID,
                                 dept=offer.dept,
-                                creation_date=offer.creation_date.strftime('%Y/%m/%d'),
-                                expiration_date=offer.expiration_date.strftime('%Y/%m/%d') if offer.expiration_date else None,
+                                effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
+                                expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
                                 teacher_manager=offer.teacher_manager,
                                 modality=offer.modality,
                                 description=offer.description,
                                 features=offer.features.raw if hasattr(offer.features, 'raw') else offer.features,
-                                lang=offer.lang,
+                                langs=offer.lang,
+                                multiple_langs=len(offer.lang) > 1,
                                 environmental_theme=offer.environmental_theme,
-                                requirements=offer.requirements,
+                                requirements=offer.requirements.raw if hasattr(offer.requirements, 'raw') else offer.requirements,
                                 grant=offer.grant,
-                                degree=offer.degree,
+                                degrees=offer.degree,
+                                multiple_degrees=len(offer.degree) > 1,
                                 keywords=offer.keys,
+                                offer_id=offer.offer_id,
+                                center=offer.center
                                 ))
 
         if not self.request.form == {}:
@@ -158,6 +162,16 @@ class View(grok.View):
         result = sorted(result, key=itemgetter('lit'))
         result.insert(0, {'id' : 'a', 'lit' : _(u"All")})
         return result
+
+
+    def getDegreeLiteralFromId(self, id):
+        degrees = self.getDegrees()
+        degree = _(u'Degree deleted')
+        result = [item['lit'] for item in degrees if item['id'] == id]
+        if result:
+            degree = result[0]
+        return degree
+
 
     def saveFilters(self):
         filters = self.request.form

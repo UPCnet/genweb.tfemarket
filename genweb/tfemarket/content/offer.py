@@ -25,6 +25,8 @@ from zope.lifecycleevent.interfaces import IObjectAddedEvent
 
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 
+import unicodedata
+
 
 grok.templatedir("templates")
 
@@ -47,7 +49,12 @@ class LangsVocabulary(object):
             results = langs.split("\r\n")
 
         for item in results:
-            languages.append(SimpleTerm(item))
+            if isinstance(item, str):
+                flattened = unicodedata.normalize('NFKD', item.decode('utf-8')).encode('ascii', errors='ignore')
+            else:
+                flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
+            languages.append(SimpleVocabulary.createTerm(item, flattened, item))
+
         return SimpleVocabulary(languages)
 
 
@@ -68,7 +75,12 @@ class KeysVocabulary(object):
             results = keys.split("\r\n")
 
         for item in results:
-            tags.append(SimpleTerm(item))
+            if isinstance(item, str):
+                flattened = unicodedata.normalize('NFKD', item.decode('utf-8')).encode('ascii', errors='ignore')
+            else:
+                flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
+            tags.append(SimpleVocabulary.createTerm(item, flattened, item))
+
         return SimpleVocabulary(tags)
 
 
@@ -89,7 +101,12 @@ class TopicsVocabulary(object):
             results = topics.split("\r\n")
 
         for item in results:
-            topic.append(SimpleTerm(item))
+            if isinstance(item, str):
+                flattened = unicodedata.normalize('NFKD', item.decode('utf-8')).encode('ascii', errors='ignore')
+            else:
+                flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
+            topic.append(SimpleVocabulary.createTerm(item, flattened, item))
+
         return SimpleVocabulary(topic)
 
 
@@ -216,7 +233,7 @@ class IOffer(form.Schema):
 
     form.widget(lang=CheckBoxFieldWidget)
     lang = schema.List(
-        value_type=schema.Choice(source=u"genweb.tfemarket.Langs"),
+        value_type=schema.Choice(vocabulary=u"genweb.tfemarket.Langs"),
         title=_(u'tfe_lang'),
         required=False,
     )
@@ -227,6 +244,7 @@ class IOffer(form.Schema):
         default=False,
     )
 
+    form.widget(degree=CheckBoxFieldWidget)
     degree = schema.List(
         value_type=schema.Choice(source=u"genweb.tfemarket.Titulacions"),
         title=_(u'degree'),
@@ -298,9 +316,10 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    keys = schema.Choice(
+    form.widget(keys=CheckBoxFieldWidget)
+    keys = schema.List(
+        value_type=schema.Choice(source=u"genweb.tfemarket.Keys"),
         title=_(u'keys'),
-        vocabulary=u"genweb.tfemarket.Keys",
         required=False,
     )
 
