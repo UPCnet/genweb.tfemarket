@@ -7,109 +7,194 @@
       i18n:domain="genweb.tfemarket">
 
     <body>
+        <metal:override fill-slot="top_slot"
+                        tal:define="disable_column_one python:request.set('disable_plone.leftcolumn',1);"/>
         <metal:content-core fill-slot="content-core">
             <metal:block define-macro="content-core">
                 <div metal:use-macro="context/batch_macros/macros/navigation" />
-                <div class="">
-
-                    <!-- SUMMARY INFO -->
-                    <div class="informacioTFE">
-                        <p>
-                            <b>Identificador:</b> 661215899 AP <br>
-                            <b>Centre:</b> 0111-Q <br>
-                            <b>Departament:</b> 37 <br>
-                            <br>
-                        </p>
-                        <div class="fechas">
-                            <p>
-                                <b>Data Creació:</b> 2018/01/29<br>
-                                <b>Data Creació:</b> 2018/01/29<br>
+                  <div id="offerData" class="offerData"
+                       tal:define="applications python:view.getApplications(context)">
+                    <ul class="nav nav-tabs" data-tabs="tablist">
+                      <li class="nav-item active">
+                        <a class="nav-link" data-toggle="tab"
+                           tal:attributes="href string:#${context/offer_id}-data;
+                                           id string:${context/offer_id}-data-tab"
+                           i18n:translate="">Offer</a>
+                      </li>
+                      <li class="nav-item" tal:condition="applications">
+                        <a class="nav-link" data-toggle="tab"
+                           tal:attributes="href string:#${context/offer_id}-applications;
+                                           id string:${context/offer_id}-applications-tab"
+                           i18n:translate="">Applications</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="data tab-pane fade show active in" role="tabpanel"
+                           tal:attributes="id string:${context/offer_id}-data;
+                                           aria-labelledby string:${context/offer_id}-data-tab">
+                        <div class="informacioTFE">
+                          <div class="leftInfoOffer">
+                            <p class="identifier">
+                              <span class="field"><span i18n:translate="">Identifier</span>: </span>
+                              <span tal:content="context/offer_id">123456 AB</span>
                             </p>
+                            <p class="center">
+                              <span class="field"><span i18n:translate="">Center</span>: </span>
+                              <span tal:content="context/center">0111-Q</span>
+                            </p>
+                            <p class="departament">
+                              <span class="field"><span i18n:translate="">Departament</span>: </span>
+                              <span tal:content="context/dept">37</span>
+                            </p>
+                          </div>
+                          <div class="rightInfoOffer">
+                            <p class="effectiveDate" tal:condition="context/effective_date">
+                              <span class="field"><span i18n:translate="">Publication date</span>: </span>
+                              <span tal:content="python: view.formatDate(context.effective_date)">2018/01/29</span>
+                            </p>
+                            <p class="expirationDate" tal:condition="context/expiration_date">
+                              <span class="field"><span i18n:translate="">Expiration date</span>: </span>
+                              <span tal:content="python: view.formatDate(context.expiration_date)">2018/04/29</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="modality">
+                              <span class="field"><span i18n:translate="">Modality</span>: </span>
+                              <span tal:content="context/modality">Modalitat</span>
+                            </p>
+                            <p class="teacher">
+                              <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
+                              <span tal:content="context/teacher_manager">Aureli Condogvia</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <div class="description">
+                              <span class="field"><span i18n:translate="">Description</span>: </span>
+                              <p tal:content="context/description">Nam fermentum tellus vel tellus imperdiet, consectetur finibus sem mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur eu maximus nulla, vitae rhoncus sem. Pellentesque efficitur, tellus vel luctus dictum, nunc tellus cursus nulla, eget aliquam lacus lacus non lectus. Nam molestie ex dolor, quis pulvinar tortor volutpat rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec ligula sit amet quam hendrerit vestibulum. Nunc ut mauris lorem. Praesent non sollicitudin eros, non vestibulum erat. Nulla facilisi.</p>
+                            </div>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="features">
+                              <span class="field"><span i18n:translate="">Features</span>: </span>
+                              <span class="raw" tal:content="python: view.getRaw(context.features)">Sed quis pretium urna. Aenean at elit non est posuere vestibulum a sit amet nisl. Integer efficitur aliquam arcu sit amet pulvinar. Phasellus tincidunt elementum tortor egestas tincidunt. Aenean elementum nec massa aliquam porttitor.</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="requirements">
+                              <span class="field"><span i18n:translate="">Requirements</span>: </span>
+                              <span class="raw" tal:content="python: view.getRaw(context.requirements)">Cap</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="degrees" tal:condition="python: len(context.degree) == 1">
+                              <span class="field"><span i18n:translate="">Degree</span>: </span>
+                              <tal:block tal:repeat="degree context/degree">
+                                <span tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</span>
+                              </tal:block>
+                            </p>
+                            <div class="degrees" tal:condition="python: len(context.degree) > 1">
+                              <span class="field"><span i18n:translate="">Degrees</span>: </span>
+                              <ul tal:repeat="degree context/degree">
+                                <li class="degree" tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="language" tal:condition="python: len(context.lang) == 1">
+                              <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
+                              <tal:block tal:repeat="lang context/lang">
+                                <span class="lang" tal:content="lang">Language</span>
+                              </tal:block>
+                            </p>
+                            <div class="language" tal:condition="python: len(context.lang) > 1">
+                              <span class="field"><span i18n:translate="">Languages work elaboration</span>: </span>
+                              <ul tal:repeat="lang context/lang">
+                                <li class="lang" tal:content="lang">Language</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="environmentalTheme">
+                              <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
+                              <span tal:condition="context/environmental_theme" i18n:translate="">Yes</span>
+                              <span tal:condition="not: context/environmental_theme" i18n:translate="">No</span>
+                            </p>
+                            <p class="grant">
+                              <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
+                              <span tal:condition="context/grant" i18n:translate="">Yes</span>
+                              <span tal:condition="not: context/grant" i18n:translate="">No</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="keywords">
+                              <span class="field"><span i18n:translate="">Keywords</span>: </span>
+                              <tal:block tal:repeat="keyword context/keys">
+                                <span class="keyword" tal:content="keyword">Keyword</span>
+                              </tal:block>
+                            </p>
+                          </div>
                         </div>
-                        <p>
-                            <b>Profesor director:</b> Aureli Condogvia<br>
-                            <b>Titulacions:</b> Titulación 1 y Titulación 2<br>
-                            <b>Modalitat:</b> Modalidad<br>
-                            <br>
-                            <b>Descripció:</b> La zona de prova, els sistemes de subjecció de les màquines,sistemes de seguretat, disseny del quadre elèctric per a poder treball a diferents voltatges, freqüències, potències de motors, etc. amb un sistema integrat de registre amb la finalitat d`obtenir traçabilitat dels productes veirficats, aplicant les normatives vigents corresponents de màquines, elèctricitat i riscos laborals.<br>
-                            <br>
-                            <b>Característiques:</b> Amb un sistema integrat de registre amb la finalitat d`obtenir traçabilitat dels productes veirficats, aplicant les normatives vigents corresponents de màquines, elèctricitat i riscos laborals.<br>
-                            <br>
-                            <b>Paraules clau:</b> Zona, Sistemes, Subjecció, Màquines.<br>
-                            <b>Llengües elaboració treball:</b> Català<br>
-                            <b>Temàtica principal:</b> Temàtica abierta<br>
-                            <b>Requisits:</b> Cap<br>
-                            <b>Possibilitat beca:</b> No<br>
-                        </p>
-                    </div>
+                      </div>
+                      <div tal:condition="applications" class="applications tab-pane fade"
+                           role="tabpanel"
+                           tal:attributes="id string:${context/offer_id}-applications;
+                                           aria-labelledby string:${context/offer_id}-applications-tab">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th i18n:translate="">DNI</th>
+                                <th i18n:translate="">Name</th>
+                                <th i18n:translate="">Center</th>
+                                <th i18n:translate="">Degree</th>
+                                <th i18n:translate="">Identifier Offer TFE</th>
+                                <th i18n:translate="">Mobile</th>
+                                <th i18n:translate="">State</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr tal:repeat="app applications">
+                                <td>DNI</td>
+                                <td>Name</td>
+                                <td>Center</td>
+                                <td>Degree</td>
+                                <td>Identifier Offer TFE</td>
+                                <td>Mobile</td>
+                                <td>State</td>
+                              </tr>
+                            </tbody>
+                          </table>
 
-                    <!-- APLLICATIONS TABLE -->
-                    <div id="parent-fieldname-text">
-                        <h3>Sol·licitud</h3>
-                        <table class="taulaRegistres" summary="Detall d'estructura de la taula de registres">
-                        <tbody>
-                        <tr class="cap">
-                        <td>DNI</td>
-                        <td>Nom</td>
-                        <td>Centre</td>
-                        <td>Titulació</td>
-                        <td>Identificador Oferta TFE</td>
-                        <td>Teléfono Móvil</td>
-                        <td>Estado de la solicitud</td>
-                        </tr>
-                        <tr>
-                        <td class="fonsDestacat1">47780321Y</td>
-                        <td>Caballero Alonso, David</td>
-                        <td>CITM</td>
-                        <td>Multimedia</td>
-                        <td>155598732A</td>
-                        <td>659478123</td>
-                        <td>En espera</td>
-                        </tr>
-                        <tr>
-                        <td class="fonsDestacat1">45876624A</td>
-                        <td>Calvet Escribano, Marc</td>
-                        <td>ETSEIAT</td>
-                        <td>Enginyeria de Camins</td>
-                        <td>564321388V</td>
-                        <td>688956325</td>
-                        <td>En espera</td>
-                        </tr>
-                        <tr>
-                        <td class="fonsDestacat1">41254663Q</td>
-                        <td>Prieto Martínez, Manel</td>
-                        <td>ETB</td>
-                        <td>Enginyeria Aeronáutica</td>
-                        <td>985666224Q</td>
-                        <td>684212147</td>
-                        <td>Candidatura Aprobada</td>
-                        </tr>
-                        <tr>
-                        <td class="fonsDestacat1">40298653V</td>
-                        <td>Fernández Perez, Alexis</td>
-                        <td>FINB</td>
-                        <td>Psicologia</td>
-                        <td>562316811G</td>
-                        <td>699932154</td>
-                        <td>Rechazada</td>
-                        </tr>
-                        <tr>
-                        <td class="fonsDestacat1">49823221O</td>
-                        <td>Gil Delgado, Joel</td>
-                        <td>FLO</td>
-                        <td>Enginyeria en Sistemes&nbsp;</td>
-                        <td>669985474M</td>
-                        <td>652812113</td>
-                        <td>Candidatura Aprobada</td>
-                        </tr>
-                        </tbody>
-                        </table>
-                        <p>&nbsp;</p>
-                        <p>
-                        <script id="protect-script" src="../++resource++protect.js" type="mce-application/javascript" data-token="5b5be370710b983ea3aaef39aa18e2c2aff26703" data-site-url="http://pc60045.estacions.upcnet.es:8080/market2"></script>
-                        </p>
+                          <!-- <ul>
+                              <tal:applications repeat="app applications">
+                                  <li>
+                                    <a tal:attributes="href app/url">
+                                        <tal:omit-tag tal:content="app/title">Item Title</tal:omit-tag>
+                                    </a>
+                                      <div class="span9">
+                                          <a tal:attributes="href app/url">
+                                              <tal:omit-tag tal:content="app/title">Item Title</tal:omit-tag>
+                                          </a>
+                                      </div>
+                                      <div class="span2">
+                                          <tal:block tal:define="estat app/state">
+                                              <span class="btn label disabled" style="padding:3px; float: right;">
+                                                <i class="fa fa-circle" aria-hidden="true"></i>&nbsp;<span tal:content="estat"></span>
+                                              </span>
+                                          </tal:block>
+                                      </div>
+                                  </li>
+                              </tal:applications>
+                          </ul> -->
+                      </div>
                     </div>
-                </div>
+                  </div>
+                  <script type="text/javascript">
+                  $(function() {
+                    $('.informacioTFE .raw').each(function(){
+                      $(this).html( $(this).text() );
+                    });
+                  });
+                  </script>
             </metal:block>
         </metal:content-core>
     </body>

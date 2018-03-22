@@ -27,7 +27,8 @@
                     </div>
                   </div>
                   <form id="formSearchOffers" name="searchOffers" action="" method="post"
-                        tal:attributes="style python: 'display:block' if save else 'display:none'">
+                         tal:attributes="style python: 'display:block' if save else 'display:none';
+                                         data-saved python: 0 if save else 1">
                     <label i18n:translate="">Text to search</label>
                     <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
 
@@ -42,7 +43,7 @@
 
                     <label i18n:translate="">Departament</label>
                     <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
-                      <option value="a">All</option>
+                      <option value="a" i18n:translate="">All</option>
                       <!-- <tal:block tal:repeat="certification view/listCertifications">
                         <option value="certification" tal:content="certification">Certification</option>
                       </tal:block> -->
@@ -67,29 +68,43 @@
                       </tal:block>
                     </select>
 
-                    <label i18n:translate="">Keywords</label>
-                    <br>
-                    <br>
+                    <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
+                      <label i18n:translate="">Keywords</label>
+                      <span class="multicheckOptions">
+                        <span tal:repeat="key view/getKeys">
+                          <tal:block tal:define="selected python: save.has_key('key') and view.flattenedString(key) in save['key']">
+                            <input type="checkbox" name="key" tal:attributes="value key; checked python: True if selected else False" />
+                            <span tal:content="key">Key</span>
+                          </tal:block>
+                        </span>
+                      </span>
+                    </div>
 
                     <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
                     <span i18n:translate="">With the possibility of offering grant/financing</span>
 
-                    <div class="multicheckLine" id="searchLanguage">
+                    <div id="searchLanguage" class="multicheck">
                       <label i18n:translate="">Developer language</label>
-                      <tal:block tal:repeat="lang view/getLanguages">
-                        <input type="checkbox" name="language"
-                               tal:attributes="value lang;" />
-                        <span tal:content="lang">Language</span>
-                      </tal:block>
+                      <span class="multicheckOptions">
+                        <span tal:repeat="lang view/getLanguages">
+                          <tal:block tal:define="selected python: save.has_key('language') and view.flattenedString(lang) in save['language']">
+                            <input type="checkbox" name="language" tal:attributes="value lang; checked python: True if selected else False" />
+                            <span tal:content="lang">Language</span>
+                          </tal:block>
+                        </span>
+                      </span>
                     </div>
 
-                    <div class="multicheckLine" id="searchModality">
+                    <div id="searchModality" class="multicheck">
                       <label i18n:translate="">Modality</label>
-                      <tal:block tal:repeat="modality view/getModalities">
-                        <input type="checkbox" name="modality"
-                               tal:attributes="value modality;" />
-                        <span tal:content="modality">Modality</span>
-                      </tal:block>
+                      <span class="multicheckOptions">
+                        <span tal:repeat="modality view/getModalities">
+                          <tal:block tal:define="selected python: save.has_key('modality') and modality['id'] in save['modality']">
+                            <input type="checkbox" name="modality" tal:attributes="value modality/id; checked python: True if selected else False" />
+                            <span tal:content="modality/lit">Modality</span>
+                          </tal:block>
+                        </span>
+                      </span>
                     </div>
 
                     <button type="submit" id="offersFilter" form="offersFilter">
@@ -129,6 +144,16 @@
                                           <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
                                       </h3>
                                   </div>
+                                  <div class="rightDates">
+                                    <p class="effectiveDate" tal:condition="offer/effective_date">
+                                      <span class="field"><span i18n:translate="">Publication date</span>: </span>
+                                      <span tal:content="offer/effective_date">2018/01/29</span>
+                                    </p>
+                                    <p class="expirationDate" tal:condition="offer/expiration_date">
+                                      <span class="field"><span i18n:translate="">Expiration date</span>: </span>
+                                      <span tal:content="offer/expiration_date">2018/04/29</span>
+                                    </p>
+                                  </div>
                               </div>
                               <div class="offerData">
                                 <div class="data">
@@ -145,16 +170,6 @@
                                       <p class="departament">
                                         <span class="field"><span i18n:translate="">Departament</span>: </span>
                                         <span tal:content="offer/dept">37</span>
-                                      </p>
-                                    </div>
-                                    <div class="rightInfoOffer">
-                                      <p class="creationDate">
-                                        <span class="field"><span i18n:translate="">Creation date</span>: </span>
-                                        <span tal:content="offer/effective_date">2018/01/29</span>
-                                      </p>
-                                      <p class="expirationDate" tal:condition="offer/expiration_date">
-                                        <span class="field"><span i18n:translate="">Expiration date</span>: </span>
-                                        <span tal:content="offer/expiration_date">2018/04/29</span>
                                       </p>
                                     </div>
                                     <div class="leftInfoOffer">
@@ -240,20 +255,28 @@
 
   <script type="text/javascript">
     $(function() {
-        $('.informacioTFE .raw').each(function(){
-          $(this).html( $(this).text() );
-        });
+        $('input[name="language"]').click(function(){
+          if($('input[name="language"]:checked').length == 0){
+            $(this).prop('checked', true);
+          }
+        })
+
+        $('input[name="modality"]').click(function(){
+          if($('input[name="modality"]:checked').length == 0){
+            $(this).prop('checked', true);
+          }
+        })
 
         $('.expand').click(function(){
-           $(this).hide();
-           $(this).parent().find('.notexpand').show();
-           $(this).parent().parent().parent().find('.offerData').slideDown();
+          $(this).hide();
+          $(this).parent().find('.notexpand').show();
+          $(this).parent().parent().parent().find('.offerData').slideDown();
         });
 
         $('.notexpand').click(function(){
-           $(this).hide();
-           $(this).parent().find('.expand').show();
-           $(this).parent().parent().parent().find('.offerData').slideUp();
+          $(this).hide();
+          $(this).parent().find('.expand').show();
+          $(this).parent().parent().parent().find('.offerData').slideUp();
         });
 
         $("#headerSearchOffers").click(function(){
@@ -286,8 +309,10 @@
           $("#collapseAll").hide();
         })
 
-        $('input[name="language"]').prop('checked', true);
-        $('input[name="modality"]').prop('checked', true);
+        if($('#formSearchOffers').attr('data-saved') == 1){
+          $('input[name="language"]').prop('checked', true);
+          $('input[name="modality"]').prop('checked', true);
+        }
     });
   </script>
 

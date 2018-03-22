@@ -15,6 +15,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 
 from genweb.tfemarket import _
+from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 
 from zope.schema import ValidationError
@@ -348,6 +349,54 @@ class View(dexterity.DisplayForm):
     grok.context(IOffer)
     grok.template('offer_view')
 
+    def formatDate(self, date):
+        return date.strftime('%d/%m/%Y')
+
+    def getDegrees(self):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        current_language = api.portal.get_current_language()
+
+        result = []
+        if tfe_tool.titulacions_table:
+            for item in tfe_tool.titulacions_table:
+                titulacio = str(item['plan_year']) + " - "
+                if current_language == 'ca':
+                    titulacio +=  item['titulacio_ca']
+                elif current_language == 'es':
+                    titulacio += item['titulacio_es']
+                else:
+                    titulacio += item['titulacio_en']
+
+                result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
+
+        result = sorted(result, key=itemgetter('lit'))
+        result.insert(0, {'id' : 'a', 'lit' : _(u"All")})
+        return result
+
+    def getDegreeLiteralFromId(self, id):
+        degrees = self.getDegrees()
+        degree = _(u'Degree deleted')
+        result = [item['lit'] for item in degrees if item['id'] == id]
+        if result:
+            degree = result[0]
+        return degree
+
+    def getRaw(self, raw):
+        return raw.raw_encoded if hasattr(raw, 'raw_encoded') else None
+
+    def getApplications(self, offer):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        results = []
+        values = catalog(path={'query': '/'.join(offer.getPhysicalPath()), 'depth': 1},
+                         object_provides=IApplication.__identifier__)
+
+        for item in values:
+            results.append(dict(title=item.Title,
+                                state=item.review_state,
+                                url=item.getURL(),
+                                ))
+        return results
 
 class AddForm(dexterity.AddForm):
     grok.context(IOffer)

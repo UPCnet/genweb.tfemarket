@@ -5,104 +5,116 @@
 }
 
 #content-core .informacioTFE {
-    position: relative;
-}
-#content-core .informacioTFE .fechas {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-.offerData p {
-    margin-top: 0px;
-}
-li.unstyled.offer {
-    background-color: white !important;
-    float: left;
-    border-bottom: 1px solid #cecece;
-    width: 100%;
-    padding: 20px 0px 20px 0px;
-}
-.documentDescription {
-    font-size: 100%;
-    color: #444;
-    margin-bottom: 18px;
-}
-.informacioTFE {
-    position: relative;
-}
-.fechas {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-.informacioTFE {
-    background-color: #f1f1f1;
-    padding: 20px;
-    border-radius: 4px !important;
-}
-#parent-fieldname-text {
-    margin-top: 30px;
-}
-a.etiquetes {
-    color: white;
-    font-weight: bold;
-    background-color: #398ce3;
-    padding: 2px 10px;
-    border-radius: 6px !important;
-    margin-right: 6px;
-    margin-left: 6px;
-}
-#popup {
-    visibility: hidden;
-    opacity: 0;
-    margin-top: -300px;
-}
-#popup:target {
-    visibility: visible;
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    z-index: 999;
-    transition: all 1s;
-}
-.popup-contenedor {
-    position: relative;
-    margin: 7% auto;
-    padding: 30px 50px;
-    background-color: #fafafa;
-    color: #333;
-    border-radius: 3px;
-    width: 50%;
-}
-a.popup-cerrar {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    background-color: #333;
-    padding: 7px 10px;
-    font-size: 20px;
-    text-decoration: none;
-    line-height: 1;
-    color: #fff;
-}
-span.btn.label.disabled {
-    width: 105px !important;
-    padding: 5px !important;
-    border-radius: 2px !important;
-}
-li.unstyled.offer {
-    margin-bottom: 5px;
+  position: relative;
 }
 
+#content-core .informacioTFE .fechas {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  }
+
+.offerData p {
+  margin-top: 0px;
+}
+
+li.unstyled.offer {
+  background-color: white !important;
+  float: left;
+  border-bottom: 1px solid #cecece;
+  width: 100%;
+  padding: 20px 0px 20px 0px;
+}
+
+.documentDescription {
+  font-size: 100%;
+  color: #444;
+  margin-bottom: 18px;
+}
+
+.informacioTFE {
+  position: relative;
+}
+
+.fechas {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#parent-fieldname-text {
+  margin-top: 30px;
+}
+
+a.etiquetes {
+  color: white;
+  font-weight: bold;
+  background-color: #398ce3;
+  padding: 2px 10px;
+  border-radius: 6px !important;
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+#popup {
+  visibility: hidden;
+  opacity: 0;
+  margin-top: -300px;
+}
+
+#popup:target {
+  visibility: visible;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  z-index: 999;
+  transition: all 1s;
+}
+
+.popup-contenedor {
+  position: relative;
+  margin: 7% auto;
+  padding: 30px 50px;
+  background-color: #fafafa;
+  color: #333;
+  border-radius: 3px;
+  width: 50%;
+}
+
+a.popup-cerrar {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background-color: #333;
+  padding: 7px 10px;
+  font-size: 20px;
+  text-decoration: none;
+  line-height: 1;
+  color: #fff;
+}
+
+span.btn.label.disabled {
+  width: 105px !important;
+  padding: 5px !important;
+  border-radius: 2px !important;
+}
+
+li.unstyled.offer {
+  margin-bottom: 5px;
+}
 
 /*FIN CSS DAVID*/
 
 /*KO & IAGO CSS*/
+
+body.portaltype-genweb-tfemarket-offer .documentDescription {
+  display: none;
+}
 
 #offersList {
   display: grid;
@@ -124,6 +136,15 @@ li.unstyled.offer {
 #offersList .puntTitle .boleta {
   margin-left: 0px;
   float: right;
+}
+
+#offersList .puntTitle .rightDates {
+  float: right;
+  text-align: right;
+}
+
+#offersList .puntTitle .rightDates p {
+  margin-bottom: 0px;
 }
 
 #offersList button.expand {
@@ -155,16 +176,17 @@ li.unstyled.offer {
   margin: 0px 0px 2px 0px;
 }
 
+#offersList .puntTitle .rightDates .field,
 .informacioTFE .field {
   font-weight: bold;
 }
 
 .informacioTFE .keyword {
-    background-color: #fcfbfb;
-    padding: 2px 6px;
-    border-radius: 10px;
-    border: 1px solid #666666;
-    margin-left: 5px;
+  background-color: #fcfbfb;
+  padding: 2px 6px;
+  border-radius: 10px;
+  border: 1px solid #666666;
+  margin-left: 5px;
 }
 
 #headerSearchOffers {
@@ -175,24 +197,108 @@ li.unstyled.offer {
   float: left;
 }
 
+#offersList .offerData {
+  margin-top: 10px;
+}
+
+#offerData .data,
+#offerData .applications,
 #offersList .offerData .data,
 #offersList .offerData .applications,
 #formSearchOffers {
   background-color: #f5f4f4;
   float: left;
+  padding: 20px;
   border-radius: 5px;
-  border: 1px solid #666666;
-  width: 99%;
+  border: 1px solid #cdcdcd;
+  width: 95.5%;
 }
 
-#offersList .offerData {
-  margin-top: 10px;
+#offerData .data,
+#offerData .applications {
+  border-radius: 0px 5px 5px 5px;
+}
+
+#offerData {
+  margin: 15px 0px;
+}
+
+#offerData .nav {
+  margin-bottom: 0px;
+}
+
+#offerData .nav-tabs {
+  border-bottom: none;
+}
+
+#offerData .informacioTFE .rightInfoOffer {
+  top: 0px;
+  right: 0px;
+  text-align: right;
+}
+
+#offerData .nav-tabs > .active > a {
+  font-weight: bold;
+}
+
+#offerData .nav-tabs > .active > a,
+#offerData .nav-tabs > li > a {
+  position: relative;
+  border-color: #cdcdcd !important;
+  border-bottom: 0px !important;
+  border-radius: 5px 5px 0px 0px;
+  background: #f5f4f4;
+  color: #000;
+}
+
+#offerData .nav-tabs > .active > a {
+  background: linear-gradient(#d4d4d4, #f5f4f4);
+}
+
+#offerData .applications table {
+  border-top: 5px solid #007bc0;
+}
+
+#offerData .applications thead th {
+  background-color: #e4e4e4;
+}
+
+#offerData .applications tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+#offerData .applications tbody tr {
+  border-bottom: 1px solid #adadad;
+  border-top: 1px solid #adadad;
+}
+
+#offerData .applications th,
+#offerData .applications td {
+  text-align: left;
+  padding: 5px;
+}
+
+#offerData .informacioTFE .leftInfoOffer:last-child {
+  margin-bottom: 0px;
+}
+
+#offersList .offerData .applications ul,
+#offersList .offerData .applications li {
+  text-decoration: none;
 }
 
 #formSearchOffers {
   width: 96%;
   margin-bottom: 20px;
   padding: 20px;
+}
+
+#formSearchOffers .saved {
+  display: block;
+}
+
+#formSearchOffers .unsaved {
+  display: none;
 }
 
 #formSearchOffers span {
@@ -232,28 +338,24 @@ li.unstyled.offer {
   font-weight: normal;
 }
 
-#formSearchOffers .multicheckLine {
+#formSearchOffers .multicheck {
   margin: 5px 0px;
 }
 
-#formSearchOffers .multicheckLine label {
+#formSearchOffers .multicheck label {
   width: auto;
   padding-right: 20px;
 }
 
-#formSearchOffers .multicheckLine input[type='checkbox'],
-#formSearchOffers .multicheckLine input[type='radio'] {
+#formSearchOffers .multicheck input[type='checkbox'],
+#formSearchOffers .multicheck input[type='radio'] {
   float: none;
   margin-right: 2px;
   margin-top: 0px;
 }
 
-#formSearchOffers .multicheckLine span {
+#formSearchOffers .multicheck .multicheckOptions span {
   margin-right: 20px;
-}
-
-#offersList ul#offersList {
-  margin: 0px;
 }
 
 #offersList #collapseAll,
@@ -262,21 +364,34 @@ li.unstyled.offer {
   display: none;
 }
 
-#offersList li.unstyled.offer {
+#offerData ul {
+  margin-bottom: 0px;
+}
+
+#offerData .applications ul {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+#offersList li.unstyled.offer,
+#offerData li.unstyled.offer {
   list-style: none;
   margin: 0px;
   display: grid;
 }
 
-#offersList .puntTitle {
+#offersList .puntTitle,
+#offerData .puntTitle {
   padding: 0px !important;
 }
 
-#offersList .titleSpan h3 {
+#offersList .titleSpan h3,
+#offerData .titleSpan h3 {
   margin: 5px 0px !important;
 }
 
-#offersList .offerdesc {
+#offersList .offerdesc,
+#offerData .offerdesc {
   text-align: justify;
 }
 
@@ -284,22 +399,70 @@ li.unstyled.offer {
   margin-top: 35px;
 }
 
-#listing-table a.contenttype-genweb-tfemarket-application:before, #listing-table a.contenttype-document:before, #listing-table span.contenttype-genweb-tfemarket-application:before, #listing-table span.contenttype-document:before, .template-tabular_view .listing a.contenttype-genweb-tfemarket-application:before, .template-tabular_view .listing a.contenttype-document:before, .template-tabular_view .listing span.contenttype-genweb-tfemarket-application:before, .template-tabular_view .listing span.contenttype-document:before, .contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-application:before, .contenttreeWidget > .navTree a.contenttype-document:before, .contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-application:before, .contenttreeWidget > .navTree span.contenttype-document:before, .collage-content-menu a.contenttype-genweb-tfemarket-application:before, .collage-content-menu a.contenttype-document:before, .collage-content-menu span.contenttype-genweb-tfemarket-application:before, .collage-content-menu span.contenttype-document:before,span.icon-genweb-tfemarket-application{
-    background-position: -192px -143px;
-    width: 14px;
-    height: 14px;
+#listing-table a.contenttype-genweb-tfemarket-application:before,
+#listing-table a.contenttype-document:before,
+#listing-table span.contenttype-genweb-tfemarket-application:before,
+#listing-table span.contenttype-document:before,
+.template-tabular_view .listing a.contenttype-genweb-tfemarket-application:before,
+.template-tabular_view .listing a.contenttype-document:before,
+.template-tabular_view .listing span.contenttype-genweb-tfemarket-application:before,
+.template-tabular_view .listing span.contenttype-document:before,
+.contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-application:before,
+.contenttreeWidget > .navTree a.contenttype-document:before,
+.contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-application:before,
+.contenttreeWidget > .navTree span.contenttype-document:before,
+.collage-content-menu a.contenttype-genweb-tfemarket-application:before,
+.collage-content-menu a.contenttype-document:before,
+.collage-content-menu span.contenttype-genweb-tfemarket-application:before,
+.collage-content-menu span.contenttype-document:before,
+span.icon-genweb-tfemarket-application{
+  background-position: -192px -143px;
+  width: 14px;
+  height: 14px;
 }
 
-#listing-table a.contenttype-genweb-tfemarket-offer:before, #listing-table a.contenttype-document:before, #listing-table span.contenttype-genweb-tfemarket-offer:before, #listing-table span.contenttype-document:before, .template-tabular_view .listing a.contenttype-genweb-tfemarket-offer:before, .template-tabular_view .listing a.contenttype-document:before, .template-tabular_view .listing span.contenttype-genweb-tfemarket-offer:before, .template-tabular_view .listing span.contenttype-document:before, .contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-offer:before, .contenttreeWidget > .navTree a.contenttype-document:before, .contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-offer:before, .contenttreeWidget > .navTree span.contenttype-document:before, .collage-content-menu a.contenttype-genweb-tfemarket-offer:before, .collage-content-menu a.contenttype-document:before, .collage-content-menu span.contenttype-genweb-tfemarket-offer:before, .collage-content-menu span.contenttype-document:before, span.icon-genweb-tfemarket-offer{
-    background-position: -120px -168px;
-    width: 14px;
-    height: 14px;
+#listing-table a.contenttype-genweb-tfemarket-offer:before,
+#listing-table a.contenttype-document:before,
+#listing-table span.contenttype-genweb-tfemarket-offer:before,
+#listing-table span.contenttype-document:before,
+.template-tabular_view .listing a.contenttype-genweb-tfemarket-offer:before,
+.template-tabular_view .listing a.contenttype-document:before,
+.template-tabular_view .listing span.contenttype-genweb-tfemarket-offer:before,
+.template-tabular_view .listing span.contenttype-document:before,
+.contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-offer:before,
+.contenttreeWidget > .navTree a.contenttype-document:before,
+.contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-offer:before,
+.contenttreeWidget > .navTree span.contenttype-document:before,
+.collage-content-menu a.contenttype-genweb-tfemarket-offer:before,
+.collage-content-menu a.contenttype-document:before,
+.collage-content-menu span.contenttype-genweb-tfemarket-offer:before,
+.collage-content-menu span.contenttype-document:before,
+span.icon-genweb-tfemarket-offer{
+  background-position: -120px -168px;
+  width: 14px;
+  height: 14px;
 }
 
-#listing-table a.contenttype-genweb-tfemarket-market:before, #listing-table a.contenttype-document:before, #listing-table span.contenttype-genweb-tfemarket-market:before, #listing-table span.contenttype-document:before, .template-tabular_view .listing a.contenttype-genweb-tfemarket-market:before, .template-tabular_view .listing a.contenttype-document:before, .template-tabular_view .listing span.contenttype-genweb-tfemarket-market:before, .template-tabular_view .listing span.contenttype-document:before, .contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-market:before, .contenttreeWidget > .navTree a.contenttype-document:before, .contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-market:before, .contenttreeWidget > .navTree span.contenttype-document:before, .collage-content-menu a.contenttype-genweb-tfemarket-market:before, .collage-content-menu a.contenttype-document:before, .collage-content-menu span.contenttype-genweb-tfemarket-market:before, .collage-content-menu span.contenttype-document:before,span.icon-genweb-tfemarket-market{
-    background-position: -433px -144px;
-    width: 14px;
-    height: 14px;
+#listing-table a.contenttype-genweb-tfemarket-market:before,
+#listing-table a.contenttype-document:before,
+#listing-table span.contenttype-genweb-tfemarket-market:before,
+#listing-table span.contenttype-document:before,
+.template-tabular_view .listing a.contenttype-genweb-tfemarket-market:before,
+.template-tabular_view .listing a.contenttype-document:before,
+.template-tabular_view .listing span.contenttype-genweb-tfemarket-market:before,
+.template-tabular_view .listing span.contenttype-document:before,
+.contenttreeWidget > .navTree a.contenttype-genweb-tfemarket-market:before,
+.contenttreeWidget > .navTree a.contenttype-document:before,
+.contenttreeWidget > .navTree span.contenttype-genweb-tfemarket-market:before,
+.contenttreeWidget > .navTree span.contenttype-document:before,
+.collage-content-menu a.contenttype-genweb-tfemarket-market:before,
+.collage-content-menu a.contenttype-document:before,
+.collage-content-menu span.contenttype-genweb-tfemarket-market:before,
+.collage-content-menu span.contenttype-document:before,
+span.icon-genweb-tfemarket-market{
+  background-position: -433px -144px;
+  width: 14px;
+  height: 14px;
 }
 
 /*FIN KO & IAGO CSS*/
