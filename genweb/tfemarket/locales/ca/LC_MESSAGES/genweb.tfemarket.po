@@ -156,8 +156,8 @@ msgid "Features"
 msgstr "Característiques"
 
 #: ../content/templates/market_view.pt:25
-msgid "Hide"
-msgstr "Amagar"
+msgid "Hide search"
+msgstr "Amagar cercador"
 
 #: ../content/application.py:30
 msgid "Identification number"
@@ -308,8 +308,8 @@ msgid "Settings"
 msgstr "Configuració"
 
 #: ../content/templates/market_view.pt:22
-msgid "Show"
-msgstr "Mostrar"
+msgid "Show search"
+msgstr "Mostrar cercador"
 
 #: ../content/offer.py:262
 msgid "TFEteacher"

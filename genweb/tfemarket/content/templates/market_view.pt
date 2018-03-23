@@ -13,114 +13,113 @@
         <metal:block define-macro="content-core"
                      tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
-            <div id="market">
-                <div id="searchOffers" tal:define="save view/saveFilters">
-                  <div id="headerSearchOffers">
-                    <h2 style="margin-top:0px; text-align: left;" i18n:translate="">Search</h2>
-                    <div style="float:right;" class="documentDescription">
-                        <span id="expandSearch" tal:attributes="style python: 'display:none' if save else 'display:display'">
-                          <span i18n:translate="">Show</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </span>
-                        <span id="collapseSearch" tal:attributes="style python: 'display:block' if save else 'display:none'">
-                          <span i18n:translate="">Hide</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                  </div>
-                  <form id="formSearchOffers" name="searchOffers" action="" method="post"
-                         tal:attributes="style python: 'display:block' if save else 'display:none';
-                                         data-saved python: 0 if save else 1">
-                    <label i18n:translate="">Text to search</label>
-                    <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
-
-                    <label i18n:translate="">Degree</label>
-                    <select id="searchDegree" name="degree">
-                      <tal:block tal:condition="view/getDegrees" tal:repeat="degree view/getDegrees">
-                        <tal:block tal:define="selected python: save.has_key('degree') and not save['degree'] == 'a' and degree['id'] == int(save['degree'])">
-                          <option tal:attributes="value degree/id; selected python: True if selected else False" tal:content="degree/lit">Degree</option>
-                        </tal:block>
-                      </tal:block>
-                    </select>
-
-                    <label i18n:translate="">Departament</label>
-                    <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
-                      <option value="a" i18n:translate="">All</option>
-                      <!-- <tal:block tal:repeat="certification view/listCertifications">
-                        <option value="certification" tal:content="certification">Certification</option>
-                      </tal:block> -->
-                    </select>
-
-                    <label i18n:translate="">Company</label>
-                    <select id="searchCompany" name="company" tal:attributes="value save/company|nothing">
-                      <option value="a" i18n:translate="">All</option>
-                      <!-- <tal:block tal:repeat="certification view/listCertifications">
-                        <option value="certification" tal:content="certification">Certification</option>
-                      </tal:block> -->
-                    </select>
-
-                    <label i18n:translate="">Date</label>
-                    <select id="searchDate" name="date">
-                      <tal:block tal:repeat="date view/getDates">
-                        <tal:block tal:define="selected python: save.has_key('date') and date['id'] == save['date']">
-                          <option tal:attributes="value date/id; selected python: True if selected else False" tal:content="date/lit">
-                            Date
-                          </option>
-                        </tal:block>
-                      </tal:block>
-                    </select>
-
-                    <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
-                      <label i18n:translate="">Keywords</label>
-                      <span class="multicheckOptions">
-                        <span tal:repeat="key view/getKeys">
-                          <tal:block tal:define="selected python: save.has_key('key') and view.flattenedString(key) in save['key']">
-                            <input type="checkbox" name="key" tal:attributes="value key; checked python: True if selected else False" />
-                            <span tal:content="key">Key</span>
-                          </tal:block>
-                        </span>
-                      </span>
-                    </div>
-
-                    <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
-                    <span i18n:translate="">With the possibility of offering grant/financing</span>
-
-                    <div id="searchLanguage" class="multicheck">
-                      <label i18n:translate="">Developer language</label>
-                      <span class="multicheckOptions">
-                        <span tal:repeat="lang view/getLanguages">
-                          <tal:block tal:define="selected python: save.has_key('language') and view.flattenedString(lang) in save['language']">
-                            <input type="checkbox" name="language" tal:attributes="value lang; checked python: True if selected else False" />
-                            <span tal:content="lang">Language</span>
-                          </tal:block>
-                        </span>
-                      </span>
-                    </div>
-
-                    <div id="searchModality" class="multicheck">
-                      <label i18n:translate="">Modality</label>
-                      <span class="multicheckOptions">
-                        <span tal:repeat="modality view/getModalities">
-                          <tal:block tal:define="selected python: save.has_key('modality') and modality['id'] in save['modality']">
-                            <input type="checkbox" name="modality" tal:attributes="value modality/id; checked python: True if selected else False" />
-                            <span tal:content="modality/lit">Modality</span>
-                          </tal:block>
-                        </span>
-                      </span>
-                    </div>
-
-                    <button type="submit" id="offersFilter" form="offersFilter">
-                      <span class="fa fa-search"></span>
-                      <span i18n:translate="">Search</span>
-                    </button>
-                  </form>
-                </div>
+            <div id="market" tal:define="save view/saveFilters">
                 <div class="clearfix"></div>
                 <div id="offersList">
                   <div id="headerListOffers">
-                    <h2 style="margin-top:0px; text-align: left; float: left;" i18n:translate="">All TFE's</h2>
-                    <div style="float:right;" class="documentDescription" tal:condition="offers">
+                    <h2 i18n:translate="">All TFE's</h2>
+                    <div class="buttonsRight documentDescription">
+                      <span id="buttonsSearch">
+                        <span id="expandSearch" tal:attributes="style python: 'display:none' if save else 'display:display'">
+                          <span i18n:translate="">Show search</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
+                        </span>
+                        <span id="collapseSearch" tal:attributes="style python: 'display:block' if save else 'display:none'">
+                          <span i18n:translate="">Hide search</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
+                        </span>
+                      </span>
+                      <span id="buttonsAllOffers" tal:condition="offers">
                         <span id="expandAll" i18n:translate="">Desplega tot <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
                         <span id="collapseAll" i18n:translate="">Plega tot <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                      </span>
                     </div>
+                  </div>
+                  <div id="searchOffers">
+                    <form id="formSearchOffers" name="searchOffers" action="" method="post"
+                           tal:attributes="style python: 'display:block' if save else 'display:none';
+                                           data-saved python: 0 if save else 1">
+                      <label i18n:translate="">Text to search</label>
+                      <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
+
+                      <label i18n:translate="">Degree</label>
+                      <select id="searchDegree" name="degree">
+                        <tal:block tal:condition="view/getDegrees" tal:repeat="degree view/getDegrees">
+                          <tal:block tal:define="selected python: save.has_key('degree') and not save['degree'] == 'a' and degree['id'] == int(save['degree'])">
+                            <option tal:attributes="value degree/id; selected python: True if selected else False" tal:content="degree/lit">Degree</option>
+                          </tal:block>
+                        </tal:block>
+                      </select>
+
+                      <label i18n:translate="">Departament</label>
+                      <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
+                        <option value="a" i18n:translate="">All</option>
+                        <!-- <tal:block tal:repeat="certification view/listCertifications">
+                          <option value="certification" tal:content="certification">Certification</option>
+                        </tal:block> -->
+                      </select>
+
+                      <label i18n:translate="">Company</label>
+                      <select id="searchCompany" name="company" tal:attributes="value save/company|nothing">
+                        <option value="a" i18n:translate="">All</option>
+                        <!-- <tal:block tal:repeat="certification view/listCertifications">
+                          <option value="certification" tal:content="certification">Certification</option>
+                        </tal:block> -->
+                      </select>
+
+                      <label i18n:translate="">Date</label>
+                      <select id="searchDate" name="date">
+                        <tal:block tal:repeat="date view/getDates">
+                          <tal:block tal:define="selected python: save.has_key('date') and date['id'] == save['date']">
+                            <option tal:attributes="value date/id; selected python: True if selected else False" tal:content="date/lit">
+                              Date
+                            </option>
+                          </tal:block>
+                        </tal:block>
+                      </select>
+
+                      <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
+                        <label i18n:translate="">Keywords</label>
+                        <span class="multicheckOptions">
+                          <span tal:repeat="key view/getKeys">
+                            <tal:block tal:define="selected python: save.has_key('key') and view.flattenedString(key) in save['key']">
+                              <input type="checkbox" name="key" tal:attributes="value key; checked python: True if selected else False" />
+                              <span tal:content="key">Key</span>
+                            </tal:block>
+                          </span>
+                        </span>
+                      </div>
+
+                      <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
+                      <span i18n:translate="">With the possibility of offering grant/financing</span>
+
+                      <div id="searchLanguage" class="multicheck">
+                        <label i18n:translate="">Developer language</label>
+                        <span class="multicheckOptions">
+                          <span tal:repeat="lang view/getLanguages">
+                            <tal:block tal:define="selected python: save.has_key('language') and view.flattenedString(lang) in save['language']">
+                              <input type="checkbox" name="language" tal:attributes="value lang; checked python: True if selected else False" />
+                              <span tal:content="lang">Language</span>
+                            </tal:block>
+                          </span>
+                        </span>
+                      </div>
+
+                      <div id="searchModality" class="multicheck">
+                        <label i18n:translate="">Modality</label>
+                        <span class="multicheckOptions">
+                          <span tal:repeat="modality view/getModalities">
+                            <tal:block tal:define="selected python: save.has_key('modality') and modality['id'] in save['modality']">
+                              <input type="checkbox" name="modality" tal:attributes="value modality/id; checked python: True if selected else False" />
+                              <span tal:content="modality/lit">Modality</span>
+                            </tal:block>
+                          </span>
+                        </span>
+                      </div>
+
+                      <button type="submit" id="offersFilter" form="offersFilter">
+                        <span class="fa fa-search"></span>
+                        <span i18n:translate="">Search</span>
+                      </button>
+                    </form>
                   </div>
                   <p id="notResults" tal:condition="not: offers" i18n:translate="">
                     No results found.
@@ -279,7 +278,7 @@
           $(this).parent().parent().parent().find('.offerData').slideUp();
         });
 
-        $("#headerSearchOffers").click(function(){
+        $("#buttonsSearch").click(function(){
           if( $("#collapseSearch").is(":visible") ){
             $("#formSearchOffers").slideUp();
             $("#expandSearch").show();

@@ -161,6 +161,21 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin: 0px;
 }
 
+#headerListOffers h2 {
+  margin-top: 0px;
+  text-align: left;
+  float: left;
+}
+
+#headerListOffers .buttonsRight {
+  float: right;
+  margin-bottom: 0px;
+}
+
+#headerListOffers #buttonsAllOffers {
+  margin-left: 15px;
+}
+
 .informacioTFE .leftInfoOffer {
   margin-bottom: 20px;
 }
@@ -211,7 +226,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   padding: 20px;
   border-radius: 5px;
   border: 1px solid #cdcdcd;
-  width: 95.5%;
+  width: 95.8%;
 }
 
 #offerData .data,
@@ -354,8 +369,9 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-top: 0px;
 }
 
-#formSearchOffers .multicheck .multicheckOptions span {
+#formSearchOffers .multicheck .multicheckOptions > span {
   margin-right: 20px;
+  display: inline-block
 }
 
 #offersList #collapseAll,
