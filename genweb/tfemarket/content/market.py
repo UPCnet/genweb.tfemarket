@@ -7,12 +7,15 @@ from operator import itemgetter
 from plone import api
 from plone.directives import form
 from plone.registry.interfaces import IRegistry
+from zope.component import getMultiAdapter
 from zope.component import queryUtility
+from Products.CMFCore.utils import getToolByName
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket.utils import canDoAction
 
 import unicodedata
 
@@ -76,12 +79,11 @@ class View(grok.View):
                 if item.has_key('keywords') and not item['keywords'] == None:
                     flattenedKeys = self.flattenedList(item['keywords'])
                     if isinstance(filters['key'], list):
-                        deletedItem = False
+                        deletedItem = True
                         for key in filters['key']:
-                            if key not in flattenedKeys:
-                                deletedItem = True
-                            else:
+                            if key in flattenedKeys:
                                 deletedItem = False
+                                break
 
                         if deletedItem:
                             delete.append(index)
@@ -104,11 +106,9 @@ class View(grok.View):
             if item.has_key('langs'):
                 flattenedListanguages = self.flattenedList(item['langs'])
                 if isinstance(filters['language'], list):
-                    deletedItem = False
+                    deletedItem = True
                     for lang in filters['language']:
-                        if lang not in flattenedListanguages:
-                            deletedItem = True
-                        else:
+                        if lang in flattenedListanguages:
                             deletedItem = False
 
                     if deletedItem:
@@ -132,44 +132,50 @@ class View(grok.View):
         return results
 
     def getOffers(self):
-        catalog = api.portal.get_tool(name='portal_catalog')
-
-        path = self.context.getPhysicalPath()
-        path = "/".join(path)
-        values = catalog(path={'query': path, 'depth': 1},
-                         object_provides=IOffer.__identifier__,
-                         sort_on='sortable_title',
-                         sort_order='ascending')
-
-        results = []
-        for item in values:
-            offer = item.getObject()
-            results.append(dict(title=item.Title,
-                                state=item.review_state,
-                                url=item.getURL(),
-                                path=item.getPath(),
-                                UID=item.UID,
-                                dept=offer.dept,
-                                effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
-                                expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
-                                teacher_manager=offer.teacher_manager,
-                                modality=offer.modality,
-                                description=offer.description,
-                                langs=offer.lang,
-                                multiple_langs=len(offer.lang) > 1,
-                                environmental_theme=offer.environmental_theme,
-                                grant=offer.grant,
-                                degrees=offer.degree,
-                                multiple_degrees=len(offer.degree) > 1,
-                                keywords=offer.keys,
-                                offer_id=offer.offer_id,
-                                center=offer.center
-                                ))
-
         if not self.request.form == {}:
-            results = self.filterResults(results)
+            catalog = api.portal.get_tool(name='portal_catalog')
+            wf_tool = getToolByName(self.context, 'portal_workflow')
+            tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+            path = self.context.getPhysicalPath()
+            path = "/".join(path)
+            values = catalog(path={'query': path, 'depth': 1},
+                             object_provides=IOffer.__identifier__,
+                             sort_on='sortable_title',
+                             sort_order='ascending')
 
-        return results
+            results = []
+            for item in values:
+                offer = item.getObject()
+                workflowActions = wf_tool.listActionInfos(object=offer)
+                workflows = tools.workflow().getWorkflowsFor(offer)[0]
+
+                results.append(dict(title=item.Title,
+                                    state=workflows['states'][item.review_state].title,
+                                    url=item.getURL(),
+                                    path=item.getPath(),
+                                    item_path=offer.absolute_url_path(),
+                                    dept=offer.dept,
+                                    effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
+                                    expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
+                                    teacher_manager=offer.teacher_manager,
+                                    modality=offer.modality,
+                                    description=offer.description,
+                                    langs=offer.lang,
+                                    multiple_langs=len(offer.lang) > 1,
+                                    environmental_theme=offer.environmental_theme,
+                                    grant=offer.grant,
+                                    degrees=offer.degree,
+                                    multiple_degrees=len(offer.degree) > 1,
+                                    keywords=offer.keys,
+                                    offer_id=offer.offer_id,
+                                    center=offer.center,
+                                    workflows=workflowActions,
+                                    can_edit=canDoAction(self, offer, 'edit'),
+                                    ))
+
+                results = self.filterResults(results)
+
+            return results
 
     def getLanguages(self):
         registry = queryUtility(IRegistry)

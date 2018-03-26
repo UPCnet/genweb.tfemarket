@@ -20,10 +20,10 @@
                     <h2 i18n:translate="">All TFE's</h2>
                     <div class="buttonsRight documentDescription">
                       <span id="buttonsSearch">
-                        <span id="expandSearch" tal:attributes="style python: 'display:none' if save else 'display:display'">
+                        <span id="expandSearch">
                           <span i18n:translate="">Show search</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
                         </span>
-                        <span id="collapseSearch" tal:attributes="style python: 'display:block' if save else 'display:none'">
+                        <span id="collapseSearch">
                           <span i18n:translate="">Hide search</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
                         </span>
                       </span>
@@ -35,8 +35,7 @@
                   </div>
                   <div id="searchOffers">
                     <form id="formSearchOffers" name="searchOffers" action="" method="post"
-                           tal:attributes="style python: 'display:block' if save else 'display:none';
-                                           data-saved python: 0 if save else 1">
+                           tal:attributes="data-saved python: 0 if save else 1">
                       <label i18n:translate="">Text to search</label>
                       <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
 
@@ -143,15 +142,42 @@
                                           <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
                                       </h3>
                                   </div>
-                                  <div class="rightDates">
-                                    <p class="effectiveDate" tal:condition="offer/effective_date">
-                                      <span class="field"><span i18n:translate="">Publication date</span>: </span>
-                                      <span tal:content="offer/effective_date">2018/01/29</span>
-                                    </p>
-                                    <p class="expirationDate" tal:condition="offer/expiration_date">
-                                      <span class="field"><span i18n:translate="">Expiration date</span>: </span>
-                                      <span tal:content="offer/expiration_date">2018/04/29</span>
-                                    </p>
+                                  <div class="rightTitle">
+                                    <div class="dates">
+                                      <span class="effectiveDate" tal:condition="offer/effective_date">
+                                        <span class="field"><span i18n:translate="">Publication date</span>: </span>
+                                        <span tal:content="offer/effective_date">2018/01/29</span>
+                                      </span>
+                                      <span class="expirationDate" tal:condition="offer/expiration_date">
+                                        <span class="field"><span i18n:translate="">Expiration date</span>: </span>
+                                        <span tal:content="offer/expiration_date">2018/04/29</span>
+                                      </span>
+                                    </div>
+                                    <div class="rightInfoOffer actions">
+                                      <span class="workflowsAction">
+                                        <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="offer/workflows">
+                                          <span tal:content="offer/state">State</span>
+                                          <span class="caret"></span>
+                                        </button>
+                                        <span class="workflow notclick label" tal:content="offer/state" tal:condition="not: offer/workflows">State</span>
+                                        <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
+                                            tal:condition="offer/workflows">
+                                          <tal:block repeat="estat offer/workflows">
+                                            <li>
+                                              <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/item_path}">
+                                                <span tal:content="estat/title">Estat</span></a>
+                                            </li>
+                                          </tal:block>
+                                        </ul>
+                                      </span>
+                                      <a class="label edit" i18n:attributes="alt edit" tal:attributes="href string:${offer/url}/edit"
+                                         tal:condition="offer/can_edit">
+                                        <span class="fa fa-pencil" aria-hidden="true"></span>
+                                      </a>
+                                      <a class="label" i18n:attributes="alt view" tal:attributes="href string:${offer/url}/view">
+                                        <span class="fa fa-folder-open" aria-hidden="true"></span>
+                                      </a>
+                                    </div>
                                   </div>
                               </div>
                               <div class="offerData">
@@ -233,11 +259,6 @@
                                         <tal:block tal:repeat="keyword offer/keywords">
                                           <span class="keyword" tal:content="keyword">Keyword</span>
                                         </tal:block>
-                                      </p>
-                                    </div>
-                                    <div class="moreInformation">
-                                      <p>
-                                        <a tal:attributes="href offer/url" i18n:translate="">More information</a>
                                       </p>
                                     </div>
                                   </div>

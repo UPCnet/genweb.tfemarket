@@ -17,6 +17,7 @@ from zope.schema.vocabulary import SimpleTerm
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket.utils import canDoAction
 
 from zope.schema import ValidationError
 from Products.CMFCore.utils import getToolByName
@@ -383,12 +384,12 @@ class View(dexterity.DisplayForm):
                                 offer_id=application.offer_id,
                                 offer_title=application.offer_title,
                                 workflows=workflowActions,
-                                can_edit=self.canDoActionApplication(application, 'edit'),
+                                can_edit=canDoAction(self, application, 'edit'),
                                 ))
         return results
 
-    def canDoActionApplication(self, application, action):
-        context_state = getMultiAdapter((application, self.request), name=u'plone_context_state')
+    def canDoAction(self, context, action):
+        context_state = getMultiAdapter((context, self.request), name=u'plone_context_state')
         actions = context_state.actions('object')
 
         for item in actions:

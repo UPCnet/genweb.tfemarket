@@ -3,6 +3,8 @@ from plone import api
 from Products.CMFCore.utils import getToolByName
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from zope.component import getMultiAdapter
+
 
 def sendMessage(context, fromMsg, toMsg, subject, message):
     portal = api.portal
@@ -16,3 +18,14 @@ def sendMessage(context, fromMsg, toMsg, subject, message):
 
     msg.attach(MIMEText(message, 'plain'))
     mailhost.send(msg)
+
+
+def canDoAction(self, context, action):
+    context_state = getMultiAdapter((context, self.request), name=u'plone_context_state')
+    actions = context_state.actions('object')
+
+    for item in actions:
+        if item['id'] == action and item['visible'] and item['allowed']:
+            return True
+
+    return False

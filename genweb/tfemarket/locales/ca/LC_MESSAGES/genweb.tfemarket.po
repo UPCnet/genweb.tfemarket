@@ -155,7 +155,7 @@ msgstr "Temàtica principal"
 #: ../content/templates/market_view.pt:151
 #: ../content/templates/offer_view.pt:56
 msgid "Expiration date"
-msgstr "Data de caducitat"
+msgstr "Caducitat"
 
 #: ../content/templates/offer_view.pt:78
 msgid "Features"
@@ -296,7 +296,7 @@ msgstr "Tipus de programa"
 #: ../content/templates/market_view.pt:147
 #: ../content/templates/offer_view.pt:52
 msgid "Publication date"
-msgstr "Data de publicació"
+msgstr "Publicació"
 
 #: ../content/templates/offer_view.pt:84
 msgid "Requirements"

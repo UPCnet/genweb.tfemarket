@@ -144,7 +144,6 @@
                             <tr>
                               <th i18n:translate="">DNI</th>
                               <th i18n:translate="">Name</th>
-                              <th i18n:translate="">Center</th>
                               <th i18n:translate="">Degree</th>
                               <th i18n:translate="">Identifier Offer TFE</th>
                               <th i18n:translate="">Mobile</th>
@@ -155,17 +154,18 @@
                             <tr tal:repeat="app applications">
                               <td tal:content="app/dni">DNI</td>
                               <td tal:content="app/name">Name</td>
-                              <td>Center</td>
                               <td>Degree</td>
                               <td>Identifier Offer TFE</td>
                               <td>Mobile</td>
                               <td class="actions">
-                                <span class="workflowsAction" tal:condition="app/workflows">
-                                  <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="workflowsAction">
+                                  <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
                                     <span tal:content="app/state">State</span>
                                     <span class="caret"></span>
                                   </button>
-                                  <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats">
+                                  <span class="workflow notclick label" tal:content="app/state" tal:condition="not: app/workflows">State</span>
+                                  <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
+                                      tal:condition="app/workflows">
                                     <tal:block repeat="estat app/workflows">
                                       <li>
                                         <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${app/item_path}">
@@ -179,7 +179,7 @@
                                   <span class="fa fa-pencil" aria-hidden="true"></span>
                                 </a>
                                 <a class="label" i18n:attributes="alt view" tal:attributes="href string:${app/url}/view">
-                                  <span class="fa fa-eye" aria-hidden="true"></span>
+                                  <span class="fa fa-folder-open" aria-hidden="true"></span>
                                 </a>
                               </td>
                             </tr>

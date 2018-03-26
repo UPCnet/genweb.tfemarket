@@ -23,7 +23,7 @@ li.unstyled.offer {
   float: left;
   border-bottom: 1px solid #cecece;
   width: 100%;
-  padding: 20px 0px 20px 0px;
+  padding: 10px 0px 10px 0px;
 }
 
 .documentDescription {
@@ -138,12 +138,16 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   float: right;
 }
 
-#offersList .puntTitle .rightDates {
+#offersList .puntTitle .rightTitle {
   float: right;
   text-align: right;
 }
 
-#offersList .puntTitle .rightDates p {
+#offersList .puntTitle .rightTitle .effectiveDate {
+  margin-right: 10px;
+}
+
+#offersList .puntTitle .rightTitle .dates p {
   margin-bottom: 0px;
 }
 
@@ -180,6 +184,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-bottom: 20px;
 }
 
+.informacioTFE .leftInfoOffer:last-child {
+  margin-bottom: 0px;
+}
+
 .informacioTFE .rightInfoOffer {
   position: absolute;
   top: 20px;
@@ -187,11 +195,18 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   text-align: right;
 }
 
+.informacioTFE .rightInfoOffer.actions {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: left;
+}
+
 .informacioTFE p {
   margin: 0px 0px 2px 0px;
 }
 
-#offersList .puntTitle .rightDates .field,
+#offersList .puntTitle .rightTitle .dates .field,
 .informacioTFE .field {
   font-weight: bold;
 }
@@ -301,8 +316,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   text-align: right;
 }
 
-#offerData .applications .actions button,
-#offerData .applications .actions > a {
+#market .rightInfoOffer.actions button,
+#market .rightInfoOffer.actions > a,
+#offerData .applications .actions > a,
+#offerData .applications .actions button {
   background-color: #FFF;
   border: 1px solid #adadad;
   color: #057bc1;
@@ -310,49 +327,69 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   text-shadow: none;
 }
 
+#market .rightInfoOffer.actions .workflowsAction .workflow.notclick,
+#offerData .applications .actions .workflowsAction .workflow.notclick {
+  background-color: #FFF;
+  border: 1px solid #adadad;
+  color: #057bc1;
+  padding: 3px 6px;
+  border-radius: 3px;
+  text-shadow: none;
+}
+
+#market .rightInfoOffer.actions a,
 #offerData .applications .actions a {
   transition: none;
 }
 
+#market .rightInfoOffer.actions button,
 #offerData .applications .actions button {
   padding: 2px 6px;
 }
 
+#market .rightInfoOffer.actions > a.edit,
 #offerData .applications .actions > a.edit {
   padding: 3px 3px 3px 6px;
   margin-right: 4px;
 }
 
+#market .rightInfoOffer.actions .caret,
 #offerData .applications .actions .caret {
   border-top: 4px solid #057bc1;
   vertical-align: middle;
 }
 
+#market .rightInfoOffer.actions button:hover,
 #offerData .applications .actions button:hover {
   border: 1px solid #057bc1;
 }
 
+#market .rightInfoOffer.actions > a:hover,
 #offerData .applications .actions > a:hover {
   background-color: #057bc1;
   color: #FFF;
   border: 1px solid #057bc1;
 }
 
+#market .rightInfoOffer.actions .workflowsAction,
 #offerData .applications .actions .workflowsAction {
   display: inline-block;
 }
 
+#market .rightInfoOffer.actions .estatsToggle,
 #offerData .applications .actions .estatsToggle {
   top: auto;
   left: auto;
   min-width: auto;
 }
 
+#market .rightInfoOffer.actions .estatsToggle li,
 #offerData .applications .actions .estatsToggle li {
   border: 0px;
   text-align: left;
 }
 
+#market .rightInfoOffer.actions .estatsToggle li a:hover,
 #offerData .applications .actions .estatsToggle li a:hover {
   background-color: #057bc1;
 }
@@ -434,6 +471,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   display: inline-block
 }
 
+#offersList #expandSearch,
 #offersList #collapseAll,
 #offersList .offerData,
 #offersList .notexpand {
