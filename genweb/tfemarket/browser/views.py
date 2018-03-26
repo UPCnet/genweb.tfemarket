@@ -2,6 +2,16 @@
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
+from genweb.tfemarket import _
+
+
+def redirectAfterChangeActualState(self):
+    import ipdb; ipdb.set_trace()
+    if self.context.portal_type == 'genweb.tfemarket.offer':
+        self.request.response.redirect(self.context.absolute_url() + "#offer-applications")
+    else:
+        self.request.response.redirect(self.context.absolute_url())
+
 
 class changeActualState(BrowserView):
     """ Es fa servir a la vista sessio i presentacio. No cal fer reload perque
@@ -11,6 +21,7 @@ class changeActualState(BrowserView):
         portal_catalog = getToolByName(self, 'portal_catalog')
         estat = self.request.form.get('estat')
         itemid = self.request.form.get('id')
+
         try:
             object_path = '/'.join(self.context.getPhysicalPath())
             item = str(itemid.split('/')[-1:][0])
@@ -20,13 +31,14 @@ class changeActualState(BrowserView):
                 path={'query': object_path,
                       'depth': 1})[0].getObject()
 
-            wftool = getToolByName(self.context, 'portal_workflow')
-            wftool.doActionFor(currentitem, estat)
-
-            if self.context.portal_type == 'genweb.tfemarket.offer':
-                self.request.response.redirect(self.context.absolute_url() + "#offer-applications")
+            if currentitem:
+                wftool = getToolByName(self.context, 'portal_workflow')
+                wftool.doActionFor(currentitem, estat)
+                redirectAfterChangeActualState(self)
             else:
-                self.request.response.redirect(self.context.absolute_url())
+                self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
+                redirectAfterChangeActualState(self)
 
         except:
-            pass
+            self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
+            redirectAfterChangeActualState(self)
