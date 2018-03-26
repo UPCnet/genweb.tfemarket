@@ -9,16 +9,17 @@ from plone.directives import form, dexterity
 from plone.supermodel.directives import fieldset
 from plone.registry.interfaces import IRegistry
 from zope import schema
+from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
-
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 
 from zope.schema import ValidationError
+from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.utils import checkEmailAddress
 from Products.CMFDefault.exceptions import EmailAddressInvalid
 
@@ -362,16 +363,39 @@ class View(dexterity.DisplayForm):
 
     def getApplications(self, offer):
         catalog = api.portal.get_tool(name='portal_catalog')
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
         results = []
         values = catalog(path={'query': '/'.join(offer.getPhysicalPath()), 'depth': 1},
                          object_provides=IApplication.__identifier__)
 
         for item in values:
+            application = item.getObject()
+            workflowActions = wf_tool.listActionInfos(object=application)
+            workflows = tools.workflow().getWorkflowsFor(application)[0]
+
             results.append(dict(title=item.Title,
-                                state=item.review_state,
+                                state=workflows['states'][item.review_state].title,
                                 url=item.getURL(),
+                                item_path=application.absolute_url_path(),
+                                dni=application.dni,
+                                name=application.title,
+                                offer_id=application.offer_id,
+                                offer_title=application.offer_title,
+                                workflows=workflowActions,
+                                can_edit=self.canDoActionApplication(application, 'edit'),
                                 ))
         return results
+
+    def canDoActionApplication(self, application, action):
+        context_state = getMultiAdapter((application, self.request), name=u'plone_context_state')
+        actions = context_state.actions('object')
+
+        for item in actions:
+            if item['id'] == action and item['visible'] and item['allowed']:
+                return True
+
+        return False
 
 
 class AddForm(dexterity.AddForm):
