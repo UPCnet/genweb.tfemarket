@@ -158,31 +158,6 @@ class IOffer(form.Schema):
     """ Folder that contains information about a TFE and its applications
     """
 
-    # fieldset('data',
-    #          label=_(u''),
-    #          fields=['degree', 'offer_id', 'title', 'description', 'targets', 'workload', 'features', 'topic']
-    #          )
-
-    fieldset('direccio',
-             label=_(u''),
-             fields=['teacher_manager', 'dept']
-             )
-
-    fieldset('requisits',
-             label=_(u''),
-             fields=['requirements', 'lang', 'num_students']
-             )
-
-    fieldset('options',
-             label=_(u''),
-             fields=['grant', 'confidential', 'environmental_theme', 'scope_cooperation', 'keys']
-             )
-
-    fieldset('modalitat',
-             label=_(u''),
-             fields=['modality', 'co_manager', 'company', 'company_contact', 'company_email']
-             )
-
     form.mode(center='hidden')
     center = schema.TextLine(
         title=_(u'offer_center'),
@@ -362,16 +337,16 @@ class View(dexterity.DisplayForm):
             for item in tfe_tool.titulacions_table:
                 titulacio = str(item['plan_year']) + " - "
                 if current_language == 'ca':
-                    titulacio +=  item['titulacio_ca']
+                    titulacio += item['titulacio_ca']
                 elif current_language == 'es':
                     titulacio += item['titulacio_es']
                 else:
                     titulacio += item['titulacio_en']
 
-                result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
+                result.append({'id': item['codi_prisma'], 'lit': titulacio})
 
         result = sorted(result, key=itemgetter('lit'))
-        result.insert(0, {'id' : 'a', 'lit' : _(u"All")})
+        result.insert(0, {'id': 'a', 'lit': _(u"All")})
         return result
 
     def getDegreeLiteralFromId(self, id):
@@ -397,6 +372,7 @@ class View(dexterity.DisplayForm):
                                 url=item.getURL(),
                                 ))
         return results
+
 
 class AddForm(dexterity.AddForm):
     grok.context(IOffer)
