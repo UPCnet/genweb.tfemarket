@@ -82,7 +82,7 @@ a.etiquetes {
   padding: 30px 50px;
   background-color: #fafafa;
   color: #333;
-  border-radius: 3px;
+  border-radius: 3px !important;
   width: 50%;
 }
 
@@ -199,7 +199,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 .informacioTFE .keyword {
   background-color: #fcfbfb;
   padding: 2px 6px;
-  border-radius: 10px;
+  border-radius: 10px !important;
   border: 1px solid #666666;
   margin-left: 5px;
 }
@@ -224,14 +224,14 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   background-color: #f5f4f4;
   float: left;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 5px !important;
   border: 1px solid #cdcdcd;
   width: 95.7%;
 }
 
 #offerData .data,
 #offerData .applications {
-  border-radius: 0px 5px 5px 5px;
+  border-radius: 0px 5px 5px 5px !important;
 }
 
 #offerData {
@@ -261,7 +261,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   position: relative;
   border-color: #cdcdcd !important;
   border-bottom: 0px !important;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 5px 0px 0px !important;
   background: #f5f4f4;
   color: #000;
 }
