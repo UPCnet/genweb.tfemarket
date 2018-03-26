@@ -6,7 +6,6 @@ from genweb.tfemarket import _
 
 
 def redirectAfterChangeActualState(self):
-    import ipdb; ipdb.set_trace()
     if self.context.portal_type == 'genweb.tfemarket.offer':
         self.request.response.redirect(self.context.absolute_url() + "#offer-applications")
     else:
