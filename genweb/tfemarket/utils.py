@@ -7,7 +7,6 @@ from zope.component import getMultiAdapter
 
 
 def sendMessage(context, fromMsg, toMsg, subject, message):
-    portal = api.portal
     context = aq_inner(context)
     mailhost = getToolByName(context, 'MailHost')
 
@@ -29,3 +28,18 @@ def canDoAction(self, context, action):
             return True
 
     return False
+
+
+def getLdapUserData(director):
+    """Create a new gengrup user by email. You have to call
+       updateUserSitesCatalog to get the new user into the
+       user_sites_catalog.
+    """
+
+    acl_users = api.portal.get_tool(name='acl_users')
+
+    import ipdb; ipdb.set_trace()
+
+    search_result = acl_users.searchUsers(id=director, exactMatch=True)
+
+    return search_result

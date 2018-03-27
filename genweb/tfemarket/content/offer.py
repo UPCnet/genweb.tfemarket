@@ -6,7 +6,6 @@ from plone import api
 from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
 from plone.directives import form, dexterity
-from plone.supermodel.directives import fieldset
 from plone.registry.interfaces import IRegistry
 from zope import schema
 from zope.component import getMultiAdapter
@@ -233,6 +232,7 @@ class IOffer(form.Schema):
         title=_(u'modality'),
         values=[u'Universitat',
                 u'Empresa'],
+        default=-(u'Universitat'),
         required=False,
     )
 
@@ -244,6 +244,12 @@ class IOffer(form.Schema):
     dept = schema.TextLine(
         title=_(u'University department'),
         required=False,
+    )
+
+    teacher_email = schema.TextLine(
+        title=_(u'Teacher Email'),
+        required=False,
+        constraint=validateaddress,
     )
 
     co_manager = schema.TextLine(
