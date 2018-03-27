@@ -232,7 +232,7 @@ class IOffer(form.Schema):
         title=_(u'modality'),
         values=[u'Universitat',
                 u'Empresa'],
-        default=-(u'Universitat'),
+        default=_(u'Universitat'),
         required=False,
     )
 
