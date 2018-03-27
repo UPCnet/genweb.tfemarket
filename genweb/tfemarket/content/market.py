@@ -17,7 +17,9 @@ from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import canDoAction
 
+import ast
 import unicodedata
+import urllib
 
 
 grok.templatedir("templates")
@@ -132,6 +134,11 @@ class View(grok.View):
         return results
 
     def getOffers(self):
+        searchMarket = self.request.cookies.get('MERCAT_TFE')
+        if searchMarket and not searchMarket == "":
+            self.request.form = ast.literal_eval(searchMarket)
+            self.request.response.setCookie('MERCAT_TFE', "", path='/')
+
         if not self.request.form == {}:
             catalog = api.portal.get_tool(name='portal_catalog')
             wf_tool = getToolByName(self.context, 'portal_workflow')
@@ -245,6 +252,9 @@ class View(grok.View):
             filters['language'] = self.flattenedList(filters['language'])
 
         return filters
+
+    def filtersString(self):
+        return urllib.urlencode(self.request.form, True)
 
     def flattenedString(self, item):
         if isinstance(item, str):

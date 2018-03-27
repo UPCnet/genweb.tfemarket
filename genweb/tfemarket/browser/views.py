@@ -3,13 +3,25 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
 from genweb.tfemarket import _
+import urllib
 
 
 def redirectAfterChangeActualState(self):
     if self.context.portal_type == 'genweb.tfemarket.offer':
-        self.request.response.redirect(self.context.absolute_url() + "#offer-applications")
+        self.request.response.redirect(self.context.absolute_url() + '#offer-applications')
+    elif self.context.portal_type == 'genweb.tfemarket.market':
+        self.request.response.setCookie('MERCAT_TFE', clearFiltersCookie(self), path='/')
+        self.request.response.redirect(self.context.absolute_url())
     else:
         self.request.response.redirect(self.context.absolute_url())
+
+
+def clearFiltersCookie(self):
+    filters = self.request.form
+    filters.pop('estat', None)
+    filters.pop('id', None)
+    filters.pop('_authenticator', None)
+    return filters
 
 
 class changeActualState(BrowserView):
