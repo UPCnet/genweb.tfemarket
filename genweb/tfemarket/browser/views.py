@@ -1,9 +1,22 @@
 # -*- coding: utf-8 -*-
+from datetime import date
+from datetime import datetime
+from five import grok
+from operator import itemgetter
+from plone import api
+from plone.directives import form
+from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
+from zope.component import getMultiAdapter
+from zope.component import queryUtility
 
 from genweb.tfemarket import _
-import urllib
+from genweb.tfemarket.content.offer import IOffer
+from genweb.tfemarket.content.market import IMarket
+from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
+from genweb.tfemarket.utils import canDoAction
 
 
 def redirectAfterChangeActualState(self):
@@ -52,3 +65,93 @@ class changeActualState(BrowserView):
         except:
             self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
             redirectAfterChangeActualState(self)
+
+
+class AllOffers(grok.View):
+    grok.context(IMarket)
+    grok.name('allOffers')
+    grok.template("allOffers")
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getOffers(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+        path = self.context.getPhysicalPath()
+        path = "/".join(path)
+
+        roles = api.user.get_roles()
+        if 'teacher' in self.request.form and 'Anonymous' not in roles and 'Student' not in roles:
+            values = catalog(path={'query': path, 'depth': 1},
+                             object_provides=IOffer.__identifier__,
+                             sort_on='sortable_title',
+                             sort_order='ascending',
+                             Creator=api.user.get_current().id)
+        else:
+            values = catalog(path={'query': path, 'depth': 1},
+                             object_provides=IOffer.__identifier__,
+                             sort_on='sortable_title',
+                             sort_order='ascending')
+
+        results = []
+        for item in values:
+            offer = item.getObject()
+            workflowActions = wf_tool.listActionInfos(object=offer)
+            workflows = tools.workflow().getWorkflowsFor(offer)[0]
+
+            results.append(dict(title=item.Title,
+                                state=workflows['states'][item.review_state].title,
+                                url=item.getURL(),
+                                path=item.getPath(),
+                                item_path=offer.absolute_url_path(),
+                                dept=offer.dept,
+                                effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
+                                expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
+                                teacher_manager=offer.teacher_manager,
+                                modality=offer.modality,
+                                description=offer.description,
+                                langs=offer.lang,
+                                multiple_langs=len(offer.lang) > 1,
+                                environmental_theme=offer.environmental_theme,
+                                grant=offer.grant,
+                                degrees=offer.degree,
+                                multiple_degrees=len(offer.degree) > 1,
+                                keywords=offer.keys,
+                                offer_id=offer.offer_id,
+                                center=offer.center,
+                                workflows=workflowActions,
+                                can_edit=canDoAction(self, offer, 'edit'),
+                                ))
+
+        return results
+
+    def getDegrees(self):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        current_language = api.portal.get_current_language()
+
+        result = []
+        if tfe_tool.titulacions_table:
+            for item in tfe_tool.titulacions_table:
+                titulacio = str(item['plan_year']) + " - "
+                if current_language == 'ca':
+                    titulacio +=  item['titulacio_ca']
+                elif current_language == 'es':
+                    titulacio += item['titulacio_es']
+                else:
+                    titulacio += item['titulacio_en']
+
+                result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
+
+        result = sorted(result, key=itemgetter('lit'))
+        result.insert(0, {'id' : 'a', 'lit' : _(u"All")})
+        return result
+
+    def getDegreeLiteralFromId(self, id):
+        degrees = self.getDegrees()
+        degree = _(u'Degree deleted')
+        result = [item['lit'] for item in degrees if item['id'] == id]
+        if result:
+            degree = result[0]
+        return degree
