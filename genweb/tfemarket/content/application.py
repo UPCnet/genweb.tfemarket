@@ -2,8 +2,10 @@
 
 from plone.directives import form, dexterity
 from five import grok
+from plone import api
 from plone.autoform import directives
 from zope import schema
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from plone.app.textfield import RichText as RichTextField
 from genweb.tfemarket import _
 
@@ -48,8 +50,13 @@ class Add(dexterity.AddForm):
 
     def updateWidgets(self):
         super(Add, self).updateWidgets()
-
-        self.widgets["dni"].value = 'lalalala'
+        catalog = api.portal.get_tool(name='portal_catalog')
+        items = catalog(object_provides=IApplication.__identifier__,
+                        Creator=api.user.get_current().id)
+        if len(items) > 0:
+            item = items[0].absolute_url()
+            self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
+            self.redirect(self.context.absolute_url())
 
 
 class View(grok.View):

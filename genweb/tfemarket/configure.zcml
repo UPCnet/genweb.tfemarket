@@ -60,13 +60,13 @@
     <subscriber
       for=".content.application.IApplication
            Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
-      handler=".browser.events.change.application_changed"
+      handler=".browser.events.change.applicationChanged"
     />
 
     <subscriber
       for=".content.offer.IOffer
            Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-      handler=".browser.events.change.offer_changed"
+      handler=".browser.events.change.offerChanged"
     />
 
 </configure>

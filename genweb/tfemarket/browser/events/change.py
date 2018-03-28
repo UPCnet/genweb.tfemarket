@@ -10,7 +10,7 @@ from genweb.tfemarket import _
 import transaction
 
 
-def application_changed(application, event):
+def applicationChanged(application, event):
     """ If genweb.tfemarket.application change WF, sends email.
     """
 
@@ -61,7 +61,7 @@ def application_changed(application, event):
         application.plone_utils.addPortalMessage(portalMsg, 'info')
 
 
-def offer_changed(offer, event):
+def offerChanged(offer, event):
     """ If genweb.tfemarket.offer change WF, checks if expired.
     """
     if event.transition is not None:

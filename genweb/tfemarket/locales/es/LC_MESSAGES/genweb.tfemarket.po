@@ -38,7 +38,7 @@ msgstr ""
 msgid "Add topics one per line"
 msgstr ""
 
-#: ../content/market.py:190
+#: ../content/market.py:197
 #: ../content/offer.py:351
 #: ../content/templates/market_view.pt:53
 msgid "All"
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Applications"
 msgstr ""
 
-#: ../content/application.py:40
+#: ../content/application.py:42
 msgid "Body"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Catalan"
 msgstr ""
 
-#: ../content/templates/market_view.pt:192
+#: ../content/templates/market_view.pt:193
 #: ../content/templates/offer_view.pt:42
 msgid "Center"
 msgstr ""
@@ -73,7 +73,7 @@ msgstr ""
 msgid "CoManager"
 msgstr ""
 
-#: ../content/market.py:186
+#: ../content/market.py:193
 #: ../content/offer.py:255
 #: ../content/templates/market_view.pt:59
 msgid "Company"
@@ -104,12 +104,12 @@ msgstr ""
 msgid "Degree code at PRISMA"
 msgstr ""
 
-#: ../content/market.py:220
+#: ../content/market.py:227
 #: ../content/offer.py:356
 msgid "Degree deleted"
 msgstr ""
 
-#: ../content/templates/market_view.pt:224
+#: ../content/templates/market_view.pt:225
 #: ../content/templates/offer_view.pt:96
 msgid "Degrees"
 msgstr ""
@@ -120,7 +120,7 @@ msgid "Departament"
 msgstr ""
 
 #: ../content/offer.py:182
-#: ../content/templates/market_view.pt:212
+#: ../content/templates/market_view.pt:213
 #: ../content/templates/offer_view.pt:72
 msgid "Description"
 msgstr ""
@@ -141,12 +141,12 @@ msgstr ""
 msgid "Environmental Theme"
 msgstr ""
 
-#: ../content/templates/market_view.pt:246
+#: ../content/templates/market_view.pt:247
 #: ../content/templates/offer_view.pt:118
 msgid "Environmental theme"
 msgstr ""
 
-#: ../browser/views.py:39
+#: ../browser/views.py:50
 msgid "Error you can't perform the action."
 msgstr ""
 
@@ -163,11 +163,11 @@ msgstr ""
 msgid "Hide search"
 msgstr ""
 
-#: ../content/application.py:30
+#: ../content/application.py:32
 msgid "Identification number"
 msgstr ""
 
-#: ../content/templates/market_view.pt:188
+#: ../content/templates/market_view.pt:189
 #: ../content/templates/offer_view.pt:38
 msgid "Identifier"
 msgstr ""
@@ -189,25 +189,25 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-#: ../content/templates/market_view.pt:232
+#: ../content/templates/market_view.pt:233
 #: ../content/templates/offer_view.pt:104
 msgid "Language work elaboration"
 msgstr ""
 
-#: ../content/templates/market_view.pt:238
+#: ../content/templates/market_view.pt:239
 #: ../content/templates/offer_view.pt:110
 msgid "Languages work elaboration"
 msgstr ""
 
-#: ../content/market.py:191
+#: ../content/market.py:198
 msgid "Last day"
 msgstr ""
 
-#: ../content/market.py:193
+#: ../content/market.py:200
 msgid "Last month"
 msgstr ""
 
-#: ../content/market.py:192
+#: ../content/market.py:199
 msgid "Last week"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../content/application.py:35
+#: ../content/application.py:37
 msgid "Name and surname"
 msgstr ""
 
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Name center"
 msgstr ""
 
-#: ../content/templates/market_view.pt:248
+#: ../content/templates/market_view.pt:249
 #: ../content/templates/offer_view.pt:120
 msgid "No"
 msgstr ""
@@ -261,12 +261,12 @@ msgstr ""
 msgid "Offer"
 msgstr ""
 
-#: ../content/application.py:19
+#: ../content/application.py:21
 #: ../content/offer.py:172
 msgid "Offer id"
 msgstr ""
 
-#: ../content/application.py:25
+#: ../content/application.py:27
 msgid "Offer title"
 msgstr ""
 
@@ -282,7 +282,7 @@ msgstr ""
 msgid "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr ""
 
-#: ../content/templates/market_view.pt:251
+#: ../content/templates/market_view.pt:252
 #: ../content/templates/offer_view.pt:123
 msgid "Possibility of scholarship"
 msgstr ""
@@ -332,7 +332,7 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: ../content/templates/market_view.pt:206
+#: ../content/templates/market_view.pt:207
 #: ../content/templates/offer_view.pt:66
 msgid "Teacher manager"
 msgstr ""
@@ -370,7 +370,7 @@ msgstr ""
 msgid "UPC Mercat TFE"
 msgstr ""
 
-#: ../content/market.py:187
+#: ../content/market.py:194
 msgid "University"
 msgstr ""
 
@@ -382,9 +382,13 @@ msgstr ""
 msgid "With the possibility of offering grant/financing"
 msgstr ""
 
-#: ../content/templates/market_view.pt:247
+#: ../content/templates/market_view.pt:248
 #: ../content/templates/offer_view.pt:119
 msgid "Yes"
+msgstr ""
+
+#: ../content/application.py:59
+msgid "You have already created an application."
 msgstr ""
 
 #. Default: "Application"
@@ -409,7 +413,7 @@ msgstr ""
 msgid "degree"
 msgstr ""
 
-#: ../content/templates/market_view.pt:173
+#: ../content/templates/market_view.pt:174
 #: ../content/templates/offer_view.pt:177
 msgid "edit"
 msgstr ""
@@ -473,7 +477,7 @@ msgstr ""
 msgid "titulacionstable"
 msgstr ""
 
-#: ../content/templates/market_view.pt:177
+#: ../content/templates/market_view.pt:178
 #: ../content/templates/offer_view.pt:181
 msgid "view"
 msgstr ""
