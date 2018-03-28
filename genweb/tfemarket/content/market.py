@@ -295,3 +295,10 @@ class View(grok.View):
             return listItems
         else:
             return self.flattenedString(listItems)
+
+    def checkPermissionViewAllOffersTeacher(self):
+        roles = api.user.get_roles()
+        if 'Teacher' in roles or 'Market Manager' in roles or 'Manager' in roles:
+            return True
+        else:
+            return False

@@ -163,10 +163,18 @@
                         </span>
                       </div>
 
-                      <button type="submit" id="offersFilter" form="offersFilter">
-                        <span class="fa fa-search"></span>
-                        <span i18n:translate="">Search</span>
-                      </button>
+                      <div class="bottomLinks">
+                        <button type="submit" class="link" tal:condition="view/checkPermissionViewAllOffersTeacher">
+                          <a href="allOffers?teacher" i18n:translate="">View my offers</a>
+                        </button>
+                        <button type="submit" class="link">
+                          <a href="allOffers" i18n:translate="">View all offers</a>
+                        </button>
+                        <button type="submit" id="offersFilter" form="offersFilter">
+                          <span class="fa fa-search"></span>
+                          <span i18n:translate="">Search</span>
+                        </button>
+                      </div>
                     </form>
                   </div>
                   <p id="notResults" tal:condition="not: offers" i18n:translate="">

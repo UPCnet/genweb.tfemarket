@@ -455,10 +455,10 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 }
 
 #formSearchOffers button {
-  float: right;
   background: #007BC0;
 }
 
+#formSearchOffers button a,
 #formSearchOffers button span {
   color: #FFF;
   font-weight: normal;
@@ -483,6 +483,18 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 #formSearchOffers .multicheck .multicheckOptions > span {
   margin-right: 20px;
   display: inline-block
+}
+
+#formSearchOffers .bottomLinks {
+  float: right;
+}
+
+#formSearchOffers .bottomLinks button.link {
+  margin-right: 5px;
+}
+
+#formSearchOffers .bottomLinks button.link a {
+  text-decoration: none;
 }
 
 #offersList #expandSearch,
