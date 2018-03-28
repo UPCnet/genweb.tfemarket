@@ -50,13 +50,15 @@ class Add(dexterity.AddForm):
 
     def updateWidgets(self):
         super(Add, self).updateWidgets()
-        catalog = api.portal.get_tool(name='portal_catalog')
-        items = catalog(object_provides=IApplication.__identifier__,
-                        Creator=api.user.get_current().id)
-        if len(items) > 0:
-            item = items[0].absolute_url()
-            self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
-            self.redirect(self.context.absolute_url())
+        roles = api.user.get_roles()
+        if 'Market Manager' not in roles and 'Manager' not in roles:
+            catalog = api.portal.get_tool(name='portal_catalog')
+            items = catalog(object_provides=IApplication.__identifier__,
+                            Creator=api.user.get_current().id)
+            if len(items) > 0:
+                item = items[0].absolute_url()
+                self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
+                self.redirect(self.context.absolute_url())
 
 
 class View(grok.View):
