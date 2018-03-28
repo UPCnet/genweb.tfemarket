@@ -16,7 +16,7 @@
             <div id="market" tal:define="save view/saveFilters; userApplications view/userApplications">
                 <div id="userApplication" tal:condition="userApplications">
                   <h2 i18n:translate="">Your application</h2>
-                  <table>
+                  <table class="tableApplications">
                     <thead>
                       <tr>
                         <th i18n:translate="">DNI</th>

@@ -139,7 +139,7 @@
                            role="tabpanel"
                            tal:attributes="id string:offer-applications;
                                            aria-labelledby string:offer-applications-tab">
-                        <table>
+                        <table class="tableApplications">
                           <thead>
                             <tr>
                               <th i18n:translate="">DNI</th>

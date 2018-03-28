@@ -12,6 +12,7 @@ from zope.component import getMultiAdapter
 from zope.component import queryUtility
 
 from genweb.tfemarket import _
+from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.content.market import IMarket
 from genweb.tfemarket.controlpanel import ITfemarketSettings
@@ -23,8 +24,17 @@ def redirectAfterChangeActualState(self):
     if self.context.portal_type == 'genweb.tfemarket.offer':
         self.request.response.redirect(self.context.absolute_url() + '#offer-applications')
     elif self.context.portal_type == 'genweb.tfemarket.market':
-        self.request.response.setCookie('MERCAT_TFE', clearFiltersCookie(self), path='/')
-        self.request.response.redirect(self.context.absolute_url())
+        if not 'view' in self.request.form:
+            self.request.response.setCookie('MERCAT_TFE', clearFiltersCookie(self), path='/')
+            self.request.response.redirect(self.context.absolute_url())
+        else:
+            url = self.context.absolute_url() + "/" + self.request.form.get('view')
+            if 'offer' in self.request.form:
+                if 'teacher' in self.request.form.get('view'):
+                    url = url + "&offer=" + self.request.form.get('offer')
+                else:
+                    url = url + "?offer=" + self.request.form.get('offer')
+            self.request.response.redirect(url)
     else:
         self.request.response.redirect(self.context.absolute_url())
 
@@ -82,7 +92,7 @@ class AllOffers(grok.View):
         path = "/".join(path)
 
         roles = api.user.get_roles()
-        if 'teacher' in self.request.form and 'Anonymous' not in roles and 'Student' not in roles:
+        if 'teacher' in self.request.form and ('Teacher' in roles or ('Anonymous' not in roles and 'Student' not in roles)):
             values = catalog(path={'query': path, 'depth': 1},
                              object_provides=IOffer.__identifier__,
                              sort_on='sortable_title',
@@ -126,6 +136,42 @@ class AllOffers(grok.View):
 
         return results
 
+    def getApplications(self, offer):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+        results = []
+        values = catalog(path={'query': offer['item_path'], 'depth': 1},
+                         object_provides=IApplication.__identifier__)
+
+        for item in values:
+            application = item.getObject()
+            workflowActions = wf_tool.listActionInfos(object=application)
+            workflows = tools.workflow().getWorkflowsFor(application)[0]
+
+            results.append(dict(title=item.Title,
+                                state=workflows['states'][item.review_state].title,
+                                url=item.getURL(),
+                                item_path=application.absolute_url_path(),
+                                dni=application.dni,
+                                name=application.title,
+                                offer_id=application.offer_id,
+                                offer_title=application.offer_title,
+                                workflows=workflowActions,
+                                can_edit=canDoAction(self, application, 'edit'),
+                                ))
+        return results
+
+    def canDoAction(self, context, action):
+        context_state = getMultiAdapter((context, self.request), name=u'plone_context_state')
+        actions = context_state.actions('object')
+
+        for item in actions:
+            if item['id'] == action and item['visible'] and item['allowed']:
+                return True
+
+        return False
+
     def getDegrees(self):
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
@@ -155,3 +201,15 @@ class AllOffers(grok.View):
         if result:
             degree = result[0]
         return degree
+
+    def openApplicationsTav(self):
+        roles = api.user.get_roles()
+        if 'teacher' in self.request.form and ('Teacher' in roles or ('Anonymous' not in roles and 'Student' not in roles)):
+            return True
+        return False
+
+    def getActualView(self):
+        if 'teacher' in self.request.form:
+            return "allOffers?teacher"
+        else:
+            return "allOffers"
