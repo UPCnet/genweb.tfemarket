@@ -39,8 +39,7 @@ class changeActualState(BrowserView):
             currentitem = portal_catalog.searchResults(
                 portal_type=['genweb.tfemarket.application', 'genweb.tfemarket.offer'],
                 id=item,
-                path={'query': object_path,
-                      'depth': 1})[0].getObject()
+                path={'query': object_path})[0].getObject()
 
             if currentitem:
                 wftool = getToolByName(self.context, 'portal_workflow')

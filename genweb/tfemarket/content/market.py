@@ -184,6 +184,32 @@ class View(grok.View):
 
             return results
 
+    def userApplications(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+        results = []
+        values = catalog(object_provides=IApplication.__identifier__,
+                         Creator=api.user.get_current().id)
+
+        for item in values:
+            application = item.getObject()
+            workflowActions = wf_tool.listActionInfos(object=application)
+            workflows = tools.workflow().getWorkflowsFor(application)[0]
+
+            results.append(dict(title=item.Title,
+                                state=workflows['states'][item.review_state].title,
+                                url=item.getURL(),
+                                item_path=application.absolute_url_path(),
+                                dni=application.dni,
+                                name=application.title,
+                                offer_id=application.offer_id,
+                                offer_title=application.offer_title,
+                                workflows=workflowActions,
+                                can_edit=canDoAction(self, application, 'edit'),
+                                ))
+        return results
+
     def getLanguages(self):
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
