@@ -196,21 +196,22 @@ class View(grok.View):
                          Creator=api.user.get_current().id)
 
         for item in values:
-            application = item.getObject()
-            workflowActions = wf_tool.listActionInfos(object=application)
-            workflows = tools.workflow().getWorkflowsFor(application)[0]
+            if item.review_state not in ['cancelled', 'rejected']:
+                application = item.getObject()
+                workflowActions = wf_tool.listActionInfos(object=application)
+                workflows = tools.workflow().getWorkflowsFor(application)[0]
 
-            results.append(dict(title=item.Title,
-                                state=workflows['states'][item.review_state].title,
-                                url=item.getURL(),
-                                item_path=application.absolute_url_path(),
-                                dni=application.dni,
-                                name=application.title,
-                                offer_id=application.offer_id,
-                                offer_title=application.offer_title,
-                                workflows=workflowActions,
-                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
-                                ))
+                results.append(dict(title=item.Title,
+                                    state=workflows['states'][item.review_state].title,
+                                    url=item.getURL(),
+                                    item_path=application.absolute_url_path(),
+                                    dni=application.dni,
+                                    name=application.title,
+                                    offer_id=application.offer_id,
+                                    offer_title=application.offer_title,
+                                    workflows=workflowActions,
+                                    can_edit=checkPermission('cmf.ModifyPortalContent', application),
+                                    ))
         return results
 
     def getLanguages(self):
