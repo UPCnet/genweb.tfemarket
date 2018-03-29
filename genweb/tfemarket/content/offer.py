@@ -7,25 +7,24 @@ from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
 from plone.directives import form, dexterity
 from plone.registry.interfaces import IRegistry
-from zope import schema
-from zope.component import getMultiAdapter
-from zope.component import queryUtility
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.schema.vocabulary import SimpleTerm
-from genweb.tfemarket import _
-from genweb.tfemarket.content.application import IApplication
-from genweb.tfemarket.controlpanel import ITfemarketSettings
-from genweb.tfemarket.utils import canDoAction
-
-from zope.schema import ValidationError
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.utils import checkEmailAddress
 from Products.CMFDefault.exceptions import EmailAddressInvalid
-
-from zope.lifecycleevent.interfaces import IObjectAddedEvent
-
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
+from zope import schema
+from zope.component import getMultiAdapter
+from zope.component import queryUtility
+from zope.schema import ValidationError
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.security import checkPermission
+
+from genweb.tfemarket import _
+from genweb.tfemarket.content.application import IApplication
+from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 
 import unicodedata
 
@@ -390,19 +389,12 @@ class View(dexterity.DisplayForm):
                                 offer_id=application.offer_id,
                                 offer_title=application.offer_title,
                                 workflows=workflowActions,
-                                can_edit=canDoAction(self, application, 'edit'),
+                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
                                 ))
         return results
 
-    def canDoAction(self, context, action):
-        context_state = getMultiAdapter((context, self.request), name=u'plone_context_state')
-        actions = context_state.actions('object')
-
-        for item in actions:
-            if item['id'] == action and item['visible'] and item['allowed']:
-                return True
-
-        return False
+    def checkPermissionCreateApplications(self):
+        return CPCreateApplications(self, self.context)
 
 
 class AddForm(dexterity.AddForm):

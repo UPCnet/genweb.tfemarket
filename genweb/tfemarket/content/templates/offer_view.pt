@@ -133,6 +133,11 @@
                               </tal:block>
                             </p>
                           </div>
+                          <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
+                            <button type="submit" class="link">
+                              <a href="add++genweb.tfemarket.application" i18n:translate="">Request the offer</a>
+                            </button>
+                          </div>
                         </div>
                       </div>
                       <div tal:condition="applications" class="applications tab-pane fade"

@@ -7,15 +7,17 @@ from operator import itemgetter
 from plone import api
 from plone.directives import form
 from plone.registry.interfaces import IRegistry
+from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from Products.CMFCore.utils import getToolByName
+from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
-from genweb.tfemarket.utils import canDoAction
+from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
+from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 
 import ast
 import unicodedata
@@ -177,7 +179,8 @@ class View(grok.View):
                                     offer_id=offer.offer_id,
                                     center=offer.center,
                                     workflows=workflowActions,
-                                    can_edit=canDoAction(self, offer, 'edit'),
+                                    can_edit=checkPermission('cmf.ModifyPortalContent', offer),
+                                    can_create_application=CPCreateApplications(self, offer),
                                     ))
 
                 results = self.filterResults(results)
@@ -206,7 +209,7 @@ class View(grok.View):
                                 offer_id=application.offer_id,
                                 offer_title=application.offer_title,
                                 workflows=workflowActions,
-                                can_edit=canDoAction(self, application, 'edit'),
+                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
                                 ))
         return results
 
@@ -296,9 +299,5 @@ class View(grok.View):
         else:
             return self.flattenedString(listItems)
 
-    def checkPermissionViewAllOffersTeacher(self):
-        roles = api.user.get_roles()
-        if 'Teacher' in roles or 'Market Manager' in roles or 'Manager' in roles:
-            return True
-        else:
-            return False
+    def checkPermissionCreateOffers(self):
+        return CPCreateOffers(self, self.context)

@@ -219,6 +219,20 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-left: 5px;
 }
 
+.informacioTFE .bottomLinks {
+  float: right;
+}
+
+.informacioTFE .bottomLinks button.link {
+  background: #007BC0;
+}
+
+.informacioTFE .bottomLinks button.link a {
+  text-decoration: none;
+  color: #FFF;
+  font-weight: normal;
+}
+
 #headerSearchOffers {
   display: inline;
 }
@@ -318,10 +332,6 @@ table.tableApplications tbody td {
   padding: 5px;
 }
 
-#offerData .informacioTFE .leftInfoOffer:last-child {
-  margin-bottom: 0px;
-}
-
 table.tableApplications tbody .actions {
   text-align: right;
 }
@@ -332,7 +342,7 @@ table.tableApplications tbody .actions {
 
 #market .rightInfoOffer.actions button,
 #market .rightInfoOffer.actions > a,
-table.tableApplications tbody button,
+table.tableApplications tbody .actions button,
 table.tableApplications tbody .actions > a {
   background-color: #FFF;
   border: 1px solid #adadad;

@@ -10,6 +10,7 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
+from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
@@ -17,7 +18,8 @@ from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.content.market import IMarket
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
-from genweb.tfemarket.utils import canDoAction
+from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
+from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 
 
 def redirectAfterChangeActualState(self):
@@ -92,7 +94,7 @@ class AllOffers(grok.View):
         path = "/".join(path)
 
         roles = api.user.get_roles()
-        if 'teacher' in self.request.form and ('Teacher' in roles or ('Anonymous' not in roles and 'Student' not in roles)):
+        if 'teacher' in self.request.form and CPCreateOffers(self, self.context):
             values = catalog(path={'query': path, 'depth': 1},
                              object_provides=IOffer.__identifier__,
                              sort_on='sortable_title',
@@ -131,7 +133,8 @@ class AllOffers(grok.View):
                                 offer_id=offer.offer_id,
                                 center=offer.center,
                                 workflows=workflowActions,
-                                can_edit=canDoAction(self, offer, 'edit'),
+                                can_edit=checkPermission('cmf.ModifyPortalContent', offer),
+                                can_create_application=CPCreateApplications(self, offer),
                                 ))
 
         return results
@@ -158,19 +161,9 @@ class AllOffers(grok.View):
                                 offer_id=application.offer_id,
                                 offer_title=application.offer_title,
                                 workflows=workflowActions,
-                                can_edit=canDoAction(self, application, 'edit'),
+                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
                                 ))
         return results
-
-    def canDoAction(self, context, action):
-        context_state = getMultiAdapter((context, self.request), name=u'plone_context_state')
-        actions = context_state.actions('object')
-
-        for item in actions:
-            if item['id'] == action and item['visible'] and item['allowed']:
-                return True
-
-        return False
 
     def getDegrees(self):
         registry = queryUtility(IRegistry)
@@ -204,7 +197,7 @@ class AllOffers(grok.View):
 
     def openApplicationsTav(self):
         roles = api.user.get_roles()
-        if 'teacher' in self.request.form and ('Teacher' in roles or ('Anonymous' not in roles and 'Student' not in roles)):
+        if 'teacher' in self.request.form and CPCreateOffers(self, self.context):
             return True
         return False
 

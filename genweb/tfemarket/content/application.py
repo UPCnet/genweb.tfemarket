@@ -2,12 +2,13 @@
 
 from plone.directives import form, dexterity
 from five import grok
-from plone import api
 from plone.autoform import directives
 from zope import schema
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from plone.app.textfield import RichText as RichTextField
+
 from genweb.tfemarket import _
+from genweb.tfemarket.utils import checkPermissionCreateApplications
 
 grok.templatedir("templates")
 
@@ -51,21 +52,9 @@ class Add(dexterity.AddForm):
     def updateWidgets(self):
         super(Add, self).updateWidgets()
 
-        roles = api.user.get_roles()
-        if 'Market Manager' not in roles and 'Manager' not in roles:
-
-            catalog = api.portal.get_tool(name='portal_catalog')
-            items = catalog(object_provides=IApplication.__identifier__,
-                            Creator=api.user.get_current().id)
-
-            results = []
-            for item in items:
-                if item.review_state not in ['cancelled', 'rejected']:
-                    results.append(item)
-
-            if len(results) > 0:
-                self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
-                self.redirect(self.context.absolute_url())
+        if not checkPermissionCreateApplications(self, self.context):
+            self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
+            self.redirect(self.context.absolute_url())
 
 
 class View(grok.View):

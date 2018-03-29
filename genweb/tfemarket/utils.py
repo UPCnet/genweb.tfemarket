@@ -1,9 +1,13 @@
+# -*- coding: utf-8 -*-
+
 from Acquisition import aq_inner
 from plone import api
+from plone.app.content.browser.folderfactories import _allowedTypes
 from Products.CMFCore.utils import getToolByName
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from zope.component import getMultiAdapter
+from zope.security import checkPermission
 
 
 def sendMessage(context, fromMsg, toMsg, subject, message):
@@ -19,17 +23,6 @@ def sendMessage(context, fromMsg, toMsg, subject, message):
     mailhost.send(msg)
 
 
-def canDoAction(self, context, action):
-    context_state = getMultiAdapter((context, self.request), name=u'plone_context_state')
-    actions = context_state.actions('object')
-
-    for item in actions:
-        if item['id'] == action and item['visible'] and item['allowed']:
-            return True
-
-    return False
-
-
 def getLdapUserData(director):
     """Create a new gengrup user by email. You have to call
        updateUserSitesCatalog to get the new user into the
@@ -43,3 +36,39 @@ def getLdapUserData(director):
     search_result = acl_users.searchUsers(id=director, exactMatch=True)
 
     return search_result
+
+
+def checkPermissionCreateApplications(self, context):
+    roles = api.user.get_roles()
+    if 'Market Manager' not in roles and 'Manager' not in roles:
+        if checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
+            catalog = api.portal.get_tool(name='portal_catalog')
+            from genweb.tfemarket.content.application import IApplication
+            items = catalog(object_provides=IApplication.__identifier__,
+                            Creator=api.user.get_current().id)
+
+            results = []
+            for item in items:
+                if item.review_state not in ['cancelled', 'rejected']:
+                    results.append(item)
+
+            if len(results) > 0:
+                return False
+            else:
+                return True
+        else:
+            return False
+    else:
+        return True
+
+
+def checkPermissionCreateOffers(self, context):
+    return checkPermissionCreateObject(self, context, 'genweb.tfemarket.offer')
+
+
+def checkPermissionCreateObject(self, context, objectID):
+    if checkPermission('cmf.AddPortalContent', context):
+        for item in _allowedTypes(self.request, context):
+            if item.id == objectID:
+                return True
+    return False

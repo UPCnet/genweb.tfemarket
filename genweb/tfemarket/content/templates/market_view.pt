@@ -164,7 +164,7 @@
                       </div>
 
                       <div class="bottomLinks">
-                        <button type="submit" class="link" tal:condition="view/checkPermissionViewAllOffersTeacher">
+                        <button type="submit" class="link" tal:condition="view/checkPermissionCreateOffers">
                           <a href="allOffers?teacher" i18n:translate="">View my offers</a>
                         </button>
                         <button type="submit" class="link">
@@ -318,6 +318,12 @@
                                           <span class="keyword" tal:content="keyword">Keyword</span>
                                         </tal:block>
                                       </p>
+                                    </div>
+                                    <div class="bottomLinks" tal:condition="offer/can_create_application">
+                                      <button type="submit" class="link">
+                                        <a tal:attributes="href string:${offer/url}/++add++genweb.tfemarket.application"
+                                           i18n:translate="">Request the offer</a>
+                                      </button>
                                     </div>
                                   </div>
                                 </div>
