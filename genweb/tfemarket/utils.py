@@ -31,8 +31,6 @@ def getLdapUserData(director):
 
     acl_users = api.portal.get_tool(name='acl_users')
 
-    import ipdb; ipdb.set_trace()
-
     search_result = acl_users.searchUsers(id=director, exactMatch=True)
 
     return search_result

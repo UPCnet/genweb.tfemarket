@@ -24,7 +24,10 @@ from zope.security import checkPermission
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
+
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
+
+from genweb.tfemarket.utils import getLdapUserData
 
 import unicodedata
 
@@ -368,6 +371,8 @@ class View(dexterity.DisplayForm):
         return raw.raw_encoded if hasattr(raw, 'raw_encoded') else None
 
     def getApplications(self, offer):
+        name_teacher = u'esteve.pallares'
+        lala = getLdapUserData(name_teacher)
         catalog = api.portal.get_tool(name='portal_catalog')
         wf_tool = getToolByName(self.context, 'portal_workflow')
         tools = getMultiAdapter((self.context, self.request), name='plone_tools')

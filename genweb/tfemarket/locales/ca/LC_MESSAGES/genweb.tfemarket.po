@@ -410,7 +410,7 @@ msgstr "Temàtiques principals dels TFE's"
 #: ../configure.zcml:41
 #: ../controlpanel.py:134
 msgid "UPC Mercat TFE"
-msgstr "Mercat de treballs final d'estudis de la UPC"
+msgstr "UPC Mercat TFE (genweb.tfemarket)"
 
 #: ../content/offer.py:234
 msgid "Universitat"
