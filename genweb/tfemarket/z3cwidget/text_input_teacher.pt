@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     tal:omit-tag="">
+
+     <input id="form-widgets-teacher_manager" type="text" autocomplete="no"
+            tal:attributes="name view/name;
+                           class view/klass;
+                           style view/style;
+                           title view/title;
+                           lang view/lang;
+                           onclick view/onclick;
+                           ondblclick view/ondblclick;
+                           onmousedown view/onmousedown;
+                           onmouseup view/onmouseup;
+                           onmouseover view/onmouseover;
+                           onmousemove view/onmousemove;
+                           onmouseout view/onmouseout;
+                           onkeypress view/onkeypress;
+                           onkeydown view/onkeydown;
+                           onkeyup view/onkeyup;
+                           value view/value;
+                           disabled view/disabled;
+                           tabindex view/tabindex;
+                           onfocus view/onfocus;
+                           onblur view/onblur;
+                           onchange view/onchange;
+                           readonly view/readonly;
+                           alt view/alt;
+                           accesskey view/accesskey;
+                           onselect view/onselect;
+                           size view/size;
+                           maxlength view/maxlength;
+                           placeholder view/placeholder;
+                           autocapitalize view/autocapitalize;" />
+
+  <ul id="form-widgets-teacher_manager-hint"></ul>
+
+  <script type="text/javascript">
+    $("#form-widgets-teacher_manager").on("keyup paste change", function(){
+      $("#form-widgets-teacher_manager-hint").html("");
+      $("#form-widgets-teacher_email").val("");
+      if($("#form-widgets-teacher_manager").val().length > 3){
+        $.ajax({
+          type: 'POST',
+          data: { "teacher" : $("#form-widgets-teacher_manager").val() },
+          url: 'getTeacher',
+          success: function(data){
+            results = $.parseJSON(data);
+            if(results != null){
+              if(results.length == 1 && results[0]['id'] == $("#form-widgets-teacher_manager").val()){
+                $("#form-widgets-teacher_email").val(results[0]['email']);
+                $("#form-widgets-teacher_manager-hint").hide();
+              }else{
+                $.each( results, function( key, value ){
+                  $("#form-widgets-teacher_manager-hint").show().delay(5000).fadeOut();
+                  $("#form-widgets-teacher_manager-hint").append("<li>" + value['id'] + "</li>");
+                });
+              }
+            }else{
+              $("#form-widgets-teacher_manager-hint").hide();
+            }
+          }
+        });
+      }
+    });
+  </script>
+
+</html>

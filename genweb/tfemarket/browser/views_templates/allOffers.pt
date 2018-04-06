@@ -19,6 +19,9 @@
                   <div id="headerListOffers">
                     <h2 i18n:translate="">All TFE's</h2>
                     <div class="buttonsRight documentDescription">
+                      <button type="submit" class="link" tal:condition="view/checkPermissionCreateOffers">
+                        <a href="++add++genweb.tfemarket.offer" i18n:translate="">Create a offer</a>
+                      </button>
                       <span id="buttonsAllOffers" tal:condition="offers">
                         <span id="expandAll" i18n:translate="">Desplega tot <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
                         <span id="collapseAll" i18n:translate="">Plega tot <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
@@ -177,7 +180,7 @@
                                           <span tal:condition="not: offer/grant" i18n:translate="">No</span>
                                         </p>
                                       </div>
-                                      <div class="leftInfoOffer">
+                                      <div class="leftInfoOffer" tal:condition="offer/keywords">
                                         <p class="keywords">
                                           <span class="field"><span i18n:translate="">Keywords</span>: </span>
                                           <tal:block tal:repeat="keyword offer/keywords">
