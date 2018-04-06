@@ -5,6 +5,7 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="genweb.tfemarket">
 
     <i18n:registerTranslations directory="locales" />
@@ -68,6 +69,14 @@
       for=".content.offer.IOffer
            Products.DCWorkflow.interfaces.IAfterTransitionEvent"
       handler=".browser.events.change.offerChanged"
+    />
+
+    <plone:behavior
+      title="Date range for offer"
+      description="Adds effective date and expiration date fields required."
+      provides="genweb.tfemarket.behaviors.IPublicationOffer"
+      factory="genweb.tfemarket.behaviors.PublicationOffer"
+      for="plone.dexterity.interfaces.IDexterityContent"
     />
 
 </configure>
