@@ -204,7 +204,11 @@ class getTeacher(grok.View):
         if len(teachers) > 0:
             listTeachers = []
             for teacher in teachers:
-                listTeachers.append({'id' : teacher['id'], 'email' : teacher['id'] + "@gmail.com"})
+                listTeachers.append({'id' : teacher['id'], 'email' : ''})
             return json.dumps(listTeachers[:5])
+        elif len(teachers) == 1:
+            pm = getToolByName(self.context, 'portal_membership')
+            member = pm.getMemberById(teacher['id'])
+            return {'id' : teacher['id'], 'email' : member.getProperty("email")}
         else:
             return None
