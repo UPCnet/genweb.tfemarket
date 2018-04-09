@@ -201,14 +201,14 @@ class getTeacher(grok.View):
 
     def render(self):
         teachers = getLdapUserData(self.request.form['teacher'])
-        if len(teachers) > 0:
+        if len(teachers) == 1 and teachers[0]['id'] == self.request.form['teacher']:
+            pm = getToolByName(self.context, 'portal_membership')
+            member = pm.getMemberById(teachers[0]['id'])
+            return json.dumps([{'id' : teachers[0]['id'], 'email' : member.getProperty("email")}])
+        elif len(teachers) > 0:
             listTeachers = []
             for teacher in teachers:
                 listTeachers.append({'id' : teacher['id'], 'email' : ''})
             return json.dumps(listTeachers[:5])
-        elif len(teachers) == 1:
-            pm = getToolByName(self.context, 'portal_membership')
-            member = pm.getMemberById(teacher['id'])
-            return {'id' : teacher['id'], 'email' : member.getProperty("email")}
         else:
             return None
