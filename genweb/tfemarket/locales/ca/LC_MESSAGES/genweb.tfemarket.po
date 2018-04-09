@@ -531,7 +531,7 @@ msgstr "Objectius"
 
 #: ../content/offer.py:205
 msgid "offer_topic"
-msgstr "Temàtica principal"
+msgstr "Tema"
 
 #: ../content/offer.py:195
 msgid "offer_workload"

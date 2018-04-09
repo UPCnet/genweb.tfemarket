@@ -529,7 +529,7 @@ msgstr "Objetivos"
 
 #: ../content/offer.py:205
 msgid "offer_topic"
-msgstr "Temática principal"
+msgstr "Tema"
 
 #: ../content/offer.py:195
 msgid "offer_workload"
