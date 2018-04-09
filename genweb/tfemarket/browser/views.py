@@ -20,6 +20,11 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
+from genweb.tfemarket.utils import getDegrees
+from genweb.tfemarket.utils import getDegreeLiteralFromId
+from genweb.tfemarket.utils import getLdapUserData
+
+import json
 
 
 def redirectAfterChangeActualState(self):
@@ -94,7 +99,7 @@ class AllOffers(grok.View):
         path = "/".join(path)
 
         roles = api.user.get_roles()
-        if 'teacher' in self.request.form and CPCreateOffers(self, self.context):
+        if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
             values = catalog(path={'query': path, 'depth': 1},
                              object_provides=IOffer.__identifier__,
                              sort_on='sortable_title',
@@ -166,43 +171,60 @@ class AllOffers(grok.View):
         return results
 
     def getDegrees(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
-        current_language = api.portal.get_current_language()
-
-        result = []
-        if tfe_tool.titulacions_table:
-            for item in tfe_tool.titulacions_table:
-                titulacio = str(item['plan_year']) + " - "
-                if current_language == 'ca':
-                    titulacio +=  item['titulacio_ca']
-                elif current_language == 'es':
-                    titulacio += item['titulacio_es']
-                else:
-                    titulacio += item['titulacio_en']
-
-                result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
-
-        result = sorted(result, key=itemgetter('lit'))
-        result.insert(0, {'id' : 'a', 'lit' : _(u"All")})
-        return result
+        return getDegrees()
 
     def getDegreeLiteralFromId(self, id):
-        degrees = self.getDegrees()
-        degree = _(u'Degree deleted')
-        result = [item['lit'] for item in degrees if item['id'] == id]
-        if result:
-            degree = result[0]
-        return degree
+        return getDegreeLiteralFromId(id)
 
     def openApplicationsTav(self):
         roles = api.user.get_roles()
-        if 'teacher' in self.request.form and CPCreateOffers(self, self.context):
+        if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
             return True
         return False
 
     def getActualView(self):
-        if 'teacher' in self.request.form:
+        if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
             return "allOffers?teacher"
         else:
             return "allOffers"
+
+    def checkPermissionCreateOffers(self):
+        return CPCreateOffers(self, self.context)
+
+
+class getTeacher(grok.View):
+    grok.context(IOffer)
+    grok.name('getTeacher')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        teachers = getLdapUserData(self.request.form['teacher'])
+        if len(teachers) > 0:
+            listTeachers = []
+            for teacher in teachers:
+                listTeachers.append({'id' : teacher['id'], 'email' : teacher['id'] + "@gmail.com"})
+            return json.dumps(listTeachers[:5])
+        else:
+            return None
+
+
+from zope.component import queryUtility
+from plone.registry.interfaces import IRegistry
+from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
+from zope.interface import Interface
+
+import transaction
+
+
+class recaptchaKeys(grok.View):
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+    grok.name('recaptchaKeys')
+
+    def render(self):
+        registry = queryUtility(IRegistry)
+        recaptcha_tool = registry.forInterface(IReCaptchaSettings)
+        recaptcha_tool.public_key = u'6LcEtjEUAAAAAHVmogdyohPkahy_0MrKsOjKlefn'
+        recaptcha_tool.private_key = u'6LcEtjEUAAAAAFoR3rEORJQTzMdQE0y6prqaC0Ta'
+        transaction.commit()

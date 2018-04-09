@@ -68,6 +68,9 @@
                   <div id="headerListOffers">
                     <h2 i18n:translate="">All TFE's</h2>
                     <div class="buttonsRight documentDescription">
+                      <button type="submit" class="link" tal:condition="view/checkPermissionCreateOffers">
+                        <a href="++add++genweb.tfemarket.offer" i18n:translate="">Create a offer</a>
+                      </button>
                       <span id="buttonsSearch">
                         <span id="expandSearch">
                           <span i18n:translate="">Show search</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -242,30 +245,16 @@
                                 <div class="data">
                                   <div class="informacioTFE">
                                     <div class="leftInfoOffer">
-                                      <p class="identifier">
-                                        <span class="field"><span i18n:translate="">Identifier</span>: </span>
-                                        <span tal:content="offer/offer_id">123456 AB</span>
-                                      </p>
-                                      <p class="center">
-                                        <span class="field"><span i18n:translate="">Center</span>: </span>
-                                        <span tal:content="offer/center">0111-Q</span>
-                                      </p>
-                                      <p class="departament">
-                                        <span class="field"><span i18n:translate="">Departament</span>: </span>
-                                        <span tal:content="offer/dept">37</span>
-                                      </p>
-                                    </div>
-                                    <div class="leftInfoOffer">
-                                      <p class="modality">
-                                        <span class="field"><span i18n:translate="">Modality</span>: </span>
-                                        <span tal:content="offer/modality">Modalitat</span>
-                                      </p>
                                       <p class="teacher">
                                         <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
                                         <span tal:content="offer/teacher_manager">Aureli Condogvia</span>
                                       </p>
+                                      <p class="modality">
+                                        <span class="field"><span i18n:translate="">Modality</span>: </span>
+                                        <span tal:content="offer/modality">Modalitat</span>
+                                      </p>
                                     </div>
-                                    <div class="leftInfoOffer">
+                                    <div class="leftInfoOffer" tal:condition="offer/description">
                                       <div class="description">
                                         <span class="field"><span i18n:translate="">Description</span>: </span>
                                         <p tal:content="offer/description">Nam fermentum tellus vel tellus imperdiet, consectetur finibus sem mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur eu maximus nulla, vitae rhoncus sem. Pellentesque efficitur, tellus vel luctus dictum, nunc tellus cursus nulla, eget aliquam lacus lacus non lectus. Nam molestie ex dolor, quis pulvinar tortor volutpat rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec ligula sit amet quam hendrerit vestibulum. Nunc ut mauris lorem. Praesent non sollicitudin eros, non vestibulum erat. Nulla facilisi.</p>
@@ -299,19 +288,14 @@
                                         </ul>
                                       </div>
                                     </div>
-                                    <div class="leftInfoOffer">
-                                      <p class="environmentalTheme">
-                                        <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
-                                        <span tal:condition="offer/environmental_theme" i18n:translate="">Yes</span>
-                                        <span tal:condition="not: offer/environmental_theme" i18n:translate="">No</span>
-                                      </p>
+                                    <div class="leftInfoOffer" tal:condition="offer/grant">
                                       <p class="grant">
                                         <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
                                         <span tal:condition="offer/grant" i18n:translate="">Yes</span>
                                         <span tal:condition="not: offer/grant" i18n:translate="">No</span>
                                       </p>
                                     </div>
-                                    <div class="leftInfoOffer">
+                                    <div class="leftInfoOffer" tal:condition="offer/keywords">
                                       <p class="keywords">
                                         <span class="field"><span i18n:translate="">Keywords</span>: </span>
                                         <tal:block tal:repeat="keyword offer/keywords">

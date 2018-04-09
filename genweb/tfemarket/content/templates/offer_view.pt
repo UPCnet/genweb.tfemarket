@@ -58,13 +58,13 @@
                             </p>
                           </div>
                           <div class="leftInfoOffer">
-                            <p class="modality">
-                              <span class="field"><span i18n:translate="">Modality</span>: </span>
-                              <span tal:content="context/modality">Modalitat</span>
-                            </p>
                             <p class="teacher">
                               <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
                               <span tal:content="context/teacher_manager">Aureli Condogvia</span>
+                            </p>
+                            <p class="modality">
+                              <span class="field"><span i18n:translate="">Modality</span>: </span>
+                              <span tal:content="context/modality">Modalitat</span>
                             </p>
                           </div>
                           <div class="leftInfoOffer">
@@ -125,7 +125,7 @@
                               <span tal:condition="not: context/grant" i18n:translate="">No</span>
                             </p>
                           </div>
-                          <div class="leftInfoOffer">
+                          <div class="leftInfoOffer" tal:condition="context/keys">
                             <p class="keywords">
                               <span class="field"><span i18n:translate="">Keywords</span>: </span>
                               <tal:block tal:repeat="keyword context/keys">

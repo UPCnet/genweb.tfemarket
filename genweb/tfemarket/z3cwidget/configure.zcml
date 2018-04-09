@@ -1,0 +1,34 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="plone">
+
+  <class class=".widget.FieldsetWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.IFieldsetWidget"
+        />
+  </class>
+
+  <z3c:widgetTemplate
+      mode="input"
+      widget=".widget.IFieldsetWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="fieldset.pt"
+      />
+
+  <class class=".widget.TeacherInputWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.ITeacherInputWidget"
+        />
+  </class>
+
+  <z3c:widgetTemplate
+      mode="input"
+      widget=".widget.ITeacherInputWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="text_input_teacher.pt"
+      />
+
+</configure>

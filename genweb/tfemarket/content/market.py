@@ -18,6 +18,8 @@ from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
+from genweb.tfemarket.utils import getDegrees
+from genweb.tfemarket.utils import getDegreeLiteralFromId
 
 import ast
 import unicodedata
@@ -230,35 +232,10 @@ class View(grok.View):
                 {'id' : 'm', 'lit' : _(u"Last month")}]
 
     def getDegrees(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
-        current_language = api.portal.get_current_language()
-
-        result = []
-        if tfe_tool.titulacions_table:
-            for item in tfe_tool.titulacions_table:
-                titulacio = str(item['plan_year']) + " - "
-                if current_language == 'ca':
-                    titulacio +=  item['titulacio_ca']
-                elif current_language == 'es':
-                    titulacio += item['titulacio_es']
-                else:
-                    titulacio += item['titulacio_en']
-
-                result.append({'id' : item['codi_prisma'], 'lit' : titulacio})
-
-        result = sorted(result, key=itemgetter('lit'))
-        result.insert(0, {'id' : 'a', 'lit' : _(u"All")})
-        return result
-
+        return getDegrees()
 
     def getDegreeLiteralFromId(self, id):
-        degrees = self.getDegrees()
-        degree = _(u'Degree deleted')
-        result = [item['lit'] for item in degrees if item['id'] == id]
-        if result:
-            degree = result[0]
-        return degree
+        return getDegreeLiteralFromId(id)
 
     def getKeys(self):
         registry = queryUtility(IRegistry)

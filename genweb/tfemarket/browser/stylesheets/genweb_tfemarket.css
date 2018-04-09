@@ -181,11 +181,11 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 }
 
 .informacioTFE .leftInfoOffer {
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
-.informacioTFE .leftInfoOffer:last-child {
-  margin-bottom: 0px;
+.informacioTFE .leftInfoOffer:first-child {
+  margin-top: 0px;
 }
 
 .informacioTFE .rightInfoOffer {
@@ -212,6 +212,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 }
 
 .informacioTFE .keyword {
+  display: inline-block;
   background-color: #fcfbfb;
   padding: 2px 6px;
   border-radius: 10px !important;
@@ -223,10 +224,16 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   float: right;
 }
 
+.buttonsRight button.link {
+  margin-right: 15px;
+}
+
+.buttonsRight button.link,
 .informacioTFE .bottomLinks button.link {
   background: #007BC0;
 }
 
+.buttonsRight button.link a,
 .informacioTFE .bottomLinks button.link a {
   text-decoration: none;
   color: #FFF;
@@ -547,6 +554,36 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 
 .portaltype-genweb-tfemarket-market #viewlet-below-content {
   margin-top: 35px;
+}
+
+h2.formFieldset {
+  padding: 4px 4px;
+  border-radius: 6px !important;
+  border-top: 6px double;
+  border-bottom: 6px double;
+}
+
+#form-widgets-teacher_manager {
+  margin-bottom: 0px;
+}
+
+#form-widgets-teacher_manager-hint {
+  position: absolute;
+  width: 222px;
+  list-style-type: none;
+  margin-left: 0px;
+  border: 1px solid rgba(178, 178, 178, 0.8);
+  display: none;
+}
+
+#form-widgets-teacher_manager-hint li {
+  padding: 4px;
+  border-bottom: 1px solid rgba(178, 178, 178, 0.8);
+  background: #DEDEDE;
+}
+
+#form-widgets-teacher_manager-hint li:last-child {
+  border-bottom: 0px;
 }
 
 #listing-table a.contenttype-genweb-tfemarket-application:before,

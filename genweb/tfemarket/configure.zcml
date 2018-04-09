@@ -5,6 +5,7 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:grok="http://namespaces.zope.org/grok"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="genweb.tfemarket">
 
     <i18n:registerTranslations directory="locales" />
@@ -14,6 +15,7 @@
     <includeDependencies package="." />
 
     <include package=".browser" />
+    <include package=".z3cwidget" />
 
     <grok:grok package="." />
 
@@ -74,6 +76,14 @@
       title="TFE Market Ldap setup"
       description="Setup Ldap Market"
       handler="genweb.tfemarket.setuphandlers.setLdapMerkat"
+    />
+
+    <plone:behavior
+      title="Date range for offer"
+      description="Adds effective date and expiration date fields required."
+      provides="genweb.tfemarket.behaviors.IPublicationOffer"
+      factory="genweb.tfemarket.behaviors.PublicationOffer"
+      for="plone.dexterity.interfaces.IDexterityContent"
     />
 
 </configure>

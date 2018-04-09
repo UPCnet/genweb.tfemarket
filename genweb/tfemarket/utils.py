@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from Acquisition import aq_inner
+from operator import itemgetter
 from plone import api
 from plone.app.content.browser.folderfactories import _allowedTypes
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from zope.component import getMultiAdapter
+from zope.component import queryUtility
 from zope.security import checkPermission
+
+from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket import _
 
 
 def sendMessage(context, fromMsg, toMsg, subject, message):
@@ -70,3 +76,35 @@ def checkPermissionCreateObject(self, context, objectID):
             if item.id == objectID:
                 return True
     return False
+
+
+def getDegrees():
+    registry = queryUtility(IRegistry)
+    tfe_tool = registry.forInterface(ITfemarketSettings)
+    current_language = api.portal.get_current_language()
+
+    result = []
+    if tfe_tool.titulacions_table:
+        for item in tfe_tool.titulacions_table:
+            titulacio = str(item['plan_year']) + " - "
+            if current_language == 'ca':
+                titulacio += item['titulacio_ca']
+            elif current_language == 'es':
+                titulacio += item['titulacio_es']
+            else:
+                titulacio += item['titulacio_en']
+
+            result.append({'id': item['codi_prisma'], 'lit': titulacio})
+
+    result = sorted(result, key=itemgetter('lit'))
+    result.insert(0, {'id': 'a', 'lit': _(u"All")})
+    return result
+
+
+def getDegreeLiteralFromId(id):
+    degrees = getDegrees()
+    degree = _(u'Degree deleted')
+    result = [item['lit'] for item in degrees if item['id'] == id]
+    if result:
+        degree = result[0]
+    return degree

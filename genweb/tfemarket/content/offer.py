@@ -19,6 +19,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.security import checkPermission
 
 from genweb.tfemarket import _
@@ -26,6 +27,10 @@ from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
+from genweb.tfemarket.utils import getDegrees
+from genweb.tfemarket.utils import getDegreeLiteralFromId
+from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
+from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
 
 from genweb.tfemarket.utils import getLdapUserData
 
@@ -205,6 +210,47 @@ class IOffer(form.Schema):
         required=False
     )
 
+
+    form.widget(degree=CheckBoxFieldWidget)
+    degree = schema.List(
+        value_type=schema.Choice(source=u"genweb.tfemarket.Titulacions"),
+        title=_(u'degree'),
+        required=False,
+    )
+
+    ############################################################################
+
+    form.widget('fieldset_dir', FieldsetFieldWidget)
+    fieldset_dir = schema.Text(
+        default=_(u'Direction'),
+        required=False,
+    )
+
+    form.widget('teacher_manager', TeacherInputFieldWidget)
+    teacher_manager = schema.TextLine(
+        title=_(u'TFEteacher'),
+        required=False,
+    )
+
+    teacher_email = schema.TextLine(
+        title=_(u'Teacher Email'),
+        required=False,
+        constraint=validateaddress,
+    )
+
+    dept = schema.TextLine(
+        title=_(u'University department'),
+        required=False,
+    )
+
+    ############################################################################
+
+    form.widget('fieldset_req', FieldsetFieldWidget)
+    fieldset_req = schema.Text(
+        default=_(u'Requirements'),
+        required=False,
+    )
+
     requirements = RichTextField(
         title=_(u'requirements'),
         required=False,
@@ -217,64 +263,6 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    grant = schema.Bool(
-        title=_(u'grant'),
-        required=False,
-        default=False,
-    )
-
-    form.widget(degree=CheckBoxFieldWidget)
-    degree = schema.List(
-        value_type=schema.Choice(source=u"genweb.tfemarket.Titulacions"),
-        title=_(u'degree'),
-        required=False,
-    )
-
-    modality = schema.Choice(
-        title=_(u'modality'),
-        values=[u'Universitat',
-                u'Empresa'],
-        default=_(u'Universitat'),
-        required=False,
-    )
-
-    teacher_manager = schema.TextLine(
-        title=_(u'TFEteacher'),
-        required=False,
-    )
-
-    dept = schema.TextLine(
-        title=_(u'University department'),
-        required=False,
-    )
-
-    teacher_email = schema.TextLine(
-        title=_(u'Teacher Email'),
-        required=False,
-        constraint=validateaddress,
-    )
-
-    co_manager = schema.TextLine(
-        title=_(u'CoManager'),
-        required=False,
-    )
-
-    company = schema.TextLine(
-        title=_(u'Company'),
-        required=False,
-    )
-
-    company_contact = schema.TextLine(
-        title=_(u'Company Contact'),
-        required=False,
-    )
-
-    company_email = schema.TextLine(
-        title=_(u'Company Email'),
-        required=False,
-        constraint=validateaddress,
-    )
-
     num_students = schema.Int(
         title=_(u'Number of students'),
         description=_(u'Number of students for the TFE (1 to 10)'),
@@ -282,6 +270,20 @@ class IOffer(form.Schema):
         min=1,
         max=10,
         required=False,
+    )
+
+    ############################################################################
+
+    form.widget('fieldset_opt', FieldsetFieldWidget)
+    fieldset_opt = schema.Text(
+        default=_(u'Options'),
+        required=False,
+    )
+
+    grant = schema.Bool(
+        title=_(u'grant'),
+        required=False,
+        default=False,
     )
 
     confidential = schema.Bool(
@@ -309,6 +311,43 @@ class IOffer(form.Schema):
         required=False,
     )
 
+    ############################################################################
+
+    form.widget('fieldset_mod', FieldsetFieldWidget)
+    fieldset_mod = schema.Text(
+        default=_(u'Modality'),
+        required=False,
+    )
+
+    modality = schema.Choice(
+        title=_(u'modality'),
+        values=[u'Universitat',
+                u'Empresa'],
+        default=_(u'Universitat'),
+        required=False,
+    )
+
+    co_manager = schema.TextLine(
+        title=_(u'CoManager'),
+        required=False,
+    )
+
+    company = schema.TextLine(
+        title=_(u'Company'),
+        required=False,
+    )
+
+    company_contact = schema.TextLine(
+        title=_(u'Company Contact'),
+        required=False,
+    )
+
+    company_email = schema.TextLine(
+        title=_(u'Company Email'),
+        required=False,
+        constraint=validateaddress,
+        )
+
 
 @grok.subscribe(IOffer, IObjectAddedEvent)
 def numOfferDefaultValue(offer, event):
@@ -326,6 +365,16 @@ def numOfferDefaultValue(offer, event):
     offer.reindexObject()
 
 
+@grok.subscribe(IOffer, IObjectAddedEvent)
+@grok.subscribe(IOffer, IObjectModifiedEvent)
+def deleteFieldsets(offer, event):
+    if hasattr(offer, "fieldset_dir"): delattr(offer, "fieldset_dir")
+    if hasattr(offer, "fieldset_req"): delattr(offer, "fieldset_req")
+    if hasattr(offer, "fieldset_opt"): delattr(offer, "fieldset_opt")
+    if hasattr(offer, "fieldset_mod"): delattr(offer, "fieldset_mod")
+    offer.reindexObject()
+
+
 class View(dexterity.DisplayForm):
     """The view. May will a template from <modulename>_templates/view.pt,
     and will be called 'view' unless otherwise stated.
@@ -338,34 +387,10 @@ class View(dexterity.DisplayForm):
         return date.strftime('%d/%m/%Y')
 
     def getDegrees(self):
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
-        current_language = api.portal.get_current_language()
-
-        result = []
-        if tfe_tool.titulacions_table:
-            for item in tfe_tool.titulacions_table:
-                titulacio = str(item['plan_year']) + " - "
-                if current_language == 'ca':
-                    titulacio += item['titulacio_ca']
-                elif current_language == 'es':
-                    titulacio += item['titulacio_es']
-                else:
-                    titulacio += item['titulacio_en']
-
-                result.append({'id': item['codi_prisma'], 'lit': titulacio})
-
-        result = sorted(result, key=itemgetter('lit'))
-        result.insert(0, {'id': 'a', 'lit': _(u"All")})
-        return result
+        return getDegrees()
 
     def getDegreeLiteralFromId(self, id):
-        degrees = self.getDegrees()
-        degree = _(u'Degree deleted')
-        result = [item['lit'] for item in degrees if item['id'] == id]
-        if result:
-            degree = result[0]
-        return degree
+        return getDegreeLiteralFromId(id)
 
     def getRaw(self, raw):
         return raw.raw_encoded if hasattr(raw, 'raw_encoded') else None
