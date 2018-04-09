@@ -21,6 +21,24 @@
                                            id string:offer-data-tab"
                            i18n:translate="">Offer</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab"
+                           tal:attributes="href string:#offer-req;
+                                           id string:offer-mod-req"
+                           i18n:translate="">Requirements</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab"
+                           tal:attributes="href string:#offer-mod;
+                                           id string:offer-mod-tab"
+                           i18n:translate="">Modality</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab"
+                           tal:attributes="href string:#offer-opt;
+                                           id string:offer-opt-tab"
+                           i18n:translate="">Options</a>
+                      </li>
                       <li class="nav-item" tal:condition="applications">
                         <a class="nav-link" data-toggle="tab"
                            tal:attributes="href string:#offer-applications;
@@ -38,14 +56,6 @@
                               <span class="field"><span i18n:translate="">Identifier</span>: </span>
                               <span tal:content="context/offer_id">123456 AB</span>
                             </p>
-                            <p class="center">
-                              <span class="field"><span i18n:translate="">Center</span>: </span>
-                              <span tal:content="context/center">0111-Q</span>
-                            </p>
-                            <p class="departament">
-                              <span class="field"><span i18n:translate="">Departament</span>: </span>
-                              <span tal:content="context/dept">37</span>
-                            </p>
                           </div>
                           <div class="rightInfoOffer">
                             <p class="effectiveDate" tal:condition="context/effective_date">
@@ -62,9 +72,13 @@
                               <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
                               <span tal:content="context/teacher_manager">Aureli Condogvia</span>
                             </p>
-                            <p class="modality">
-                              <span class="field"><span i18n:translate="">Modality</span>: </span>
-                              <span tal:content="context/modality">Modalitat</span>
+                            <p class="teacherEmail">
+                              <span class="field"><span i18n:translate="">Teacher Email</span>: </span>
+                              <span tal:content="context/teacher_email">???@???.???</span>
+                            </p>
+                            <p class="departament">
+                              <span class="field"><span i18n:translate="">Departament</span>: </span>
+                              <span tal:content="context/dept">37</span>
                             </p>
                           </div>
                           <div class="leftInfoOffer">
@@ -72,18 +86,6 @@
                               <span class="field"><span i18n:translate="">Description</span>: </span>
                               <p tal:content="context/description">Nam fermentum tellus vel tellus imperdiet, consectetur finibus sem mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur eu maximus nulla, vitae rhoncus sem. Pellentesque efficitur, tellus vel luctus dictum, nunc tellus cursus nulla, eget aliquam lacus lacus non lectus. Nam molestie ex dolor, quis pulvinar tortor volutpat rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec ligula sit amet quam hendrerit vestibulum. Nunc ut mauris lorem. Praesent non sollicitudin eros, non vestibulum erat. Nulla facilisi.</p>
                             </div>
-                          </div>
-                          <div class="leftInfoOffer">
-                            <p class="features">
-                              <span class="field"><span i18n:translate="">Features</span>: </span>
-                              <span class="raw" tal:content="python: view.getRaw(context.features)">Sed quis pretium urna. Aenean at elit non est posuere vestibulum a sit amet nisl. Integer efficitur aliquam arcu sit amet pulvinar. Phasellus tincidunt elementum tortor egestas tincidunt. Aenean elementum nec massa aliquam porttitor.</span>
-                            </p>
-                          </div>
-                          <div class="leftInfoOffer">
-                            <p class="requirements">
-                              <span class="field"><span i18n:translate="">Requirements</span>: </span>
-                              <span class="raw" tal:content="python: view.getRaw(context.requirements)">Cap</span>
-                            </p>
                           </div>
                           <div class="leftInfoOffer">
                             <p class="degrees" tal:condition="python: len(context.degree) == 1">
@@ -99,30 +101,10 @@
                               </ul>
                             </div>
                           </div>
-                          <div class="leftInfoOffer">
-                            <p class="language" tal:condition="python: len(context.lang) == 1">
-                              <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
-                              <tal:block tal:repeat="lang context/lang">
-                                <span class="lang" tal:content="lang">Language</span>
-                              </tal:block>
-                            </p>
-                            <div class="language" tal:condition="python: len(context.lang) > 1">
-                              <span class="field"><span i18n:translate="">Languages work elaboration</span>: </span>
-                              <ul tal:repeat="lang context/lang">
-                                <li class="lang" tal:content="lang">Language</li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="leftInfoOffer">
-                            <p class="environmentalTheme">
-                              <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
-                              <span tal:condition="context/environmental_theme" i18n:translate="">Yes</span>
-                              <span tal:condition="not: context/environmental_theme" i18n:translate="">No</span>
-                            </p>
-                            <p class="grant">
-                              <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
-                              <span tal:condition="context/grant" i18n:translate="">Yes</span>
-                              <span tal:condition="not: context/grant" i18n:translate="">No</span>
+                          <div class="leftInfoOffer" tal:condition="context/topic">
+                            <p class="topic">
+                              <span class="field"><span i18n:translate="">Topic</span>: </span>
+                              <span tal:content="context/topic">Topic</span>
                             </p>
                           </div>
                           <div class="leftInfoOffer" tal:condition="context/keys">
@@ -137,6 +119,112 @@
                             <button type="submit" class="link">
                               <a href="add++genweb.tfemarket.application" i18n:translate="">Request the offer</a>
                             </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="data tab-pane fade" role="tabpanel"
+                           tal:attributes="id string:offer-req;
+                                           aria-labelledby string:offer-data-req">
+                        <div class="informacioTFE">
+                          <div class="leftInfoOffer">
+                            <p class="numStudents">
+                              <span class="field"><span i18n:translate="">Number of students</span>: </span>
+                              <span tal:content="context/num_students">1</span>
+                            </p>
+                            <p class="workload">
+                              <span class="field"><span i18n:translate="">Workload</span>: </span>
+                              <span tal:content="context/workload">Workload</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="targets">
+                              <span class="field"><span i18n:translate="">Targets</span>: </span>
+                              <span class="raw" tal:content="python: view.getRaw(context.targets)">Sed quis pretium urna. Aenean at elit non est posuere vestibulum a sit amet nisl. Integer efficitur aliquam arcu sit amet pulvinar. Phasellus tincidunt elementum tortor egestas tincidunt. Aenean elementum nec massa aliquam porttitor.</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="features">
+                              <span class="field"><span i18n:translate="">Features</span>: </span>
+                              <span class="raw" tal:content="python: view.getRaw(context.features)">Sed quis pretium urna. Aenean at elit non est posuere vestibulum a sit amet nisl. Integer efficitur aliquam arcu sit amet pulvinar. Phasellus tincidunt elementum tortor egestas tincidunt. Aenean elementum nec massa aliquam porttitor.</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="requirements">
+                              <span class="field"><span i18n:translate="">Requirements</span>: </span>
+                              <span class="raw" tal:content="python: view.getRaw(context.requirements)">Sed quis pretium urna. Aenean at elit non est posuere vestibulum a sit amet nisl. Integer efficitur aliquam arcu sit amet pulvinar. Phasellus tincidunt elementum tortor egestas tincidunt. Aenean elementum nec massa aliquam porttitor.</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer" tal:condition="python: len(context.lang) > 0">
+                            <p class="language" tal:condition="python: len(context.lang) == 1">
+                              <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
+                              <tal:block tal:repeat="lang context/lang">
+                                <span class="lang" tal:content="lang">Language</span>
+                              </tal:block>
+                            </p>
+                            <div class="language" tal:condition="python: len(context.lang) > 1">
+                              <span class="field"><span i18n:translate="">Languages work elaboration</span>: </span>
+                              <ul tal:repeat="lang context/lang">
+                                <li class="lang" tal:content="lang">Language</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="data tab-pane fade" role="tabpanel"
+                           tal:attributes="id string:offer-mod;
+                                           aria-labelledby string:offer-data-mod">
+                        <div class="informacioTFE">
+                          <div class="leftInfoOffer">
+                            <p class="modality">
+                              <span class="field"><span i18n:translate="">Modality</span>: </span>
+                              <span tal:content="context/modality">Modalitat</span>
+                            </p>
+                          </div>
+                          <div class="leftInfoOffer">
+                            <p class="coManager">
+                              <span class="field"><span i18n:translate="">CoManager</span>: </span>
+                              <span tal:content="context/co_manager">CoManager</span>
+                            </p>
+                            <p class="company">
+                              <span class="field"><span i18n:translate="">Company</span>: </span>
+                              <span tal:content="context/company">Company</span>
+                            </p>
+                            <p class="companyContact">
+                              <span class="field"><span i18n:translate="">Company Contact</span>: </span>
+                              <span tal:content="context/company_contact">Company Contact</span>
+                            </p>
+                            <p class="companyEmail">
+                              <span class="field"><span i18n:translate="">Company Email</span>: </span>
+                              <span tal:content="context/company_email">Company Email</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="data tab-pane fade" role="tabpanel"
+                           tal:attributes="id string:offer-opt;
+                                           aria-labelledby string:offer-opt-tab">
+                        <div class="informacioTFE">
+                          <div class="leftInfoOffer">
+                            <p class="environmentalTheme">
+                              <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
+                              <span tal:condition="context/environmental_theme" i18n:translate="">Yes</span>
+                              <span tal:condition="not: context/environmental_theme" i18n:translate="">No</span>
+                            </p>
+                            <p class="grant">
+                              <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
+                              <span tal:condition="context/grant" i18n:translate="">Yes</span>
+                              <span tal:condition="not: context/grant" i18n:translate="">No</span>
+                            </p>
+                            <p class="confidential">
+                              <span class="field"><span i18n:translate="">Confidential</span>: </span>
+                              <span tal:condition="context/confidential" i18n:translate="">Yes</span>
+                              <span tal:condition="not: context/confidential" i18n:translate="">No</span>
+                            </p>
+                            <p class="scopeCooperation">
+                              <span class="field"><span i18n:translate="">Scope of cooperation</span>: </span>
+                              <span tal:condition="context/scope_cooperation" i18n:translate="">Yes</span>
+                              <span tal:condition="not: context/scope_cooperation" i18n:translate="">No</span>
+                            </p>
                           </div>
                         </div>
                       </div>

@@ -189,32 +189,23 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    targets = RichTextField(
-        title=_(u'offer_targets'),
-        required=False,
-    )
-
-    workload = schema.Text(
-        title=_(u'offer_workload'),
-        required=False,
-    )
-
-    features = RichTextField(
-        title=_(u'offer_features'),
-        required=False,
-    )
-
     topic = schema.Choice(
         title=_(u'offer_topic'),
         vocabulary=u"genweb.tfemarket.Topics",
         required=False
     )
 
-
     form.widget(degree=CheckBoxFieldWidget)
     degree = schema.List(
         value_type=schema.Choice(source=u"genweb.tfemarket.Titulacions"),
         title=_(u'degree'),
+        required=False,
+    )
+
+    form.widget(keys=CheckBoxFieldWidget)
+    keys = schema.List(
+        value_type=schema.Choice(source=u"genweb.tfemarket.Keys"),
+        title=_(u'keys'),
         required=False,
     )
 
@@ -251,18 +242,6 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    requirements = RichTextField(
-        title=_(u'requirements'),
-        required=False,
-    )
-
-    form.widget(lang=CheckBoxFieldWidget)
-    lang = schema.List(
-        value_type=schema.Choice(vocabulary=u"genweb.tfemarket.Langs"),
-        title=_(u'tfe_lang'),
-        required=False,
-    )
-
     num_students = schema.Int(
         title=_(u'Number of students'),
         description=_(u'Number of students for the TFE (1 to 10)'),
@@ -272,42 +251,30 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    ############################################################################
-
-    form.widget('fieldset_opt', FieldsetFieldWidget)
-    fieldset_opt = schema.Text(
-        default=_(u'Options'),
+    workload = schema.Text(
+        title=_(u'offer_workload'),
         required=False,
     )
 
-    grant = schema.Bool(
-        title=_(u'grant'),
-        required=False,
-        default=False,
-    )
-
-    confidential = schema.Bool(
-        title=_(u'confidential'),
-        default=False,
+    targets = RichTextField(
+        title=_(u'offer_targets'),
         required=False,
     )
 
-    environmental_theme = schema.Bool(
-        title=_(u'Environmental Theme'),
-        default=False,
+    features = RichTextField(
+        title=_(u'offer_features'),
         required=False,
     )
 
-    scope_cooperation = schema.Bool(
-        title=_(u'Scope of cooperation'),
-        default=False,
+    requirements = RichTextField(
+        title=_(u'requirements'),
         required=False,
     )
 
-    form.widget(keys=CheckBoxFieldWidget)
-    keys = schema.List(
-        value_type=schema.Choice(source=u"genweb.tfemarket.Keys"),
-        title=_(u'keys'),
+    form.widget(lang=CheckBoxFieldWidget)
+    lang = schema.List(
+        value_type=schema.Choice(vocabulary=u"genweb.tfemarket.Langs"),
+        title=_(u'tfe_lang'),
         required=False,
     )
 
@@ -347,6 +314,38 @@ class IOffer(form.Schema):
         required=False,
         constraint=validateaddress,
         )
+
+    ############################################################################
+
+    form.widget('fieldset_opt', FieldsetFieldWidget)
+    fieldset_opt = schema.Text(
+        default=_(u'Options'),
+        required=False,
+    )
+
+    grant = schema.Bool(
+        title=_(u'grant'),
+        required=False,
+        default=False,
+    )
+
+    confidential = schema.Bool(
+        title=_(u'confidential'),
+        default=False,
+        required=False,
+    )
+
+    environmental_theme = schema.Bool(
+        title=_(u'Environmental Theme'),
+        default=False,
+        required=False,
+    )
+
+    scope_cooperation = schema.Bool(
+        title=_(u'Scope of cooperation'),
+        default=False,
+        required=False,
+    )
 
 
 @grok.subscribe(IOffer, IObjectAddedEvent)
