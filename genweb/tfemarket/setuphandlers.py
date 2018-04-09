@@ -26,7 +26,6 @@ def uninstall(context):
     # Do something at the end of the uninstallation of this package.
 
 def setLdapMerkat(context):
-        import ipdb; ipdb.set_trace()
         portal = context.getSite()
         #ldap_name = context.request.form.get('ldap_name', 'ldap')
         ldap_name = 'ldapUPC'
