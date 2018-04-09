@@ -208,24 +208,3 @@ class getTeacher(grok.View):
             return json.dumps(listTeachers[:5])
         else:
             return None
-
-
-from zope.component import queryUtility
-from plone.registry.interfaces import IRegistry
-from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
-from zope.interface import Interface
-
-import transaction
-
-
-class recaptchaKeys(grok.View):
-    grok.context(Interface)
-    grok.require('cmf.ManagePortal')
-    grok.name('recaptchaKeys')
-
-    def render(self):
-        registry = queryUtility(IRegistry)
-        recaptcha_tool = registry.forInterface(IReCaptchaSettings)
-        recaptcha_tool.public_key = u'6LcEtjEUAAAAAHVmogdyohPkahy_0MrKsOjKlefn'
-        recaptcha_tool.private_key = u'6LcEtjEUAAAAAFoR3rEORJQTzMdQE0y6prqaC0Ta'
-        transaction.commit()
