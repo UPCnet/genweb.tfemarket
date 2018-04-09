@@ -123,6 +123,7 @@ class AllOffers(grok.View):
                                 path=item.getPath(),
                                 item_path=offer.absolute_url_path(),
                                 dept=offer.dept,
+                                company=offer.company,
                                 effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
                                 expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
                                 teacher_manager=offer.teacher_manager,

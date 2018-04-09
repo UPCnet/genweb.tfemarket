@@ -103,17 +103,21 @@
                       <label i18n:translate="">Departament</label>
                       <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
                         <option value="a" i18n:translate="">All</option>
-                        <!-- <tal:block tal:repeat="certification view/listCertifications">
-                          <option value="certification" tal:content="certification">Certification</option>
-                        </tal:block> -->
+                        <tal:block tal:repeat="departament view/getDeptartaments">
+                          <tal:block tal:define="selected python: save.has_key('departament') and not save['departament'] == 'a' and departament == save['departament']">
+                            <option tal:attributes="value departament; selected python: True if selected else False" tal:content="departament">Departament</option>
+                          </tal:block>
+                        </tal:block>
                       </select>
 
                       <label i18n:translate="">Company</label>
                       <select id="searchCompany" name="company" tal:attributes="value save/company|nothing">
                         <option value="a" i18n:translate="">All</option>
-                        <!-- <tal:block tal:repeat="certification view/listCertifications">
-                          <option value="certification" tal:content="certification">Certification</option>
-                        </tal:block> -->
+                        <tal:block tal:repeat="company view/getCompanys">
+                          <tal:block tal:define="selected python: save.has_key('company') and not save['company'] == 'a' and company == save['company']">
+                            <option tal:attributes="value company; selected python: True if selected else False" tal:content="company">Company</option>
+                          </tal:block>
+                        </tal:block>
                       </select>
 
                       <label i18n:translate="">Date</label>
@@ -249,9 +253,19 @@
                                         <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
                                         <span tal:content="offer/teacher_manager">Aureli Condogvia</span>
                                       </p>
+                                      <p class="departament">
+                                        <span class="field"><span i18n:translate="">Departament</span>: </span>
+                                        <span tal:content="offer/dept">Departament</span>
+                                      </p>
+                                    </div>
+                                    <div class="leftInfoOffer">
                                       <p class="modality">
                                         <span class="field"><span i18n:translate="">Modality</span>: </span>
                                         <span tal:content="offer/modality">Modalitat</span>
+                                      </p>
+                                      <p class="company">
+                                        <span class="field"><span i18n:translate="">Company</span>: </span>
+                                        <span tal:content="offer/company">Company</span>
                                       </p>
                                     </div>
                                     <div class="leftInfoOffer" tal:condition="offer/description">

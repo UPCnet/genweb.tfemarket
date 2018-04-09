@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from collections import OrderedDict
 from datetime import date
 from datetime import datetime
 from five import grok
@@ -55,12 +56,12 @@ class View(grok.View):
                 continue
 
             # Filter departament
-            if not filters['departament'] == 'a' and (not item.has_key('dept') or int(filters['departament']) not in item['dept']):
+            if not filters['departament'] == 'a' and (not item.has_key('dept') or filters['departament'] != item['dept']):
                 delete.append(index)
                 continue
 
             # Filter company
-            if not filters['company'] == 'a' and (not item.has_key('company') or int(filters['company']) not in item['company']):
+            if not filters['company'] == 'a' and (not item.has_key('company') or filters['company'] != item['company']):
                 delete.append(index)
                 continue
 
@@ -166,6 +167,7 @@ class View(grok.View):
                                     path=item.getPath(),
                                     item_path=offer.absolute_url_path(),
                                     dept=offer.dept,
+                                    company=offer.company,
                                     effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
                                     expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
                                     teacher_manager=offer.teacher_manager,
@@ -236,6 +238,32 @@ class View(grok.View):
 
     def getDegreeLiteralFromId(self, id):
         return getDegreeLiteralFromId(id)
+
+    def getAllOffers(self):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        path = self.context.getPhysicalPath()
+        path = "/".join(path)
+        return catalog(path={'query': path, 'depth': 1},
+                       object_provides=IOffer.__identifier__)
+
+    def getDeptartaments(self):
+        results = []
+        for item in self.getAllOffers():
+            offer = item.getObject()
+            if not offer.dept == None:
+                results.append(offer.dept)
+
+        return sorted(list(OrderedDict.fromkeys(results)))
+
+    def getCompanys(self):
+        results = []
+        for item in self.getAllOffers():
+            offer = item.getObject()
+            if not offer.company == None:
+                results.append(offer.company)
+
+        return sorted(list(OrderedDict.fromkeys(results)))
+
 
     def getKeys(self):
         registry = queryUtility(IRegistry)

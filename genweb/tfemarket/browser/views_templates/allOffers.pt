@@ -115,9 +115,19 @@
                                           <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
                                           <span tal:content="offer/teacher_manager">Aureli Condogvia</span>
                                         </p>
+                                        <p class="departament">
+                                          <span class="field"><span i18n:translate="">Departament</span>: </span>
+                                          <span tal:content="offer/dept">Departament</span>
+                                        </p>
+                                      </div>
+                                      <div class="leftInfoOffer">
                                         <p class="modality">
                                           <span class="field"><span i18n:translate="">Modality</span>: </span>
                                           <span tal:content="offer/modality">Modalitat</span>
+                                        </p>
+                                        <p class="company">
+                                          <span class="field"><span i18n:translate="">Company</span>: </span>
+                                          <span tal:content="offer/company">Company</span>
                                         </p>
                                       </div>
                                       <div class="leftInfoOffer" tal:condition="offer/description">
