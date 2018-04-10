@@ -8,7 +8,6 @@ from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.security import checkPermission
 
@@ -30,11 +29,8 @@ def sendMessage(context, fromMsg, toMsg, subject, message):
 
 
 def getLdapUserData(user):
-    """Create a new gengrup user by email. You have to call
-       updateUserSitesCatalog to get the new user into the
-       user_sites_catalog.
     """
-
+    """
     acl_users = api.portal.get_tool(name='acl_users')
     search_result = acl_users.searchUsers(id=user, exactMatch=True)
     return search_result

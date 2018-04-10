@@ -218,6 +218,7 @@ class IOffer(form.Schema):
     form.widget('teacher_manager', TeacherInputFieldWidget)
     teacher_manager = schema.TextLine(
         title=_(u'TFEteacher'),
+        description=_(u'Add a common name'),
         required=False,
     )
 
@@ -311,7 +312,7 @@ class IOffer(form.Schema):
         title=_(u'Company Email'),
         required=False,
         constraint=validateaddress,
-        )
+    )
 
     ############################################################################
 
@@ -365,10 +366,14 @@ def numOfferDefaultValue(offer, event):
 @grok.subscribe(IOffer, IObjectAddedEvent)
 @grok.subscribe(IOffer, IObjectModifiedEvent)
 def deleteFieldsets(offer, event):
-    if hasattr(offer, "fieldset_dir"): delattr(offer, "fieldset_dir")
-    if hasattr(offer, "fieldset_req"): delattr(offer, "fieldset_req")
-    if hasattr(offer, "fieldset_opt"): delattr(offer, "fieldset_opt")
-    if hasattr(offer, "fieldset_mod"): delattr(offer, "fieldset_mod")
+    if hasattr(offer, "fieldset_dir"):
+        delattr(offer, "fieldset_dir")
+    if hasattr(offer, "fieldset_req"):
+        delattr(offer, "fieldset_req")
+    if hasattr(offer, "fieldset_opt"):
+        delattr(offer, "fieldset_opt")
+    if hasattr(offer, "fieldset_mod"):
+        delattr(offer, "fieldset_mod")
     offer.reindexObject()
 
 

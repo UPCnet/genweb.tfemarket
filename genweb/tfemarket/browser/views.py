@@ -1,28 +1,23 @@
 # -*- coding: utf-8 -*-
-from datetime import date
-from datetime import datetime
 from five import grok
-from operator import itemgetter
 from plone import api
-from plone.directives import form
-from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
-from zope.component import queryUtility
 from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.content.market import IMarket
-from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getLdapUserData
+
+from zope.interface import Interface
 
 import json
 
@@ -31,7 +26,7 @@ def redirectAfterChangeActualState(self):
     if self.context.portal_type == 'genweb.tfemarket.offer':
         self.request.response.redirect(self.context.absolute_url() + '#offer-applications')
     elif self.context.portal_type == 'genweb.tfemarket.market':
-        if not 'view' in self.request.form:
+        if 'view' not in self.request.form:
             self.request.response.setCookie('MERCAT_TFE', clearFiltersCookie(self), path='/')
             self.request.response.redirect(self.context.absolute_url())
         else:
@@ -98,7 +93,6 @@ class AllOffers(grok.View):
         path = self.context.getPhysicalPath()
         path = "/".join(path)
 
-        roles = api.user.get_roles()
         if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
             values = catalog(path={'query': path, 'depth': 1},
                              object_provides=IOffer.__identifier__,
@@ -178,7 +172,6 @@ class AllOffers(grok.View):
         return getDegreeLiteralFromId(id)
 
     def openApplicationsTav(self):
-        roles = api.user.get_roles()
         if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
             return True
         return False
@@ -194,7 +187,7 @@ class AllOffers(grok.View):
 
 
 class getTeacher(grok.View):
-    grok.context(IOffer)
+    grok.context(Interface)
     grok.name('getTeacher')
     grok.require('zope2.View')
     grok.layer(IGenwebTfemarketLayer)
@@ -204,11 +197,11 @@ class getTeacher(grok.View):
         if len(teachers) == 1 and teachers[0]['id'] == self.request.form['teacher']:
             pm = getToolByName(self.context, 'portal_membership')
             member = pm.getMemberById(teachers[0]['id'])
-            return json.dumps([{'id' : teachers[0]['id'], 'email' : member.getProperty("email")}])
+            return json.dumps([{'id': teachers[0]['id'], 'email': member.getProperty("email")}])
         elif len(teachers) > 0:
             listTeachers = []
             for teacher in teachers:
-                listTeachers.append({'id' : teacher['id'], 'email' : ''})
+                listTeachers.append({'id': teacher['id'], 'email': ''})
             return json.dumps(listTeachers[:5])
         else:
             return None

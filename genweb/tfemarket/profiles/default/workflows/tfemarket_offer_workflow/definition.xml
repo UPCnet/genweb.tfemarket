@@ -46,8 +46,8 @@
   </permission-map>
  </state>
  <state state_id="assigned" title="Assignada">
-  <exit-transition transition_id="register"/>
   <exit-transition transition_id="publicaloferta"/>
+  <exit-transition transition_id="register"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
    <permission-role>Manager</permission-role>
@@ -87,10 +87,53 @@
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
+ <state state_id="canceled" title="Cancel">
+  <exit-transition transition_id="retiraaesborrany"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Add portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Change portal events" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Market Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Student</permission-role>
+   <permission-role>Teacher</permission-role>
+   <permission-role>WebMaster</permission-role>
+  </permission-map>
+ </state>
  <state state_id="expired" title="Caducada">
   <exit-transition transition_id="publicaloferta"/>
   <exit-transition transition_id="publicaalintranet"/>
   <exit-transition transition_id="retiraaesborrany"/>
+  <exit-transition transition_id="cancellaloferta"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
@@ -168,6 +211,7 @@
   <exit-transition transition_id="assignalofertaintranet"/>
   <exit-transition transition_id="caducaloferta"/>
   <exit-transition transition_id="retiraaesborrany"/>
+  <exit-transition transition_id="cancellaloferta"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Market Manager</permission-role>
@@ -359,9 +403,10 @@
   </permission-map>
  </state>
  <state state_id="public" title="Pública">
-  <exit-transition transition_id="assign"/>
   <exit-transition transition_id="caducaloferta"/>
   <exit-transition transition_id="retiraaesborrany"/>
+  <exit-transition transition_id="cancellaloferta"/>
+  <exit-transition transition_id="assign"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
    <permission-role>Manager</permission-role>
@@ -470,7 +515,19 @@
   </guard>
  </transition>
  <transition transition_id="caducaloferta" title="Caduca l'oferta" new_state="expired" trigger="USER" before_script="" after_script="">
-
+  
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
+   <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="cancellaloferta" title="Cancel·la l'oferta" new_state="canceled" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=cancellaloferta" category="workflow" icon="">Publica l'oferta</action>
   <guard>
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
@@ -554,7 +611,7 @@
   </guard>
  </transition>
  <transition transition_id="sendtorreview" title="" new_state="pending" trigger="USER" before_script="" after_script="">
-
+  
   <guard>
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
@@ -588,7 +645,7 @@
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
   <description>Previous transition</description>
   <default>
-
+   
    <expression>transition/getId|nothing</expression>
   </default>
   <guard>
@@ -597,7 +654,7 @@
  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
   <description>The ID of the user who performed the previous transition</description>
   <default>
-
+   
    <expression>user/getId</expression>
   </default>
   <guard>
@@ -606,7 +663,7 @@
  <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
   <description>Comment about the last transition</description>
   <default>
-
+   
    <expression>python:state_change.kwargs.get('comment', '')</expression>
   </default>
   <guard>
@@ -615,7 +672,7 @@
  <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
   <description>Provides access to workflow history</description>
   <default>
-
+   
    <expression>state_change/getHistory</expression>
   </default>
   <guard>
@@ -626,7 +683,7 @@
  <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
   <description>When the previous transition was performed</description>
   <default>
-
+   
    <expression>state_change/getDateTime</expression>
   </default>
   <guard>

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
-from plone import api
 
 from Products.LDAPUserFolder.LDAPUserFolder import LDAPUserFolder
 
@@ -25,6 +24,7 @@ def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
 
+
 def setupLdapMarket(context):
     # Ordinarily, GenericSetup handlers check for the existence of XML files.
     # Here, we are not parsing an XML file, but we use this text file as a
@@ -35,7 +35,6 @@ def setupLdapMarket(context):
         return
 
     portal = context.getSite()
-    #ldap_name = context.request.form.get('ldap_name', 'ldap')
     ldap_acl_users = getattr(portal.acl_users, 'ldapUPC').acl_users
     LDAPUserFolder.manage_addLDAPSchemaItem(
         ldap_acl_users, ldap_name='unit', friendly_name='Unit',
