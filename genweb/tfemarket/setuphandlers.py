@@ -25,14 +25,21 @@ def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
 
-def setLdapMerkat(context):
-        portal = context.getSite()
-        #ldap_name = context.request.form.get('ldap_name', 'ldap')
-        ldap_name = 'ldapUPC'
+def setupLdapMarket(context):
+    # Ordinarily, GenericSetup handlers check for the existence of XML files.
+    # Here, we are not parsing an XML file, but we use this text file as a
+    # flag to check that we actually meant for this import step to be run.
+    # The file is found in profiles/default.
 
-        ldap_acl_users = getattr(portal.acl_users, ldap_name).acl_users
+    if context.readDataFile('genweb.tfemarket_ldap.txt') is None:
+        return
 
-        # Add schema properties
-
-        LDAPUserFolder.manage_addLDAPSchemaItem(ldap_acl_users, ldap_name='unit', friendly_name='Unit', public_name='unit', multi_value=True)
-        LDAPUserFolder.manage_addLDAPSchemaItem(ldap_acl_users, ldap_name='segmentation', friendly_name='Segmentation',public_name='segmentation', multi_value=True)
+    portal = context.getSite()
+    #ldap_name = context.request.form.get('ldap_name', 'ldap')
+    ldap_acl_users = getattr(portal.acl_users, 'ldapUPC').acl_users
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='unit', friendly_name='Unit',
+        public_name='unit', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='segmentation', friendly_name='Segmentation',
+        public_name='segmentation', multivalued=True)

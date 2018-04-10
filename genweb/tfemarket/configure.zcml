@@ -75,7 +75,7 @@
       name="tfe.market"
       title="TFE Market Ldap setup"
       description="Setup Ldap Market"
-      handler="genweb.tfemarket.setuphandlers.setLdapMerkat"
+      handler="genweb.tfemarket.setuphandlers.setupLdapMarket"
     />
 
     <plone:behavior
