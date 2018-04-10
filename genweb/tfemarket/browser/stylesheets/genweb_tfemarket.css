@@ -517,6 +517,10 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
   text-shadow: none;
 }
 
+#formSearchOffers .bottomLinks button.viewOffers {
+  background: #007BC0AA;
+}
+
 #offersList #expandSearch,
 #offersList #collapseAll,
 #offersList .offerData,

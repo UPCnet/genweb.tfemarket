@@ -171,10 +171,10 @@
                       </div>
 
                       <div class="bottomLinks">
-                        <button type="submit" class="link" tal:condition="view/checkPermissionCreateOffers">
+                        <button type="submit" class="link viewOffers" tal:condition="view/checkPermissionCreateOffers">
                           <a href="allOffers?teacher" i18n:translate="">View my offers</a>
                         </button>
-                        <button type="submit" class="link">
+                        <button type="submit" class="link viewOffers">
                           <a href="allOffers" i18n:translate="">View all offers</a>
                         </button>
                         <button type="submit" id="offersFilter" form="offersFilter">
