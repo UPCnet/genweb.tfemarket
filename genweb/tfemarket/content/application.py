@@ -4,7 +4,6 @@ from plone.directives import form, dexterity
 from five import grok
 from plone.autoform import directives
 from zope import schema
-from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from plone.app.textfield import RichText as RichTextField
 
 from genweb.tfemarket import _
@@ -37,6 +36,16 @@ class IApplication(form.Schema):
     title = schema.TextLine(
         title=_(u'Name and surname'),
         required=True,
+    )
+
+    email = schema.TextLine(
+        title=_(u'Student Email'),
+        required=False,
+    )
+
+    phone = schema.TextLine(
+        title=_(u"Student's telephone"),
+        required=False,
     )
 
     body = RichTextField(

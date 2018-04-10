@@ -363,20 +363,6 @@ def numOfferDefaultValue(offer, event):
     offer.reindexObject()
 
 
-@grok.subscribe(IOffer, IObjectAddedEvent)
-@grok.subscribe(IOffer, IObjectModifiedEvent)
-def deleteFieldsets(offer, event):
-    if hasattr(offer, "fieldset_dir"):
-        delattr(offer, "fieldset_dir")
-    if hasattr(offer, "fieldset_req"):
-        delattr(offer, "fieldset_req")
-    if hasattr(offer, "fieldset_opt"):
-        delattr(offer, "fieldset_opt")
-    if hasattr(offer, "fieldset_mod"):
-        delattr(offer, "fieldset_mod")
-    offer.reindexObject()
-
-
 class View(dexterity.DisplayForm):
     """The view. May will a template from <modulename>_templates/view.pt,
     and will be called 'view' unless otherwise stated.
