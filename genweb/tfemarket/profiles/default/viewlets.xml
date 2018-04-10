@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object>
+ <hidden manager="plone.abovecontent" skinname="GenwebTheme">
+  <viewlet name="errorcreateapplication"/>
+ </hidden>
+</object>

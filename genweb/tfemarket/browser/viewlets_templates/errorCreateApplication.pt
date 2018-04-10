@@ -1,0 +1,11 @@
+<tal:block i18n:domain="genweb.tfemarket">
+  <div class="alert alert-error">
+    <button data-dismiss="alert" class="close" type="button">×</button>
+    <strong i18n:translate="">
+      Error
+    </strong>
+    <tal:msg i18n:translate="">
+      You have already created an <a tal:attributes="href viewlet/getApplicationUrl">application</a>.
+    </tal:msg>
+  </div>
+</tal:block>
