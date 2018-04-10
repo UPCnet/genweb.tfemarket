@@ -235,9 +235,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 
 .buttonsRight button.link a,
 .informacioTFE .bottomLinks button.link a {
+  text-shadow: none;
   text-decoration: none;
   color: #FFF;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 #headerSearchOffers {
@@ -478,7 +479,8 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 #formSearchOffers button a,
 #formSearchOffers button span {
   color: #FFF;
-  font-weight: normal;
+  font-weight: bold;
+  text-shadow: none;
 }
 
 #formSearchOffers .multicheck {
@@ -512,6 +514,7 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 
 #formSearchOffers .bottomLinks button.link a {
   text-decoration: none;
+  text-shadow: none;
 }
 
 #offersList #expandSearch,
