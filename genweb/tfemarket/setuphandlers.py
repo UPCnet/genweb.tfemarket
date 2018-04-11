@@ -48,3 +48,9 @@ def setupLdapMarket(context):
     LDAPUserFolder.manage_addLDAPSchemaItem(
         ldap_acl_users, ldap_name='typology', friendly_name='Typology',
         public_name='typology', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='DNIpassport', friendly_name='DNI',
+        public_name='DNIpassport', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='telephoneNumber', friendly_name='Telephone',
+        public_name='telephoneNumber', multivalued=True)

@@ -8,13 +8,10 @@ from plone.autoform import directives
 from plone.directives import form, dexterity
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
-from Products.CMFDefault.utils import checkEmailAddress
-from Products.CMFDefault.exceptions import EmailAddressInvalid
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from zope.schema import ValidationError
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
@@ -29,6 +26,8 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getDegreeLiteralFromId
+from genweb.tfemarket.utils import getLdapExactUserData
+from genweb.tfemarket.validations import validateEmail
 from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
@@ -37,10 +36,6 @@ import unicodedata
 
 
 grok.templatedir("templates")
-
-
-class InvalidEmailAddress(ValidationError):
-    "Invalid email address"
 
 
 class LangsVocabulary(object):
@@ -153,14 +148,6 @@ class DegreesVocabulary(object):
 grok.global_utility(DegreesVocabulary, name=u"genweb.tfemarket.Titulacions")
 
 
-def validateaddress(value):
-    try:
-        checkEmailAddress(value)
-    except EmailAddressInvalid:
-        raise InvalidEmailAddress(value)
-    return True
-
-
 class IOffer(form.Schema):
     """ Folder that contains information about a TFE and its applications
     """
@@ -221,19 +208,21 @@ class IOffer(form.Schema):
         title=_(u'TFEteacher'),
         description=_(u'Add a common name'),
         required=False,
+        default=u'',
     )
 
     form.widget('teacher_email', ReadOnlyInputFieldWidget)
     teacher_email = schema.TextLine(
         title=_(u'Teacher Email'),
         required=False,
-        constraint=validateaddress,
+        default=u'',
     )
 
     form.widget('dept', ReadOnlyInputFieldWidget)
     dept = schema.TextLine(
         title=_(u'University department'),
         required=False,
+        default=u'',
     )
 
     ############################################################################
@@ -314,7 +303,7 @@ class IOffer(form.Schema):
     company_email = schema.TextLine(
         title=_(u'Company Email'),
         required=False,
-        constraint=validateaddress,
+        constraint=validateEmail,
     )
 
     ############################################################################
@@ -352,7 +341,7 @@ class IOffer(form.Schema):
 
 @grok.subscribe(IOffer, IObjectAddedEvent)
 def numOfferDefaultValue(offer, event):
-    total_offers = len(
+    total = len(
         api.content.find(
             portal_type='genweb.tfemarket.offer')
     )
@@ -360,7 +349,6 @@ def numOfferDefaultValue(offer, event):
     registry = queryUtility(IRegistry)
     tfe_tool = registry.forInterface(ITfemarketSettings)
     center = tfe_tool.center_code
-    total = total_offers
 
     offer.offer_id = str(center) + '-' + str(total).zfill(5)
     offer.reindexObject()
@@ -416,6 +404,15 @@ class View(dexterity.DisplayForm):
         return CPCreateApplications(self, self.context)
 
 
-class AddForm(dexterity.AddForm):
-    grok.context(IOffer)
+class Add(dexterity.AddForm):
     grok.name('offer')
+
+    def updateWidgets(self):
+        super(Add, self).updateWidgets()
+
+        current = api.user.get_current()
+        user = getLdapExactUserData(current.id)
+        if user and user.has_key('typology') and user['typology'] == 'PDI':
+            self.fields['teacher_manager'].field.default = user['uid']
+            self.fields['teacher_email'].field.default = user['mail']
+            self.fields['dept'].field.default = u''
