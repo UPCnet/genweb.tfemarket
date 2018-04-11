@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <object>
- <hidden manager="plone.abovecontent" skinname="GenwebTheme">
-  <viewlet name="errorcreateapplication"/>
- </hidden>
+  <order manager="plone.abovecontenttitle" skinname="GenwebTheme">
+    <viewlet name="genweb.socialtools"/>
+    <viewlet name="genweb.tfemarket.info"/>
+  </order>
+  <hidden manager="plone.abovecontent" skinname="GenwebTheme">
+    <viewlet name="genweb.tfemarket.errorcreateapplication"/>
+  </hidden>
 </object>

@@ -605,6 +605,16 @@ h2.formFieldset {
   display: none
 }
 
+#viewlet-above-content-title .infoTfemarket {
+  margin-right: 5px;
+  height: 22px;
+  width: 22px;
+}
+
+#viewlet-above-content-title .infoTfemarket .fa-info-circle {
+  font-size: 1.9em;
+}
+
 #listing-table a.contenttype-genweb-tfemarket-application:before,
 #listing-table a.contenttype-document:before,
 #listing-table span.contenttype-genweb-tfemarket-application:before,
