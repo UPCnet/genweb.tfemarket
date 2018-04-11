@@ -12,17 +12,19 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
+from zope.globalrequest import getRequest
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.lifecycleevent.interfaces import IObjectRemovedEvent
 from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 
+from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getDegreeLiteralFromId
@@ -53,7 +55,8 @@ class LangsVocabulary(object):
 
         for item in results:
             if isinstance(item, str):
-                flattened = unicodedata.normalize('NFKD', item.decode('utf-8')).encode('ascii', errors='ignore')
+                flattened = unicodedata.normalize('NFKD', item.decode(
+                    'utf-8')).encode('ascii', errors='ignore')
             else:
                 flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
             languages.append(SimpleVocabulary.createTerm(item, flattened, item))
@@ -79,7 +82,8 @@ class KeysVocabulary(object):
 
         for item in results:
             if isinstance(item, str):
-                flattened = unicodedata.normalize('NFKD', item.decode('utf-8')).encode('ascii', errors='ignore')
+                flattened = unicodedata.normalize('NFKD', item.decode(
+                    'utf-8')).encode('ascii', errors='ignore')
             else:
                 flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
             tags.append(SimpleVocabulary.createTerm(item, flattened, item))
@@ -105,7 +109,8 @@ class TopicsVocabulary(object):
 
         for item in results:
             if isinstance(item, str):
-                flattened = unicodedata.normalize('NFKD', item.decode('utf-8')).encode('ascii', errors='ignore')
+                flattened = unicodedata.normalize('NFKD', item.decode(
+                    'utf-8')).encode('ascii', errors='ignore')
             else:
                 flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
             topic.append(SimpleVocabulary.createTerm(item, flattened, item))
@@ -352,6 +357,14 @@ def numOfferDefaultValue(offer, event):
 
     offer.offer_id = str(center) + '-' + str(total).zfill(5)
     offer.reindexObject()
+
+
+@grok.subscribe(IOffer, IObjectRemovedEvent)
+def checkdeleteOffer(offer, event):
+    if not checkOfferhasValidApplications(offer):
+        offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
+        request = getRequest()
+        request.response.redirect(offer.absolute_url())
 
 
 class View(dexterity.DisplayForm):

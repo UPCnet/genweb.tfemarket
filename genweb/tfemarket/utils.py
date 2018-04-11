@@ -11,8 +11,8 @@ from email.mime.text import MIMEText
 from zope.component import queryUtility
 from zope.security import checkPermission
 
-from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket import _
+from genweb.tfemarket.controlpanel import ITfemarketSettings
 
 
 def sendMessage(context, fromMsg, toMsg, subject, message):
@@ -110,3 +110,15 @@ def getDegreeLiteralFromId(id):
     if result:
         degree = result[0]
     return degree
+
+
+def checkOfferhasValidApplications(offer):
+    from genweb.tfemarket.content.application import IApplication
+    catalog = api.portal.get_tool(name='portal_catalog')
+    values = catalog(path={'query': '/'.join(offer.getPhysicalPath()), 'depth': 1},
+                     object_provides=IApplication.__identifier__)
+
+    for item in values:
+        if not item.review_state == 'cancelled':
+            return True
+    return False
