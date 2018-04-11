@@ -40,5 +40,11 @@ def setupLdapMarket(context):
         ldap_acl_users, ldap_name='unit', friendly_name='Unit',
         public_name='unit', multivalued=True)
     LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='unitCode', friendly_name='Unit Code',
+        public_name='unitCode', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
         ldap_acl_users, ldap_name='segmentation', friendly_name='Segmentation',
         public_name='segmentation', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='typology', friendly_name='Typology',
+        public_name='typology', multivalued=True)
