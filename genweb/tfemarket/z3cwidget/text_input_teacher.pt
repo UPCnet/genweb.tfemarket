@@ -100,7 +100,7 @@
 
     $("#form-widgets-teacher_manager-btn").on("click", function(){
       hideElementsTeacher();
-      var regexTeacher = new RegExp('^[a-zA-Z]{2,}\.[a-zA-Z]{2,}$');
+      var regexTeacher = new RegExp('^[a-zA-Z]{2,}\.[a-zA-Z.]{2,}$');
       var teacherUser = $("#form-widgets-teacher_manager").val();
       if(regexTeacher.test(teacherUser)){
         $.ajax({
