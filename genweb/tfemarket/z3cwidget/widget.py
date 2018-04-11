@@ -46,3 +46,24 @@ class TeacherInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
 def TeacherInputFieldWidget(field, request):
     return z3c.form.widget.FieldWidget(field, TeacherInputWidget(request))
+
+
+
+class IReadOnlyInputWidget(z3c.form.interfaces.ITextWidget):
+    pass
+
+
+class ReadOnlyInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelectionWidget):
+    zope.interface.implementsOnly(IReadOnlyInputWidget)
+
+    klass = u'readonly-input-widget'
+
+    def update(self):
+        super(z3c.form.browser.text.TextWidget, self).update()
+        z3c.form.browser.widget.addFieldClass(self)
+
+
+@zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)
+@zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
+def ReadOnlyInputFieldWidget(field, request):
+    return z3c.form.widget.FieldWidget(field, ReadOnlyInputWidget(request))

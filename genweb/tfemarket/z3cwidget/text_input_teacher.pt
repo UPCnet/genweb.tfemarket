@@ -1,9 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
      xmlns:tal="http://xml.zope.org/namespaces/tal"
-     tal:omit-tag="">
+     tal:omit-tag=""
+     i18n:domain="genweb.tfemarket">
 
-     <input id="form-widgets-teacher_manager" type="text" autocomplete="no"
-            tal:attributes="name view/name;
+     <input type="text" autocomplete="no"
+            tal:attributes="id view/id;
+                           name view/name;
                            class view/klass;
                            style view/style;
                            title view/title;
@@ -33,34 +35,104 @@
                            placeholder view/placeholder;
                            autocapitalize view/autocapitalize;" />
 
-  <ul id="form-widgets-teacher_manager-hint"></ul>
+  <input id="form-widgets-teacher_manager-btn" type="button" i18n:attributes="value Search"/>
+
+  <p id="form-widgets-teacher_manager-error" i18n:translate="">
+    <b>Error:</b> The format is incorrect. <b>name.lastname</b>
+  </p>
+
+  <p id="form-widgets-teacher_manager-warn" i18n:translate="">
+    No results found.
+  </p>
+
+  <table id="form-widgets-teacher_manager-hint">
+    <thead>
+      <th i18n:translate="">User</th>
+      <th i18n:translate="">Fullname</th>
+      <th i18n:translate="">Email</th>
+      <th i18n:translate="">Departament</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr><td/><td/><td/><td/><td/></tr>
+    </tbody>
+  </table>
 
   <script type="text/javascript">
-    $("#form-widgets-teacher_manager").on("keyup paste change", function(){
-      $("#form-widgets-teacher_manager-hint").html("");
+    var addErrorTeacher = function(){
+      $("#form-widgets-teacher_manager").addClass("viewError");
+      $("#form-widgets-teacher_manager-btn").addClass("viewError");
+      $("#form-widgets-teacher_manager-error").addClass("viewError");
+    }
+
+    var addWarnTeacher = function(){
+      $("#form-widgets-teacher_manager").addClass("viewWarn");
+      $("#form-widgets-teacher_manager-btn").addClass("viewWarn");
+      $("#form-widgets-teacher_manager-warn").addClass("viewWarn");
+    }
+
+    var removeErrorTeacher = function(){
+      $("#form-widgets-teacher_manager").removeClass("viewError");
+      $("#form-widgets-teacher_manager-btn").removeClass("viewError");
+      $("#form-widgets-teacher_manager-error").removeClass("viewError");
+    }
+
+    var removeWarnTeacher = function(){
+      $("#form-widgets-teacher_manager").removeClass("viewWarn");
+      $("#form-widgets-teacher_manager-btn").removeClass("viewWarn");
+      $("#form-widgets-teacher_manager-warn").removeClass("viewWarn");
+    }
+
+    var hideElementsTeacher = function(){
+      removeErrorTeacher();
+      removeWarnTeacher();
+      $("#form-widgets-teacher_manager-hint > tbody").html("<tr><td/><td/><td/><td/><td/></tr>");
       $("#form-widgets-teacher_email").val("");
-      if($("#form-widgets-teacher_manager").val().length > 3){
+      $("#form-widgets-dept").val("");
+    }
+
+    var addTeacher = function(teacher){
+      parent = $(teacher).parent().parent();
+      $("#form-widgets-teacher_manager").val($(parent).children('.teacher').html());
+      $("#form-widgets-teacher_email").val($(parent).children('.email').html());
+      $("#form-widgets-dept").val($(parent).children('.dept').html());
+    }
+
+    $("#form-widgets-teacher_manager-btn").on("click", function(){
+      hideElementsTeacher();
+      var regexTeacher = new RegExp('^[a-zA-Z]{2,}\.[a-zA-Z]{2,}$');
+      var teacherUser = $("#form-widgets-teacher_manager").val();
+      if(regexTeacher.test(teacherUser)){
         $.ajax({
           type: 'POST',
           data: { "teacher" : $("#form-widgets-teacher_manager").val() },
           url: 'getTeacher',
           success: function(data){
             results = $.parseJSON(data);
-            if(results != null){
-              if(results.length == 1 && results[0]['id'] == $("#form-widgets-teacher_manager").val()){
-                $("#form-widgets-teacher_email").val(results[0]['email']);
-                $("#form-widgets-teacher_manager-hint").hide();
-              }else{
-                $.each( results, function( key, value ){
-                  $("#form-widgets-teacher_manager-hint").show().delay(5000).fadeOut();
-                  $("#form-widgets-teacher_manager-hint").append("<li>" + value['id'] + "</li>");
-                });
-              }
+            if(results != null && results.length > 0){
+              $.each( results, function( key, value ){
+                $("#form-widgets-teacher_manager-hint").show();
+                field = "<tr>";
+                field += "<td class='teacher'>" + value['user'] + "</td>";
+                field += "<td class='fullname'>" + value['fullname'] + "</td>";
+                field += "<td class='email'>" + value['email'] + "</td>";
+                field += "<td class='dept'>" + value['dept'] + "</td>";
+                field += "<td class='actions'>";
+                field += "<a class='label add' i18n:attributes='alt add' onclick='addTeacher(this)'>";
+                field += "<span class='fa fa-plus' aria-hidden='true'></span>";
+                field += "</a>";
+                field += "</td>";
+                field += "</tr>";
+                  $("#form-widgets-teacher_manager-hint > tbody").html("");
+                $("#form-widgets-teacher_manager-hint").append(field);
+              });
             }else{
-              $("#form-widgets-teacher_manager-hint").hide();
+              addWarnTeacher();
             }
           }
         });
+      }else{
+        addErrorTeacher();
       }
     });
   </script>

@@ -30,6 +30,7 @@ from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreate
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
+from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
 
 import unicodedata
@@ -222,12 +223,14 @@ class IOffer(form.Schema):
         required=False,
     )
 
+    form.widget('teacher_email', ReadOnlyInputFieldWidget)
     teacher_email = schema.TextLine(
         title=_(u'Teacher Email'),
         required=False,
         constraint=validateaddress,
     )
 
+    form.widget('dept', ReadOnlyInputFieldWidget)
     dept = schema.TextLine(
         title=_(u'University department'),
         required=False,

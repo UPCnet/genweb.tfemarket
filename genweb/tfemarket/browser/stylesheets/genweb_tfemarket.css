@@ -315,32 +315,38 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   background: linear-gradient(#d4d4d4, #f5f4f4);
 }
 
-table.tableApplications {
+table.tableApplications,
+table#form-widgets-teacher_manager-hint {
   border-top: 5px solid #007bc0;
 }
 
-table.tableApplications thead th {
+table.tableApplications thead th,
+table#form-widgets-teacher_manager-hint thead th {
   background-color: #e4e4e4;
   text-align: left;
   padding: 5px;
 }
 
-table.tableApplications tbody tr:nth-child(odd) {
+table.tableApplications tbody tr:nth-child(odd),
+table#form-widgets-teacher_manager-hint tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
 
-table.tableApplications tbody tr {
+table.tableApplications tbody tr,
+table#form-widgets-teacher_manager-hint tbody tr {
   border-bottom: 1px solid #adadad;
   border-top: 1px solid #adadad;
 }
 
 
-table.tableApplications tbody td {
+table.tableApplications tbody td,
+table#form-widgets-teacher_manager-hint tbody td {
   text-align: left;
   padding: 5px;
 }
 
-table.tableApplications tbody .actions {
+table.tableApplications tbody .actions,
+table#form-widgets-teacher_manager-hint tbody .actions {
   text-align: right;
 }
 
@@ -351,7 +357,8 @@ table.tableApplications tbody .actions {
 #market .rightInfoOffer.actions button,
 #market .rightInfoOffer.actions > a,
 table.tableApplications tbody .actions button,
-table.tableApplications tbody .actions > a {
+table.tableApplications tbody .actions > a,
+table#form-widgets-teacher_manager-hint tbody .actions > a {
   background-color: #FFF;
   border: 1px solid #adadad;
   color: #057bc1;
@@ -370,7 +377,8 @@ table.tableApplications tbody .actions .workflowsAction .workflow.notclick {
 }
 
 #market .rightInfoOffer.actions a,
-table.tableApplications tbody .actions a {
+table.tableApplications tbody .actions a,
+table#form-widgets-teacher_manager-hint tbody .actions a {
   transition: none;
 }
 
@@ -386,7 +394,8 @@ table.tableApplications tbody .actions > a.edit {
 }
 
 #market .rightInfoOffer.actions .caret,
-table.tableApplications tbody .actions .caret {
+table.tableApplications tbody .actions .caret,
+table#form-widgets-teacher_manager-hint tbody .actions .caret {
   border-top: 4px solid #057bc1;
   vertical-align: middle;
 }
@@ -397,7 +406,8 @@ table.tableApplications tbody .actions button:hover {
 }
 
 #market .rightInfoOffer.actions > a:hover,
-table.tableApplications tbody .actions > a:hover {
+table.tableApplications tbody .actions > a:hover,
+table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
   background-color: #057bc1;
   color: #FFF;
   border: 1px solid #057bc1;
@@ -570,27 +580,29 @@ h2.formFieldset {
   border-bottom: 6px double;
 }
 
-#form-widgets-teacher_manager {
+#form-widgets-teacher_manager-btn {
+  margin-bottom: 9px;
+}
+
+#form-widgets-teacher_manager.viewError,
+#form-widgets-teacher_manager-btn.viewError,
+#form-widgets-teacher_manager.viewWarn,
+#form-widgets-teacher_manager-btn.viewWarn {
   margin-bottom: 0px;
 }
 
-#form-widgets-teacher_manager-hint {
-  position: absolute;
-  width: 222px;
-  list-style-type: none;
-  margin-left: 0px;
-  border: 1px solid rgba(178, 178, 178, 0.8);
-  display: none;
+#form-widgets-teacher_manager-error {
+  color: #FF0000;
+  display: none
 }
 
-#form-widgets-teacher_manager-hint li {
-  padding: 4px;
-  border-bottom: 1px solid rgba(178, 178, 178, 0.8);
-  background: #DEDEDE;
+#form-widgets-teacher_manager-error.viewError,
+#form-widgets-teacher_manager-warn.viewWarn {
+  display: block
 }
 
-#form-widgets-teacher_manager-hint li:last-child {
-  border-bottom: 0px;
+#form-widgets-teacher_manager-warn {
+  display: none
 }
 
 #listing-table a.contenttype-genweb-tfemarket-application:before,

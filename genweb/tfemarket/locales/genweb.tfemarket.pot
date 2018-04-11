@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-04-10 10:02+0000\n"
+"POT-Creation-Date: 2018-04-10 11:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,20 @@ msgstr ""
 msgid ""
 msgstr ""
 
+#: ../z3cwidget/text_input_teacher.pt:39
+msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
+msgstr ""
+
 #: ../browser/events/change.py:64
 msgid "A3"
 msgstr ""
 
 #: ../browser/events/change.py:70
 msgid "A4"
+msgstr ""
+
+#: ../content/offer.py:221
+msgid "Add a common name"
 msgstr ""
 
 #: ../controlpanel.py:101
@@ -51,7 +59,7 @@ msgstr ""
 
 #: ../content/market.py:231
 #: ../content/templates/market_view.pt:105
-#: ../utils.py:98
+#: ../utils.py:94
 msgid "All"
 msgstr ""
 
@@ -77,23 +85,23 @@ msgstr ""
 msgid "Center code"
 msgstr ""
 
-#: ../content/offer.py:296
+#: ../content/offer.py:297
 #: ../content/templates/offer_view.pt:185
 msgid "CoManager"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:129
 #: ../content/market.py:227
-#: ../content/offer.py:301
+#: ../content/offer.py:302
 msgid "Company"
 msgstr ""
 
-#: ../content/offer.py:306
+#: ../content/offer.py:307
 #: ../content/templates/offer_view.pt:193
 msgid "Company Contact"
 msgstr ""
 
-#: ../content/offer.py:311
+#: ../content/offer.py:312
 #: ../content/templates/offer_view.pt:197
 msgid "Company Email"
 msgstr ""
@@ -131,7 +139,7 @@ msgstr ""
 msgid "Degree code at PRISMA"
 msgstr ""
 
-#: ../utils.py:104
+#: ../utils.py:100
 msgid "Degree deleted"
 msgstr ""
 
@@ -170,7 +178,7 @@ msgstr ""
 msgid "Direction"
 msgstr ""
 
-#: ../content/offer.py:337
+#: ../content/offer.py:338
 msgid "Environmental Theme"
 msgstr ""
 
@@ -178,11 +186,11 @@ msgstr ""
 msgid "Environmental theme"
 msgstr ""
 
-#: ../browser/viewlets_templates/errorCreateApplication.pt:3
+#: ../browser/viewlets_templates/errorCreateApplication.pt:4
 msgid "Error"
 msgstr ""
 
-#: ../browser/views.py:80
+#: ../browser/views.py:74
 msgid "Error you can't perform the action."
 msgstr ""
 
@@ -267,7 +275,7 @@ msgid "Mobile"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:125
-#: ../content/offer.py:283
+#: ../content/offer.py:284
 #: ../content/templates/market_view.pt:162
 msgid "Modality"
 msgstr ""
@@ -297,12 +305,12 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: ../content/offer.py:244
+#: ../content/offer.py:245
 #: ../content/templates/offer_view.pt:131
 msgid "Number of students"
 msgstr ""
 
-#: ../content/offer.py:245
+#: ../content/offer.py:246
 msgid "Number of students for the TFE (1 to 10)"
 msgstr ""
 
@@ -320,7 +328,7 @@ msgstr ""
 msgid "Offer title"
 msgstr ""
 
-#: ../content/offer.py:320
+#: ../content/offer.py:321
 #: ../content/templates/offer_view.pt:37
 msgid "Options"
 msgstr ""
@@ -360,7 +368,7 @@ msgstr ""
 msgid "Request the offer"
 msgstr ""
 
-#: ../content/offer.py:239
+#: ../content/offer.py:240
 #: ../content/templates/offer_view.pt:25
 msgid "Requirements"
 msgstr ""
@@ -369,12 +377,13 @@ msgstr ""
 msgid "Review State"
 msgstr ""
 
-#: ../content/offer.py:343
+#: ../content/offer.py:344
 #: ../content/templates/offer_view.pt:224
 msgid "Scope of cooperation"
 msgstr ""
 
 #: ../content/templates/market_view.pt:182
+#: ../z3cwidget/text_input_teacher.pt:37
 msgid "Search"
 msgstr ""
 
@@ -402,7 +411,7 @@ msgstr ""
 msgid "Targets"
 msgstr ""
 
-#: ../content/offer.py:225
+#: ../content/offer.py:226
 #: ../content/templates/offer_view.pt:76
 msgid "Teacher Email"
 msgstr ""
@@ -450,7 +459,7 @@ msgstr ""
 msgid "UPC Mercat TFE"
 msgstr ""
 
-#: ../content/offer.py:291
+#: ../content/offer.py:292
 msgid "Universitat"
 msgstr ""
 
@@ -458,7 +467,7 @@ msgstr ""
 msgid "University"
 msgstr ""
 
-#: ../content/offer.py:231
+#: ../content/offer.py:232
 msgid "University department"
 msgstr ""
 
@@ -484,7 +493,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: ../browser/viewlets_templates/errorCreateApplication.pt:7
+#: ../browser/viewlets_templates/errorCreateApplication.pt:8
 msgid "You have already created an <a href=\"${DYNAMIC_CONTENT}\">application</a>."
 msgstr ""
 
@@ -509,7 +518,7 @@ msgstr ""
 msgid "classifications"
 msgstr ""
 
-#: ../content/offer.py:331
+#: ../content/offer.py:332
 msgid "confidential"
 msgstr ""
 
@@ -523,7 +532,7 @@ msgstr ""
 msgid "edit"
 msgstr ""
 
-#: ../content/offer.py:325
+#: ../content/offer.py:326
 msgid "grant"
 msgstr ""
 
@@ -541,7 +550,7 @@ msgstr ""
 msgid "market"
 msgstr ""
 
-#: ../content/offer.py:288
+#: ../content/offer.py:289
 msgid "modality"
 msgstr ""
 
@@ -553,11 +562,11 @@ msgstr ""
 msgid "offer_center"
 msgstr ""
 
-#: ../content/offer.py:263
+#: ../content/offer.py:264
 msgid "offer_features"
 msgstr ""
 
-#: ../content/offer.py:258
+#: ../content/offer.py:259
 msgid "offer_targets"
 msgstr ""
 
@@ -565,15 +574,15 @@ msgstr ""
 msgid "offer_topic"
 msgstr ""
 
-#: ../content/offer.py:253
+#: ../content/offer.py:254
 msgid "offer_workload"
 msgstr ""
 
-#: ../content/offer.py:268
+#: ../content/offer.py:269
 msgid "requirements"
 msgstr ""
 
-#: ../content/offer.py:275
+#: ../content/offer.py:276
 msgid "tfe_lang"
 msgstr ""
 

@@ -14,6 +14,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ../z3cwidget/text_input_teacher.pt:39
+msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
+msgstr "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
+
 #: ../browser/events/change.py:64
 msgid "A3"
 msgstr "IMPORTANT: You have confirmed the allocation of this offer. Your information and those of the offer will be transferred to PRISMA in order to formalize the registration. If you have any questions, you can contact your secretary."
@@ -21,6 +25,10 @@ msgstr "IMPORTANT: You have confirmed the allocation of this offer. Your informa
 #: ../browser/events/change.py:70
 msgid "A4"
 msgstr "NOTICE: You have waived the offer and the teacher has been notified. If you want to return to request it, you have to fill out a new application."
+
+#: ../content/offer.py:221
+msgid "Add a common name"
+msgstr "Add a common name"
 
 #: ../controlpanel.py:101
 msgid "Add languages one per line"
@@ -44,7 +52,7 @@ msgstr "Adds effective date and expiration date fields required."
 
 #: ../content/market.py:231
 #: ../content/templates/market_view.pt:105
-#: ../utils.py:98
+#: ../utils.py:94
 msgid "All"
 msgstr "All"
 
@@ -70,23 +78,23 @@ msgstr "Catalan"
 msgid "Center code"
 msgstr "Center code"
 
-#: ../content/offer.py:296
+#: ../content/offer.py:297
 #: ../content/templates/offer_view.pt:185
 msgid "CoManager"
 msgstr "Co-director"
 
 #: ../browser/views_templates/allOffers.pt:129
 #: ../content/market.py:227
-#: ../content/offer.py:301
+#: ../content/offer.py:302
 msgid "Company"
 msgstr "Company"
 
-#: ../content/offer.py:306
+#: ../content/offer.py:307
 #: ../content/templates/offer_view.pt:193
 msgid "Company Contact"
 msgstr "Company Contact"
 
-#: ../content/offer.py:311
+#: ../content/offer.py:312
 #: ../content/templates/offer_view.pt:197
 msgid "Company Email"
 msgstr "Company Email"
@@ -124,7 +132,7 @@ msgstr "Degree"
 msgid "Degree code at PRISMA"
 msgstr "Degree code at PRISMA"
 
-#: ../utils.py:104
+#: ../utils.py:100
 msgid "Degree deleted"
 msgstr "Degree deleted"
 
@@ -163,7 +171,7 @@ msgstr "Development languages"
 msgid "Direction"
 msgstr "Direction"
 
-#: ../content/offer.py:337
+#: ../content/offer.py:338
 msgid "Environmental Theme"
 msgstr "Environmental Theme"
 
@@ -171,11 +179,11 @@ msgstr "Environmental Theme"
 msgid "Environmental theme"
 msgstr "Environmental Theme"
 
-#: ../browser/viewlets_templates/errorCreateApplication.pt:3
+#: ../browser/viewlets_templates/errorCreateApplication.pt:4
 msgid "Error"
 msgstr "Error"
 
-#: ../browser/views.py:80
+#: ../browser/views.py:74
 msgid "Error you can't perform the action."
 msgstr "Error you can't perform the action."
 
@@ -260,7 +268,7 @@ msgid "Mobile"
 msgstr "Mobile"
 
 #: ../browser/views_templates/allOffers.pt:125
-#: ../content/offer.py:283
+#: ../content/offer.py:284
 #: ../content/templates/market_view.pt:162
 msgid "Modality"
 msgstr "Modality"
@@ -290,12 +298,12 @@ msgstr "No"
 msgid "No results found."
 msgstr "No results found."
 
-#: ../content/offer.py:244
+#: ../content/offer.py:245
 #: ../content/templates/offer_view.pt:131
 msgid "Number of students"
 msgstr "Number of students"
 
-#: ../content/offer.py:245
+#: ../content/offer.py:246
 msgid "Number of students for the TFE (1 to 10)"
 msgstr "Number of students for the TFE (1 to 10)"
 
@@ -313,7 +321,7 @@ msgstr "Offer id"
 msgid "Offer title"
 msgstr "Offer title"
 
-#: ../content/offer.py:320
+#: ../content/offer.py:321
 #: ../content/templates/offer_view.pt:37
 msgid "Options"
 msgstr "Options"
@@ -353,7 +361,7 @@ msgstr "Publication"
 msgid "Request the offer"
 msgstr "Request the offer"
 
-#: ../content/offer.py:239
+#: ../content/offer.py:240
 #: ../content/templates/offer_view.pt:25
 msgid "Requirements"
 msgstr "Requirements"
@@ -362,12 +370,13 @@ msgstr "Requirements"
 msgid "Review State"
 msgstr "Review State"
 
-#: ../content/offer.py:343
+#: ../content/offer.py:344
 #: ../content/templates/offer_view.pt:224
 msgid "Scope of cooperation"
 msgstr "Scope of cooperation"
 
 #: ../content/templates/market_view.pt:182
+#: ../z3cwidget/text_input_teacher.pt:37
 msgid "Search"
 msgstr "Search"
 
@@ -395,7 +404,7 @@ msgstr "Tags"
 msgid "Targets"
 msgstr "Targets"
 
-#: ../content/offer.py:225
+#: ../content/offer.py:226
 #: ../content/templates/offer_view.pt:76
 msgid "Teacher Email"
 msgstr "Teacher Email"
@@ -443,7 +452,7 @@ msgstr "Topics of the TFE"
 msgid "UPC Mercat TFE"
 msgstr "Market for final studies of the UPC"
 
-#: ../content/offer.py:291
+#: ../content/offer.py:292
 msgid "Universitat"
 msgstr "University"
 
@@ -451,7 +460,7 @@ msgstr "University"
 msgid "University"
 msgstr "University"
 
-#: ../content/offer.py:231
+#: ../content/offer.py:232
 msgid "University department"
 msgstr "University department"
 
@@ -477,7 +486,7 @@ msgstr "Workload"
 msgid "Yes"
 msgstr "Yes"
 
-#: ../browser/viewlets_templates/errorCreateApplication.pt:7
+#: ../browser/viewlets_templates/errorCreateApplication.pt:8
 msgid "You have already created an <a href=\"${DYNAMIC_CONTENT}\">application</a>."
 msgstr "You have already created an <a href=\"${DYNAMIC_CONTENT}\">application</a>."
 
@@ -503,7 +512,7 @@ msgstr "Description"
 msgid "classifications"
 msgstr "Classifications"
 
-#: ../content/offer.py:331
+#: ../content/offer.py:332
 msgid "confidential"
 msgstr "Confidential"
 
@@ -517,7 +526,7 @@ msgstr "Degree"
 msgid "edit"
 msgstr "edit"
 
-#: ../content/offer.py:325
+#: ../content/offer.py:326
 msgid "grant"
 msgstr "Grant"
 
@@ -535,7 +544,7 @@ msgstr "keys"
 msgid "market"
 msgstr "Market"
 
-#: ../content/offer.py:288
+#: ../content/offer.py:289
 msgid "modality"
 msgstr "Modality"
 
@@ -548,11 +557,11 @@ msgstr "Offer"
 msgid "offer_center"
 msgstr "Center"
 
-#: ../content/offer.py:263
+#: ../content/offer.py:264
 msgid "offer_features"
 msgstr "Features"
 
-#: ../content/offer.py:258
+#: ../content/offer.py:259
 msgid "offer_targets"
 msgstr "Targets"
 
@@ -560,15 +569,15 @@ msgstr "Targets"
 msgid "offer_topic"
 msgstr "Topic"
 
-#: ../content/offer.py:253
+#: ../content/offer.py:254
 msgid "offer_workload"
 msgstr "Workload"
 
-#: ../content/offer.py:268
+#: ../content/offer.py:269
 msgid "requirements"
 msgstr "Requirements"
 
-#: ../content/offer.py:275
+#: ../content/offer.py:276
 msgid "tfe_lang"
 msgstr "Work language"
 
