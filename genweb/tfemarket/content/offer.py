@@ -359,12 +359,12 @@ def numOfferDefaultValue(offer, event):
     offer.reindexObject()
 
 
-@grok.subscribe(IOffer, IObjectRemovedEvent)
-def checkdeleteOffer(offer, event):
-    if not checkOfferhasValidApplications(offer):
-        offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
-        request = getRequest()
-        request.response.redirect(offer.absolute_url())
+# @grok.subscribe(IOffer, IObjectRemovedEvent)
+# def checkdeleteOffer(offer, event):
+#     if checkOfferhasValidApplications(offer):
+#         offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
+#         request = getRequest()
+#         request.response.redirect(offer.absolute_url())
 
 
 class View(dexterity.DisplayForm):
