@@ -526,7 +526,7 @@
   </guard>
  </transition>
  <transition transition_id="cancellaloferta" title="Cancel·la l'oferta" new_state="canceled" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=cancellaloferta" category="workflow" icon="">Publica l'oferta</action>
+  <action url="%(content_url)s/content_status_modify?workflow_action=cancellaloferta" category="workflow" icon="">Cancel·la l'oferta</action>
   <guard>
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
