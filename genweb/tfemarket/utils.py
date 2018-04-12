@@ -125,3 +125,10 @@ def checkOfferhasValidApplications(offer):
         if item.review_state == 'cancelled':
             return False
     return True
+
+
+def checkOfferhasConfirmedApplications(offer):
+    for item in getAllApplicationsFromOffer(offer):
+        if item.review_state == 'confirmed':
+            return True
+    return False

@@ -12,8 +12,21 @@
         <metal:content-core fill-slot="content-core">
             <metal:block define-macro="content-core">
                 <div metal:use-macro="context/batch_macros/macros/navigation" />
+                  <div class="alert alert-info" role="alert" tal:condition="view/showMessageAssignOffer">
+                    <button data-dismiss="alert" class="close" type="button">×</button>
+                    <strong i18n:translate="">
+                      Info
+                    </strong>
+                    <tal:msg i18n:translate="">
+                      The current offer contains an accepted application.
+                    </tal:msg>
+                    <a class="btn btn-success" i18n:translate=""
+                       tal:attributes="href string:content_status_modify?workflow_action=${view/showMessageAssignOffer}">
+                      Assign the offer
+                    </a>
+                  </div>
                   <div id="offerData" class="offerData"
-                       tal:define="applications python:view.getApplications(context)">
+                       tal:define="applications view/getApplications">
                     <ul class="nav nav-tabs" data-tabs="tablist">
                       <li class="nav-item active">
                         <a class="nav-link" data-toggle="tab"

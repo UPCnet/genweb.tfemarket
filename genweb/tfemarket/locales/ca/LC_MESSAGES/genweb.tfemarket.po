@@ -20,15 +20,15 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr "<b>Error:</b> El format es incorrecte. <b>nom.cognom</b>"
 
-#: ../browser/events/change.py:65
+#: ../browser/events/change.py:67
 msgid "A3"
 msgstr "Has confirmat l’assignació d’aquesta oferta. Les teves dades i les de l’oferta es traspassaran a PRISMA per tal de formalitzar la matrícula. Si tens qualsevol dubte pots adreçar-te a la teva secretaria."
 
-#: ../browser/events/change.py:71
+#: ../browser/events/change.py:73
 msgid "A4"
 msgstr "Has renunciat a l’oferta i s’ha comunicat al professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
 
-#: ../content/offer.py:214
+#: ../content/offer.py:216
 msgid "Add a common name"
 msgstr "Afegiu un nom comú"
 
@@ -48,7 +48,7 @@ msgstr "Afegeix el fitxer .csv separat per , amb les titulacions per escola:"
 msgid "Add topics one per line"
 msgstr "Afegeix un tema per línea"
 
-#: ../configure.zcml:87
+#: ../configure.zcml:93
 msgid "Adds effective date and expiration date fields required."
 msgstr "Afegeix camps data de publicació i de caducitat com a obligatoris."
 
@@ -64,9 +64,13 @@ msgid "All TFE's"
 msgstr "Treballs Fi d'Estudis"
 
 #: ../browser/views_templates/allOffers.pt:102
-#: ../content/templates/offer_view.pt:43
+#: ../content/templates/offer_view.pt:56
 msgid "Applications"
 msgstr "Sol·licituds"
+
+#: ../content/templates/offer_view.pt:23
+msgid "Assign the offer"
+msgstr "Assigna l'oferta"
 
 #: ../content/application.py:66
 msgid "Body"
@@ -80,28 +84,28 @@ msgstr "Català"
 msgid "Center code"
 msgstr "Codi del centre"
 
-#: ../content/offer.py:294
-#: ../content/templates/offer_view.pt:185
+#: ../content/offer.py:296
+#: ../content/templates/offer_view.pt:198
 msgid "CoManager"
 msgstr "Codirector"
 
 #: ../browser/views_templates/allOffers.pt:129
 #: ../content/market.py:227
-#: ../content/offer.py:299
+#: ../content/offer.py:301
 msgid "Company"
 msgstr "Empresa"
 
-#: ../content/offer.py:304
-#: ../content/templates/offer_view.pt:193
+#: ../content/offer.py:306
+#: ../content/templates/offer_view.pt:206
 msgid "Company Contact"
 msgstr "Dades de contacte de l'empresa"
 
-#: ../content/offer.py:309
-#: ../content/templates/offer_view.pt:197
+#: ../content/offer.py:311
+#: ../content/templates/offer_view.pt:210
 msgid "Company Email"
 msgstr "Adreça de correu de l'empresa"
 
-#: ../content/templates/offer_view.pt:219
+#: ../content/templates/offer_view.pt:232
 msgid "Confidential"
 msgstr "Confidencial"
 
@@ -120,13 +124,13 @@ msgstr "DNI"
 msgid "Date"
 msgstr "Data"
 
-#: ../configure.zcml:87
+#: ../configure.zcml:93
 msgid "Date range for offer"
 msgstr "Interval de dates per a l'oferta"
 
 #: ../browser/views_templates/allOffers.pt:141
 #: ../content/templates/market_view.pt:24
-#: ../content/templates/offer_view.pt:92
+#: ../content/templates/offer_view.pt:105
 msgid "Degree"
 msgstr "Titulació"
 
@@ -140,18 +144,18 @@ msgstr "Titulació eliminada"
 
 #: ../browser/views_templates/allOffers.pt:147
 #: ../content/templates/market_view.pt:285
-#: ../content/templates/offer_view.pt:98
+#: ../content/templates/offer_view.pt:111
 msgid "Degrees"
 msgstr "Titulacions"
 
 #: ../browser/views_templates/allOffers.pt:119
 #: ../content/templates/market_view.pt:103
-#: ../content/templates/offer_view.pt:80
+#: ../content/templates/offer_view.pt:93
 msgid "Departament"
 msgstr "Departament"
 
 #: ../browser/views_templates/allOffers.pt:135
-#: ../content/offer.py:179
+#: ../content/offer.py:181
 #: ../content/templates/market_view.pt:273
 msgid "Description"
 msgstr "Descripció"
@@ -169,7 +173,7 @@ msgstr "Idioma de treball"
 msgid "Development languages"
 msgstr "Idiomes d'elaboració del treball"
 
-#: ../content/offer.py:207
+#: ../content/offer.py:209
 msgid "Direction"
 msgstr "Direcció"
 
@@ -178,11 +182,11 @@ msgstr "Direcció"
 msgid "Email"
 msgstr "Correu"
 
-#: ../content/offer.py:335
+#: ../content/offer.py:337
 msgid "Environmental Theme"
 msgstr "Temàtica ambiental"
 
-#: ../content/templates/offer_view.pt:209
+#: ../content/templates/offer_view.pt:222
 msgid "Environmental theme"
 msgstr "Temàtica ambiental"
 
@@ -196,11 +200,11 @@ msgstr "Error, no pots realitzar aquesta acció."
 
 #: ../browser/views_templates/allOffers.pt:61
 #: ../content/templates/market_view.pt:216
-#: ../content/templates/offer_view.pt:66
+#: ../content/templates/offer_view.pt:79
 msgid "Expiration date"
 msgstr "Caducitat"
 
-#: ../content/templates/offer_view.pt:147
+#: ../content/templates/offer_view.pt:160
 msgid "Features"
 msgstr "Característiques"
 
@@ -213,13 +217,13 @@ msgstr "Nom complet"
 msgid "Hide search"
 msgstr "Amagar cercador"
 
-#: ../content/templates/offer_view.pt:56
+#: ../content/templates/offer_view.pt:69
 msgid "Identifier"
 msgstr "Identificador"
 
 #: ../browser/views_templates/allOffers.pt:200
 #: ../content/templates/market_view.pt:25
-#: ../content/templates/offer_view.pt:241
+#: ../content/templates/offer_view.pt:254
 msgid "Identifier Offer TFE"
 msgstr "Identificador de l'oferta"
 
@@ -227,25 +231,29 @@ msgstr "Identificador de l'oferta"
 msgid "Import the degrees"
 msgstr "Importa totes les titulacions"
 
+#: ../content/templates/offer_view.pt:17
+msgid "Info"
+msgstr "Informació"
+
 #: ../configure.zcml:43
 msgid "Installs the genweb.tfemarket add-on."
 msgstr "Instal·lar Genweb Mercat de  TFE"
 
 #: ../browser/views_templates/allOffers.pt:176
 #: ../content/templates/market_view.pt:135
-#: ../content/templates/offer_view.pt:112
+#: ../content/templates/offer_view.pt:125
 msgid "Keywords"
 msgstr "Paraules clau"
 
 #: ../browser/views_templates/allOffers.pt:155
 #: ../content/templates/market_view.pt:293
-#: ../content/templates/offer_view.pt:159
+#: ../content/templates/offer_view.pt:172
 msgid "Language work elaboration"
 msgstr "Idioma d'elaboració del treball"
 
 #: ../browser/views_templates/allOffers.pt:161
 #: ../content/templates/market_view.pt:299
-#: ../content/templates/offer_view.pt:165
+#: ../content/templates/offer_view.pt:178
 msgid "Languages work elaboration"
 msgstr "Idiomes d'elaboració del treball"
 
@@ -271,19 +279,19 @@ msgstr "Codi MEC del Grau"
 
 #: ../browser/views_templates/allOffers.pt:201
 #: ../content/templates/market_view.pt:26
-#: ../content/templates/offer_view.pt:242
+#: ../content/templates/offer_view.pt:255
 msgid "Mobile"
 msgstr "Mòbil"
 
 #: ../browser/views_templates/allOffers.pt:125
-#: ../content/offer.py:281
+#: ../content/offer.py:283
 #: ../content/templates/market_view.pt:162
 msgid "Modality"
 msgstr "Modalitat"
 
 #: ../browser/views_templates/allOffers.pt:198
 #: ../content/templates/market_view.pt:23
-#: ../content/templates/offer_view.pt:239
+#: ../content/templates/offer_view.pt:252
 msgid "Name"
 msgstr "Nom"
 
@@ -293,7 +301,7 @@ msgstr "Nom del centre"
 
 #: ../browser/views_templates/allOffers.pt:171
 #: ../content/templates/market_view.pt:309
-#: ../content/templates/offer_view.pt:211
+#: ../content/templates/offer_view.pt:224
 msgid "No"
 msgstr "No"
 
@@ -303,22 +311,22 @@ msgstr "No"
 msgid "No results found."
 msgstr "No s'han trobat resultats."
 
-#: ../content/offer.py:242
-#: ../content/templates/offer_view.pt:131
+#: ../content/offer.py:244
+#: ../content/templates/offer_view.pt:144
 msgid "Number of students"
 msgstr "Nombre d'estudiants"
 
-#: ../content/offer.py:243
+#: ../content/offer.py:245
 msgid "Number of students for the TFE (1 to 10)"
 msgstr "Nombre d'estudiants (1 fins a 10)"
 
 #: ../browser/views_templates/allOffers.pt:96
-#: ../content/templates/offer_view.pt:19
+#: ../content/templates/offer_view.pt:32
 msgid "Offer"
 msgstr "Oferta"
 
 #: ../content/application.py:25
-#: ../content/offer.py:169
+#: ../content/offer.py:171
 msgid "Offer id"
 msgstr "Identificador de l'oferta"
 
@@ -326,8 +334,8 @@ msgstr "Identificador de l'oferta"
 msgid "Offer title"
 msgstr "Títol de l'oferta"
 
-#: ../content/offer.py:318
-#: ../content/templates/offer_view.pt:37
+#: ../content/offer.py:320
+#: ../content/templates/offer_view.pt:50
 msgid "Options"
 msgstr "Opcions"
 
@@ -346,7 +354,7 @@ msgstr "Plega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-up\" aria-hi
 
 #: ../browser/views_templates/allOffers.pt:169
 #: ../content/templates/market_view.pt:307
-#: ../content/templates/offer_view.pt:214
+#: ../content/templates/offer_view.pt:227
 msgid "Possibility of scholarship"
 msgstr "Possibilitat de beca"
 
@@ -356,18 +364,18 @@ msgstr "Tipus de programa"
 
 #: ../browser/views_templates/allOffers.pt:57
 #: ../content/templates/market_view.pt:212
-#: ../content/templates/offer_view.pt:62
+#: ../content/templates/offer_view.pt:75
 msgid "Publication date"
 msgstr "Publicació"
 
 #: ../browser/views_templates/allOffers.pt:184
 #: ../content/templates/market_view.pt:322
-#: ../content/templates/offer_view.pt:120
+#: ../content/templates/offer_view.pt:133
 msgid "Request the offer"
 msgstr "Sol·licitar l'oferta"
 
-#: ../content/offer.py:237
-#: ../content/templates/offer_view.pt:25
+#: ../content/offer.py:239
+#: ../content/templates/offer_view.pt:38
 msgid "Requirements"
 msgstr "Requisits"
 
@@ -375,8 +383,8 @@ msgstr "Requisits"
 msgid "Review State"
 msgstr "Estat de revisió actiu"
 
-#: ../content/offer.py:341
-#: ../content/templates/offer_view.pt:224
+#: ../content/offer.py:343
+#: ../content/templates/offer_view.pt:237
 msgid "Scope of cooperation"
 msgstr "Ambit de cooperació"
 
@@ -397,7 +405,7 @@ msgstr "Configuració"
 msgid "Show search"
 msgstr "Mostrar cercador"
 
-#: ../content/offer.py:213
+#: ../content/offer.py:215
 msgid "TFEteacher"
 msgstr "Professor"
 
@@ -405,18 +413,18 @@ msgstr "Professor"
 msgid "Tags"
 msgstr "Llistat de paraules clau"
 
-#: ../content/templates/offer_view.pt:141
+#: ../content/templates/offer_view.pt:154
 msgid "Targets"
 msgstr "Objectius"
 
-#: ../content/offer.py:221
-#: ../content/templates/offer_view.pt:76
+#: ../content/offer.py:223
+#: ../content/templates/offer_view.pt:89
 msgid "Teacher Email"
 msgstr "Email del professor"
 
 #: ../browser/views_templates/allOffers.pt:115
 #: ../content/templates/market_view.pt:253
-#: ../content/templates/offer_view.pt:72
+#: ../content/templates/offer_view.pt:85
 msgid "Teacher manager"
 msgstr "Profesor director"
 
@@ -428,11 +436,15 @@ msgstr "Telèfon"
 msgid "Text to search"
 msgstr "Text a cercar"
 
-#: ../browser/events/change.py:105
+#: ../content/templates/offer_view.pt:20
+msgid "The current offer contains an accepted application."
+msgstr "L'oferta actual conté una sol·licitud acceptada."
+
+#: ../browser/events/change.py:113
 msgid "The offer can't be canceled if it contains active applications."
 msgstr "L'oferta no es pot cancelar si conté sol·licituds actives."
 
-#: ../content/offer.py:174
+#: ../content/offer.py:176
 msgid "Title"
 msgstr "Título"
 
@@ -452,7 +464,7 @@ msgstr "Titulacions EN"
 msgid "Titulacions ES"
 msgstr "Titulacions ES"
 
-#: ../content/templates/offer_view.pt:106
+#: ../content/templates/offer_view.pt:119
 msgid "Topic"
 msgstr "Tema"
 
@@ -465,7 +477,7 @@ msgstr "Temàtiques principals dels TFE's"
 msgid "UPC Mercat TFE"
 msgstr "UPC Mercat TFE (genweb.tfemarket)"
 
-#: ../content/offer.py:289
+#: ../content/offer.py:291
 msgid "Universitat"
 msgstr "Universitat"
 
@@ -473,7 +485,7 @@ msgstr "Universitat"
 msgid "University"
 msgstr "Universitat"
 
-#: ../content/offer.py:228
+#: ../content/offer.py:230
 msgid "University department"
 msgstr "Departament"
 
@@ -493,13 +505,13 @@ msgstr "Veure les meves ofertes"
 msgid "With the possibility of offering grant/financing"
 msgstr "Amb posibilitat d'oferir beca o financament"
 
-#: ../content/templates/offer_view.pt:135
+#: ../content/templates/offer_view.pt:148
 msgid "Workload"
 msgstr "Càrrega de treball"
 
 #: ../browser/views_templates/allOffers.pt:170
 #: ../content/templates/market_view.pt:308
-#: ../content/templates/offer_view.pt:210
+#: ../content/templates/offer_view.pt:223
 msgid "Yes"
 msgstr "Si"
 
@@ -529,21 +541,21 @@ msgstr "Dades per a la sol·licitud d'un TFE"
 msgid "classifications"
 msgstr "Classificacions"
 
-#: ../content/offer.py:329
+#: ../content/offer.py:331
 msgid "confidential"
 msgstr "Confidencial"
 
-#: ../content/offer.py:192
+#: ../content/offer.py:194
 msgid "degree"
 msgstr "Grau"
 
 #: ../browser/views_templates/allOffers.pt:83
 #: ../content/templates/market_view.pt:54
-#: ../content/templates/offer_view.pt:270
+#: ../content/templates/offer_view.pt:283
 msgid "edit"
 msgstr "Editar"
 
-#: ../content/offer.py:323
+#: ../content/offer.py:325
 msgid "grant"
 msgstr "Possibilitat de beca"
 
@@ -556,7 +568,7 @@ msgstr "Dades importades mitjançant un fitxer .csv. Por importar les titulacion
 msgid "info"
 msgstr "Informació"
 
-#: ../content/offer.py:199
+#: ../content/offer.py:201
 msgid "keys"
 msgstr "Paraules clau"
 
@@ -565,7 +577,7 @@ msgstr "Paraules clau"
 msgid "market"
 msgstr "Mercat"
 
-#: ../content/offer.py:286
+#: ../content/offer.py:288
 msgid "modality"
 msgstr "Modalitat"
 
@@ -574,31 +586,31 @@ msgstr "Modalitat"
 msgid "offer"
 msgstr "Oferta"
 
-#: ../content/offer.py:162
+#: ../content/offer.py:164
 msgid "offer_center"
 msgstr "Centre"
 
-#: ../content/offer.py:261
+#: ../content/offer.py:263
 msgid "offer_features"
 msgstr "Característiques"
 
-#: ../content/offer.py:256
+#: ../content/offer.py:258
 msgid "offer_targets"
 msgstr "Objectius"
 
-#: ../content/offer.py:184
+#: ../content/offer.py:186
 msgid "offer_topic"
 msgstr "Tema"
 
-#: ../content/offer.py:251
+#: ../content/offer.py:253
 msgid "offer_workload"
 msgstr "Càrrega de treball"
 
-#: ../content/offer.py:266
+#: ../content/offer.py:268
 msgid "requirements"
 msgstr "Requisits"
 
-#: ../content/offer.py:273
+#: ../content/offer.py:275
 msgid "tfe_lang"
 msgstr "Idioma del treball"
 
@@ -608,6 +620,6 @@ msgstr "XXXXXXXXXXX"
 
 #: ../browser/views_templates/allOffers.pt:87
 #: ../content/templates/market_view.pt:58
-#: ../content/templates/offer_view.pt:274
+#: ../content/templates/offer_view.pt:287
 msgid "view"
 msgstr "Veure"

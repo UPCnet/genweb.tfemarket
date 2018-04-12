@@ -25,6 +25,7 @@ from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 
 from genweb.tfemarket.utils import checkOfferhasValidApplications
+from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getAllApplicationsFromOffer
 from genweb.tfemarket.utils import getDegrees
@@ -388,11 +389,11 @@ class View(dexterity.DisplayForm):
     def getRaw(self, raw):
         return raw.raw_encoded if hasattr(raw, 'raw_encoded') else None
 
-    def getApplications(self, offer):
+    def getApplications(self):
         wf_tool = getToolByName(self.context, 'portal_workflow')
         tools = getMultiAdapter((self.context, self.request), name='plone_tools')
         results = []
-        for item in getAllApplicationsFromOffer(offer):
+        for item in getAllApplicationsFromOffer(self.context):
             application = item.getObject()
             workflowActions = wf_tool.listActionInfos(object=application)
             workflows = tools.workflow().getWorkflowsFor(application)[0]
@@ -412,6 +413,17 @@ class View(dexterity.DisplayForm):
 
     def checkPermissionCreateApplications(self):
         return CPCreateApplications(self, self.context)
+
+    def showMessageAssignOffer(self):
+        pw = getToolByName(self.context, "portal_workflow")
+        offer_workflow = pw.getWorkflowsFor(self.context)[0].id
+        offer_status = pw.getStatusOf(offer_workflow, self.context)
+        if checkOfferhasConfirmedApplications(self.context):
+            if offer_status['review_state'] == 'intranet':
+                return 'assignalofertaintranet'
+            elif offer_status['review_state'] =='public':
+                return 'assign'
+        return False
 
 
 class Add(dexterity.AddForm):
