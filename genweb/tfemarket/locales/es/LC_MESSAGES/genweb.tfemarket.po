@@ -20,11 +20,11 @@ msgstr "<b>Error:</b> El formato es incorrecto. <b>nombre.apellido</b>"
 
 #: ../browser/events/change.py:65
 msgid "A3"
-msgstr "IMPORTANTE: Has confirmado la asignación de esta oferta. Tus datos y los de la oferta se traspasarán a PRISMA para formalizar la matrícula. Si tienes cualquier duda puedes dirigirte a tu secretaría."
+msgstr "Has confirmado la asignación de esta oferta. Tus datos y los de la oferta se traspasarán a PRISMA para formalizar la matrícula. Si tienes cualquier duda puedes dirigirte a tu secretaría."
 
 #: ../browser/events/change.py:71
 msgid "A4"
-msgstr "AVISO: Has renunciado a la oferta y se ha comunicado al profesor. Si quieres volver a solicitarla debes rellenar una nueva solicitud."
+msgstr "Has renunciado a la oferta y se ha comunicado al profesor. Si quieres volver a solicitarla debes rellenar una nueva solicitud."
 
 #: ../content/offer.py:214
 msgid "Add a common name"

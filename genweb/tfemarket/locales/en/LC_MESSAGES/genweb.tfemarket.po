@@ -20,11 +20,11 @@ msgstr "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 
 #: ../browser/events/change.py:65
 msgid "A3"
-msgstr "IMPORTANT: You have confirmed the allocation of this offer. Your information and those of the offer will be transferred to PRISMA in order to formalize the registration. If you have any questions, you can contact your secretary."
+msgstr "You have confirmed the allocation of this offer. Your information and those of the offer will be transferred to PRISMA in order to formalize the registration. If you have any questions, you can contact your secretary."
 
 #: ../browser/events/change.py:71
 msgid "A4"
-msgstr "NOTICE: You have waived the offer and the teacher has been notified. If you want to return to request it, you have to fill out a new application."
+msgstr "You have waived the offer and the teacher has been notified. If you want to return to request it, you have to fill out a new application."
 
 #: ../content/offer.py:214
 msgid "Add a common name"

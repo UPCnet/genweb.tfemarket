@@ -22,11 +22,11 @@ msgstr "<b>Error:</b> El format es incorrecte. <b>nom.cognom</b>"
 
 #: ../browser/events/change.py:65
 msgid "A3"
-msgstr "IMPORTANT: Has confirmat l’assignació d’aquesta oferta. Les teves dades i les de l’oferta es traspassaran a PRISMA per tal de formalitzar la matrícula. Si tens qualsevol dubte pots adreçar-te a la teva secretaria."
+msgstr "Has confirmat l’assignació d’aquesta oferta. Les teves dades i les de l’oferta es traspassaran a PRISMA per tal de formalitzar la matrícula. Si tens qualsevol dubte pots adreçar-te a la teva secretaria."
 
 #: ../browser/events/change.py:71
 msgid "A4"
-msgstr "AVIS: Has renunciat a l’oferta i s’ha comunicat al professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
+msgstr "Has renunciat a l’oferta i s’ha comunicat al professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
 
 #: ../content/offer.py:214
 msgid "Add a common name"
