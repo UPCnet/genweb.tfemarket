@@ -78,8 +78,8 @@ class Add(dexterity.AddForm):
             self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
             self.redirect(self.context.absolute_url())
 
-        self.fields['offer_id'].field.default = self.context.offer_id
-        self.fields['offer_title'].field.default = self.context.title
+        self.fields['offer_id'].field.default = self.context.offer_id.decode()
+        self.fields['offer_title'].field.default = self.context.title.decode()
 
         current = api.user.get_current()
         user = getLdapExactUserData(current.id)
