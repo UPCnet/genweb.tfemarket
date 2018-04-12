@@ -112,13 +112,16 @@ def getDegreeLiteralFromId(id):
     return degree
 
 
-def checkOfferhasValidApplications(offer):
+def getAllApplicationsFromOffer(offer):
     from genweb.tfemarket.content.application import IApplication
     catalog = api.portal.get_tool(name='portal_catalog')
     values = catalog(path={'query': '/'.join(offer.getPhysicalPath()), 'depth': 1},
                      object_provides=IApplication.__identifier__)
+    return values
 
-    for item in values:
-        if not item.review_state == 'cancelled':
-            return True
-    return False
+
+def checkOfferhasValidApplications(offer):
+    for item in getAllApplicationsFromOffer(offer):
+        if item.review_state == 'cancelled':
+            return False
+    return True

@@ -26,6 +26,7 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 
 from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
+from genweb.tfemarket.utils import getAllApplicationsFromOffer
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getLdapExactUserData
@@ -388,14 +389,10 @@ class View(dexterity.DisplayForm):
         return raw.raw_encoded if hasattr(raw, 'raw_encoded') else None
 
     def getApplications(self, offer):
-        catalog = api.portal.get_tool(name='portal_catalog')
         wf_tool = getToolByName(self.context, 'portal_workflow')
         tools = getMultiAdapter((self.context, self.request), name='plone_tools')
         results = []
-        values = catalog(path={'query': '/'.join(offer.getPhysicalPath()), 'depth': 1},
-                         object_provides=IApplication.__identifier__)
-
-        for item in values:
+        for item in getAllApplicationsFromOffer(offer):
             application = item.getObject()
             workflowActions = wf_tool.listActionInfos(object=application)
             workflows = tools.workflow().getWorkflowsFor(application)[0]
