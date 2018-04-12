@@ -84,11 +84,11 @@ class Add(dexterity.AddForm):
         current = api.user.get_current()
         user = getLdapExactUserData(current.id)
         if user:
-            self.fields['dni'].field.default = user['DNIpassport']
-            self.fields['fullname'].field.default = user['sn']
-            self.fields['email'].field.default = user['mail']
+            self.fields['dni'].field.default = user['DNIpassport'].decode()
+            self.fields['fullname'].field.default = user['sn'].decode()
+            self.fields['email'].field.default = user['mail'].decode()
             if user.has_key('telephoneNumber'):
-                self.fields['phone'].field.default = user['telephoneNumber']
+                self.fields['phone'].field.default = user['telephoneNumber'].decode()
 
 
 class View(grok.View):
