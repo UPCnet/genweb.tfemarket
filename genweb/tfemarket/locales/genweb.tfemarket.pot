@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-04-11 14:24+0000\n"
+"POT-Creation-Date: 2018-04-12 07:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr ""
 
-#: ../browser/events/change.py:64
+#: ../browser/events/change.py:65
 msgid "A3"
 msgstr ""
 
-#: ../browser/events/change.py:70
+#: ../browser/events/change.py:71
 msgid "A4"
 msgstr ""
 
@@ -433,8 +433,8 @@ msgstr ""
 msgid "Text to search"
 msgstr ""
 
-#: ../content/offer.py:365
-msgid "The offer can't be deleted."
+#: ../browser/events/change.py:105
+msgid "The offer can't be canceled if it contains active applications."
 msgstr ""
 
 #: ../content/offer.py:174

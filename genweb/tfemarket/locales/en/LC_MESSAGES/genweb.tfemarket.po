@@ -18,11 +18,11 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 
-#: ../browser/events/change.py:64
+#: ../browser/events/change.py:65
 msgid "A3"
 msgstr "IMPORTANT: You have confirmed the allocation of this offer. Your information and those of the offer will be transferred to PRISMA in order to formalize the registration. If you have any questions, you can contact your secretary."
 
-#: ../browser/events/change.py:70
+#: ../browser/events/change.py:71
 msgid "A4"
 msgstr "NOTICE: You have waived the offer and the teacher has been notified. If you want to return to request it, you have to fill out a new application."
 
@@ -426,9 +426,9 @@ msgstr "Telephone"
 msgid "Text to search"
 msgstr "Text to search"
 
-#: ../content/offer.py:365
-msgid "The offer can't be deleted."
-msgstr "The offer can't be deleted."
+#: ../browser/events/change.py:105
+msgid "The offer can't be canceled if it contains active applications."
+msgstr "The offer can't be canceled if it contains active applications."
 
 #: ../content/offer.py:174
 msgid "Title"

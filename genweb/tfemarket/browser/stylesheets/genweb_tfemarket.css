@@ -231,6 +231,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 .buttonsRight button.link,
 .informacioTFE .bottomLinks button.link {
   background: #007BC0;
+  border-radius: 4px !important;
 }
 
 .buttonsRight button.link a,

@@ -71,6 +71,12 @@
       handler=".browser.events.change.offerChanged"
     />
 
+    <subscriber
+      for=".content.offer.IOffer
+           Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+      handler=".browser.events.change.offerCanceled"
+    />
+
     <genericsetup:importStep
       name="tfe.market"
       title="TFE Market Ldap setup"

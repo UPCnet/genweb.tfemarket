@@ -20,11 +20,11 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr "<b>Error:</b> El format es incorrecte. <b>nom.cognom</b>"
 
-#: ../browser/events/change.py:64
+#: ../browser/events/change.py:65
 msgid "A3"
 msgstr "IMPORTANT: Has confirmat l’assignació d’aquesta oferta. Les teves dades i les de l’oferta es traspassaran a PRISMA per tal de formalitzar la matrícula. Si tens qualsevol dubte pots adreçar-te a la teva secretaria."
 
-#: ../browser/events/change.py:70
+#: ../browser/events/change.py:71
 msgid "A4"
 msgstr "AVIS: Has renunciat a l’oferta i s’ha comunicat al professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
 
@@ -428,9 +428,9 @@ msgstr "Telèfon"
 msgid "Text to search"
 msgstr "Text a cercar"
 
-#: ../content/offer.py:365
-msgid "The offer can't be deleted."
-msgstr "No es pot eliminar l'oferta."
+#: ../browser/events/change.py:105
+msgid "The offer can't be canceled if it contains active applications."
+msgstr "L'oferta no es pot cancelar si conté sol·licituds actives."
 
 #: ../content/offer.py:174
 msgid "Title"
