@@ -13,7 +13,7 @@ from genweb.tfemarket import _
 
 class ITableTitulacions(form.Schema):
 
-    codi_prisma = schema.Int(
+    codi_prisma = schema.TextLine(
         title=_(u'PRISMA code'),
         required=False,
         description=_(u'Degree code at PRISMA')
@@ -24,13 +24,13 @@ class ITableTitulacions(form.Schema):
         required=False
     )
 
-    codi_mec = schema.Int(
+    codi_mec = schema.TextLine(
         title=_(u'MEC code'),
         required=False,
         description=_(u'MEC degree code')
     )
 
-    plan_year = schema.Int(
+    plan_year = schema.TextLine(
         title=_(u'Plan year'),
         required=False,
     )

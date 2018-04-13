@@ -12,19 +12,15 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from zope.globalrequest import getRequest
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
-from zope.lifecycleevent.interfaces import IObjectRemovedEvent
 from zope.security import checkPermission
 
 from genweb.tfemarket import _
-from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 
-from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getAllApplicationsFromOffer
@@ -361,14 +357,6 @@ def numOfferDefaultValue(offer, event):
     offer.reindexObject()
 
 
-# @grok.subscribe(IOffer, IObjectRemovedEvent)
-# def checkdeleteOffer(offer, event):
-#     if checkOfferhasValidApplications(offer):
-#         offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
-#         request = getRequest()
-#         request.response.redirect(offer.absolute_url())
-
-
 class View(dexterity.DisplayForm):
     """The view. May will a template from <modulename>_templates/view.pt,
     and will be called 'view' unless otherwise stated.
@@ -421,7 +409,7 @@ class View(dexterity.DisplayForm):
         if checkOfferhasConfirmedApplications(self.context):
             if offer_status['review_state'] == 'intranet':
                 return 'assignalofertaintranet'
-            elif offer_status['review_state'] =='public':
+            elif offer_status['review_state'] == 'public':
                 return 'assign'
         return False
 
@@ -434,7 +422,7 @@ class Add(dexterity.AddForm):
 
         current = api.user.get_current()
         user = getLdapExactUserData(current.id)
-        if user and user.has_key('typology') and user['typology'] == 'PDI':
+        if user and 'typology' in user and user['typology'] == 'PDI':
             self.fields['teacher_manager'].field.default = user['uid']
             self.fields['teacher_email'].field.default = user['mail']
             self.fields['dept'].field.default = u''

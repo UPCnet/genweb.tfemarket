@@ -4,16 +4,18 @@ from datetime import date
 from datetime import datetime
 from plone import api
 from Products.CMFCore.utils import getToolByName
-from Products.CMFCore.WorkflowCore import WorkflowException
 from zope.globalrequest import getRequest
+
+from zope.lifecycleevent.interfaces import IObjectRemovedEvent
+from genweb.tfemarket.content.offer import IOffer
 
 from genweb.tfemarket.browser.events.messages import M1, M2, M3, M4, M5, M6
 from genweb.tfemarket.utils import checkOfferhasValidApplications
-from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import sendMessage
 from genweb.tfemarket import _
 
 import transaction
+from five import grok
 
 
 def applicationChanged(application, event):
@@ -25,14 +27,14 @@ def applicationChanged(application, event):
         lang = 'en'
 
     data = {
-        'student' : application.id,
-        'degree' : 'Titulació usuari',
-        'num' : application.getParentNode().offer_id,
-        'title' : application.getParentNode().title,
-        'linkApplication' : application.absolute_url(),
-        'linkOffer' : application.getParentNode().absolute_url(),
-        'linkMarket' : application.getParentNode().getParentNode().absolute_url(),
-        'firm' : 'TFE Mercat',
+        'student': application.id,
+        'degree': 'Titulació usuari',
+        'num': application.getParentNode().offer_id,
+        'title': application.getParentNode().title,
+        'linkApplication': application.absolute_url(),
+        'linkOffer': application.getParentNode().absolute_url(),
+        'linkMarket': application.getParentNode().getParentNode().absolute_url(),
+        'firm': 'TFE Mercat',
     }
 
     fromMsg = toMsg = subject = msg = portalMsg = ''
@@ -113,3 +115,12 @@ def offerCanceled(offer, event):
                 offer.plone_utils.addPortalMessage(_(u'The offer can\'t be canceled if it contains active applications.'), 'info')
                 request = getRequest()
                 request.response.redirect(offer.absolute_url())
+
+
+@grok.subscribe(IOffer, IObjectRemovedEvent)
+def checkdeleteOffer(offer, event):
+    import ipdb; ipdb.set_trace()
+    if checkOfferhasValidApplications(offer):
+        offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
+        request = getRequest()
+        request.response.redirect(offer.absolute_url())
