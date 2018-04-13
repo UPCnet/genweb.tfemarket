@@ -12,6 +12,7 @@ from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.security import checkPermission
+from zope.sequencesort.ssort import sort
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.offer import IOffer
@@ -148,24 +149,25 @@ class View(grok.View):
             catalog = api.portal.get_tool(name='portal_catalog')
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
-            path = self.context.getPhysicalPath()
-            path = "/".join(path)
-            values = catalog(path={'query': path, 'depth': 1},
-                             object_provides=IOffer.__identifier__,
-                             sort_on='sortable_title',
-                             sort_order='ascending')
+
+            values = self.context.contentValues(
+                filter={'portal_type': 'genweb.tfemarket.offer'})
+
+            values = sort(values, sort=(
+                ('Date','cmp','desc'),
+                ('Title','cmp','asc')
+            ))
 
             results = []
-            for item in values:
-                offer = item.getObject()
+            for offer in values:
                 workflowActions = wf_tool.listActionInfos(object=offer)
                 workflows = tools.workflow().getWorkflowsFor(offer)[0]
-
-                results.append(dict(title=item.Title,
-                                    state=workflows['states'][item.review_state].title,
-                                    url=item.getURL(),
-                                    path=item.getPath(),
-                                    item_path=offer.absolute_url_path(),
+                offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
+                offer_status = wf_tool.getStatusOf(offer_workflow, offer)
+                results.append(dict(title=offer.title,
+                                    state=workflows['states'][offer_status['review_state']].title,
+                                    url=offer.absolute_url(),
+                                    path=offer.absolute_url_path(),
                                     dept=offer.dept,
                                     company=offer.company,
                                     effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
