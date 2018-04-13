@@ -7,7 +7,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.WorkflowCore import WorkflowException
 from zope.globalrequest import getRequest
 
-from genweb.tfemarket.browser.events.messages import M1, M2, M3, M4, M5, M6
+from genweb.tfemarket.browser.events.data.messages import M1, M2, M3, M4, M5, M6
 from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import sendMessage
