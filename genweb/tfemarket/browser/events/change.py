@@ -10,6 +10,7 @@ from zope.lifecycleevent.interfaces import IObjectRemovedEvent
 from genweb.tfemarket.content.offer import IOffer
 
 from genweb.tfemarket.browser.events.messages import M1, M2, M3, M4, M5, M6
+
 from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import sendMessage
 from genweb.tfemarket import _
@@ -119,7 +120,6 @@ def offerCanceled(offer, event):
 
 @grok.subscribe(IOffer, IObjectRemovedEvent)
 def checkdeleteOffer(offer, event):
-    import ipdb; ipdb.set_trace()
     if checkOfferhasValidApplications(offer):
         offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
         request = getRequest()
