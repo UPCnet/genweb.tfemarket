@@ -28,6 +28,11 @@ msgstr "Has confirmat l’assignació d’aquesta oferta. Les teves dades i les 
 msgid "A4"
 msgstr "Has renunciat a l’oferta i s’ha comunicat al professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
 
+#: ../browser/views_templates/allOffers.pt:183
+#: ../content/templates/market_view.pt:321
+msgid "Access the offer"
+msgstr "Accedeix a la oferta"
+
 #: ../content/offer.py:212
 msgid "Add a common name"
 msgstr "Afegiu l'usuari del professor (nom.cognom)"
@@ -363,8 +368,6 @@ msgstr "Tipus de programa"
 msgid "Publication date"
 msgstr "Publicació"
 
-#: ../browser/views_templates/allOffers.pt:183
-#: ../content/templates/market_view.pt:321
 #: ../content/templates/offer_view.pt:133
 msgid "Request the offer"
 msgstr "Sol·licitar l'oferta"

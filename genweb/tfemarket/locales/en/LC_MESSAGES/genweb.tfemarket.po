@@ -26,6 +26,11 @@ msgstr "You have confirmed the allocation of this offer. Your information and th
 msgid "A4"
 msgstr "You have waived the offer and the teacher has been notified. If you want to return to request it, you have to fill out a new application."
 
+#: ../browser/views_templates/allOffers.pt:183
+#: ../content/templates/market_view.pt:321
+msgid "Access the offer"
+msgstr "Access the offer"
+
 #: ../content/offer.py:212
 msgid "Add a common name"
 msgstr "Add a common name"
@@ -361,8 +366,6 @@ msgstr "Program type"
 msgid "Publication date"
 msgstr "Publication"
 
-#: ../browser/views_templates/allOffers.pt:183
-#: ../content/templates/market_view.pt:321
 #: ../content/templates/offer_view.pt:133
 msgid "Request the offer"
 msgstr "Request the offer"

@@ -26,6 +26,11 @@ msgstr "Has confirmado la asignación de esta oferta. Tus datos y los de la ofer
 msgid "A4"
 msgstr "Has renunciado a la oferta y se ha comunicado al profesor. Si quieres volver a solicitarla debes rellenar una nueva solicitud."
 
+#: ../browser/views_templates/allOffers.pt:183
+#: ../content/templates/market_view.pt:321
+msgid "Access the offer"
+msgstr "Accede a la oferta"
+
 #: ../content/offer.py:212
 msgid "Add a common name"
 msgstr "Agrega el usuario del profesor (nombre.apellido)"
@@ -361,8 +366,6 @@ msgstr "Tipo de programa"
 msgid "Publication date"
 msgstr "Publicación"
 
-#: ../browser/views_templates/allOffers.pt:183
-#: ../content/templates/market_view.pt:321
 #: ../content/templates/offer_view.pt:133
 msgid "Request the offer"
 msgstr "Solicitar la oferta"

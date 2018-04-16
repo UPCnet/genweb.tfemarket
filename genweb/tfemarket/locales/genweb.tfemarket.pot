@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-04-16 06:12+0000\n"
+"POT-Creation-Date: 2018-04-16 07:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,11 @@ msgstr ""
 
 #: ../browser/events/change.py:76
 msgid "A4"
+msgstr ""
+
+#: ../browser/views_templates/allOffers.pt:183
+#: ../content/templates/market_view.pt:321
+msgid "Access the offer"
 msgstr ""
 
 #: ../content/offer.py:212
@@ -368,8 +373,6 @@ msgstr ""
 msgid "Publication date"
 msgstr ""
 
-#: ../browser/views_templates/allOffers.pt:183
-#: ../content/templates/market_view.pt:321
 #: ../content/templates/offer_view.pt:133
 msgid "Request the offer"
 msgstr ""

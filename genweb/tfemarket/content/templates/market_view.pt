@@ -316,10 +316,10 @@
                                         </tal:block>
                                       </p>
                                     </div>
-                                    <div class="bottomLinks" tal:condition="offer/can_create_application">
+                                    <div class="bottomLinks">
                                       <button type="submit" class="link">
-                                        <a tal:attributes="href string:${offer/url}/++add++genweb.tfemarket.application"
-                                           i18n:translate="">Request the offer</a>
+                                        <a tal:attributes="href string:${offer/url}"
+                                           i18n:translate="">Access the offer</a>
                                       </button>
                                     </div>
                                   </div>
