@@ -83,6 +83,12 @@
       handler=".browser.events.change.offerCanceled"
     />
 
+    <subscriber
+      for=".content.offer.IOffer
+           zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+      handler=".browser.events.change.offerDeleted"
+    />
+
     <genericsetup:importStep
       name="tfe.market"
       title="TFE Market Ldap setup"

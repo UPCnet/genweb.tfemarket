@@ -120,11 +120,19 @@ def getAllApplicationsFromOffer(offer):
     return values
 
 
+def getApplicationsFromContent(content):
+    return content.contentValues(filter={'portal_type': 'genweb.tfemarket.application'})
+
+
 def checkOfferhasValidApplications(offer):
-    for item in getAllApplicationsFromOffer(offer):
-        if item.review_state == 'cancelled':
-            return False
-    return True
+    wf_tool = getToolByName(offer, 'portal_workflow')
+    import ipdb; ipdb.set_trace()
+    for item in getApplicationsFromContent(offer):
+        application_workflow = wf_tool.getWorkflowsFor(item)[0].id
+        application_status = wf_tool.getStatusOf(application_workflow, item)
+        if application_status['review_state'] != 'cancelled':
+            return True
+    return False
 
 
 def checkOfferhasConfirmedApplications(offer):

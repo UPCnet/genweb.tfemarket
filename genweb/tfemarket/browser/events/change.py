@@ -118,8 +118,10 @@ def offerCanceled(offer, event):
                 request.response.redirect(offer.absolute_url())
 
 
-@grok.subscribe(IOffer, IObjectRemovedEvent)
-def checkdeleteOffer(offer, event):
+def offerDeleted(offer, event):
+    """ Checks if can deleted genweb.tfemarket.offer.
+    """
+
     if checkOfferhasValidApplications(offer):
         offer.plone_utils.addPortalMessage(_(u"The offer can't be deleted."), 'error')
         request = getRequest()
