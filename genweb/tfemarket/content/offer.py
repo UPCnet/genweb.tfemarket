@@ -209,7 +209,6 @@ class IOffer(form.Schema):
     form.widget('teacher_manager', TeacherInputFieldWidget)
     teacher_manager = schema.TextLine(
         title=_(u'TFEteacher'),
-        description=_(u'Add a common name'),
         required=False,
         default=u'',
     )

@@ -3,92 +3,85 @@
      tal:omit-tag=""
      i18n:domain="genweb.tfemarket">
 
-     <input type="text" autocomplete="no"
-            tal:attributes="id view/id;
-                           name view/name;
-                           class view/klass;
-                           style view/style;
-                           title view/title;
-                           lang view/lang;
-                           onclick view/onclick;
-                           ondblclick view/ondblclick;
-                           onmousedown view/onmousedown;
-                           onmouseup view/onmouseup;
-                           onmouseover view/onmouseover;
-                           onmousemove view/onmousemove;
-                           onmouseout view/onmouseout;
-                           onkeypress view/onkeypress;
-                           onkeydown view/onkeydown;
-                           onkeyup view/onkeyup;
-                           value view/value;
-                           disabled view/disabled;
-                           tabindex view/tabindex;
-                           onfocus view/onfocus;
-                           onblur view/onblur;
-                           onchange view/onchange;
-                           readonly view/readonly;
-                           alt view/alt;
-                           accesskey view/accesskey;
-                           onselect view/onselect;
-                           size view/size;
-                           maxlength view/maxlength;
-                           placeholder view/placeholder;
-                           autocapitalize view/autocapitalize;" />
+  <input type="text" autocomplete="no" readonly
+         tal:attributes="id view/id;
+                         name view/name;
+                         class view/klass;
+                         style view/style;
+                         title view/title;
+                         lang view/lang;
+                         onclick view/onclick;
+                         ondblclick view/ondblclick;
+                         onmousedown view/onmousedown;
+                         onmouseup view/onmouseup;
+                         onmouseover view/onmouseover;
+                         onmousemove view/onmousemove;
+                         onmouseout view/onmouseout;
+                         onkeypress view/onkeypress;
+                         onkeydown view/onkeydown;
+                         onkeyup view/onkeyup;
+                         value view/value;
+                         disabled view/disabled;
+                         tabindex view/tabindex;
+                         onfocus view/onfocus;
+                         onblur view/onblur;
+                         onchange view/onchange;
+                         alt view/alt;
+                         accesskey view/accesskey;
+                         onselect view/onselect;
+                         size view/size;
+                         maxlength view/maxlength;
+                         placeholder view/placeholder;
+                         autocapitalize view/autocapitalize;" />
 
-  <input id="form-widgets-teacher_manager-btn" type="button" i18n:attributes="value Search"/>
+  <input id="form-widgets-teacher_manager-btn-modal" type="button"
+         data-toggle="modal" data-target="#form-widgets-teacher_manager-modal"
+         i18n:attributes="value Search_teacher"/>
 
-  <p id="form-widgets-teacher_manager-error" i18n:translate="">
-    <b>Error:</b> The format is incorrect. <b>name.lastname</b>
-  </p>
+  <div id="form-widgets-teacher_manager-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" i18n:translate="">Seach teacher</h4>
+        </div>
+        <div class="modal-body">
+          <input id="form-widgets-teacher_manager-input" type="text" autocomplete="no"
+                 i18n:attributes="placeholder name.surname"/>
 
-  <p id="form-widgets-teacher_manager-warn" i18n:translate="">
-    No results found.
-  </p>
+          <input id="form-widgets-teacher_manager-btn" type="button"
+                 i18n:attributes="value Search"/>
 
-  <table id="form-widgets-teacher_manager-hint">
-    <thead>
-      <th i18n:translate="">User</th>
-      <th i18n:translate="">Fullname</th>
-      <th i18n:translate="">Email</th>
-      <th i18n:translate="">Departament</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr><td/><td/><td/><td/><td/></tr>
-    </tbody>
-  </table>
+          <p id="form-widgets-teacher_manager-error" i18n:translate="">
+            <b>Error:</b> The format is incorrect. <b>name.lastname</b>
+          </p>
+
+          <p id="form-widgets-teacher_manager-warn" i18n:translate="">
+            No results found.
+          </p>
+
+          <table id="form-widgets-teacher_manager-hint">
+            <thead>
+              <th i18n:translate="">User</th>
+              <th i18n:translate="">Fullname</th>
+              <th i18n:translate="">Email</th>
+              <th i18n:translate="">Departament</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr><td/><td/><td/><td/><td/></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script type="text/javascript">
-    var addErrorTeacher = function(){
-      $("#form-widgets-teacher_manager").addClass("viewError");
-      $("#form-widgets-teacher_manager-btn").addClass("viewError");
-      $("#form-widgets-teacher_manager-error").addClass("viewError");
-    }
-
-    var addWarnTeacher = function(){
-      $("#form-widgets-teacher_manager").addClass("viewWarn");
-      $("#form-widgets-teacher_manager-btn").addClass("viewWarn");
-      $("#form-widgets-teacher_manager-warn").addClass("viewWarn");
-    }
-
-    var removeErrorTeacher = function(){
-      $("#form-widgets-teacher_manager").removeClass("viewError");
-      $("#form-widgets-teacher_manager-btn").removeClass("viewError");
-      $("#form-widgets-teacher_manager-error").removeClass("viewError");
-    }
-
-    var removeWarnTeacher = function(){
-      $("#form-widgets-teacher_manager").removeClass("viewWarn");
-      $("#form-widgets-teacher_manager-btn").removeClass("viewWarn");
-      $("#form-widgets-teacher_manager-warn").removeClass("viewWarn");
-    }
-
     var hideElementsTeacher = function(){
-      removeErrorTeacher();
-      removeWarnTeacher();
+      $("#form-widgets-teacher_manager-error").removeClass("viewError");
+      $("#form-widgets-teacher_manager-warn").removeClass("viewWarn");
       $("#form-widgets-teacher_manager-hint > tbody").html("<tr><td/><td/><td/><td/><td/></tr>");
-      $("#form-widgets-teacher_email").val("");
-      $("#form-widgets-dept").val("");
     }
 
     var addTeacher = function(teacher){
@@ -96,20 +89,22 @@
       $("#form-widgets-teacher_manager").val($(parent).children('.teacher').html());
       $("#form-widgets-teacher_email").val($(parent).children('.email').html());
       $("#form-widgets-dept").val($(parent).children('.dept').html());
+      $('#form-widgets-teacher_manager-modal').modal('toggle');
     }
 
     $("#form-widgets-teacher_manager-btn").on("click", function(){
       hideElementsTeacher();
-      var regexTeacher = new RegExp('^[a-zA-Z]{2,}\.[a-zA-Z.]{2,}$');
-      var teacherUser = $("#form-widgets-teacher_manager").val();
+      var regexTeacher = new RegExp('^[a-zA-Z]{2,}\\.[a-zA-Z-.]{2,}$');
+      var teacherUser = $("#form-widgets-teacher_manager-input").val();
       if(regexTeacher.test(teacherUser)){
         $.ajax({
           type: 'POST',
-          data: { "teacher" : $("#form-widgets-teacher_manager").val() },
+          data: { "teacher" : $("#form-widgets-teacher_manager-input").val() },
           url: 'getTeacher',
           success: function(data){
             results = $.parseJSON(data);
             if(results != null && results.length > 0){
+              $("#form-widgets-teacher_manager-hint > tbody").html("");
               $.each( results, function( key, value ){
                 $("#form-widgets-teacher_manager-hint").show();
                 field = "<tr>";
@@ -123,16 +118,15 @@
                 field += "</a>";
                 field += "</td>";
                 field += "</tr>";
-                  $("#form-widgets-teacher_manager-hint > tbody").html("");
                 $("#form-widgets-teacher_manager-hint").append(field);
               });
             }else{
-              addWarnTeacher();
+              $("#form-widgets-teacher_manager-warn").addClass("viewWarn");
             }
           }
         });
       }else{
-        addErrorTeacher();
+        $("#form-widgets-teacher_manager-error").addClass("viewError");
       }
     });
   </script>

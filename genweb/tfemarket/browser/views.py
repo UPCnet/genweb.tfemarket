@@ -198,21 +198,20 @@ class getTeacher(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
-        teachers = getLdapUserData(self.request.form['teacher'])
+        teachers = getLdapUserData(self.request.form['teacher'], typology='PDI')
         if len(teachers) > 0:
             listTeachers = []
             for teacher in teachers:
-                if teacher.has_key('typology') and teacher['typology'] == 'PDI':
-                    try:
-                        teacherDept = teacher['unitCode'] + "-" + teacher['unit']
-                        listTeachers.append({
-                            'user': teacher['id'],
-                            'email': teacher['mail'],
-                            'fullname': teacher['sn'],
-                            'dept': teacherDept
-                        })
-                    except:
-                        pass
+                try:
+                    teacherDept = teacher['unitCode'] + "-" + teacher['unit']
+                    listTeachers.append({
+                        'user': teacher['id'],
+                        'email': teacher['mail'],
+                        'fullname': teacher['sn'],
+                        'dept': teacherDept
+                    })
+                except:
+                    pass
             return json.dumps(listTeachers)
         else:
             return None

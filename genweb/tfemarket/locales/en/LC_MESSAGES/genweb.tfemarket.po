@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ../z3cwidget/text_input_teacher.pt:40
+#: ../z3cwidget/text_input_teacher.pt:55
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 
@@ -30,10 +30,6 @@ msgstr "You have waived the offer and the teacher has been notified. If you want
 #: ../content/templates/market_view.pt:321
 msgid "Access the offer"
 msgstr "Access the offer"
-
-#: ../content/offer.py:212
-msgid "Add a common name"
-msgstr "Add a common name"
 
 #: ../controlpanel.py:101
 msgid "Add languages one per line"
@@ -82,23 +78,23 @@ msgstr "Catalan"
 msgid "Center code"
 msgstr "Center code"
 
-#: ../content/offer.py:292
+#: ../content/offer.py:291
 #: ../content/templates/offer_view.pt:198
 msgid "CoManager"
 msgstr "Co-director"
 
 #: ../browser/views_templates/allOffers.pt:128
 #: ../content/market.py:229
-#: ../content/offer.py:297
+#: ../content/offer.py:296
 msgid "Company"
 msgstr "Company"
 
-#: ../content/offer.py:302
+#: ../content/offer.py:301
 #: ../content/templates/offer_view.pt:206
 msgid "Company Contact"
 msgstr "Company Contact"
 
-#: ../content/offer.py:307
+#: ../content/offer.py:306
 #: ../content/templates/offer_view.pt:210
 msgid "Company Email"
 msgstr "Company Email"
@@ -176,11 +172,11 @@ msgid "Direction"
 msgstr "Direction"
 
 #: ../content/application.py:54
-#: ../z3cwidget/text_input_teacher.pt:52
+#: ../z3cwidget/text_input_teacher.pt:67
 msgid "Email"
 msgstr "Email"
 
-#: ../content/offer.py:333
+#: ../content/offer.py:332
 msgid "Environmental Theme"
 msgstr "Environmental Theme"
 
@@ -207,7 +203,7 @@ msgid "Features"
 msgstr "Features"
 
 #: ../content/application.py:47
-#: ../z3cwidget/text_input_teacher.pt:51
+#: ../z3cwidget/text_input_teacher.pt:66
 msgid "Fullname"
 msgstr "Fullname"
 
@@ -282,7 +278,7 @@ msgid "Mobile"
 msgstr "Mobile"
 
 #: ../browser/views_templates/allOffers.pt:124
-#: ../content/offer.py:279
+#: ../content/offer.py:278
 #: ../content/templates/market_view.pt:161
 msgid "Modality"
 msgstr "Modality"
@@ -305,16 +301,16 @@ msgstr "No"
 
 #: ../browser/views_templates/allOffers.pt:30
 #: ../content/templates/market_view.pt:186
-#: ../z3cwidget/text_input_teacher.pt:44
+#: ../z3cwidget/text_input_teacher.pt:59
 msgid "No results found."
 msgstr "No results found."
 
-#: ../content/offer.py:240
+#: ../content/offer.py:239
 #: ../content/templates/offer_view.pt:144
 msgid "Number of students"
 msgstr "Number of students"
 
-#: ../content/offer.py:241
+#: ../content/offer.py:240
 msgid "Number of students for the TFE (1 to 10)"
 msgstr "Number of students for the TFE (1 to 10)"
 
@@ -332,7 +328,7 @@ msgstr "Offer id"
 msgid "Offer title"
 msgstr "Offer title"
 
-#: ../content/offer.py:316
+#: ../content/offer.py:315
 #: ../content/templates/offer_view.pt:50
 msgid "Options"
 msgstr "Options"
@@ -370,7 +366,7 @@ msgstr "Publication"
 msgid "Request the offer"
 msgstr "Request the offer"
 
-#: ../content/offer.py:235
+#: ../content/offer.py:234
 #: ../content/templates/offer_view.pt:38
 msgid "Requirements"
 msgstr "Requirements"
@@ -379,15 +375,23 @@ msgstr "Requirements"
 msgid "Review State"
 msgstr "Review State"
 
-#: ../content/offer.py:339
+#: ../content/offer.py:338
 #: ../content/templates/offer_view.pt:237
 msgid "Scope of cooperation"
 msgstr "Scope of cooperation"
 
+#: ../z3cwidget/text_input_teacher.pt:46
+msgid "Seach teacher"
+msgstr "Seach teacher"
+
 #: ../content/templates/market_view.pt:181
-#: ../z3cwidget/text_input_teacher.pt:38
+#: ../z3cwidget/text_input_teacher.pt:52
 msgid "Search"
 msgstr "Search"
+
+#: ../z3cwidget/text_input_teacher.pt:37
+msgid "Search_teacher"
+msgstr "Seach teacher"
 
 #: ../controlpanel.py:95
 msgid "Select if you want to add \"Reviewer\" role"
@@ -413,7 +417,7 @@ msgstr "Tags"
 msgid "Targets"
 msgstr "Targets"
 
-#: ../content/offer.py:219
+#: ../content/offer.py:218
 #: ../content/templates/offer_view.pt:89
 msgid "Teacher Email"
 msgstr "Teacher Email"
@@ -477,7 +481,7 @@ msgstr "Topics of the TFE"
 msgid "UPC Mercat TFE"
 msgstr "Market for final studies of the UPC"
 
-#: ../content/offer.py:287
+#: ../content/offer.py:286
 msgid "Universitat"
 msgstr "University"
 
@@ -485,11 +489,11 @@ msgstr "University"
 msgid "University"
 msgstr "University"
 
-#: ../content/offer.py:226
+#: ../content/offer.py:225
 msgid "University department"
 msgstr "University department"
 
-#: ../z3cwidget/text_input_teacher.pt:50
+#: ../z3cwidget/text_input_teacher.pt:65
 msgid "User"
 msgstr "User"
 
@@ -541,7 +545,7 @@ msgstr "Description"
 msgid "classifications"
 msgstr "Classifications"
 
-#: ../content/offer.py:327
+#: ../content/offer.py:326
 msgid "confidential"
 msgstr "Confidential"
 
@@ -555,7 +559,7 @@ msgstr "Degree"
 msgid "edit"
 msgstr "edit"
 
-#: ../content/offer.py:321
+#: ../content/offer.py:320
 msgid "grant"
 msgstr "Grant"
 
@@ -577,9 +581,13 @@ msgstr "keys"
 msgid "market"
 msgstr "Market"
 
-#: ../content/offer.py:284
+#: ../content/offer.py:283
 msgid "modality"
 msgstr "Modality"
+
+#: ../z3cwidget/text_input_teacher.pt:49
+msgid "name.surname"
+msgstr "name.surname"
 
 #. Default: "offer"
 #: ../profiles/default/types/genweb.tfemarket.offer.xml
@@ -590,11 +598,11 @@ msgstr "Offer"
 msgid "offer_center"
 msgstr "Center"
 
-#: ../content/offer.py:259
+#: ../content/offer.py:258
 msgid "offer_features"
 msgstr "Features"
 
-#: ../content/offer.py:254
+#: ../content/offer.py:253
 msgid "offer_targets"
 msgstr "Targets"
 
@@ -602,15 +610,15 @@ msgstr "Targets"
 msgid "offer_topic"
 msgstr "Topic"
 
-#: ../content/offer.py:249
+#: ../content/offer.py:248
 msgid "offer_workload"
 msgstr "Workload"
 
-#: ../content/offer.py:264
+#: ../content/offer.py:263
 msgid "requirements"
 msgstr "Requirements"
 
-#: ../content/offer.py:271
+#: ../content/offer.py:270
 msgid "tfe_lang"
 msgstr "Work language"
 

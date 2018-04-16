@@ -585,15 +585,14 @@ h2.formFieldset {
   border-bottom: 6px double;
 }
 
-#form-widgets-teacher_manager-btn {
-  margin-bottom: 9px;
+#form-widgets-teacher_manager-modal {
+  width: 70% !important;
+  left: 37% !important;
 }
 
-#form-widgets-teacher_manager.viewError,
-#form-widgets-teacher_manager-btn.viewError,
-#form-widgets-teacher_manager.viewWarn,
-#form-widgets-teacher_manager-btn.viewWarn {
-  margin-bottom: 0px;
+#form-widgets-teacher_manager-btn-modal,
+#form-widgets-teacher_manager-btn {
+  margin-bottom: 9px;
 }
 
 #form-widgets-teacher_manager-error {
