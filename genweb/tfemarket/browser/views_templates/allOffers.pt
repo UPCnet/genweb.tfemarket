@@ -17,7 +17,6 @@
                 <div class="clearfix"></div>
                 <div id="offersList">
                   <div id="headerListOffers">
-                    <h2 i18n:translate="">All TFE's</h2>
                     <div class="buttonsRight documentDescription">
                       <button type="submit" class="link" tal:condition="view/checkPermissionCreateOffers">
                         <a href="++add++genweb.tfemarket.offer" i18n:translate="">Create a offer</a>

@@ -165,6 +165,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin: 0px;
 }
 
+#headerListOffers {
+  margin-bottom: 10px;
+}
+
 #headerListOffers h2 {
   margin-top: 0px;
   text-align: left;
