@@ -34,29 +34,18 @@
                                            id string:offer-data-tab"
                            i18n:translate="">Offer</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab"
-                           tal:attributes="href string:#offer-req;
-                                           id string:offer-mod-req"
-                           i18n:translate="">Requirements</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab"
-                           tal:attributes="href string:#offer-mod;
-                                           id string:offer-mod-tab"
-                           i18n:translate="">Modality</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab"
-                           tal:attributes="href string:#offer-opt;
-                                           id string:offer-opt-tab"
-                           i18n:translate="">Options</a>
-                      </li>
                       <li class="nav-item" tal:condition="applications">
                         <a class="nav-link" data-toggle="tab"
                            tal:attributes="href string:#offer-applications;
                                            id string:offer-applications-tab"
                            i18n:translate="">Applications</a>
+                      </li>
+                      <li class="informacioTFE">
+                        <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
+                          <button type="submit" class="link">
+                            <a href="++add++genweb.tfemarket.application" i18n:translate="">Request the offer</a>
+                          </button>
+                        </div>
                       </li>
                     </ul>
                     <div class="tab-content">
@@ -128,17 +117,6 @@
                               </tal:block>
                             </p>
                           </div>
-                          <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
-                            <button type="submit" class="link">
-                              <a href="++add++genweb.tfemarket.application" i18n:translate="">Request the offer</a>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="data tab-pane fade" role="tabpanel"
-                           tal:attributes="id string:offer-req;
-                                           aria-labelledby string:offer-data-req">
-                        <div class="informacioTFE">
                           <div class="leftInfoOffer">
                             <p class="numStudents">
                               <span class="field"><span i18n:translate="">Number of students</span>: </span>
@@ -181,12 +159,6 @@
                               </ul>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="data tab-pane fade" role="tabpanel"
-                           tal:attributes="id string:offer-mod;
-                                           aria-labelledby string:offer-data-mod">
-                        <div class="informacioTFE">
                           <div class="leftInfoOffer">
                             <p class="modality">
                               <span class="field"><span i18n:translate="">Modality</span>: </span>
@@ -211,12 +183,6 @@
                               <span tal:content="context/company_email">Company Email</span>
                             </p>
                           </div>
-                        </div>
-                      </div>
-                      <div class="data tab-pane fade" role="tabpanel"
-                           tal:attributes="id string:offer-opt;
-                                           aria-labelledby string:offer-opt-tab">
-                        <div class="informacioTFE">
                           <div class="leftInfoOffer">
                             <p class="environmentalTheme">
                               <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
@@ -238,6 +204,13 @@
                               <span tal:condition="context/scope_cooperation" i18n:translate="">Yes</span>
                               <span tal:condition="not: context/scope_cooperation" i18n:translate="">No</span>
                             </p>
+                          </div>
+                          <div>
+                            <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
+                              <button type="submit" class="link">
+                                <a href="++add++genweb.tfemarket.application" i18n:translate="">Request the offer</a>
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>

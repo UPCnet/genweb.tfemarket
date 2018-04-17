@@ -292,6 +292,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   border-bottom: none;
 }
 
+#offerData .nav.nav-tabs li.informacioTFE {
+  float: right;
+}
+
 #offerData .informacioTFE .rightInfoOffer {
   top: 0px;
   right: 0px;
