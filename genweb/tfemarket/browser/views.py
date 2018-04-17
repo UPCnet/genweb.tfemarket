@@ -21,14 +21,6 @@ from genweb.tfemarket.utils import getLdapUserData
 from zope.interface import Interface
 
 import json
-import pkg_resources
-
-try:
-    pkg_resources.get_distribution('plone4.csrffixes')
-except pkg_resources.DistributionNotFound:
-    CSRF = False
-else:
-    CSRF = True
 
 
 def redirectAfterChangeActualState(self):
