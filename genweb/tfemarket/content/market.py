@@ -4,7 +4,6 @@ from collections import OrderedDict
 from datetime import date
 from datetime import datetime
 from five import grok
-from operator import itemgetter
 from plone import api
 from plone.directives import form
 from plone.registry.interfaces import IRegistry
@@ -48,34 +47,34 @@ class View(grok.View):
 
             # Filter text
             if len(filters['title']) > 2 and not filters['title'].lower() in item['title'].lower():
-               delete.append(index)
-               continue
+                delete.append(index)
+                continue
 
-             # Filter degree
-            if not filters['degree'] == 'a' and (not item.has_key('degrees') or int(filters['degree']) not in item['degrees']):
+            # Filter degree
+            if filters['degree'] != 'a' and ('degrees' not in item or int(filters['degree']) not in item['degrees']):
                 delete.append(index)
                 continue
 
             # Filter departament
-            if not filters['departament'] == 'a' and (not item.has_key('dept') or filters['departament'] != item['dept']):
+            if filters['departament'] != 'a' and ('dept' not in item or filters['departament'] != item['dept']):
                 delete.append(index)
                 continue
 
             # Filter company
-            if not filters['company'] == 'a' and (not item.has_key('company') or filters['company'] != item['company']):
+            if filters['company'] != 'a' and ('company' not in item or filters['company'] != item['company']):
                 delete.append(index)
                 continue
 
             # Filter date
             if not filters['date'] == 'a':
-                if item.has_key('effective_date') and item['effective_date']:
+                if 'effective_date' in item and item['effective_date']:
                     today = date.today()
                     effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
                     diff_days = today - effective_date
                     diff_days = diff_days.days
                     if filters['date'] == 'd' and diff_days > 1 \
-                    or filters['date'] == 'w' and diff_days > 7 \
-                    or filters['date'] == 'm' and diff_days > 30:
+                       or filters['date'] == 'w' and diff_days > 7 \
+                       or filters['date'] == 'm' and diff_days > 30:
                         delete.append(index)
                         continue
                 else:
@@ -83,8 +82,9 @@ class View(grok.View):
                     continue
 
             # Filters Keys
-            if filters.has_key('key'):
-                if item.has_key('keywords') and item['keywords']:
+
+            if 'key' in filters:
+                if 'keywords' in item and item['keywords']:
                     flattenedKeys = self.flattenedList(item['keywords'])
                     if isinstance(filters['key'], list):
                         deletedItem = True
@@ -105,13 +105,13 @@ class View(grok.View):
                     continue
 
             # Filter grant
-            if filters.has_key('grant'):
+            if 'grant' in filters:
                 if not item['grant']:
                     delete.append(index)
                     continue
 
             # Filter language
-            if item.has_key('langs'):
+            if 'langs' in item:
                 flattenedListanguages = self.flattenedList(item['langs'])
                 if isinstance(filters['language'], list):
                     deletedItem = True
@@ -128,7 +128,7 @@ class View(grok.View):
                         continue
 
             # FIlter modality
-            if item.has_key('modality') and len(filters['modality']) != 2:
+            if 'modality' in item and len(filters['modality']) != 2:
                 if (filters['modality'] == 'u' and item['modality'] != 'Universitat') or (filters['modality'] == 'c' and item['modality'] != 'Empresa'):
                     delete.append(index)
                     continue
@@ -146,7 +146,6 @@ class View(grok.View):
             self.request.response.setCookie('MERCAT_TFE', "", path='/')
 
         if not self.request.form == {}:
-            catalog = api.portal.get_tool(name='portal_catalog')
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
@@ -154,8 +153,8 @@ class View(grok.View):
                 filter={'portal_type': 'genweb.tfemarket.offer'})
 
             values = sort(values, sort=(
-                ('Date','cmp','desc'),
-                ('Title','cmp','asc')
+                ('Date', 'cmp', 'desc'),
+                ('Title', 'cmp', 'asc')
             ))
 
             results = []
@@ -226,14 +225,14 @@ class View(grok.View):
         return tfe_tool.languages.split('\r\n')
 
     def getModalities(self):
-        return [{'id' : 'c', 'lit' : _(u"Company")},
-                {'id' : 'u', 'lit' : _(u"University")}]
+        return [{'id': 'c', 'lit': _(u"Company")},
+                {'id': 'u', 'lit': _(u"University")}]
 
     def getDates(self):
-        return [{'id' : 'a', 'lit' : _(u"All")},
-                {'id' : 'd', 'lit' : _(u"Last day")},
-                {'id' : 'w', 'lit' : _(u"Last week")},
-                {'id' : 'm', 'lit' : _(u"Last month")}]
+        return [{'id': 'a', 'lit': _(u"All")},
+                {'id': 'd', 'lit': _(u"Last day")},
+                {'id': 'w', 'lit': _(u"Last week")},
+                {'id': 'm', 'lit': _(u"Last month")}]
 
     def getDegrees(self):
         return getDegrees()
@@ -266,7 +265,6 @@ class View(grok.View):
 
         return sorted(list(OrderedDict.fromkeys(results)))
 
-
     def getKeys(self):
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
@@ -282,10 +280,10 @@ class View(grok.View):
     def saveFilters(self):
         filters = self.request.form
 
-        if filters.has_key('key'):
+        if 'key' in filters:
             filters['key'] = self.flattenedList(filters['key'])
 
-        if filters.has_key('language'):
+        if 'language' in filters:
             filters['language'] = self.flattenedList(filters['language'])
 
         return filters
