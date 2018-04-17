@@ -28,7 +28,7 @@ msgstr "Has renunciado a la oferta y se ha comunicado al profesor. Si quieres vo
 
 #: ../browser/events/change.py:49
 msgid "A5"
-msgstr "Request filed. You will receive an email with the data of your request and a link to it, through which you can check its status. The changes in status of your request are also communicated via email."
+msgstr "Solicitud presentada. Recibirás un mensaje de correo con los datos de tu solicitud y un enlace a la misma, a través del cual podrás consultar su estado. Los cambios de estado de tu solicitud se comunican también mediante el correo electrónico."
 
 #: ../browser/views_templates/allOffers.pt:183
 #: ../content/templates/market_view.pt:321
