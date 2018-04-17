@@ -68,7 +68,7 @@ class View(grok.View):
 
             # Filter date
             if not filters['date'] == 'a':
-                if item.has_key('effective_date') and not item['effective_date'] == None:
+                if item.has_key('effective_date') and item['effective_date']:
                     today = date.today()
                     effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
                     diff_days = today - effective_date
@@ -84,7 +84,7 @@ class View(grok.View):
 
             # Filters Keys
             if filters.has_key('key'):
-                if item.has_key('keywords') and not item['keywords'] == None:
+                if item.has_key('keywords') and item['keywords']:
                     flattenedKeys = self.flattenedList(item['keywords'])
                     if isinstance(filters['key'], list):
                         deletedItem = True
@@ -252,7 +252,7 @@ class View(grok.View):
         results = []
         for item in self.getAllOffers():
             offer = item.getObject()
-            if not offer.dept == None:
+            if offer.dept:
                 results.append(offer.dept)
 
         return sorted(list(OrderedDict.fromkeys(results)))
@@ -261,7 +261,7 @@ class View(grok.View):
         results = []
         for item in self.getAllOffers():
             offer = item.getObject()
-            if not offer.company == None:
+            if offer.company:
                 results.append(offer.company)
 
         return sorted(list(OrderedDict.fromkeys(results)))
