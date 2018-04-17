@@ -262,6 +262,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 #offerData .applications,
 #offersList .offerData .data,
 #offersList .offerData .applications,
+#applicationData,
 #formSearchOffers {
   background-color: #f5f4f4;
   float: left;
@@ -359,6 +360,7 @@ table#form-widgets-teacher_manager-hint tbody .actions {
   text-align: right;
 }
 
+#applicationData,
 #market #userApplication {
   margin-bottom: 25px;
 }

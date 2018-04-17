@@ -20,6 +20,12 @@ class IApplication(form.Schema):
     """ Application for an offer
     """
 
+    directives.mode(title="hidden")
+    title = schema.TextLine(
+        title=_(u'Fullname'),
+        required=False,
+    )
+
     directives.mode(offer_id="display")
     offer_id = schema.TextLine(
         title=_(u'Offer id'),
@@ -34,17 +40,16 @@ class IApplication(form.Schema):
         default=u'',
     )
 
-    primary('dni')
-    directives.mode(dni="display")
-    dni = schema.TextLine(
-        title=_(u'DNI'),
+    directives.mode(fullname="display")
+    fullname = schema.TextLine(
+        title=_(u'Fullname'),
         required=False,
         default=u'',
     )
 
-    directives.mode(fullname="display")
-    fullname = schema.TextLine(
-        title=_(u'Fullname'),
+    directives.mode(dni="display")
+    dni = schema.TextLine(
+        title=_(u'DNI'),
         required=False,
         default=u'',
     )
@@ -84,6 +89,7 @@ class Add(dexterity.AddForm):
         current = api.user.get_current()
         user = getLdapExactUserData(current.id)
         if user:
+            self.fields['title'].field.default = user['sn'].decode()
             self.fields['dni'].field.default = user['DNIpassport'].decode()
             self.fields['fullname'].field.default = user['sn'].decode()
             self.fields['email'].field.default = user['mail'].decode()

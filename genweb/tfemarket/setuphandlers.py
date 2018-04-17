@@ -23,6 +23,15 @@ def post_install(context):
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
+    if context.readDataFile('genweb.tfemarket_ldap.txt') is None:
+        return
+
+    portal = context.getSite()
+    ldap_acl_users = getattr(portal.acl_users, 'ldapUPC').acl_users
+    LDAPUserFolder.manage_deleteLDAPSchemaItems(
+        ldap_acl_users,
+        ldap_names=['unit', 'unitCode', 'segmentation', 'typology', 'DNIpassport', 'telephoneNumber'],
+        REQUEST=None)
 
 
 def setupLdapMarket(context):

@@ -46,12 +46,14 @@ def applicationChanged(application, event):
         toMsg = 'Professor'
         subject = 'Sol·licita'
         msg = M1[lang].format(**data)
+        portalMsg = _(u'A5')
     else:
         if event.transition.id == 'request':
             fromMsg = 'Estudiant'
             toMsg = 'Professor'
             subject = 'Sol·licita'
             msg = M1[lang].format(**data)
+            portalMsg = _(u'A5')
         elif event.transition.id == 'accept':
             fromMsg = 'Professor'
             toMsg = 'Estudiant'

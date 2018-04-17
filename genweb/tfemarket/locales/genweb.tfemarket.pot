@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-04-16 09:03+0000\n"
+"POT-Creation-Date: 2018-04-17 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,12 +25,16 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr ""
 
-#: ../browser/events/change.py:70
+#: ../browser/events/change.py:72
 msgid "A3"
 msgstr ""
 
-#: ../browser/events/change.py:76
+#: ../browser/events/change.py:78
 msgid "A4"
+msgstr ""
+
+#: ../browser/events/change.py:49
+msgid "A5"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:183
@@ -60,12 +64,12 @@ msgstr ""
 
 #: ../content/market.py:233
 #: ../content/templates/market_view.pt:104
-#: ../utils.py:102
+#: ../utils.py:103
 msgid "All"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:101
-#: ../content/templates/offer_view.pt:56
+#: ../content/templates/offer_view.pt:38
 msgid "Applications"
 msgstr ""
 
@@ -73,7 +77,8 @@ msgstr ""
 msgid "Assign the offer"
 msgstr ""
 
-#: ../content/application.py:66
+#: ../content/application.py:71
+#: ../content/templates/application_view.pt:47
 msgid "Body"
 msgstr ""
 
@@ -86,7 +91,7 @@ msgid "Center code"
 msgstr ""
 
 #: ../content/offer.py:291
-#: ../content/templates/offer_view.pt:198
+#: ../content/templates/offer_view.pt:170
 msgid "CoManager"
 msgstr ""
 
@@ -97,16 +102,16 @@ msgid "Company"
 msgstr ""
 
 #: ../content/offer.py:301
-#: ../content/templates/offer_view.pt:206
+#: ../content/templates/offer_view.pt:178
 msgid "Company Contact"
 msgstr ""
 
 #: ../content/offer.py:306
-#: ../content/templates/offer_view.pt:210
+#: ../content/templates/offer_view.pt:182
 msgid "Company Email"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:232
+#: ../content/templates/offer_view.pt:198
 msgid "Confidential"
 msgstr ""
 
@@ -116,8 +121,8 @@ msgid "Create a offer"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:196
-#: ../content/application.py:40
-#: ../content/templates/market_view.pt:22
+#: ../content/application.py:25
+#: ../content/templates/application_view.pt:33
 msgid "DNI"
 msgstr ""
 
@@ -131,7 +136,7 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:140
 #: ../content/templates/market_view.pt:24
-#: ../content/templates/offer_view.pt:105
+#: ../content/templates/offer_view.pt:94
 msgid "Degree"
 msgstr ""
 
@@ -139,19 +144,19 @@ msgstr ""
 msgid "Degree code at PRISMA"
 msgstr ""
 
-#: ../utils.py:108
+#: ../utils.py:109
 msgid "Degree deleted"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:146
 #: ../content/templates/market_view.pt:284
-#: ../content/templates/offer_view.pt:111
+#: ../content/templates/offer_view.pt:100
 msgid "Degrees"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:118
 #: ../content/templates/market_view.pt:102
-#: ../content/templates/offer_view.pt:93
+#: ../content/templates/offer_view.pt:82
 msgid "Departament"
 msgstr ""
 
@@ -178,7 +183,8 @@ msgstr ""
 msgid "Direction"
 msgstr ""
 
-#: ../content/application.py:54
+#: ../content/application.py:59
+#: ../content/templates/application_view.pt:37
 #: ../z3cwidget/text_input_teacher.pt:67
 msgid "Email"
 msgstr ""
@@ -187,7 +193,7 @@ msgstr ""
 msgid "Environmental Theme"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:222
+#: ../content/templates/offer_view.pt:188
 msgid "Environmental theme"
 msgstr ""
 
@@ -201,15 +207,16 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:60
 #: ../content/templates/market_view.pt:215
-#: ../content/templates/offer_view.pt:79
+#: ../content/templates/offer_view.pt:68
 msgid "Expiration date"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:160
+#: ../content/templates/offer_view.pt:138
 msgid "Features"
 msgstr ""
 
-#: ../content/application.py:47
+#: ../content/application.py:45
+#: ../content/templates/application_view.pt:29
 #: ../z3cwidget/text_input_teacher.pt:66
 msgid "Fullname"
 msgstr ""
@@ -218,13 +225,13 @@ msgstr ""
 msgid "Hide search"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:69
+#: ../content/templates/offer_view.pt:58
 msgid "Identifier"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:199
 #: ../content/templates/market_view.pt:25
-#: ../content/templates/offer_view.pt:254
+#: ../content/templates/offer_view.pt:227
 msgid "Identifier Offer TFE"
 msgstr ""
 
@@ -242,19 +249,19 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:175
 #: ../content/templates/market_view.pt:134
-#: ../content/templates/offer_view.pt:125
+#: ../content/templates/offer_view.pt:114
 msgid "Keywords"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:154
 #: ../content/templates/market_view.pt:292
-#: ../content/templates/offer_view.pt:172
+#: ../content/templates/offer_view.pt:150
 msgid "Language work elaboration"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:160
 #: ../content/templates/market_view.pt:298
-#: ../content/templates/offer_view.pt:178
+#: ../content/templates/offer_view.pt:156
 msgid "Languages work elaboration"
 msgstr ""
 
@@ -280,7 +287,7 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:200
 #: ../content/templates/market_view.pt:26
-#: ../content/templates/offer_view.pt:255
+#: ../content/templates/offer_view.pt:228
 msgid "Mobile"
 msgstr ""
 
@@ -292,7 +299,7 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:197
 #: ../content/templates/market_view.pt:23
-#: ../content/templates/offer_view.pt:252
+#: ../content/templates/offer_view.pt:225
 msgid "Name"
 msgstr ""
 
@@ -302,7 +309,7 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:170
 #: ../content/templates/market_view.pt:308
-#: ../content/templates/offer_view.pt:224
+#: ../content/templates/offer_view.pt:190
 msgid "No"
 msgstr ""
 
@@ -313,7 +320,7 @@ msgid "No results found."
 msgstr ""
 
 #: ../content/offer.py:239
-#: ../content/templates/offer_view.pt:144
+#: ../content/templates/offer_view.pt:122
 msgid "Number of students"
 msgstr ""
 
@@ -326,17 +333,18 @@ msgstr ""
 msgid "Offer"
 msgstr ""
 
-#: ../content/application.py:25
+#: ../content/application.py:31
 #: ../content/offer.py:167
+#: ../content/templates/application_view.pt:19
 msgid "Offer id"
 msgstr ""
 
-#: ../content/application.py:32
+#: ../content/application.py:38
+#: ../content/templates/application_view.pt:23
 msgid "Offer title"
 msgstr ""
 
 #: ../content/offer.py:315
-#: ../content/templates/offer_view.pt:50
 msgid "Options"
 msgstr ""
 
@@ -355,7 +363,7 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:168
 #: ../content/templates/market_view.pt:306
-#: ../content/templates/offer_view.pt:227
+#: ../content/templates/offer_view.pt:193
 msgid "Possibility of scholarship"
 msgstr ""
 
@@ -365,16 +373,16 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:56
 #: ../content/templates/market_view.pt:211
-#: ../content/templates/offer_view.pt:75
+#: ../content/templates/offer_view.pt:64
 msgid "Publication date"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:133
+#: ../content/templates/offer_view.pt:46
 msgid "Request the offer"
 msgstr ""
 
 #: ../content/offer.py:234
-#: ../content/templates/offer_view.pt:38
+#: ../content/templates/offer_view.pt:144
 msgid "Requirements"
 msgstr ""
 
@@ -383,7 +391,7 @@ msgid "Review State"
 msgstr ""
 
 #: ../content/offer.py:338
-#: ../content/templates/offer_view.pt:237
+#: ../content/templates/offer_view.pt:203
 msgid "Scope of cooperation"
 msgstr ""
 
@@ -420,22 +428,23 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:154
+#: ../content/templates/offer_view.pt:132
 msgid "Targets"
 msgstr ""
 
 #: ../content/offer.py:218
-#: ../content/templates/offer_view.pt:89
+#: ../content/templates/offer_view.pt:78
 msgid "Teacher Email"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:114
 #: ../content/templates/market_view.pt:252
-#: ../content/templates/offer_view.pt:85
+#: ../content/templates/offer_view.pt:74
 msgid "Teacher manager"
 msgstr ""
 
-#: ../content/application.py:60
+#: ../content/application.py:65
+#: ../content/templates/application_view.pt:41
 msgid "Telephone"
 msgstr ""
 
@@ -447,11 +456,11 @@ msgstr ""
 msgid "The current offer contains an accepted application."
 msgstr ""
 
-#: ../browser/events/change.py:116
+#: ../browser/events/change.py:118
 msgid "The offer can't be canceled if it contains active applications."
 msgstr ""
 
-#: ../browser/events/change.py:126
+#: ../browser/events/change.py:128
 msgid "The offer can't be deleted."
 msgstr ""
 
@@ -475,7 +484,7 @@ msgstr ""
 msgid "Titulacions ES"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:119
+#: ../content/templates/offer_view.pt:108
 msgid "Topic"
 msgstr ""
 
@@ -516,13 +525,13 @@ msgstr ""
 msgid "With the possibility of offering grant/financing"
 msgstr ""
 
-#: ../content/templates/offer_view.pt:148
+#: ../content/templates/offer_view.pt:126
 msgid "Workload"
 msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:169
 #: ../content/templates/market_view.pt:307
-#: ../content/templates/offer_view.pt:223
+#: ../content/templates/offer_view.pt:189
 msgid "Yes"
 msgstr ""
 
@@ -530,7 +539,7 @@ msgstr ""
 msgid "You have already created an <a href=\"${DYNAMIC_CONTENT}\">application</a>."
 msgstr ""
 
-#: ../content/application.py:78
+#: ../content/application.py:83
 msgid "You have already created an application."
 msgstr ""
 
@@ -561,7 +570,7 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:82
 #: ../content/templates/market_view.pt:54
-#: ../content/templates/offer_view.pt:283
+#: ../content/templates/offer_view.pt:256
 msgid "edit"
 msgstr ""
 
@@ -633,6 +642,6 @@ msgstr ""
 
 #: ../browser/views_templates/allOffers.pt:86
 #: ../content/templates/market_view.pt:58
-#: ../content/templates/offer_view.pt:287
+#: ../content/templates/offer_view.pt:260
 msgid "view"
 msgstr ""
