@@ -127,7 +127,6 @@ def getApplicationsFromContent(content):
 
 def checkOfferhasValidApplications(offer):
     wf_tool = getToolByName(offer, 'portal_workflow')
-    import ipdb; ipdb.set_trace()
     for item in getApplicationsFromContent(offer):
         application_workflow = wf_tool.getWorkflowsFor(item)[0].id
         application_status = wf_tool.getStatusOf(application_workflow, item)
