@@ -1,6 +1,4 @@
-from DateTime import DateTime
 from z3c.form.interfaces import IEditForm, IAddForm
-from zope.interface import provider
 from zope.interface import alsoProvides
 from zope import schema
 from plone.autoform import directives as form
@@ -9,6 +7,19 @@ from plone.app.dexterity.behaviors.metadata import MetadataBase
 from plone.supermodel import model
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.app.dexterity import PloneMessageFactory as _PMF
+
+from plone.app.event.base import dt_end_of_day
+from plone.app.event.base import dt_start_of_day
+
+import datetime
+
+
+def effectiveDefaultValue():
+    return dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1))
+
+
+def expiresDefaultValue():
+    return dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365))
 
 
 class IPublicationOffer(model.Schema):
@@ -25,7 +36,8 @@ class IPublicationOffer(model.Schema):
             u'help_effective_date',
             default=u"If this date is in the future, the content will "
                     u"not show up in listings and searches until this date."),
-        required=True
+        required=True,
+        defaultFactory=effectiveDefaultValue,
     )
 
     expires = schema.Datetime(
@@ -34,12 +46,14 @@ class IPublicationOffer(model.Schema):
             u'help_expiration_date',
             default=u"When this date is reached, the content will no"
                     u"longer be visible in listings and searches."),
-        required=True
+        required=True,
+        defaultFactory=expiresDefaultValue,
     )
 
     form.omitted('effective', 'expires')
     form.no_omit(IEditForm, 'effective', 'expires')
     form.no_omit(IAddForm, 'effective', 'expires')
+
 
 alsoProvides(IPublicationOffer, IFormFieldProvider)
 
