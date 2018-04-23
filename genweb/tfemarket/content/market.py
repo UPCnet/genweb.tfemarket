@@ -210,8 +210,6 @@ class View(grok.View):
                                     state=workflows['states'][item.review_state].title,
                                     url=item.getURL(),
                                     item_path=application.absolute_url_path(),
-                                    dni=application.dni,
-                                    name=application.title,
                                     offer_id=application.offer_id,
                                     offer_title=application.offer_title,
                                     workflows=workflowActions,

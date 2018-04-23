@@ -226,6 +226,7 @@
                               <th i18n:translate="">Name</th>
                               <th i18n:translate="">Degree</th>
                               <th i18n:translate="">Identifier Offer TFE</th>
+                              <th i18n:translate="">Title Offer TFE</th>
                               <th i18n:translate="">Mobile</th>
                               <th></th>
                            </tr>
@@ -235,8 +236,9 @@
                               <td tal:content="app/dni">DNI</td>
                               <td tal:content="app/name">Name</td>
                               <td>Degree</td>
-                              <td>Identifier Offer TFE</td>
-                              <td>Mobile</td>
+                              <td tal:content="app/offer_id">Identifier Offer TFE</td>
+                              <td tal:content="app/offer_title">Title Offer TFE</td>
+                              <td tal:content="app/phone">Mobile</td>
                               <td class="actions">
                                  <span class="workflowsAction">
                                     <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
