@@ -97,19 +97,14 @@ class AllOffers(grok.View):
                 filter={'portal_type': 'genweb.tfemarket.offer',
                         'Creator': api.user.get_current().id
                         })
-
-            values = sort(values, sort=(
-                ('Date', 'cmp', 'desc'),
-                ('Title', 'cmp', 'asc')
-            ))
         else:
             values = self.context.contentValues(
                 filter={'portal_type': 'genweb.tfemarket.offer'})
 
-            values = sort(values, sort=(
-                ('Date', 'cmp', 'desc'),
-                ('Title' ,'cmp', 'asc')
-            ))
+        values = sort(values, sort=(
+            ('Date', 'cmp', 'desc'),
+            ('Title' ,'cmp', 'asc')
+        ))
 
         results = []
         for offer in values:

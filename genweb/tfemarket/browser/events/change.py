@@ -90,7 +90,8 @@ def applicationChanged(application, event):
 
 
 def offerChanged(offer, event):
-    """ If genweb.tfemarket.offer change WF, checks if expired.
+    """ If genweb.tfemarket.offer change WF, checks if expired otherwise we
+        will change the effective date.
     """
 
     if event.transition is not None:
@@ -103,6 +104,9 @@ def offerChanged(offer, event):
                 if diff_days.days < 0:
                     wftool.doActionFor(offer, 'caducaloferta')
                     transaction.commit()
+                else:
+                    offer.effective_date = datetime.now()
+                    offer.reindexObject()
             else:
                 wftool.doActionFor(offer, 'caducaloferta')
                 transaction.commit()
