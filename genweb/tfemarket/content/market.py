@@ -145,7 +145,7 @@ class View(grok.View):
             self.request.form = ast.literal_eval(searchMarket)
             self.request.response.setCookie('MERCAT_TFE', "", path='/')
 
-        if not self.request.form == {}:
+        if not self.request.form == {} and 'form.button.confirm' not in self.request.form:
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
