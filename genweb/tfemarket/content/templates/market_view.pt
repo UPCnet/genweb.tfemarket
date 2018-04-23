@@ -67,9 +67,11 @@
                 <div id="offersList">
                   <div id="headerListOffers">
                     <div class="buttonsRight documentDescription">
-                      <button type="submit" class="link" tal:condition="view/checkPermissionCreateOffers">
-                        <a href="++add++genweb.tfemarket.offer" i18n:translate="">Create a offer</a>
-                      </button>
+                      <a href="++add++genweb.tfemarket.offer" tal:condition="view/checkPermissionCreateOffers">
+                        <button type="submit" class="link">
+                          <span i18n:translate="">Create a offer</span>
+                        </button>
+                      </a>
                       <span id="buttonsSearch">
                         <span id="expandSearch">
                           <span i18n:translate="">Show search</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -170,12 +172,15 @@
                       </div>
 
                       <div class="bottomLinks">
-                        <button type="submit" class="link viewOffers" tal:condition="view/checkPermissionCreateOffers">
-                          <a href="allOffers?teacher" i18n:translate="">View my offers</a>
-                        </button>
-                        <button type="submit" class="link viewOffers">
-                          <a href="allOffers" i18n:translate="">View all offers</a>
-                        </button>
+                        <a href="allOffers?teacher" class="btnTFE"
+                          tal:condition="view/checkPermissionCreateOffers"
+                          i18n:translate="">
+                          View my offers
+                        </a>
+                        <a href="allOffers" class="btnTFE"
+                          i18n:translate="">
+                          View all offers
+                        </a>
                         <button type="submit" id="offersFilter" form="offersFilter">
                           <span class="fa fa-search"></span>
                           <span i18n:translate="">Search</span>

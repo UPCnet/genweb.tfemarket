@@ -18,10 +18,12 @@
                 <div id="offersList">
                   <div id="headerListOffers">
                     <div class="buttonsRight documentDescription">
-                      <button type="submit" class="link" tal:condition="view/checkPermissionCreateOffers">
-                        <a href="++add++genweb.tfemarket.offer" i18n:translate="">Create a offer</a>
-                      </button>
-                      <span id="buttonsAllOffers" tal:condition="offers">
+                      <a href="++add++genweb.tfemarket.offer" tal:condition="view/checkPermissionCreateOffers">
+                        <button type="submit" class="link">
+                          <span i18n:translate="">Create a offer</span>
+                        </button>
+                      </a>
+                      <span tal:condition="offers">
                         <span id="expandAll" i18n:translate="">Desplega tot <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i></span>
                         <span id="collapseAll" i18n:translate="">Plega tot <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i></span>
                       </span>
@@ -179,10 +181,11 @@
                                         </p>
                                       </div>
                                       <div class="bottomLinks">
-                                        <button type="submit" class="link">
-                                          <a tal:attributes="href string:${offer/url}"
-                                             i18n:translate="">Access the offer</a>
-                                        </button>
+                                        <a tal:attributes="href string:${offer/url}">
+                                          <button type="submit" class="link">
+                                             <span i18n:translate="">Access the offer</span>
+                                           </button>
+                                        </a>
                                       </div>
                                     </div>
                                   </div>

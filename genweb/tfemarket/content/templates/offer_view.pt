@@ -41,9 +41,11 @@
                   </li>
                   <li class="informacioTFE">
                      <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
-                        <button type="submit" class="link">
-                        <a href="++add++genweb.tfemarket.application" i18n:translate="">Request the offer</a>
-                        </button>
+                        <a href="++add++genweb.tfemarket.application">
+                          <button type="submit" class="link">
+                            <span i18n:translate="">Request the offer</span>
+                          </button>
+                        </a>
                      </div>
                   </li>
                </ul>
@@ -204,13 +206,13 @@
                               </tal:block>
                            </p>
                         </div>
-                        <div>
-                           <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
-                              <button type="submit" class="link">
-                              <a href="++add++genweb.tfemarket.application" i18n:translate="">Request the offer</a>
-                              </button>
-                           </div>
-                        </div>
+                         <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
+                           <a href="++add++genweb.tfemarket.application">
+                             <button type="submit" class="link">
+                               <span i18n:translate="">Request the offer</span>
+                             </button>
+                           </a>
+                         </div>
                      </div>
                   </div>
                   <div tal:condition="applications" class="applications tab-pane fade"

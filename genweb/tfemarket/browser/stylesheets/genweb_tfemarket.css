@@ -180,10 +180,6 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-bottom: 0px;
 }
 
-#headerListOffers #buttonsAllOffers {
-  margin-left: 15px;
-}
-
 .informacioTFE .leftInfoOffer {
   margin-top: 20px;
 }
@@ -232,19 +228,28 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-right: 15px;
 }
 
+.btnTFE:hover,
+.buttonsRight a:hover,
+.bottomLinks a:hover {
+  text-decoration: none;
+}
+
+.btnTFE,
 .buttonsRight button.link,
 .informacioTFE .bottomLinks button.link {
   background: #007BC0;
   border-radius: 4px !important;
 }
 
-.buttonsRight button.link a,
-.informacioTFE .bottomLinks button.link a {
+.btnTFE,
+.buttonsRight a button.link,
+.informacioTFE .bottomLinks a button.link {
   text-shadow: none;
   text-decoration: none;
   color: #FFF;
   font-weight: bold;
 }
+
 
 #headerSearchOffers {
   display: inline;
@@ -538,10 +543,6 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
   text-shadow: none;
 }
 
-#formSearchOffers .bottomLinks button.viewOffers {
-  background: #007BC0AA;
-}
-
 #offersList #expandSearch,
 #offersList #collapseAll,
 #offersList .offerData,
@@ -623,6 +624,32 @@ h2.formFieldset {
 
 #viewlet-above-content-title .infoTfemarket .fa-info-circle {
   font-size: 1.9em;
+}
+
+.btnTFE {
+  display: inline-block;
+  padding: 4px 14px;
+  vertical-align: middle;
+  cursor: pointer;
+  background: #007BC0AA;
+  margin-right: 5px;
+  border: 1px solid #7f7f7f;
+  border-bottom-color: #595959;
+  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+  text-shadow: none;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: bold;
+  border-radius: 4px !important;
+}
+
+.btnTFE:hover {
+  color: #FFF;
+}
+
+.btnTFE:active {
+  outline: 0;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #listing-table a.contenttype-genweb-tfemarket-application:before,
