@@ -196,7 +196,7 @@ class getTeacher(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
-        teachers = getLdapUserData(self.request.form['teacher'], typology='PDI')
+        teachers = getLdapUserData(self.request.form['teacher'], typology='PERSONAL')
         if len(teachers) > 0:
             listTeachers = []
             for teacher in teachers:
