@@ -210,21 +210,18 @@ class IOffer(form.Schema):
     teacher_manager = schema.TextLine(
         title=_(u'TFEteacher'),
         required=False,
-        default=u'',
     )
 
     form.widget('teacher_email', ReadOnlyInputFieldWidget)
     teacher_email = schema.TextLine(
         title=_(u'Teacher Email'),
         required=False,
-        default=u'',
     )
 
     form.widget('dept', ReadOnlyInputFieldWidget)
     dept = schema.TextLine(
         title=_(u'University department'),
         required=False,
-        default=u'',
     )
 
     ############################################################################
@@ -419,10 +416,3 @@ class Add(dexterity.AddForm):
 
     def updateWidgets(self):
         super(Add, self).updateWidgets()
-
-        current = api.user.get_current()
-        user = getLdapExactUserData(current.id)
-        if user and 'typology' in user and user['typology'] == 'PDI':
-            self.fields['teacher_manager'].field.default = user['uid']
-            self.fields['teacher_email'].field.default = user['mail']
-            self.fields['dept'].field.default = u''

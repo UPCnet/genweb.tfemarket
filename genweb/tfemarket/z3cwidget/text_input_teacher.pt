@@ -129,6 +129,20 @@
         $("#form-widgets-teacher_manager-error").addClass("viewError");
       }
     });
+
+    $.ajax({
+      type: 'POST',
+      data: { "teacher" : $("#user-name").html().trim() },
+      url: 'getExactTeacher',
+      success: function(data){
+        result = $.parseJSON(data);
+        if(result != null){
+          $("#form-widgets-teacher_manager").val(result['user']);
+          $("#form-widgets-teacher_email").val(result['email']);
+          $("#form-widgets-dept").val(result['dept']);
+        }
+      }
+    });
   </script>
 
 </html>

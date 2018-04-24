@@ -215,6 +215,27 @@ class getTeacher(grok.View):
             return None
 
 
+class getExactTeacher(grok.View):
+    grok.context(Interface)
+    grok.name('getExactTeacher')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        teacher = getLdapExactUserData(self.request.form['teacher'], typology='PDI')
+        if teacher and 'sn' in teacher:
+            teacherDept = teacher['unitCode'] + "-" + teacher['unit']
+            data = {
+                'user': teacher['id'],
+                'email': teacher['mail'],
+                'fullname': teacher['sn'],
+                'dept': teacherDept
+            }
+            return json.dumps(data)
+        else:
+            return None
+
+
 class createApplication(grok.View):
     grok.context(IOffer)
     grok.name('createApplication')

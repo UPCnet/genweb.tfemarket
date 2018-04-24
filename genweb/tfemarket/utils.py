@@ -28,8 +28,8 @@ def sendMessage(context, fromMsg, toMsg, subject, message):
     mailhost.send(msg)
 
 
-def getLdapExactUserData(user):
-    users = getLdapUserData(user)
+def getLdapExactUserData(user, typology=None):
+    users = getLdapUserData(user, typology)
     for userLDAP in users:
         if userLDAP['id'] == user:
             return userLDAP
