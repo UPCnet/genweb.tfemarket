@@ -26,9 +26,8 @@ def applicationChanged(application, event):
     lang = api.portal.get_current_language()
     if lang not in ['ca', 'en', 'es']:
         lang = 'en'
-
     data = {
-        'student': application.id,
+        'student': application.fullname,
         'degree': 'Titulació usuari',
         'num': application.getParentNode().offer_id,
         'title': application.getParentNode().title,
