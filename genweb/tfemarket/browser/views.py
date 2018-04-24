@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from five import grok
 from plone import api
+from plone.dexterity.utils import createContentInContainer
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
+from zope.interface import alsoProvides
 from zope.security import checkPermission
 from zope.sequencesort.ssort import sort
 
@@ -16,6 +18,7 @@ from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getDegreeLiteralFromId
+from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 
 from zope.interface import Interface
@@ -210,3 +213,42 @@ class getTeacher(grok.View):
             return json.dumps(listTeachers)
         else:
             return None
+
+
+class createApplication(grok.View):
+    grok.context(IOffer)
+    grok.name('createApplication')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        try:
+            from plone.protect.interfaces import IDisableCSRFProtection
+            alsoProvides(self.request, IDisableCSRFProtection)
+        except:
+            pass
+        if not CPCreateApplications(self, self.context):
+            self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
+            self.redirect(self.context.absolute_url())
+        else:
+            current = api.user.get_current()
+            user = getLdapExactUserData(current.id)
+            if user and 'sn' in user:
+                data = {
+                'offer_id': self.context.offer_id,
+                'offer_title': self.context.title,
+                'title': user['sn'],
+                'fullname': user['sn'],
+                'dni': user['DNIpassport'],
+                'email': user['sn'],
+                }
+
+                if user.has_key('telephoneNumber'):
+                    data.update({'phone': user['telephoneNumber']})
+
+                    app = createContentInContainer(self.context, "genweb.tfemarket.application", **data)
+                    app.reindexObject()
+                    self.redirect(app.absolute_url() + "/edit")
+            else:
+                self.context.plone_utils.addPortalMessage(_(u"User not exist in LDAP."), 'error')
+                self.redirect(self.context.absolute_url())

@@ -30,41 +30,35 @@ class IApplication(form.Schema):
     offer_id = schema.TextLine(
         title=_(u'Offer id'),
         required=False,
-        default=u'',
     )
 
     directives.mode(offer_title="display")
     offer_title = schema.TextLine(
         title=_(u'Offer title'),
         required=False,
-        default=u'',
     )
 
     directives.mode(fullname="display")
     fullname = schema.TextLine(
         title=_(u'Fullname'),
         required=False,
-        default=u'',
     )
 
     directives.mode(dni="display")
     dni = schema.TextLine(
         title=_(u'DNI'),
         required=False,
-        default=u'',
     )
 
     directives.mode(email="display")
     email = schema.TextLine(
         title=_(u'Email'),
         required=False,
-        default=u'',
     )
 
     phone = schema.TextLine(
         title=_(u"Telephone"),
         required=False,
-        default=u'',
     )
 
     body = RichTextField(
@@ -78,23 +72,6 @@ class Add(dexterity.AddForm):
 
     def updateWidgets(self):
         super(Add, self).updateWidgets()
-
-        if not checkPermissionCreateApplications(self, self.context):
-            self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
-            self.redirect(self.context.absolute_url())
-
-        self.fields['offer_id'].field.default = self.context.offer_id.decode()
-        self.fields['offer_title'].field.default = self.context.title.decode()
-
-        current = api.user.get_current()
-        user = getLdapExactUserData(current.id)
-        if user:
-            self.fields['title'].field.default = user['sn'].decode()
-            self.fields['dni'].field.default = user['DNIpassport'].decode()
-            self.fields['fullname'].field.default = user['sn'].decode()
-            self.fields['email'].field.default = user['mail'].decode()
-            if user.has_key('telephoneNumber'):
-                self.fields['phone'].field.default = user['telephoneNumber'].decode()
 
 
 class View(grok.View):

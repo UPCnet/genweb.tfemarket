@@ -70,7 +70,7 @@ msgstr "Solicitudes"
 msgid "Assign the offer"
 msgstr "Asigna la oferta"
 
-#: ../content/application.py:71
+#: ../content/application.py:65
 #: ../content/templates/application_view.pt:47
 msgid "Body"
 msgstr "Comentarios"
@@ -114,7 +114,7 @@ msgid "Create a offer"
 msgstr "Crear una oferta"
 
 #: ../browser/views_templates/allOffers.pt:199
-#: ../content/application.py:52
+#: ../content/application.py:49
 #: ../content/templates/application_view.pt:33
 msgid "DNI"
 msgstr "DNI"
@@ -176,7 +176,7 @@ msgstr "Idiomas de eleboración del trabajo"
 msgid "Direction"
 msgstr "Dirección"
 
-#: ../content/application.py:59
+#: ../content/application.py:55
 #: ../content/templates/application_view.pt:37
 #: ../z3cwidget/text_input_teacher.pt:67
 msgid "Email"
@@ -194,7 +194,7 @@ msgstr "Temática ambiental"
 msgid "Error"
 msgstr "Error"
 
-#: ../browser/views.py:74
+#: ../browser/views.py:78
 msgid "Error you can't perform the action."
 msgstr "Error, no puedes realizar esta acción."
 
@@ -279,7 +279,7 @@ msgid "MEC degree code"
 msgstr "Código MEC del grado"
 
 #: ../browser/views_templates/allOffers.pt:203
-#: ../content/templates/offer_view.pt:229
+#: ../content/templates/offer_view.pt:230
 msgid "Mobile"
 msgstr "Móvil"
 
@@ -330,7 +330,7 @@ msgstr "Oferta"
 msgid "Offer id"
 msgstr "Identificador de la oferta"
 
-#: ../content/application.py:38
+#: ../content/application.py:37
 #: ../content/templates/application_view.pt:23
 msgid "Offer title"
 msgstr "Título de la oferta"
@@ -434,7 +434,7 @@ msgstr "Email del profesor"
 msgid "Teacher manager"
 msgstr "Profesor director"
 
-#: ../content/application.py:65
+#: ../content/application.py:60
 #: ../content/templates/application_view.pt:41
 msgid "Telephone"
 msgstr "Teléfono"
@@ -460,6 +460,7 @@ msgid "Title"
 msgstr "Título"
 
 #: ../content/templates/market_view.pt:24
+#: ../content/templates/offer_view.pt:229
 msgid "Title Offer TFE"
 msgstr "Título de la oferta"
 
@@ -508,6 +509,10 @@ msgstr "Departamento"
 msgid "User"
 msgstr "Usuario"
 
+#: ../browser/views.py:253
+msgid "User not exist in LDAP."
+msgstr "User not exist in LDAP."
+
 #: ../content/templates/market_view.pt:176
 msgid "View all offers"
 msgstr "Ver todas las ofertas"
@@ -534,7 +539,7 @@ msgstr "Si"
 msgid "You have already created an <a href=\"${DYNAMIC_CONTENT}\">application</a>."
 msgstr "Actualmente tienes una <a href=\"${DYNAMIC_CONTENT}\">solicitud</a> activa."
 
-#: ../content/application.py:83
+#: ../browser/views.py:231
 msgid "You have already created an application."
 msgstr "Ya has hecho una solicitud."
 
@@ -566,7 +571,7 @@ msgstr "Grado"
 
 #: ../browser/views_templates/allOffers.pt:84
 #: ../content/templates/market_view.pt:50
-#: ../content/templates/offer_view.pt:257
+#: ../content/templates/offer_view.pt:259
 msgid "edit"
 msgstr "Editar"
 
@@ -639,6 +644,6 @@ msgstr "XXXXXXXXXXX"
 
 #: ../browser/views_templates/allOffers.pt:88
 #: ../content/templates/market_view.pt:54
-#: ../content/templates/offer_view.pt:261
+#: ../content/templates/offer_view.pt:263
 msgid "view"
 msgstr "Ver"

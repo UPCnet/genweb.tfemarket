@@ -41,7 +41,7 @@
                   </li>
                   <li class="informacioTFE">
                      <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
-                        <a href="++add++genweb.tfemarket.application">
+                        <a href="createApplication">
                           <button type="submit" class="link">
                             <span i18n:translate="">Request the offer</span>
                           </button>
@@ -207,7 +207,7 @@
                            </p>
                         </div>
                          <div class="bottomLinks" tal:condition="view/checkPermissionCreateApplications">
-                           <a href="++add++genweb.tfemarket.application">
+                           <a href="createApplication">
                              <button type="submit" class="link">
                                <span i18n:translate="">Request the offer</span>
                              </button>
