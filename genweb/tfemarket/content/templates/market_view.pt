@@ -21,15 +21,13 @@
                       <tr>
                         <th i18n:translate="">Degree</th>
                         <th i18n:translate="">Identifier Offer TFE</th>
-                        <th i18n:translate="">Title Offer TFE</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr tal:repeat="app userApplications">
                         <td>Degree</td>
-                        <td tal:content="app/offer_id">Identifier Offer TFE</td>
-                        <td tal:content="app/offer_title">Identifier Offer TFE</td>
+                        <td tal:content="python:app['offer_id'] + ' ' + app['offer_title']">Identifier Offer TFE</td>
                         <td class="actions">
                           <span class="workflowsAction">
                             <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">

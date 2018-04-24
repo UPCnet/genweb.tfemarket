@@ -513,7 +513,7 @@ msgstr "Usuari"
 
 #: ../browser/views.py:253
 msgid "User not exist in LDAP."
-msgstr "L'usuari no existeix en LDAP."
+msgstr "L'usuari no existeix a l'LDAP."
 
 #: ../content/templates/market_view.pt:176
 msgid "View all offers"
