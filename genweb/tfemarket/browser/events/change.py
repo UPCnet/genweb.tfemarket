@@ -9,7 +9,7 @@ from zope.globalrequest import getRequest
 from zope.lifecycleevent.interfaces import IObjectRemovedEvent
 from genweb.tfemarket.content.offer import IOffer
 
-from genweb.tfemarket.browser.events.messages import M1, M2, M3, M4, M5, M6
+from genweb.tfemarket.browser.events.data.messages import M1, M2, M3, M4, M5, M6
 
 from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import sendMessage
