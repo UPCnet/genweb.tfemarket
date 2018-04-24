@@ -318,10 +318,11 @@
                                       </p>
                                     </div>
                                     <div class="bottomLinks">
-                                      <button type="submit" class="link">
-                                        <a tal:attributes="href string:${offer/url}"
-                                           i18n:translate="">Access the offer</a>
-                                      </button>
+                                      <a tal:attributes="href string:${offer/url}">
+                                        <button type="submit" class="link">
+                                          <span i18n:translate="">Access the offer</span>
+                                        </button>
+                                      </a>
                                     </div>
                                   </div>
                                 </div>
