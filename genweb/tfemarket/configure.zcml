@@ -66,12 +66,6 @@
     />
 
     <subscriber
-      for=".content.market.IMarket
-           zope.app.container.interfaces.IObjectAddedEvent"
-      handler=".browser.events.createMarket.createMarket"
-    />
-
-    <subscriber
       for=".content.offer.IOffer
            Products.DCWorkflow.interfaces.IAfterTransitionEvent"
       handler=".browser.events.change.offerChanged"

@@ -28,15 +28,7 @@ class infoTfemarket(grok.Viewlet):
         return False
 
     def urlInfo(self):
-        url = ""
-        portal_type = self.context.portal_type
-        if portal_type == 'genweb.tfemarket.market':
-            url = self.context.absolute_url() + "/manual-dus"
-        elif portal_type == 'genweb.tfemarket.offer':
-            url = self.context.getParentNode().absolute_url() + "/manual-dus"
-        elif portal_type == 'genweb.tfemarket.application':
-            url = self.context.getParentNode().getParentNode().absolute_url() + "/manual-dus"
-        return url
+        return "https://serveistic.upc.edu/ca"
 
 
 class errorCreateApplication(grok.Viewlet):
