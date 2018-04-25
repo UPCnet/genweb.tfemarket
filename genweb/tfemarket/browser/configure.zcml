@@ -10,12 +10,4 @@
         directory="stylesheets"
         />
 
-    <browser:page
-      for="*"
-      name="changeActualState"
-      class=".views.changeActualState"
-      layer="genweb.tfemarket.interfaces.IGenwebTfemarketLayer"
-      permission="zope2.View"
-      />
-
 </configure>

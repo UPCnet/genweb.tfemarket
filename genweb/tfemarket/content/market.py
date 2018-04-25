@@ -149,9 +149,11 @@ class View(grok.View):
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
-            values = self.context.contentValues(
-                filter={'portal_type': 'genweb.tfemarket.offer'})
+            filters = {'portal_type': 'genweb.tfemarket.offer'}
+            if 'allOffersTeacher' in self.request.form:
+                filters.update({'Creator': api.user.get_current().id})
 
+            values = self.context.contentValues(filters)
             values = sort(values, sort=(
                 ('Date', 'cmp', 'desc'),
                 ('Title', 'cmp', 'asc')
@@ -188,7 +190,8 @@ class View(grok.View):
                                     can_create_application=CPCreateApplications(self, offer),
                                     ))
 
-                results = self.filterResults(results)
+                if 'allOffers' not in self.request.form and 'allOffersTeacher' not in self.request.form:
+                    results = self.filterResults(results)
 
             return results
 
@@ -215,6 +218,32 @@ class View(grok.View):
                                     workflows=workflowActions,
                                     can_edit=checkPermission('cmf.ModifyPortalContent', application),
                                     ))
+        return results
+
+    def getApplications(self, offer):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+        results = []
+        values = catalog(path={'query': offer['path'], 'depth': 1},
+                         object_provides=IApplication.__identifier__)
+
+        for item in values:
+            application = item.getObject()
+            workflowActions = wf_tool.listActionInfos(object=application)
+            workflows = tools.workflow().getWorkflowsFor(application)[0]
+
+            results.append(dict(title=item.Title,
+                                state=workflows['states'][item.review_state].title,
+                                url=item.getURL(),
+                                item_path=application.absolute_url_path(),
+                                dni=application.dni,
+                                name=application.title,
+                                offer_id=application.offer_id,
+                                offer_title=application.offer_title,
+                                workflows=workflowActions,
+                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
+                                ))
         return results
 
     def getLanguages(self):
@@ -305,3 +334,8 @@ class View(grok.View):
 
     def checkPermissionCreateOffers(self):
         return CPCreateOffers(self, self.context)
+
+    def openApplicationsTav(self):
+        if 'allOffersTeacher' in self.request.form and self.checkPermissionCreateOffers():
+            return True
+        return False

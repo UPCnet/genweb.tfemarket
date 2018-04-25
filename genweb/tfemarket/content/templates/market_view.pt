@@ -166,12 +166,12 @@
                       </div>
 
                       <div class="bottomLinks">
-                        <a href="allOffers?teacher" class="btnTFE"
+                        <a href="?allOffersTeacher" class="btnTFE"
                           tal:condition="view/checkPermissionCreateOffers"
                           i18n:translate="">
                           View my offers
                         </a>
-                        <a href="allOffers" class="btnTFE"
+                        <a href="?allOffers" class="btnTFE"
                           i18n:translate="">
                           View all offers
                         </a>
@@ -186,65 +186,83 @@
                     No results found.
                   </p>
                   <ul id="list" tal:condition="offers">
-                      <tal:offers repeat="offer offers">
-                          <li class="unstyled offer">
-                              <div class="puntTitle">
-                                  <div class="fletxaSpan">
-                                      <button type="button" class="expand"
-                                              data-original-title="Expand">
-                                          <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <tal:offers repeat="offer offers">
+                        <li class="unstyled offer" tal:define="applications python:view.getApplications(offer)">
+                            <div class="puntTitle">
+                                <div class="fletxaSpan">
+                                    <button type="button" class="expand"
+                                            data-original-title="Expand"
+                                            tal:attributes="id offer/offer_id">
+                                        <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="notexpand"
+                                            data-original-title="Collapse">
+                                        <i  style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="titleSpan">
+                                    <h3>
+                                        <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
+                                    </h3>
+                                </div>
+                                <div class="rightTitle">
+                                  <div class="dates">
+                                    <span class="effectiveDate" tal:condition="offer/effective_date">
+                                      <span class="field"><span i18n:translate="">Publication date</span>: </span>
+                                      <span tal:content="offer/effective_date">2018/01/29</span>
+                                    </span>
+                                    <span class="expirationDate" tal:condition="offer/expiration_date">
+                                      <span class="field"><span i18n:translate="">Expiration date</span>: </span>
+                                      <span tal:content="offer/expiration_date">2018/04/29</span>
+                                    </span>
+                                  </div>
+                                  <div class="rightInfoOffer actions">
+                                    <span class="workflowsAction">
+                                      <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="offer/workflows">
+                                        <span tal:content="offer/state">State</span>
+                                        <span class="caret"></span>
                                       </button>
-                                      <button type="button" class="notexpand"
-                                              data-original-title="Collapse">
-                                          <i  style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
-                                      </button>
+                                      <span class="workflow notclick label" tal:content="offer/state" tal:condition="not: offer/workflows">State</span>
+                                      <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
+                                          tal:condition="offer/workflows">
+                                        <tal:block repeat="estat offer/workflows">
+                                          <li>
+                                            <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/path}&allOffersTeacher">
+                                              <span tal:content="estat/title">Estat</span>
+                                            </a>
+                                          </li>
+                                        </tal:block>
+                                      </ul>
+                                    </span>
+                                    <a class="label edit" i18n:attributes="alt edit" tal:attributes="href string:${offer/url}/edit"
+                                       tal:condition="offer/can_edit">
+                                      <span class="fa fa-pencil" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="label" i18n:attributes="alt view" tal:attributes="href string:${offer/url}/view">
+                                      <span class="fa fa-folder-open" aria-hidden="true"></span>
+                                    </a>
                                   </div>
-                                  <div class="titleSpan">
-                                      <h3>
-                                          <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
-                                      </h3>
-                                  </div>
-                                  <div class="rightTitle">
-                                    <div class="dates">
-                                      <span class="effectiveDate" tal:condition="offer/effective_date">
-                                        <span class="field"><span i18n:translate="">Publication date</span>: </span>
-                                        <span tal:content="offer/effective_date">2018/01/29</span>
-                                      </span>
-                                      <span class="expirationDate" tal:condition="offer/expiration_date">
-                                        <span class="field"><span i18n:translate="">Expiration date</span>: </span>
-                                        <span tal:content="offer/expiration_date">2018/04/29</span>
-                                      </span>
-                                    </div>
-                                    <div class="rightInfoOffer actions">
-                                      <span class="workflowsAction">
-                                        <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="offer/workflows">
-                                          <span tal:content="offer/state">State</span>
-                                          <span class="caret"></span>
-                                        </button>
-                                        <span class="workflow notclick label" tal:content="offer/state" tal:condition="not: offer/workflows">State</span>
-                                        <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
-                                            tal:condition="offer/workflows">
-                                          <tal:block repeat="estat offer/workflows">
-                                            <li>
-                                              <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/path}&${view/filtersString}">
-                                                <span tal:content="estat/title">Estat</span>
-                                              </a>
-                                            </li>
-                                          </tal:block>
-                                        </ul>
-                                      </span>
-                                      <a class="label edit" i18n:attributes="alt edit" tal:attributes="href string:${offer/url}/edit"
-                                         tal:condition="offer/can_edit">
-                                        <span class="fa fa-pencil" aria-hidden="true"></span>
-                                      </a>
-                                      <a class="label" i18n:attributes="alt view" tal:attributes="href string:${offer/url}/view">
-                                        <span class="fa fa-folder-open" aria-hidden="true"></span>
-                                      </a>
-                                    </div>
-                                  </div>
-                              </div>
-                              <div class="offerData">
-                                <div class="data">
+                                </div>
+                            </div>
+                            <div class="offerData"  tal:define="applications python:view.getApplications(offer)">
+                              <ul class="nav nav-tabs" data-tabs="tablist" tal:condition="python: view.openApplicationsTav() and applications">
+                                <li class="nav-item active">
+                                  <a class="nav-link" data-toggle="tab"
+                                  tal:attributes="href string:#offer-data-${offer/offer_id};
+                                                  id string:offer-data-tab-${offer/offer_id}"
+                                  i18n:translate="">Offer</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link app-tab" data-toggle="tab"
+                                  tal:attributes="href string:#offer-applications-${offer/offer_id};
+                                                  id string:offer-applications-tab-${offer/offer_id}"
+                                  i18n:translate="">Applications</a>
+                                </li>
+                              </ul>
+                              <div class="tab-content">
+                                <div class="data tab-pane fade show active in" role="tabpanel"
+                                     tal:attributes="id string:offer-data-${offer/offer_id};
+                                                     aria-labelledby string:offer-data-tab-${offer/offer_id}">
                                   <div class="informacioTFE">
                                     <div class="leftInfoOffer">
                                       <p class="teacher">
@@ -318,15 +336,68 @@
                                     <div class="bottomLinks">
                                       <a tal:attributes="href string:${offer/url}">
                                         <button type="submit" class="link">
-                                          <span i18n:translate="">Access the offer</span>
-                                        </button>
+                                           <span i18n:translate="">Access the offer</span>
+                                         </button>
                                       </a>
                                     </div>
                                   </div>
                                 </div>
+                                <div tal:condition="python: view.openApplicationsTav() and applications"
+                                     class="applications tab-pane fade"
+                                     tal:attributes="id string:offer-applications-${offer/offer_id};
+                                                     aria-labelledby string:offer-applications-tab-${offer/offer_id}">
+                                  <table class="tableApplications">
+                                    <thead>
+                                      <tr>
+                                        <th i18n:translate="">DNI</th>
+                                        <th i18n:translate="">Name</th>
+                                        <th i18n:translate="">Degree</th>
+                                        <th i18n:translate="">Identifier Offer TFE</th>
+                                        <th i18n:translate="">Mobile</th>
+                                        <th></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr tal:repeat="app applications">
+                                        <td tal:content="app/dni">DNI</td>
+                                        <td tal:content="app/name">Name</td>
+                                        <td>Degree</td>
+                                        <td>Identifier Offer TFE</td>
+                                        <td>Mobile</td>
+                                        <td class="actions">
+                                          <span class="workflowsAction">
+                                            <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
+                                              <span tal:content="app/state">State</span>
+                                              <span class="caret"></span>
+                                            </button>
+                                            <span class="workflow notclick label" tal:content="app/state" tal:condition="not: app/workflows">State</span>
+                                            <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
+                                                tal:condition="app/workflows">
+                                              <tal:block repeat="estat app/workflows">
+                                                <li>
+                                                  <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${app/item_path}&offer=${offer/offer_id}&allOffersTeacher">
+                                                    <span tal:content="estat/title">Estat</span>
+                                                  </a>
+                                                </li>
+                                              </tal:block>
+                                            </ul>
+                                          </span>
+                                          <a class="label edit" i18n:attributes="alt edit" tal:attributes="href string:${app/url}/edit"
+                                             tal:condition="app/can_edit">
+                                            <span class="fa fa-pencil" aria-hidden="true"></span>
+                                          </a>
+                                          <a class="label" i18n:attributes="alt view" tal:attributes="href string:${app/url}/view">
+                                            <span class="fa fa-folder-open" aria-hidden="true"></span>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
                               </div>
-                          </li>
-                      </tal:offers>
+                            </div>
+                        </li>
+                    </tal:offers>
                   </ul>
               </div>
         </div>
@@ -335,6 +406,11 @@
 
 
   <script type="text/javascript">
+    $.urlParam = function(name){
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      return results ? results[1] : false;
+    }
+
     $(function() {
         $('input[name="language"]').click(function(){
           if($('input[name="language"]:checked').length == 0){
@@ -393,6 +469,12 @@
         if($('#formSearchOffers').attr('data-saved') == 1){
           $('input[name="language"]').prop('checked', true);
           $('input[name="modality"]').prop('checked', true);
+        }
+
+        var offer = $.urlParam('offer');
+        if(offer){
+          $("#"+offer).trigger('click');
+          $("#"+offer).parent().parent().parent().find('.app-tab').trigger('click');
         }
     });
   </script>

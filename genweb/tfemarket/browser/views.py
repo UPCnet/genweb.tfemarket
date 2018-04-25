@@ -27,19 +27,22 @@ import json
 
 
 def redirectAfterChangeActualState(self):
+    try:
+        from plone.protect.interfaces import IDisableCSRFProtection
+        alsoProvides(self.request, IDisableCSRFProtection)
+    except:
+        pass
+
     if self.context.portal_type == 'genweb.tfemarket.offer':
         self.request.response.redirect(self.context.absolute_url() + '#offer-applications')
     elif self.context.portal_type == 'genweb.tfemarket.market':
-        if 'view' not in self.request.form:
+        if 'allOffersTeacher' not in self.request.form:
             self.request.response.setCookie('MERCAT_TFE', clearFiltersCookie(self), path='/')
             self.request.response.redirect(self.context.absolute_url())
         else:
-            url = self.context.absolute_url() + "/" + self.request.form.get('view')
-            if 'offer' in self.request.form:
-                if 'teacher' in self.request.form.get('view'):
-                    url = url + "&offer=" + self.request.form.get('offer')
-                else:
-                    url = url + "?offer=" + self.request.form.get('offer')
+            url = self.context.absolute_url() + "?allOffersTeacher"
+            if 'offer' in  self.request.form:
+                url += "&offer=" + self.request.form.get('offer')
             self.request.response.redirect(url)
     else:
         self.request.response.redirect(self.context.absolute_url())
@@ -53,17 +56,28 @@ def clearFiltersCookie(self):
     return filters
 
 
-class changeActualState(BrowserView):
+class changeActualState(grok.View):
+    grok.context(Interface)
+    grok.name('changeActualState')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
     """ Es fa servir a la vista sessio i presentacio. No cal fer reload perque
         es mostra el nou valor per JS
     """
-    def __call__(self):
+
+    def render(self):
+        try:
+            from plone.protect.interfaces import IDisableCSRFProtection
+            alsoProvides(self.request, IDisableCSRFProtection)
+        except:
+            pass
+
         portal_catalog = getToolByName(self, 'portal_catalog')
         estat = self.request.form.get('estat')
         itemid = self.request.form.get('id')
 
         try:
-            object_path = '/'.join(self.context.getPhysicalPath())
+            object_path = '/'.join(itemid.split('/')[:-1])
             item = str(itemid.split('/')[-1:][0])
             currentitem = portal_catalog.searchResults(
                 portal_type=['genweb.tfemarket.application', 'genweb.tfemarket.offer'],
@@ -81,112 +95,6 @@ class changeActualState(BrowserView):
         except:
             self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
             redirectAfterChangeActualState(self)
-
-
-class AllOffers(grok.View):
-    grok.context(IMarket)
-    grok.name('allOffers')
-    grok.template("allOffers")
-    grok.require('zope2.View')
-    grok.layer(IGenwebTfemarketLayer)
-
-    def getOffers(self):
-        catalog = api.portal.get_tool(name='portal_catalog')
-        wf_tool = getToolByName(self.context, 'portal_workflow')
-        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
-
-        if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
-            values = self.context.contentValues(
-                filter={'portal_type': 'genweb.tfemarket.offer',
-                        'Creator': api.user.get_current().id
-                        })
-        else:
-            values = self.context.contentValues(
-                filter={'portal_type': 'genweb.tfemarket.offer'})
-
-        values = sort(values, sort=(
-            ('Date', 'cmp', 'desc'),
-            ('Title' ,'cmp', 'asc')
-        ))
-
-        results = []
-        for offer in values:
-            workflowActions = wf_tool.listActionInfos(object=offer)
-            workflows = tools.workflow().getWorkflowsFor(offer)[0]
-            offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
-            offer_status = wf_tool.getStatusOf(offer_workflow, offer)
-            results.append(dict(title=offer.title,
-                                state=workflows['states'][offer_status['review_state']].title,
-                                url=offer.absolute_url(),
-                                path=offer.absolute_url_path(),
-                                dept=offer.dept,
-                                company=offer.company,
-                                effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
-                                expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
-                                teacher_manager=offer.teacher_manager,
-                                modality=offer.modality,
-                                description=offer.description,
-                                langs=offer.lang,
-                                multiple_langs=len(offer.lang) > 1,
-                                environmental_theme=offer.environmental_theme,
-                                grant=offer.grant,
-                                degrees=offer.degree,
-                                multiple_degrees=len(offer.degree) > 1,
-                                keywords=offer.keys,
-                                offer_id=offer.offer_id,
-                                center=offer.center,
-                                workflows=workflowActions,
-                                can_edit=checkPermission('cmf.ModifyPortalContent', offer),
-                                can_create_application=CPCreateApplications(self, offer),
-                                ))
-
-        return results
-
-    def getApplications(self, offer):
-        catalog = api.portal.get_tool(name='portal_catalog')
-        wf_tool = getToolByName(self.context, 'portal_workflow')
-        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
-        results = []
-        values = catalog(path={'query': offer['path'], 'depth': 1},
-                         object_provides=IApplication.__identifier__)
-
-        for item in values:
-            application = item.getObject()
-            workflowActions = wf_tool.listActionInfos(object=application)
-            workflows = tools.workflow().getWorkflowsFor(application)[0]
-
-            results.append(dict(title=item.Title,
-                                state=workflows['states'][item.review_state].title,
-                                url=item.getURL(),
-                                item_path=application.absolute_url_path(),
-                                dni=application.dni,
-                                name=application.title,
-                                offer_id=application.offer_id,
-                                offer_title=application.offer_title,
-                                workflows=workflowActions,
-                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
-                                ))
-        return results
-
-    def getDegrees(self):
-        return getDegrees()
-
-    def getDegreeLiteralFromId(self, id):
-        return getDegreeLiteralFromId(id)
-
-    def openApplicationsTav(self):
-        if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
-            return True
-        return False
-
-    def getActualView(self):
-        if 'teacher' in self.request.form and self.checkPermissionCreateOffers():
-            return "allOffers?teacher"
-        else:
-            return "allOffers"
-
-    def checkPermissionCreateOffers(self):
-        return CPCreateOffers(self, self.context)
 
 
 class getTeacher(grok.View):
@@ -256,20 +164,20 @@ class createApplication(grok.View):
             user = getLdapExactUserData(current.id)
             if user and 'sn' in user:
                 data = {
-                'offer_id': self.context.offer_id,
-                'offer_title': self.context.title,
-                'title': user['sn'],
-                'fullname': user['sn'],
-                'dni': user['DNIpassport'],
-                'email': user['sn'],
+                    'offer_id': self.context.offer_id,
+                    'offer_title': self.context.title,
+                    'title': user['sn'],
+                    'fullname': user['sn'],
+                    'dni': user['DNIpassport'],
+                    'email': user['sn'],
                 }
 
                 if user.has_key('telephoneNumber'):
                     data.update({'phone': user['telephoneNumber']})
 
-                    app = createContentInContainer(self.context, "genweb.tfemarket.application", **data)
-                    app.reindexObject()
-                    self.redirect(app.absolute_url() + "/edit")
+                app = createContentInContainer(self.context, "genweb.tfemarket.application", **data)
+                app.reindexObject()
+                self.redirect(app.absolute_url())
             else:
                 self.context.plone_utils.addPortalMessage(_(u"User not exist in LDAP."), 'error')
                 self.redirect(self.context.absolute_url())
