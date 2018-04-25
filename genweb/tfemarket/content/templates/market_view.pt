@@ -82,7 +82,7 @@
                   </div>
                   <div id="searchOffers">
                     <form id="formSearchOffers" name="searchOffers" action="" method="post"
-                           tal:attributes="data-saved python: 0 if save else 1">
+                           tal:attributes="data-saved python: 0 if save.has_key('language') else 1">
                       <label i18n:translate="">Text to search</label>
                       <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
 

@@ -180,6 +180,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-bottom: 0px;
 }
 
+#headerListOffers #buttonsSearch {
+  margin-right: 15px;
+}
+
 .informacioTFE .leftInfoOffer {
   margin-top: 20px;
 }
