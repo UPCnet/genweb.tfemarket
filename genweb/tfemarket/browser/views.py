@@ -157,7 +157,7 @@ class createApplication(grok.View):
         except:
             pass
         if not CPCreateApplications(self, self.context):
-            self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
+            self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it on the main page of the market."), 'error')
             self.redirect(self.context.absolute_url())
         else:
             current = api.user.get_current()
