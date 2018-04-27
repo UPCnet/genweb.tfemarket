@@ -190,7 +190,7 @@ class View(grok.View):
                                     can_create_application=CPCreateApplications(self, offer),
                                     ))
 
-                if 'allOffers' not in self.request.form and 'allOffersTeacher' not in self.request.form:
+                if 'language' in self.request.form:
                     results = self.filterResults(results)
 
             return results
