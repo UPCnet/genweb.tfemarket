@@ -73,7 +73,7 @@
                         <div class="leftInfoOffer">
                            <p class="teacher">
                               <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
-                              <span tal:content="context/teacher_manager">Aureli Condogvia</span>
+                              <span tal:content="context/teacher_fullname">Aureli Condogvia</span>
                            </p>
                            <p class="teacherEmail">
                               <span class="field"><span i18n:translate="">Teacher Email</span>: </span>

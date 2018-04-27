@@ -212,6 +212,12 @@ class IOffer(form.Schema):
         required=False,
     )
 
+    form.widget('teacher_fullname', ReadOnlyInputFieldWidget)
+    teacher_fullname = schema.TextLine(
+        title=_(u'Teacher Fullname'),
+        required=False,
+    )
+
     form.widget('teacher_email', ReadOnlyInputFieldWidget)
     teacher_email = schema.TextLine(
         title=_(u'Teacher Email'),
@@ -417,10 +423,3 @@ class Add(dexterity.AddForm):
 
     def updateWidgets(self):
         super(Add, self).updateWidgets()
-
-        current = api.user.get_current()
-        user = getLdapExactUserData(current.id)
-        if user and 'typology' in user and user['typology'] == 'PERSONAL':
-            self.fields['teacher_manager'].field.default = user['id'].decode('utf-8')
-            self.fields['teacher_email'].field.default = user['mail'].decode('utf-8')
-            self.fields['dept'].field.default = u''

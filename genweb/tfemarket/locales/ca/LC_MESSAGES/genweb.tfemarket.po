@@ -84,23 +84,23 @@ msgstr "Català"
 msgid "Center code"
 msgstr "Codi del centre"
 
-#: ../content/offer.py:288
+#: ../content/offer.py:294
 #: ../content/templates/offer_view.pt:163
 msgid "CoManager"
 msgstr "Codirector"
 
 #: ../content/market.py:258
-#: ../content/offer.py:293
+#: ../content/offer.py:299
 #: ../content/templates/market_view.pt:108
 msgid "Company"
 msgstr "Empresa"
 
-#: ../content/offer.py:298
+#: ../content/offer.py:304
 #: ../content/templates/offer_view.pt:171
 msgid "Company Contact"
 msgstr "Dades de contacte de l'empresa"
 
-#: ../content/offer.py:303
+#: ../content/offer.py:309
 #: ../content/templates/offer_view.pt:175
 msgid "Company Email"
 msgstr "Adreça de correu de l'empresa"
@@ -179,7 +179,7 @@ msgstr "Direcció"
 msgid "Email"
 msgstr "Correu"
 
-#: ../content/offer.py:329
+#: ../content/offer.py:335
 msgid "Environmental Theme"
 msgstr "Temàtica ambiental"
 
@@ -275,7 +275,7 @@ msgstr "Codi MEC del Grau"
 msgid "Mobile"
 msgstr "Mòbil"
 
-#: ../content/offer.py:275
+#: ../content/offer.py:281
 #: ../content/templates/market_view.pt:157
 #: ../content/templates/offer_view.pt:157
 msgid "Modality"
@@ -300,12 +300,12 @@ msgstr "No"
 msgid "No results found."
 msgstr "No s'han trobat resultats."
 
-#: ../content/offer.py:236
+#: ../content/offer.py:242
 #: ../content/templates/offer_view.pt:115
 msgid "Number of students"
 msgstr "Nombre d'estudiants"
 
-#: ../content/offer.py:237
+#: ../content/offer.py:243
 msgid "Number of students for the TFE (1 to 10)"
 msgstr "Nombre d'estudiants (1 fins a 10)"
 
@@ -325,7 +325,7 @@ msgstr "Identificador de l'oferta"
 msgid "Offer title"
 msgstr "Títol de l'oferta"
 
-#: ../content/offer.py:312
+#: ../content/offer.py:318
 msgid "Options"
 msgstr "Opcions"
 
@@ -359,7 +359,7 @@ msgstr "Publicació"
 msgid "Request the offer"
 msgstr "Sol·licitar l'oferta"
 
-#: ../content/offer.py:231
+#: ../content/offer.py:237
 #: ../content/templates/offer_view.pt:137
 msgid "Requirements"
 msgstr "Requisits"
@@ -368,7 +368,7 @@ msgstr "Requisits"
 msgid "Review State"
 msgstr "Estat de revisió actiu"
 
-#: ../content/offer.py:335
+#: ../content/offer.py:341
 #: ../content/templates/offer_view.pt:196
 msgid "Scope of cooperation"
 msgstr "Ambit de cooperació"
@@ -410,10 +410,14 @@ msgstr "Llistat de paraules clau"
 msgid "Targets"
 msgstr "Objectius"
 
-#: ../content/offer.py:217
+#: ../content/offer.py:223
 #: ../content/templates/offer_view.pt:79
 msgid "Teacher Email"
 msgstr "Email del professor"
+
+#: ../content/offer.py:217
+msgid "Teacher Fullname"
+msgstr "Nom del professor"
 
 #: ../content/templates/market_view.pt:269
 #: ../content/templates/offer_view.pt:75
@@ -474,7 +478,7 @@ msgstr "Temàtiques principals dels TFE's"
 msgid "UPC Mercat TFE"
 msgstr "UPC Mercat TFE (genweb.tfemarket)"
 
-#: ../content/offer.py:283
+#: ../content/offer.py:289
 msgid "Universitat"
 msgstr "Universitat"
 
@@ -482,7 +486,7 @@ msgstr "Universitat"
 msgid "University"
 msgstr "Universitat"
 
-#: ../content/offer.py:223
+#: ../content/offer.py:229
 msgid "University department"
 msgstr "Departament"
 
@@ -490,7 +494,7 @@ msgstr "Departament"
 msgid "User"
 msgstr "Usuari"
 
-#: ../browser/views.py:181
+#: ../browser/views.py:183
 msgid "User not exist in LDAP."
 msgstr "L'usuari no existeix a l'LDAP."
 
@@ -519,7 +523,7 @@ msgstr "Si"
 msgid "You have already created an <a href=\"${DYNAMIC_CONTENT}\">application</a>."
 msgstr "Actualment tens una <a href=\"${DYNAMIC_CONTENT}\">sol·licitud</a> activa."
 
-#: ../browser/views.py:160
+#: ../browser/views.py:162
 #: ../content/application.py:70
 msgid "You have already created an application. You can see it on the main page of the market."
 msgstr "Ja has fet una sol·licitud. Pots visualitzar-la a la pàgina inicial del mercat."
@@ -542,7 +546,7 @@ msgstr "Dades per a la sol·licitud d'un TFE"
 msgid "classifications"
 msgstr "Classificacions"
 
-#: ../content/offer.py:323
+#: ../content/offer.py:329
 msgid "confidential"
 msgstr "Confidencial"
 
@@ -555,7 +559,7 @@ msgstr "Grau"
 msgid "edit"
 msgstr "Editar"
 
-#: ../content/offer.py:317
+#: ../content/offer.py:323
 msgid "grant"
 msgstr "Possibilitat de beca"
 
@@ -577,7 +581,7 @@ msgstr "Paraules clau"
 msgid "market"
 msgstr "Mercat"
 
-#: ../content/offer.py:280
+#: ../content/offer.py:286
 msgid "modality"
 msgstr "Modalitat"
 
@@ -594,11 +598,11 @@ msgstr "Oferta"
 msgid "offer_center"
 msgstr "Centre"
 
-#: ../content/offer.py:255
+#: ../content/offer.py:261
 msgid "offer_features"
 msgstr "Característiques"
 
-#: ../content/offer.py:250
+#: ../content/offer.py:256
 msgid "offer_targets"
 msgstr "Objectius"
 
@@ -606,15 +610,15 @@ msgstr "Objectius"
 msgid "offer_topic"
 msgstr "Tema"
 
-#: ../content/offer.py:245
+#: ../content/offer.py:251
 msgid "offer_workload"
 msgstr "Càrrega de treball"
 
-#: ../content/offer.py:260
+#: ../content/offer.py:266
 msgid "requirements"
 msgstr "Requisits"
 
-#: ../content/offer.py:267
+#: ../content/offer.py:273
 msgid "tfe_lang"
 msgstr "Idioma del treball"
 

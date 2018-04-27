@@ -87,6 +87,7 @@
     var addTeacher = function(teacher){
       parent = $(teacher).parent().parent();
       $("#form-widgets-teacher_manager").val($(parent).children('.teacher').html());
+      $("#form-widgets-teacher_fullname").val($(parent).children('.fullname').html());
       $("#form-widgets-teacher_email").val($(parent).children('.email').html());
       $("#form-widgets-dept").val($(parent).children('.dept').html());
       $('#form-widgets-teacher_manager-modal').modal('toggle');
@@ -139,6 +140,7 @@
           result = $.parseJSON(data);
           if(result != null){
             $("#form-widgets-teacher_manager").val(result['user']);
+            $("#form-widgets-teacher_fullname").val(result['fullname']);
             $("#form-widgets-teacher_email").val(result['email']);
             $("#form-widgets-dept").val(result['dept']);
           }

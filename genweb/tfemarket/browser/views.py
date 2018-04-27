@@ -104,6 +104,7 @@ class getTeacher(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
+        ### TODO Cambiar PERSONAL por PDI
         teachers = getLdapUserData(self.request.form['teacher'], typology='PERSONAL')
         if len(teachers) > 0:
             listTeachers = []
@@ -130,7 +131,8 @@ class getExactTeacher(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
-        teacher = getLdapExactUserData(self.request.form['teacher'], typology='PDI')
+        ### TODO Cambiar PERSONAL por PDI
+        teacher = getLdapExactUserData(self.request.form['teacher'], typology='PERSONAL')
         if teacher and 'sn' in teacher:
             teacherDept = teacher['unitCode'] + "-" + teacher['unit']
             data = {

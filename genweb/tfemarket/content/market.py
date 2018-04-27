@@ -175,6 +175,7 @@ class View(grok.View):
                                         effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
                                         expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
                                         teacher_manager=offer.teacher_manager,
+                                        teacher_fullname=offer.teacher_fullname,
                                         modality=offer.modality,
                                         description=offer.description,
                                         langs=offer.lang,
