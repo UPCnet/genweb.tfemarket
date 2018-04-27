@@ -161,37 +161,38 @@ class View(grok.View):
 
             results = []
             for offer in values:
-                workflowActions = wf_tool.listActionInfos(object=offer)
-                workflows = tools.workflow().getWorkflowsFor(offer)[0]
-                offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
-                offer_status = wf_tool.getStatusOf(offer_workflow, offer)
-                results.append(dict(title=offer.title,
-                                    state=workflows['states'][offer_status['review_state']].title,
-                                    url=offer.absolute_url(),
-                                    path=offer.absolute_url_path(),
-                                    dept=offer.dept,
-                                    company=offer.company,
-                                    effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
-                                    expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
-                                    teacher_manager=offer.teacher_manager,
-                                    modality=offer.modality,
-                                    description=offer.description,
-                                    langs=offer.lang,
-                                    multiple_langs=len(offer.lang) > 1,
-                                    environmental_theme=offer.environmental_theme,
-                                    grant=offer.grant,
-                                    degrees=offer.degree,
-                                    multiple_degrees=len(offer.degree) > 1,
-                                    keywords=offer.keys,
-                                    offer_id=offer.offer_id,
-                                    center=offer.center,
-                                    workflows=workflowActions,
-                                    can_edit=checkPermission('cmf.ModifyPortalContent', offer),
-                                    can_create_application=CPCreateApplications(self, offer),
-                                    ))
+                if checkPermission('zope2.View', offer):
+                    workflowActions = wf_tool.listActionInfos(object=offer)
+                    workflows = tools.workflow().getWorkflowsFor(offer)[0]
+                    offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
+                    offer_status = wf_tool.getStatusOf(offer_workflow, offer)
+                    results.append(dict(title=offer.title,
+                                        state=workflows['states'][offer_status['review_state']].title,
+                                        url=offer.absolute_url(),
+                                        path=offer.absolute_url_path(),
+                                        dept=offer.dept,
+                                        company=offer.company,
+                                        effective_date=offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else None,
+                                        expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
+                                        teacher_manager=offer.teacher_manager,
+                                        modality=offer.modality,
+                                        description=offer.description,
+                                        langs=offer.lang,
+                                        multiple_langs=len(offer.lang) > 1,
+                                        environmental_theme=offer.environmental_theme,
+                                        grant=offer.grant,
+                                        degrees=offer.degree,
+                                        multiple_degrees=len(offer.degree) > 1,
+                                        keywords=offer.keys,
+                                        offer_id=offer.offer_id,
+                                        center=offer.center,
+                                        workflows=workflowActions,
+                                        can_edit=checkPermission('cmf.ModifyPortalContent', offer),
+                                        can_create_application=CPCreateApplications(self, offer),
+                                        ))
 
-                if 'language' in self.request.form:
-                    results = self.filterResults(results)
+            if 'language' in self.request.form:
+                results = self.filterResults(results)
 
             return results
 
