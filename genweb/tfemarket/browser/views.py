@@ -167,9 +167,8 @@ class createApplication(grok.View):
                     'offer_id': self.context.offer_id,
                     'offer_title': self.context.title,
                     'title': user['sn'],
-                    'fullname': user['sn'],
                     'dni': user['DNIpassport'],
-                    'email': user['sn'],
+                    'email': user['mail'],
                 }
 
                 if user.has_key('telephoneNumber'):

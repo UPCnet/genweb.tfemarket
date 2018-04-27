@@ -27,7 +27,7 @@ def applicationChanged(application, event):
     if lang not in ['ca', 'en', 'es']:
         lang = 'en'
     data = {
-        'student': application.fullname,
+        'student': application.title,
         'degree': 'Titulació usuari',
         'num': application.getParentNode().offer_id,
         'title': application.getParentNode().title,

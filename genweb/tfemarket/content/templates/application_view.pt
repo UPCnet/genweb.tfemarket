@@ -27,7 +27,7 @@
                     <div class="leftInfoOffer">
                       <p class="fullname">
                         <span class="field"><span i18n:translate="">Fullname</span>: </span>
-                        <span tal:content="context/fullname"></span>
+                        <span tal:content="context/title"></span>
                       </p>
                       <p class="dni">
                         <span class="field"><span i18n:translate="">DNI</span>: </span>

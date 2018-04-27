@@ -20,12 +20,6 @@ class IApplication(form.Schema):
     """ Application for an offer
     """
 
-    directives.mode(title="hidden")
-    title = schema.TextLine(
-        title=_(u'Fullname'),
-        required=False,
-    )
-
     directives.mode(offer_id="display")
     offer_id = schema.TextLine(
         title=_(u'Offer id'),
@@ -38,8 +32,8 @@ class IApplication(form.Schema):
         required=False,
     )
 
-    directives.mode(fullname="display")
-    fullname = schema.TextLine(
+    directives.mode(title="display")
+    title = schema.TextLine(
         title=_(u'Fullname'),
         required=False,
     )
@@ -72,6 +66,9 @@ class Add(dexterity.AddForm):
 
     def updateWidgets(self):
         super(Add, self).updateWidgets()
+        if not checkPermissionCreateApplications(self, self.context):
+            self.context.plone_utils.addPortalMessage(_(u"You have already created an application."), 'error')
+            self.redirect(self.context.absolute_url())
 
 
 class View(grok.View):

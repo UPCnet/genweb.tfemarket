@@ -351,9 +351,10 @@
                                       <tr>
                                         <th i18n:translate="">DNI</th>
                                         <th i18n:translate="">Name</th>
+                                        <th i18n:translate="">Email</th>
+                                        <th i18n:translate="">Mobile</th>
                                         <th i18n:translate="">Degree</th>
                                         <th i18n:translate="">Identifier Offer TFE</th>
-                                        <th i18n:translate="">Mobile</th>
                                         <th></th>
                                       </tr>
                                     </thead>
@@ -361,9 +362,12 @@
                                       <tr tal:repeat="app applications">
                                         <td tal:content="app/dni">DNI</td>
                                         <td tal:content="app/name">Name</td>
+                                        <td tal:content="app/email">Email</td>
+                                        <td tal:content="app/phone">Mobile</td>
                                         <td>Degree</td>
-                                        <td>Identifier Offer TFE</td>
-                                        <td>Mobile</td>
+                                        <td tal:define="a app/offer_id;
+                                                        b app/offer_title"
+                                            tal:content="python:app['offer_id'] + ' ' + app['offer_title']">hola</td>
                                         <td class="actions">
                                           <span class="workflowsAction">
                                             <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">

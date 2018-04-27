@@ -388,6 +388,7 @@ class View(dexterity.DisplayForm):
                                 item_path=application.absolute_url_path(),
                                 dni=application.dni,
                                 name=application.title,
+                                email=application.email,
                                 phone=application.phone,
                                 offer_id=application.offer_id,
                                 offer_title=application.offer_title,
