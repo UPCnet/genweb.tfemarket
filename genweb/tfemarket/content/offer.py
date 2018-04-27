@@ -403,7 +403,7 @@ class View(dexterity.DisplayForm):
         pw = getToolByName(self.context, "portal_workflow")
         offer_workflow = pw.getWorkflowsFor(self.context)[0].id
         offer_status = pw.getStatusOf(offer_workflow, self.context)
-        if checkOfferhasConfirmedApplications(self.context):
+        if checkPermission('cmf.RequestReview', self) and checkOfferhasConfirmedApplications(self.context):
             if offer_status['review_state'] == 'intranet':
                 return 'assignalofertaintranet'
             elif offer_status['review_state'] == 'public':
