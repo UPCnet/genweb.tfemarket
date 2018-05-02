@@ -355,7 +355,7 @@
                                         <th i18n:translate="">Mobile</th>
                                         <th i18n:translate="">Degree</th>
                                         <th i18n:translate="">Identifier Offer TFE</th>
-                                        <th></th>
+                                        <th nowrap></th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -368,7 +368,7 @@
                                         <td tal:define="a app/offer_id;
                                                         b app/offer_title"
                                             tal:content="python:app['offer_id'] + ' ' + app['offer_title']">hola</td>
-                                        <td class="actions">
+                                        <td class="actions" nowrap>
                                           <span class="workflowsAction">
                                             <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
                                               <span tal:content="app/state">State</span>
