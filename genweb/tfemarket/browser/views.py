@@ -100,7 +100,8 @@ class getTeacher(grok.View):
 
     def render(self):
         ### TODO Cambiar PERSONAL por PDI
-        teachers = getLdapUserData(self.request.form['teacher'], typology='PERSONAL')
+        # teachers = getLdapUserData(self.request.form['teacher'], typology='PERSONAL')
+        teachers = getLdapUserData(self.request.form['teacher'])
         if len(teachers) > 0:
             listTeachers = []
             for teacher in teachers:
@@ -127,7 +128,8 @@ class getExactTeacher(grok.View):
 
     def render(self):
         ### TODO Cambiar PERSONAL por PDI
-        teacher = getLdapExactUserData(self.request.form['teacher'], typology='PERSONAL')
+        # teacher = getLdapExactUserData(self.request.form['teacher'], typology='PERSONAL')
+        teacher = getLdapExactUserData(self.request.form['teacher'])
         if teacher and 'sn' in teacher:
             teacherDept = teacher['unitCode'] + "-" + teacher['unit']
             data = {
