@@ -193,7 +193,7 @@ msgstr "Error"
 
 #: ../browser/views.py:92
 msgid "Error you can't perform the action."
-msgstr "Error, no pots realitzar aquesta acció."
+msgstr "No pots realitzar aquesta acció."
 
 #: ../content/templates/market_view.pt:215
 #: ../content/templates/offer_view.pt:69

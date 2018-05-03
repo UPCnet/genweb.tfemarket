@@ -77,13 +77,8 @@ class changeActualState(grok.View):
         itemid = self.request.form.get('id')
 
         try:
-            object_path = '/'.join(itemid.split('/')[:-1])
-            item = str(itemid.split('/')[-1:][0])
-            currentitem = portal_catalog.searchResults(
-                portal_type=['genweb.tfemarket.application', 'genweb.tfemarket.offer'],
-                id=item,
-                path={'query': object_path})[0].getObject()
-
+            portal = api.portal.get()
+            currentitem = portal.unrestrictedTraverse(itemid)
             if currentitem:
                 wftool = getToolByName(self.context, 'portal_workflow')
                 wftool.doActionFor(currentitem, estat)
