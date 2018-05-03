@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from zope import schema
-from plone.supermodel import model
-from plone.app.registry.browser import controlpanel
-
-from plone.directives import form
 from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
+from plone.app.registry.browser import controlpanel
+from plone.autoform import directives
+from plone.directives import form
+from plone.supermodel import model
+from zope import schema
 
 from genweb.tfemarket import _
 
@@ -62,7 +62,7 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Settings',
         _(u'Settings'),
-        fields=['center_code', 'center_name', 'review_state', 'languages'],
+        fields=['center_code', 'center_name', 'review_state', 'languages', 'count_offers'],
     )
 
     model.fieldset(
@@ -90,17 +90,25 @@ class ITfemarketSettings(model.Schema):
         required=False,
     )
 
-    review_state = schema.Bool(title=_(u"Review State"),
-                               default=False,
-                               description=_(u'Select if you want to add "Reviewer" role'),
-                               required=False,
-                               )
+    review_state = schema.Bool(
+        title=_(u"Review State"),
+        default=False,
+        description=_(u'Select if you want to add "Reviewer" role'),
+        required=False,
+    )
 
     languages = schema.Text(title=_(u"Development languages"),
-                            default=_(u"Catalan"),
-                            description=_(u'Add languages one per line'),
-                            required=False,
-                            )
+        default=_(u"Catalan"),
+        description=_(u'Add languages one per line'),
+        required=False,
+    )
+
+    directives.mode(count_offers="display")
+    count_offers = schema.Int(
+        title=_(u"Number of offers created"),
+        required=False,
+        default=0,
+    )
 
     # CLASSIFICATIONS
 

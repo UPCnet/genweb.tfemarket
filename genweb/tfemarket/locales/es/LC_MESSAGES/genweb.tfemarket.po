@@ -34,11 +34,11 @@ msgstr "Solicitud presentada. Recibirás un mensaje de correo con los datos de t
 msgid "Access the offer"
 msgstr "Accede a la oferta"
 
-#: ../controlpanel.py:101
+#: ../controlpanel.py:102
 msgid "Add languages one per line"
 msgstr "Añade un idioma por línea"
 
-#: ../controlpanel.py:115
+#: ../controlpanel.py:123
 msgid "Add tags one per line"
 msgstr "Añade un tag por línea"
 
@@ -46,7 +46,7 @@ msgstr "Añade un tag por línea"
 msgid "Add the .csv file separated by , with the degrees by school:"
 msgstr "Añade el archivo .csv separado por, con las titulaciones por escuela:"
 
-#: ../controlpanel.py:109
+#: ../controlpanel.py:117
 msgid "Add topics one per line"
 msgstr "Añade un tema por línea"
 
@@ -54,7 +54,7 @@ msgstr "Añade un tema por línea"
 msgid "Adds effective date and expiration date fields required."
 msgstr "Añade los campos de fecha de publicación y de caducidad como obligatorios."
 
-#: ../content/market.py:262
+#: ../content/market.py:263
 #: ../content/templates/market_view.pt:100
 #: ../utils.py:103
 msgid "All"
@@ -69,12 +69,12 @@ msgstr "Solicitudes"
 msgid "Assign the offer"
 msgstr "Asigna la oferta"
 
-#: ../content/application.py:59
+#: ../content/application.py:61
 #: ../content/templates/application_view.pt:47
 msgid "Body"
 msgstr "Comentarios"
 
-#: ../controlpanel.py:100
+#: ../controlpanel.py:101
 msgid "Catalan"
 msgstr "Catalán"
 
@@ -87,7 +87,7 @@ msgstr "Código del centro"
 msgid "CoManager"
 msgstr "Codirector"
 
-#: ../content/market.py:258
+#: ../content/market.py:259
 #: ../content/offer.py:299
 #: ../content/templates/market_view.pt:108
 msgid "Company"
@@ -111,7 +111,7 @@ msgstr "Confidencial"
 msgid "Create a offer"
 msgstr "Crear una oferta"
 
-#: ../content/application.py:43
+#: ../content/application.py:45
 #: ../content/templates/application_view.pt:33
 #: ../content/templates/market_view.pt:352
 msgid "DNI"
@@ -163,7 +163,7 @@ msgstr "Despliega todo <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" 
 msgid "Developer language"
 msgstr "Idioma de trabajo"
 
-#: ../controlpanel.py:99
+#: ../controlpanel.py:100
 msgid "Development languages"
 msgstr "Idiomas de eleboración del trabajo"
 
@@ -171,7 +171,7 @@ msgstr "Idiomas de eleboración del trabajo"
 msgid "Direction"
 msgstr "Dirección"
 
-#: ../content/application.py:49
+#: ../content/application.py:51
 #: ../content/templates/application_view.pt:37
 #: ../content/templates/market_view.pt:354
 msgid "Email"
@@ -189,7 +189,7 @@ msgstr "Temática ambiental"
 msgid "Error"
 msgstr "Error"
 
-#: ../browser/views.py:92
+#: ../browser/views.py:87
 msgid "Error you can't perform the action."
 msgstr "No puedes realizar esta acción."
 
@@ -202,7 +202,7 @@ msgstr "Caducidad"
 msgid "Features"
 msgstr "Características"
 
-#: ../content/application.py:37
+#: ../content/application.py:39
 #: ../content/templates/application_view.pt:29
 #: ../z3cwidget/text_input_teacher.pt:66
 msgid "Fullname"
@@ -248,15 +248,15 @@ msgstr "Idioma de elaboración del trabajo"
 msgid "Languages work elaboration"
 msgstr "Idiomas de elaboración del trabajo"
 
-#: ../content/market.py:263
+#: ../content/market.py:264
 msgid "Last day"
 msgstr "Último días"
 
-#: ../content/market.py:265
+#: ../content/market.py:266
 msgid "Last month"
 msgstr "Último mes"
 
-#: ../content/market.py:264
+#: ../content/market.py:265
 msgid "Last week"
 msgstr "Última semana"
 
@@ -298,6 +298,10 @@ msgstr "No"
 msgid "No results found."
 msgstr "No se han encontrado resultados."
 
+#: ../controlpanel.py:108
+msgid "Number of offers created"
+msgstr "Número de ofertas creadas"
+
 #: ../content/offer.py:242
 #: ../content/templates/offer_view.pt:115
 msgid "Number of students"
@@ -312,13 +316,13 @@ msgstr "Número de estudiantes (1 hasta 10)"
 msgid "Offer"
 msgstr "Oferta"
 
-#: ../content/application.py:25
+#: ../content/application.py:27
 #: ../content/offer.py:167
 #: ../content/templates/application_view.pt:19
 msgid "Offer id"
 msgstr "Identificador de la oferta"
 
-#: ../content/application.py:31
+#: ../content/application.py:33
 #: ../content/templates/application_view.pt:23
 msgid "Offer title"
 msgstr "Título de la oferta"
@@ -362,7 +366,7 @@ msgstr "Solicitar la oferta"
 msgid "Requirements"
 msgstr "Requesitos"
 
-#: ../controlpanel.py:93
+#: ../controlpanel.py:94
 msgid "Review State"
 msgstr "Estado de revisión activo"
 
@@ -384,7 +388,7 @@ msgstr "Buscar"
 msgid "Search_teacher"
 msgstr "Busca el profesor"
 
-#: ../controlpanel.py:95
+#: ../controlpanel.py:96
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr "Seleccionar si es necesario el rol de revisión"
 
@@ -400,7 +404,7 @@ msgstr "Mostrar buscador"
 msgid "TFEteacher"
 msgstr "Profesor"
 
-#: ../controlpanel.py:114
+#: ../controlpanel.py:122
 msgid "Tags"
 msgstr "Listado de palabras clave"
 
@@ -422,7 +426,7 @@ msgstr "Nombre del profesor"
 msgid "Teacher manager"
 msgstr "Profesor director"
 
-#: ../content/application.py:54
+#: ../content/application.py:56
 #: ../content/templates/application_view.pt:41
 msgid "Telephone"
 msgstr "Teléfono"
@@ -467,12 +471,12 @@ msgstr "Titulaciones ES"
 msgid "Topic"
 msgstr "Tema"
 
-#: ../controlpanel.py:108
+#: ../controlpanel.py:116
 msgid "Topics of the TFE"
 msgstr "Temas principales de los TFE's"
 
 #: ../configure.zcml:43
-#: ../controlpanel.py:134
+#: ../controlpanel.py:142
 msgid "UPC Mercat TFE"
 msgstr "Mercado de trabajos de final de estudios de la UPC"
 
@@ -480,7 +484,7 @@ msgstr "Mercado de trabajos de final de estudios de la UPC"
 msgid "Universitat"
 msgstr "Universidad"
 
-#: ../content/market.py:259
+#: ../content/market.py:260
 msgid "University"
 msgstr "Universidad"
 
@@ -492,7 +496,7 @@ msgstr "Departamento"
 msgid "User"
 msgstr "Usuario"
 
-#: ../browser/views.py:183
+#: ../content/application.py:93
 msgid "User not exist in LDAP."
 msgstr "User not exist in LDAP."
 
@@ -521,8 +525,7 @@ msgstr "Si"
 msgid "You have already created an <a href=\"${DYNAMIC_CONTENT}\">application</a>."
 msgstr "Actualmente tienes una <a href=\"${DYNAMIC_CONTENT}\">solicitud</a> activa."
 
-#: ../browser/views.py:162
-#: ../content/application.py:70
+#: ../content/application.py:72
 msgid "You have already created an application. You can see it on the main page of the market."
 msgstr "Ya has hecho una solicitud. Puedes visualizarla en la página principal del mercado."
 
@@ -562,7 +565,7 @@ msgid "grant"
 msgstr "Posibilidad de beca"
 
 #. Default: "Imported dades from csv"
-#: ../controlpanel.py:123
+#: ../controlpanel.py:131
 msgid "help_titulacions_table"
 msgstr "Datos importados mediante un archivo .csv. Puede importar las titulaciones desde el siguiente <a href=\"import_titulacions\"> enlace </a>."
 
@@ -620,7 +623,7 @@ msgstr "Requisitos"
 msgid "tfe_lang"
 msgstr "Idioma del trabajo"
 
-#: ../controlpanel.py:125
+#: ../controlpanel.py:133
 msgid "titulacionstable"
 msgstr "XXXXXXXXXXX"
 

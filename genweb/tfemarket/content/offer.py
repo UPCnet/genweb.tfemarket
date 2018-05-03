@@ -20,7 +20,6 @@ from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
-
 from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getAllApplicationsFromOffer
@@ -32,6 +31,7 @@ from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
 
+import transaction
 import unicodedata
 
 
@@ -346,17 +346,16 @@ class IOffer(form.Schema):
 
 @grok.subscribe(IOffer, IObjectAddedEvent)
 def numOfferDefaultValue(offer, event):
-    total = len(
-        api.content.find(
-            portal_type='genweb.tfemarket.offer')
-    )
-
     registry = queryUtility(IRegistry)
     tfe_tool = registry.forInterface(ITfemarketSettings)
     center = tfe_tool.center_code
+    total = tfe_tool.count_offers + 1
 
     offer.offer_id = str(center) + '-' + str(total).zfill(5)
     offer.reindexObject()
+
+    tfe_tool.count_offers += 1
+    transaction.commit()
 
 
 class View(dexterity.DisplayForm):
