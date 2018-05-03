@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-from five import grok
-from Products.CMFCore.utils import getToolByName
-from zope.component import getMultiAdapter
-from zope.interface import Interface
 
+from Products.CMFCore.utils import getToolByName
+from five import grok
 from plone import api
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from plone.app.layout.viewlets.interfaces import IAboveContentTitle
+from zope.component import getMultiAdapter
+from zope.interface import Interface
 
-from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.content.application import IApplication
+from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 
 
 class infoTfemarket(grok.Viewlet):

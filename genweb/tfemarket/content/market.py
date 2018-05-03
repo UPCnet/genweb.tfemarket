@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from Products.CMFCore.utils import getToolByName
 from collections import OrderedDict
 from datetime import date
 from datetime import datetime
@@ -7,20 +8,19 @@ from five import grok
 from plone import api
 from plone.directives import form
 from plone.registry.interfaces import IRegistry
-from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.security import checkPermission
 from zope.sequencesort.ssort import sort
 
 from genweb.tfemarket import _
-from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.content.application import IApplication
+from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.controlpanel import ITfemarketSettings
-from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
-from genweb.tfemarket.utils import getDegrees
+from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import getDegreeLiteralFromId
+from genweb.tfemarket.utils import getDegrees
 
 import ast
 import unicodedata

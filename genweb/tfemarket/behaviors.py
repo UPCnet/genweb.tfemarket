@@ -1,15 +1,17 @@
-from z3c.form.interfaces import IEditForm, IAddForm
-from zope.interface import alsoProvides
-from zope import schema
-from plone.autoform import directives as form
+# -*- coding: utf-8 -*-
+
+from plone.app.dexterity import PloneMessageFactory as _PMF
 from plone.app.dexterity.behaviors.metadata import DCFieldProperty
 from plone.app.dexterity.behaviors.metadata import MetadataBase
-from plone.supermodel import model
-from plone.autoform.interfaces import IFormFieldProvider
-from plone.app.dexterity import PloneMessageFactory as _PMF
-
 from plone.app.event.base import dt_end_of_day
 from plone.app.event.base import dt_start_of_day
+from plone.autoform import directives as form
+from plone.autoform.interfaces import IFormFieldProvider
+from plone.supermodel import model
+from z3c.form.interfaces import IAddForm
+from z3c.form.interfaces import IEditForm
+from zope import schema
+from zope.interface import alsoProvides
 
 import datetime
 

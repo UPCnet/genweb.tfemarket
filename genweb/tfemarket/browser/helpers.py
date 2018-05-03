@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-from five import grok
-from plone.registry.interfaces import IRegistry
-from zope.interface import Interface
-from zope.component import queryUtility
-from genweb.tfemarket.controlpanel import ITfemarketSettings
-from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
-import csv
-import transaction
 
 from Products.statusmessages.interfaces import IStatusMessage
+from five import grok
+from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
+from plone.registry.interfaces import IRegistry
+from zope.component import queryUtility
+from zope.interface import Interface
+
+import csv
+import transaction
 
 
 class importTitulacions(grok.View):

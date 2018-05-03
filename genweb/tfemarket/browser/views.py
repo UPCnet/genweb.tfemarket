@@ -1,27 +1,14 @@
 # -*- coding: utf-8 -*-
+
+from Products.CMFCore.utils import getToolByName
 from five import grok
 from plone import api
-from plone.dexterity.utils import createContentInContainer
-from Products.Five.browser import BrowserView
-from Products.CMFCore.utils import getToolByName
-from zope.component import getMultiAdapter
-from zope.interface import alsoProvides
-from zope.security import checkPermission
-from zope.sequencesort.ssort import sort
+from zope.interface import Interface
 
 from genweb.tfemarket import _
-from genweb.tfemarket.content.application import IApplication
-from genweb.tfemarket.content.offer import IOffer
-from genweb.tfemarket.content.market import IMarket
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
-from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
-from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
-from genweb.tfemarket.utils import getDegrees
-from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
-
-from zope.interface import Interface
 
 import json
 
@@ -41,7 +28,7 @@ def redirectAfterChangeActualState(self):
             self.request.response.redirect(self.context.absolute_url())
         else:
             url = self.context.absolute_url() + "?allOffersTeacher"
-            if 'offer' in  self.request.form:
+            if 'offer' in self.request.form:
                 url += "&offer=" + self.request.form.get('offer')
             self.request.response.redirect(url)
     else:

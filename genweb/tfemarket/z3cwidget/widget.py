@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
+
 from plone.formwidget.autocomplete.widget import AutocompleteSelectionWidget
 
-import z3c.form.interfaces
 import z3c.form.browser.text
+import z3c.form.interfaces
 import z3c.form.widget
 import zope.interface
 import zope.schema.interfaces

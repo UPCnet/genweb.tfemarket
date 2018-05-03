@@ -5,15 +5,13 @@ from plone import api
 from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
 from plone.dexterity.utils import createContentInContainer
-from plone.directives import form, dexterity
-from plone.supermodel.directives import primary
+from plone.directives import dexterity
+from plone.directives import form
 from zope import schema
-from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 
 from genweb.tfemarket import _
 from genweb.tfemarket.utils import checkPermissionCreateApplications
 from genweb.tfemarket.utils import getLdapExactUserData
-from genweb.tfemarket.validations import validateEmail
 
 grok.templatedir("templates")
 
@@ -83,7 +81,7 @@ class Add(dexterity.AddForm):
                     'email': user['mail'],
                 }
 
-                if user.has_key('telephoneNumber'):
+                if 'telephoneNumber' in user:
                     data.update({'phone': user['telephoneNumber']})
 
                 app = createContentInContainer(self.context, "genweb.tfemarket.application", **data)

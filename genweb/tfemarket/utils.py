@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from Acquisition import aq_inner
+from Products.CMFCore.utils import getToolByName
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from operator import itemgetter
 from plone import api
 from plone.app.content.browser.folderfactories import _allowedTypes
 from plone.registry.interfaces import IRegistry
-from Products.CMFCore.utils import getToolByName
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from zope.component import queryUtility
 from zope.security import checkPermission
 

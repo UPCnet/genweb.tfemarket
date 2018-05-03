@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 
+from Products.CMFCore.utils import getToolByName
 from datetime import date
 from datetime import datetime
 from plone import api
-from Products.CMFCore.utils import getToolByName
 from zope.globalrequest import getRequest
 
-from zope.lifecycleevent.interfaces import IObjectRemovedEvent
-from genweb.tfemarket.content.offer import IOffer
-
-from genweb.tfemarket.browser.events.data.messages import M1, M2, M3, M4, M5, M6
-
+from genweb.tfemarket import _
+from genweb.tfemarket.browser.events.data.messages import M1
+from genweb.tfemarket.browser.events.data.messages import M2
+from genweb.tfemarket.browser.events.data.messages import M3
+from genweb.tfemarket.browser.events.data.messages import M4
+from genweb.tfemarket.browser.events.data.messages import M5
+from genweb.tfemarket.browser.events.data.messages import M6
 from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import sendMessage
-from genweb.tfemarket import _
 
 import transaction
-from five import grok
 
 
 def applicationChanged(application, event):

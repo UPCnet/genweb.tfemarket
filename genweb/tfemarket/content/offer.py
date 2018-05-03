@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 
+from Products.CMFCore.utils import getToolByName
 from five import grok
 from operator import itemgetter
 from plone import api
 from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
-from plone.directives import form, dexterity
+from plone.directives import dexterity
+from plone.directives import form
 from plone.registry.interfaces import IRegistry
-from Products.CMFCore.utils import getToolByName
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.schema.vocabulary import SimpleTerm
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 from zope.security import checkPermission
 
 from genweb.tfemarket import _
@@ -23,9 +24,8 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import getAllApplicationsFromOffer
-from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getDegreeLiteralFromId
-from genweb.tfemarket.utils import getLdapExactUserData
+from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.validations import validateEmail
 from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget

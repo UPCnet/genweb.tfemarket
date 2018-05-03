@@ -1,8 +1,8 @@
-from Products.CMFDefault.utils import checkEmailAddress
-from Products.CMFDefault.exceptions import EmailAddressInvalid
-from zope.schema import ValidationError
+# -*- coding: utf-8 -*-
 
-from genweb.tfemarket import _
+from Products.CMFDefault.exceptions import EmailAddressInvalid
+from Products.CMFDefault.utils import checkEmailAddress
+from zope.schema import ValidationError
 
 
 class InvalidEmailAddress(ValidationError):

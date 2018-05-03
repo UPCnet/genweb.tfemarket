@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from Products.CMFPlone.interfaces import INonInstallable
-from zope.interface import implementer
 
+from Products.CMFPlone.interfaces import INonInstallable
 from Products.LDAPUserFolder.LDAPUserFolder import LDAPUserFolder
+from zope.interface import implementer
 
 
 @implementer(INonInstallable)
