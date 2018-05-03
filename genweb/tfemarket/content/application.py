@@ -4,9 +4,11 @@ from five import grok
 from plone import api
 from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
+from plone.dexterity.utils import createContentInContainer
 from plone.directives import form, dexterity
 from plone.supermodel.directives import primary
 from zope import schema
+from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 
 from genweb.tfemarket import _
 from genweb.tfemarket.utils import checkPermissionCreateApplications
@@ -69,6 +71,27 @@ class Add(dexterity.AddForm):
         if not checkPermissionCreateApplications(self, self.context):
             self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it on the main page of the market."), 'error')
             self.redirect(self.context.absolute_url())
+        else:
+            current = api.user.get_current()
+            user = getLdapExactUserData(current.id)
+            if user and 'sn' in user:
+                data = {
+                    'offer_id': self.context.offer_id,
+                    'offer_title': self.context.title,
+                    'title': user['sn'],
+                    'dni': user['DNIpassport'],
+                    'email': user['mail'],
+                }
+
+                if user.has_key('telephoneNumber'):
+                    data.update({'phone': user['telephoneNumber']})
+
+                app = createContentInContainer(self.context, "genweb.tfemarket.application", **data)
+                app.reindexObject()
+                self.redirect(app.absolute_url())
+            else:
+                self.context.plone_utils.addPortalMessage(_(u"User not exist in LDAP."), 'error')
+                self.redirect(self.context.absolute_url())
 
 
 class View(grok.View):
