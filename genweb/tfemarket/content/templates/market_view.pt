@@ -81,7 +81,7 @@
                     </div>
                   </div>
                   <div id="searchOffers">
-                    <form id="formSearchOffers" name="searchOffers" action="" method="post"
+                    <form id="formSearchOffers" name="searchOffers" action="?search" method="post"
                            tal:attributes="data-saved python: 0 if save.has_key('language') else 1">
                       <label i18n:translate="">Text to search</label>
                       <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
@@ -227,7 +227,7 @@
                                           tal:condition="offer/workflows">
                                         <tal:block repeat="estat offer/workflows">
                                           <li>
-                                            <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/path}&allOffersTeacher">
+                                            <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/path}${view/getActualView}">
                                               <span tal:content="estat/title">Estat</span>
                                             </a>
                                           </li>
@@ -379,7 +379,7 @@
                                                 tal:condition="app/workflows">
                                               <tal:block repeat="estat app/workflows">
                                                 <li>
-                                                  <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${app/item_path}&offer=${offer/offer_id}&allOffersTeacher">
+                                                  <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${app/item_path}&offer=${offer/offer_id}${view/getActualView}">
                                                     <span tal:content="estat/title">Estat</span>
                                                   </a>
                                                 </li>

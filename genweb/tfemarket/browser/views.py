@@ -23,24 +23,20 @@ def redirectAfterChangeActualState(self):
     if self.context.portal_type == 'genweb.tfemarket.offer':
         self.request.response.redirect(self.context.absolute_url() + '#offer-applications')
     elif self.context.portal_type == 'genweb.tfemarket.market':
-        if 'allOffersTeacher' not in self.request.form:
-            self.request.response.setCookie('MERCAT_TFE', clearFiltersCookie(self), path='/')
+        if 'allOffersTeacher' not in self.request.form and 'allOffers' not in self.request.form and 'search' not in self.request.form:
             self.request.response.redirect(self.context.absolute_url())
         else:
-            url = self.context.absolute_url() + "?allOffersTeacher"
+            if 'allOffersTeacher' in self.request.form:
+                url = self.context.absolute_url() + "?allOffersTeacher"
+            elif 'allOffers' in self.request.form:
+                url = self.context.absolute_url() + "?allOffers"
+            else:
+                url = self.context.absolute_url() + "?searchFilters"
             if 'offer' in self.request.form:
                 url += "&offer=" + self.request.form.get('offer')
             self.request.response.redirect(url)
     else:
         self.request.response.redirect(self.context.absolute_url())
-
-
-def clearFiltersCookie(self):
-    filters = self.request.form
-    filters.pop('estat', None)
-    filters.pop('id', None)
-    filters.pop('_authenticator', None)
-    return filters
 
 
 class changeActualState(grok.View):

@@ -39,6 +39,14 @@ class View(grok.View):
     grok.context(IMarket)
     grok.template('market_view')
 
+
+    def clearFiltersCookie(self):
+        filters = self.request.form
+        filters.pop('estat', None)
+        filters.pop('id', None)
+        filters.pop('_authenticator', None)
+        return filters
+
     def filterResults(self, results):
         filters = self.saveFilters()
         delete = []
@@ -46,7 +54,7 @@ class View(grok.View):
         for index, item in enumerate(results, start=0):
 
             # Filter text
-            if len(filters['title']) > 2 and not filters['title'].lower() in item['title'].lower():
+            if len(filters['title']) > 0 and not filters['title'].lower() in item['title'].lower():
                 delete.append(index)
                 continue
 
@@ -142,8 +150,11 @@ class View(grok.View):
     def getOffers(self):
         searchMarket = self.request.cookies.get('MERCAT_TFE')
         if searchMarket and not searchMarket == "":
-            self.request.form = ast.literal_eval(searchMarket)
-            self.request.response.setCookie('MERCAT_TFE', "", path='/')
+            if 'searchFilters' in self.request.form:
+                self.request.form = ast.literal_eval(searchMarket)
+            else:
+                if 'search' not in self.request.form:
+                    self.request.response.setCookie('MERCAT_TFE', "", path='/')
 
         if not self.request.form == {} and 'form.button.confirm' not in self.request.form:
             wf_tool = getToolByName(self.context, 'portal_workflow')
@@ -192,8 +203,9 @@ class View(grok.View):
                                         can_create_application=CPCreateApplications(self, offer),
                                         ))
 
-            if 'language' in self.request.form:
+            if 'search' in self.request.form or 'searchFilters' in self.request.form:
                 results = self.filterResults(results)
+                self.request.response.setCookie('MERCAT_TFE', self.clearFiltersCookie(), path='/')
 
             return results
 
@@ -343,3 +355,11 @@ class View(grok.View):
         if 'allOffersTeacher' in self.request.form and self.checkPermissionCreateOffers():
             return True
         return False
+
+    def getActualView(self):
+        if 'allOffersTeacher' in self.request.form:
+            return '&allOffersTeacher'
+        elif 'allOffers' in self.request.form:
+            return '&allOffers'
+        else:
+            return "&search"
