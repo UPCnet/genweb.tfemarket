@@ -32,7 +32,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Delete objects" acquired="False">
@@ -47,7 +46,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
@@ -55,7 +53,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
@@ -95,7 +92,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Delete objects" acquired="False">
@@ -110,7 +106,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
@@ -118,7 +113,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
