@@ -6,6 +6,7 @@ from plone import api
 from zope.interface import Interface
 
 from genweb.tfemarket import _
+from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
@@ -124,3 +125,30 @@ class getExactTeacher(grok.View):
             return json.dumps(data)
         else:
             return None
+
+
+class getInfoCreateApplication(grok.View):
+    grok.context(IOffer)
+    grok.name('getInfoCreateApplication')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+
+    def render(self):
+        current = api.user.get_current()
+        user = getLdapExactUserData(current.id)
+        if user and 'sn' in user:
+            data = {
+                'offer_id': self.context.offer_id,
+                'offer_title': self.context.title,
+                'fullname': user['sn'],
+                'dni': user['DNIpassport'],
+                'email': user['mail'],
+            }
+
+            if 'telephoneNumber' in user:
+                data.update({'phone': user['telephoneNumber']})
+
+        return json.dumps(data)
+
+

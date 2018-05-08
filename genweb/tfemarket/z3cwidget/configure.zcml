@@ -31,18 +31,34 @@
       template="text_input_teacher.pt"
       />
 
-    <class class=".widget.ReadOnlyInputWidget">
-      <require
-          permission="zope.Public"
-          interface=".widget.IReadOnlyInputWidget"
-          />
-    </class>
-
-    <z3c:widgetTemplate
-        mode="input"
-        widget=".widget.IReadOnlyInputWidget"
-        layer="z3c.form.interfaces.IFormLayer"
-        template="text_input_read_only.pt"
+  <class class=".widget.ReadOnlyInputWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.IReadOnlyInputWidget"
         />
+  </class>
+
+  <z3c:widgetTemplate
+      mode="input"
+      widget=".widget.IReadOnlyInputWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="text_input_read_only.pt"
+      />
+
+
+
+  <class class=".widget.StudentInputWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.IStudentInputWidget"
+        />
+  </class>
+
+  <z3c:widgetTemplate
+      mode="input"
+      widget=".widget.IStudentInputWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="text_input_student.pt"
+      />
 
 </configure>

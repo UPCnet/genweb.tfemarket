@@ -451,7 +451,7 @@ msgstr "L'oferta no es pot eliminar, te sol·licituds actives."
 
 #: ../content/offer.py:172
 msgid "Title"
-msgstr "Título"
+msgstr "Títol"
 
 #: ../controlpanel.py:76
 msgid "Titulacions"
