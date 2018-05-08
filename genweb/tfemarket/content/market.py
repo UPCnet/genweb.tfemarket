@@ -284,16 +284,11 @@ class View(grok.View):
         return getDegreeLiteralFromId(id)
 
     def getAllOffers(self):
-        catalog = api.portal.get_tool(name='portal_catalog')
-        path = self.context.getPhysicalPath()
-        path = "/".join(path)
-        return catalog(path={'query': path, 'depth': 1},
-                       object_provides=IOffer.__identifier__)
+        return self.context.contentValues({'portal_type': 'genweb.tfemarket.offer'})
 
-    def getDeptartaments(self):
+    def getDepartaments(self):
         results = []
-        for item in self.getAllOffers():
-            offer = item.getObject()
+        for offer in self.getAllOffers():
             if offer.dept:
                 results.append(offer.dept)
 
@@ -301,8 +296,7 @@ class View(grok.View):
 
     def getCompanys(self):
         results = []
-        for item in self.getAllOffers():
-            offer = item.getObject()
+        for offer in self.getAllOffers():
             if offer.company:
                 results.append(offer.company)
 

@@ -98,7 +98,7 @@
                       <label i18n:translate="">Departament</label>
                       <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
                         <option value="a" i18n:translate="">All</option>
-                        <tal:block tal:repeat="departament view/getDeptartaments">
+                        <tal:block tal:repeat="departament view/getDepartaments">
                           <tal:block tal:define="selected python: save.has_key('departament') and not save['departament'] == 'a' and departament == save['departament']">
                             <option tal:attributes="value departament; selected python: True if selected else False" tal:content="departament">Departament</option>
                           </tal:block>
