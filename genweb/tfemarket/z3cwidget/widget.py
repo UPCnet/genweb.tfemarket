@@ -93,7 +93,7 @@ def StudentInputFieldWidget(field, request):
 
 
 
-class ISelectModalityInputWidget(z3c.form.interfaces.ITextWidget):
+class ISelectModalityInputWidget(z3c.form.interfaces.ISelectWidget):
     pass
 
 
