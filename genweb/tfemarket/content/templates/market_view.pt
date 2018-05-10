@@ -279,7 +279,7 @@
                                         <span class="field"><span i18n:translate="">Modality</span>: </span>
                                         <span tal:content="offer/modality">Modalitat</span>
                                       </p>
-                                      <p class="company" tal:condition="offer/if_modality_univesity">
+                                      <p class="company" tal:condition="offer/if_modality_company">
                                         <span class="field"><span i18n:translate="">Company</span>: </span>
                                         <span tal:content="offer/company">Company</span>
                                       </p>

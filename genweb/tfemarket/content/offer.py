@@ -418,8 +418,8 @@ class View(dexterity.DisplayForm):
                 return 'assign'
         return False
 
-    def ifModalityUnivesity(self):
-        return True if self.modality == 'Universitat' else False
+    def ifModalityCompany(self):
+        return True if self.context.modality == 'Empresa' else False
 
 
 class Add(dexterity.AddForm):

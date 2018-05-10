@@ -158,7 +158,7 @@
                               <span tal:content="context/modality">Modalitat</span>
                            </p>
                         </div>
-                        <div class="leftInfoOffer" tal:condition="view/ifModalityUnivesity">
+                        <div class="leftInfoOffer" tal:condition="view/ifModalityCompany">
                            <p class="coManager">
                               <span class="field"><span i18n:translate="">CoManager</span>: </span>
                               <span tal:content="context/co_manager">CoManager</span>

@@ -97,7 +97,7 @@ class ISelectModalityInputWidget(z3c.form.interfaces.ISelectWidget):
     pass
 
 
-class SelectModalityInputWidget(z3c.form.browser.select.SelectWidget):
+class SelectModalityInputWidget(z3c.form.browser.select.SelectWidget, AutocompleteSelectionWidget):
     zope.interface.implementsOnly(ISelectModalityInputWidget)
 
     klass = u'select-modality-input-widget'

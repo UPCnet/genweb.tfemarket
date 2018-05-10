@@ -201,7 +201,7 @@ class View(grok.View):
                                         workflows=workflowActions,
                                         can_edit=checkPermission('cmf.ModifyPortalContent', offer),
                                         can_create_application=CPCreateApplications(self, offer),
-                                        if_modality_univesity=True if offer.modality == 'Universitat' else False,
+                                        if_modality_company=True if offer.modality == 'Empresa' else False,
                                         ))
 
             if 'search' in self.request.form or 'searchFilters' in self.request.form:
