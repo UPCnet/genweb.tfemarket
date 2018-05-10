@@ -79,7 +79,7 @@ class IStudentInputWidget(z3c.form.interfaces.ITextWidget):
 class StudentInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelectionWidget):
     zope.interface.implementsOnly(IStudentInputWidget)
 
-    klass = u'teacher-input-widget'
+    klass = u'student-input-widget'
 
     def update(self):
         super(z3c.form.browser.text.TextWidget, self).update()
@@ -90,3 +90,24 @@ class StudentInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
 def StudentInputFieldWidget(field, request):
     return z3c.form.widget.FieldWidget(field, StudentInputWidget(request))
+
+
+
+class ISelectModalityInputWidget(z3c.form.interfaces.ITextWidget):
+    pass
+
+
+class SelectModalityInputWidget(z3c.form.browser.select.SelectWidget):
+    zope.interface.implementsOnly(ISelectModalityInputWidget)
+
+    klass = u'select-modality-input-widget'
+
+    def update(self):
+        super(z3c.form.browser.select.SelectWidget, self).update()
+        z3c.form.browser.widget.addFieldClass(self)
+
+
+@zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)
+@zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
+def SelectModalityInputFieldWidget(field, request):
+    return z3c.form.widget.FieldWidget(field, SelectModalityInputWidget(request))

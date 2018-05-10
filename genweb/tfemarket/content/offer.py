@@ -29,6 +29,7 @@ from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.validations import validateEmail
 from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
+from genweb.tfemarket.z3cwidget import SelectModalityInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
 
 import transaction
@@ -282,12 +283,13 @@ class IOffer(form.Schema):
         required=False,
     )
 
+    form.widget('modality', SelectModalityInputFieldWidget)
     modality = schema.Choice(
         title=_(u'modality'),
         values=[u'Universitat',
                 u'Empresa'],
         default=_(u'Universitat'),
-        required=False,
+        required=True
     )
 
     co_manager = schema.TextLine(
@@ -415,6 +417,9 @@ class View(dexterity.DisplayForm):
             elif offer_status['review_state'] == 'public':
                 return 'assign'
         return False
+
+    def ifModalityUnivesity(self):
+        return True if self.modality == 'Universitat' else False
 
 
 class Add(dexterity.AddForm):

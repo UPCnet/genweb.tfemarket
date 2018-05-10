@@ -61,4 +61,20 @@
       template="text_input_student.pt"
       />
 
+
+
+  <class class=".widget.SelectModalityInputWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.ISelectModalityInputWidget"
+        />
+  </class>
+
+  <z3c:widgetTemplate
+      mode="input"
+      widget=".widget.ISelectModalityInputWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="select_input_modality.pt"
+      />
+
 </configure>
