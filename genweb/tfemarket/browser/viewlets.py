@@ -1,15 +1,28 @@
 # -*- coding: utf-8 -*-
 
 from Products.CMFCore.utils import getToolByName
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from five import grok
 from plone import api
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from plone.app.layout.viewlets.interfaces import IAboveContentTitle
+from plone.app.layout.viewlets.interfaces import IPortalTop
 from zope.component import getMultiAdapter
 from zope.interface import Interface
 
+from genweb.theme.browser.viewlets import gwPersonalBarViewlet
+
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
+
+
+class genwebTfemarketPersonalBarViewlet(gwPersonalBarViewlet):
+    """ Done without jbot as it was failing sometimes randomly """
+    grok.name('genweb.personalbar')
+    grok.viewletmanager(IPortalTop)
+    grok.layer(IGenwebTfemarketLayer)
+
+    index = ViewPageTemplateFile('viewlets_templates/personal_bar.pt')
 
 
 class infoTfemarket(grok.Viewlet):
