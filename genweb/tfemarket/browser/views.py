@@ -3,6 +3,7 @@
 from Products.CMFCore.utils import getToolByName
 from five import grok
 from plone import api
+from zope.interface import alsoProvides
 from zope.interface import Interface
 
 from genweb.tfemarket import _
