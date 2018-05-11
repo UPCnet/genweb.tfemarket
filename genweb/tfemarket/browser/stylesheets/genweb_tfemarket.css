@@ -723,7 +723,9 @@ span.icon-genweb-tfemarket-market{
   height: 14px;
 }
 
-ul#contentActionMenus li.dropdown:first-of-type {
+.portaltype-genweb-tfemarket-offer ul#contentActionMenus li.dropdown:first-of-type,
+.portaltype-genweb-tfemarket-market ul#contentActionMenus li.dropdown:first-of-type,
+.portaltype-genweb-tfemarket-application ul#contentActionMenus li.dropdown:first-of-type {
     display: none;
 }
 
