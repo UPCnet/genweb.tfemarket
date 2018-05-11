@@ -723,4 +723,8 @@ span.icon-genweb-tfemarket-market{
   height: 14px;
 }
 
+ul#contentActionMenus li.dropdown:first-of-type {
+    display: none;
+}
+
 /*FIN KO & IAGO CSS*/
