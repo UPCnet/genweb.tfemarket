@@ -234,11 +234,13 @@
                                         </tal:block>
                                       </ul>
                                     </span>
-                                    <a class="label edit" i18n:attributes="alt edit" tal:attributes="href string:${offer/url}/edit"
+                                    <a class="label edit" i18n:attributes="alt edit; title edit"
+                                       tal:attributes="href string:${offer/url}/edit"
                                        tal:condition="offer/can_edit">
                                       <span class="fa fa-pencil" aria-hidden="true"></span>
                                     </a>
-                                    <a class="label" i18n:attributes="alt view" tal:attributes="href string:${offer/url}/view">
+                                    <a class="label" i18n:attributes="alt view; title view"
+                                       tal:attributes="href string:${offer/url}/view">
                                       <span class="fa fa-folder-open" aria-hidden="true"></span>
                                     </a>
                                   </div>
@@ -386,11 +388,13 @@
                                               </tal:block>
                                             </ul>
                                           </span>
-                                          <a class="label edit" i18n:attributes="alt edit" tal:attributes="href string:${app/url}/edit"
+                                          <a class="label edit" i18n:attributes="alt edit; title edit"
+                                             tal:attributes="href string:${app/url}/edit"
                                              tal:condition="app/can_edit">
                                             <span class="fa fa-pencil" aria-hidden="true"></span>
                                           </a>
-                                          <a class="label" i18n:attributes="alt view" tal:attributes="href string:${app/url}/view">
+                                          <a class="label" i18n:attributes="alt view; title view"
+                                             tal:attributes="href string:${app/url}/view">
                                             <span class="fa fa-folder-open" aria-hidden="true"></span>
                                           </a>
                                         </td>
