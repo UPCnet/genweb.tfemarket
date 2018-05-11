@@ -37,47 +37,50 @@ def applicationChanged(application, event):
         'firm': 'TFE Mercat',
     }
 
+    student_mail = application.email
+    teacher_mail = application.getParentNode().teacher_email
+
     fromMsg = toMsg = subject = msg = portalMsg = ''
     if event.transition is None:
         # Añadir comprovación de la titulación, en caso de no tener enviar un
         # portal message _(u'A1')
-        fromMsg = 'Estudiant'
-        toMsg = 'Professor'
+        fromMsg = student_mail
+        toMsg = teacher_mail
         subject = 'Sol·licita'
         msg = M1[lang].format(**data)
         portalMsg = _(u'A5')
     else:
         if event.transition.id == 'request':
-            fromMsg = 'Estudiant'
-            toMsg = 'Professor'
+            fromMsg = student_mail
+            toMsg = teacher_mail
             subject = 'Sol·licita'
             msg = M1[lang].format(**data)
             portalMsg = _(u'A5')
         elif event.transition.id == 'accept':
-            fromMsg = 'Professor'
-            toMsg = 'Estudiant'
+            fromMsg = teacher_mail
+            toMsg = student_mail
             subject = 'Aceptada'
             msg = M2[lang].format(**data)
         elif event.transition.id == 'reject':
-            fromMsg = 'Professor'
-            toMsg = 'Estudiant'
+            fromMsg = teacher_mail
+            toMsg = student_mail
             subject = 'Rebutjada'
             msg = M3[lang].format(**data)
         elif event.transition.id == 'confirm':
-            fromMsg = 'Estudiant'
-            toMsg = 'Professor'
+            fromMsg = student_mail
+            toMsg = teacher_mail
             subject = 'Confirma'
             msg = M4[lang].format(**data)
             portalMsg = _(u'A3')
         elif event.transition.id == 'renounce':
-            fromMsg = 'Estudiant'
-            toMsg = 'Professor'
+            fromMsg = student_mail
+            toMsg = teacher_mail
             subject = 'Renuncia'
             msg = M5[lang].format(**data)
             portalMsg = _(u'A4')
         elif event.transition.id == 'cancel':
-            fromMsg = 'Estudiant'
-            toMsg = 'Professor'
+            fromMsg = student_mail
+            toMsg = teacher_mail
             subject = 'Cancela'
             msg = M6[lang].format(**data)
 
