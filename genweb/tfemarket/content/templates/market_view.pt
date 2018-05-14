@@ -227,7 +227,7 @@
                                           tal:condition="offer/workflows">
                                         <tal:block repeat="estat offer/workflows">
                                           <li>
-                                            <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/path}${view/getActualView}">
+                                            <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/item_path}${view/getActualView}">
                                               <span tal:content="estat/title">Estat</span>
                                             </a>
                                           </li>
@@ -246,7 +246,7 @@
                                   </div>
                                 </div>
                             </div>
-                            <div class="offerData"  tal:define="applications python:view.getApplications(offer)">
+                            <div class="offerData">
                               <ul class="nav nav-tabs" data-tabs="tablist" tal:condition="python: view.openApplicationsTav() and applications">
                                 <li class="nav-item active">
                                   <a class="nav-link" data-toggle="tab"

@@ -392,7 +392,7 @@ class View(dexterity.DisplayForm):
             results.append(dict(title=item.Title,
                                 state=workflows['states'][item.review_state].title,
                                 url=item.getURL(),
-                                item_path=application.absolute_url_path(),
+                                item_path='/'.join(application.getPhysicalPath()[2:]),
                                 dni=application.dni,
                                 name=application.title,
                                 email=application.email,
