@@ -615,8 +615,8 @@
    <guard-role>Market Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="sendtorreview" title="" new_state="pending" trigger="USER" before_script="" after_script="">
-
+ <transition transition_id="sendtorreview" title="Envia a revisió" new_state="pending" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=sendtorreview" category="workflow" icon="">Envia a revisió</action>
   <guard>
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
