@@ -39,53 +39,57 @@ def applicationChanged(application, event):
 
     student_mail = application.email
     teacher_mail = application.getParentNode().teacher_email
+    portal = api.portal.get()
+    sender_email = portal.getProperty('email_from_address')
+    sender_name = portal.getProperty('email_from_name').encode('utf-8')
+    email_charset = portal.getProperty('email_charset')
 
     fromMsg = toMsg = subject = msg = portalMsg = ''
     if event.transition is None:
         # Añadir comprovación de la titulación, en caso de no tener enviar un
         # portal message _(u'A1')
-        fromMsg = student_mail
+        fromMsg = sender_name + ' ' + '<' + sender_email + '>'
         toMsg = teacher_mail
-        subject = 'Sol·licita'
+        subject = _(u'Sol·licita')
         msg = M1[lang].format(**data)
         portalMsg = _(u'A5')
     else:
         if event.transition.id == 'request':
-            fromMsg = student_mail
+            fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = teacher_mail
-            subject = 'Sol·licita'
+            subject = _(u'Sol·licita')
             msg = M1[lang].format(**data)
             portalMsg = _(u'A5')
         elif event.transition.id == 'accept':
-            fromMsg = teacher_mail
+            fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = student_mail
             subject = 'Aceptada'
             msg = M2[lang].format(**data)
         elif event.transition.id == 'reject':
-            fromMsg = teacher_mail
+            fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = student_mail
             subject = 'Rebutjada'
             msg = M3[lang].format(**data)
         elif event.transition.id == 'confirm':
-            fromMsg = student_mail
+            fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = teacher_mail
             subject = 'Confirma'
             msg = M4[lang].format(**data)
             portalMsg = _(u'A3')
         elif event.transition.id == 'renounce':
-            fromMsg = student_mail
+            fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = teacher_mail
             subject = 'Renuncia'
             msg = M5[lang].format(**data)
             portalMsg = _(u'A4')
         elif event.transition.id == 'cancel':
-            fromMsg = student_mail
+            fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = teacher_mail
             subject = 'Cancela'
             msg = M6[lang].format(**data)
 
     if not fromMsg == '':
-        sendMessage(application, fromMsg, toMsg, subject, msg)
+        sendMessage(application, fromMsg, toMsg, subject, msg, email_charset)
 
     if not portalMsg == '':
         application.plone_utils.addPortalMessage(portalMsg, 'info')

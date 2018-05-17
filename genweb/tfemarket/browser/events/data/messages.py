@@ -12,8 +12,6 @@ També pots accedir al Mercat de TFE {linkMarket} de l’escola directament.
 
 Atentament,
 
-Firma
-
 {firm}
 """,
 
@@ -32,8 +30,6 @@ Un cop la confirmis, les teves dades arribaran a PRISMA per tal de realitzar la 
 
 Atentament,
 
-Firma
-
 {firm}
 """,
 
@@ -49,8 +45,6 @@ Benvolgut / Benvolguda,
 La teva sol·licitud per a l’oferta {num} - {title} ha estat rebutjada. Pot posar-te en contacte amb el professor per a qualsevol informació addicional.
 
 Atentament,
-
-Firma
 
 {firm}
 """,
@@ -74,8 +68,6 @@ Les dades es traspasaran a PRISMA per tal de realitzar l’inscripció del treba
 
 Atentament,
 
-Firma
-
 {firm}
 """,
 
@@ -92,8 +84,6 @@ Benvolgut / Benvolguda,
 
 Atentament,
 
-Firma
-
 {firm}
 """,
 
@@ -109,8 +99,6 @@ Benvolgut / Benvolguda,
 {student} ha anul·lat la seva sol·licitud a l’oferta {num} - {title}.
 
 Atentament,
-
-Firma
 
 {firm}
 """,

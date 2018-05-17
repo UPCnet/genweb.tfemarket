@@ -13,18 +13,21 @@ from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
+from cgi import escape
+from Products.CMFPlone.utils import safe_unicode
 
 
-def sendMessage(context, fromMsg, toMsg, subject, message):
+def sendMessage(context, fromMsg, toMsg, subject, message, email_charset):
     context = aq_inner(context)
     mailhost = getToolByName(context, 'MailHost')
 
     msg = MIMEMultipart()
     msg['From'] = fromMsg
     msg['To'] = toMsg
-    msg['Subject'] = subject
+    msg['Subject'] = escape(safe_unicode(subject))
+    msg['charset'] = email_charset
 
-    msg.attach(MIMEText(message, 'plain'))
+    msg.attach(MIMEText(message, 'plain', email_charset))
     mailhost.send(msg)
 
 
