@@ -177,6 +177,17 @@ class View(grok.View):
                     workflows = tools.workflow().getWorkflowsFor(offer)[0]
                     offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
                     offer_status = wf_tool.getStatusOf(offer_workflow, offer)
+                    state_id = workflows['states'][offer_status['review_state']].title
+
+                    if state_id == 'Proposta':
+                        registry = queryUtility(IRegistry)
+                        tfe_tool = registry.forInterface(ITfemarketSettings)
+                        review_state = tfe_tool.review_state
+                        if review_state:
+                            workflowActions = [x for x in workflowActions if x.get('id') == 'sendtoreview']
+                        else:
+                            workflowActions = [x for x in workflowActions if x.get('id') != 'sendtoreview']
+
                     results.append(dict(title=offer.title,
                                         state=workflows['states'][offer_status['review_state']].title,
                                         url=offer.absolute_url(),
