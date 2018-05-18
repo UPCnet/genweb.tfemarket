@@ -227,7 +227,8 @@ class View(grok.View):
         wf_tool = getToolByName(self.context, 'portal_workflow')
         tools = getMultiAdapter((self.context, self.request), name='plone_tools')
         results = []
-        values = catalog(object_provides=IApplication.__identifier__,
+        values = catalog(path={'query': '/'.join(self.context.getPhysicalPath()), 'depth': 3},
+                         object_provides=IApplication.__identifier__,
                          Creator=api.user.get_current().id)
 
         for item in values:
