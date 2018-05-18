@@ -6,7 +6,6 @@
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <state state_id="assignadaintranet" title="Assignada (intranet)">
-  <exit-transition transition_id="publicaalintranet"/>
   <exit-transition transition_id="registralofertaintranet"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
@@ -46,7 +45,6 @@
   </permission-map>
  </state>
  <state state_id="assigned" title="Assignada">
-  <exit-transition transition_id="publicaloferta"/>
   <exit-transition transition_id="register"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
