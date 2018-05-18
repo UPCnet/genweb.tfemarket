@@ -3,16 +3,21 @@
 from Products.CMFCore.utils import getToolByName
 from five import grok
 from plone import api
+from plone.registry.interfaces import IRegistry
+from zope.i18n import translate
+from zope.component import queryUtility
 from zope.interface import alsoProvides
 from zope.interface import Interface
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.offer import IOffer
+from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 
 import json
+import transaction
 
 
 def redirectAfterChangeActualState(self):
@@ -153,3 +158,20 @@ class getInfoCreateApplication(grok.View):
         return json.dumps(data)
 
 
+class resetCountOffers(grok.View):
+    grok.name('reset_count_offers')
+    grok.context(Interface)
+    grok.require('cmf.ManagePortal')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        if 'confirm' in self.request.form:
+            registry = queryUtility(IRegistry)
+            tfe_tool = registry.forInterface(ITfemarketSettings)
+            tfe_tool.count_offers = 0
+            transaction.commit()
+            self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings")
+        else:
+            lang = self.context.language
+            value = _(u'If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter.')
+            return translate(msgid=value, domain='genweb.tfemarket', target_language=lang)

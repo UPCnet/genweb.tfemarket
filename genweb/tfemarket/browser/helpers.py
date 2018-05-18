@@ -2,11 +2,12 @@
 
 from Products.statusmessages.interfaces import IStatusMessage
 from five import grok
-from genweb.tfemarket.controlpanel import ITfemarketSettings
-from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from plone.registry.interfaces import IRegistry
 from zope.component import queryUtility
 from zope.interface import Interface
+
+from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 
 import csv
 import transaction
@@ -17,6 +18,7 @@ class importTitulacions(grok.View):
     grok.name('import_titulacions')
     grok.context(Interface)
     grok.template('import_titulacions')
+    grok.require('cmf.ManagePortal')
     grok.layer(IGenwebTfemarketLayer)
 
     def update(self):
