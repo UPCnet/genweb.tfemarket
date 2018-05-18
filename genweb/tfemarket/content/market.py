@@ -162,7 +162,7 @@ class View(grok.View):
 
             filters = {'portal_type': 'genweb.tfemarket.offer'}
             if 'allOffersTeacher' in self.request.form:
-                filters.update({'Creator': api.user.get_current().id})
+                filters.update({'listCreators': api.user.get_current().id})
 
             values = self.context.contentValues(filters)
             values = sort(values, sort=(

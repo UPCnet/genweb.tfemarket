@@ -360,6 +360,14 @@ def numOfferDefaultValue(offer, event):
     transaction.commit()
 
 
+@grok.subscribe(IOffer, IObjectAddedEvent)
+def defineTeacherAsEditor(offer, event):
+    if offer.teacher_manager not in offer.creators:
+        offer.creators += (offer.teacher_manager,)
+        offer.manage_setLocalRoles(offer.teacher_manager, ["Owner"])
+        offer.reindexObject()
+
+
 class View(dexterity.DisplayForm):
     """The view. May will a template from <modulename>_templates/view.pt,
     and will be called 'view' unless otherwise stated.
