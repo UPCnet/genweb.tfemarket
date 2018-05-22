@@ -36,7 +36,7 @@
 
   <input id="form-widgets-teacher_manager-btn-modal" type="button"
          data-toggle="modal" data-target="#form-widgets-teacher_manager-modal"
-         i18n:attributes="value Search_teacher"/>
+         i18n:attributes="value Search_teacher" tal:condition="view/hasPermissions"/>
 
   <div id="form-widgets-teacher_manager-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">

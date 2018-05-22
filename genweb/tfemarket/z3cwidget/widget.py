@@ -43,6 +43,10 @@ class TeacherInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
         super(z3c.form.browser.text.TextWidget, self).update()
         z3c.form.browser.widget.addFieldClass(self)
 
+    def hasPermissions(self):
+        ## TODO Aplicar funcionalidad, si no eres Manager devolver return False
+        return True
+
 
 @zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
