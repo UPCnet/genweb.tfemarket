@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+<head>
+    <metal:block fill-slot="top_slot"/>
+</head>
+
+<body>
+
+<metal:main fill-slot="content">
+    <tal:main-macro metal:define-macro="main">
+
+     <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+         Status message
+     </div>
+
+      <form method="post" enctype="multipart/form-data" action="import_ofertes">
+        <label i18n:translate="">Select the market where you want to import the offers.</label>
+        <br>
+        <select name="market" required>
+          <tal:block tal:repeat="market view/getMarkets">
+            <option tal:attributes="value market/value" tal:content="market/title"></option>
+          </tal:block>
+        </select>
+        <br>
+        <br>
+        <label i18n:translate="">Add the .csv file separated by , with the offers:</label>
+        <input name="offersfile" type="file" />
+        <button name="save" type="submit" i18n:translate="">Import the offers</button>
+      </form>
+
+    </tal:main-macro>
+
+</metal:main>
+
+</body>
+</html>

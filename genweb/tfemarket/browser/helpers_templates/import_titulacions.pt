@@ -20,8 +20,8 @@
      </div>
 
       <form method="post" enctype="multipart/form-data" action="import_titulacions">
-        <p i18n:translate="">Add the .csv file separated by , with the degrees by school:</p>
-        <input name="titulacionsfile" type="file" />
+        <label i18n:translate="">Add the .csv file separated by , with the degrees by school:</label>
+        <input name="degreesfile" type="file" />
         <button name="save" type="submit" i18n:translate="">Import the degrees</button>
       </form>
 

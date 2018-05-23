@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-05-18 09:51+0000\n"
+"POT-Creation-Date: 2018-05-23 11:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,11 +41,11 @@ msgstr ""
 msgid "Access the offer"
 msgstr ""
 
-#: ../controlpanel.py:102
+#: ../controlpanel.py:123
 msgid "Add languages one per line"
 msgstr ""
 
-#: ../controlpanel.py:124
+#: ../controlpanel.py:116
 msgid "Add tags one per line"
 msgstr ""
 
@@ -53,7 +53,11 @@ msgstr ""
 msgid "Add the .csv file separated by , with the degrees by school:"
 msgstr ""
 
-#: ../controlpanel.py:118
+#: ../browser/helpers_templates/import_ofertes.pt:32
+msgid "Add the .csv file separated by , with the offers:"
+msgstr ""
+
+#: ../controlpanel.py:110
 msgid "Add topics one per line"
 msgstr ""
 
@@ -81,11 +85,11 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: ../controlpanel.py:101
+#: ../controlpanel.py:122
 msgid "Catalan"
 msgstr ""
 
-#: ../controlpanel.py:83
+#: ../controlpanel.py:89
 msgid "Center code"
 msgstr ""
 
@@ -170,7 +174,7 @@ msgstr ""
 msgid "Developer language"
 msgstr ""
 
-#: ../controlpanel.py:100
+#: ../controlpanel.py:121
 msgid "Development languages"
 msgstr ""
 
@@ -232,8 +236,16 @@ msgstr ""
 msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 msgstr ""
 
+#: ../controlpanel.py:142
+msgid "Import offers"
+msgstr ""
+
 #: ../browser/helpers_templates/import_titulacions.pt:25
 msgid "Import the degrees"
+msgstr ""
+
+#: ../browser/helpers_templates/import_ofertes.pt:34
+msgid "Import the offers"
 msgstr ""
 
 #: ../content/templates/offer_view.pt:16
@@ -295,7 +307,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../controlpanel.py:89
+#: ../controlpanel.py:95
 msgid "Name center"
 msgstr ""
 
@@ -309,7 +321,7 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: ../controlpanel.py:108
+#: ../controlpanel.py:149
 msgid "Number of offers created"
 msgstr ""
 
@@ -320,6 +332,10 @@ msgstr ""
 
 #: ../content/offer.py:244
 msgid "Number of students for the TFE (1 to 10)"
+msgstr ""
+
+#: ../controlpanel.py:76
+msgid "Ofertes"
 msgstr ""
 
 #: ../content/templates/market_view.pt:252
@@ -377,7 +393,7 @@ msgstr ""
 msgid "Requirements"
 msgstr ""
 
-#: ../controlpanel.py:94
+#: ../controlpanel.py:100
 msgid "Review State"
 msgstr ""
 
@@ -399,8 +415,12 @@ msgstr ""
 msgid "Search_teacher"
 msgstr ""
 
-#: ../controlpanel.py:96
+#: ../controlpanel.py:102
 msgid "Select if you want to add \"Reviewer\" role"
+msgstr ""
+
+#: ../browser/helpers_templates/import_ofertes.pt:23
+msgid "Select the market where you want to import the offers."
 msgstr ""
 
 #: ../controlpanel.py:64
@@ -419,7 +439,7 @@ msgstr ""
 msgid "TFEteacher"
 msgstr ""
 
-#: ../controlpanel.py:123
+#: ../controlpanel.py:115
 msgid "Tags"
 msgstr ""
 
@@ -466,7 +486,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ../controlpanel.py:76
+#: ../controlpanel.py:70
 msgid "Titulacions"
 msgstr ""
 
@@ -482,7 +502,11 @@ msgstr ""
 msgid "Titulacions ES"
 msgstr ""
 
-#: ../controlpanel.py:109
+#: ../controlpanel.py:143
+msgid "To import the offers access the following <a href=\"import_ofertes\">link</a>."
+msgstr ""
+
+#: ../controlpanel.py:150
 msgid "To reset the counter access the following <a href=\"reset_count_offers\">link</a>."
 msgstr ""
 
@@ -490,12 +514,12 @@ msgstr ""
 msgid "Topic"
 msgstr ""
 
-#: ../controlpanel.py:117
+#: ../controlpanel.py:109
 msgid "Topics of the TFE"
 msgstr ""
 
 #: ../configure.zcml:43
-#: ../controlpanel.py:143
+#: ../controlpanel.py:159
 msgid "UPC Mercat TFE"
 msgstr ""
 
@@ -557,7 +581,7 @@ msgstr ""
 msgid "application_description"
 msgstr ""
 
-#: ../controlpanel.py:70
+#: ../controlpanel.py:82
 msgid "classifications"
 msgstr ""
 
@@ -579,7 +603,7 @@ msgid "grant"
 msgstr ""
 
 #. Default: "Imported dades from csv"
-#: ../controlpanel.py:132
+#: ../controlpanel.py:131
 msgid "help_titulacions_table"
 msgstr ""
 
@@ -636,7 +660,7 @@ msgstr ""
 msgid "tfe_lang"
 msgstr ""
 
-#: ../controlpanel.py:134
+#: ../controlpanel.py:133
 msgid "titulacionstable"
 msgstr ""
 

@@ -170,7 +170,7 @@ class resetCountOffers(grok.View):
             tfe_tool = registry.forInterface(ITfemarketSettings)
             tfe_tool.count_offers = 0
             transaction.commit()
-            self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings")
+            self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
         else:
             lang = self.context.language
             value = _(u'If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter.')

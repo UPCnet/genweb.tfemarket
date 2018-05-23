@@ -62,19 +62,25 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Settings',
         _(u'Settings'),
-        fields=['center_code', 'center_name', 'review_state', 'languages', 'count_offers'],
-    )
-
-    model.fieldset(
-        'TopicTFE',
-        _(u'classifications'),
-        fields=['topics', 'tags'],
+        fields=['center_code', 'center_name', 'review_state'],
     )
 
     model.fieldset(
         'Titulacions',
         _(u'Titulacions'),
         fields=['titulacions_table'],
+    )
+
+    model.fieldset(
+        'Ofertes',
+        _(u'Ofertes'),
+        fields=['import_offers', 'count_offers',],
+    )
+
+    model.fieldset(
+        'TopicTFE',
+        _(u'classifications'),
+        fields=['topics', 'tags', 'languages'],
     )
 
     # SETTINGS
@@ -97,20 +103,6 @@ class ITfemarketSettings(model.Schema):
         required=False,
     )
 
-    languages = schema.Text(title=_(u"Development languages"),
-        default=_(u"Catalan"),
-        description=_(u'Add languages one per line'),
-        required=False,
-    )
-
-    directives.mode(count_offers="display")
-    count_offers = schema.Int(
-        title=_(u"Number of offers created"),
-        description=_(u'To reset the counter access the following <a href=\"reset_count_offers\">link</a>.'),
-        required=False,
-        default=0,
-    )
-
     # CLASSIFICATIONS
 
     topics = schema.Text(
@@ -125,6 +117,13 @@ class ITfemarketSettings(model.Schema):
         required=False,
     )
 
+    languages = schema.Text(
+        title=_(u"Development languages"),
+        default=_(u"Catalan"),
+        description=_(u'Add languages one per line'),
+        required=False,
+    )
+
     # TITULACIONS
 
     form.widget(titulacions_table=DataGridFieldFactory)
@@ -135,6 +134,23 @@ class ITfemarketSettings(model.Schema):
                                                        schema=ITableTitulacions),
                                     required=False
                                     )
+
+    # OFERTES
+
+    directives.mode(import_offers="display")
+    import_offers = schema.Text(
+        title=_(u"Import offers"),
+        description=_(u'To import the offers access the following <a href=\"import_ofertes\">link</a>.'),
+        required=False,
+    )
+
+    directives.mode(count_offers="display")
+    count_offers = schema.Int(
+        title=_(u"Number of offers created"),
+        description=_(u'To reset the counter access the following <a href=\"reset_count_offers\">link</a>.'),
+        required=False,
+        default=0,
+    )
 
 
 class TfemarketSettingsEditForm(controlpanel.RegistryEditForm):

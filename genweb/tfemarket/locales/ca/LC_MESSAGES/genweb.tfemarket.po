@@ -36,11 +36,11 @@ msgstr "Sol·licitud presentada. Rebràs un missatge de correu amb les dades de 
 msgid "Access the offer"
 msgstr "Accedeix a la oferta"
 
-#: ../controlpanel.py:102
+#: ../controlpanel.py:123
 msgid "Add languages one per line"
 msgstr "Afegeix un idioma per línea"
 
-#: ../controlpanel.py:124
+#: ../controlpanel.py:116
 msgid "Add tags one per line"
 msgstr "Afegeix un tag per línea"
 
@@ -48,7 +48,11 @@ msgstr "Afegeix un tag per línea"
 msgid "Add the .csv file separated by , with the degrees by school:"
 msgstr "Afegeix el fitxer .csv separat per , amb les titulacions per escola:"
 
-#: ../controlpanel.py:118
+#: ../browser/helpers_templates/import_ofertes.pt:32
+msgid "Add the .csv file separated by , with the offers:"
+msgstr "Afegiu el fitxer .csv separat per , amb les ofertes:"
+
+#: ../controlpanel.py:110
 msgid "Add topics one per line"
 msgstr "Afegeix un tema per línea"
 
@@ -76,11 +80,11 @@ msgstr "Assigna l'oferta"
 msgid "Body"
 msgstr "Comentaris"
 
-#: ../controlpanel.py:101
+#: ../controlpanel.py:122
 msgid "Catalan"
 msgstr "Català"
 
-#: ../controlpanel.py:83
+#: ../controlpanel.py:89
 msgid "Center code"
 msgstr "Codi del centre"
 
@@ -165,7 +169,7 @@ msgstr "Desplega tot <i style=\"color: #557c95\" class=\"fa fa-chevron-down\" ar
 msgid "Developer language"
 msgstr "Idioma de treball"
 
-#: ../controlpanel.py:100
+#: ../controlpanel.py:121
 msgid "Development languages"
 msgstr "Idiomes d'elaboració del treball"
 
@@ -227,9 +231,17 @@ msgstr "Identificador de l'oferta"
 msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 msgstr "Si està realitzant la següent acció és perquè has eliminat totes les ofertes dels mercats. Fes clic al següent  <a href=\"reset_count_offers?confirm\">enllaç</a> per confirmar el reseteig del comptador d'ofertes."
 
+#: ../controlpanel.py:142
+msgid "Import offers"
+msgstr "Importar ofertes"
+
 #: ../browser/helpers_templates/import_titulacions.pt:25
 msgid "Import the degrees"
 msgstr "Importa totes les titulacions"
+
+#: ../browser/helpers_templates/import_ofertes.pt:34
+msgid "Import the offers"
+msgstr "Importar les ofertes"
 
 #: ../content/templates/offer_view.pt:16
 msgid "Info"
@@ -290,7 +302,7 @@ msgstr "Modalitat"
 msgid "Name"
 msgstr "Nom"
 
-#: ../controlpanel.py:89
+#: ../controlpanel.py:95
 msgid "Name center"
 msgstr "Nom del centre"
 
@@ -304,7 +316,7 @@ msgstr "No"
 msgid "No results found."
 msgstr "No s'han trobat resultats."
 
-#: ../controlpanel.py:108
+#: ../controlpanel.py:149
 msgid "Number of offers created"
 msgstr "Nombre d'ofertes creades"
 
@@ -316,6 +328,10 @@ msgstr "Nombre d'estudiants"
 #: ../content/offer.py:244
 msgid "Number of students for the TFE (1 to 10)"
 msgstr "Nombre d'estudiants (1 fins a 10)"
+
+#: ../controlpanel.py:76
+msgid "Ofertes"
+msgstr "Ofertes"
 
 #: ../content/templates/market_view.pt:252
 #: ../content/templates/offer_view.pt:31
@@ -372,7 +388,7 @@ msgstr "Sol·licitar l'oferta"
 msgid "Requirements"
 msgstr "Requisits"
 
-#: ../controlpanel.py:94
+#: ../controlpanel.py:100
 msgid "Review State"
 msgstr "Estat de revisió actiu"
 
@@ -394,9 +410,13 @@ msgstr "Cerca"
 msgid "Search_teacher"
 msgstr "Cerca el professor"
 
-#: ../controlpanel.py:96
+#: ../controlpanel.py:102
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr "Seleccionar si és necessari el rol de revisió"
+
+#: ../browser/helpers_templates/import_ofertes.pt:23
+msgid "Select the market where you want to import the offers."
+msgstr "Seleccioneu el mercat on voleu importar les ofertes."
 
 #: ../controlpanel.py:64
 msgid "Settings"
@@ -414,7 +434,7 @@ msgstr "Sol·licita"
 msgid "TFEteacher"
 msgstr "Professor"
 
-#: ../controlpanel.py:123
+#: ../controlpanel.py:115
 msgid "Tags"
 msgstr "Llistat de paraules clau"
 
@@ -461,7 +481,7 @@ msgstr "L'oferta no es pot eliminar, te sol·licituds actives."
 msgid "Title"
 msgstr "Títol"
 
-#: ../controlpanel.py:76
+#: ../controlpanel.py:70
 msgid "Titulacions"
 msgstr "Titulacions"
 
@@ -477,7 +497,11 @@ msgstr "Titulacions EN"
 msgid "Titulacions ES"
 msgstr "Titulacions ES"
 
-#: ../controlpanel.py:109
+#: ../controlpanel.py:143
+msgid "To import the offers access the following <a href=\"import_ofertes\">link</a>."
+msgstr "Per importar les ofertes accedeixi al següent <a href=\"reset_count_offers\">enllaç</a>."
+
+#: ../controlpanel.py:150
 msgid "To reset the counter access the following <a href=\"reset_count_offers\">link</a>."
 msgstr "Per restablir el comptador accedeixi al següent <a href=\"reset_count_offers\">enllaç</a>."
 
@@ -485,12 +509,12 @@ msgstr "Per restablir el comptador accedeixi al següent <a href=\"reset_count_o
 msgid "Topic"
 msgstr "Tema"
 
-#: ../controlpanel.py:117
+#: ../controlpanel.py:109
 msgid "Topics of the TFE"
 msgstr "Temàtiques principals dels TFE's"
 
 #: ../configure.zcml:43
-#: ../controlpanel.py:143
+#: ../controlpanel.py:159
 msgid "UPC Mercat TFE"
 msgstr "UPC Mercat TFE (genweb.tfemarket)"
 
@@ -553,7 +577,7 @@ msgstr "Sol·licitud"
 msgid "application_description"
 msgstr "Dades per a la sol·licitud d'un TFE"
 
-#: ../controlpanel.py:70
+#: ../controlpanel.py:82
 msgid "classifications"
 msgstr "Classificacions"
 
@@ -575,7 +599,7 @@ msgid "grant"
 msgstr "Possibilitat de beca"
 
 #. Default: "Imported dades from csv"
-#: ../controlpanel.py:132
+#: ../controlpanel.py:131
 msgid "help_titulacions_table"
 msgstr "Dades importades mitjançant un fitxer .csv. Pot importar les titulacions desde el següent <a href=\"import_titulacions\">enllaç</a>."
 
@@ -633,7 +657,7 @@ msgstr "Requisits"
 msgid "tfe_lang"
 msgstr "Idioma del treball"
 
-#: ../controlpanel.py:134
+#: ../controlpanel.py:133
 msgid "titulacionstable"
 msgstr "XXXXXXXXXXX"
 

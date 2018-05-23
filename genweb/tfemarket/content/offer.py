@@ -210,7 +210,7 @@ class IOffer(form.Schema):
     form.widget('teacher_manager', TeacherInputFieldWidget)
     teacher_manager = schema.TextLine(
         title=_(u'TFEteacher'),
-        required=False,
+        required=True,
     )
 
     form.widget('teacher_fullname', ReadOnlyInputFieldWidget)
@@ -289,7 +289,7 @@ class IOffer(form.Schema):
         values=[u'Universitat',
                 u'Empresa'],
         default=_(u'Universitat'),
-        required=True
+        required=True,
     )
 
     co_manager = schema.TextLine(
