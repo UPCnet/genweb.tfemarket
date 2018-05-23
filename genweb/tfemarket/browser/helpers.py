@@ -120,41 +120,45 @@ class importOfertes(grok.View):
         csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
         csv_file.next()  # Ignore header for csv
         for count, row in enumerate(csv_file):
-            teacher = getLdapExactUserData(row[5].decode("utf-8"))
-            if teacher:
-                data = {
-                    'title': row[0].decode("utf-8"),
-                    'description': row[1].decode("utf-8"),
-                    'topic': row[2].decode("utf-8"),
-                    'degree': row[3].decode("utf-8").split(","),
-                    'keys': row[4].decode("utf-8").split(","),
-                    'teacher_manager': teacher['id'],
-                    'teacher_fullname': teacher['sn'],
-                    'teacher_email': teacher['mail'],
-                    'dept': teacher['unitCode'] + "-" + teacher['unit'],
-                    'num_students': int(row[6].decode("utf-8")),
-                    'workload': row[7].decode("utf-8"),
-                    'targets': row[8].decode("utf-8"),
-                    'features': row[9].decode("utf-8"),
-                    'requirements': row[10].decode("utf-8"),
-                    'lang': row[11].decode("utf-8").split(","),
-                    'modality': row[12].decode("utf-8"),
-                    'co_manager': row[13].decode("utf-8"),
-                    'company': row[14].decode("utf-8"),
-                    'company_contact': row[15].decode("utf-8"),
-                    'company_email': row[16].decode("utf-8"),
-                    'grant': bool(row[17].decode("utf-8")),
-                    'confidential': bool(row[18].decode("utf-8")),
-                    'environmental_theme': bool(row[19].decode("utf-8")),
-                    'scope_cooperation': bool(row[20].decode("utf-8")),
-                }
-                offer = createContentInContainer(market, "genweb.tfemarket.offer", **data)
-                offer.setEffectiveDate(dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1)))
-                offer.setExpirationDate(dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365)))
-                offer.reindexObject()
-                print str(count) + ": Done - " + row[0].decode("utf-8")
+            notValidDegrees = self.checkNotValidDegrees(row[3].decode("utf-8").split(","))
+            if len(notValidDegrees) == 0:
+                teacher = getLdapExactUserData(row[5].decode("utf-8"))
+                if teacher:
+                    data = {
+                        'title': row[0].decode("utf-8"),
+                        'description': row[1].decode("utf-8"),
+                        'topic': row[2].decode("utf-8"),
+                        'degree': row[3].decode("utf-8").split(","),
+                        'keys': row[4].decode("utf-8").split(","),
+                        'teacher_manager': teacher['id'],
+                        'teacher_fullname': teacher['sn'],
+                        'teacher_email': teacher['mail'],
+                        'dept': teacher['unitCode'] + "-" + teacher['unit'],
+                        'num_students': int(row[6].decode("utf-8")),
+                        'workload': row[7].decode("utf-8"),
+                        'targets': row[8].decode("utf-8"),
+                        'features': row[9].decode("utf-8"),
+                        'requirements': row[10].decode("utf-8"),
+                        'lang': row[11].decode("utf-8").split(","),
+                        'modality': row[12].decode("utf-8"),
+                        'co_manager': row[13].decode("utf-8"),
+                        'company': row[14].decode("utf-8"),
+                        'company_contact': row[15].decode("utf-8"),
+                        'company_email': row[16].decode("utf-8"),
+                        'grant': bool(row[17].decode("utf-8")),
+                        'confidential': bool(row[18].decode("utf-8")),
+                        'environmental_theme': bool(row[19].decode("utf-8")),
+                        'scope_cooperation': bool(row[20].decode("utf-8")),
+                    }
+                    offer = createContentInContainer(market, "genweb.tfemarket.offer", **data)
+                    offer.setEffectiveDate(dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1)))
+                    offer.setExpirationDate(dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365)))
+                    offer.reindexObject()
+                    print str(count) + ": Done - " + row[0].decode("utf-8")
+                else:
+                    print str(count) + ": Error - Teacher (" + row[5].decode("utf-8") + ") not exist."
             else:
-                print str(count) + ": Error - Teacher (" + row[5].decode("utf-8") + ") not exist."
+                print str(count) + ": Error - Degree (" + " ".join(notValidDegrees)  + ") not valid."
 
     def getMarkets(self):
         markets = []
@@ -165,3 +169,10 @@ class importOfertes(grok.View):
             markets.append({'value': market.UID, 'title': market.Title})
 
         return markets
+
+    def checkNotValidDegrees(self, degrees):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        allDegrees = [x['codi_mec'] for x in tfe_tool.titulacions_table]
+        notValid = [x for x in degrees if x not in allDegrees]
+        return notValid

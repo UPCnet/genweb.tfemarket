@@ -100,7 +100,7 @@ def getDegrees():
             else:
                 titulacio += item['titulacio_en']
 
-            result.append({'id': item['codi_prisma'], 'lit': titulacio})
+            result.append({'id': item['codi_mec'], 'lit': titulacio})
 
     result = sorted(result, key=itemgetter('lit'))
     result.insert(0, {'id': 'a', 'lit': _(u"All")})
