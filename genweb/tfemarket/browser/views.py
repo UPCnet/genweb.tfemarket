@@ -139,10 +139,10 @@ class getInfoCreateApplication(grok.View):
     grok.require('zope2.View')
     grok.layer(IGenwebTfemarketLayer)
 
-
     def render(self):
         current = api.user.get_current()
         user = getLdapExactUserData(current.id)
+        data = {}
         if user and 'sn' in user:
             data = {
                 'offer_id': self.context.offer_id,

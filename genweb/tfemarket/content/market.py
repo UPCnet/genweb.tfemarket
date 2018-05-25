@@ -15,7 +15,6 @@ from zope.sequencesort.ssort import sort
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
-from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
@@ -38,7 +37,6 @@ class IMarket(form.Schema):
 class View(grok.View):
     grok.context(IMarket)
     grok.template('market_view')
-
 
     def clearFiltersCookie(self):
         filters = self.request.form

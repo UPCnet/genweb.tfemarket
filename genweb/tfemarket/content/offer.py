@@ -6,31 +6,21 @@ from operator import itemgetter
 from plone import api
 from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
-from plone.directives import dexterity
-from plone.directives import form
+from plone.directives import dexterity, form
 from plone.registry.interfaces import IRegistry
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
-from zope.component import getMultiAdapter
-from zope.component import queryUtility
+from zope.component import getMultiAdapter, queryUtility
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleTerm
-from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
-from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
-from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
-from genweb.tfemarket.utils import getAllApplicationsFromOffer
-from genweb.tfemarket.utils import getDegreeLiteralFromId
-from genweb.tfemarket.utils import getDegrees
+from genweb.tfemarket.utils import checkOfferhasConfirmedApplications, getAllApplicationsFromOffer, getDegreeLiteralFromId, checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.validations import validateEmail
-from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
-from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
-from genweb.tfemarket.z3cwidget import SelectModalityInputFieldWidget
-from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
+from genweb.tfemarket.z3cwidget import FieldsetFieldWidget, ReadOnlyInputFieldWidget, SelectModalityInputFieldWidget, TeacherInputFieldWidget
 
 import transaction
 import unicodedata
@@ -138,7 +128,7 @@ class DegreesVocabulary(object):
             else:
                 titulacio += item['titulacio_en']
 
-            result.append({'id': item['codi_mec'], 'lit': titulacio})
+            result.append({'id': item['codi_prisma'], 'lit': titulacio})
 
         result = sorted(result, key=itemgetter('lit'))
 
@@ -378,9 +368,6 @@ class View(dexterity.DisplayForm):
 
     def formatDate(self, date):
         return date.strftime('%d/%m/%Y')
-
-    def getDegrees(self):
-        return getDegrees()
 
     def getDegreeLiteralFromId(self, id):
         return getDegreeLiteralFromId(id)

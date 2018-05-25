@@ -16,6 +16,8 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from cgi import escape
 from Products.CMFPlone.utils import safe_unicode
 
+import requests
+
 
 def sendMessage(context, fromMsg, toMsg, subject, message, email_charset):
     context = aq_inner(context)
@@ -100,7 +102,7 @@ def getDegrees():
             else:
                 titulacio += item['titulacio_en']
 
-            result.append({'id': item['codi_mec'], 'lit': titulacio})
+            result.append({'id': item['codi_prisma'], 'lit': titulacio})
 
     result = sorted(result, key=itemgetter('lit'))
     result.insert(0, {'id': 'a', 'lit': _(u"All")})
