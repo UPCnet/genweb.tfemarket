@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="tfemarket_properties" meta_type="Plone Property Sheet">
+  <property name="title">TFEMarket Properties</property>
+  <property name="bussoa_url" type="string" purge="False"/>
+  <property name="bussoa_username" type="string" purge="False"/>
+  <property name="bussoa_password" type="string" purge="False"/>
+  <property name="bussoa_apikey" type="string" purge="False"/>
+ </object>
+
+</object>
