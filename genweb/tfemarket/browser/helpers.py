@@ -4,6 +4,7 @@ from five import grok
 from plone import api
 from plone.app.event.base import dt_end_of_day
 from plone.app.event.base import dt_start_of_day
+from plone.app.textfield.value import RichTextValue
 from plone.dexterity.utils import createContentInContainer
 from plone.registry.interfaces import IRegistry
 from zope.component import queryUtility
@@ -87,7 +88,6 @@ class importOfertes(grok.View):
                 message = (u"Falta afegir el fitxer csv.")
                 IStatusMessage(self.request).addStatusMessage(message, type='error')
 
-
     def importConfigurationFields(self, fitxer):
         strTopics = ''
         strTags = ''
@@ -136,9 +136,9 @@ class importOfertes(grok.View):
                         'dept': teacher['unitCode'] + "-" + teacher['unit'],
                         'num_students': int(row[6].decode("utf-8")),
                         'workload': row[7].decode("utf-8"),
-                        'targets': row[8].decode("utf-8"),
-                        'features': row[9].decode("utf-8"),
-                        'requirements': row[10].decode("utf-8"),
+                        'targets': RichTextValue(row[8].decode("utf-8")),
+                        'features': RichTextValue(row[9].decode("utf-8")),
+                        'requirements': RichTextValue(row[10].decode("utf-8")),
                         'lang': row[11].decode("utf-8").split(","),
                         'modality': row[12].decode("utf-8"),
                         'co_manager': row[13].decode("utf-8"),
@@ -158,7 +158,7 @@ class importOfertes(grok.View):
                 else:
                     print str(count) + ": Error - Teacher (" + row[5].decode("utf-8") + ") not exist."
             else:
-                print str(count) + ": Error - Degree (" + " ".join(notValidDegrees)  + ") not valid."
+                print str(count) + ": Error - Degree (" + " ".join(notValidDegrees) + ") not valid."
 
     def getMarkets(self):
         markets = []
