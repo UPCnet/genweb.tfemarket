@@ -500,8 +500,8 @@ msgid "To import the offers access the following <a href=\"import_ofertes\">link
 msgstr "To import the offers access the following <a href=\"import_ofertes\">link</a>."
 
 #: ../controlpanel.py:150
-msgid "To reset the counter access the following <a href=\"reset_count_offers\">link</a>."
-msgstr "To reset the counter access the following <a href=\"reset_count_offers\">link</a>."
+msgid "To reset the counter access the following <a href=\"import_ofertes\">link</a>."
+msgstr "To reset the counter access the following <a href=\"import_ofertes\">link</a>."
 
 #: ../content/templates/offer_view.pt:109
 msgid "Topic"

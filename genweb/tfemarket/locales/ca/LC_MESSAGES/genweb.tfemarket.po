@@ -499,7 +499,7 @@ msgstr "Titulacions ES"
 
 #: ../controlpanel.py:143
 msgid "To import the offers access the following <a href=\"import_ofertes\">link</a>."
-msgstr "Per importar les ofertes accedeixi al següent <a href=\"reset_count_offers\">enllaç</a>."
+msgstr "Per importar les ofertes accedeixi al següent <a href=\"import_ofertes\">enllaç</a>."
 
 #: ../controlpanel.py:150
 msgid "To reset the counter access the following <a href=\"reset_count_offers\">link</a>."
