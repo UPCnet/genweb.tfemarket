@@ -39,6 +39,9 @@ setup(
         'plone.app.dexterity',
         'five.grok',
         'collective.dexteritytextindexer'
+        'soappy',
+        'z3c.saconfig'
+
     ],
     extras_require={
         'test': [

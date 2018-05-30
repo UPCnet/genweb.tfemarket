@@ -74,13 +74,19 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Ofertes',
         _(u'Ofertes'),
-        fields=['import_offers', 'count_offers',],
+        fields=['import_offers', 'count_offers']
     )
 
     model.fieldset(
         'TopicTFE',
         _(u'classifications'),
         fields=['topics', 'tags', 'languages'],
+    )
+
+    model.fieldset(
+        'BUS SOA',
+        _(u'Bus SOA'),
+        fields=['bus_user', 'bus_url', 'bus_password', 'bus_apikey']
     )
 
     # SETTINGS
@@ -151,6 +157,26 @@ class ITfemarketSettings(model.Schema):
         required=False,
         default=0,
     )
+
+    # BUS SOA
+
+    bus_user = schema.TextLine(
+        title=_(u'User'),
+        description=_('User to connect to the bus'),
+        required=False)
+
+    bus_url = schema.TextLine(
+        title=_(u'URL'),
+        description=_(u'URL to access the bus'),
+        required=False)
+
+    bus_password = schema.Password(
+        title=_(u'Password'),
+        required=False)
+
+    bus_apikey = schema.Password(
+        title=_(u'APIKEY'),
+        required=False)
 
 
 class TfemarketSettingsEditForm(controlpanel.RegistryEditForm):
