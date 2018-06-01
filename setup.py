@@ -38,7 +38,7 @@ setup(
         'setuptools',
         'plone.app.dexterity',
         'five.grok',
-        'collective.dexteritytextindexer'
+        'collective.dexteritytextindexer',
         'soappy',
         'z3c.saconfig'
 
