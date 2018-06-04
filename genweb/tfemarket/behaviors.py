@@ -13,6 +13,9 @@ from z3c.form.interfaces import IEditForm
 from zope import schema
 from zope.interface import alsoProvides
 
+from genweb.tfemarket import _
+from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
+
 import datetime
 
 
@@ -26,10 +29,10 @@ def expiresDefaultValue():
 
 class IPublicationOffer(model.Schema):
 
-    model.fieldset(
-        'dates',
-        label=_PMF(u'label_schema_dates', default=u'Dates'),
-        fields=['effective', 'expires'],
+    form.widget('fieldset_opt', FieldsetFieldWidget)
+    fieldset_opt = schema.Text(
+        default=_(u'Dates'),
+        required=False,
     )
 
     effective = schema.Datetime(
