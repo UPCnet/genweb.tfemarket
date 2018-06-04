@@ -4,7 +4,6 @@ from Products.CMFCore.utils import getToolByName
 from five import grok
 from operator import itemgetter
 from plone import api
-from plone.app.textfield import RichText as RichTextField
 from plone.autoform import directives
 from plone.directives import dexterity, form
 from plone.registry.interfaces import IRegistry
@@ -243,17 +242,17 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    targets = RichTextField(
+    targets = schema.TextLine(
         title=_(u'offer_targets'),
         required=False,
     )
 
-    features = RichTextField(
+    features = schema.TextLine(
         title=_(u'offer_features'),
         required=False,
     )
 
-    requirements = RichTextField(
+    requirements = schema.TextLine(
         title=_(u'requirements'),
         required=False,
     )

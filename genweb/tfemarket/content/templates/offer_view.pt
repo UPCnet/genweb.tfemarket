@@ -121,22 +121,22 @@
                            </p>
                         </div>
                         <div class="leftInfoOffer">
-                           <p class="targets">
+                           <div class="targets">
                               <span class="field"><span i18n:translate="">Targets</span>: </span>
-                              <span tal:condition="context/targets" tal:content="structure context/targets/output"></span>
-                           </p>
+                              <p tal:condition="context/targets" tal:content="context/targets"></p>
+                           </div>
                         </div>
                         <div class="leftInfoOffer">
-                           <p class="features">
+                           <div class="features">
                               <span class="field"><span i18n:translate="">Features</span>: </span>
-                              <span tal:condition="context/features" tal:content="structure context/features/output"></span>
-                           </p>
+                              <p tal:condition="context/features" tal:content="context/features"></p>
+                           </div>
                         </div>
                         <div class="leftInfoOffer">
-                           <p class="requirements">
+                           <div class="requirements">
                               <span class="field"><span i18n:translate="">Requirements</span>: </span>
-                              <span tal:condition="context/requirements" tal:content="structure context/requirements/output"></span>
-                           </p>
+                              <p tal:condition="context/requirements" tal:content="context/requirements"></p>
+                           </div>
                         </div>
                         <div class="leftInfoOffer" tal:condition="python: len(context.lang) > 0">
                            <p class="language" tal:condition="python: len(context.lang) == 1">
@@ -276,9 +276,9 @@
             </div>
             <script type="text/javascript">
                $(function() {
-               if (window.location.href.endsWith("#offer-applications")) {
-               $("#offer-applications-tab").trigger("click");
-               }
+                  if (window.location.href.endsWith("#offer-applications")) {
+                     $("#offer-applications-tab").trigger("click");
+                  }
                });
             </script>
          </metal:block>
