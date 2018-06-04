@@ -271,6 +271,10 @@
                                         <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
                                         <span tal:content="offer/teacher_fullname">Aureli Condogvia</span>
                                       </p>
+                                     <p class="teacherEmail">
+                                        <span class="field"><span i18n:translate="">Teacher Email</span>: </span>
+                                        <span tal:content="offer/teacher_email">???@???.???</span>
+                                     </p>
                                       <p class="departament">
                                         <span class="field"><span i18n:translate="">Departament</span>: </span>
                                         <span tal:content="offer/dept">Departament</span>
@@ -280,10 +284,6 @@
                                       <p class="modality">
                                         <span class="field"><span i18n:translate="">Modality</span>: </span>
                                         <span tal:content="offer/modality">Modalitat</span>
-                                      </p>
-                                      <p class="company" tal:condition="offer/if_modality_company">
-                                        <span class="field"><span i18n:translate="">Company</span>: </span>
-                                        <span tal:content="offer/company">Company</span>
                                       </p>
                                     </div>
                                     <div class="leftInfoOffer" tal:condition="offer/description">
@@ -336,11 +336,91 @@
                                       </p>
                                     </div>
                                     <div class="bottomLinks">
-                                      <a tal:attributes="href string:${offer/url}">
-                                        <button type="submit" class="link">
-                                           <span i18n:translate="">Access the offer</span>
-                                         </button>
-                                      </a>
+                                      <a>
+                                        <button type="submit" class="link showMoreInfo">
+                                         <span i18n:translate="">+ Info</span>
+                                       </button>
+                                     </a>
+                                    </div>
+                                    <div class="moreInfo hide">
+                                      <div class="leftInfoOffer" tal:condition="offer/topic">
+                                         <p class="topic">
+                                            <span class="field"><span i18n:translate="">Topic</span>: </span>
+                                            <span tal:content="offer/topic">Topic</span>
+                                         </p>
+                                      </div>
+                                      <div class="leftInfoOffer">
+                                         <p class="numStudents">
+                                            <span class="field"><span i18n:translate="">Number of students</span>: </span>
+                                            <span tal:content="offer/num_students">1</span>
+                                         </p>
+                                         <p class="workload">
+                                            <span class="field"><span i18n:translate="">Workload</span>: </span>
+                                            <span tal:content="offer/workload">Workload</span>
+                                         </p>
+                                      </div>
+                                      <div class="leftInfoOffer">
+                                         <div class="targets">
+                                            <span class="field"><span i18n:translate="">Targets</span>: </span>
+                                            <p tal:condition="offer/targets" tal:content="offer/targets"></p>
+                                         </div>
+                                      </div>
+                                      <div class="leftInfoOffer">
+                                         <div class="features">
+                                            <span class="field"><span i18n:translate="">Features</span>: </span>
+                                            <p tal:condition="offer/features" tal:content="offer/features"></p>
+                                         </div>
+                                      </div>
+                                      <div class="leftInfoOffer">
+                                         <div class="requirements">
+                                            <span class="field"><span i18n:translate="">Requirements</span>: </span>
+                                            <p tal:condition="offer/requirements" tal:content="offer/requirements"></p>
+                                         </div>
+                                      </div>
+                                      <div class="leftInfoOffer" tal:condition="offer/ifModalityCompany">
+                                         <p class="coManager">
+                                            <span class="field"><span i18n:translate="">CoManager</span>: </span>
+                                            <span tal:content="offer/co_manager">CoManager</span>
+                                         </p>
+                                         <p class="company">
+                                            <span class="field"><span i18n:translate="">Company</span>: </span>
+                                            <span tal:content="offer/company">Company</span>
+                                         </p>
+                                         <p class="companyContact">
+                                            <span class="field"><span i18n:translate="">Company Contact</span>: </span>
+                                            <span tal:content="offer/company_contact">Company Contact</span>
+                                         </p>
+                                         <p class="companyEmail">
+                                            <span class="field"><span i18n:translate="">Company Email</span>: </span>
+                                            <span tal:content="offer/company_email">Company Email</span>
+                                         </p>
+                                         <div class="observations">
+                                            <span class="field"><span i18n:translate="">Observations</span>: </span>
+                                            <p tal:condition="offer/observations" tal:content="context/observations"></p>
+                                         </div>
+                                      </div>
+                                      <div class="leftInfoOffer">
+                                         <p class="environmentalTheme">
+                                            <span class="field"><span i18n:translate="">Environmental theme</span>: </span>
+                                            <span tal:condition="offer/environmental_theme" i18n:translate="">Yes</span>
+                                            <span tal:condition="not: offer/environmental_theme" i18n:translate="">No</span>
+                                         </p>
+                                         <p class="grant">
+                                            <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
+                                            <span tal:condition="offer/grant" i18n:translate="">Yes</span>
+                                            <span tal:condition="not: offer/grant" i18n:translate="">No</span>
+                                         </p>
+                                         <p class="confidential">
+                                            <span class="field"><span i18n:translate="">Confidential</span>: </span>
+                                            <span tal:condition="offer/confidential" i18n:translate="">Yes</span>
+                                            <span tal:condition="not: offer/confidential" i18n:translate="">No</span>
+                                         </p>
+                                         <p class="scopeCooperation">
+                                            <span class="field"><span i18n:translate="">Scope of cooperation</span>: </span>
+                                            <span tal:condition="offer/scope_cooperation" i18n:translate="">Yes</span>
+                                            <span tal:condition="not: offer/scope_cooperation" i18n:translate="">No</span>
+                                         </p>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -484,6 +564,18 @@
           $("#"+offer).trigger('click');
           $("#"+offer).parent().parent().parent().find('.app-tab').trigger('click');
         }
+
+
+        $('.showMoreInfo').click(function(){
+          offerInfo = $(this).parent().parent().parent().find('.moreInfo');
+          if(offerInfo.hasClass('hide')){
+            offerInfo.slideDown();
+            offerInfo.removeClass('hide').addClass('show');
+          }else if(offerInfo.hasClass('show')){
+            offerInfo.slideUp();
+            offerInfo.removeClass('show').addClass('hide');
+          }
+        })
     });
   </script>
 

@@ -210,6 +210,8 @@ class View(grok.View):
                                         expiration_date=offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else None,
                                         teacher_manager=offer.teacher_manager,
                                         teacher_fullname=offer.teacher_fullname,
+                                        teacher_email=offer.teacher_email,
+                                        observations=offer.observations,
                                         modality=offer.modality,
                                         description=offer.description,
                                         langs=offer.lang,
@@ -225,6 +227,18 @@ class View(grok.View):
                                         can_edit=checkPermission('cmf.ModifyPortalContent', offer),
                                         can_create_application=CPCreateApplications(self, offer),
                                         if_modality_company=True if offer.modality == 'Empresa' else False,
+                                        num_students=offer.num_students,
+                                        workload=offer.workload,
+                                        targets=offer.targets,
+                                        features=offer.features,
+                                        requirements=offer.requirements,
+                                        co_manager=offer.co_manager,
+                                        company_contact=offer.company_contact,
+                                        company_email=offer.company_email,
+                                        confidential=offer.confidential,
+                                        scope_cooperation=offer.scope_cooperation,
+                                        ifModalityCompany=True if offer.modality == 'Empresa' else False,
+                                        topic=offer.topic,
                                         ))
 
             if 'search' in self.request.form or 'searchFilters' in self.request.form:

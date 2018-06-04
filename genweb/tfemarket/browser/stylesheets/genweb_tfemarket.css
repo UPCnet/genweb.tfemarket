@@ -193,6 +193,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-top: 0px;
 }
 
+.informacioTFE .moreInfo .leftInfoOffer:first-child {
+  margin-top: 20px;
+}
+
 .informacioTFE .rightInfoOffer {
   position: absolute;
   top: 20px;
@@ -373,6 +377,10 @@ table#form-widgets-teacher_manager-hint tbody .actions {
 #applicationData,
 #market #userApplication {
   margin-bottom: 25px;
+}
+
+#market .moreInfo.hide {
+  display: none;
 }
 
 #market .rightInfoOffer.actions button,
