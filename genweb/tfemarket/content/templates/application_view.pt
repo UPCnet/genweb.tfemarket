@@ -43,10 +43,10 @@
                       </p>
                     </div>
                     <div class="leftInfoOffer">
-                      <p class="description">
+                      <div class="description">
                         <span class="field"><span i18n:translate="">Body</span>: </span>
-                        <span tal:condition="context/body" tal:content="structure context/body/output"></span>
-                      </p>
+                        <p tal:condition="context/body" tal:content="context/body"></p>
+                      </div>
                     </div>
                   </div>
                 </div>

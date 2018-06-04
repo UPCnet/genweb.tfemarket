@@ -71,7 +71,7 @@ class IApplication(form.Schema):
         required=False
     )
 
-    body = RichTextField(
+    body = schema.TextLine(
         title=_(u'Body'),
         required=False,
     )
