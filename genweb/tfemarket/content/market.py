@@ -7,9 +7,14 @@ from datetime import datetime
 from five import grok
 from plone import api
 from plone.directives import form
+from plone.portlets.constants import CONTEXT_CATEGORY
+from plone.portlets.interfaces import ILocalPortletAssignmentManager
+from plone.portlets.interfaces import IPortletManager
 from plone.registry.interfaces import IRegistry
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.component import queryUtility
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.security import checkPermission
 from zope.sequencesort.ssort import sort
 
@@ -32,6 +37,14 @@ grok.templatedir("templates")
 class IMarket(form.Schema):
     """ Folder that contains all the TFE's
     """
+
+
+@grok.subscribe(IMarket, IObjectAddedEvent)
+def disablePortlets(market, event):
+    for column in [u"plone.leftcolumn", u"plone.rightcolumn"]:
+        manager = getUtility(IPortletManager, name=column)
+        blacklist = getMultiAdapter((market, manager), ILocalPortletAssignmentManager)
+        blacklist.setBlacklistStatus(CONTEXT_CATEGORY, True)
 
 
 class View(grok.View):
