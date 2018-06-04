@@ -19,8 +19,7 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n">
     <property name="add_permission">genweb.tfemarket.add.market</property>
     <property name="klass">plone.dexterity.content.Container</property>
     <property name="behaviors">
-        <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-        <element value="plone.app.dexterity.behaviors.metadata.IDublinCore" />
+        <element value="plone.app.dexterity.behaviors.metadata.IBasic" />
         <element value="plone.app.content.interfaces.INameFromTitle"/>
     </property>
     <property name="schema">genweb.tfemarket.content.market.IMarket</property>
