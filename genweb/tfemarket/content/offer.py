@@ -220,6 +220,11 @@ class IOffer(form.Schema):
         required=False,
     )
 
+    observations = schema.TextLine(
+        title=_(u'Observations'),
+        required=False,
+    )
+
     ############################################################################
 
     form.widget('fieldset_req', FieldsetFieldWidget)

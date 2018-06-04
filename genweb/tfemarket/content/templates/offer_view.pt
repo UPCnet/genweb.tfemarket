@@ -175,6 +175,10 @@
                               <span class="field"><span i18n:translate="">Company Email</span>: </span>
                               <span tal:content="context/company_email">Company Email</span>
                            </p>
+                           <div class="observations">
+                              <span class="field"><span i18n:translate="">Observations</span>: </span>
+                              <p tal:condition="context/observations" tal:content="context/observations"></p>
+                           </div>
                         </div>
                         <div class="leftInfoOffer">
                            <p class="environmentalTheme">

@@ -144,10 +144,11 @@ class importOfertes(grok.View):
                         'company': row[14].decode("utf-8"),
                         'company_contact': row[15].decode("utf-8"),
                         'company_email': row[16].decode("utf-8"),
-                        'grant': bool(row[17].decode("utf-8")),
-                        'confidential': bool(row[18].decode("utf-8")),
-                        'environmental_theme': bool(row[19].decode("utf-8")),
-                        'scope_cooperation': bool(row[20].decode("utf-8")),
+                        'observations': row[17].decode("utf-8"),
+                        'grant': bool(row[18].decode("utf-8")),
+                        'confidential': bool(row[19].decode("utf-8")),
+                        'environmental_theme': bool(row[20].decode("utf-8")),
+                        'scope_cooperation': bool(row[21].decode("utf-8")),
                     }
                     offer = createContentInContainer(market, "genweb.tfemarket.offer", **data)
                     offer.setEffectiveDate(dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1)))
