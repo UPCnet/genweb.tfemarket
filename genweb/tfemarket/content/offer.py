@@ -229,7 +229,7 @@ class IOffer(form.Schema):
 
     form.widget('fieldset_req', FieldsetFieldWidget)
     fieldset_req = schema.Text(
-        default=_(u'Requirements'),
+        default=_(u'Other data'),
         required=False,
     )
 
