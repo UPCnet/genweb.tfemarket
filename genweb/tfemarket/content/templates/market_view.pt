@@ -335,13 +335,6 @@
                                         </tal:block>
                                       </p>
                                     </div>
-                                    <div class="bottomLinks">
-                                      <a>
-                                        <button type="submit" class="link showMoreInfo">
-                                         <span i18n:translate="">+ Info</span>
-                                       </button>
-                                     </a>
-                                    </div>
                                     <div class="moreInfo hide">
                                       <div class="leftInfoOffer" tal:condition="offer/topic">
                                          <p class="topic">
@@ -423,6 +416,12 @@
                                             <span tal:condition="not: offer/scope_cooperation" i18n:translate="">No</span>
                                          </p>
                                       </div>
+                                    </div>
+                                    <div class="bottomLinks">
+                                      <button type="submit" class="link showMoreInfo">
+                                        <span class="sign">+</span>
+                                        <span>Info</span>
+                                     </button>
                                     </div>
                                   </div>
                                 </div>
@@ -569,12 +568,14 @@
 
 
         $('.showMoreInfo').click(function(){
+          sign = $(this).find('.sign')
           offerInfo = $(this).parent().parent().parent().find('.moreInfo');
           if(offerInfo.hasClass('hide')){
-            offerInfo.slideDown();
+            offerInfo.slideDown(function(){$(sign).html("-")});
             offerInfo.removeClass('hide').addClass('show');
+            ;
           }else if(offerInfo.hasClass('show')){
-            offerInfo.slideUp();
+            offerInfo.slideUp(function(){$(sign).html("+")});
             offerInfo.removeClass('show').addClass('hide');
           }
         })
