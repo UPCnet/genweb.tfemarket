@@ -92,7 +92,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Add portal content" acquired="False">
@@ -118,7 +117,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -365,7 +363,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Add portal content" acquired="False">
@@ -390,7 +387,6 @@
    <permission-role>Market Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
