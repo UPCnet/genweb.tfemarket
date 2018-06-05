@@ -262,12 +262,18 @@ class View(grok.View):
                 workflowActions = wf_tool.listActionInfos(object=application)
                 workflows = tools.workflow().getWorkflowsFor(application)[0]
 
-                results.append(dict(title=item.Title,
+                results.append(dict(UID=item.UID,
+                                    title=item.Title,
                                     state=workflows['states'][item.review_state].title,
                                     url=item.getURL(),
                                     item_path='/'.join(application.getPhysicalPath()[2:]),
+                                    dni=application.dni,
+                                    name=application.title,
+                                    email=application.email,
+                                    phone=application.phone,
                                     offer_id=application.offer_id,
                                     offer_title=application.offer_title,
+                                    body=application.body,
                                     workflows=workflowActions,
                                     can_edit=checkPermission('cmf.ModifyPortalContent', application),
                                     ))
@@ -286,7 +292,8 @@ class View(grok.View):
             workflowActions = wf_tool.listActionInfos(object=application)
             workflows = tools.workflow().getWorkflowsFor(application)[0]
 
-            results.append(dict(title=item.Title,
+            results.append(dict(UID=item.UID,
+                                title=item.Title,
                                 state=workflows['states'][item.review_state].title,
                                 url=item.getURL(),
                                 item_path='/'.join(application.getPhysicalPath()[2:]),
@@ -296,6 +303,7 @@ class View(grok.View):
                                 phone=application.phone,
                                 offer_id=application.offer_id,
                                 offer_title=application.offer_title,
+                                body=application.body,
                                 workflows=workflowActions,
                                 can_edit=checkPermission('cmf.ModifyPortalContent', application),
                                 ))

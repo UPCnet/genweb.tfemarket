@@ -375,6 +375,16 @@ table#form-widgets-teacher_manager-hint tbody .actions {
   text-align: right;
 }
 
+table.tableApplications tbody .actions .modal,
+table#form-widgets-teacher_manager-hint tbody .actions .modal {
+  text-align: left;
+}
+
+table.tableApplications tbody .actions .modal .modal-body,
+table#form-widgets-teacher_manager-hint tbody .actions .modal .modal-body {
+  white-space: initial;
+}
+
 #applicationData,
 #market #userApplication {
   margin-bottom: 25px;
@@ -394,6 +404,12 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
   color: #057bc1;
   padding: 3px 6px;
   text-shadow: none;
+}
+
+#market .rightInfoOffer.actions button.disabled,
+table.tableApplications tbody .actions button.disabled {
+  color: #ADADAD;
+  cursor: default;
 }
 
 #market .rightInfoOffer.actions .workflowsAction .workflow.notclick,
@@ -434,6 +450,12 @@ table#form-widgets-teacher_manager-hint tbody .actions .caret {
 table.tableApplications tbody .actions button:hover {
   border: 1px solid #057bc1;
 }
+
+#market .rightInfoOffer.actions button.disabled:hover,
+table.tableApplications tbody .actions button.disabled:hover {
+  border: 1px solid #ADADAD;
+}
+
 
 #market .rightInfoOffer.actions > a:hover,
 table.tableApplications tbody .actions > a:hover,

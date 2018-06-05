@@ -49,9 +49,61 @@
                              tal:condition="app/can_edit">
                             <span class="fa fa-pencil" aria-hidden="true"></span>
                           </a>
-                          <a class="label" i18n:attributes="alt view" tal:attributes="href string:${app/url}/view">
-                            <span class="fa fa-folder-open" aria-hidden="true"></span>
-                          </a>
+                          <button class="label" data-toggle="modal" tal:attributes="data-target string:#modal${app/UID}">
+                            <span class="sign">+</span>
+                            <span>Info</span>
+                          </button>
+                          <div tal:attributes="id string:modal${app/UID}" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h4 class="modal-title" i18n:translate="">Description</h4>
+                                </div>
+                                <div class="modal-body informacioTFE">
+                                  <div class="leftInfoOffer">
+                                    <p class="offerID">
+                                      <span class="field"><span i18n:translate="">Offer id</span>: </span>
+                                      <span tal:content="app/offer_id"></span>
+                                    </p>
+                                    <p class="offerTitle">
+                                      <span class="field"><span i18n:translate="">Offer title</span>: </span>
+                                      <span tal:content="app/offer_title"></span>
+                                    </p>
+                                  </div>
+                                  <div class="leftInfoOffer">
+                                    <p class="fullname">
+                                      <span class="field"><span i18n:translate="">Fullname</span>: </span>
+                                      <span tal:content="app/title"></span>
+                                    </p>
+                                    <p class="dni">
+                                      <span class="field"><span i18n:translate="">DNI</span>: </span>
+                                      <span tal:content="app/dni"></span>
+                                    </p>
+                                    <p class="email">
+                                      <span class="field"><span i18n:translate="">Email</span>: </span>
+                                      <span tal:content="app/email"></span>
+                                    </p>
+                                    <p class="telephone">
+                                      <span class="field"><span i18n:translate="">Telephone</span>: </span>
+                                      <span tal:content="app/phone"></span>
+                                    </p>
+                                  </div>
+                                  <div class="leftInfoOffer" tal:condition="app/body">
+                                    <div class="description">
+                                      <span class="field"><span i18n:translate="">Body</span>: </span>
+                                      <p tal:content="app/body"></p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="">
+                                    Close
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </td>
                       </tr>
                     </tbody>
@@ -347,27 +399,27 @@
                                             <span class="field"><span i18n:translate="">Number of students</span>: </span>
                                             <span tal:content="offer/num_students">1</span>
                                          </p>
-                                         <p class="workload">
+                                         <p class="workload" tal:condition="offer/workload">
                                             <span class="field"><span i18n:translate="">Workload</span>: </span>
                                             <span tal:content="offer/workload">Workload</span>
                                          </p>
                                       </div>
-                                      <div class="leftInfoOffer">
+                                      <div class="leftInfoOffer" tal:condition="offer/targets">
                                          <div class="targets">
                                             <span class="field"><span i18n:translate="">Targets</span>: </span>
-                                            <p tal:condition="offer/targets" tal:content="offer/targets"></p>
+                                            <p tal:content="offer/targets"></p>
                                          </div>
                                       </div>
-                                      <div class="leftInfoOffer">
+                                      <div class="leftInfoOffer" tal:condition="offer/features">
                                          <div class="features">
                                             <span class="field"><span i18n:translate="">Features</span>: </span>
-                                            <p tal:condition="offer/features" tal:content="offer/features"></p>
+                                            <p  tal:content="offer/features"></p>
                                          </div>
                                       </div>
-                                      <div class="leftInfoOffer">
+                                      <div class="leftInfoOffer" tal:condition="offer/requirements">
                                          <div class="requirements">
                                             <span class="field"><span i18n:translate="">Requirements</span>: </span>
-                                            <p tal:condition="offer/requirements" tal:content="offer/requirements"></p>
+                                            <p tal:content="offer/requirements"></p>
                                          </div>
                                       </div>
                                       <div class="leftInfoOffer">
@@ -389,9 +441,9 @@
                                               <span tal:content="offer/company_email">Company Email</span>
                                            </p>
                                          </tal:block>
-                                         <div class="observations">
+                                         <div class="observations" tal:condition="offer/observations">
                                             <span class="field"><span i18n:translate="">Observations</span>: </span>
-                                            <p tal:condition="offer/observations" tal:content="context/observations"></p>
+                                            <p tal:content="offer/observations"></p>
                                          </div>
                                       </div>
                                       <div class="leftInfoOffer">
@@ -474,10 +526,33 @@
                                              tal:condition="app/can_edit">
                                             <span class="fa fa-pencil" aria-hidden="true"></span>
                                           </a>
-                                          <a class="label" i18n:attributes="alt view; title view"
-                                             tal:attributes="href string:${app/url}/view">
-                                            <span class="fa fa-folder-open" aria-hidden="true"></span>
-                                          </a>
+                                          <button class="label" data-toggle="modal" tal:condition="app/body"
+                                                  tal:attributes="data-target string:#modalApplication${app/UID}">
+                                            <span class="sign">+</span>
+                                            <span>Info</span>
+                                          </button>
+                                          <button class="label disabled" data-toggle="modal" tal:condition="not: app/body">
+                                            <span class="sign">+</span>
+                                            <span>Info</span>
+                                          </button>
+                                          <div tal:attributes="id string:modalApplication${app/UID}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                  <h4 class="modal-title" i18n:translate="">Description</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <p tal:content="app/body">Some text in the modal.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="">
+                                                    Close
+                                                  </button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </td>
                                       </tr>
                                     </tbody>
