@@ -733,7 +733,9 @@ span.icon-genweb-tfemarket-market{
 
 
 /* Contenido de plone > Display = None */
-
+.portaltype-genweb-tfemarket-offer #viewlet-below-content,
+.portaltype-genweb-tfemarket-market #viewlet-below-content,
+.portaltype-genweb-tfemarket-application #viewlet-below-content,
 .portaltype-genweb-tfemarket-offer #edit-bar,
 .portaltype-genweb-tfemarket-market #edit-bar,
 .portaltype-genweb-tfemarket-application #edit-bar,
