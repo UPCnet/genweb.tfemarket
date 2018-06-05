@@ -100,7 +100,7 @@ msgstr "Codi del centre"
 #: ../content/templates/market_view.pt:382
 #: ../content/templates/offer_view.pt:163
 msgid "CoManager"
-msgstr "Codirector"
+msgstr "Contacte"
 
 #: ../content/application.py:65
 msgid "Codi Expedient"
