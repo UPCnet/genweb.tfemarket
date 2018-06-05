@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-06-04 15:06+0000\n"
+"POT-Creation-Date: 2018-06-05 07:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
+#: ../content/templates/market_view.pt:341
+msgid "+ Info"
+msgstr ""
+
 #: ../z3cwidget/text_input_teacher.pt:55
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr ""
 
-#: ../browser/events/change.py:78
+#: ../browser/events/change.py:79
 msgid "A3"
 msgstr ""
 
-#: ../browser/events/change.py:84
+#: ../browser/events/change.py:85
 msgid "A4"
 msgstr ""
 
@@ -37,12 +41,12 @@ msgstr ""
 msgid "A5"
 msgstr ""
 
-#: ../controlpanel.py:178
-msgid "APIKEY"
+#: ../browser/events/change.py:68
+msgid "A6"
 msgstr ""
 
-#: ../content/templates/market_view.pt:341
-msgid "Access the offer"
+#: ../controlpanel.py:178
+msgid "APIKEY"
 msgstr ""
 
 #: ../controlpanel.py:129
@@ -102,7 +106,7 @@ msgid "Center code"
 msgstr ""
 
 #: ../content/offer.py:290
-#: ../content/templates/market_view.pt:382
+#: ../content/templates/market_view.pt:383
 #: ../content/templates/offer_view.pt:163
 msgid "CoManager"
 msgstr ""
@@ -118,18 +122,18 @@ msgid "Company"
 msgstr ""
 
 #: ../content/offer.py:300
-#: ../content/templates/market_view.pt:390
+#: ../content/templates/market_view.pt:391
 #: ../content/templates/offer_view.pt:171
 msgid "Company Contact"
 msgstr ""
 
 #: ../content/offer.py:305
-#: ../content/templates/market_view.pt:394
+#: ../content/templates/market_view.pt:395
 #: ../content/templates/offer_view.pt:175
 msgid "Company Email"
 msgstr ""
 
-#: ../content/templates/market_view.pt:414
+#: ../content/templates/market_view.pt:416
 #: ../content/templates/offer_view.pt:195
 msgid "Confidential"
 msgstr ""
@@ -140,7 +144,7 @@ msgstr ""
 
 #: ../content/application.py:43
 #: ../content/templates/application_view.pt:33
-#: ../content/templates/market_view.pt:434
+#: ../content/templates/market_view.pt:436
 msgid "DNI"
 msgstr ""
 
@@ -204,7 +208,7 @@ msgstr ""
 
 #: ../content/application.py:55
 #: ../content/templates/application_view.pt:37
-#: ../content/templates/market_view.pt:436
+#: ../content/templates/market_view.pt:438
 msgid "Email"
 msgstr ""
 
@@ -212,7 +216,7 @@ msgstr ""
 msgid "Environmental Theme"
 msgstr ""
 
-#: ../content/templates/market_view.pt:404
+#: ../content/templates/market_view.pt:406
 #: ../content/templates/offer_view.pt:185
 msgid "Environmental theme"
 msgstr ""
@@ -254,7 +258,7 @@ msgstr ""
 msgid "Identifier Offer TFE"
 msgstr ""
 
-#: ../browser/views.py:176
+#: ../browser/views.py:180
 msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 msgstr ""
 
@@ -313,7 +317,7 @@ msgstr ""
 msgid "MEC degree code"
 msgstr ""
 
-#: ../content/templates/market_view.pt:437
+#: ../content/templates/market_view.pt:439
 #: ../content/templates/offer_view.pt:232
 msgid "Mobile"
 msgstr ""
@@ -324,7 +328,7 @@ msgstr ""
 msgid "Modality"
 msgstr ""
 
-#: ../content/templates/market_view.pt:435
+#: ../content/templates/market_view.pt:437
 #: ../content/templates/offer_view.pt:230
 msgid "Name"
 msgstr ""
@@ -358,7 +362,7 @@ msgid "Number of students for the TFE (1 to 10)"
 msgstr ""
 
 #: ../content/offer.py:224
-#: ../content/templates/market_view.pt:398
+#: ../content/templates/market_view.pt:400
 #: ../content/templates/offer_view.pt:179
 msgid "Observations"
 msgstr ""
@@ -436,7 +440,7 @@ msgid "Review State"
 msgstr ""
 
 #: ../content/offer.py:337
-#: ../content/templates/market_view.pt:419
+#: ../content/templates/market_view.pt:421
 #: ../content/templates/offer_view.pt:200
 msgid "Scope of cooperation"
 msgstr ""
@@ -515,11 +519,11 @@ msgstr ""
 msgid "The current offer contains an accepted application."
 msgstr ""
 
-#: ../browser/events/change.py:128
+#: ../browser/events/change.py:129
 msgid "The offer can't be canceled if it contains active applications."
 msgstr ""
 
-#: ../browser/events/change.py:138
+#: ../browser/events/change.py:139
 msgid "The offer can't be deleted."
 msgstr ""
 

@@ -4,6 +4,7 @@ from Products.CMFCore.utils import getToolByName
 from datetime import date
 from datetime import datetime
 from plone import api
+from zope.component import getMultiAdapter
 from zope.globalrequest import getRequest
 
 from genweb.tfemarket import _
@@ -17,6 +18,21 @@ from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import sendMessage
 
 import transaction
+
+
+def offerHasAnotherApplicationsPending(application):
+    wf_tool = getToolByName(application, 'portal_workflow')
+    tools = getMultiAdapter((application, getRequest()), name='plone_tools')
+    parent = application.getParentNode()
+    for offer in parent.getChildNodes():
+        if offer.id != application.id:
+            workflows = tools.workflow().getWorkflowsFor(offer)[0]
+            offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
+            offer_status = wf_tool.getStatusOf(offer_workflow, offer)
+            state_id = workflows['states'][offer_status['review_state']].id
+            if state_id == 'requested':
+                return True
+    return False
 
 
 def applicationChanged(application, event):
@@ -65,6 +81,8 @@ def applicationChanged(application, event):
             toMsg = student_mail
             subject = 'Aceptada'
             msg = M2[lang].format(**data)
+            if offerHasAnotherApplicationsPending(application):
+                portalMsg = _(u'A6')
         elif event.transition.id == 'reject':
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = student_mail

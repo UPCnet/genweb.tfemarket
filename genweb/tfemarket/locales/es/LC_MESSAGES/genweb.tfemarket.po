@@ -14,15 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ../content/templates/market_view.pt:341
+msgid "+ Info"
+msgstr ""
+
 #: ../z3cwidget/text_input_teacher.pt:55
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr "<b>Error:</b> El formato es incorrecto. <b>nombre.apellido</b>"
 
-#: ../browser/events/change.py:78
+#: ../browser/events/change.py:79
 msgid "A3"
 msgstr "Has confirmado la asignación de esta oferta. Tus datos y los de la oferta se traspasarán a PRISMA para formalizar la matrícula. Si tienes cualquier duda puedes dirigirte a tu secretaría."
 
-#: ../browser/events/change.py:84
+#: ../browser/events/change.py:85
 msgid "A4"
 msgstr "Has renunciado a la oferta y se ha comunicado al profesor. Si quieres volver a solicitarla debes rellenar una nueva solicitud."
 
@@ -30,13 +34,13 @@ msgstr "Has renunciado a la oferta y se ha comunicado al profesor. Si quieres vo
 msgid "A5"
 msgstr "Solicitud presentada. Recibirás un mensaje de correo con los datos de tu solicitud y un enlace a la misma, a través del cual podrás consultar su estado. Los cambios de estado de tu solicitud se comunican también mediante el correo electrónico."
 
+#: ../browser/events/change.py:68
+msgid "A6"
+msgstr "Actualmente hay otras solicitudes pendientes, se recomienda rechazarlas por no tener al resto de estudiantes a la espera."
+
 #: ../controlpanel.py:178
 msgid "APIKEY"
 msgstr "Clave API"
-
-#: ../content/templates/market_view.pt:341
-msgid "Access the offer"
-msgstr "Accede a la oferta"
 
 #: ../controlpanel.py:129
 msgid "Add languages one per line"
@@ -95,7 +99,7 @@ msgid "Center code"
 msgstr "Código del centro"
 
 #: ../content/offer.py:290
-#: ../content/templates/market_view.pt:382
+#: ../content/templates/market_view.pt:383
 #: ../content/templates/offer_view.pt:163
 msgid "CoManager"
 msgstr "Contacto"
@@ -111,18 +115,18 @@ msgid "Company"
 msgstr "Empresa"
 
 #: ../content/offer.py:300
-#: ../content/templates/market_view.pt:390
+#: ../content/templates/market_view.pt:391
 #: ../content/templates/offer_view.pt:171
 msgid "Company Contact"
 msgstr "Datos de contacto de la empresa"
 
 #: ../content/offer.py:305
-#: ../content/templates/market_view.pt:394
+#: ../content/templates/market_view.pt:395
 #: ../content/templates/offer_view.pt:175
 msgid "Company Email"
 msgstr "Dirección de correo de la empresa"
 
-#: ../content/templates/market_view.pt:414
+#: ../content/templates/market_view.pt:416
 #: ../content/templates/offer_view.pt:195
 msgid "Confidential"
 msgstr "Confidencial"
@@ -133,7 +137,7 @@ msgstr "Crear una oferta"
 
 #: ../content/application.py:43
 #: ../content/templates/application_view.pt:33
-#: ../content/templates/market_view.pt:434
+#: ../content/templates/market_view.pt:436
 msgid "DNI"
 msgstr "DNI"
 
@@ -197,7 +201,7 @@ msgstr "Dirección"
 
 #: ../content/application.py:55
 #: ../content/templates/application_view.pt:37
-#: ../content/templates/market_view.pt:436
+#: ../content/templates/market_view.pt:438
 msgid "Email"
 msgstr "Correo"
 
@@ -205,7 +209,7 @@ msgstr "Correo"
 msgid "Environmental Theme"
 msgstr "Temática ambiental"
 
-#: ../content/templates/market_view.pt:404
+#: ../content/templates/market_view.pt:406
 #: ../content/templates/offer_view.pt:185
 msgid "Environmental theme"
 msgstr "Temática ambiental"
@@ -247,7 +251,7 @@ msgstr "Identificador"
 msgid "Identifier Offer TFE"
 msgstr "Identificador de la oferta TFE"
 
-#: ../browser/views.py:176
+#: ../browser/views.py:180
 msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 msgstr "Si esta realizando la siguiente acción es porque has eliminado todas las ofertas de los mercados. Haz clic al siguiente <a href=\"reset_count_offers?confirm\">enlace</a> para confirmar el reseteo del contador de ofertas."
 
@@ -306,7 +310,7 @@ msgstr "Código MEC"
 msgid "MEC degree code"
 msgstr "Código MEC del grado"
 
-#: ../content/templates/market_view.pt:437
+#: ../content/templates/market_view.pt:439
 #: ../content/templates/offer_view.pt:232
 msgid "Mobile"
 msgstr "Móvil"
@@ -317,7 +321,7 @@ msgstr "Móvil"
 msgid "Modality"
 msgstr "Modalidad"
 
-#: ../content/templates/market_view.pt:435
+#: ../content/templates/market_view.pt:437
 #: ../content/templates/offer_view.pt:230
 msgid "Name"
 msgstr "Nombre"
@@ -351,7 +355,7 @@ msgid "Number of students for the TFE (1 to 10)"
 msgstr "Número de estudiantes (1 hasta 10)"
 
 #: ../content/offer.py:224
-#: ../content/templates/market_view.pt:398
+#: ../content/templates/market_view.pt:400
 #: ../content/templates/offer_view.pt:179
 msgid "Observations"
 msgstr "Observaciones"
@@ -429,7 +433,7 @@ msgid "Review State"
 msgstr "Estado de revisión activo"
 
 #: ../content/offer.py:337
-#: ../content/templates/market_view.pt:419
+#: ../content/templates/market_view.pt:421
 #: ../content/templates/offer_view.pt:200
 msgid "Scope of cooperation"
 msgstr "Ámbito de cooperación"
@@ -508,11 +512,11 @@ msgstr "Texto a buscar"
 msgid "The current offer contains an accepted application."
 msgstr "La oferta actual contiene una solicitud aceptada."
 
-#: ../browser/events/change.py:128
+#: ../browser/events/change.py:129
 msgid "The offer can't be canceled if it contains active applications."
 msgstr "La oferta no se puede cancelar si contiene solicitudes activas."
 
-#: ../browser/events/change.py:138
+#: ../browser/events/change.py:139
 msgid "The offer can't be deleted."
 msgstr "LA oferta no se puede eliminar, tiene solicitudes activas."
 
