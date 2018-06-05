@@ -377,23 +377,25 @@
                                             <p tal:condition="offer/requirements" tal:content="offer/requirements"></p>
                                          </div>
                                       </div>
-                                      <div class="leftInfoOffer" tal:condition="offer/ifModalityCompany">
-                                         <p class="coManager">
-                                            <span class="field"><span i18n:translate="">CoManager</span>: </span>
-                                            <span tal:content="offer/co_manager">CoManager</span>
-                                         </p>
-                                         <p class="company">
-                                            <span class="field"><span i18n:translate="">Company</span>: </span>
-                                            <span tal:content="offer/company">Company</span>
-                                         </p>
-                                         <p class="companyContact">
-                                            <span class="field"><span i18n:translate="">Company Contact</span>: </span>
-                                            <span tal:content="offer/company_contact">Company Contact</span>
-                                         </p>
-                                         <p class="companyEmail">
-                                            <span class="field"><span i18n:translate="">Company Email</span>: </span>
-                                            <span tal:content="offer/company_email">Company Email</span>
-                                         </p>
+                                      <div class="leftInfoOffer">
+                                        <tal:block tal:condition="offer/ifModalityCompany">
+                                           <p class="coManager">
+                                              <span class="field"><span i18n:translate="">CoManager</span>: </span>
+                                              <span tal:content="offer/co_manager">CoManager</span>
+                                           </p>
+                                           <p class="company">
+                                              <span class="field"><span i18n:translate="">Company</span>: </span>
+                                              <span tal:content="offer/company">Company</span>
+                                           </p>
+                                           <p class="companyContact">
+                                              <span class="field"><span i18n:translate="">Company Contact</span>: </span>
+                                              <span tal:content="offer/company_contact">Company Contact</span>
+                                           </p>
+                                           <p class="companyEmail">
+                                              <span class="field"><span i18n:translate="">Company Email</span>: </span>
+                                              <span tal:content="offer/company_email">Company Email</span>
+                                           </p>
+                                         </tal:block>
                                          <div class="observations">
                                             <span class="field"><span i18n:translate="">Observations</span>: </span>
                                             <p tal:condition="offer/observations" tal:content="context/observations"></p>
