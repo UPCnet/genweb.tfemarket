@@ -336,7 +336,7 @@ class View(grok.View):
     def getDepartaments(self):
         results = []
         for offer in self.getAllOffers():
-            if offer.dept:
+            if checkPermission('zope2.View', offer) and offer.dept:
                 results.append(offer.dept)
 
         return sorted(list(OrderedDict.fromkeys(results)))
@@ -344,7 +344,7 @@ class View(grok.View):
     def getCompanys(self):
         results = []
         for offer in self.getAllOffers():
-            if offer.company:
+            if checkPermission('zope2.View', offer) and offer.company:
                 results.append(offer.company)
 
         return sorted(list(OrderedDict.fromkeys(results)))
