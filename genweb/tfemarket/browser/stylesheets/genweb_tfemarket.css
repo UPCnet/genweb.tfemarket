@@ -579,7 +579,7 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
   text-shadow: none;
 }
 
-#offersList #expandSearch,
+#offersList .hide,
 #offersList #collapseAll,
 #offersList .offerData,
 #offersList .notexpand {

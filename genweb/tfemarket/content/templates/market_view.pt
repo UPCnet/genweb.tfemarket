@@ -110,7 +110,7 @@
                   </table>
                 </div>
                 <div class="clearfix"></div>
-                <div id="offersList">
+                <div id="offersList" tal:define="classViewSearch view/classViewSearch">
                   <div id="headerListOffers">
                     <div class="buttonsRight documentDescription">
                       <a href="++add++genweb.tfemarket.offer" tal:condition="view/checkPermissionCreateOffers">
@@ -119,10 +119,10 @@
                         </button>
                       </a>
                       <span id="buttonsSearch">
-                        <span id="expandSearch">
+                        <span id="expandSearch" tal:attributes="class classViewSearch/expand">
                           <span i18n:translate="">Show search</span> <i style="color: #557c95" class="fa fa-chevron-down" aria-hidden="true"></i>
                         </span>
-                        <span id="collapseSearch">
+                        <span id="collapseSearch" tal:attributes="class classViewSearch/collapse">
                           <span i18n:translate="">Hide search</span> <i style="color: #557c95" class="fa fa-chevron-up" aria-hidden="true"></i>
                         </span>
                       </span>
@@ -134,7 +134,8 @@
                   </div>
                   <div id="searchOffers">
                     <form id="formSearchOffers" name="searchOffers" action="?search" method="post"
-                           tal:attributes="data-saved python: 0 if save.has_key('language') else 1">
+                           tal:attributes="data-saved python: 0 if save.has_key('language') else 1;
+                                           class classViewSearch/collapse">
                       <label i18n:translate="">Text to search</label>
                       <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
 
@@ -218,11 +219,11 @@
                       </div>
 
                       <div class="bottomLinks">
-                        <a href="?allOffersTeacher" class="btnTFE"
+<!--                         <a href="?allOffersTeacher" class="btnTFE"
                           tal:condition="view/checkPermissionCreateOffers"
                           i18n:translate="">
                           View my offers
-                        </a>
+                        </a> -->
                         <a href="?allOffers" class="btnTFE"
                           i18n:translate="">
                           View all offers
@@ -601,7 +602,7 @@
         });
 
         $("#buttonsSearch").click(function(){
-          if( $("#collapseSearch").is(":visible") ){
+          if($("#collapseSearch").is(":visible")){
             $("#formSearchOffers").slideUp();
             $("#expandSearch").show();
             $("#collapseSearch").hide();
@@ -655,9 +656,7 @@
           }
         })
     });
-  </script>
 
-  <script type="text/javascript">
     $(function() {
       $('#offersFilter').on('click', function(){
         $('#formSearchOffers').submit()
