@@ -76,11 +76,11 @@
         }
 
         $(document).ready(function(){
-          $("#form-widgets-modality").change(function(){
-            update_modality_offer($(this).val());
+            $("#form-widgets-modality").change(function(){
+                update_modality_offer($(this).val());
             });
 
-            update_modality_offer($(this).val());
+            update_modality_offer($("#form-widgets-modality").val());
         });
     </script>
 </html>
