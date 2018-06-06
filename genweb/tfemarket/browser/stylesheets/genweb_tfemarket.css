@@ -768,7 +768,16 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-offer ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-market ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-application ul#contentActionMenus li.dropdown:first-of-type {
-    display: none;
+  display: none;
+}
+
+
+/* Campo título ampliar */
+
+.portaltype-genweb-tfemarket-offer #form-widgets-title,
+.portaltype-genweb-tfemarket-market #form-widgets-title,
+.portaltype-genweb-tfemarket-application #form-widgets-title {
+  width: calc(100% - 14px); /* Le restamos el padding (6 - 6) y el borde (1 - 1) */
 }
 
 /*FIN KO & IAGO CSS*/
