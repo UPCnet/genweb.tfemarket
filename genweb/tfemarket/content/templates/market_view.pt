@@ -191,21 +191,6 @@
                         </tal:block>
                       </select>
 
-                      <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
-                        <label i18n:translate="">Keywords</label>
-                        <span class="multicheckOptions">
-                          <span tal:repeat="key view/getKeys">
-                            <tal:block tal:define="selected python: save.has_key('key') and view.flattenedString(key) in save['key']">
-                              <input type="checkbox" name="key" tal:attributes="value key; checked python: True if selected else False" />
-                              <span tal:content="key">Key</span>
-                            </tal:block>
-                          </span>
-                        </span>
-                      </div>
-
-                      <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
-                      <span i18n:translate="">With the possibility of offering grant/financing</span>
-
                       <div id="searchLanguage" class="multicheck">
                         <label i18n:translate="">Developer language</label>
                         <span class="multicheckOptions">
@@ -217,6 +202,9 @@
                           </span>
                         </span>
                       </div>
+
+                      <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
+                      <span i18n:translate="">With the possibility of offering grant/financing</span>
 
                       <div id="searchModality" class="multicheck">
                         <label i18n:translate="">Modality</label>
@@ -230,12 +218,19 @@
                         </span>
                       </div>
 
+                      <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
+                        <label i18n:translate="">Keywords</label>
+                        <span class="multicheckOptions">
+                          <span tal:repeat="key view/getKeys">
+                            <tal:block tal:define="selected python: save.has_key('key') and view.flattenedString(key) in save['key']">
+                              <input type="checkbox" name="key" tal:attributes="value key; checked python: True if selected else False" />
+                              <span tal:content="key">Key</span>
+                            </tal:block>
+                          </span>
+                        </span>
+                      </div>
+
                       <div class="bottomLinks">
-<!--                         <a href="?allOffersTeacher" class="btnTFE"
-                          tal:condition="view/checkPermissionCreateOffers"
-                          i18n:translate="">
-                          View my offers
-                        </a> -->
                         <a href="?allOffers" class="btnTFE"
                           i18n:translate="">
                           View all offers
@@ -385,13 +380,6 @@
                                         </ul>
                                       </div>
                                     </div>
-                                    <div class="leftInfoOffer" tal:condition="offer/grant">
-                                      <p class="grant">
-                                        <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
-                                        <span tal:condition="offer/grant" i18n:translate="">Yes</span>
-                                        <span tal:condition="not: offer/grant" i18n:translate="">No</span>
-                                      </p>
-                                    </div>
                                     <div class="leftInfoOffer" tal:condition="offer/keywords">
                                       <p class="keywords">
                                         <span class="field"><span i18n:translate="">Keywords</span>: </span>
@@ -399,6 +387,19 @@
                                           <span class="keyword" tal:content="keyword">Keyword</span>
                                         </tal:block>
                                       </p>
+                                    </div>
+                                    <div class="bottomLinks" tal:condition="python: view.checkPermissionCreateApplications(offer)">
+                                      <a tal:attributes="href string:${offer/url}/++add++genweb.tfemarket.application">
+                                        <button type="submit" class="link">
+                                          <span i18n:translate="">Request the offer</span>
+                                        </button>
+                                      </a>
+                                    </div>
+                                    <div class="bottomLinks">
+                                      <button type="submit" class="link showMoreInfo">
+                                        <span class="sign">+</span>
+                                        <span>Info</span>
+                                     </button>
                                     </div>
                                     <div class="moreInfo hide">
                                       <div class="leftInfoOffer" tal:condition="offer/topic">
@@ -481,12 +482,6 @@
                                             <span tal:condition="not: offer/scope_cooperation" i18n:translate="">No</span>
                                          </p>
                                       </div>
-                                    </div>
-                                    <div class="bottomLinks">
-                                      <button type="submit" class="link showMoreInfo">
-                                        <span class="sign">+</span>
-                                        <span>Info</span>
-                                     </button>
                                     </div>
                                   </div>
                                 </div>
