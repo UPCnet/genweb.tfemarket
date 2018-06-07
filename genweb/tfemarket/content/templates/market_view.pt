@@ -299,7 +299,8 @@
                                        tal:condition="offer/can_edit">
                                       <span class="fa fa-pencil" aria-hidden="true"></span>
                                     </a>
-                                </div>
+                                  </div>
+                               </div>
                             </div>
                             <div class="offerData">
                               <ul class="nav nav-tabs" data-tabs="tablist" tal:condition="python: view.openApplicationsTav() and applications">
