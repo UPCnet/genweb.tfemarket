@@ -179,6 +179,18 @@
                         </tal:block>
                       </select>
 
+                      <label i18n:translate="">State</label>
+                      <select id="searchState" name="state">
+                        <option value="a" i18n:translate="">All</option>
+                        <tal:block tal:repeat="state view/getStates">
+                          <tal:block tal:define="selected python: save.has_key('state') and state['id'] == save['state']">
+                            <option tal:attributes="value state/id; selected python: True if selected else False" tal:content="state/lit">
+                              State
+                            </option>
+                          </tal:block>
+                        </tal:block>
+                      </select>
+
                       <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
                         <label i18n:translate="">Keywords</label>
                         <span class="multicheckOptions">

@@ -16,8 +16,6 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from cgi import escape
 from Products.CMFPlone.utils import safe_unicode
 
-import requests
-
 
 def sendMessage(context, fromMsg, toMsg, subject, message, email_charset):
     context = aq_inner(context)

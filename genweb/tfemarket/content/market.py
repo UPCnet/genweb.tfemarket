@@ -85,7 +85,7 @@ class View(grok.View):
                 continue
 
             # Filter date
-            if not filters['date'] == 'a':
+            if filters['date'] != 'a':
                 if 'effective_date' in item and item['effective_date']:
                     today = date.today()
                     effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
@@ -100,8 +100,12 @@ class View(grok.View):
                     delete.append(index)
                     continue
 
-            # Filters Keys
+            # Filters status
+            if filters['state'] != 'a' and filters['state'] != item['state_id']:
+                delete.append(index)
+                continue
 
+            # Filters keys
             if 'key' in filters:
                 if 'keywords' in item and item['keywords']:
                     flattenedKeys = self.flattenedList(item['keywords'])
@@ -201,6 +205,7 @@ class View(grok.View):
 
                     results.append(dict(title=offer.title,
                                         state=workflows['states'][offer_status['review_state']].title,
+                                        state_id=workflows['states'][offer_status['review_state']].id,
                                         url=offer.absolute_url(),
                                         path='/'.join(offer.getPhysicalPath()),
                                         item_path='/'.join(offer.getPhysicalPath()[2:]),
@@ -348,6 +353,19 @@ class View(grok.View):
                 results.append(offer.company)
 
         return sorted(list(OrderedDict.fromkeys(results)))
+
+    def getStates(self):
+        results = []
+        wf_tool = getToolByName(self, 'portal_workflow')
+        states = wf_tool.tfemarket_offer_workflow.states._mapping
+        user_roles = api.user.get_current().getRoles()
+        for state in states.keys():
+            permissions = states[state].permission_roles['View']
+            for role in user_roles:
+                if role in permissions:
+                    results.append({'id': state, 'lit': states[state].title})
+                    break
+        return sorted(results, key=lambda x: x['lit'])
 
     def getKeys(self):
         registry = queryUtility(IRegistry)
