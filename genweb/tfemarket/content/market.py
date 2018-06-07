@@ -91,8 +91,7 @@ class View(grok.View):
                     effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
                     diff_days = today - effective_date
                     diff_days = diff_days.days
-                    if filters['date'] == 'd' and diff_days > 1 \
-                       or filters['date'] == 'w' and diff_days > 7 \
+                    if filters['date'] == 'w' and diff_days > 7 \
                        or filters['date'] == 'm' and diff_days > 30:
                         delete.append(index)
                         continue
@@ -325,7 +324,6 @@ class View(grok.View):
 
     def getDates(self):
         return [{'id': 'a', 'lit': _(u"All")},
-                {'id': 'd', 'lit': _(u"Last day")},
                 {'id': 'w', 'lit': _(u"Last week")},
                 {'id': 'm', 'lit': _(u"Last month")}]
 
