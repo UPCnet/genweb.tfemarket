@@ -175,7 +175,7 @@ class View(grok.View):
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
             filters = {'portal_type': 'genweb.tfemarket.offer'}
-            if 'allOffersTeacher' in self.request.form or self.checkPermissionCreateOffers():
+            if self.checkPermissionCreateOffers():
                 filters.update({'listCreators': api.user.get_current().id})
 
             values = self.context.contentValues(filters)
@@ -409,14 +409,12 @@ class View(grok.View):
         return CPCreateOffers(self, self.context)
 
     def openApplicationsTav(self):
-        if 'allOffersTeacher' in self.request.form and self.checkPermissionCreateOffers():
+        if self.checkPermissionCreateOffers():
             return True
         return False
 
     def getActualView(self):
-        if 'allOffersTeacher' in self.request.form:
-            return '&allOffersTeacher'
-        elif 'allOffers' in self.request.form:
+        if 'allOffers' in self.request.form:
             return '&allOffers'
         elif 'search' in self.request.form:
             return '&search'
