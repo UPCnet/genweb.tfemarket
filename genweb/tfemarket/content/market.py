@@ -418,8 +418,10 @@ class View(grok.View):
             return '&allOffersTeacher'
         elif 'allOffers' in self.request.form:
             return '&allOffers'
+        elif 'search' in self.request.form:
+            return '&search'
         else:
-            return "&search"
+            return ''
 
     def classViewSearch(self):
         if self.checkPermissionCreateOffers() and self.request.form == {}:

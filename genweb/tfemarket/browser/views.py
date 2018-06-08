@@ -37,8 +37,10 @@ def redirectAfterChangeActualState(self):
                 url = self.context.absolute_url() + "?allOffersTeacher"
             elif 'allOffers' in self.request.form:
                 url = self.context.absolute_url() + "?allOffers"
-            else:
+            elif 'search' in self.request.form:
                 url = self.context.absolute_url() + "?searchFilters"
+            else:
+                url = self.context.absolute_url()
             if 'offer' in self.request.form:
                 url += "&offer=" + self.request.form.get('offer')
             self.request.response.redirect(url)
@@ -62,7 +64,6 @@ class changeActualState(grok.View):
         except:
             pass
 
-        portal_catalog = getToolByName(self, 'portal_catalog')
         estat = self.request.form.get('estat')
         itemid = self.request.form.get('id')
 
