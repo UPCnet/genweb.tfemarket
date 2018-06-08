@@ -115,27 +115,27 @@
                               <span class="field"><span i18n:translate="">Number of students</span>: </span>
                               <span tal:content="context/num_students">1</span>
                            </p>
-                           <p class="workload">
+                           <p class="workload" tal:condition="context/workload">
                               <span class="field"><span i18n:translate="">Workload</span>: </span>
                               <span tal:content="context/workload">Workload</span>
                            </p>
                         </div>
-                        <div class="leftInfoOffer">
+                        <div class="leftInfoOffer" tal:condition="context/targets">
                            <div class="targets">
                               <span class="field"><span i18n:translate="">Targets</span>: </span>
-                              <p tal:condition="context/targets" tal:content="context/targets"></p>
+                              <p tal:content="context/targets"></p>
                            </div>
                         </div>
-                        <div class="leftInfoOffer">
+                        <div class="leftInfoOffer" tal:condition="context/features">
                            <div class="features">
                               <span class="field"><span i18n:translate="">Features</span>: </span>
-                              <p tal:condition="context/features" tal:content="context/features"></p>
+                              <p  tal:content="context/features"></p>
                            </div>
                         </div>
-                        <div class="leftInfoOffer">
+                        <div class="leftInfoOffer" tal:condition="context/requirements">
                            <div class="requirements">
                               <span class="field"><span i18n:translate="">Requirements</span>: </span>
-                              <p tal:condition="context/requirements" tal:content="context/requirements"></p>
+                              <p tal:content="context/requirements"></p>
                            </div>
                         </div>
                         <div class="leftInfoOffer" tal:condition="python: len(context.lang) > 0">
@@ -175,9 +175,9 @@
                               <span class="field"><span i18n:translate="">Company Email</span>: </span>
                               <span tal:content="context/company_email">Company Email</span>
                            </p>
-                           <div class="observations">
+                           <div class="observations" tal:condition="context/observations">
                               <span class="field"><span i18n:translate="">Observations</span>: </span>
-                              <p tal:condition="context/observations" tal:content="context/observations"></p>
+                              <p tal:content="context/observations"></p>
                            </div>
                         </div>
                         <div class="leftInfoOffer">

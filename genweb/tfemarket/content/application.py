@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
-from plone.app.textfield import RichText as RichTextField
 from plone.directives import dexterity
 from plone.directives import form
 from zope import schema
@@ -66,7 +65,7 @@ class IApplication(form.Schema):
         required=False,
     )
 
-    body = schema.TextLine(
+    body = schema.Text(
         title=_(u'Body'),
         required=False,
     )

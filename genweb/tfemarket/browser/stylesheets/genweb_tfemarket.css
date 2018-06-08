@@ -252,7 +252,8 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 
 .btnTFE,
 .buttonsRight a button.link,
-.informacioTFE .bottomLinks a button.link {
+.informacioTFE .bottomLinks a button.link,
+.informacioTFE .bottomLinks .showMoreInfo {
   text-shadow: none;
   text-decoration: none;
   color: #FFF;
@@ -374,6 +375,16 @@ table#form-widgets-teacher_manager-hint tbody .actions {
   text-align: right;
 }
 
+table.tableApplications tbody .actions .modal,
+table#form-widgets-teacher_manager-hint tbody .actions .modal {
+  text-align: left;
+}
+
+table.tableApplications tbody .actions .modal .modal-body,
+table#form-widgets-teacher_manager-hint tbody .actions .modal .modal-body {
+  white-space: initial;
+}
+
 #applicationData,
 #market #userApplication {
   margin-bottom: 25px;
@@ -393,6 +404,12 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
   color: #057bc1;
   padding: 3px 6px;
   text-shadow: none;
+}
+
+#market .rightInfoOffer.actions button.disabled,
+table.tableApplications tbody .actions button.disabled {
+  color: #ADADAD;
+  cursor: default;
 }
 
 #market .rightInfoOffer.actions .workflowsAction .workflow.notclick,
@@ -433,6 +450,12 @@ table#form-widgets-teacher_manager-hint tbody .actions .caret {
 table.tableApplications tbody .actions button:hover {
   border: 1px solid #057bc1;
 }
+
+#market .rightInfoOffer.actions button.disabled:hover,
+table.tableApplications tbody .actions button.disabled:hover {
+  border: 1px solid #ADADAD;
+}
+
 
 #market .rightInfoOffer.actions > a:hover,
 table.tableApplications tbody .actions > a:hover,
@@ -556,7 +579,7 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
   text-shadow: none;
 }
 
-#offersList #expandSearch,
+#offersList .hide,
 #offersList #collapseAll,
 #offersList .offerData,
 #offersList .notexpand {
@@ -745,7 +768,16 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-offer ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-market ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-application ul#contentActionMenus li.dropdown:first-of-type {
-    display: none;
+  display: none;
+}
+
+
+/* Campo título ampliar */
+
+.portaltype-genweb-tfemarket-offer #form-widgets-title,
+.portaltype-genweb-tfemarket-market #form-widgets-title,
+.portaltype-genweb-tfemarket-application #form-widgets-title {
+  width: calc(100% - 14px); /* Le restamos el padding (6 - 6) y el borde (1 - 1) */
 }
 
 /*FIN KO & IAGO CSS*/
