@@ -179,20 +179,17 @@
                         </tal:block>
                       </select>
 
-                      <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
-                        <label i18n:translate="">Keywords</label>
-                        <span class="multicheckOptions">
-                          <span tal:repeat="key view/getKeys">
-                            <tal:block tal:define="selected python: save.has_key('key') and view.flattenedString(key) in save['key']">
-                              <input type="checkbox" name="key" tal:attributes="value key; checked python: True if selected else False" />
-                              <span tal:content="key">Key</span>
-                            </tal:block>
-                          </span>
-                        </span>
-                      </div>
-
-                      <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
-                      <span i18n:translate="">With the possibility of offering grant/financing</span>
+                      <label i18n:translate="">State</label>
+                      <select id="searchState" name="state">
+                        <option value="a" i18n:translate="">All</option>
+                        <tal:block tal:repeat="state view/getStates">
+                          <tal:block tal:define="selected python: save.has_key('state') and state['id'] == save['state']">
+                            <option tal:attributes="value state/id; selected python: True if selected else False" tal:content="state/lit">
+                              State
+                            </option>
+                          </tal:block>
+                        </tal:block>
+                      </select>
 
                       <div id="searchLanguage" class="multicheck">
                         <label i18n:translate="">Developer language</label>
@@ -206,6 +203,9 @@
                         </span>
                       </div>
 
+                      <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
+                      <span i18n:translate="">With the possibility of offering grant/financing</span>
+
                       <div id="searchModality" class="multicheck">
                         <label i18n:translate="">Modality</label>
                         <span class="multicheckOptions">
@@ -218,12 +218,19 @@
                         </span>
                       </div>
 
+                      <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
+                        <label i18n:translate="">Keywords</label>
+                        <span class="multicheckOptions">
+                          <span tal:repeat="key view/getKeys">
+                            <tal:block tal:define="selected python: save.has_key('key') and view.flattenedString(key) in save['key']">
+                              <input type="checkbox" name="key" tal:attributes="value key; checked python: True if selected else False" />
+                              <span tal:content="key">Key</span>
+                            </tal:block>
+                          </span>
+                        </span>
+                      </div>
+
                       <div class="bottomLinks">
-<!--                         <a href="?allOffersTeacher" class="btnTFE"
-                          tal:condition="view/checkPermissionCreateOffers"
-                          i18n:translate="">
-                          View my offers
-                        </a> -->
                         <a href="?allOffers" class="btnTFE"
                           i18n:translate="">
                           View all offers
@@ -292,12 +299,8 @@
                                        tal:condition="offer/can_edit">
                                       <span class="fa fa-pencil" aria-hidden="true"></span>
                                     </a>
-                                    <a class="label" i18n:attributes="alt view; title view"
-                                       tal:attributes="href string:${offer/url}/view">
-                                      <span class="fa fa-folder-open" aria-hidden="true"></span>
-                                    </a>
                                   </div>
-                                </div>
+                               </div>
                             </div>
                             <div class="offerData">
                               <ul class="nav nav-tabs" data-tabs="tablist" tal:condition="python: view.openApplicationsTav() and applications">
@@ -373,13 +376,6 @@
                                         </ul>
                                       </div>
                                     </div>
-                                    <div class="leftInfoOffer" tal:condition="offer/grant">
-                                      <p class="grant">
-                                        <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
-                                        <span tal:condition="offer/grant" i18n:translate="">Yes</span>
-                                        <span tal:condition="not: offer/grant" i18n:translate="">No</span>
-                                      </p>
-                                    </div>
                                     <div class="leftInfoOffer" tal:condition="offer/keywords">
                                       <p class="keywords">
                                         <span class="field"><span i18n:translate="">Keywords</span>: </span>
@@ -387,6 +383,19 @@
                                           <span class="keyword" tal:content="keyword">Keyword</span>
                                         </tal:block>
                                       </p>
+                                    </div>
+                                    <div class="bottomLinks" tal:condition="python: view.checkPermissionCreateApplications(offer)">
+                                      <a tal:attributes="href string:${offer/url}/++add++genweb.tfemarket.application">
+                                        <button type="submit" class="link">
+                                          <span i18n:translate="">Request the offer</span>
+                                        </button>
+                                      </a>
+                                    </div>
+                                    <div class="bottomLinks">
+                                      <button type="submit" class="link showMoreInfo">
+                                        <span class="sign">+</span>
+                                        <span>Info</span>
+                                     </button>
                                     </div>
                                     <div class="moreInfo hide">
                                       <div class="leftInfoOffer" tal:condition="offer/topic">
@@ -469,12 +478,6 @@
                                             <span tal:condition="not: offer/scope_cooperation" i18n:translate="">No</span>
                                          </p>
                                       </div>
-                                    </div>
-                                    <div class="bottomLinks">
-                                      <button type="submit" class="link showMoreInfo">
-                                        <span class="sign">+</span>
-                                        <span>Info</span>
-                                     </button>
                                     </div>
                                   </div>
                                 </div>
