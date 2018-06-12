@@ -23,7 +23,7 @@ li.unstyled.offer {
   float: left;
   border-bottom: 1px solid #cecece;
   width: 100%;
-  padding: 10px 0px 10px 0px;
+  padding: 8px 0px 8px 0px;
 }
 
 .documentDescription {
@@ -120,6 +120,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   display: grid;
 }
 
+#offersList .puntTitle .span8,
 #offersList .nav.nav-tabs {
   margin-bottom: 0px;
 }
@@ -138,27 +139,20 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   float: right;
 }
 
-#offersList .puntTitle .rightTitle {
-  float: right;
-  text-align: right;
-}
-
-#offersList .puntTitle .rightTitle .effectiveDate {
-  margin-right: 10px;
-}
-
-#offersList .puntTitle .rightTitle .dates p {
+#offersList .puntTitle .dates p,
+#offersList .puntTitle .effectiveDate {
   margin-bottom: 0px;
 }
 
 #offersList .fletxaSpan .notexpand,
 #offersList .fletxaSpan .expand {
   margin-top: 0px;
-  padding: 2px 6px;
-  background: #be2946;
+  padding: 4px 6px;
+  background: #c35a0a;
   background-color: #eaeaea;
   border: 1px solid #d2d2d2;
-  color: #be2946;
+  color: #c35a0a;
+  border-radius: 3px !important;
 }
 
 #offersList #list {
@@ -210,16 +204,15 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   position: absolute;
   top: 0px;
   right: 0px;
-  text-align: left;
 }
 
 .informacioTFE p {
   margin: 0px 0px 2px 0px;
 }
 
-#offersList .puntTitle .rightTitle .dates .field,
+#offersList .puntTitle .dates .field,
 .informacioTFE .field {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .informacioTFE .keyword {
@@ -252,20 +245,34 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 .btnTFE,
 .buttonsRight button.link,
 .informacioTFE .bottomLinks button.link {
-  background: #be2946;
+  background: #c35a0a;
   border-radius: 2px !important;
 }
 
 .btnTFE,
-.buttonsRight a button.link,
-.informacioTFE .bottomLinks a button.link,
-.informacioTFE .bottomLinks .showMoreInfo {
+.buttonsRight a button.link {
   text-shadow: none;
   text-decoration: none;
   color: #FFF;
   font-weight: bold;
 }
 
+.informacioTFE .buttonsOffer .showMoreInfo {
+  border-radius: 15px !important;
+  padding: 2px;
+  border: 1px solid #666;
+  background-color: #fcfbfb;
+  cursor: pointer;
+  float: right;
+  height: 20px;
+  width: 20px;
+  display: block;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  text-align: center;
+
+}
 
 #headerSearchOffers {
   display: inline;
@@ -290,6 +297,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   border-radius: 2px !important;
   border: 1px solid #eaeaea;
   width: 95.7%;
+  position: relative;
 }
 
 #offerData ul.nav-tabs + div.tab-content .data,
@@ -347,7 +355,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 
 table.tableApplications,
 table#form-widgets-teacher_manager-hint {
-  border-top: 5px solid #be2946;
+  border-top: 5px solid #c35a0a;
 }
 
 table.tableApplications thead th,
@@ -395,7 +403,7 @@ table#form-widgets-teacher_manager-hint tbody .actions .modal .modal-body {
   margin-bottom: 25px;
 }
 
-#market .moreInfo.hide {
+#market .moreInfo {
   display: none;
 }
 
@@ -406,7 +414,7 @@ table.tableApplications tbody .actions > a,
 table#form-widgets-teacher_manager-hint tbody .actions > a {
   background-color: #FFF;
   border: 1px solid #adadad;
-  color: #be2946;
+  color: #c35a0a;
   padding: 3px 6px;
   text-shadow: none;
 }
@@ -421,7 +429,7 @@ table.tableApplications tbody .actions button.disabled {
 table.tableApplications tbody .actions .workflowsAction .workflow.notclick {
   background-color: #FFF;
   border: 1px solid #adadad;
-  color: #be2946;
+  color: #c35a0a;
   padding: 3px 6px;
   border-radius: 3px !important;
   text-shadow: none;
@@ -433,27 +441,22 @@ table#form-widgets-teacher_manager-hint tbody .actions a {
   transition: none;
 }
 
-#market .rightInfoOffer.actions button,
-table.tableApplications tbody .actions button {
-  padding: 2px 6px;
-}
-
 #market .rightInfoOffer.actions > a.edit,
 table.tableApplications tbody .actions > a.edit {
-  padding: 3px 3px 3px 6px;
   margin-right: 4px;
+  padding: 2px 4px 3px 6px;
 }
 
 #market .rightInfoOffer.actions .caret,
 table.tableApplications tbody .actions .caret,
 table#form-widgets-teacher_manager-hint tbody .actions .caret {
-  border-top: 4px solid #be2946;
+  border-top: 4px solid #c35a0a;
   vertical-align: middle;
 }
 
 #market .rightInfoOffer.actions button:hover,
 table.tableApplications tbody .actions button:hover {
-  border: 1px solid #be2946;
+  border: 1px solid #c35a0a;
 }
 
 #market .rightInfoOffer.actions button.disabled:hover,
@@ -465,9 +468,10 @@ table.tableApplications tbody .actions button.disabled:hover {
 #market .rightInfoOffer.actions > a:hover,
 table.tableApplications tbody .actions > a:hover,
 table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
-  background-color: #be2946;
+  background-color: #c35a0a;
   color: #FFF;
-  border: 1px solid #be2946;
+  border: 1px solid #c35a0a;
+  background-image: none;
 }
 
 #market .rightInfoOffer.actions .workflowsAction,
@@ -490,7 +494,8 @@ table.tableApplications tbody .actions .estatsToggle li {
 
 #market .rightInfoOffer.actions .estatsToggle li a:hover,
 table.tableApplications tbody .actions .estatsToggle li a:hover {
-  background-color: #057bc1;
+  background-color: #c35a0a;
+  background-image: none;
 }
 
 #offersList .offerData .applications ul,
@@ -501,6 +506,7 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 #formSearchOffers {
   width: 100%;
   margin-bottom: 20px;
+  padding-top: 0px;
   float: left;
 }
 
@@ -557,7 +563,7 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
   color: #FFF;
   text-shadow: none;
   font-size:15px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 #formSearchOffers .multicheck label {
@@ -590,7 +596,7 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 }
 
 #formSearchOffers span.keyword.checked {
-  background-color: #be2946;
+  background-color: #c35a0a;
   color: white;
 }
 
@@ -617,7 +623,6 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 }
 
 #offersList .hide,
-#offersList #collapseAll,
 #offersList .offerData,
 #offersList .notexpand {
   display: none;
@@ -642,6 +647,9 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 #offersList .puntTitle,
 #offerData .puntTitle {
   padding: 0px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #offersList .titleSpan h3,
@@ -702,6 +710,7 @@ h2.formFieldset {
 }
 
 #formSearchOffers button,
+.informacioTFE .buttonsOffer button,
 .btnTFE {
   display: inline-block;
   vertical-align: middle;
@@ -713,19 +722,19 @@ h2.formFieldset {
   text-decoration: none;
   color: #FFF;
   border-radius: 2px !important;
-  background: #be2946;
+  background: #c35a0a;
   border-color: #ac3549;
-  padding: 10px 20px;
+  padding: 8px 20px;
   min-width: 125px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .btnTFE {
   height: 20px;
 }
 
-.informacioTFE .bottomLinks button.link:hover,
+.informacioTFE .buttonsOffer button:hover,
 .buttonsRight a button.link:hover,
 #formSearchOffers button:hover,
 .btnTFE:hover,
@@ -881,8 +890,10 @@ span.icon-genweb-tfemarket-market{
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+}
+
+.portaltype-genweb-tfemarket-market #searchOffers h2 {
+   margin-top: 20px!important;
 }
 
 #formSearchOffers div#searchGrants,
@@ -891,6 +902,30 @@ span.icon-genweb-tfemarket-market{
 }
 
 #formSearchOffers .multicheckOptionsKeys .keyword span {
-   font-size: 13px;
-   font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#offersList #notResults {
+  margin-top: 20px;
+}
+
+.puntTitle .actions.span2 {
+  text-align: right;
+  width: 13.11043%;
+  min-height: 0px;
+}
+
+.puntTitle .dates.span2 {
+  width: 15.11043%;
+}
+
+p.effectiveDate {
+  margin-bottom: 0px;
+}
+
+.nav-tabs > li,
+.contentViews > li,
+.configlets > li {
+  margin-bottom: -2px;
 }

@@ -109,16 +109,16 @@
                               <span class="field"><span i18n:translate="">Topic</span>: </span>
                               <span tal:content="context/topic">Topic</span>
                            </p>
-                        </div>
-                        <div class="leftInfoOffer">
                            <p class="numStudents">
                               <span class="field"><span i18n:translate="">Number of students</span>: </span>
                               <span tal:content="context/num_students">1</span>
                            </p>
-                           <p class="workload" tal:condition="context/workload">
+                        </div>
+                        <div>
+                           <div class="workload" tal:condition="context/workload">
                               <span class="field"><span i18n:translate="">Workload</span>: </span>
-                              <span tal:content="context/workload">Workload</span>
-                           </p>
+                              <p tal:content="context/workload">Workload</p>
+                           </div>
                         </div>
                         <div class="leftInfoOffer" tal:condition="context/targets">
                            <div class="targets">
@@ -175,6 +175,8 @@
                               <span class="field"><span i18n:translate="">Company Email</span>: </span>
                               <span tal:content="context/company_email">Company Email</span>
                            </p>
+                        </div>
+                        <div class="leftInfoOffer">
                            <div class="observations" tal:condition="context/observations">
                               <span class="field"><span i18n:translate="">Observations</span>: </span>
                               <p tal:content="context/observations"></p>

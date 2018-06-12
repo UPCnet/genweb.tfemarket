@@ -220,7 +220,7 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    observations = schema.TextLine(
+    observations = schema.Text(
         title=_(u'Observations'),
         required=False,
     )
