@@ -1,9 +1,5 @@
 /*CSS DAVID*/
 
-.applications {
-  padding-top: 40px;
-}
-
 #content-core .informacioTFE {
   position: relative;
 }
@@ -291,9 +287,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 }
 
 #offerData .data,
-#offerData .applications,
 #offersList .offerData .data,
-#offersList .offerData .applications,
 #applicationData{
   background-color: #f5f4f4;
   float: left;
@@ -304,57 +298,14 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   position: relative;
 }
 
-#offerData ul.nav-tabs + div.tab-content .data,
-#offerData ul.nav-tabs + div.tab-content .applications,
-#offersList .offerData ul.nav-tabs + div.tab-content .data,
-#offersList .offerData ul.nav-tabs + div.tab-content .applications {
-  border-radius: 0px 5px 5px 5px !important;
-}
-
 #offerData {
   margin: 15px 0px;
-}
-
-#offersList .offerData .nav,
-#offerData .nav {
-  margin-bottom: 0px;
-}
-
-#offersList .offerData .nav-tabs,
-#offerData .nav-tabs {
-  border-bottom: none;
-}
-
-#offerData .nav.nav-tabs li.informacioTFE {
-  float: right;
 }
 
 #offerData .informacioTFE .rightInfoOffer {
   top: 0px;
   right: 0px;
   text-align: right;
-}
-
-#offersList .offerData .nav-tabs > .active > a,
-#offerData .nav-tabs > .active > a {
-  font-weight: bold;
-}
-
-#offersList .offerData .nav-tabs > .active > a,
-#offersList .offerData .nav-tabs > li > a,
-#offerData .nav-tabs > .active > a,
-#offerData .nav-tabs > li > a {
-  position: relative;
-  border-color: #cdcdcd !important;
-  border-bottom: 0px !important;
-  border-radius: 5px 5px 0px 0px !important;
-  background: #f5f4f4;
-  color: #000;
-}
-
-#offersList .offerData .nav-tabs > .active > a,
-#offerData .nav-tabs > .active > a {
-  background: linear-gradient(#d4d4d4, #f5f4f4);
 }
 
 table.tableApplications,
@@ -628,7 +579,8 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 
 #offersList .hide,
 #offersList .offerData,
-#offersList .notexpand {
+#offersList .notexpand,
+#offersList .hideApplicationsLit {
   display: none;
 }
 
@@ -752,6 +704,11 @@ h2.formFieldset {
 
 .informacioTFE .span6 {
   margin-bottom: 0px;
+}
+
+
+.informacioTFE .applications {
+  padding-top: 20px;
 }
 
 #listing-table a.contenttype-genweb-tfemarket-application:before,
