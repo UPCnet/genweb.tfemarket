@@ -50,22 +50,25 @@ def getLdapUserData(user, typology=None):
 
 def checkPermissionCreateApplications(self, context):
     roles = api.user.get_roles()
-    if 'Market Manager' not in roles and 'Manager' not in roles and 'Anonymous' not in roles:
-        if 'Teacher' not in roles and checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
-            catalog = api.portal.get_tool(name='portal_catalog')
-            from genweb.tfemarket.content.application import IApplication
-            items = catalog(object_provides=IApplication.__identifier__,
-                            Creator=api.user.get_current().id)
+    if 'Anonymous' not in roles:
+        if 'Market Manager' not in roles and 'Manager' not in roles and 'Teacher' not in roles:
+            if checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
+                catalog = api.portal.get_tool(name='portal_catalog')
+                from genweb.tfemarket.content.application import IApplication
+                items = catalog(object_provides=IApplication.__identifier__,
+                                Creator=api.user.get_current().id)
 
-            results = []
-            for item in items:
-                if item.review_state not in ['cancelled', 'rejected']:
-                    results.append(item)
+                results = []
+                for item in items:
+                    if item.review_state not in ['cancelled', 'rejected']:
+                        results.append(item)
 
-            if len(results) > 0:
-                return False
+                if len(results) > 0:
+                    return False
+                else:
+                    return True
             else:
-                return True
+                return False
         else:
             return False
     else:
