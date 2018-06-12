@@ -51,7 +51,7 @@ def getLdapUserData(user, typology=None):
 def checkPermissionCreateApplications(self, context):
     roles = api.user.get_roles()
     if 'Market Manager' not in roles and 'Manager' not in roles and 'Anonymous' not in roles:
-        if checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
+        if 'Teacher' not in roles and checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
             catalog = api.portal.get_tool(name='portal_catalog')
             from genweb.tfemarket.content.application import IApplication
             items = catalog(object_provides=IApplication.__identifier__,
