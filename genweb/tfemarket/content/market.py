@@ -426,6 +426,3 @@ class View(grok.View):
             return {'collapse': ' hide', 'expand': ''}
         else:
             return {'collapse': '', 'expand': ' hide'}
-
-    def checkPermissionCreateApplications(self, offer):
-        return CPCreateApplications(self, offer)
