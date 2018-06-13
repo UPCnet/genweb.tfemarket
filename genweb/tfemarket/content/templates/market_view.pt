@@ -333,8 +333,23 @@
                                 </a>
                                </div>
                             </div>
-                            <div tal:attributes="id string:${offer/offer_id}-info" class="offerInfo"></div>
                             <div class="offerData">
+                              <div tal:attributes="id string:${offer/offer_id}-info" class="offerInfo"></div>
+                              <tal:block tal:condition="applications">
+                                <div class="alert alert-info offerInfo" role="alert" tal:condition="offer/assignOffer">
+                                   <button data-dismiss="alert" class="close" type="button">×</button>
+                                   <strong i18n:translate="">
+                                   Info
+                                   </strong>
+                                   <tal:msg i18n:translate="">
+                                      The current offer contains an accepted application.
+                                   </tal:msg>
+                                   <a class="btn btn-success" i18n:translate=""
+                                      tal:attributes="href string:changeActualState?estat=${offer/assignOffer}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">
+                                   Assign the offer
+                                   </a>
+                                </div>
+                              </tal:block>
                               <div class="data">
                                 <div class="informacioTFE row-fluid">
                                   <div class="span6">

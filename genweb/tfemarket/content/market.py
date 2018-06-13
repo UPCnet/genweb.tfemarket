@@ -21,6 +21,7 @@ from zope.sequencesort.ssort import sort
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import ITfemarketSettings
+from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import getDegreeLiteralFromId
@@ -191,9 +192,10 @@ class View(grok.View):
                     workflows = tools.workflow().getWorkflowsFor(offer)[0]
                     offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
                     offer_status = wf_tool.getStatusOf(offer_workflow, offer)
-                    state_id = workflows['states'][offer_status['review_state']].title
+                    state_title = workflows['states'][offer_status['review_state']].title
+                    state_id = workflows['states'][offer_status['review_state']].id
 
-                    if state_id == 'Proposta':
+                    if state_title == 'Proposta':
                         registry = queryUtility(IRegistry)
                         tfe_tool = registry.forInterface(ITfemarketSettings)
                         review_state = tfe_tool.review_state
@@ -203,8 +205,8 @@ class View(grok.View):
                             workflowActions = [x for x in workflowActions if x.get('id') != 'sendtoreview']
 
                     results.append(dict(title=offer.title,
-                                        state=workflows['states'][offer_status['review_state']].title,
-                                        state_id=workflows['states'][offer_status['review_state']].id,
+                                        state=state_title,
+                                        state_id=state_id,
                                         url=offer.absolute_url(),
                                         path='/'.join(offer.getPhysicalPath()),
                                         item_path='/'.join(offer.getPhysicalPath()[2:]),
@@ -243,6 +245,7 @@ class View(grok.View):
                                         scope_cooperation=offer.scope_cooperation,
                                         ifModalityCompany=True if offer.modality == 'Empresa' else False,
                                         topic=offer.topic,
+                                        assignOffer=self.assignOffer(offer, state_id)
                                         ))
 
             if 'search' in self.request.form or 'searchFilters' in self.request.form:
@@ -426,3 +429,11 @@ class View(grok.View):
             return {'collapse': ' hide', 'expand': ''}
         else:
             return {'collapse': '', 'expand': ' hide'}
+
+    def assignOffer(self, offer, state):
+        if checkPermission('cmf.RequestReview', offer) and checkOfferhasConfirmedApplications(offer):
+            if state == 'intranet':
+                return 'assignalofertaintranet'
+            elif state == 'public':
+                return 'assign'
+        return False

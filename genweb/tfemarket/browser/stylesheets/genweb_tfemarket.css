@@ -771,14 +771,17 @@ h2.formFieldset {
   border-bottom-color: #595959;
 }
 
-.portaltype-genweb-tfemarket-market .offerInfo .alert,
 .informacioTFE .span6 {
   margin-bottom: 0px;
 }
 
-
 .informacioTFE .applications {
   padding-top: 20px;
+}
+
+.offerData .offerInfo .btn-success {
+  margin-left: 10px;
+  vertical-align: baseline;
 }
 
 #listing-table a.contenttype-genweb-tfemarket-application:before,
