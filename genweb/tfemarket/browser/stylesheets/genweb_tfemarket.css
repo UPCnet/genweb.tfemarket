@@ -484,7 +484,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 #formSearchOffers span {
   font-weight: normal;
   margin-bottom: 4px;
-  font-size: 15px;
+  font-size: 13px;
   color: #555;
 }
 
@@ -499,7 +499,8 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   position: relative;
   display: inline-block;
   width: 15px;
-  height: 22px;
+  height: 18px;
+  margin-bottom: 0px
 }
 
 #formSearchOffers label.switch input {
@@ -516,6 +517,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   background-color: #bbb;
   -webkit-transition: .4s;
   transition: .4s;
+  margin-bottom: 0px
 }
 
 #formSearchOffers label.switch .slider:before {
