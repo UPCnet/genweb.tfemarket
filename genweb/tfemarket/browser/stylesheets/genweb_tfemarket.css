@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i');
+
 /*CSS DAVID*/
 
 #content-core .informacioTFE {
@@ -493,6 +495,63 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   color: #6d6d6d;
 }
 
+#formSearchOffers label.switch {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 22px;
+}
+
+#formSearchOffers label.switch input {
+  display: none;
+}
+
+#formSearchOffers label.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bbb;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#formSearchOffers label.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#formSearchOffers label.switch input:checked + .slider {
+  background-color: #c35a0a;
+}
+
+#formSearchOffers label.switch input:focus + .slider {
+  box-shadow: 0 0 1px #c35a0a;
+}
+
+#formSearchOffers label.switch input:checked + .slider:before {
+  -webkit-transform: translateX(21px);
+  -ms-transform: translateX(21px);
+  transform: translateX(21px);
+}
+
+#formSearchOffers label.switch .slider.round {
+  border-radius: 34px;
+}
+
+#formSearchOffers label.switch .slider.round:before {
+  border-radius: 50%;
+}
+
 #formSearchOffers input[type='text'] {
   float: left;
   width: calc(100% - 14px);
@@ -579,7 +638,9 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   text-shadow: none;
 }
 
-#formSearchOffers .span6 {
+#formSearchOffers .span6,
+#formSearchOffers .span4,
+#formSearchOffers .span2 {
   margin-bottom: 0px;
 }
 

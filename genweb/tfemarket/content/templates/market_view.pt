@@ -227,7 +227,7 @@
                             </span>
                           </div>
 
-                          <div id="searchModality" class="multicheck span6">
+                          <div id="searchModality" class="multicheck span4">
                             <label i18n:translate="">Modality</label>
                             <span class="multicheckOptions">
                               <span tal:repeat="modality view/getModalities">
@@ -238,14 +238,14 @@
                               </span>
                             </span>
                           </div>
-                        </div>
 
-                        <div id="searchGrants">
-                          <label i18n:translate="">grant</label>
-                          <span>
-                            <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
-                            <span i18n:translate="">With the possibility of offering grant/financing</span>
-                          </span>
+                          <div id="searchGrants" class="span2">
+                            <label i18n:translate="">grant</label>
+                            <label class="switch">
+                              <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
                         </div>
 
                         <div id="searchKeys" class="multicheck" tal:condition="view/getKeys">
