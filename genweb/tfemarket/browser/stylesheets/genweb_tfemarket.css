@@ -171,9 +171,9 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-bottom: 0px;
 }
 
-#headerListOffers #buttonsAllOffers,
 #headerListOffers #buttonsSearch {
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .tab-content .informacioTFE .bottomLinks,
@@ -447,10 +447,16 @@ table.tableApplications tbody .actions .estatsToggle li {
   text-align: left;
 }
 
+
+#market .rightInfoOffer.actions .estatsToggle li a:active,
+table.tableApplications tbody .actions .estatsToggle li a:active,
 #market .rightInfoOffer.actions .estatsToggle li a:hover,
-table.tableApplications tbody .actions .estatsToggle li a:hover {
+table.tableApplications tbody .actions .estatsToggle li a:hover,
+#market .rightInfoOffer.actions .estatsToggle li a:focus,
+table.tableApplications tbody .actions .estatsToggle li a:focus {
   background-color: #c35a0a;
   background-image: none;
+  color: #FFF;
 }
 
 #offersList .offerData .applications ul,

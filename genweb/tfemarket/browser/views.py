@@ -31,16 +31,21 @@ def redirectAfterChangeActualState(self):
         self.request.response.redirect(self.context.absolute_url() + '#offer-applications')
     elif self.context.portal_type == 'genweb.tfemarket.market':
         if 'allOffers' not in self.request.form and 'search' not in self.request.form:
-            self.request.response.redirect(self.context.absolute_url())
+            url = self.context.absolute_url()
+            if 'offer' in self.request.form:
+                url += "?offer=" + self.request.form.get('offer')
+                if 'open' in self.request.form:
+                    url += "&open=Y"
+            self.request.response.redirect(url)
         else:
             if 'allOffers' in self.request.form:
                 url = self.context.absolute_url() + "?allOffers"
             elif 'search' in self.request.form:
                 url = self.context.absolute_url() + "?searchFilters"
-            else:
-                url = self.context.absolute_url()
             if 'offer' in self.request.form:
                 url += "&offer=" + self.request.form.get('offer')
+                if 'open' in self.request.form:
+                    url += "&open=Y"
             self.request.response.redirect(url)
     else:
         self.request.response.redirect(self.context.absolute_url())
