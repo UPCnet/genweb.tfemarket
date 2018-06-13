@@ -333,6 +333,7 @@
                                 </a>
                                </div>
                             </div>
+                            <div tal:attributes="id string:${offer/offer_id}-info" class="offerInfo"></div>
                             <div class="offerData">
                               <div class="data">
                                 <div class="informacioTFE row-fluid">
@@ -649,8 +650,9 @@
 
         var offer = $.urlParam('offer');
         if(offer){
+          $(".alert[role='alert']").appendTo("#"+offer+"-info")
           $('html, body').animate({
-              scrollTop: $("#"+offer).offset().top
+              scrollTop: $("#"+offer).offset().top - 50
           }, 1000);
           $("#"+offer).trigger('click');
           if($.urlParam('open')){
