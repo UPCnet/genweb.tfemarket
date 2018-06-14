@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import ldap
+
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from email.mime.multipart import MIMEMultipart
@@ -146,3 +148,59 @@ def checkOfferhasConfirmedApplications(offer):
         if item.review_state == 'confirmed':
             return True
     return False
+
+
+def LDAPSearch(self, query, isQueryAlreadyMade=False):
+    def return_dict(ok, content):
+        return {'ok': ok, 'content': content}
+
+    def create_query(query):
+        fields = ['sn', 'cn']
+        return '(|' + ''.join('(%s=*%s*)' % (fieldname, query) for fieldname in fields) + ')'
+
+    if not query:
+        return return_dict(False, 'Query should not be empty')
+
+    result_set = []
+    acl_users = getToolByName(self.context, 'acl_users').ldapUPC.acl_users
+    ldap_pwd = acl_users._bindpwd
+    ldap_binduid = acl_users._binduid
+    ldap_server = acl_users.getServers()[0]
+    server = "%s://%s:%s" % (ldap_server['protocol'], ldap_server['host'], ldap_server['port'])
+    try:
+        ldapservice = ldap.initialize(server)
+        ldapservice.simple_bind_s(ldap_binduid, ldap_pwd)
+        ldapservice.protocol_version = ldap.VERSION3
+        ldapservice.op_timeout = ldap_server['op_timeout']
+        ldap_result_id = ldapservice.search(
+            acl_users.users_base,
+            acl_users.users_scope,
+            query if isQueryAlreadyMade else create_query(query),
+            None
+        )
+        while True:
+            result_type, result_data = ldapservice.result(ldap_result_id, 0)
+            if result_data == []:
+                break
+            else:
+                if result_type == ldap.RES_SEARCH_ENTRY:
+                    person_info = result_data[0][1]
+                    returnfields = [
+                        ('username', 'cn'),
+                        ('dni', 'DNIpassport'),
+                        ('segmentation', 'segmentation'),
+                        ('typology', 'typology'),
+                        ('unit', 'unit'),
+                        ('idorigen', 'idorigen'),
+                        ('fullname', 'sn'),
+                        ('email', 'mail'),
+                        ('phone', 'telephoneNumber')
+                    ]
+                    result_set.append({key: person_info.get(value, ['']) for key, value in returnfields})
+
+    except ldap.LDAPError as e:
+        return return_dict(False, e[0])
+    else:
+        return return_dict(True, result_set)
+    finally:
+        ldapservice.unbind_s()

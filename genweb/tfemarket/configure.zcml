@@ -11,6 +11,8 @@
 
     <i18n:registerTranslations directory="locales" />
 
+    <cmf:registerDirectory name="tfetheme_images" recursive="True" />
+
     <five:registerPackage package="." initialize=".initialize" />
 
     <includeDependencies package="." />
@@ -34,8 +36,6 @@
         id="genweb.tfemarket.add.application"
         title="Genweb TFEMarket: Add Application"
     />
-
-    <cmf:registerDirectory name="tfetheme_custom" recursive="True" />
 
     <genericsetup:registerProfile
         name="default"

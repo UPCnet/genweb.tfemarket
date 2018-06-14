@@ -21,6 +21,7 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n">
     <property name="behaviors">
         <element value="plone.app.dexterity.behaviors.metadata.IBasic" />
         <element value="plone.app.content.interfaces.INameFromTitle"/>
+        <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
     </property>
     <property name="schema">genweb.tfemarket.content.market.IMarket</property>
     <property name="model_source">&lt;model xmlns="http://namespaces.plone.org/supermodel/schema"&gt;
