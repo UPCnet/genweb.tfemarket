@@ -1,8 +1,6 @@
-/*CSS DAVID*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i');
 
-.applications {
-  padding-top: 40px;
-}
+/*CSS DAVID*/
 
 #content-core .informacioTFE {
   position: relative;
@@ -23,7 +21,7 @@ li.unstyled.offer {
   float: left;
   border-bottom: 1px solid #cecece;
   width: 100%;
-  padding: 10px 0px 10px 0px;
+  padding: 8px 0px 8px 0px;
 }
 
 .documentDescription {
@@ -120,6 +118,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   display: grid;
 }
 
+#offersList .puntTitle .span8,
 #offersList .nav.nav-tabs {
   margin-bottom: 0px;
 }
@@ -138,39 +137,33 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   float: right;
 }
 
-#offersList .puntTitle .rightTitle {
-  float: right;
-  text-align: right;
-}
-
-#offersList .puntTitle .rightTitle .effectiveDate {
-  margin-right: 10px;
-}
-
-#offersList .puntTitle .rightTitle .dates p {
+#offersList .puntTitle .dates p,
+#offersList .puntTitle .effectiveDate {
   margin-bottom: 0px;
 }
 
-#offersList button.expand {
-  padding: 3px;
-}
-
+#offersList .fletxaSpan .notexpand,
 #offersList .fletxaSpan .expand {
-  margin-top: 0px!important;
-  padding-top: 2px!important;
-  padding: 2px 6px;
+  margin-top: 0px;
+  padding: 4px 6px;
+  background: #c35a0a;
+  background-color: #eaeaea;
+  border: 1px solid #d2d2d2;
+  color: #c35a0a;
+  border-radius: 3px !important;
 }
 
 #offersList #list {
   margin: 0px;
+  margin-top: 20px;
 }
 
 #headerListOffers {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #headerListOffers h2 {
-  margin-top: 0px;
+  margin-top: 20px;
   text-align: left;
   float: left;
 }
@@ -182,6 +175,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 
 #headerListOffers #buttonsSearch {
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .tab-content .informacioTFE .bottomLinks,
@@ -208,16 +202,15 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   position: absolute;
   top: 0px;
   right: 0px;
-  text-align: left;
 }
 
 .informacioTFE p {
   margin: 0px 0px 2px 0px;
 }
 
-#offersList .puntTitle .rightTitle .dates .field,
+#offersList .puntTitle .dates .field,
 .informacioTFE .field {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .informacioTFE .keyword {
@@ -227,6 +220,10 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   border-radius: 10px !important;
   border: 1px solid #666666;
   margin-left: 5px;
+}
+
+.informacioTFE .keyword:first-of-type {
+  margin-left: 0px;
 }
 
 .informacioTFE .bottomLinks {
@@ -246,20 +243,38 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 .btnTFE,
 .buttonsRight button.link,
 .informacioTFE .bottomLinks button.link {
-  background: #007BC0;
-  border-radius: 4px !important;
+  background: #c35a0a;
+  border-radius: 2px !important;
 }
 
 .btnTFE,
-.buttonsRight a button.link,
-.informacioTFE .bottomLinks a button.link,
-.informacioTFE .bottomLinks .showMoreInfo {
+.buttonsRight a button.link {
   text-shadow: none;
   text-decoration: none;
   color: #FFF;
   font-weight: bold;
 }
 
+.informacioTFE .buttonsOffer {
+  padding-top: 20px;
+}
+
+.informacioTFE .buttonsOffer .showMoreInfo {
+  border-radius: 15px !important;
+  padding: 2px;
+  border: 1px solid #666;
+  background-color: #fcfbfb;
+  cursor: pointer;
+  float: right;
+  height: 20px;
+  width: 20px;
+  display: block;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  text-align: center;
+
+}
 
 #headerSearchOffers {
   display: inline;
@@ -274,42 +289,19 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 }
 
 #offerData .data,
-#offerData .applications,
 #offersList .offerData .data,
-#offersList .offerData .applications,
-#applicationData,
-#formSearchOffers {
+#applicationData{
   background-color: #f5f4f4;
   float: left;
   padding: 20px;
-  border-radius: 5px !important;
-  border: 1px solid #cdcdcd;
+  border-radius: 2px !important;
+  border: 1px solid #eaeaea;
   width: 95.7%;
-}
-
-#offerData ul.nav-tabs + div.tab-content .data,
-#offerData ul.nav-tabs + div.tab-content .applications,
-#offersList .offerData ul.nav-tabs + div.tab-content .data,
-#offersList .offerData ul.nav-tabs + div.tab-content .applications {
-  border-radius: 0px 5px 5px 5px !important;
+  position: relative;
 }
 
 #offerData {
   margin: 15px 0px;
-}
-
-#offersList .offerData .nav,
-#offerData .nav {
-  margin-bottom: 0px;
-}
-
-#offersList .offerData .nav-tabs,
-#offerData .nav-tabs {
-  border-bottom: none;
-}
-
-#offerData .nav.nav-tabs li.informacioTFE {
-  float: right;
 }
 
 #offerData .informacioTFE .rightInfoOffer {
@@ -318,36 +310,14 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   text-align: right;
 }
 
-#offersList .offerData .nav-tabs > .active > a,
-#offerData .nav-tabs > .active > a {
-  font-weight: bold;
-}
-
-#offersList .offerData .nav-tabs > .active > a,
-#offersList .offerData .nav-tabs > li > a,
-#offerData .nav-tabs > .active > a,
-#offerData .nav-tabs > li > a {
-  position: relative;
-  border-color: #cdcdcd !important;
-  border-bottom: 0px !important;
-  border-radius: 5px 5px 0px 0px !important;
-  background: #f5f4f4;
-  color: #000;
-}
-
-#offersList .offerData .nav-tabs > .active > a,
-#offerData .nav-tabs > .active > a {
-  background: linear-gradient(#d4d4d4, #f5f4f4);
-}
-
 table.tableApplications,
 table#form-widgets-teacher_manager-hint {
-  border-top: 5px solid #007bc0;
+  border-top: 5px solid #c35a0a;
 }
 
 table.tableApplications thead th,
 table#form-widgets-teacher_manager-hint thead th {
-  background-color: #e4e4e4;
+  background-color: #efefef;
   text-align: left;
   padding: 5px;
 }
@@ -359,8 +329,8 @@ table#form-widgets-teacher_manager-hint tbody tr:nth-child(odd) {
 
 table.tableApplications tbody tr,
 table#form-widgets-teacher_manager-hint tbody tr {
-  border-bottom: 1px solid #adadad;
-  border-top: 1px solid #adadad;
+  border-bottom: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
 }
 
 
@@ -390,7 +360,7 @@ table#form-widgets-teacher_manager-hint tbody .actions .modal .modal-body {
   margin-bottom: 25px;
 }
 
-#market .moreInfo.hide {
+#market .moreInfo {
   display: none;
 }
 
@@ -401,7 +371,7 @@ table.tableApplications tbody .actions > a,
 table#form-widgets-teacher_manager-hint tbody .actions > a {
   background-color: #FFF;
   border: 1px solid #adadad;
-  color: #057bc1;
+  color: #c35a0a;
   padding: 3px 6px;
   text-shadow: none;
 }
@@ -416,7 +386,7 @@ table.tableApplications tbody .actions button.disabled {
 table.tableApplications tbody .actions .workflowsAction .workflow.notclick {
   background-color: #FFF;
   border: 1px solid #adadad;
-  color: #057bc1;
+  color: #c35a0a;
   padding: 3px 6px;
   border-radius: 3px !important;
   text-shadow: none;
@@ -428,27 +398,22 @@ table#form-widgets-teacher_manager-hint tbody .actions a {
   transition: none;
 }
 
-#market .rightInfoOffer.actions button,
-table.tableApplications tbody .actions button {
-  padding: 2px 6px;
-}
-
 #market .rightInfoOffer.actions > a.edit,
 table.tableApplications tbody .actions > a.edit {
-  padding: 3px 3px 3px 6px;
   margin-right: 4px;
+  padding: 2px 4px 3px 6px;
 }
 
 #market .rightInfoOffer.actions .caret,
 table.tableApplications tbody .actions .caret,
 table#form-widgets-teacher_manager-hint tbody .actions .caret {
-  border-top: 4px solid #057bc1;
+  border-top: 4px solid #c35a0a;
   vertical-align: middle;
 }
 
 #market .rightInfoOffer.actions button:hover,
 table.tableApplications tbody .actions button:hover {
-  border: 1px solid #057bc1;
+  border: 1px solid #c35a0a;
 }
 
 #market .rightInfoOffer.actions button.disabled:hover,
@@ -460,9 +425,10 @@ table.tableApplications tbody .actions button.disabled:hover {
 #market .rightInfoOffer.actions > a:hover,
 table.tableApplications tbody .actions > a:hover,
 table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
-  background-color: #057bc1;
+  background-color: #c35a0a;
   color: #FFF;
-  border: 1px solid #057bc1;
+  border: 1px solid #c35a0a;
+  background-image: none;
 }
 
 #market .rightInfoOffer.actions .workflowsAction,
@@ -483,9 +449,16 @@ table.tableApplications tbody .actions .estatsToggle li {
   text-align: left;
 }
 
+
+#market .rightInfoOffer.actions .estatsToggle li a:active,
+table.tableApplications tbody .actions .estatsToggle li a:active,
 #market .rightInfoOffer.actions .estatsToggle li a:hover,
-table.tableApplications tbody .actions .estatsToggle li a:hover {
-  background-color: #057bc1;
+table.tableApplications tbody .actions .estatsToggle li a:hover,
+#market .rightInfoOffer.actions .estatsToggle li a:focus,
+table.tableApplications tbody .actions .estatsToggle li a:focus {
+  background-color: #c35a0a;
+  background-image: none;
+  color: #FFF;
 }
 
 #offersList .offerData .applications ul,
@@ -494,9 +467,10 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 }
 
 #formSearchOffers {
-  width: 96%;
+  width: 100%;
   margin-bottom: 20px;
-  padding: 20px;
+  padding-top: 0px;
+  float: left;
 }
 
 #formSearchOffers .saved {
@@ -508,19 +482,84 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 }
 
 #formSearchOffers span {
-  color: #557C95;
-  font-weight: bold;
+  font-weight: normal;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #555;
 }
 
 #formSearchOffers label {
   float: left;
   width: 100%;
   padding-right: 24px;
+  color: #6d6d6d;
+}
+
+#formSearchOffers label.switch {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 18px;
+  margin-bottom: 0px
+}
+
+#formSearchOffers label.switch input {
+  display: none;
+}
+
+#formSearchOffers label.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #bbb;
+  -webkit-transition: .4s;
+  transition: .4s;
+  margin-bottom: 0px
+}
+
+#formSearchOffers label.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+#formSearchOffers label.switch input:checked + .slider {
+  background-color: #c35a0a;
+}
+
+#formSearchOffers label.switch input:focus + .slider {
+  box-shadow: 0 0 1px #c35a0a;
+}
+
+#formSearchOffers label.switch input:checked + .slider:before {
+  -webkit-transform: translateX(21px);
+  -ms-transform: translateX(21px);
+  transform: translateX(21px);
+}
+
+#formSearchOffers label.switch .slider.round {
+  border-radius: 34px;
+}
+
+#formSearchOffers label.switch .slider.round:before {
+  border-radius: 50%;
 }
 
 #formSearchOffers input[type='text'] {
   float: left;
   width: calc(100% - 14px);
+  height: 25px;
+  margin-bottom: 18px;
+  border-color: #dedede;
 }
 
 #formSearchOffers input[type='checkbox'] {
@@ -532,6 +571,9 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 #formSearchOffers select {
   float: left;
   width: 100%;
+  height: 35px;
+  margin-bottom: 18px;
+  border-color: #dedede;
 }
 
 #formSearchOffers button {
@@ -541,16 +583,12 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 #formSearchOffers button a,
 #formSearchOffers button span {
   color: #FFF;
-  font-weight: bold;
   text-shadow: none;
-}
-
-#formSearchOffers .multicheck {
-  margin: 5px 0px;
+  font-size:15px;
+  font-weight: 600;
 }
 
 #formSearchOffers .multicheck label {
-  width: auto;
   padding-right: 20px;
 }
 
@@ -566,6 +604,29 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
   display: inline-block
 }
 
+#formSearchOffers span.keyword {
+  display: inline-block;
+  background-color: #ddd;
+  padding: 5px 15px;
+  border-radius: 20px !important;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+#formSearchOffers span.keyword input[type='checkbox'] {
+  display: none;
+}
+
+#formSearchOffers span.keyword.checked {
+  background-color: #c35a0a;
+  color: white;
+}
+
+#formSearchOffers span.keyword.checked span {
+  color: white!important;
+}
+
+
 #formSearchOffers .bottomLinks {
   float: right;
 }
@@ -579,10 +640,16 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
   text-shadow: none;
 }
 
+#formSearchOffers .span6,
+#formSearchOffers .span4,
+#formSearchOffers .span2 {
+  margin-bottom: 0px;
+}
+
 #offersList .hide,
-#offersList #collapseAll,
 #offersList .offerData,
-#offersList .notexpand {
+#offersList .notexpand,
+#offersList .hideApplicationsLit {
   display: none;
 }
 
@@ -605,6 +672,9 @@ table.tableApplications tbody .actions .estatsToggle li a:hover {
 #offersList .puntTitle,
 #offerData .puntTitle {
   padding: 0px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #offersList .titleSpan h3,
@@ -652,40 +722,66 @@ h2.formFieldset {
   display: none
 }
 
+.portaltype-genweb-tfemarket-market .infoTfemarket,
 #viewlet-above-content-title .infoTfemarket {
   margin-right: 5px;
   height: 22px;
   width: 22px;
 }
 
+.portaltype-genweb-tfemarket-market .infoTfemarket .fa-info-circle,
 #viewlet-above-content-title .infoTfemarket .fa-info-circle {
   font-size: 1.9em;
 }
 
+#formSearchOffers button,
+.informacioTFE .buttonsOffer button,
 .btnTFE {
   display: inline-block;
-  padding: 4px 14px;
   vertical-align: middle;
   cursor: pointer;
-  background: #007BC0AA;
   margin-right: 5px;
   border: 1px solid #7f7f7f;
   border-bottom-color: #595959;
-  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
   text-shadow: none;
   text-decoration: none;
   color: #FFF;
-  font-weight: bold;
-  border-radius: 4px !important;
+  border-radius: 2px !important;
+  background: #c35a0a;
+  border-color: #ac3549;
+  padding: 8px 20px;
+  min-width: 125px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-.btnTFE:hover {
-  color: #FFF;
+.btnTFE {
+  height: 20px;
 }
 
+.informacioTFE .buttonsOffer button:hover,
+.buttonsRight a button.link:hover,
+#formSearchOffers button:hover,
+.btnTFE:hover,
 .btnTFE:active {
+  color: #FFF;
   outline: 0;
   box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #7f7f7f;
+  border-bottom-color: #595959;
+}
+
+.informacioTFE .span6 {
+  margin-bottom: 0px;
+}
+
+.informacioTFE .applications {
+  padding-top: 20px;
+}
+
+.offerData .offerInfo .btn-success {
+  margin-left: 10px;
+  vertical-align: baseline;
 }
 
 #listing-table a.contenttype-genweb-tfemarket-application:before,
@@ -781,3 +877,93 @@ span.icon-genweb-tfemarket-market{
 }
 
 /*FIN KO & IAGO CSS*/
+
+/* ALBERT */
+
+.portaltype-genweb-tfemarket-market {
+  font-family:'Open Sans', sans-serif
+}
+
+.portaltype-genweb-tfemarket-market .tfe-header-image.l3-image:before {
+  content: "Mercat de treball de final d'estudis";
+  font-size: 50px;
+  color: white;
+  text-shadow: 2px 2px 10px black;
+  display: block;
+  text-align: center;
+  padding-right: 15px;
+}
+
+.portaltype-genweb-tfemarket-market .tfe-header-image.l3-image {
+  background-image: url(../background-tfe.jpg);
+  height: 100px;
+  background-size: cover;
+  width: 99.5vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  padding-top: 6.63%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: 20px;
+}
+
+.portaltype-genweb-tfemarket-market nav#portal-globalnav,
+.portaltype-genweb-tfemarket-market nav#portal-breadcrumbs,
+.portaltype-genweb-tfemarket-market #portal-breadcrumbs,
+.portaltype-genweb-tfemarket-market .header-image.l3-image,
+.portaltype-genweb-tfemarket-market h1.documentFirstHeading {
+  display: none;
+}
+
+.portaltype-genweb-tfemarket-market #content-area {
+  margin-top: 0px;
+}
+
+.portaltype-genweb-tfemarket-market #searchOffers {
+  background-image: url(../pattern-tfe.png);
+  width: 99.5vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.portaltype-genweb-tfemarket-market #searchOffers h2 {
+   margin-top: 20px!important;
+}
+
+#formSearchOffers div#searchGrants,
+#formSearchOffers .multicheck {
+  margin-bottom: 18px;
+}
+
+#formSearchOffers .multicheckOptionsKeys .keyword span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#offersList #notResults {
+  margin-top: 20px;
+}
+
+.puntTitle .actions.span2 {
+  text-align: right;
+  width: 13.11043%;
+  min-height: 0px;
+}
+
+.puntTitle .dates.span2 {
+  width: 15.11043%;
+}
+
+p.effectiveDate {
+  margin-bottom: 0px;
+}
+
+.nav-tabs > li,
+.contentViews > li,
+.configlets > li {
+  margin-bottom: -2px;
+}

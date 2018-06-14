@@ -50,25 +50,3 @@ class infoTfemarket(grok.Viewlet):
         elif portal_type == 'genweb.tfemarket.application':
             url = self.context.getParentNode().getParentNode().absolute_url() + "/manual-dus"
         return url
-
-
-class errorCreateApplication(grok.Viewlet):
-    grok.viewletmanager(IAboveContent)
-    grok.context(Interface)
-    grok.name('genweb.tfemarket.errorcreateapplication')
-    grok.template('errorCreateApplication')
-    grok.layer(IGenwebTfemarketLayer)
-
-    def getApplicationUrl(self):
-        catalog = api.portal.get_tool(name='portal_catalog')
-        wf_tool = getToolByName(self.context, 'portal_workflow')
-        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
-        results = []
-        values = catalog(object_provides=IApplication.__identifier__,
-                         Creator=api.user.get_current().id)
-
-        for item in values:
-            if item.review_state not in ['cancelled', 'rejected']:
-                return item.getURL()
-
-        return ""

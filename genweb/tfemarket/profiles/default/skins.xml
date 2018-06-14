@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_skins" default_skin="GenwebTFEMarket">
+ <object name="tfetheme_custom"
+    meta_type="Filesystem Directory View"
+    directory="genweb.tfemarket:skins/tfetheme_custom"/>
+
+ <skin-path name="GenwebTFEMarket" based-on="GenwebTheme">
+  <layer name="tfetheme_custom" insert-after="custom"/>
+ </skin-path>
+
+</object>

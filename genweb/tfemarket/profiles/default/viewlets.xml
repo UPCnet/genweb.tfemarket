@@ -4,7 +4,4 @@
     <viewlet name="genweb.socialtools"/>
     <viewlet name="genweb.tfemarket.info"/>
   </order>
-  <hidden manager="plone.abovecontent" skinname="GenwebTheme">
-    <viewlet name="genweb.tfemarket.errorcreateapplication"/>
-  </hidden>
 </object>
