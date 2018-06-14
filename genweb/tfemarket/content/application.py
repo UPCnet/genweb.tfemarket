@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
+from plone import api
 from plone.directives import dexterity
 from plone.directives import form
 from zope import schema
@@ -213,5 +214,14 @@ class Add(dexterity.AddForm):
 
 
 class View(grok.View):
+    grok.require('zope2.View')
     grok.context(IApplication)
     grok.template('application_view')
+
+    def redirectToMarket(self):
+        roles = api.user.get_current().getRoles()
+        market_path = self.context.getParentNode().getParentNode().absolute_url()
+        if 'Manager' in roles or 'Market Manager' in roles:
+            self.redirect(market_path + "?offer=" + self.context.offer_id + "&open=Y")
+        else:
+            self.redirect(market_path)

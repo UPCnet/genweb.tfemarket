@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from Products.CMFCore.utils import getToolByName
 from five import grok
 from operator import itemgetter
 from plone import api
@@ -9,15 +8,13 @@ from plone.directives import dexterity, form
 from plone.registry.interfaces import IRegistry
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
-from zope.component import getMultiAdapter, queryUtility
+from zope.component import queryUtility
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
-from zope.security import checkPermission
 
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
-from genweb.tfemarket.utils import checkOfferhasConfirmedApplications, getAllApplicationsFromOffer, getDegreeLiteralFromId, checkPermissionCreateApplications as CPCreateApplications
 from genweb.tfemarket.validations import validateEmail
 from genweb.tfemarket.z3cwidget import FieldsetFieldWidget, ReadOnlyInputFieldWidget, SelectModalityInputFieldWidget, TeacherInputFieldWidget
 
@@ -363,62 +360,13 @@ def defineTeacherAsEditor(offer, event):
 
 
 class View(dexterity.DisplayForm):
-    """The view. May will a template from <modulename>_templates/view.pt,
-    and will be called 'view' unless otherwise stated.
-    """
     grok.require('zope2.View')
     grok.context(IOffer)
     grok.template('offer_view')
 
-    def formatDate(self, date):
-        return date.strftime('%d/%m/%Y')
-
-    def getDegreeLiteralFromId(self, id):
-        return getDegreeLiteralFromId(id)
-
-    def getRaw(self, raw):
-        return raw.raw_encoded if hasattr(raw, 'raw_encoded') else None
-
-    def getApplications(self):
-        wf_tool = getToolByName(self.context, 'portal_workflow')
-        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
-        results = []
-        for item in getAllApplicationsFromOffer(self.context):
-            application = item.getObject()
-            workflowActions = wf_tool.listActionInfos(object=application)
-            workflows = tools.workflow().getWorkflowsFor(application)[0]
-
-            results.append(dict(title=item.Title,
-                                state=workflows['states'][item.review_state].title,
-                                url=item.getURL(),
-                                item_path='/'.join(application.getPhysicalPath()[2:]),
-                                dni=application.dni,
-                                name=application.title,
-                                email=application.email,
-                                phone=application.phone,
-                                offer_id=application.offer_id,
-                                offer_title=application.offer_title,
-                                workflows=workflowActions,
-                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
-                                ))
-        return results
-
-    def checkPermissionCreateApplications(self):
-        return CPCreateApplications(self, self.context)
-
-    def showMessageAssignOffer(self):
-        pw = getToolByName(self.context, "portal_workflow")
-        offer_workflow = pw.getWorkflowsFor(self.context)[0].id
-        offer_status = pw.getStatusOf(offer_workflow, self.context)
-        if checkPermission('cmf.RequestReview', self) and checkOfferhasConfirmedApplications(self.context):
-            if offer_status['review_state'] == 'intranet':
-                return 'assignalofertaintranet'
-            elif offer_status['review_state'] == 'public':
-                return 'assign'
-        return False
-
-    def ifModalityCompany(self):
-        return True if self.context.modality == 'Empresa' else False
+    def redirectToMarket(self):
+        market_path = self.context.getParentNode().absolute_url()
+        self.redirect(market_path + "?offer=" + self.context.offer_id)
 
 
 class Add(dexterity.AddForm):

@@ -12,44 +12,7 @@
         <metal:content-core fill-slot="content-core">
             <metal:block define-macro="content-core">
                 <div metal:use-macro="context/batch_macros/macros/navigation" />
-                <div id="applicationData">
-                  <div class="informacioTFE">
-                    <div class="leftInfoOffer">
-                      <p class="offerID">
-                        <span class="field"><span i18n:translate="">Offer id</span>: </span>
-                        <span tal:content="context/offer_id"></span>
-                      </p>
-                      <p class="offerTitle">
-                        <span class="field"><span i18n:translate="">Offer title</span>: </span>
-                        <span tal:content="context/offer_title"></span>
-                      </p>
-                    </div>
-                    <div class="leftInfoOffer">
-                      <p class="fullname">
-                        <span class="field"><span i18n:translate="">Fullname</span>: </span>
-                        <span tal:content="context/title"></span>
-                      </p>
-                      <p class="dni">
-                        <span class="field"><span i18n:translate="">DNI</span>: </span>
-                        <span tal:content="context/dni"></span>
-                      </p>
-                      <p class="email">
-                        <span class="field"><span i18n:translate="">Email</span>: </span>
-                        <span tal:content="context/email"></span>
-                      </p>
-                      <p class="telephone">
-                        <span class="field"><span i18n:translate="">Telephone</span>: </span>
-                        <span tal:content="context/phone"></span>
-                      </p>
-                    </div>
-                    <div class="leftInfoOffer" tal:condition="context/body">
-                      <div class="description">
-                        <span class="field"><span i18n:translate="">Body</span>: </span>
-                        <p tal:content="context/body"></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <tal:block tal:content="view/redirectToMarket"></tal:block>
               </metal:block>
           </metal:content-core>
       </body>
