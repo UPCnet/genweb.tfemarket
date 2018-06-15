@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from five import grok
 from plone import api
-from plone.app.layout.viewlets.interfaces import IAboveContent
 from plone.app.layout.viewlets.interfaces import IAboveContentTitle
 from plone.app.layout.viewlets.interfaces import IPortalTop
-from zope.component import getMultiAdapter
 from zope.interface import Interface
+from zope.security import checkPermission
 
 from genweb.theme.browser.viewlets import gwPersonalBarViewlet
 
-from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 
 
@@ -23,6 +20,12 @@ class genwebTfemarketPersonalBarViewlet(gwPersonalBarViewlet):
     grok.layer(IGenwebTfemarketLayer)
 
     index = ViewPageTemplateFile('viewlets_templates/personal_bar.pt')
+
+    def canManageConfig(self):
+        return self.canManageTFE() or self.canManageSite()
+
+    def canManageTFE(self):
+        return checkPermission("genweb.tfemarket.controlpanel", self)
 
 
 class infoTfemarket(grok.Viewlet):

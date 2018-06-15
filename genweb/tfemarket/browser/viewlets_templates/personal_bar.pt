@@ -17,7 +17,8 @@
           <h2 class="goout" id="titol-eines-usuari"
               i18n:translate="label_menu_usuari"> Menú d'usuari </h2>
           <ul class="nav" role="menu" aria-labelledby="titol-menu-usuari"
-              tal:define="show_tools view/show_tools">
+              tal:define="show_tools view/show_tools;
+                          canManageSite view/canManageSite">
             <li class="dropdown" role="menuitem" tal:attributes="id string:${view/user_name}">
               <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
                 <img tal:attributes="src string:${view/getPortraitMini}" aria-hidden="true"
@@ -107,7 +108,7 @@
               </ul>
             </li>
             <li class="dropdown" role="menuitem" id="admin"
-                tal:condition="view/canManageSite">
+                tal:condition="view/canManageConfig">
               <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
                 <tal:settingsFolder i18n:translate="genweb-settings">
                   Configuració
@@ -115,13 +116,13 @@
                 <span aria-hidden="true" class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li role="menuitem">
+                <li role="menuitem" tal:condition="canManageSite">
                   <a tal:attributes="href string:${portal_url}/@@overview-controlpanel">
                     <tal:managesite i18n:domain="plone" i18n:translate="Site Setup">
                       Site setup</tal:managesite>
                   </a>
                 </li>
-                <li role="menuitem">
+                <li role="menuitem" tal:condition="canManageSite">
                   <a tal:attributes="href string:${portal_url}/@@genweb-controlpanel">
                           Genweb UPC
                     <img i18n:attributes="alt obrir_link_finestra_nova"
@@ -129,7 +130,7 @@
                         tal:attributes="src string:${portal_url}/++resource++cpgenweb.png" />
                   </a>
                 </li>
-                <li role="menuitem">
+                <li role="menuitem" tal:condition="view/canManageTFE">
                   <a tal:attributes="href string:${portal_url}/@@tfemarket-settings">
                           Mercat de TFE
                     <img i18n:attributes="alt obrir_link_finestra_nova"
@@ -137,14 +138,14 @@
                         tal:attributes="src string:${portal_url}/++resource++cpgenweb.png" />
                   </a>
                 </li>
-                <li aria-hidden="true" class="divider"></li>
-                <li role="menuitem">
+                <li aria-hidden="true" class="divider" tal:condition="canManageSite"></li>
+                <li role="menuitem" tal:condition="canManageSite">
                   <a i18n:translate="genweb-accesarrel"
                      tal:attributes="href string:${portal_url}/folder_contents">
                     Root folder
                   </a>
                 </li>
-                <li role="menuitem">
+                <li role="menuitem" tal:condition="canManageSite">
                   <a tal:attributes="href string:${portal_url}/${view/pref_lang}/@@manage-portlets">
                     <tal:managesite i18n:domain="plone" i18n:translate="manage_portlets_link">
                       Manage root portlets</tal:managesite>
