@@ -351,72 +351,79 @@
                                    </a>
                                 </div>
                               </tal:block>
-                              <div class="data">
-                                <div class="informacioTFE row-fluid">
-                                  <div class="span6">
-                                    <div class="leftInfoOffer">
-                                      <p class="teacher">
-                                        <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
-                                        <span tal:content="offer/teacher_fullname">Aureli Condogvia</span>
-                                      </p>
-                                     <p class="teacherEmail">
-                                        <span class="field"><span i18n:translate="">Teacher Email</span>: </span>
-                                        <span tal:content="offer/teacher_email">???@???.???</span>
-                                     </p>
-                                      <p class="departament">
-                                        <span class="field"><span i18n:translate="">Departament</span>: </span>
-                                        <span tal:content="offer/dept">Departament</span>
-                                      </p>
-                                    </div>
-                                    <div class="leftInfoOffer">
-                                      <p class="modality">
-                                        <span class="field"><span i18n:translate="">Modality</span>: </span>
-                                        <span tal:content="offer/modality">Modalitat</span>
-                                      </p>
-                                    </div>
-                                    <div class="leftInfoOffer">
-                                      <p class="degrees" tal:condition="not: offer/multiple_degrees">
-                                        <span class="field"><span i18n:translate="">Degree</span>: </span>
-                                        <tal:block tal:repeat="degree offer/degrees">
-                                          <span tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</span>
-                                        </tal:block>
-                                      </p>
-                                      <div class="degrees" tal:condition="offer/multiple_degrees">
-                                        <span class="field"><span i18n:translate="">Degrees</span>: </span>
-                                        <ul tal:repeat="degree offer/degrees">
-                                          <li class="degree" tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</li>
-                                        </ul>
+                              <div class="data" tal:define="view_applications python: view.openApplicationsTav() and applications">
+                                <div class="informacioTFE">
+                                  <div class="row-fluid">
+                                    <div class="span6">
+                                      <div class="leftInfoOffer">
+                                        <p class="teacher">
+                                          <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
+                                          <span tal:content="offer/teacher_fullname">Aureli Condogvia</span>
+                                        </p>
+                                       <p class="teacherEmail">
+                                          <span class="field"><span i18n:translate="">Teacher Email</span>: </span>
+                                          <span tal:content="offer/teacher_email">???@???.???</span>
+                                       </p>
+                                        <p class="departament">
+                                          <span class="field"><span i18n:translate="">Departament</span>: </span>
+                                          <span tal:content="offer/dept">Departament</span>
+                                        </p>
                                       </div>
                                       <div class="leftInfoOffer">
-                                        <p class="language" tal:condition="not: offer/multiple_langs">
-                                          <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
-                                          <tal:block tal:repeat="lang offer/langs">
-                                            <span class="lang" tal:content="lang">Language</span>
+                                        <p class="degrees" tal:condition="not: offer/multiple_degrees">
+                                          <span class="field"><span i18n:translate="">Degree</span>: </span>
+                                          <tal:block tal:repeat="degree offer/degrees">
+                                            <span tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</span>
                                           </tal:block>
                                         </p>
-                                        <div class="language" tal:condition="offer/multiple_langs">
-                                          <span class="field"><span i18n:translate="">Languages work elaboration</span>: </span>
-                                          <ul tal:repeat="lang offer/langs">
-                                            <li class="lang" tal:content="lang">Language</li>
+                                        <div class="degrees" tal:condition="offer/multiple_degrees">
+                                          <span class="field"><span i18n:translate="">Degrees</span>: </span>
+                                          <ul tal:repeat="degree offer/degrees">
+                                            <li class="degree" tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</li>
                                           </ul>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                  <div class="span6">
-                                    <div class="leftInfoOffer" tal:condition="offer/description">
-                                      <div class="description">
-                                        <span class="field"><span i18n:translate="">Description</span>: </span>
-                                        <p tal:content="offer/description">Nam fermentum tellus vel tellus imperdiet, consectetur finibus sem mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur eu maximus nulla, vitae rhoncus sem. Pellentesque efficitur, tellus vel luctus dictum, nunc tellus cursus nulla, eget aliquam lacus lacus non lectus. Nam molestie ex dolor, quis pulvinar tortor volutpat rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec ligula sit amet quam hendrerit vestibulum. Nunc ut mauris lorem. Praesent non sollicitudin eros, non vestibulum erat. Nulla facilisi.</p>
+                                    <div class="span6">
+                                      <div class="leftInfoOffer">
+                                        <p class="modality">
+                                          <span class="field"><span i18n:translate="">Modality</span>: </span>
+                                          <span tal:content="offer/modality">Modalitat</span>
+                                        </p>
+                                        <p class="grant">
+                                          <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
+                                          <span tal:condition="offer/grant" i18n:translate="">Yes</span>
+                                          <span tal:condition="not: offer/grant" i18n:translate="">No</span>
+                                         </p>
+                                      </div>
+                                      <div class="leftInfoOffer">
+                                          <p class="language" tal:condition="not: offer/multiple_langs">
+                                            <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
+                                            <tal:block tal:repeat="lang offer/langs">
+                                              <span class="lang" tal:content="lang">Language</span>
+                                            </tal:block>
+                                          </p>
+                                          <div class="language" tal:condition="offer/multiple_langs">
+                                            <span class="field"><span i18n:translate="">Languages work elaboration</span>: </span>
+                                            <ul tal:repeat="lang offer/langs">
+                                              <li class="lang" tal:content="lang">Language</li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      <div class="leftInfoOffer" tal:condition="offer/keywords">
+                                        <p class="keywords">
+                                          <span class="field"><span i18n:translate="">Keywords</span>: </span>
+                                          <tal:block tal:repeat="keyword offer/keywords">
+                                            <span class="keyword" tal:content="keyword">Keyword</span>
+                                          </tal:block>
+                                        </p>
                                       </div>
                                     </div>
-                                    <div class="leftInfoOffer" tal:condition="offer/keywords">
-                                      <p class="keywords">
-                                        <span class="field"><span i18n:translate="">Keywords</span>: </span>
-                                        <tal:block tal:repeat="keyword offer/keywords">
-                                          <span class="keyword" tal:content="keyword">Keyword</span>
-                                        </tal:block>
-                                      </p>
+                                  </div>
+                                  <div class="leftInfoOffer" tal:condition="offer/description">
+                                    <div class="description">
+                                      <span class="field"><span i18n:translate="">Description</span>: </span>
+                                      <p tal:content="offer/description">Nam fermentum tellus vel tellus imperdiet, consectetur finibus sem mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur eu maximus nulla, vitae rhoncus sem. Pellentesque efficitur, tellus vel luctus dictum, nunc tellus cursus nulla, eget aliquam lacus lacus non lectus. Nam molestie ex dolor, quis pulvinar tortor volutpat rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec ligula sit amet quam hendrerit vestibulum. Nunc ut mauris lorem. Praesent non sollicitudin eros, non vestibulum erat. Nulla facilisi.</p>
                                     </div>
                                   </div>
                                 </div>
@@ -488,11 +495,6 @@
                                           <span tal:condition="offer/environmental_theme" i18n:translate="">Yes</span>
                                           <span tal:condition="not: offer/environmental_theme" i18n:translate="">No</span>
                                        </p>
-                                       <p class="grant">
-                                          <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
-                                          <span tal:condition="offer/grant" i18n:translate="">Yes</span>
-                                          <span tal:condition="not: offer/grant" i18n:translate="">No</span>
-                                       </p>
                                        <p class="confidential">
                                           <span class="field"><span i18n:translate="">Confidential</span>: </span>
                                           <span tal:condition="offer/confidential" i18n:translate="">Yes</span>
@@ -505,7 +507,16 @@
                                        </p>
                                     </div>
                                   </div>
-                                  <div tal:condition="python: view.openApplicationsTav() and applications" class="applications hide">
+                                  <div class="buttonsOfferInfo">
+                                    <span class="offerMoreInfo">
+                                      <span class="litMoreInfo" i18n:translate="">More info</span>
+                                      <span class="showMoreInfo">
+                                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                      </span>
+                                    </span>
+                                  </div>
+                                  <div class="offerSeparator" tal:condition="view_applications"></div>
+                                  <div tal:condition="view_applications" class="applications hide">
                                     <table class="tableApplications">
                                       <thead>
                                         <tr>
@@ -583,7 +594,7 @@
                                       </tbody>
                                     </table>
                                   </div>
-                                  <div class="buttonsOffer">
+                                  <div class="buttonsOffer" tal:condition="view_applications">
                                     <tal:condition tal:condition="offer/can_create_application">
                                       <a tal:attributes="href string:${offer/url}/++add++genweb.tfemarket.application">
                                         <button type="submit" class="link">
@@ -600,9 +611,6 @@
                                         <span class="hideApplicationsLit" i18n:translate="">Hide applications</span>
                                       </button>
                                     </tal:condition>
-                                    <span class="showMoreInfo">
-                                      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                    </span>
                                   </div>
                                 </div>
                               </div>

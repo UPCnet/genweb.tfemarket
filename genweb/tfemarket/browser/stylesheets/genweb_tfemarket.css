@@ -256,11 +256,32 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   font-weight: bold;
 }
 
+.informacioTFE .offerSeparator {
+  border-top: 2px solid #FFFFFF;
+}
+
 .informacioTFE .buttonsOffer {
   padding-top: 20px;
 }
 
-.informacioTFE .buttonsOffer .showMoreInfo {
+.informacioTFE .buttonsOfferInfo {
+  height: 35px;
+}
+
+.informacioTFE .buttonsOfferInfo .offerMoreInfo {
+  float: right;
+}
+
+.informacioTFE .buttonsOfferInfo .litMoreInfo {
+  display: inline-table;
+  margin-top: 4px;
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #c35a0a;
+  font-weight: 600;
+}
+
+.informacioTFE .buttonsOfferInfo .showMoreInfo {
   border-radius: 15px !important;
   padding: 2px;
   border: 1px solid #666;
@@ -270,9 +291,6 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   height: 20px;
   width: 20px;
   display: block;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
   text-align: center;
 
 }
@@ -693,13 +711,6 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   margin-top: 35px;
 }
 
-h2.formFieldset {
-  padding: 4px 4px;
-  border-radius: 6px !important;
-  border-top: 6px double;
-  border-bottom: 6px double;
-}
-
 #form-widgets-teacher_manager-modal {
   width: 70% !important;
   left: 37% !important;
@@ -896,6 +907,7 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-offer #portal-header,
 .portaltype-genweb-tfemarket-application #portal-header {
   height: 276px;
+  margin-bottom: 20px;
 }
 
 .portaltype-genweb-tfemarket-market #portal-header:after,
@@ -922,6 +934,36 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-offer,
 .portaltype-genweb-tfemarket-application {
   font-family:'Open Sans', sans-serif
+}
+
+.portaltype-genweb-tfemarket-market label,
+.portaltype-genweb-tfemarket-offer label,
+.portaltype-genweb-tfemarket-application label {
+  color: #6d6d6d;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.portaltype-genweb-tfemarket-market label *.label,
+.portaltype-genweb-tfemarket-offer label *.label,
+.portaltype-genweb-tfemarket-application label *.label {
+  font-weight: normal;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #555;
+}
+
+.portaltype-genweb-tfemarket-market h2.formFieldset,
+.portaltype-genweb-tfemarket-offer h2.formFieldset,
+.portaltype-genweb-tfemarket-application h2.formFieldset {
+  padding: 4px 0px;
+  margin-top: 0px;
+}
+
+#formfield-form-widgets-grant,
+#formfield-form-widgets-confidential,
+#formfield-form-widgets-environmental_theme {
+  margin-bottom: 0px;
 }
 
 .portaltype-genweb-tfemarket-market nav#portal-globalnav,
