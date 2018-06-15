@@ -126,6 +126,10 @@
                           <span i18n:translate="">Hide search</span> <i class="fa fa-chevron-up" aria-hidden="true"></i>
                         </span>
                       </span>
+                      <span id="buttonsAllOffers" tal:condition="offers">
+                        <span id="expandAll" i18n:translate="">Desplega tot <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        <span id="collapseAll" i18n:translate="">Plega tot <i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                      </span>
                       <div class="pull-right infoTfemarket">
                         <a i18n:attributes="alt info; title info" href="manual-dus">
                           <i class="fa fa-info-circle"></i>
@@ -654,6 +658,24 @@
             $("#collapseSearch").show();
           }
         });
+
+        $("#expandAll").click(function(){
+          $(".expand").parent().parent().parent().parent().slideDown();
+          $(".expand").hide();
+          $(".notexpand").show();
+          $(".expand").parent().parent().parent().parent().find('.offerData').slideDown();
+          $("#expandAll").hide();
+          $("#collapseAll").show();
+        })
+
+        $("#collapseAll").click(function(){
+          $(".notexpand").slideUp();
+          $(".notexpand").hide();
+          $(".expand").show();
+          $(".expand").parent().parent().parent().parent().find('.offerData').slideUp();
+          $("#expandAll").show();
+          $("#collapseAll").hide();
+        })
 
         if($('#formSearchOffers').attr('data-saved') == 1){
           $('input[name="language"]').prop('checked', true);

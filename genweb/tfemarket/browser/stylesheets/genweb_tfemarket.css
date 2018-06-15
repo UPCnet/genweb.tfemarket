@@ -173,7 +173,8 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-bottom: 0px;
 }
 
-#headerListOffers #buttonsSearch {
+#headerListOffers #buttonsSearch,
+#headerListOffers #buttonsAllOffers {
   margin-right: 15px;
   cursor: pointer;
 }
@@ -649,6 +650,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 #offersList .hide,
 #offersList .offerData,
 #offersList .notexpand,
+#offersList #collapseAll,
 #offersList .hideApplicationsLit {
   display: none;
 }
