@@ -13,9 +13,6 @@
         <metal:block define-macro="content-core"
                      tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
-
-            <div class="tfe-header-image l3-image"></div>
-
             <div id="market" tal:define="save view/saveFilters; userApplications view/userApplications">
                 <div id="userApplication" tal:condition="userApplications">
                   <h2 i18n:translate="">Your application</h2>
@@ -665,7 +662,7 @@
 
         var offer = $.urlParam('offer');
         if(offer){
-          $(".alert[role='alert']").appendTo("#"+offer+"-info")
+          $(".alert[role='alert']").appendTo("#"+offer+"-info");
           $('html, body').animate({
               scrollTop: $("#"+offer).offset().top - 50
           }, 1000);

@@ -722,15 +722,13 @@ h2.formFieldset {
   display: none
 }
 
-.portaltype-genweb-tfemarket-market .infoTfemarket,
-#viewlet-above-content-title .infoTfemarket {
+.portaltype-genweb-tfemarket-market .infoTfemarket {
   margin-right: 5px;
   height: 22px;
   width: 22px;
 }
 
-.portaltype-genweb-tfemarket-market .infoTfemarket .fa-info-circle,
-#viewlet-above-content-title .infoTfemarket .fa-info-circle {
+.portaltype-genweb-tfemarket-market .infoTfemarket .fa-info-circle  {
   font-size: 1.9em;
 }
 
@@ -852,17 +850,26 @@ span.icon-genweb-tfemarket-market{
 
 
 /* Contenido de plone > Display = None */
-.portaltype-genweb-tfemarket-offer #viewlet-below-content,
+.portaltype-genweb-tfemarket-market #viewlet-above-content,
+.portaltype-genweb-tfemarket-market #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-market #viewlet-below-content,
-.portaltype-genweb-tfemarket-application #viewlet-below-content,
-.portaltype-genweb-tfemarket-offer #edit-bar,
 .portaltype-genweb-tfemarket-market #edit-bar,
-.portaltype-genweb-tfemarket-application #edit-bar,
-.portaltype-genweb-tfemarket-offer #viewlet-below-content-title .documentByLine,
+.portaltype-genweb-tfemarket-market .header-image,
 .portaltype-genweb-tfemarket-market #viewlet-below-content-title .documentByLine,
-.portaltype-genweb-tfemarket-application #viewlet-below-content-title .documentByLine,
-.portaltype-genweb-tfemarket-offer ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-market ul#contentActionMenus li.dropdown:first-of-type,
+.portaltype-genweb-tfemarket-offer #viewlet-above-content,
+.portaltype-genweb-tfemarket-offer #viewlet-above-content-title,
+.portaltype-genweb-tfemarket-offer #viewlet-below-content,
+.portaltype-genweb-tfemarket-offer #edit-bar,
+.portaltype-genweb-tfemarket-offer .header-image,
+.portaltype-genweb-tfemarket-offer #viewlet-below-content-title .documentByLine,
+.portaltype-genweb-tfemarket-offer ul#contentActionMenus li.dropdown:first-of-type,
+.portaltype-genweb-tfemarket-application #viewlet-above-content,
+.portaltype-genweb-tfemarket-application #viewlet-above-content-title,
+.portaltype-genweb-tfemarket-application #viewlet-below-content,
+.portaltype-genweb-tfemarket-application #edit-bar,
+.portaltype-genweb-tfemarket-application .header-image,
+.portaltype-genweb-tfemarket-application #viewlet-below-content-title .documentByLine,
 .portaltype-genweb-tfemarket-application ul#contentActionMenus li.dropdown:first-of-type {
   display: none;
 }
@@ -876,36 +883,43 @@ span.icon-genweb-tfemarket-market{
   width: calc(100% - 14px); /* Le restamos el padding (6 - 6) y el borde (1 - 1) */
 }
 
-/*FIN KO & IAGO CSS*/
 
-/* ALBERT */
+/* Cabecera Mercado */
 
-.portaltype-genweb-tfemarket-market {
-  font-family:'Open Sans', sans-serif
+.portaltype-genweb-tfemarket-market  #market {
+  margin-top: 20px;
 }
 
-.portaltype-genweb-tfemarket-market .tfe-header-image.l3-image:before {
+.portaltype-genweb-tfemarket-market #portal-header,
+.portaltype-genweb-tfemarket-offer #portal-header,
+.portaltype-genweb-tfemarket-application #portal-header {
+  height: 276px;
+}
+
+.portaltype-genweb-tfemarket-market #portal-header:after,
+.portaltype-genweb-tfemarket-offer #portal-header:after,
+.portaltype-genweb-tfemarket-application #portal-header:after {
+  background-image: url(../background-tfe.jpg);
+  height: 100px;
+  background-size: cover;
+  width: 100%;
+  position: absolute;
   content: "Mercat de treball de final d'estudis";
   font-size: 50px;
   color: white;
   text-shadow: 2px 2px 10px black;
-  display: block;
   text-align: center;
-  padding-right: 15px;
+  padding-top: 65px;
 }
 
-.portaltype-genweb-tfemarket-market .tfe-header-image.l3-image {
-  background-image: url(../background-tfe.jpg);
-  height: 100px;
-  background-size: cover;
-  width: 99.5vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  padding-top: 6.63%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  margin-bottom: 20px;
+/*FIN KO & IAGO CSS*/
+
+/* ALBERT */
+
+.portaltype-genweb-tfemarket-market,
+.portaltype-genweb-tfemarket-offer,
+.portaltype-genweb-tfemarket-application {
+  font-family:'Open Sans', sans-serif
 }
 
 .portaltype-genweb-tfemarket-market nav#portal-globalnav,
