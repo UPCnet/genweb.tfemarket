@@ -928,6 +928,12 @@ span.icon-genweb-tfemarket-market{
   font-weight: 600;
 }
 
+.portaltype-genweb-tfemarket-market #portal-header.logoPropi,
+.portaltype-genweb-tfemarket-offer #portal-header.logoPropi,
+.portaltype-genweb-tfemarket-application #portal-header.logoPropi {
+  padding: 0px;
+}
+
 /*FIN KO & IAGO CSS*/
 
 /* ALBERT */
