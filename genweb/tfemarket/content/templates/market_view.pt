@@ -594,7 +594,7 @@
                                       </tbody>
                                     </table>
                                   </div>
-                                  <div class="buttonsOffer" tal:condition="view_applications">
+                                  <div class="buttonsOffer">
                                     <tal:condition tal:condition="offer/can_create_application">
                                       <a tal:attributes="href string:${offer/url}/++add++genweb.tfemarket.application">
                                         <button type="submit" class="link">
@@ -602,7 +602,7 @@
                                         </button>
                                       </a>
                                     </tal:condition>
-                                    <tal:condition tal:condition="python: view.openApplicationsTav() and applications">
+                                    <tal:condition tal:condition="view_applications">
                                       <button type="submit" class="link showApplications">
                                         <span tal:attributes="id string:${offer/offer_id}-applications"
                                               class="showApplicationsLit" i18n:translate="">
