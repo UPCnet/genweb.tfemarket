@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from plone import api
 from plone.formwidget.autocomplete.widget import AutocompleteSelectionWidget
 
 import z3c.form.browser.text
@@ -44,9 +45,12 @@ class TeacherInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
         z3c.form.browser.widget.addFieldClass(self)
 
     def hasPermissions(self):
-        ## TODO Aplicar funcionalidad, si no eres Manager devolver return False
-        return True
+        roles = api.user.get_roles()
+        return 'Market Manager' in roles or 'Manager' in roles
 
+    def ifTeacher(self):
+        roles = api.user.get_roles()
+        return 'Teacher' in roles
 
 @zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
