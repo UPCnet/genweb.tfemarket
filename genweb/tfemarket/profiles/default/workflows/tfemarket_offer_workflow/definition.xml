@@ -276,7 +276,7 @@
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
- <state state_id="okprisma" title="Ok PRISMA">
+ <state state_id="okprisma" title="Treball inscrit">
   <exit-transition transition_id="retiraaesborranymanager"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
@@ -316,7 +316,7 @@
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
- <state state_id="okprismaintranet" title="Ok PRISMA (intranet)">
+ <state state_id="okprismaintranet" title="Treball inscrit (intranet)">
   <exit-transition transition_id="retiraaesborranymanager"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
