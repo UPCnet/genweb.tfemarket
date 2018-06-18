@@ -396,9 +396,12 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
 }
 
 #market .rightInfoOffer.actions button.disabled,
-table.tableApplications tbody .actions button.disabled {
-  color: #ADADAD;
+table.tableApplications tbody .actions button.disabled,
+#market .rightInfoOffer.actions button.disabled:hover,
+table.tableApplications tbody .actions button.disabled:hover {
+  color: #ADADAD !important;
   cursor: default;
+  border: 1px solid #adadad !important;
 }
 
 #market .rightInfoOffer.actions .workflowsAction .workflow.notclick,
@@ -445,7 +448,7 @@ table.tableApplications tbody .actions button.disabled:hover {
 table.tableApplications tbody .actions > a:hover,
 table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
   background-color: #c35a0a;
-  color: #FFF;
+  color: #FFF !important;
   border: 1px solid #c35a0a;
   background-image: none;
 }
