@@ -1022,12 +1022,14 @@ span.icon-genweb-tfemarket-market{
 
 .puntTitle .actions.span2 {
   text-align: right;
-  width: 13.11043%;
+  width: 20.69939%;
   min-height: 0px;
+  margin-left: 0px;
+  margin-left: 1%;
 }
 
 .puntTitle .dates.span2 {
-  width: 15.11043%;
+  width: 16.11043%;
 }
 
 p.effectiveDate {
