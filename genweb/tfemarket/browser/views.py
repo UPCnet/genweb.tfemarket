@@ -3,11 +3,16 @@
 from Products.CMFCore.utils import getToolByName
 from five import grok
 from plone import api
+from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
+from scss import Scss
 from zope.i18n import translate
 from zope.component import queryUtility
 from zope.interface import alsoProvides
 from zope.interface import Interface
+
+from genweb.core.utils import genweb_config
+from genweb.theme.browser.views import _render_cachekey
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.offer import IOffer
@@ -17,6 +22,7 @@ from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 
 import json
+import pkg_resources
 import transaction
 
 
@@ -183,3 +189,44 @@ class resetCountOffers(grok.View):
                 lang = portal_state.default_language()
             value = _(u'If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter.')
             return translate(msgid=value, domain='genweb.tfemarket', target_language=lang)
+
+
+class dynamicTfeCSS(grok.View):
+    grok.name('dynamic_tfe.css')
+    grok.context(Interface)
+    grok.layer(IGenwebTfemarketLayer)
+
+    def update(self):
+        self.especific1 = genweb_config().especific1
+        self.especific2 = genweb_config().especific2
+
+    def render(self):
+        self.request.response.setHeader('Content-Type', 'text/css')
+        self.request.response.addHeader('Cache-Control', 'must-revalidate, max-age=0, no-cache, no-store')
+        if self.especific1 and self.especific2:
+            return self.compile_scss(especific1=self.especific1, especific2=self.especific2)
+
+    @ram.cache(_render_cachekey)
+    def compile_scss(self, **kwargs):
+        genwebtfeegg = pkg_resources.get_distribution('genweb.tfemarket')
+
+        scssfile = open('{}/genweb/tfemarket/browser/stylesheets/dynamic_tfe.scss'.format(genwebtfeegg.location))
+
+        settings = dict(especific1=self.especific1,
+                        especific2=self.especific2)
+
+        variables_scss = """
+
+        $genwebPrimary: {especific1};
+        $genwebTitles: {especific2};
+
+        """.format(**settings)
+
+        css = Scss(scss_opts={
+                   'compress': False,
+                   'debug_info': False,
+                   })
+
+        dynamic_scss = ''.join([variables_scss, scssfile.read()])
+
+        return css.compile(dynamic_scss)

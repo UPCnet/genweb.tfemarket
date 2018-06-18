@@ -5,6 +5,7 @@
     i18n_domain="genweb.tfemarket">
 
     <!-- ++resource++genweb.tfemarket.stylesheets/genweb_tfemarket.css -->
+    <!-- ++resource++genweb.tfemarket.stylesheets/dynamic_tfe.scss -->
     <browser:resourceDirectory
         name="genweb.tfemarket.stylesheets"
         directory="stylesheets"
