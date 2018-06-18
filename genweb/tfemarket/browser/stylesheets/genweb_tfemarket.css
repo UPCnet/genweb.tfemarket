@@ -128,10 +128,6 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-right: 10px;
 }
 
-#offersList .puntTitle .titleSpan {
-  float: left;
-}
-
 #offersList .puntTitle .boleta {
   margin-left: 0px;
   float: right;
@@ -869,21 +865,18 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-market #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-market #viewlet-below-content,
 .portaltype-genweb-tfemarket-market #edit-bar,
-.portaltype-genweb-tfemarket-market .header-image,
 .portaltype-genweb-tfemarket-market #viewlet-below-content-title .documentByLine,
 .portaltype-genweb-tfemarket-market ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-offer #viewlet-above-content,
 .portaltype-genweb-tfemarket-offer #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-offer #viewlet-below-content,
 .portaltype-genweb-tfemarket-offer #edit-bar,
-.portaltype-genweb-tfemarket-offer .header-image,
 .portaltype-genweb-tfemarket-offer #viewlet-below-content-title .documentByLine,
 .portaltype-genweb-tfemarket-offer ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-application #viewlet-above-content,
 .portaltype-genweb-tfemarket-application #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-application #viewlet-below-content,
 .portaltype-genweb-tfemarket-application #edit-bar,
-.portaltype-genweb-tfemarket-application .header-image,
 .portaltype-genweb-tfemarket-application #viewlet-below-content-title .documentByLine,
 .portaltype-genweb-tfemarket-application ul#contentActionMenus li.dropdown:first-of-type {
   display: none;
@@ -911,9 +904,9 @@ span.icon-genweb-tfemarket-market{
   height: 222px;
 }
 
-.portaltype-genweb-tfemarket-market #portal-header .header-image,
-.portaltype-genweb-tfemarket-offer #portal-header .header-imager,
-.portaltype-genweb-tfemarket-application #portal-header .header-image {
+.portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image,
+.portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image,
+.portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image {
   background-image: url(../background-tfe.jpg);
   height: 66px;
   background-size: cover;
@@ -923,9 +916,9 @@ span.icon-genweb-tfemarket-market{
   text-align: right;
 }
 
-.portaltype-genweb-tfemarket-market #portal-header .header-image:after,
-.portaltype-genweb-tfemarket-offer #portal-header .header-imager:after,
-.portaltype-genweb-tfemarket-application #portal-header .header-image:after {
+.portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
+.portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
+.portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
   content: "Mercat de treball de final d'estudis";
   color: white;
   text-shadow: 2px 2px 10px black;
@@ -978,8 +971,15 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-market nav#portal-globalnav,
 .portaltype-genweb-tfemarket-market nav#portal-breadcrumbs,
 .portaltype-genweb-tfemarket-market #portal-breadcrumbs,
-.portaltype-genweb-tfemarket-market .header-image.l3-image,
-.portaltype-genweb-tfemarket-market h1.documentFirstHeading {
+.portaltype-genweb-tfemarket-market h1.documentFirstHeading
+.portaltype-genweb-tfemarket-offer nav#portal-globalnav,
+.portaltype-genweb-tfemarket-offer nav#portal-breadcrumbs,
+.portaltype-genweb-tfemarket-offer #portal-breadcrumbs,
+.portaltype-genweb-tfemarket-offer h1.documentFirstHeading
+.portaltype-genweb-tfemarket-application nav#portal-globalnav,
+.portaltype-genweb-tfemarket-application nav#portal-breadcrumbs,
+.portaltype-genweb-tfemarket-application #portal-breadcrumbs,
+.portaltype-genweb-tfemarket-application h1.documentFirstHeading {
   display: none;
 }
 
