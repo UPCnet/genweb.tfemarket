@@ -74,4 +74,6 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 .informacioTFE .buttonsOffer button,
 .btnTFE {
   background: $genwebPrimary !important;
+  border-color: darken($genwebPrimary, 10%) !important;
+
 }

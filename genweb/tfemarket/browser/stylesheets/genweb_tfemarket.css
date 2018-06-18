@@ -490,8 +490,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 
 #formSearchOffers {
   width: 100%;
-  margin-bottom: 20px;
-  padding-top: 0px;
+  padding: 0px 20px 20px 20px;
   float: left;
 }
 
@@ -763,7 +762,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   border-radius: 2px !important;
   background: #c35a0a;
   border-color: #ac3549;
-  padding: 8px 20px;
+  padding: 6px 14px;
   min-width: 125px;
   font-size: 15px;
   font-weight: 600;
@@ -909,24 +908,31 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-market #portal-header,
 .portaltype-genweb-tfemarket-offer #portal-header,
 .portaltype-genweb-tfemarket-application #portal-header {
-  height: 276px;
-  margin-bottom: 20px;
+  height: 222px;
 }
 
-.portaltype-genweb-tfemarket-market #portal-header:after,
-.portaltype-genweb-tfemarket-offer #portal-header:after,
-.portaltype-genweb-tfemarket-application #portal-header:after {
+.portaltype-genweb-tfemarket-market #portal-header .header-image,
+.portaltype-genweb-tfemarket-offer #portal-header .header-imager,
+.portaltype-genweb-tfemarket-application #portal-header .header-image {
   background-image: url(../background-tfe.jpg);
-  height: 100px;
+  height: 66px;
   background-size: cover;
   width: 100%;
-  position: absolute;
+  padding: 44px 0px 0px 0px;
+  display: block !important;
+  text-align: right;
+}
+
+.portaltype-genweb-tfemarket-market #portal-header .header-image:after,
+.portaltype-genweb-tfemarket-offer #portal-header .header-imager:after,
+.portaltype-genweb-tfemarket-application #portal-header .header-image:after {
   content: "Mercat de treball de final d'estudis";
-  font-size: 50px;
   color: white;
   text-shadow: 2px 2px 10px black;
-  text-align: center;
-  padding-top: 65px;
+  text-align: right;
+  padding-right: 20px;
+  font-size: 33px;
+  font-weight: 600;
 }
 
 /*FIN KO & IAGO CSS*/
@@ -983,12 +989,11 @@ span.icon-genweb-tfemarket-market{
 
 .portaltype-genweb-tfemarket-market #searchOffers {
   background-image: url(../pattern-tfe.png);
-  width: 99.5vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  display: flex;
+}
+
+.portaltype-genweb-tfemarket-market #formSearchOffers h2 {
+  margin-top: 20px;
 }
 
 .portaltype-genweb-tfemarket-market #searchOffers h2 {
