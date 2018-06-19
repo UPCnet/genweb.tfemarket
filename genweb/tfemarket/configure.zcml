@@ -22,6 +22,13 @@
 
     <grok:grok package="." />
 
+    <permission id="genweb.tfemarket.controlpanel"
+                title="Genweb TFEMarket: Edit Controlpanel">
+        <role name="WebMaster"/>
+        <role name="Manager"/>
+        <role name="Market Manager"/>
+    </permission>
+
     <permission
         id="genweb.tfemarket.add.market"
         title="Genweb TFEMarket: Add Market"
@@ -60,7 +67,7 @@
         name="tfemarket-settings"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.TfemarketSettingsControlPanel"
-        permission="cmf.ManagePortal"/>
+        permission="genweb.tfemarket.controlpanel"/>
 
     <browser:page
         name="bussoa-settings"

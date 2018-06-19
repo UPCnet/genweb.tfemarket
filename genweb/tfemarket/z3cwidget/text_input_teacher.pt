@@ -130,8 +130,10 @@
         $("#form-widgets-teacher_manager-error").addClass("viewError");
       }
     });
+  </script>
 
-    if($("#form-widgets-teacher_manager").val() == ""){
+  <script type="text/javascript" tal:condition="view/ifTeacher">
+     if($("#form-widgets-teacher_manager").val() == ""){
       $.ajax({
         type: 'POST',
         data: { "teacher" : $("#user-name").html().trim() },

@@ -52,29 +52,33 @@ def getLdapUserData(user, typology=None):
 
 def checkPermissionCreateApplications(self, context):
     roles = api.user.get_roles()
-    if 'Anonymous' not in roles:
-        if 'Market Manager' not in roles and 'Manager' not in roles and 'Teacher' not in roles:
-            if checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
-                catalog = api.portal.get_tool(name='portal_catalog')
-                from genweb.tfemarket.content.application import IApplication
-                items = catalog(object_provides=IApplication.__identifier__,
-                                Creator=api.user.get_current().id)
 
-                results = []
-                for item in items:
-                    if item.review_state not in ['cancelled', 'rejected']:
-                        results.append(item)
+    if 'Market Manager' in roles or 'Manager' in roles or 'Teacher' in roles:
+        return False
 
-                if len(results) > 0:
-                    return False
-                else:
-                    return True
-            else:
-                return False
-        else:
-            return False
-    else:
+    wf_tool = getToolByName(context, 'portal_workflow')
+    offer_workflow = wf_tool.getWorkflowsFor(context)[0].id
+    offer_status = wf_tool.getStatusOf(offer_workflow, context)
+    if 'Anonymous' in roles and offer_status['review_state'] == 'public':
         return True
+
+    if checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
+        catalog = api.portal.get_tool(name='portal_catalog')
+        from genweb.tfemarket.content.application import IApplication
+        items = catalog(object_provides=IApplication.__identifier__,
+                        Creator=api.user.get_current().id)
+
+        results = []
+        for item in items:
+            if item.review_state not in ['cancelled', 'rejected']:
+                results.append(item)
+
+        if len(results) > 0:
+            return False
+        else:
+            return True
+    else:
+        return False
 
 
 def checkPermissionCreateOffers(self, context):
@@ -204,3 +208,15 @@ def LDAPSearch(self, query, isQueryAlreadyMade=False):
         return return_dict(True, result_set)
     finally:
         ldapservice.unbind_s()
+
+
+def offerIsFromTheTeacher(offer):
+    user = api.user.get_current()
+    user_roles = user.getRoles()
+    if 'Manager' in user_roles or 'Market Manager' in user_roles:
+        return True
+    else:
+        if 'Teacher' in user_roles:
+            if user.id in offer.creators:
+                return True
+    return False

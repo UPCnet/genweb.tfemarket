@@ -128,10 +128,6 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-right: 10px;
 }
 
-#offersList .puntTitle .titleSpan {
-  float: left;
-}
-
 #offersList .puntTitle .boleta {
   margin-left: 0px;
   float: right;
@@ -256,11 +252,32 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   font-weight: bold;
 }
 
+.informacioTFE .offerSeparator {
+  border-top: 2px solid #FFFFFF;
+}
+
 .informacioTFE .buttonsOffer {
   padding-top: 20px;
 }
 
-.informacioTFE .buttonsOffer .showMoreInfo {
+.informacioTFE .buttonsOfferInfo {
+  height: 35px;
+}
+
+.informacioTFE .buttonsOfferInfo .offerMoreInfo {
+  float: right;
+}
+
+.informacioTFE .buttonsOfferInfo .litMoreInfo {
+  display: inline-table;
+  margin-top: 4px;
+  vertical-align: middle;
+  margin-right: 10px;
+  color: #c35a0a;
+  font-weight: 600;
+}
+
+.informacioTFE .buttonsOfferInfo .showMoreInfo {
   border-radius: 15px !important;
   padding: 2px;
   border: 1px solid #666;
@@ -270,9 +287,6 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   height: 20px;
   width: 20px;
   display: block;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
   text-align: center;
 
 }
@@ -378,9 +392,12 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
 }
 
 #market .rightInfoOffer.actions button.disabled,
-table.tableApplications tbody .actions button.disabled {
-  color: #ADADAD;
+table.tableApplications tbody .actions button.disabled,
+#market .rightInfoOffer.actions button.disabled:hover,
+table.tableApplications tbody .actions button.disabled:hover {
+  color: #ADADAD !important;
   cursor: default;
+  border: 1px solid #adadad !important;
 }
 
 #market .rightInfoOffer.actions .workflowsAction .workflow.notclick,
@@ -427,7 +444,7 @@ table.tableApplications tbody .actions button.disabled:hover {
 table.tableApplications tbody .actions > a:hover,
 table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
   background-color: #c35a0a;
-  color: #FFF;
+  color: #FFF !important;
   border: 1px solid #c35a0a;
   background-image: none;
 }
@@ -469,8 +486,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 
 #formSearchOffers {
   width: 100%;
-  margin-bottom: 20px;
-  padding-top: 0px;
+  padding: 0px 20px 20px 20px;
   float: left;
 }
 
@@ -676,7 +692,6 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   padding: 0px !important;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 #offersList .titleSpan h3,
@@ -691,13 +706,6 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 
 .portaltype-genweb-tfemarket-market #viewlet-below-content {
   margin-top: 35px;
-}
-
-h2.formFieldset {
-  padding: 4px 4px;
-  border-radius: 6px !important;
-  border-top: 6px double;
-  border-bottom: 6px double;
 }
 
 #form-widgets-teacher_manager-modal {
@@ -749,7 +757,7 @@ h2.formFieldset {
   border-radius: 2px !important;
   background: #c35a0a;
   border-color: #ac3549;
-  padding: 8px 20px;
+  padding: 6px 14px;
   min-width: 125px;
   font-size: 15px;
   font-weight: 600;
@@ -856,21 +864,18 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-market #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-market #viewlet-below-content,
 .portaltype-genweb-tfemarket-market #edit-bar,
-.portaltype-genweb-tfemarket-market .header-image,
 .portaltype-genweb-tfemarket-market #viewlet-below-content-title .documentByLine,
 .portaltype-genweb-tfemarket-market ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-offer #viewlet-above-content,
 .portaltype-genweb-tfemarket-offer #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-offer #viewlet-below-content,
 .portaltype-genweb-tfemarket-offer #edit-bar,
-.portaltype-genweb-tfemarket-offer .header-image,
 .portaltype-genweb-tfemarket-offer #viewlet-below-content-title .documentByLine,
 .portaltype-genweb-tfemarket-offer ul#contentActionMenus li.dropdown:first-of-type,
 .portaltype-genweb-tfemarket-application #viewlet-above-content,
 .portaltype-genweb-tfemarket-application #viewlet-above-content-title,
 .portaltype-genweb-tfemarket-application #viewlet-below-content,
 .portaltype-genweb-tfemarket-application #edit-bar,
-.portaltype-genweb-tfemarket-application .header-image,
 .portaltype-genweb-tfemarket-application #viewlet-below-content-title .documentByLine,
 .portaltype-genweb-tfemarket-application ul#contentActionMenus li.dropdown:first-of-type {
   display: none;
@@ -895,23 +900,74 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-market #portal-header,
 .portaltype-genweb-tfemarket-offer #portal-header,
 .portaltype-genweb-tfemarket-application #portal-header {
-  height: 276px;
+  height: 222px;
 }
 
-.portaltype-genweb-tfemarket-market #portal-header:after,
-.portaltype-genweb-tfemarket-offer #portal-header:after,
-.portaltype-genweb-tfemarket-application #portal-header:after {
+.portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image,
+.portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image,
+.portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image {
   background-image: url(../background-tfe.jpg);
-  height: 100px;
+  height: 66px;
   background-size: cover;
   width: 100%;
-  position: absolute;
-  content: "Mercat de treball de final d'estudis";
-  font-size: 50px;
+  padding: 44px 0px 0px 0px;
+  display: block !important;
+  text-align: right;
+}
+
+.portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
+.portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
+.portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
+  content: "Ofertes de treballs de final d'estudis";
   color: white;
   text-shadow: 2px 2px 10px black;
-  text-align: center;
-  padding-top: 65px;
+  text-align: right;
+  padding-right: 20px;
+  font-size: 33px;
+  font-weight: 600;
+}
+
+.portaltype-genweb-tfemarket-market #portal-header .logoPropi,
+.portaltype-genweb-tfemarket-offer #portal-header .logoPropi,
+.portaltype-genweb-tfemarket-application #portal-header .logoPropi {
+  padding: 0px;
+}
+
+@media only screen and (max-width: 640px) {
+  #offersList .puntTitle,
+  #offerData .puntTitle {
+    display: inline;
+  }
+
+   .puntTitle .actions.span2,
+  .puntTitle .dates.span2 {
+    width: 50% !important;
+  }
+
+  .puntTitle .dates.span2 {
+    float: left !important;
+    padding-left: 35px !important;
+  }
+
+  .puntTitle .actions.span2 {
+    float: right !important;
+    margin-left: 0px !important;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #offersFilter,
+  #headerListOffers {
+    margin-top: 20px;
+  }
+
+  .puntTitle .dates.span2 {
+    width: 30% !important;
+  }
+
+  .puntTitle .actions.span2 {
+    width: 70% !important;
+  }
 }
 
 /*FIN KO & IAGO CSS*/
@@ -924,11 +980,48 @@ span.icon-genweb-tfemarket-market{
   font-family:'Open Sans', sans-serif
 }
 
+.portaltype-genweb-tfemarket-market label,
+.portaltype-genweb-tfemarket-offer label,
+.portaltype-genweb-tfemarket-application label {
+  color: #6d6d6d;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.portaltype-genweb-tfemarket-market label *.label,
+.portaltype-genweb-tfemarket-offer label *.label,
+.portaltype-genweb-tfemarket-application label *.label {
+  font-weight: normal;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #555;
+}
+
+.portaltype-genweb-tfemarket-market h2.formFieldset,
+.portaltype-genweb-tfemarket-offer h2.formFieldset,
+.portaltype-genweb-tfemarket-application h2.formFieldset {
+  padding: 4px 0px;
+  margin-top: 0px;
+}
+
+#formfield-form-widgets-grant,
+#formfield-form-widgets-confidential,
+#formfield-form-widgets-environmental_theme {
+  margin-bottom: 0px;
+}
+
 .portaltype-genweb-tfemarket-market nav#portal-globalnav,
 .portaltype-genweb-tfemarket-market nav#portal-breadcrumbs,
 .portaltype-genweb-tfemarket-market #portal-breadcrumbs,
-.portaltype-genweb-tfemarket-market .header-image.l3-image,
-.portaltype-genweb-tfemarket-market h1.documentFirstHeading {
+.portaltype-genweb-tfemarket-market h1.documentFirstHeading,
+.portaltype-genweb-tfemarket-offer nav#portal-globalnav,
+.portaltype-genweb-tfemarket-offer nav#portal-breadcrumbs,
+.portaltype-genweb-tfemarket-offer #portal-breadcrumbs,
+.portaltype-genweb-tfemarket-offer h1.documentFirstHeading,
+.portaltype-genweb-tfemarket-application nav#portal-globalnav,
+.portaltype-genweb-tfemarket-application nav#portal-breadcrumbs,
+.portaltype-genweb-tfemarket-application #portal-breadcrumbs,
+.portaltype-genweb-tfemarket-application h1.documentFirstHeading {
   display: none;
 }
 
@@ -938,12 +1031,11 @@ span.icon-genweb-tfemarket-market{
 
 .portaltype-genweb-tfemarket-market #searchOffers {
   background-image: url(../pattern-tfe.png);
-  width: 99.5vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  display: flex;
+}
+
+.portaltype-genweb-tfemarket-market #formSearchOffers h2 {
+  margin-top: 20px;
 }
 
 .portaltype-genweb-tfemarket-market #searchOffers h2 {
@@ -966,12 +1058,14 @@ span.icon-genweb-tfemarket-market{
 
 .puntTitle .actions.span2 {
   text-align: right;
-  width: 13.11043%;
+  width: 20.69939%;
   min-height: 0px;
+  margin-left: 0px;
+  margin-left: 1%;
 }
 
 .puntTitle .dates.span2 {
-  width: 15.11043%;
+  width: 16.11043%;
 }
 
 p.effectiveDate {

@@ -5,6 +5,7 @@ from plone import api
 from plone.directives import dexterity
 from plone.directives import form
 from zope import schema
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 
 from genweb.tfemarket import _
 from genweb.tfemarket.utils import checkPermissionCreateApplications
