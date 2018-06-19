@@ -62,6 +62,12 @@
         class=".controlpanel.TfemarketSettingsControlPanel"
         permission="cmf.ManagePortal"/>
 
+    <browser:page
+        name="bussoa-settings"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.BUSSOASettingsControlPanel"
+        permission="cmf.ManagePortal"/>
+
     <subscriber
       for=".content.application.IApplication
            Products.DCWorkflow.interfaces.IBeforeTransitionEvent"

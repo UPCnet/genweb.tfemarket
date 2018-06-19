@@ -156,7 +156,7 @@ def LDAPSearch(self, query, isQueryAlreadyMade=False):
 
     def create_query(query):
         fields = ['sn', 'cn']
-        return '(|' + ''.join('(%s=*%s*)' % (fieldname, query) for fieldname in fields) + ')'
+        return '(|' + ''.join('(%s=%s)' % (fieldname, query) for fieldname in fields) + ')'
 
     if not query:
         return return_dict(False, 'Query should not be empty')

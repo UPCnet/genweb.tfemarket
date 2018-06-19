@@ -54,12 +54,13 @@ class IApplication(form.Schema):
         required=False,
     )
 
-    form.widget('prisma_id', ReadOnlyInputFieldWidget)
+    form.mode(prisma_id='hidden')
     prisma_id = schema.TextLine(
         title=_(u'PRISMA id'),
         required=False,
     )
 
+    form.mode(llista_expedients='hidden')
     llista_expedients = schema.List(
         title=_(u'Llista Expedients'),
         value_type=schema.TextLine(),

@@ -142,15 +142,13 @@ class getExactTeacher(grok.View):
 class getInfoCreateApplication(grok.View):
     grok.context(IOffer)
     grok.name('getInfoCreateApplication')
-    # grok.require('zope2.View')
     grok.require('cmf.AddPortalContent')
     grok.layer(IGenwebTfemarketLayer)
 
     def getIdPrisma(self, cn):
         idPrisma = ()
-        import ipdb; ipdb.set_trace()
-        user = LDAPSearch(self, 'iago.lopez')
-        if user.ok:
+        user = LDAPSearch(self, cn)
+        if user['ok']:
             keys = ['segmentation', 'unit', 'typology', 'idorigen']
             data = []
             for key in keys:
@@ -190,7 +188,9 @@ class getInfoCreateApplication(grok.View):
             bussoa_user = tfe_tool.bus_user
             bussoa_pass = tfe_tool.bus_password
             bussoa_apikey = tfe_tool.bus_apikey
-            res_data = requests.get(bussoa_url + "%s" % id_prisma + '?tipusAltaTFE=' + "%s" % ('I'), headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+            tipus_alta = '53316254T'
+            id_prisma = '2708479'
+            res_data = requests.get(bussoa_url + "%s" % id_prisma + '?tipusAltaTFE=' + "%s" % (tipus_alta), headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
             if res_data.ok:
                 student_data = res_data.json()

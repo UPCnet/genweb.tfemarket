@@ -62,7 +62,7 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Settings',
         _(u'Settings'),
-        fields=['center_code', 'center_name', 'review_state'],
+        fields=['center_code', 'center_name', 'review_state', 'enroll_type'],
     )
 
     model.fieldset(
@@ -81,12 +81,6 @@ class ITfemarketSettings(model.Schema):
         'TopicTFE',
         _(u'classifications'),
         fields=['topics', 'tags', 'languages'],
-    )
-
-    model.fieldset(
-        'BUS SOA',
-        _(u'Bus SOA'),
-        fields=['bus_user', 'bus_url', 'bus_password', 'bus_apikey']
     )
 
     # SETTINGS
@@ -108,6 +102,13 @@ class ITfemarketSettings(model.Schema):
         description=_(u'Select if you want to add "Reviewer" role'),
         required=False,
     )
+
+    enroll_type = schema.Choice(
+        title=_(u'Enroll type '),
+        description=_('Parameter to post the student enroll'),
+        values=[_(u'Inscripció'), _(u'Registre')],
+        default=_(u'Inscripció'),
+        required=False)
 
     # CLASSIFICATIONS
 
@@ -158,6 +159,21 @@ class ITfemarketSettings(model.Schema):
         default=0,
     )
 
+
+class TfemarketSettingsEditForm(controlpanel.RegistryEditForm):
+
+    schema = ITfemarketSettings
+    label = _(u'UPC Mercat TFE')
+
+
+class TfemarketSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
+    form = TfemarketSettingsEditForm
+
+
+class BUSSOASettings(model.Schema):
+    """ Global BUS SOA TFE Market settings. This describes records stored in the
+    configuration registry and obtainable via plone.registry.
+    """
     # BUS SOA
 
     bus_user = schema.TextLine(
@@ -179,11 +195,11 @@ class ITfemarketSettings(model.Schema):
         required=False)
 
 
-class TfemarketSettingsEditForm(controlpanel.RegistryEditForm):
+class BUSSOASettingsEditForm(controlpanel.RegistryEditForm):
 
-    schema = ITfemarketSettings
-    label = _(u'UPC Mercat TFE')
+    schema = BUSSOASettings
+    label = _(u'BUS SOA TFE')
 
 
-class TfemarketSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
-    form = TfemarketSettingsEditForm
+class BUSSOASettingsControlPanel(controlpanel.ControlPanelFormWrapper):
+    form = BUSSOASettingsEditForm
