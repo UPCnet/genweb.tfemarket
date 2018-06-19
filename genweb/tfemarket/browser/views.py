@@ -20,6 +20,7 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
+from genweb.tfemarket.utils import offerIsFromTheTeacher
 
 import json
 import pkg_resources
@@ -79,7 +80,7 @@ class changeActualState(grok.View):
         try:
             portal = api.portal.get()
             currentitem = portal.unrestrictedTraverse(itemid)
-            if currentitem:
+            if currentitem and offerIsFromTheTeacher(currentitem.getParentNode()):
                 wftool = getToolByName(self.context, 'portal_workflow')
                 wftool.doActionFor(currentitem, estat)
                 redirectAfterChangeActualState(self)

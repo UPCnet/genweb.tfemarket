@@ -335,7 +335,7 @@
                             <div class="offerData">
                               <div tal:attributes="id string:${offer/offer_id}-info" class="offerInfo"></div>
                               <tal:block tal:condition="applications">
-                                <div class="alert alert-info offerInfo" role="alert" tal:condition="offer/assignOffer">
+                                <div class="alert alert-info offerInfo" role="alert" tal:condition="offer/assign_offer">
                                    <button data-dismiss="alert" class="close" type="button">×</button>
                                    <strong i18n:translate="">
                                    Info
@@ -344,7 +344,7 @@
                                       The current offer contains an accepted application.
                                    </tal:msg>
                                    <a class="btn btn-success" i18n:translate=""
-                                      tal:attributes="href string:changeActualState?estat=${offer/assignOffer}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">
+                                      tal:attributes="href string:changeActualState?estat=${offer/assign_offer}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">
                                    Assign the offer
                                    </a>
                                 </div>
@@ -462,7 +462,7 @@
                                        </div>
                                     </div>
                                     <div class="leftInfoOffer">
-                                      <tal:block tal:condition="offer/ifModalityCompany">
+                                      <tal:block tal:condition="offer/if_modality_company">
                                          <p class="coManager">
                                             <span class="field"><span i18n:translate="">CoManager</span>: </span>
                                             <span tal:content="offer/co_manager">CoManager</span>

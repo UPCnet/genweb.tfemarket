@@ -26,6 +26,7 @@ from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreate
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getDegrees
+from genweb.tfemarket.utils import offerIsFromTheTeacher
 
 import ast
 import unicodedata
@@ -195,7 +196,7 @@ class View(grok.View):
                     state_title = workflows['states'][offer_status['review_state']].title
                     state_id = workflows['states'][offer_status['review_state']].id
 
-                    if state_title == 'Proposta':
+                    if state_id == 'offered':
                         registry = queryUtility(IRegistry)
                         tfe_tool = registry.forInterface(ITfemarketSettings)
                         review_state = tfe_tool.review_state
@@ -203,6 +204,9 @@ class View(grok.View):
                             workflowActions = [x for x in workflowActions if x.get('id') == 'sendtoreview']
                         else:
                             workflowActions = [x for x in workflowActions if x.get('id') != 'sendtoreview']
+
+                    if state_id == 'pending' and self.currentUserIsAloneTeacher():
+                        workflowActions = []
 
                     results.append(dict(title=offer.title,
                                         state=state_title,
@@ -243,9 +247,9 @@ class View(grok.View):
                                         company_email=offer.company_email,
                                         confidential=offer.confidential,
                                         scope_cooperation=offer.scope_cooperation,
-                                        ifModalityCompany=True if offer.modality == 'Empresa' else False,
                                         topic=offer.topic,
-                                        assignOffer=self.assignOffer(offer, state_id)
+                                        if_propietary=offerIsFromTheTeacher(offer),
+                                        assign_offer=self.assignOffer(offer, state_id)
                                         ))
 
             if 'search' in self.request.form or 'searchFilters' in self.request.form:
@@ -296,7 +300,7 @@ class View(grok.View):
 
         for item in values:
             application = item.getObject()
-            workflowActions = wf_tool.listActionInfos(object=application)
+            workflowActions = wf_tool.listActionInfos(object=application) if offer['if_propietary'] else []
             workflows = tools.workflow().getWorkflowsFor(application)[0]
 
             results.append(dict(UID=item.UID,
@@ -312,7 +316,8 @@ class View(grok.View):
                                 offer_title=application.offer_title,
                                 body=application.body,
                                 workflows=workflowActions,
-                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
+                                can_change_workflows=True,
+                                can_edit=checkPermission('cmf.ModifyPortalContent', application) and not self.currentUserIsAloneTeacher(),
                                 ))
         return results
 
@@ -437,3 +442,13 @@ class View(grok.View):
             elif state == 'public':
                 return 'assign'
         return False
+
+    def currentUserIsAloneTeacher(self):
+        user_roles = api.user.get_current().getRoles()
+        if 'Teacher' in user_roles:
+            if 'Manager' in user_roles or 'Market Manager' in user_roles:
+                return False
+            else:
+                return True
+        else:
+            return False

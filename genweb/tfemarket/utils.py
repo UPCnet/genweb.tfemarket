@@ -150,3 +150,15 @@ def checkOfferhasConfirmedApplications(offer):
         if item.review_state == 'confirmed':
             return True
     return False
+
+
+def offerIsFromTheTeacher(offer):
+    user = api.user.get_current()
+    user_roles = user.getRoles()
+    if 'Manager' in user_roles or 'Market Manager' in user_roles:
+        return True
+    else:
+        if 'Teacher' in user_roles:
+            if user.id in offer.creators:
+                return True
+    return False
