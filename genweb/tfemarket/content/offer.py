@@ -10,6 +10,8 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import queryUtility
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 
@@ -351,12 +353,20 @@ def numOfferDefaultValue(offer, event):
     transaction.commit()
 
 
+@grok.subscribe(IOffer, IObjectModifiedEvent)
 @grok.subscribe(IOffer, IObjectAddedEvent)
 def defineTeacherAsEditor(offer, event):
-    if offer.teacher_manager not in offer.creators:
-        offer.creators += (offer.teacher_manager,)
-        offer.manage_setLocalRoles(offer.teacher_manager, ["Owner"])
-        offer.reindexObject()
+    creator = offer.getOwner()._id
+    teacher = offer.teacher_manager
+
+    for user in offer.get_local_roles():
+        if user not in [creator, teacher]:
+            offer.manage_delLocalRoles([user])
+
+    offer.creators = tuple([creator, teacher])
+    offer.manage_setLocalRoles(teacher, ["Owner"])
+    offer.addCreator(teacher)
+    offer.reindexObject()
 
 
 class View(dexterity.DisplayForm):
