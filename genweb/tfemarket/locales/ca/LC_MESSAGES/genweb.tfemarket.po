@@ -599,7 +599,7 @@ msgstr "Confidencial"
 
 #: ../content/offer.py:177
 msgid "degree"
-msgstr "Grau"
+msgstr "Titulació"
 
 #: ../content/templates/market_view.pt:48
 msgid "edit"
