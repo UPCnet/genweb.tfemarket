@@ -82,10 +82,11 @@ class changeActualState(grok.View):
 
         try:
             portal = api.portal.get()
-            currentitem = portal.unrestrictedTraverse(itemid)
-            if currentitem and offerIsFromTheTeacher(currentitem.getParentNode()):
+            currentItem = portal.unrestrictedTraverse(itemid)
+            isCreator = api.user.get_current().id in currentItem.creators
+            if currentItem and (offerIsFromTheTeacher(currentItem.getParentNode()) or isCreator):
                 wftool = getToolByName(self.context, 'portal_workflow')
-                wftool.doActionFor(currentitem, estat)
+                wftool.doActionFor(currentItem, estat)
                 redirectAfterChangeActualState(self)
             else:
                 self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')

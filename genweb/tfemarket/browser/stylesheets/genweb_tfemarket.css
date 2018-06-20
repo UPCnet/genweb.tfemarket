@@ -792,6 +792,10 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   vertical-align: baseline;
 }
 
+.portaltype-genweb-tfemarket-market .row-fluid .span12 {
+  margin-top: 10px;
+}
+
 #listing-table a.contenttype-genweb-tfemarket-application:before,
 #listing-table a.contenttype-document:before,
 #listing-table span.contenttype-genweb-tfemarket-application:before,

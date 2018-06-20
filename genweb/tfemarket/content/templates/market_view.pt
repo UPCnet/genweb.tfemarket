@@ -30,11 +30,11 @@
                         <td tal:content="python:app['offer_id'] + ' ' + app['offer_title']">Identifier Offer TFE</td>
                         <td class="actions">
                           <span class="workflowsAction">
+                            <span class="workflow notclick label" tal:content="app/state" tal:condition="not: app/workflows">State</span>
                             <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
                               <span tal:content="app/state">State</span>
                               <span class="caret"></span>
                             </button>
-                            <span class="workflow notclick label" tal:content="app/state" tal:condition="not: app/workflows">State</span>
                             <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
                                 tal:condition="app/workflows">
                               <tal:block repeat="estat app/workflows">
