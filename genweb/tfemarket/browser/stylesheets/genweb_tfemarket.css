@@ -974,6 +974,56 @@ span.icon-genweb-tfemarket-market{
   }
 }
 
+/* Formulario solicitud */
+
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-title,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-phone,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-email {
+  display: inline-block;
+}
+
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-phone {
+  width: 30%
+}
+
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-title,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-email {
+  width: 69%
+}
+
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title input,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-title input,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-email input {
+  width: 99%
+}
+
+@media only screen and (max-width: 850px) {
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-title,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-phone,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-email {
+    display: block;
+    width: 100%;
+  }
+
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id input,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title input,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni input,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-title input,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-phone input,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-email input {
+    width: 98%;
+  }
+}
+
 /*FIN KO & IAGO CSS*/
 
 /* ALBERT */

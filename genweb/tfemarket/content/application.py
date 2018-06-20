@@ -32,26 +32,26 @@ class IApplication(form.Schema):
         required=False,
     )
 
-    form.widget('title', StudentInputFieldWidget)
-    title = schema.TextLine(
-        title=_(u'Fullname'),
-        required=False,
-    )
-
     form.widget('dni', ReadOnlyInputFieldWidget)
     dni = schema.TextLine(
         title=_(u'DNI'),
         required=False,
     )
 
-    form.widget('email', ReadOnlyInputFieldWidget)
-    email = schema.TextLine(
-        title=_(u'Email'),
+    form.widget('title', StudentInputFieldWidget)
+    title = schema.TextLine(
+        title=_(u'Fullname'),
         required=False,
     )
 
     phone = schema.TextLine(
         title=_(u"Telephone"),
+        required=False,
+    )
+
+    form.widget('email', ReadOnlyInputFieldWidget)
+    email = schema.TextLine(
+        title=_(u'Email'),
         required=False,
     )
 
