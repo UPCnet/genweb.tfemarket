@@ -70,7 +70,7 @@ def checkPermissionCreateApplications(self, context):
 
         results = []
         for item in items:
-            if item.review_state not in ['cancelled', 'rejected']:
+            if item.review_state not in ['cancelled', 'rejected', 'renounced']:
                 results.append(item)
 
         if len(results) > 0:
