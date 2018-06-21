@@ -26,11 +26,10 @@ def offerHasAnotherApplicationsPending(application):
     parent = application.getParentNode()
     for offer in parent.getChildNodes():
         if offer.id != application.id:
-            workflows = tools.workflow().getWorkflowsFor(offer)[0]
-            offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
-            offer_status = wf_tool.getStatusOf(offer_workflow, offer)
-            state_id = workflows['states'][offer_status['review_state']].id
-            if state_id == 'requested':
+            offerWorkflow = tools.workflow().getWorkflowsFor(offer)[0]
+            offerStatus = wf_tool.getStatusOf(offerWorkflow.id, offer)
+            stateID = offerWorkflow['states'][offerStatus['review_state']].id
+            if stateID == 'requested':
                 return True
     return False
 

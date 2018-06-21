@@ -190,13 +190,11 @@ class View(grok.View):
             for offer in values:
                 if checkPermission('zope2.View', offer):
                     workflowActions = wf_tool.listActionInfos(object=offer)
-                    workflows = tools.workflow().getWorkflowsFor(offer)[0]
-                    offer_workflow = wf_tool.getWorkflowsFor(offer)[0].id
-                    offer_status = wf_tool.getStatusOf(offer_workflow, offer)
-                    state_title = workflows['states'][offer_status['review_state']].title
-                    state_id = workflows['states'][offer_status['review_state']].id
+                    offerWorkflow = tools.workflow().getWorkflowsFor(offer)[0]
+                    offerStatus = wf_tool.getStatusOf(offerWorkflow.id, offer)
+                    offerState = offerWorkflow['states'][offerStatus['review_state']]
 
-                    if state_id == 'offered':
+                    if offerState.id == 'offered':
                         registry = queryUtility(IRegistry)
                         tfe_tool = registry.forInterface(ITfemarketSettings)
                         review_state = tfe_tool.review_state
@@ -205,12 +203,22 @@ class View(grok.View):
                         else:
                             workflowActions = [x for x in workflowActions if x.get('id') != 'sendtoreview']
 
-                    if state_id == 'pending' and self.currentUserIsAloneTeacher():
+                    if offerState.id == 'pending' and self.currentUserIsAloneTeacher():
                         workflowActions = []
 
+                    market = offer.getParentNode()
+                    marketWorkflow = tools.workflow().getWorkflowsFor(market)[0]
+                    marketStatus = wf_tool.getStatusOf(marketWorkflow.id, market)
+                    marketState = marketWorkflow['states'][marketStatus['review_state']]
+
+                    if marketState.id == 'published':
+                        workflowActions = [x for x in workflowActions if x.get('id') != 'publicaalintranet']
+                    elif marketState.id == 'intranet':
+                        workflowActions = [x for x in workflowActions if x.get('id') != 'publicaloferta']
+
                     results.append(dict(title=offer.title,
-                                        state=state_title,
-                                        state_id=state_id,
+                                        state=offerState.title,
+                                        state_id=offerState.id,
                                         url=offer.absolute_url(),
                                         path='/'.join(offer.getPhysicalPath()),
                                         item_path='/'.join(offer.getPhysicalPath()[2:]),
@@ -249,7 +257,7 @@ class View(grok.View):
                                         scope_cooperation=offer.scope_cooperation,
                                         topic=offer.topic,
                                         if_propietary=offerIsFromTheTeacher(offer),
-                                        assign_offer=self.assignOffer(offer, state_id)
+                                        assign_offer=self.assignOffer(offer, offerState.id)
                                         ))
 
             if 'search' in self.request.form or 'searchFilters' in self.request.form:

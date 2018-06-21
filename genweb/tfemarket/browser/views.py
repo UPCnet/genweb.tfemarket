@@ -7,6 +7,7 @@ from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
 from scss import Scss
 from zope.i18n import translate
+from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.interface import alsoProvides
 from zope.interface import Interface
@@ -85,6 +86,19 @@ class changeActualState(grok.View):
             currentItem = portal.unrestrictedTraverse(itemid)
             isCreator = api.user.get_current().id in currentItem.creators
             if currentItem and (offerIsFromTheTeacher(currentItem.getParentNode()) or isCreator):
+                if currentItem.portal_type == 'genweb.tfemarket.offer':
+                    wf_tool = getToolByName(self.context, 'portal_workflow')
+                    tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+                    market = currentItem.getParentNode()
+                    marketWorkflow = tools.workflow().getWorkflowsFor(market)[0]
+                    marketStatus = wf_tool.getStatusOf(marketWorkflow.id, market)
+                    marketState = marketWorkflow['states'][marketStatus['review_state']]
+
+                    if (marketState.id == 'published' and estat == 'publicaalintranet') or (marketState.id == 'intranet' and estat == 'publicaloferta'):
+                        self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
+                        redirectAfterChangeActualState(self)
+                        return None
+
                 wftool = getToolByName(self.context, 'portal_workflow')
                 wftool.doActionFor(currentItem, estat)
                 redirectAfterChangeActualState(self)
