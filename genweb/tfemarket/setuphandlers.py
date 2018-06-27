@@ -30,7 +30,7 @@ def uninstall(context):
     ldap_acl_users = getattr(portal.acl_users, 'ldapUPC').acl_users
     LDAPUserFolder.manage_deleteLDAPSchemaItems(
         ldap_acl_users,
-        ldap_names=['unit', 'unitCode', 'segmentation', 'typology', 'DNIpassport', 'telephoneNumber'],
+        ldap_names=['unit', 'unitCode', 'segmentation', 'typology', 'DNIpassport', 'telephoneNumber', 'mail'],
         REQUEST=None)
 
 
@@ -63,3 +63,6 @@ def setupLdapMarket(context):
     LDAPUserFolder.manage_addLDAPSchemaItem(
         ldap_acl_users, ldap_name='idorigen', friendly_name='Identifier',
         public_name='Identifier', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='mail', friendly_name='eMail',
+        public_name='mail', multivalued=False)
