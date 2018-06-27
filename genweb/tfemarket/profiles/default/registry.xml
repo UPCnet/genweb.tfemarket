@@ -4,6 +4,6 @@
     interface="genweb.tfemarket.controlpanel.ITfemarketSettings"
     purge="False"/>
     <records
-    interface="genweb.tfemarket.controlpanel.BUSSOASettings"
+    interface="genweb.tfemarket.controlpanel.IBUSSOASettings"
     purge="False"/>
 </registry>

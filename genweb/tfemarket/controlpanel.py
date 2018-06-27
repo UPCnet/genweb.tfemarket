@@ -170,20 +170,20 @@ class TfemarketSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
     form = TfemarketSettingsEditForm
 
 
-class BUSSOASettings(model.Schema):
+class IBUSSOASettings(model.Schema):
     """ Global BUS SOA TFE Market settings. This describes records stored in the
     configuration registry and obtainable via plone.registry.
     """
     # BUS SOA
 
-    bus_user = schema.TextLine(
-        title=_(u'User'),
-        description=_('User to connect to the bus'),
-        required=False)
-
     bus_url = schema.TextLine(
         title=_(u'URL'),
         description=_(u'URL to access the bus'),
+        required=False)
+
+    bus_user = schema.TextLine(
+        title=_(u'User'),
+        description=_('User to connect to the bus'),
         required=False)
 
     bus_password = schema.Password(
@@ -197,7 +197,7 @@ class BUSSOASettings(model.Schema):
 
 class BUSSOASettingsEditForm(controlpanel.RegistryEditForm):
 
-    schema = BUSSOASettings
+    schema = IBUSSOASettings
     label = _(u'BUS SOA TFE')
 
 
