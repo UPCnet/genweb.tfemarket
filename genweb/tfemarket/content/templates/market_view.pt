@@ -141,7 +141,7 @@
                     <form id="formSearchOffers" name="searchOffers" action="?search" method="post"
                            tal:attributes="data-saved python: 0 if save.has_key('language') else 1;
                                            class classViewSearch/collapse">
-                      <h2 i18n:translate="">Search engine</h2>
+                      <h2 i18n:translate="">Quines ofertes cerques?</h2>
 
                       <div>
                         <label i18n:translate="">Text to search</label>
