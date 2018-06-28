@@ -177,7 +177,7 @@ class View(grok.View):
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
             filters = {'portal_type': 'genweb.tfemarket.offer'}
-            if self.checkPermissionCreateOffers():
+            if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
                 filters.update({'Creator': api.user.get_current().id})
 
             values = self.context.contentValues(filters)
