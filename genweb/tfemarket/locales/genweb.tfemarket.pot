@@ -409,7 +409,7 @@ msgid "Scope of cooperation"
 msgstr ""
 
 #: ../z3cwidget/text_input_teacher.pt:46
-msgid "Seach teacher"
+msgid "Search teacher"
 msgstr ""
 
 #: ../content/templates/market_view.pt:270
