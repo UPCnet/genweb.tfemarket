@@ -95,6 +95,12 @@
 
     <subscriber
       for=".content.offer.IOffer
+           Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+      handler=".browser.events.change.offerRegistered"
+    />
+
+    <subscriber
+      for=".content.offer.IOffer
            zope.lifecycleevent.interfaces.IObjectRemovedEvent"
       handler=".browser.events.change.offerDeleted"
     />
