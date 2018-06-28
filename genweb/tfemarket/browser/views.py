@@ -344,8 +344,8 @@ class resetCountOffers(grok.View):
     def render(self):
         if 'confirm' in self.request.form:
             registry = queryUtility(IRegistry)
-            bussoa_tool = registry.forInterface(ITfemarketSettings)
-            bussoa_tool.count_offers = 0
+            tfe_tool = registry.forInterface(ITfemarketSettings)
+            tfe_tool.count_offers = 0
             transaction.commit()
             self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
         else:
