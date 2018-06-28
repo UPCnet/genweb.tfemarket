@@ -2,11 +2,14 @@
 
 from collective.z3cform.datagridfield import DataGridFieldFactory
 from collective.z3cform.datagridfield.registry import DictRow
+from five import grok
 from plone.app.registry.browser import controlpanel
 from plone.autoform import directives
 from plone.directives import form
 from plone.supermodel import model
 from zope import schema
+from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.interfaces import IVocabularyFactory
 
 from genweb.tfemarket import _
 
@@ -52,6 +55,19 @@ class ITableTitulacions(form.Schema):
         description=_(u''),
         required=False
     )
+
+
+class EnrollVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'I', 'I', _(u'Enroll')))
+        types.append(SimpleVocabulary.createTerm(u'R', 'R', _(u'Register')))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(EnrollVocabulary, name=u"genweb.tfemarket.Enrolls")
 
 
 class ITfemarketSettings(model.Schema):
@@ -106,9 +122,9 @@ class ITfemarketSettings(model.Schema):
     enroll_type = schema.Choice(
         title=_(u'Enroll type '),
         description=_('Parameter to post the student enroll'),
-        values=[_(u'Inscripció'), _(u'Registre')],
-        default=_(u'Inscripció'),
-        required=False)
+        vocabulary=u"genweb.tfemarket.Enrolls",
+        default=u'I',
+        required=True)
 
     # CLASSIFICATIONS
 
@@ -126,7 +142,7 @@ class ITfemarketSettings(model.Schema):
 
     languages = schema.Text(
         title=_(u"Development languages"),
-        default=_(u"Catalan"),
+        default=_(u"Català"),
         description=_(u'Add languages one per line'),
         required=False,
     )
