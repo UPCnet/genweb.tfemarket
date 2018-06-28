@@ -402,8 +402,8 @@ msgid "Scope of cooperation"
 msgstr "Scope of cooperation"
 
 #: ../z3cwidget/text_input_teacher.pt:46
-msgid "Seach teacher"
-msgstr "Seach teacher"
+msgid "Search teacher"
+msgstr "Search teacher"
 
 #: ../content/templates/market_view.pt:270
 #: ../z3cwidget/text_input_teacher.pt:52
@@ -416,7 +416,7 @@ msgstr "Search engine"
 
 #: ../z3cwidget/text_input_teacher.pt:37
 msgid "Search_teacher"
-msgstr "Seach teacher"
+msgstr "Search teacher"
 
 #: ../controlpanel.py:108
 msgid "Select if you want to add \"Reviewer\" role"

@@ -404,7 +404,7 @@ msgid "Scope of cooperation"
 msgstr "Ambit de cooperació"
 
 #: ../z3cwidget/text_input_teacher.pt:46
-msgid "Seach teacher"
+msgid "Search teacher"
 msgstr "Cerca el professor"
 
 #: ../content/templates/market_view.pt:270
