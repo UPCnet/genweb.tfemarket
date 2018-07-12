@@ -126,6 +126,13 @@ class ITfemarketSettings(model.Schema):
         default=u'I',
         required=True)
 
+    life_period = schema.Int(
+        title=_(u'Months until expiration'),
+        description=_('Number of months until the offer expires automatically'),
+        required=True,
+    )
+
+
     # CLASSIFICATIONS
 
     topics = schema.Text(

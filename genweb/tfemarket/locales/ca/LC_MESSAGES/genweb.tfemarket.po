@@ -391,8 +391,10 @@ msgid "Plega tot <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr "Plega tot <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 
 #: ../content/templates/market_view.pt:392
+#: ../content/offer.py:316
+#: ../content/templates/market_view.pt:243
 msgid "Possibility of scholarship"
-msgstr "Possibilitat de beca"
+msgstr "Possibilitat de beca o finançament"
 
 #: ../controlpanel.py:26
 msgid "Program type"
@@ -625,11 +627,14 @@ msgstr "Titulació"
 msgid "edit"
 msgstr "Editar"
 
+<<<<<<< Updated upstream
 #: ../content/offer.py:318
 #: ../content/templates/market_view.pt:243
 msgid "grant"
 msgstr "Possibilitat de beca"
 
+=======
+>>>>>>> Stashed changes
 #. Default: "The date the item will be published."
 #: ../behaviors.py:40
 msgid "help_effective_date"

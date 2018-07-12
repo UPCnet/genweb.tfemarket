@@ -12,6 +12,7 @@ from z3c.form.interfaces import IAddForm
 from z3c.form.interfaces import IEditForm
 from zope import schema
 from zope.interface import alsoProvides
+from plone.registry.interfaces import IRegistry
 
 from genweb.tfemarket import _
 from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
@@ -21,10 +22,6 @@ import datetime
 
 def effectiveDefaultValue():
     return dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1))
-
-
-def expiresDefaultValue():
-    return dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365))
 
 
 class IPublicationOffer(model.Schema):
@@ -40,22 +37,20 @@ class IPublicationOffer(model.Schema):
         description=_(
             u'help_effective_date',
             default=u"The date the item will be published."),
-        required=True,
-        defaultFactory=effectiveDefaultValue,
+        required=True
     )
 
-    expires = schema.Datetime(
+    expired= schema.Datetime(
         title=_PMF(u'label_expiration_date', u'Expiration Date'),
         description=_(
             u'help_expiration_date',
             default=u"The date that the item will expire."),
-        required=True,
-        defaultFactory=expiresDefaultValue,
+        required=False,
     )
 
-    form.omitted('effective', 'expires')
-    form.no_omit(IEditForm, 'effective', 'expires')
-    form.no_omit(IAddForm, 'effective', 'expires')
+    form.omitted('effective', 'expired')
+    form.no_omit(IEditForm, 'effective', 'expired')
+    form.no_omit(IAddForm, 'effective', 'expired')
 
 
 alsoProvides(IPublicationOffer, IFormFieldProvider)
@@ -66,7 +61,7 @@ class PublicationOffer(MetadataBase):
         IPublicationOffer['effective'],
         get_name='effective_date'
     )
-    expires = DCFieldProperty(
-        IPublicationOffer['expires'],
+    expired = DCFieldProperty(
+        IPublicationOffer['expired'],
         get_name='expiration_date'
     )

@@ -240,7 +240,7 @@
                         </div>
 
                         <div id="searchGrants" class="span2">
-                          <label i18n:translate="">grant</label>
+                          <label i18n:translate="">Possibility of scholarship</label>
                           <label class="switch">
                             <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
                             <span class="slider round"></span>

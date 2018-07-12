@@ -23,6 +23,8 @@ from genweb.tfemarket.z3cwidget import FieldsetFieldWidget, ReadOnlyInputFieldWi
 import transaction
 import unicodedata
 
+from dateutil.relativedelta import relativedelta
+
 
 grok.templatedir("templates")
 
@@ -219,8 +221,8 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    observations = schema.Text(
-        title=_(u'Observations'),
+    codirector = schema.Text(
+        title=_(u'Codirector'),
         required=False,
     )
 
@@ -315,7 +317,7 @@ class IOffer(form.Schema):
     )
 
     grant = schema.Bool(
-        title=_(u'grant'),
+        title=_(u'Possibility of scholarship'),
         required=False,
         default=False,
     )
@@ -367,6 +369,15 @@ def defineTeacherAsEditor(offer, event):
     offer.manage_setLocalRoles(teacher, ["Owner"])
     offer.addCreator(teacher)
     offer.reindexObject()
+
+
+@grok.subscribe(IOffer, IObjectModifiedEvent)
+@grok.subscribe(IOffer, IObjectAddedEvent)
+def expiredDefaultValue():
+    if not offer.expired:
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        return  dt_end_of_day(datetime.datetime.today() + relativedelta(months=+tfe_tool.life_period))
 
 
 class View(dexterity.DisplayForm):
