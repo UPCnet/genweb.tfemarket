@@ -76,6 +76,11 @@ class View(grok.View):
                 delete.append(index)
                 continue
 
+            # Filter teacher
+            if filters['teacher'] != 'a' and ('teacher_manager' not in item or filters['teacher'] != item['teacher_manager']):
+                delete.append(index)
+                continue
+
             # Filter departament
             if filters['departament'] != 'a' and ('dept' not in item or filters['departament'] != item['dept']):
                 delete.append(index)
@@ -351,6 +356,20 @@ class View(grok.View):
 
     def getAllOffers(self):
         return self.context.contentValues({'portal_type': 'genweb.tfemarket.offer'})
+
+    def getTeachers(self):
+        results = []
+        for offer in self.getAllOffers():
+            if checkPermission('zope2.View', offer) and offer.teacher_manager:
+                teacherNotInList = True
+                for teacher in results:
+                    if teacher['id'] == offer.teacher_manager:
+                        teacherNotInList = False
+                        break
+                if teacherNotInList:
+                    results.append({'id': offer.teacher_manager, 'lit': offer.teacher_fullname + " (" + offer.teacher_manager + ")"})
+
+        return sorted(list(results))
 
     def getDepartaments(self):
         results = []

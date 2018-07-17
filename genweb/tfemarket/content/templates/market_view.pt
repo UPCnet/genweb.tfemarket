@@ -161,9 +161,21 @@
 
                       <div class="row-fluid">
                         <div class="span6">
+                          <label i18n:translate="">TFEteacher</label>
+                          <select id="searchTeacher" name="teacher" tal:attributes="value save/teacher|nothing">
+                            <option value="a" i18n:translate="">MAll</option>
+                            <tal:block tal:repeat="teacher view/getTeachers">
+                              <tal:block tal:define="selected python: save.has_key('teacher') and not save['teacher'] == 'a' and teacher['id'] == save['teacher']">
+                                <option tal:attributes="value teacher/id; selected python: True if selected else False" tal:content="teacher/lit">Teacher</option>
+                              </tal:block>
+                            </tal:block>
+                          </select>
+                        </div>
+
+                        <div class="span6">
                           <label i18n:translate="">Departament</label>
                           <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
-                            <option value="a" i18n:translate="">All</option>
+                            <option value="a" i18n:translate="">MAll</option>
                             <tal:block tal:repeat="departament view/getDepartaments">
                               <tal:block tal:define="selected python: save.has_key('departament') and not save['departament'] == 'a' and departament == save['departament']">
                                 <option tal:attributes="value departament; selected python: True if selected else False" tal:content="departament">Departament</option>
@@ -171,7 +183,9 @@
                             </tal:block>
                           </select>
                         </div>
+                      </div>
 
+                      <div class="row-fluid">
                         <div class="span6">
                           <label i18n:translate="">Company</label>
                           <select id="searchCompany" name="company" tal:attributes="value save/company|nothing">
@@ -183,10 +197,8 @@
                             </tal:block>
                           </select>
                         </div>
-                      </div>
 
-                      <div class="row-fluid">
-                        <div class="span6">
+                        <div class="span3">
                           <label i18n:translate="">Date</label>
                           <select id="searchDate" name="date">
                             <tal:block tal:repeat="date view/getDates">
@@ -199,7 +211,7 @@
                           </select>
                         </div>
 
-                        <div class="span6">
+                        <div class="span3">
                           <label i18n:translate="">State</label>
                           <select id="searchState" name="state">
                             <option value="a" i18n:translate="">All</option>
