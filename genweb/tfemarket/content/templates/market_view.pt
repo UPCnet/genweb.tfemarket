@@ -273,6 +273,10 @@
                       </div>
 
                       <div class="bottomLinks">
+                        <a href="" class="btnTFE" tal:condition="view/currentUserIsAloneTeacher"
+                          i18n:translate="">
+                          View me offers
+                        </a>
                         <a href="?allOffers" class="btnTFE"
                           i18n:translate="">
                           View all offers
