@@ -398,7 +398,7 @@ msgstr "Oculta todo <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 
 #: ../content/templates/market_view.pt:408
 msgid "Possibility of scholarship"
-msgstr "Posibilidad de beca"
+msgstr "Posibilidad de beca / subvención"
 
 #: ../controlpanel.py:26
 msgid "Program type"
@@ -643,7 +643,7 @@ msgstr "Editar"
 #: ../content/offer.py:318
 #: ../content/templates/market_view.pt:255
 msgid "grant"
-msgstr "Posibilidad de beca"
+msgstr "Posibilidad de beca / subvención"
 
 #. Default: "The date the item will be published."
 #: ../behaviors.py:40
