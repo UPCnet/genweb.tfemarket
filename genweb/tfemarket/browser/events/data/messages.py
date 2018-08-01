@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
+#######################################################################
+
 M1 = {
 'ca' : """\
 Benvolgut / Benvolguda,
 
-{student} que cursa {degree}, ha sol·licitat el treball final d’estudis {num} - {title} que tens ofertat.
+{student} que cursa {degree}, ha sol·licitat el treball de final d’estudis {num} - {title} que tens ofertat.
 
 Pots accedir a la sol·licitud des d’aquest enllaç {linkApplication} per tal de acceptar-la o rebutjar-la o bé accedir a totes les sol·licituds d’aquest treball {linkOffer}.
 
@@ -15,10 +17,36 @@ Atentament,
 {firm}
 """,
 
-'en' : '',
+'en' : """\
+Dear / Dear,
 
-'es' : '',
+{student} who attended {degree}, has requested the final study work {num} - {title} that you have offered.
+
+You can access the request from this link {linkApplication} in order to accept or reject it or access all requests for this work {linkOffer}.
+
+You can also access the TFE Market {linkMarket} of the school directly.
+
+Yours faithfully,
+
+{firm}
+""",
+
+'es' : """\
+Estimado / Estimada,
+
+{student} que cursa {degree}, ha solicitado el trabajo de final de estudios {num} - {title} que tienes ofertado.
+
+Puedes acceder a la solicitud desde este enlace {linkApplication} para aceptarla o rechazarla o bien acceder a todas las solicitudes de este trabajo {linkOffer}.
+
+También puedes acceder al Mercado de TFE {linkMarket} de la escuela directamente.
+
+Atentamente,
+
+{firm}
+""",
 }
+
+#######################################################################
 
 M2 = {
 'ca' : """\
@@ -33,10 +61,32 @@ Atentament,
 {firm}
 """,
 
-'en' : '',
+'en' : """\
+Dear / Dear,
 
-'es' : '',
+We inform you that your request for the following work of the study {num} - {title} has been accepted. Remember that in order to finalize the assignment process, you must confirm or resign from the following link {linkApplication}.
+
+Once confirmed, your information will reach PRISMA in order to register the work.
+
+Yours faithfully,
+
+{firm}
+""",
+
+'es' : """\
+Estimado / Estimada,
+
+Te comunicamos que tu solicitud para el siguiente trabajo de fin de estudios {num} - {title} ha sido aceptada. Recuerda que para finalizar el proceso de asignación, debes confirmarla o renunciar desde el siguiente enlace {linkApplication}.
+
+Una vez la confirmes, tus datos llegarán a PRISMA para realizar la inscripción del trabajo.
+
+Atentamente,
+
+{firm}
+""",
 }
+
+#######################################################################
 
 M3 = {
 'ca' : """\
@@ -49,16 +99,34 @@ Atentament,
 {firm}
 """,
 
-'en' : '',
+'en' : """\
+Dear / Dear,
 
-'es' : '',
+Your request for the offer {num} - {title} has been rejected. You can contact the teacher for any additional information.
+
+Yours faithfully,
+
+{firm}
+""",
+
+'es' : """\
+Estimado / Estimada,
+
+Tu solicitud para la oferta {num} - {title} ha sido rechazada. Puede ponerse en contacto con el profesor para cualquier información adicional.
+
+Atentamente,
+
+{firm}
+""",
 }
+
+#######################################################################
 
 M4 = {
 'ca' : """\
 Benvolgut / Benvolguda,
 
-{student} ha confirmat la sol·licitud del treball final d’estudis {num} - {title}.
+{student} ha confirmat la sol·licitud del treball de final d’estudis {num} - {title}.
 
 Pots accedir a la sol·licitud des d’aquest enllaç {linkApplication}, o bé accedir a totes les sol·licituds d’aquest treball {linkOffer}.
 
@@ -71,10 +139,40 @@ Atentament,
 {firm}
 """,
 
-'en' : '',
+'en' : """\
+Dear / Dear,
 
-'es' : '',
+{student} has confirmed the application for the final study work {num} - {title}.
+
+You can access the request from this link {linkApplication}, or access all requests for this work {linkOffer}.
+
+Remember to modify the status of the offer and the possible applications, if the number of students needed has been reached. You can also access the TFE Market {linkMarket} of the school directly, to manage it.
+
+The data is transferred to PRISMA in order to register the work.
+
+Yours faithfully,
+
+{firm}
+""",
+
+'es' : """\
+Estimado / Estimada,
+
+{student} confirmó la solicitud del trabajo de final de estudios {num} - {title}.
+
+Puedes acceder a la solicitud desde este enlace {linkApplication}, o bien acceder a todas las solicitudes de este trabajo {linkOffer}.
+
+Recuerda modificar el estado de la oferta y de las posibles solicitudes que haya, si se ha alcanzado el número de estudiantes necesarios. También puedes acceder al Mercado de TFE {linkMarket} de la escuela directamente, para gestionarlo.
+
+Los datos se traspasan a PRISMA para realizar la inscripción del trabajo.
+
+Atentamente,
+
+{firm}
+""",
 }
+
+#######################################################################
 
 M5 = {
 'ca' : """\
@@ -87,10 +185,28 @@ Atentament,
 {firm}
 """,
 
-'en' : '',
+'en' : """\
+Dear / Dear,
 
-'es' : '',
+{student} who made a request to the offer {num} - {title} has renounced it.
+
+Yours faithfully,
+
+{firm}
+""",
+
+'es' : """\
+Estimado / Estimada,
+
+{student} que realizó una solicitud a la oferta {num} - {title} ha renunciado a la misma.
+
+Atentamente,
+
+{firm}
+""",
 }
+
+#######################################################################
 
 M6 = {
 'ca' : """\
@@ -103,7 +219,23 @@ Atentament,
 {firm}
 """,
 
-'en' : '',
+'en' : """\
+Dear / Dear,
 
-'es' : '',
+{student} has canceled your request to the offer {num} - {title}.
+
+Yours faithfully,
+
+{firm}
+""",
+
+'es' : """\
+Estimado / Estimada,
+
+{student} ha anulado su solicitud a la oferta {num} - {title}.
+
+Atentamente,
+
+{firm}
+""",
 }
