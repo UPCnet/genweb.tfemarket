@@ -63,7 +63,6 @@ class View(grok.View):
     def filterResults(self, results):
         filters = self.saveFilters()
         delete = []
-
         for index, item in enumerate(results, start=0):
 
             # Filter text
@@ -183,7 +182,8 @@ class View(grok.View):
 
             filters = {'portal_type': 'genweb.tfemarket.offer'}
             if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
-                filters.update({'Creator': api.user.get_current().id})
+                if 'search' not in self.request.form and 'allOffers' not in self.request.form:
+                    filters.update({'Creator': api.user.get_current().id})
 
             values = self.context.contentValues(filters)
             values = sort(values, sort=(

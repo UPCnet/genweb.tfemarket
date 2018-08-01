@@ -659,6 +659,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 
 #formSearchOffers .span6,
 #formSearchOffers .span4,
+#formSearchOffers .span3,
 #formSearchOffers .span2 {
   margin-bottom: 0px;
 }

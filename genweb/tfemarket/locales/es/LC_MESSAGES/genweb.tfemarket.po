@@ -643,7 +643,7 @@ msgstr "Editar"
 #: ../content/offer.py:318
 #: ../content/templates/market_view.pt:255
 msgid "grant"
-msgstr "Posibilidad de beca / subvención"
+msgstr "Beca / subvención"
 
 #. Default: "The date the item will be published."
 #: ../behaviors.py:40
