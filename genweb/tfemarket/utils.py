@@ -19,6 +19,14 @@ from cgi import escape
 from Products.CMFPlone.utils import safe_unicode
 
 
+class BusError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
 def sendMessage(context, fromMsg, toMsg, subject, message, email_charset):
     context = aq_inner(context)
     mailhost = getToolByName(context, 'MailHost')

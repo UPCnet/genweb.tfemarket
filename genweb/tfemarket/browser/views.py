@@ -6,28 +6,30 @@ from plone import api
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
 from scss import Scss
-from zope.i18n import translate
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from zope.interface import alsoProvides
+from zope.i18n import translate
 from zope.interface import Interface
+from zope.interface import alsoProvides
 
 from genweb.core.utils import genweb_config
 from genweb.theme.browser.views import _render_cachekey
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.offer import IOffer
-from genweb.tfemarket.controlpanel import ITfemarketSettings, IBUSSOASettings
+from genweb.tfemarket.controlpanel import IBUSSOASettings
+from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
+from genweb.tfemarket.utils import BusError
+from genweb.tfemarket.utils import LDAPSearch
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
-from genweb.tfemarket.utils import LDAPSearch
 from genweb.tfemarket.utils import offerIsFromTheTeacher
 
 import json
 import pkg_resources
-import transaction
 import requests
+import transaction
 
 
 def redirectAfterChangeActualState(self):
@@ -104,7 +106,9 @@ class changeActualState(grok.View):
             else:
                 self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
                 redirectAfterChangeActualState(self)
-
+        except BusError as err:
+            self.context.plone_utils.addPortalMessage(err.value.status_code, 'error')
+            redirectAfterChangeActualState(self)
         except:
             self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
             redirectAfterChangeActualState(self)
