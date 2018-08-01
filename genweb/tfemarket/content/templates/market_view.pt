@@ -14,6 +14,11 @@
                      tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
             <div id="market" tal:define="save view/saveFilters; userApplications view/userApplications">
+                <div class="offerInfo alert alert-error" role="alert" tal:condition="view/showErrorBusSOA">
+                  <button data-dismiss="alert" class="close" type="button">×</button>
+                  <strong>Error</strong>
+                  <span i18n:translate="">SOA bus not configured. Contact the site administrator.</span>
+                </div>
                 <div id="userApplication" tal:condition="userApplications">
                   <h2 i18n:translate="">Your application</h2>
                   <table class="tableApplications">

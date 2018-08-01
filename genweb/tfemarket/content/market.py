@@ -20,6 +20,7 @@ from zope.sequencesort.ssort import sort
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
+from genweb.tfemarket.controlpanel import IBUSSOASettings
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
@@ -479,3 +480,13 @@ class View(grok.View):
                 return True
         else:
             return False
+
+    def showErrorBusSOA(self):
+        user_roles = api.user.get_current().getRoles()
+        if 'Manager' in user_roles or 'Market Manager' in user_roles:
+            registry = queryUtility(IRegistry)
+            bussoa_tool = registry.forInterface(IBUSSOASettings)
+            if bussoa_tool.bus_url and bussoa_tool.bus_user and bussoa_tool.bus_password and bussoa_tool.bus_apikey:
+                return False
+            return True
+        return False
