@@ -14,6 +14,11 @@
                      tal:define="offers view/getOffers">
             <div metal:use-macro="context/batch_macros/macros/navigation" />
             <div id="market" tal:define="save view/saveFilters; userApplications view/userApplications">
+                <div class="offerInfo alert alert-error" role="alert" tal:condition="view/showErrorBusSOA">
+                  <button data-dismiss="alert" class="close" type="button">×</button>
+                  <strong>Error</strong>
+                  <span i18n:translate="">SOA bus not configured. Contact the site administrator.</span>
+                </div>
                 <div id="userApplication" tal:condition="userApplications">
                   <h2 i18n:translate="">Your application</h2>
                   <table class="tableApplications">
@@ -26,7 +31,7 @@
                     </thead>
                     <tbody>
                       <tr tal:repeat="app userApplications">
-                        <td>Degree</td>
+                        <td i18n:translate="">Degree</td>
                         <td tal:content="python:app['offer_id'] + ' ' + app['offer_title']">Identifier Offer TFE</td>
                         <td class="actions">
                           <span class="workflowsAction">
@@ -161,9 +166,21 @@
 
                       <div class="row-fluid">
                         <div class="span6">
+                          <label i18n:translate="">TFEteacher</label>
+                          <select id="searchTeacher" name="teacher" tal:attributes="value save/teacher|nothing">
+                            <option value="a" i18n:translate="">MAll</option>
+                            <tal:block tal:repeat="teacher view/getTeachers">
+                              <tal:block tal:define="selected python: save.has_key('teacher') and not save['teacher'] == 'a' and teacher['id'] == save['teacher']">
+                                <option tal:attributes="value teacher/id; selected python: True if selected else False" tal:content="teacher/lit">Teacher</option>
+                              </tal:block>
+                            </tal:block>
+                          </select>
+                        </div>
+
+                        <div class="span6">
                           <label i18n:translate="">Departament</label>
                           <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
-                            <option value="a" i18n:translate="">All</option>
+                            <option value="a" i18n:translate="">MAll</option>
                             <tal:block tal:repeat="departament view/getDepartaments">
                               <tal:block tal:define="selected python: save.has_key('departament') and not save['departament'] == 'a' and departament == save['departament']">
                                 <option tal:attributes="value departament; selected python: True if selected else False" tal:content="departament">Departament</option>
@@ -171,7 +188,9 @@
                             </tal:block>
                           </select>
                         </div>
+                      </div>
 
+                      <div class="row-fluid">
                         <div class="span6">
                           <label i18n:translate="">Company</label>
                           <select id="searchCompany" name="company" tal:attributes="value save/company|nothing">
@@ -183,10 +202,8 @@
                             </tal:block>
                           </select>
                         </div>
-                      </div>
 
-                      <div class="row-fluid">
-                        <div class="span6">
+                        <div class="span3">
                           <label i18n:translate="">Date</label>
                           <select id="searchDate" name="date">
                             <tal:block tal:repeat="date view/getDates">
@@ -199,7 +216,7 @@
                           </select>
                         </div>
 
-                        <div class="span6">
+                        <div class="span3">
                           <label i18n:translate="">State</label>
                           <select id="searchState" name="state">
                             <option value="a" i18n:translate="">All</option>
@@ -227,7 +244,7 @@
                           </span>
                         </div>
 
-                        <div id="searchModality" class="multicheck span4">
+                        <div id="searchModality" class="multicheck span3">
                           <label i18n:translate="">Modality</label>
                           <span class="multicheckOptions">
                             <span tal:repeat="modality view/getModalities">
@@ -239,8 +256,8 @@
                           </span>
                         </div>
 
-                        <div id="searchGrants" class="span2">
-                          <label i18n:translate="">Possibility of scholarship</label>
+                        <div id="searchGrants" class="span3">
+                          <label i18n:translate="">grant</label>
                           <label class="switch">
                             <input type="checkbox" id="searchGrant" name="grant" tal:attributes="checked python: True if save.has_key('grant') else False"/>
                             <span class="slider round"></span>
@@ -261,6 +278,10 @@
                       </div>
 
                       <div class="bottomLinks">
+                        <a href="" class="btnTFE" tal:condition="view/currentUserIsAloneTeacher"
+                          i18n:translate="">
+                          View me offers
+                        </a>
                         <a href="?allOffers" class="btnTFE"
                           i18n:translate="">
                           View all offers
@@ -533,7 +554,7 @@
                                           <td tal:content="app/name">Name</td>
                                           <td tal:content="app/email">Email</td>
                                           <td tal:content="app/phone">Mobile</td>
-                                          <td>Degree</td>
+                                          <td i18n:translate="">Degree</td>
                                           <td tal:define="a app/offer_id;
                                                           b app/offer_title"
                                               tal:content="python:app['offer_id'] + ' ' + app['offer_title']">hola</td>

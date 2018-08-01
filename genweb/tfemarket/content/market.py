@@ -20,6 +20,7 @@ from zope.sequencesort.ssort import sort
 
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
+from genweb.tfemarket.controlpanel import IBUSSOASettings
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
@@ -63,7 +64,6 @@ class View(grok.View):
     def filterResults(self, results):
         filters = self.saveFilters()
         delete = []
-
         for index, item in enumerate(results, start=0):
 
             # Filter text
@@ -73,6 +73,11 @@ class View(grok.View):
 
             # Filter degree
             if filters['degree'] != 'a' and ('degrees' not in item or int(filters['degree']) not in item['degrees']):
+                delete.append(index)
+                continue
+
+            # Filter teacher
+            if filters['teacher'] != 'a' and ('teacher_manager' not in item or filters['teacher'] != item['teacher_manager']):
                 delete.append(index)
                 continue
 
@@ -178,7 +183,8 @@ class View(grok.View):
 
             filters = {'portal_type': 'genweb.tfemarket.offer'}
             if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
-                filters.update({'Creator': api.user.get_current().id})
+                if 'search' not in self.request.form and 'allOffers' not in self.request.form:
+                    filters.update({'Creator': api.user.get_current().id})
 
             values = self.context.contentValues(filters)
             values = sort(values, sort=(
@@ -352,6 +358,20 @@ class View(grok.View):
     def getAllOffers(self):
         return self.context.contentValues({'portal_type': 'genweb.tfemarket.offer'})
 
+    def getTeachers(self):
+        results = []
+        for offer in self.getAllOffers():
+            if checkPermission('zope2.View', offer) and offer.teacher_manager:
+                teacherNotInList = True
+                for teacher in results:
+                    if teacher['id'] == offer.teacher_manager:
+                        teacherNotInList = False
+                        break
+                if teacherNotInList:
+                    results.append({'id': offer.teacher_manager, 'lit': offer.teacher_fullname + " (" + offer.teacher_manager + ")"})
+
+        return sorted(list(results))
+
     def getDepartaments(self):
         results = []
         for offer in self.getAllOffers():
@@ -460,3 +480,13 @@ class View(grok.View):
                 return True
         else:
             return False
+
+    def showErrorBusSOA(self):
+        user_roles = api.user.get_current().getRoles()
+        if 'Manager' in user_roles or 'Market Manager' in user_roles:
+            registry = queryUtility(IRegistry)
+            bussoa_tool = registry.forInterface(IBUSSOASettings)
+            if bussoa_tool.bus_url and bussoa_tool.bus_user and bussoa_tool.bus_password and bussoa_tool.bus_apikey:
+                return False
+            return True
+        return False

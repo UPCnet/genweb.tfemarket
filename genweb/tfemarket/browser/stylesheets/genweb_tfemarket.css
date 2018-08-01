@@ -659,6 +659,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 
 #formSearchOffers .span6,
 #formSearchOffers .span4,
+#formSearchOffers .span3,
 #formSearchOffers .span2 {
   margin-bottom: 0px;
 }
@@ -747,6 +748,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 .btnTFE {
   display: inline-block;
   vertical-align: middle;
+  text-align: center;
   cursor: pointer;
   margin-right: 5px;
   border: 1px solid #7f7f7f;
