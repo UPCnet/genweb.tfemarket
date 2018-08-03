@@ -90,7 +90,7 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Ofertes',
         _(u'Ofertes'),
-        fields=['import_offers', 'count_offers']
+        fields=['life_period', 'import_offers', 'count_offers']
     )
 
     model.fieldset(
@@ -126,13 +126,6 @@ class ITfemarketSettings(model.Schema):
         default=u'I',
         required=True)
 
-    life_period = schema.Int(
-        title=_(u'Months until expiration'),
-        description=_('Number of months until the offer expires automatically'),
-        required=True,
-    )
-
-
     # CLASSIFICATIONS
 
     topics = schema.Text(
@@ -166,6 +159,13 @@ class ITfemarketSettings(model.Schema):
                                     )
 
     # OFERTES
+
+    life_period = schema.Int(
+        title=_(u'Months until expiration'),
+        description=_('Months until the offer expires automatically'),
+        required=True,
+        default=12,
+    )
 
     directives.mode(import_offers="display")
     import_offers = schema.Text(
