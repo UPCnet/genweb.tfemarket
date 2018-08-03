@@ -235,7 +235,7 @@ class View(grok.View):
                                         teacher_manager=offer.teacher_manager,
                                         teacher_fullname=offer.teacher_fullname,
                                         teacher_email=offer.teacher_email,
-                                        observations=offer.observations,
+                                        codirector=offer.codirector,
                                         modality=offer.modality,
                                         description=offer.description,
                                         langs=offer.lang,

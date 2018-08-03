@@ -503,9 +503,9 @@
                                        </tal:block>
                                      </div>
                                      <div class="leftInfoOffer">
-                                       <div class="observations" tal:condition="offer/observations">
-                                          <span class="field"><span i18n:translate="">Observations</span>: </span>
-                                          <p tal:content="offer/observations"></p>
+                                       <div class="observations" tal:condition="offer/codirector">
+                                          <span class="field"><span i18n:translate="">Codirector</span>: </span>
+                                          <p tal:content="offer/codirector"></p>
                                        </div>
                                     </div>
                                     <div class="leftInfoOffer">

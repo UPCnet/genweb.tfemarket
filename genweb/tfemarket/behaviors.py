@@ -20,8 +20,8 @@ from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 import datetime
 
 
-def effectiveDefaultValue():
-    return dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1))
+def expiresDefaultValue():
+    return dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365))
 
 
 class IPublicationOffer(model.Schema):
@@ -46,6 +46,7 @@ class IPublicationOffer(model.Schema):
             u'help_expiration_date',
             default=u"The date that the item will expire."),
         required=False,
+        defaultFactory=expiresDefaultValue,
     )
 
     form.omitted('effective', 'expired')
