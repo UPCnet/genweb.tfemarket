@@ -1115,6 +1115,14 @@ span.icon-genweb-tfemarket-market{
   margin-bottom: 0px;
 }
 
+#form-widgets-degree .option {
+  margin-bottom: 3px;
+}
+
+#form-widgets-degree label {
+  display: initial;
+}
+
 .portaltype-genweb-tfemarket-market nav#portal-globalnav,
 .portaltype-genweb-tfemarket-market nav#portal-breadcrumbs,
 .portaltype-genweb-tfemarket-market #portal-breadcrumbs,
