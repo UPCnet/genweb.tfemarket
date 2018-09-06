@@ -2,7 +2,6 @@
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from five import grok
-from plone import api
 from plone.app.layout.viewlets.interfaces import IAboveContentTitle
 from plone.app.layout.viewlets.interfaces import IPortalTop
 from zope.interface import Interface

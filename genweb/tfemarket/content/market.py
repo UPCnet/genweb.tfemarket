@@ -270,6 +270,11 @@ class View(grok.View):
                 results = self.filterResults(results)
                 self.request.response.setCookie('MERCAT_TFE', self.clearFiltersCookie(), path='/')
 
+            if 'searchOffer' in self.request.form and 'offer' in self.request.form:
+                for offer in results:
+                    if offer['offer_id'] == self.request.form['offer']:
+                        return [offer, ]
+
             return results
 
     def userApplications(self):

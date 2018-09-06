@@ -23,8 +23,6 @@ from genweb.tfemarket.z3cwidget import FieldsetFieldWidget, ReadOnlyInputFieldWi
 import transaction
 import unicodedata
 
-from dateutil.relativedelta import relativedelta
-
 
 grok.templatedir("templates")
 

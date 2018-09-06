@@ -32,7 +32,8 @@
                     <tbody>
                       <tr tal:repeat="app userApplications">
                         <td i18n:translate="">Degree</td>
-                        <td tal:content="python:app['offer_id'] + ' ' + app['offer_title']">Identifier Offer TFE</td>
+                        <td><a tal:content="python:app['offer_id'] + ' ' + app['offer_title']"
+                               tal:attributes="href python:'?searchOffer&offer=' + app['offer_id']">Identifier Offer TFE</a></td>
                         <td class="actions">
                           <span class="workflowsAction">
                             <span class="workflow notclick label" tal:content="app/state" tal:condition="not: app/workflows">State</span>
