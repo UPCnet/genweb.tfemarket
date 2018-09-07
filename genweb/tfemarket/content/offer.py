@@ -265,7 +265,7 @@ class IOffer(form.Schema):
     lang = schema.List(
         value_type=schema.Choice(vocabulary=u"genweb.tfemarket.Langs"),
         title=_(u'tfe_lang'),
-        required=False,
+        required=True,
     )
 
     ############################################################################

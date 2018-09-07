@@ -22,25 +22,25 @@ class IApplication(form.Schema):
     form.widget('offer_id', ReadOnlyInputFieldWidget)
     offer_id = schema.TextLine(
         title=_(u'Offer id'),
-        required=False,
+        required=True,
     )
 
     form.widget('offer_title', ReadOnlyInputFieldWidget)
     offer_title = schema.TextLine(
         title=_(u'Offer title'),
-        required=False,
+        required=True,
     )
 
     form.widget('dni', ReadOnlyInputFieldWidget)
     dni = schema.TextLine(
         title=_(u'DNI'),
-        required=False,
+        required=True,
     )
 
     form.widget('title', StudentInputFieldWidget)
     title = schema.TextLine(
         title=_(u'Fullname'),
-        required=False,
+        required=True,
     )
 
     phone = schema.TextLine(
@@ -51,7 +51,7 @@ class IApplication(form.Schema):
     form.widget('email', ReadOnlyInputFieldWidget)
     email = schema.TextLine(
         title=_(u'Email'),
-        required=False,
+        required=True,
     )
 
     form.mode(prisma_id='hidden')
