@@ -163,7 +163,7 @@ class getExactTeacher(grok.View):
 class requestOffer(grok.View):
     grok.context(Interface)
     grok.name('requestOffer')
-    grok.require('zope2.View')
+    grok.require('genweb.authenticated')
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
@@ -178,7 +178,6 @@ class requestOffer(grok.View):
         currentItem = portal.unrestrictedTraverse(itemid)
         currentUser = api.user.get_current()
         data = getStudentData(self, currentItem, currentUser)
-
         if data:
             self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
         else:
