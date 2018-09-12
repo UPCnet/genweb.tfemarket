@@ -66,7 +66,7 @@ msgstr "Afegeix camps efectius de data i caducitat obligatoris."
 
 #: ../content/market.py:355
 #: ../content/templates/market_view.pt:198
-#: ../utils.py:123
+#: ../utils.py:126
 msgid "All"
 msgstr "Totes"
 
@@ -125,7 +125,7 @@ msgstr "Adreça de correu de l'empresa"
 msgid "Confidential"
 msgstr "Confidencial"
 
-#: ../browser/views.py:107
+#: ../browser/views.py:105
 msgid "Connection error"
 msgstr "Error de connexió"
 
@@ -158,7 +158,7 @@ msgstr "Titulació"
 msgid "Degree code at PRISMA"
 msgstr "Codi del grau a PRISMA"
 
-#: ../utils.py:129
+#: ../utils.py:132
 msgid "Degree deleted"
 msgstr "Titulació eliminada"
 
@@ -218,7 +218,7 @@ msgstr "Temàtica ambiental"
 msgid "Environmental theme"
 msgstr "Temàtica ambiental"
 
-#: ../browser/views.py:96
+#: ../browser/views.py:94
 msgid "Error you can't perform the action."
 msgstr "No pots realitzar aquesta acció."
 
@@ -248,7 +248,7 @@ msgstr "Amagar cercador"
 msgid "Identifier Offer TFE"
 msgstr "Identificador de l'oferta"
 
-#: ../browser/views.py:382
+#: ../browser/views.py:218
 msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 msgstr "Si està realitzant la següent acció és perquè has eliminat totes les ofertes dels mercats. Fes clic al següent  <a href=\"reset_count_offers?confirm\">enllaç</a> per confirmar el reseteig del comptador d'ofertes."
 
@@ -342,9 +342,13 @@ msgstr "No"
 msgid "No results found."
 msgstr "No s'han trobat resultats."
 
-#: ../browser/views.py:346
+#: ../utils.py:310
 msgid "No tens número d'expedient a Prisma"
 msgstr "No tens número d'expedient a Prisma"
+
+#: ../utils.py:318
+msgid "No tens viculació d'ESTUDIANT"
+msgstr "No tens vinculació d'ESTUDIANT"
 
 #: ../controlpanel.py:179
 msgid "Number of offers created"
@@ -390,7 +394,7 @@ msgstr "Codi PRISMA"
 msgid "PRISMA id"
 msgstr "ID de PRISMA"
 
-#: ../browser/views.py:351
+#: ../utils.py:315
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "L'identificador PRISMA no s'ha trobat a PRISMA. %s"
 
@@ -614,7 +618,7 @@ msgstr "Usuari"
 msgid "User to connect to the bus"
 msgstr "Usuari per conectar-se al bus"
 
-#: ../browser/views.py:354
+#: ../utils.py:321
 msgid "Usuari no trobat en el Ldap"
 msgstr "Usuari no trobat en el LDAP"
 

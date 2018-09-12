@@ -64,7 +64,7 @@ msgstr "Adds effective date and expiration date fields required."
 
 #: ../content/market.py:355
 #: ../content/templates/market_view.pt:198
-#: ../utils.py:123
+#: ../utils.py:126
 msgid "All"
 msgstr "All"
 
@@ -123,7 +123,7 @@ msgstr "Company Email"
 msgid "Confidential"
 msgstr "Confidential"
 
-#: ../browser/views.py:107
+#: ../browser/views.py:105
 msgid "Connection error"
 msgstr "Connection error"
 
@@ -156,7 +156,7 @@ msgstr "Degree"
 msgid "Degree code at PRISMA"
 msgstr "Degree code at PRISMA"
 
-#: ../utils.py:129
+#: ../utils.py:132
 msgid "Degree deleted"
 msgstr "Degree deleted"
 
@@ -216,7 +216,7 @@ msgstr "Environmental Theme"
 msgid "Environmental theme"
 msgstr "Environmental Theme"
 
-#: ../browser/views.py:96
+#: ../browser/views.py:94
 msgid "Error you can't perform the action."
 msgstr "You can't perform the action."
 
@@ -246,7 +246,7 @@ msgstr "Hide search"
 msgid "Identifier Offer TFE"
 msgstr "Identifier of offer"
 
-#: ../browser/views.py:382
+#: ../browser/views.py:218
 msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 msgstr "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 
@@ -340,9 +340,13 @@ msgstr "No"
 msgid "No results found."
 msgstr "No results found."
 
-#: ../browser/views.py:346
+#: ../utils.py:310
 msgid "No tens número d'expedient a Prisma"
 msgstr "You do not have a Prisma number"
+
+#: ../utils.py:318
+msgid "No tens viculació d'ESTUDIANT"
+msgstr "You don't have STUDENT binding"
 
 #: ../controlpanel.py:179
 msgid "Number of offers created"
@@ -388,7 +392,7 @@ msgstr "PRISMA code"
 msgid "PRISMA id"
 msgstr "RISMA id"
 
-#: ../browser/views.py:351
+#: ../utils.py:315
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "PRISMA id not found at PRISMA. %s"
 
@@ -612,7 +616,7 @@ msgstr "User"
 msgid "User to connect to the bus"
 msgstr "User to connect to the bus"
 
-#: ../browser/views.py:354
+#: ../utils.py:321
 msgid "Usuari no trobat en el Ldap"
 msgstr "User not found in LDAP"
 

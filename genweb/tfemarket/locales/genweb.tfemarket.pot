@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-09-12 10:58+0000\n"
+"POT-Creation-Date: 2018-09-12 14:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: ../content/market.py:355
 #: ../content/templates/market_view.pt:198
-#: ../utils.py:123
+#: ../utils.py:126
 msgid "All"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Confidential"
 msgstr ""
 
-#: ../browser/views.py:107
+#: ../browser/views.py:105
 msgid "Connection error"
 msgstr ""
 
@@ -163,7 +163,7 @@ msgstr ""
 msgid "Degree code at PRISMA"
 msgstr ""
 
-#: ../utils.py:129
+#: ../utils.py:132
 msgid "Degree deleted"
 msgstr ""
 
@@ -223,7 +223,7 @@ msgstr ""
 msgid "Environmental theme"
 msgstr ""
 
-#: ../browser/views.py:96
+#: ../browser/views.py:94
 msgid "Error you can't perform the action."
 msgstr ""
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Identifier Offer TFE"
 msgstr ""
 
-#: ../browser/views.py:382
+#: ../browser/views.py:218
 msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
 msgstr ""
 
@@ -347,8 +347,12 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: ../browser/views.py:346
+#: ../utils.py:310
 msgid "No tens número d'expedient a Prisma"
+msgstr ""
+
+#: ../utils.py:318
+msgid "No tens viculació d'ESTUDIANT"
 msgstr ""
 
 #: ../controlpanel.py:179
@@ -395,7 +399,7 @@ msgstr ""
 msgid "PRISMA id"
 msgstr ""
 
-#: ../browser/views.py:351
+#: ../utils.py:315
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr ""
 
@@ -619,7 +623,7 @@ msgstr ""
 msgid "User to connect to the bus"
 msgstr ""
 
-#: ../browser/views.py:354
+#: ../utils.py:321
 msgid "Usuari no trobat en el Ldap"
 msgstr ""
 
