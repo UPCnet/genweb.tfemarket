@@ -279,26 +279,26 @@ def getStudentData(self, item, cn):
             id_prisma = student_data['id_prisma']
             numDocument = student_data['dni']
 
-        # list_test = [{'id_prisma': '2866124', 'numDocument': '44522242S'},
-        #              {'id_prisma': '2708530', 'numDocument': '47405847H'},
-        #              {'id_prisma': '2708479', 'numDocument': '41747970A'},
-        #              {'id_prisma': '2707723', 'numDocument': '18079004S'},
-        #              {'id_prisma': '2706798', 'numDocument': '48085070M'},
-        #              {'id_prisma': '2554111', 'numDocument': '53870113L'},
-        #              {'id_prisma': '2553255', 'numDocument': '39934092C'},
-        #              {'id_prisma': '2553249', 'numDocument': '53835514N'},
-        #              {'id_prisma': '2553092', 'numDocument': '26063484E'},
-        #              {'id_prisma': '2552221', 'numDocument': '21798723J'},
-        #              {'id_prisma': '2551839', 'numDocument': 'X2756193B'},
-        #              {'id_prisma': '2551740', 'numDocument': '73461145L'},
-        #              {'id_prisma': '2551700', 'numDocument': '41578237X'},
-        #              {'id_prisma': '2551388', 'numDocument': '47238061V'},
-        #              {'id_prisma': '2550963', 'numDocument': '48031179A'}]
+            list_test = [{'id_prisma': '2866124', 'numDocument': '44522242S'},
+                         {'id_prisma': '2708530', 'numDocument': '47405847H'},
+                         {'id_prisma': '2708479', 'numDocument': '41747970A'},
+                         {'id_prisma': '2707723', 'numDocument': '18079004S'},
+                         {'id_prisma': '2706798', 'numDocument': '48085070M'},
+                         {'id_prisma': '2554111', 'numDocument': '53870113L'},
+                         {'id_prisma': '2553255', 'numDocument': '39934092C'},
+                         {'id_prisma': '2553249', 'numDocument': '53835514N'},
+                         {'id_prisma': '2553092', 'numDocument': '26063484E'},
+                         {'id_prisma': '2552221', 'numDocument': '21798723J'},
+                         {'id_prisma': '2551839', 'numDocument': 'X2756193B'},
+                         {'id_prisma': '2551740', 'numDocument': '73461145L'},
+                         {'id_prisma': '2551700', 'numDocument': '41578237X'},
+                         {'id_prisma': '2551388', 'numDocument': '47238061V'},
+                         {'id_prisma': '2550963', 'numDocument': '48031179A'}]
 
-        # from random import randint
-        # test_user = list_test[randint(0, len(list_test) - 1)]
-        # id_prisma = test_user['id_prisma']
-        # numDocument = test_user['numDocument']
+            from random import randint
+            test_user = list_test[randint(0, len(list_test) - 1)]
+            id_prisma = test_user['id_prisma']
+            numDocument = test_user['numDocument']
 
             res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
@@ -307,7 +307,14 @@ def getStudentData(self, item, cn):
                 num_expedients = data['llistatExpedients']
 
                 if num_expedients:
-                    student_data.update({'llista_expedients': num_expedients})
+                    for exp in num_expedients:
+                        if exp['codiMecPrograma'] in item.degree:
+                            student_data.update({'degree_id': exp['codiMecPrograma']})
+                            student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
+
+                    if 'degree_id' not in student_data:
+                        self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la ofeta", 'error')
+                        return None
                 else:
                     self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
                     return None

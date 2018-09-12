@@ -48,7 +48,7 @@ def applicationChanged(application, event):
         lang = 'en'
     data = {
         'student': application.title,
-        'degree': 'Titulació usuari',
+        'degree': application.degree_title,
         'num': application.getParentNode().offer_id,
         'title': application.getParentNode().title,
         'linkApplication': application.absolute_url(),

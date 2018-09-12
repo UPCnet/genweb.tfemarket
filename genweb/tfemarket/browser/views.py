@@ -102,7 +102,7 @@ class changeActualState(grok.View):
                 self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
                 redirectToMarket(self)
         except BusError as err:
-            self.context.plone_utils.addPortalMessage(err.value.status_code, 'error')
+            self.context.plone_utils.addPortalMessage(_(u'Connection error') + ': ' + err.value.status_code, 'error')
             redirectToMarket(self)
         except:
             self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
@@ -180,13 +180,7 @@ class requestOffer(grok.View):
         data = getStudentData(self, currentItem, currentUser)
 
         if data:
-            expedients = data['llista_expedients']
-            for exp in expedients:
-                if exp['codiMecPrograma'] in currentItem.degree:
-                    self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
-                    return True
-            self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la ofeta", 'error')
-            redirectToMarket(self)
+            self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
         else:
             redirectToMarket(self)
 

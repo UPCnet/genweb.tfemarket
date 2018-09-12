@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
                       <tr tal:repeat="app userApplications">
-                        <td i18n:translate="">Degree</td>
+                        <td tal:content="app/degree_title">Degree</td>
                         <td><a tal:content="python:app['offer_id'] + ' ' + app['offer_title']"
                                tal:attributes="href python:'?searchOffer&offer=' + app['offer_id']">Identifier Offer TFE</a></td>
                         <td class="actions">
@@ -555,7 +555,7 @@
                                           <td tal:content="app/name">Name</td>
                                           <td tal:content="app/email">Email</td>
                                           <td tal:content="app/phone">Mobile</td>
-                                          <td i18n:translate="">Degree</td>
+                                          <td tal:content="app/degree_title">Degree</td>
                                           <td tal:define="a app/offer_id;
                                                           b app/offer_title"
                                               tal:content="python:app['offer_id'] + ' ' + app['offer_title']">hola</td>

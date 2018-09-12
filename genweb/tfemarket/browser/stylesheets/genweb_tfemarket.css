@@ -1000,6 +1000,7 @@ span.icon-genweb-tfemarket-market{
 }
 
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title input,
+.portaltype-genweb-tfemarket-offer #formfield-form-widgets-degree_title input,
 .portaltype-genweb-tfemarket-offer:not(.template-edit) #formfield-form-widgets-title input,
 .portaltype-genweb-tfemarket-offer #formfield-form-widgets-email input {
   width: 99%
@@ -1018,6 +1019,7 @@ span.icon-genweb-tfemarket-market{
 
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_id input,
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-offer_title input,
+  .portaltype-genweb-tfemarket-offer #formfield-form-widgets-degree_title input,
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-dni input,
   .portaltype-genweb-tfemarket-offer:not(.template-edit) #formfield-form-widgets-title input,
   .portaltype-genweb-tfemarket-offer #formfield-form-widgets-phone input,
@@ -1048,6 +1050,7 @@ span.icon-genweb-tfemarket-market{
 }
 
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_title input,
+.portaltype-genweb-tfemarket-application #formfield-form-widgets-degree_title input,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-title input,
 .portaltype-genweb-tfemarket-application #formfield-form-widgets-email input {
   width: 99%
@@ -1066,6 +1069,7 @@ span.icon-genweb-tfemarket-market{
 
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_id input,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-offer_title input,
+  .portaltype-genweb-tfemarket-application #formfield-form-widgets-degree_title input,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-dni input,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-title input,
   .portaltype-genweb-tfemarket-application #formfield-form-widgets-phone input,

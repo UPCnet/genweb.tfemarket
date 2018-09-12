@@ -19,6 +19,18 @@ class IApplication(form.Schema):
     """ Application for an offer
     """
 
+    form.mode(degree_id='hidden')
+    degree_id = schema.TextLine(
+        title=_(u'Degree id'),
+        required=True,
+    )
+
+    form.widget('degree_title', ReadOnlyInputFieldWidget)
+    degree_title = schema.TextLine(
+        title=_(u'Title of the degree with which you request the offer'),
+        required=True,
+    )
+
     form.widget('offer_id', ReadOnlyInputFieldWidget)
     offer_id = schema.TextLine(
         title=_(u'Offer id'),
@@ -57,13 +69,6 @@ class IApplication(form.Schema):
     form.mode(prisma_id='hidden')
     prisma_id = schema.TextLine(
         title=_(u'PRISMA id'),
-        required=False,
-    )
-
-    form.mode(llista_expedients='hidden')
-    llista_expedients = schema.List(
-        title=_(u'Llista Expedients'),
-        value_type=schema.TextLine(),
         required=False,
     )
 
