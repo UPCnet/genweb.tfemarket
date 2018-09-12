@@ -616,7 +616,7 @@
                                   </div>
                                   <div class="buttonsOffer">
                                     <tal:condition tal:condition="offer/can_create_application">
-                                      <a tal:attributes="href string:${offer/url}/++add++genweb.tfemarket.application">
+                                      <a tal:attributes="href string:requestOffer?id=${offer/item_path}&offer=${offer/offer_id}&open${view/getActualView}">
                                         <button type="submit" class="link">
                                           <span i18n:translate="">Request the offer</span>
                                         </button>

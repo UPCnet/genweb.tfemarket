@@ -32,7 +32,7 @@ import requests
 import transaction
 
 
-def redirectAfterChangeActualState(self):
+def redirectToMarket(self):
     try:
         from plone.protect.interfaces import IDisableCSRFProtection
         alsoProvides(self.request, IDisableCSRFProtection)
@@ -68,9 +68,6 @@ class changeActualState(grok.View):
     grok.name('changeActualState')
     grok.require('zope2.View')
     grok.layer(IGenwebTfemarketLayer)
-    """ Es fa servir a la vista sessio i presentacio. No cal fer reload perque
-        es mostra el nou valor per JS
-    """
 
     def render(self):
         try:
@@ -97,21 +94,21 @@ class changeActualState(grok.View):
 
                     if (marketState.id == 'published' and estat == 'publicaalintranet') or (marketState.id == 'intranet' and estat == 'publicaloferta'):
                         self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
-                        redirectAfterChangeActualState(self)
+                        redirectToMarket(self)
                         return None
 
                 wftool = getToolByName(self.context, 'portal_workflow')
                 wftool.doActionFor(currentItem, estat)
-                redirectAfterChangeActualState(self)
+                redirectToMarket(self)
             else:
                 self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
-                redirectAfterChangeActualState(self)
+                redirectToMarket(self)
         except BusError as err:
             self.context.plone_utils.addPortalMessage(err.value.status_code, 'error')
-            redirectAfterChangeActualState(self)
+            redirectToMarket(self)
         except:
             self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
-            redirectAfterChangeActualState(self)
+            redirectToMarket(self)
 
 
 class getTeacher(grok.View):
@@ -163,6 +160,31 @@ class getExactTeacher(grok.View):
             return json.dumps(data)
         else:
             return None
+
+
+class requestOffer(grok.View):
+    grok.context(Interface)
+    grok.name('requestOffer')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        try:
+            from plone.protect.interfaces import IDisableCSRFProtection
+            alsoProvides(self.request, IDisableCSRFProtection)
+        except:
+            pass
+
+        itemid = self.request.form.get('id')
+        portal = api.portal.get()
+        currentItem = portal.unrestrictedTraverse(itemid)
+        import ipdb; ipdb.set_trace()
+
+        if True:
+            self.context.plone_utils.addPortalMessage("AQUI LOS ERRORES", 'error')
+            redirectToMarket(self)
+        else:
+            self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
 
 
 class getInfoCreateApplication(grok.View):
