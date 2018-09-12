@@ -178,7 +178,6 @@ class requestOffer(grok.View):
         itemid = self.request.form.get('id')
         portal = api.portal.get()
         currentItem = portal.unrestrictedTraverse(itemid)
-        import ipdb; ipdb.set_trace()
 
         if True:
             self.context.plone_utils.addPortalMessage("AQUI LOS ERRORES", 'error')
