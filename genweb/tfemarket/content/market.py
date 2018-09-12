@@ -27,7 +27,7 @@ from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreate
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getDegrees
-from genweb.tfemarket.utils import offerIsFromTheTeacher
+from genweb.tfemarket.utils import isTeachersOffer
 
 import ast
 import unicodedata
@@ -262,7 +262,7 @@ class View(grok.View):
                                         confidential=offer.confidential,
                                         scope_cooperation=offer.scope_cooperation,
                                         topic=offer.topic,
-                                        if_propietary=offerIsFromTheTeacher(offer),
+                                        if_propietary=isTeachersOffer(offer),
                                         assign_offer=self.assignOffer(offer, offerState.id)
                                         ))
 

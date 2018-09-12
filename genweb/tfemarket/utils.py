@@ -18,6 +18,9 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from cgi import escape
 from Products.CMFPlone.utils import safe_unicode
 
+from genweb.tfemarket.controlpanel import IBUSSOASettings
+import requests
+
 
 class BusError(Exception):
     def __init__(self, value):
@@ -218,7 +221,7 @@ def LDAPSearch(self, query, isQueryAlreadyMade=False):
         ldapservice.unbind_s()
 
 
-def offerIsFromTheTeacher(offer):
+def isTeachersOffer(offer):
     user = api.user.get_current()
     user_roles = user.getRoles()
     if 'Manager' in user_roles or 'Market Manager' in user_roles:
@@ -228,3 +231,96 @@ def offerIsFromTheTeacher(offer):
             if user.id in offer.creators:
                 return True
     return False
+
+
+def getStudentData(self, item, cn):
+    registry = queryUtility(IRegistry)
+    bussoa_tool = registry.forInterface(IBUSSOASettings)
+    tfe_tool = registry.forInterface(ITfemarketSettings)
+    bussoa_url = bussoa_tool.bus_url
+    bussoa_user = bussoa_tool.bus_user
+    bussoa_pass = bussoa_tool.bus_password
+    bussoa_apikey = bussoa_tool.bus_apikey
+    tipus_alta = tfe_tool.enroll_type
+    student_data = {}
+    keys = ['segmentation', 'unit', 'typology', 'idorigen']
+    vinculacio = []
+    result = LDAPSearch(self, cn)
+    if result['ok']:
+        user = result['content'][0]
+        student_data = {
+            'offer_id': item.offer_id,
+            'offer_title': item.title,
+            'fullname': user['fullname'],
+            'dni': user['dni'],
+            'email': user['email'],
+            'id_prisma': '',
+        }
+        if 'telephoneNumber' in user:
+            student_data.update({'phone': user['phone']})
+
+        for key in keys:
+            for ind, i in enumerate(user[key]):
+                try:
+                    vinculacio[ind].update({key: i})
+                except IndexError:
+                    vinculacio.append({key: i})
+
+        isStudent = (True for item in vinculacio if item['typology'] == 'EST')
+
+        if True in isStudent:
+
+            for item in vinculacio:
+                if item['typology'] == 'EST':
+                    id_prisma = item['idorigen']
+                    student_data.update({'idPrisma': id_prisma})
+                    break
+
+            id_prisma = student_data['id_prisma']
+            numDocument = student_data['dni']
+
+        # list_test = [{'id_prisma': '2866124', 'numDocument': '44522242S'},
+        #              {'id_prisma': '2708530', 'numDocument': '47405847H'},
+        #              {'id_prisma': '2708479', 'numDocument': '41747970A'},
+        #              {'id_prisma': '2707723', 'numDocument': '18079004S'},
+        #              {'id_prisma': '2706798', 'numDocument': '48085070M'},
+        #              {'id_prisma': '2554111', 'numDocument': '53870113L'},
+        #              {'id_prisma': '2553255', 'numDocument': '39934092C'},
+        #              {'id_prisma': '2553249', 'numDocument': '53835514N'},
+        #              {'id_prisma': '2553092', 'numDocument': '26063484E'},
+        #              {'id_prisma': '2552221', 'numDocument': '21798723J'},
+        #              {'id_prisma': '2551839', 'numDocument': 'X2756193B'},
+        #              {'id_prisma': '2551740', 'numDocument': '73461145L'},
+        #              {'id_prisma': '2551700', 'numDocument': '41578237X'},
+        #              {'id_prisma': '2551388', 'numDocument': '47238061V'},
+        #              {'id_prisma': '2550963', 'numDocument': '48031179A'}]
+
+        # from random import randint
+        # test_user = list_test[randint(0, len(list_test) - 1)]
+        # id_prisma = test_user['id_prisma']
+        # numDocument = test_user['numDocument']
+
+            res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+
+            if res_data.ok:
+                data = res_data.json()
+                num_expedients = data['llistatExpedients']
+
+                if num_expedients:
+                    student_data.update({'llista_expedients': num_expedients})
+                else:
+                    self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
+                    return None
+            else:
+                status_code = res_data.status_code
+                reason = res_data.reason
+                self.context.plone_utils.addPortalMessage(_(u"PRISMA id not found at PRISMA. %s" % (str(status_code) + ' ' + reason)), 'error')
+                return None
+        else:
+            self.context.plone_utils.addPortalMessage(_(u"No tens viculació d'ESTUDIANT"), 'error')
+            return None
+    else:
+        self.context.plone_utils.addPortalMessage(_(u"Usuari no trobat en el Ldap"), 'error')
+        return None
+
+    return student_data

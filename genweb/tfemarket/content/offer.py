@@ -369,15 +369,6 @@ def defineTeacherAsEditor(offer, event):
     offer.reindexObject()
 
 
-# @grok.subscribe(IOffer, IObjectModifiedEvent)
-# @grok.subscribe(IOffer, IObjectAddedEvent)
-# def expiredDefaultValue():
-#     if not self.expired:
-#         registry = queryUtility(IRegistry)
-#         tfe_tool = registry.forInterface(ITfemarketSettings)
-#         return  dt_end_of_day(datetime.datetime.today() + relativedelta(months=+tfe_tool.life_period))
-
-
 class View(dexterity.DisplayForm):
     grok.require('zope2.View')
     grok.context(IOffer)
