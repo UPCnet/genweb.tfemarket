@@ -396,7 +396,7 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
 table.tableApplications tbody .actions button.ignore,
 table.tableApplications tbody .actions > a.ignore,
 table#form-widgets-teacher_manager-hint tbody .actions > a.ignore {
-  color: #e3564d !important;
+  color: #800000 !important;
 }
 
 #market .rightInfoOffer.actions button.disabled,
@@ -416,6 +416,11 @@ table.tableApplications tbody .actions .workflowsAction .workflow.notclick {
   padding: 3px 6px;
   border-radius: 3px !important;
   text-shadow: none;
+}
+
+#market .rightInfoOffer.actions .workflowsAction .ignore.workflow.notclick,
+table.tableApplications tbody .actions .workflowsAction .ignore.workflow.notclick {
+  color: #800000 !important;
 }
 
 #market .rightInfoOffer.actions a,
@@ -440,7 +445,7 @@ table#form-widgets-teacher_manager-hint tbody .actions .caret {
 #market .rightInfoOffer.actions .ignore .caret,
 table.tableApplications tbody .actions .ignore .caret,
 table#form-widgets-teacher_manager-hint tbody .actions .ignore .caret {
-  border-top: 4px solid #e3564d !important;
+  border-top: 4px solid #800000 !important;
 }
 
 #market .rightInfoOffer.actions button:hover,
@@ -450,7 +455,7 @@ table.tableApplications tbody .actions button:hover {
 
 #market .rightInfoOffer.actions button.ignore:hover,
 table.tableApplications tbody .actions button.ignore:hover {
-  border: 1px solid #e3564d !important;
+  border: 1px solid #800000 !important;
 }
 
 #market .rightInfoOffer.actions button.disabled:hover,
