@@ -339,6 +339,7 @@ class View(grok.View):
                                 workflows=workflowActions,
                                 can_change_workflows=True,
                                 can_edit=checkPermission('cmf.ModifyPortalContent', application) and not self.currentUserIsAloneTeacher(),
+                                style='ignore' if item.review_state in ['cancelled', 'rejected', 'renounced'] else '',
                                 ))
         return results
 

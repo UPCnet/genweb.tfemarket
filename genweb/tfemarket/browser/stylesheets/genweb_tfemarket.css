@@ -391,6 +391,14 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
   text-shadow: none;
 }
 
+#market .rightInfoOffer.actions button.ignore,
+#market .rightInfoOffer.actions > a.ignore,
+table.tableApplications tbody .actions button.ignore,
+table.tableApplications tbody .actions > a.ignore,
+table#form-widgets-teacher_manager-hint tbody .actions > a.ignore {
+  color: #e3564d !important;
+}
+
 #market .rightInfoOffer.actions button.disabled,
 table.tableApplications tbody .actions button.disabled,
 #market .rightInfoOffer.actions button.disabled:hover,
@@ -429,14 +437,25 @@ table#form-widgets-teacher_manager-hint tbody .actions .caret {
   vertical-align: middle;
 }
 
+#market .rightInfoOffer.actions .ignore .caret,
+table.tableApplications tbody .actions .ignore .caret,
+table#form-widgets-teacher_manager-hint tbody .actions .ignore .caret {
+  border-top: 4px solid #e3564d !important;
+}
+
 #market .rightInfoOffer.actions button:hover,
 table.tableApplications tbody .actions button:hover {
   border: 1px solid #c35a0a;
 }
 
+#market .rightInfoOffer.actions button.ignore:hover,
+table.tableApplications tbody .actions button.ignore:hover {
+  border: 1px solid #e3564d !important;
+}
+
 #market .rightInfoOffer.actions button.disabled:hover,
 table.tableApplications tbody .actions button.disabled:hover {
-  border: 1px solid #ADADAD;
+  border: 1px solid #ADADAD !important;
 }
 
 

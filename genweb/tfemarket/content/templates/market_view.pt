@@ -561,7 +561,8 @@
                                               tal:content="python:app['offer_id'] + ' ' + app['offer_title']">hola</td>
                                           <td class="actions" nowrap>
                                             <span class="workflowsAction">
-                                              <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
+                                              <button tal:attributes="class string:${app/style} label dropdown-toggle bullet-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
                                                 <span tal:content="app/state">State</span>
                                                 <span class="caret"></span>
                                               </button>
