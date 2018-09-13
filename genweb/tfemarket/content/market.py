@@ -287,7 +287,7 @@ class View(grok.View):
                          Creator=api.user.get_current().id)
 
         for item in values:
-            if item.review_state not in ['cancelled', 'rejected']:
+            if item.review_state not in ['cancelled', 'rejected', 'renounced']:
                 application = item.getObject()
                 workflowActions = wf_tool.listActionInfos(object=application)
                 workflows = tools.workflow().getWorkflowsFor(application)[0]
