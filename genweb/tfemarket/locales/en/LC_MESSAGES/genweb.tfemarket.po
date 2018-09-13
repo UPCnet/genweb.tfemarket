@@ -18,11 +18,11 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 
-#: ../browser/events/change.py:100
+#: ../browser/events/change.py:104
 msgid "A3"
 msgstr "You have confirmed the allocation of this offer. Your information and those of the offer will be transferred to PRISMA in order to formalize the registration. If you have any questions, you can contact your secretary."
 
-#: ../browser/events/change.py:106
+#: ../browser/events/change.py:110
 msgid "A4"
 msgstr "You have waived the offer and the teacher has been notified. If you want to return to request it, you have to fill out a new application."
 
@@ -30,11 +30,11 @@ msgstr "You have waived the offer and the teacher has been notified. If you want
 msgid "A5"
 msgstr "Request filed. You will receive an email with the data of your request and a link to it, through which you can check its status. The changes in status of your request are also communicated via email."
 
-#: ../browser/events/change.py:89
+#: ../browser/events/change.py:93
 msgid "A6"
 msgstr "There are currently other pending applications, it is recommended to reject them because they do not have the rest of the students waiting."
 
-#: ../browser/events/change.py:111
+#: ../browser/events/change.py:115
 msgid "A7"
 msgstr "The request is canceled."
 
@@ -66,7 +66,7 @@ msgstr "Add topics one for line"
 msgid "Adds effective date and expiration date fields required."
 msgstr "Adds effective date and expiration date fields required."
 
-#: ../content/market.py:355
+#: ../content/market.py:356
 #: ../content/templates/market_view.pt:198
 #: ../utils.py:126
 msgid "All"
@@ -107,7 +107,7 @@ msgstr "Contact"
 msgid "Codirector"
 msgstr "Co-director"
 
-#: ../content/market.py:351
+#: ../content/market.py:352
 #: ../content/offer.py:294
 #: ../content/templates/market_view.pt:196
 msgid "Company"
@@ -238,7 +238,7 @@ msgstr "Features"
 msgid "Fullname"
 msgstr "Fullname"
 
-#: ../content/templates/market_view.pt:631
+#: ../content/templates/market_view.pt:632
 msgid "Hide applications"
 msgstr "Hide applications"
 
@@ -286,11 +286,11 @@ msgstr "Language work elaboration"
 msgid "Languages work elaboration"
 msgstr "Languages work elaboration"
 
-#: ../content/market.py:357
+#: ../content/market.py:358
 msgid "Last month"
 msgstr "Last month"
 
-#: ../content/market.py:356
+#: ../content/market.py:357
 msgid "Last week"
 msgstr "Last week"
 
@@ -344,11 +344,11 @@ msgstr "No"
 msgid "No results found."
 msgstr "No results found."
 
-#: ../utils.py:310
+#: ../utils.py:323
 msgid "No tens número d'expedient a Prisma"
 msgstr "You do not have a Prisma number"
 
-#: ../utils.py:318
+#: ../utils.py:331
 msgid "No tens viculació d'ESTUDIANT"
 msgstr "You don't have STUDENT binding"
 
@@ -396,7 +396,7 @@ msgstr "PRISMA code"
 msgid "PRISMA id"
 msgstr "RISMA id"
 
-#: ../utils.py:315
+#: ../utils.py:328
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "PRISMA id not found at PRISMA. %s"
 
@@ -437,7 +437,7 @@ msgstr "What search offers?"
 msgid "Register"
 msgstr "Register"
 
-#: ../content/templates/market_view.pt:621
+#: ../content/templates/market_view.pt:622
 msgid "Request the offer"
 msgstr "Request the offer"
 
@@ -483,7 +483,7 @@ msgstr "Select the market where you want to import the offers."
 msgid "Settings"
 msgstr "Settings"
 
-#: ../content/templates/market_view.pt:627
+#: ../content/templates/market_view.pt:628
 msgid "Show applications"
 msgstr "Show applications"
 
@@ -538,11 +538,11 @@ msgstr "Text to search"
 msgid "The current offer contains an accepted application."
 msgstr "The current offer contains an accepted application."
 
-#: ../browser/events/change.py:152
+#: ../browser/events/change.py:155
 msgid "The offer can't be canceled if it contains active applications."
 msgstr "The offer can't be canceled if it contains active applications."
 
-#: ../browser/events/change.py:162
+#: ../browser/events/change.py:165
 msgid "The offer can't be deleted."
 msgstr "The offer can't be deleted."
 
@@ -603,7 +603,7 @@ msgstr "URL to access the bus"
 msgid "Universitat"
 msgstr "University"
 
-#: ../content/market.py:352
+#: ../content/market.py:353
 msgid "University"
 msgstr "University"
 
@@ -620,7 +620,7 @@ msgstr "User"
 msgid "User to connect to the bus"
 msgstr "User to connect to the bus"
 
-#: ../utils.py:321
+#: ../utils.py:334
 msgid "Usuari no trobat en el Ldap"
 msgstr "User not found in LDAP"
 
@@ -639,6 +639,10 @@ msgstr "Workload"
 #: ../content/templates/market_view.pt:415
 msgid "Yes"
 msgstr "Yes"
+
+#: ../utils.py:251
+msgid "You have already created an application. You can see it at the top of the market page."
+msgstr "You have already created an application. You can see it at the top of the market page."
 
 #: ../content/application.py:87
 msgid "You have already created an application. You can see it on the main page of the market."

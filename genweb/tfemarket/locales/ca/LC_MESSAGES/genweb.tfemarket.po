@@ -20,11 +20,11 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr "<b>Error:</b> El format es incorrecte. <b>nom.cognom</b>"
 
-#: ../browser/events/change.py:100
+#: ../browser/events/change.py:104
 msgid "A3"
 msgstr "Has confirmat l’assignació d’aquesta oferta. Les teves dades i les de l’oferta es traspassaran a PRISMA per tal de formalitzar la matrícula. Si tens qualsevol dubte pots adreçar-te a la teva secretaria."
 
-#: ../browser/events/change.py:106
+#: ../browser/events/change.py:110
 msgid "A4"
 msgstr "Has renunciat a l’oferta i s’ha comunicat al professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
 
@@ -32,11 +32,11 @@ msgstr "Has renunciat a l’oferta i s’ha comunicat al professor. Si vols torn
 msgid "A5"
 msgstr "Sol·licitud presentada. Rebràs un missatge de correu amb les dades de la teva sol·licitud i un enllaç a aquesta, a través del qual podràs consultar el seu estat. Els canvis d'estat de la teva sol·licitud es comuniquen també mitjançant el correu electrònic. "
 
-#: ../browser/events/change.py:89
+#: ../browser/events/change.py:93
 msgid "A6"
 msgstr "Actualment hi ha altres sol·licituds pendents, es recomana rebutjar-les per no tenir la resta d'estudiants a l'espera."
 
-#: ../browser/events/change.py:111
+#: ../browser/events/change.py:115
 msgid "A7"
 msgstr "La sol·licitud a sigut cancel·lada."
 
@@ -68,7 +68,7 @@ msgstr "Afegeix un tema per línea"
 msgid "Adds effective date and expiration date fields required."
 msgstr "Afegeix camps efectius de data i caducitat obligatoris."
 
-#: ../content/market.py:355
+#: ../content/market.py:356
 #: ../content/templates/market_view.pt:198
 #: ../utils.py:126
 msgid "All"
@@ -109,7 +109,7 @@ msgstr "Contacte"
 msgid "Codirector"
 msgstr "Codirector"
 
-#: ../content/market.py:351
+#: ../content/market.py:352
 #: ../content/offer.py:294
 #: ../content/templates/market_view.pt:196
 msgid "Company"
@@ -240,7 +240,7 @@ msgstr "Característiques"
 msgid "Fullname"
 msgstr "Nom complet"
 
-#: ../content/templates/market_view.pt:631
+#: ../content/templates/market_view.pt:632
 msgid "Hide applications"
 msgstr "Amagar sol·licituds"
 
@@ -288,11 +288,11 @@ msgstr "Idioma d'elaboració del treball"
 msgid "Languages work elaboration"
 msgstr "Idiomes d'elaboració del treball"
 
-#: ../content/market.py:357
+#: ../content/market.py:358
 msgid "Last month"
 msgstr "Últim mes"
 
-#: ../content/market.py:356
+#: ../content/market.py:357
 msgid "Last week"
 msgstr "Última setmana"
 
@@ -346,11 +346,11 @@ msgstr "No"
 msgid "No results found."
 msgstr "No s'han trobat resultats."
 
-#: ../utils.py:310
+#: ../utils.py:323
 msgid "No tens número d'expedient a Prisma"
 msgstr "No tens número d'expedient a Prisma"
 
-#: ../utils.py:318
+#: ../utils.py:331
 msgid "No tens viculació d'ESTUDIANT"
 msgstr "No tens vinculació d'ESTUDIANT"
 
@@ -398,7 +398,7 @@ msgstr "Codi PRISMA"
 msgid "PRISMA id"
 msgstr "ID de PRISMA"
 
-#: ../utils.py:315
+#: ../utils.py:328
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "L'identificador PRISMA no s'ha trobat a PRISMA. %s"
 
@@ -439,7 +439,7 @@ msgstr "Quines ofertes cerques?"
 msgid "Register"
 msgstr "Registre"
 
-#: ../content/templates/market_view.pt:621
+#: ../content/templates/market_view.pt:622
 msgid "Request the offer"
 msgstr "Sol·licitar l'oferta"
 
@@ -485,7 +485,7 @@ msgstr "Seleccioneu el mercat on voleu importar les ofertes."
 msgid "Settings"
 msgstr "Configuració"
 
-#: ../content/templates/market_view.pt:627
+#: ../content/templates/market_view.pt:628
 msgid "Show applications"
 msgstr "Mostrar sol·licituds"
 
@@ -540,11 +540,11 @@ msgstr "Text a cercar"
 msgid "The current offer contains an accepted application."
 msgstr "L'oferta actual conté una sol·licitud acceptada."
 
-#: ../browser/events/change.py:152
+#: ../browser/events/change.py:155
 msgid "The offer can't be canceled if it contains active applications."
 msgstr "L'oferta no es pot cancelar si conté sol·licituds actives."
 
-#: ../browser/events/change.py:162
+#: ../browser/events/change.py:165
 msgid "The offer can't be deleted."
 msgstr "L'oferta no es pot eliminar, te sol·licituds actives."
 
@@ -605,7 +605,7 @@ msgstr "URL per accedir al bus"
 msgid "Universitat"
 msgstr "Universitat"
 
-#: ../content/market.py:352
+#: ../content/market.py:353
 msgid "University"
 msgstr "Universitat"
 
@@ -622,7 +622,7 @@ msgstr "Usuari"
 msgid "User to connect to the bus"
 msgstr "Usuari per conectar-se al bus"
 
-#: ../utils.py:321
+#: ../utils.py:334
 msgid "Usuari no trobat en el Ldap"
 msgstr "Usuari no trobat en el LDAP"
 
@@ -641,6 +641,10 @@ msgstr "Càrrega de treball"
 #: ../content/templates/market_view.pt:415
 msgid "Yes"
 msgstr "Si"
+
+#: ../utils.py:251
+msgid "You have already created an application. You can see it at the top of the market page."
+msgstr "Ja has fet una sol·licitud. Pots visualitzar-la a la part superior de la pàgina del mercat."
 
 #: ../content/application.py:87
 msgid "You have already created an application. You can see it on the main page of the market."

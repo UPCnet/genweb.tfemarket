@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-09-13 06:59+0000\n"
+"POT-Creation-Date: 2018-09-13 09:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
 msgstr ""
 
-#: ../browser/events/change.py:100
+#: ../browser/events/change.py:104
 msgid "A3"
 msgstr ""
 
-#: ../browser/events/change.py:106
+#: ../browser/events/change.py:110
 msgid "A4"
 msgstr ""
 
@@ -37,11 +37,11 @@ msgstr ""
 msgid "A5"
 msgstr ""
 
-#: ../browser/events/change.py:89
+#: ../browser/events/change.py:93
 msgid "A6"
 msgstr ""
 
-#: ../browser/events/change.py:111
+#: ../browser/events/change.py:115
 msgid "A7"
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Adds effective date and expiration date fields required."
 msgstr ""
 
-#: ../content/market.py:355
+#: ../content/market.py:356
 #: ../content/templates/market_view.pt:198
 #: ../utils.py:126
 msgid "All"
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Codirector"
 msgstr ""
 
-#: ../content/market.py:351
+#: ../content/market.py:352
 #: ../content/offer.py:294
 #: ../content/templates/market_view.pt:196
 msgid "Company"
@@ -245,7 +245,7 @@ msgstr ""
 msgid "Fullname"
 msgstr ""
 
-#: ../content/templates/market_view.pt:631
+#: ../content/templates/market_view.pt:632
 msgid "Hide applications"
 msgstr ""
 
@@ -293,11 +293,11 @@ msgstr ""
 msgid "Languages work elaboration"
 msgstr ""
 
-#: ../content/market.py:357
+#: ../content/market.py:358
 msgid "Last month"
 msgstr ""
 
-#: ../content/market.py:356
+#: ../content/market.py:357
 msgid "Last week"
 msgstr ""
 
@@ -351,11 +351,11 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: ../utils.py:310
+#: ../utils.py:323
 msgid "No tens número d'expedient a Prisma"
 msgstr ""
 
-#: ../utils.py:318
+#: ../utils.py:331
 msgid "No tens viculació d'ESTUDIANT"
 msgstr ""
 
@@ -403,7 +403,7 @@ msgstr ""
 msgid "PRISMA id"
 msgstr ""
 
-#: ../utils.py:315
+#: ../utils.py:328
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr ""
 
@@ -444,7 +444,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ../content/templates/market_view.pt:621
+#: ../content/templates/market_view.pt:622
 msgid "Request the offer"
 msgstr ""
 
@@ -490,7 +490,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../content/templates/market_view.pt:627
+#: ../content/templates/market_view.pt:628
 msgid "Show applications"
 msgstr ""
 
@@ -545,11 +545,11 @@ msgstr ""
 msgid "The current offer contains an accepted application."
 msgstr ""
 
-#: ../browser/events/change.py:152
+#: ../browser/events/change.py:155
 msgid "The offer can't be canceled if it contains active applications."
 msgstr ""
 
-#: ../browser/events/change.py:162
+#: ../browser/events/change.py:165
 msgid "The offer can't be deleted."
 msgstr ""
 
@@ -610,7 +610,7 @@ msgstr ""
 msgid "Universitat"
 msgstr ""
 
-#: ../content/market.py:352
+#: ../content/market.py:353
 msgid "University"
 msgstr ""
 
@@ -627,7 +627,7 @@ msgstr ""
 msgid "User to connect to the bus"
 msgstr ""
 
-#: ../utils.py:321
+#: ../utils.py:334
 msgid "Usuari no trobat en el Ldap"
 msgstr ""
 
@@ -645,6 +645,10 @@ msgstr ""
 
 #: ../content/templates/market_view.pt:415
 msgid "Yes"
+msgstr ""
+
+#: ../utils.py:251
+msgid "You have already created an application. You can see it at the top of the market page."
 msgstr ""
 
 #: ../content/application.py:87

@@ -247,6 +247,10 @@ def getStudentData(self, item, cn):
     vinculacio = []
     result = LDAPSearch(self, cn)
     if result['ok']:
+        if not checkPermissionCreateApplications(self, self.context):
+            self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it at the top of the market page."), 'error')
+            return None
+
         user = result['content'][0]
         student_data = {
             'offer_id': item.offer_id,
