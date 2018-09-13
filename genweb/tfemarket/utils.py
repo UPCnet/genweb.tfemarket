@@ -61,10 +61,12 @@ def getLdapUserData(user, typology=None):
     return search_result
 
 
-def checkPermissionCreateApplications(self, context):
+def checkPermissionCreateApplications(self, context, errors=False):
     roles = api.user.get_roles()
 
     if 'Market Manager' in roles or 'Manager' in roles or 'Teacher' in roles:
+        if errors:
+            self.context.plone_utils.addPortalMessage(_(u"You don't have permission for create a application."), 'error')
         return False
 
     wf_tool = getToolByName(context, 'portal_workflow')
@@ -85,10 +87,14 @@ def checkPermissionCreateApplications(self, context):
                 results.append(item)
 
         if len(results) > 0:
+            if errors:
+                self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it at the top of the market page."), 'error')
             return False
         else:
             return True
     else:
+        if errors:
+            self.context.plone_utils.addPortalMessage(_(u"You don't have permission for create a application."), 'error')
         return False
 
 
@@ -247,8 +253,7 @@ def getStudentData(self, item, cn):
     vinculacio = []
     result = LDAPSearch(self, cn)
     if result['ok']:
-        if not checkPermissionCreateApplications(self, self.context):
-            self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it at the top of the market page."), 'error')
+        if not checkPermissionCreateApplications(self, item, True):
             return None
 
         user = result['content'][0]
@@ -272,11 +277,13 @@ def getStudentData(self, item, cn):
 
         isStudent = (True for item in vinculacio if item['typology'] == 'EST')
 
+        # TODO Para hacer pruebas
+        # if True:
         if True in isStudent:
 
-            for item in vinculacio:
-                if item['typology'] == 'EST':
-                    id_prisma = item['idorigen']
+            for vinc in vinculacio:
+                if vinc['typology'] == 'EST':
+                    id_prisma = vinc['idorigen']
                     student_data.update({'idPrisma': id_prisma})
                     break
 
@@ -285,18 +292,6 @@ def getStudentData(self, item, cn):
 
             list_test = [{'id_prisma': '2866124', 'numDocument': '44522242S'},
                          {'id_prisma': '2708530', 'numDocument': '47405847H'},
-                         {'id_prisma': '2708479', 'numDocument': '41747970A'},
-                         {'id_prisma': '2707723', 'numDocument': '18079004S'},
-                         {'id_prisma': '2706798', 'numDocument': '48085070M'},
-                         {'id_prisma': '2554111', 'numDocument': '53870113L'},
-                         {'id_prisma': '2553255', 'numDocument': '39934092C'},
-                         {'id_prisma': '2553249', 'numDocument': '53835514N'},
-                         {'id_prisma': '2553092', 'numDocument': '26063484E'},
-                         {'id_prisma': '2552221', 'numDocument': '21798723J'},
-                         {'id_prisma': '2551839', 'numDocument': 'X2756193B'},
-                         {'id_prisma': '2551740', 'numDocument': '73461145L'},
-                         {'id_prisma': '2551700', 'numDocument': '41578237X'},
-                         {'id_prisma': '2551388', 'numDocument': '47238061V'},
                          {'id_prisma': '2550963', 'numDocument': '48031179A'}]
 
             from random import randint
@@ -316,6 +311,9 @@ def getStudentData(self, item, cn):
                             student_data.update({'degree_id': exp['codiMecPrograma']})
                             student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
 
+                    # TODO Para hacer pruebas
+                    # student_data.update({'degree_id': '555'})
+                    # student_data.update({'degree_title': '555'})
                     if 'degree_id' not in student_data:
                         self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
                         return None

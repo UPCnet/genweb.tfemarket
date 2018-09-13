@@ -68,7 +68,7 @@ msgstr "Agrega los campos de fecha de vigencia y fecha de vencimiento requeridos
 
 #: ../content/market.py:356
 #: ../content/templates/market_view.pt:198
-#: ../utils.py:126
+#: ../utils.py:132
 msgid "All"
 msgstr "Todas"
 
@@ -160,7 +160,7 @@ msgstr "Titulación"
 msgid "Degree code at PRISMA"
 msgstr "Código de titulación en PRISMA"
 
-#: ../utils.py:132
+#: ../utils.py:138
 msgid "Degree deleted"
 msgstr "Titulación eliminada"
 
@@ -238,7 +238,7 @@ msgstr "Características"
 msgid "Fullname"
 msgstr "Nombre completo"
 
-#: ../content/templates/market_view.pt:632
+#: ../content/templates/market_view.pt:633
 msgid "Hide applications"
 msgstr "Esconder solicitudes"
 
@@ -344,11 +344,11 @@ msgstr "No"
 msgid "No results found."
 msgstr "No se han encontrado resultados."
 
-#: ../utils.py:323
+#: ../utils.py:319
 msgid "No tens número d'expedient a Prisma"
 msgstr "No tienes número de expediente a PRISMA"
 
-#: ../utils.py:331
+#: ../utils.py:327
 msgid "No tens viculació d'ESTUDIANT"
 msgstr "No tienes vinculación de ESTUDIANTE"
 
@@ -396,7 +396,7 @@ msgstr "Código PRISMA"
 msgid "PRISMA id"
 msgstr "ID de PRISMA"
 
-#: ../utils.py:328
+#: ../utils.py:324
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "ID de PRISMA no encontrada en PRISMA. %s"
 
@@ -437,7 +437,7 @@ msgstr "Que ofertas buscas?"
 msgid "Register"
 msgstr "Registro"
 
-#: ../content/templates/market_view.pt:622
+#: ../content/templates/market_view.pt:623
 msgid "Request the offer"
 msgstr "Solicitar la oferta"
 
@@ -483,7 +483,7 @@ msgstr "Seleccione el mercado donde desea importar las ofertas."
 msgid "Settings"
 msgstr "Configuración"
 
-#: ../content/templates/market_view.pt:628
+#: ../content/templates/market_view.pt:629
 msgid "Show applications"
 msgstr "Mostrar solicitudes"
 
@@ -620,7 +620,7 @@ msgstr "Usuario"
 msgid "User to connect to the bus"
 msgstr "Usuario para conectarse al bus"
 
-#: ../utils.py:334
+#: ../utils.py:330
 msgid "Usuari no trobat en el Ldap"
 msgstr "Usuario no encontrado en el LDAP"
 
@@ -640,7 +640,11 @@ msgstr "Carga de trabajo"
 msgid "Yes"
 msgstr "Si"
 
-#: ../utils.py:251
+#: ../utils.py:69
+msgid "You don't have permission for create a application."
+msgstr "No tienes permisos para crear una solicitud"
+
+#: ../utils.py:91
 msgid "You have already created an application. You can see it at the top of the market page."
 msgstr "Ya has hecho una solicitud. Puedes visualizarla en la parte superior de la página del mercado."
 

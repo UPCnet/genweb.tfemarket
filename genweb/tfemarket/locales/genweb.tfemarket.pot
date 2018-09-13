@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-09-13 09:46+0000\n"
+"POT-Creation-Date: 2018-09-13 14:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,7 @@ msgstr ""
 
 #: ../content/market.py:356
 #: ../content/templates/market_view.pt:198
-#: ../utils.py:126
+#: ../utils.py:132
 msgid "All"
 msgstr ""
 
@@ -167,7 +167,7 @@ msgstr ""
 msgid "Degree code at PRISMA"
 msgstr ""
 
-#: ../utils.py:132
+#: ../utils.py:138
 msgid "Degree deleted"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgstr ""
 msgid "Fullname"
 msgstr ""
 
-#: ../content/templates/market_view.pt:632
+#: ../content/templates/market_view.pt:633
 msgid "Hide applications"
 msgstr ""
 
@@ -351,11 +351,11 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
-#: ../utils.py:323
+#: ../utils.py:319
 msgid "No tens número d'expedient a Prisma"
 msgstr ""
 
-#: ../utils.py:331
+#: ../utils.py:327
 msgid "No tens viculació d'ESTUDIANT"
 msgstr ""
 
@@ -403,7 +403,7 @@ msgstr ""
 msgid "PRISMA id"
 msgstr ""
 
-#: ../utils.py:328
+#: ../utils.py:324
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr ""
 
@@ -444,7 +444,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ../content/templates/market_view.pt:622
+#: ../content/templates/market_view.pt:623
 msgid "Request the offer"
 msgstr ""
 
@@ -490,7 +490,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../content/templates/market_view.pt:628
+#: ../content/templates/market_view.pt:629
 msgid "Show applications"
 msgstr ""
 
@@ -627,7 +627,7 @@ msgstr ""
 msgid "User to connect to the bus"
 msgstr ""
 
-#: ../utils.py:334
+#: ../utils.py:330
 msgid "Usuari no trobat en el Ldap"
 msgstr ""
 
@@ -647,7 +647,11 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: ../utils.py:251
+#: ../utils.py:69
+msgid "You don't have permission for create a application."
+msgstr ""
+
+#: ../utils.py:91
 msgid "You have already created an application. You can see it at the top of the market page."
 msgstr ""
 

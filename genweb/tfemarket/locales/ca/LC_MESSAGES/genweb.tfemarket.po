@@ -70,7 +70,7 @@ msgstr "Afegeix camps efectius de data i caducitat obligatoris."
 
 #: ../content/market.py:356
 #: ../content/templates/market_view.pt:198
-#: ../utils.py:126
+#: ../utils.py:132
 msgid "All"
 msgstr "Totes"
 
@@ -162,7 +162,7 @@ msgstr "Titulació"
 msgid "Degree code at PRISMA"
 msgstr "Codi del grau a PRISMA"
 
-#: ../utils.py:132
+#: ../utils.py:138
 msgid "Degree deleted"
 msgstr "Titulació eliminada"
 
@@ -240,7 +240,7 @@ msgstr "Característiques"
 msgid "Fullname"
 msgstr "Nom complet"
 
-#: ../content/templates/market_view.pt:632
+#: ../content/templates/market_view.pt:633
 msgid "Hide applications"
 msgstr "Amagar sol·licituds"
 
@@ -346,11 +346,11 @@ msgstr "No"
 msgid "No results found."
 msgstr "No s'han trobat resultats."
 
-#: ../utils.py:323
+#: ../utils.py:319
 msgid "No tens número d'expedient a Prisma"
 msgstr "No tens número d'expedient a Prisma"
 
-#: ../utils.py:331
+#: ../utils.py:327
 msgid "No tens viculació d'ESTUDIANT"
 msgstr "No tens vinculació d'ESTUDIANT"
 
@@ -398,7 +398,7 @@ msgstr "Codi PRISMA"
 msgid "PRISMA id"
 msgstr "ID de PRISMA"
 
-#: ../utils.py:328
+#: ../utils.py:324
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "L'identificador PRISMA no s'ha trobat a PRISMA. %s"
 
@@ -439,7 +439,7 @@ msgstr "Quines ofertes cerques?"
 msgid "Register"
 msgstr "Registre"
 
-#: ../content/templates/market_view.pt:622
+#: ../content/templates/market_view.pt:623
 msgid "Request the offer"
 msgstr "Sol·licitar l'oferta"
 
@@ -485,7 +485,7 @@ msgstr "Seleccioneu el mercat on voleu importar les ofertes."
 msgid "Settings"
 msgstr "Configuració"
 
-#: ../content/templates/market_view.pt:628
+#: ../content/templates/market_view.pt:629
 msgid "Show applications"
 msgstr "Mostrar sol·licituds"
 
@@ -622,7 +622,7 @@ msgstr "Usuari"
 msgid "User to connect to the bus"
 msgstr "Usuari per conectar-se al bus"
 
-#: ../utils.py:334
+#: ../utils.py:330
 msgid "Usuari no trobat en el Ldap"
 msgstr "Usuari no trobat en el LDAP"
 
@@ -642,7 +642,11 @@ msgstr "Càrrega de treball"
 msgid "Yes"
 msgstr "Si"
 
-#: ../utils.py:251
+#: ../utils.py:69
+msgid "You don't have permission for create a application."
+msgstr "No teniu permisos per crear una sol·licitud."
+
+#: ../utils.py:91
 msgid "You have already created an application. You can see it at the top of the market page."
 msgstr "Ja has fet una sol·licitud. Pots visualitzar-la a la part superior de la pàgina del mercat."
 

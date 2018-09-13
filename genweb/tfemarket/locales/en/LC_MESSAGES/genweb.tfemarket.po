@@ -68,7 +68,7 @@ msgstr "Adds effective date and expiration date fields required."
 
 #: ../content/market.py:356
 #: ../content/templates/market_view.pt:198
-#: ../utils.py:126
+#: ../utils.py:132
 msgid "All"
 msgstr "All"
 
@@ -160,7 +160,7 @@ msgstr "Degree"
 msgid "Degree code at PRISMA"
 msgstr "Degree code at PRISMA"
 
-#: ../utils.py:132
+#: ../utils.py:138
 msgid "Degree deleted"
 msgstr "Degree deleted"
 
@@ -238,7 +238,7 @@ msgstr "Features"
 msgid "Fullname"
 msgstr "Fullname"
 
-#: ../content/templates/market_view.pt:632
+#: ../content/templates/market_view.pt:633
 msgid "Hide applications"
 msgstr "Hide applications"
 
@@ -344,11 +344,11 @@ msgstr "No"
 msgid "No results found."
 msgstr "No results found."
 
-#: ../utils.py:323
+#: ../utils.py:319
 msgid "No tens número d'expedient a Prisma"
 msgstr "You do not have a Prisma number"
 
-#: ../utils.py:331
+#: ../utils.py:327
 msgid "No tens viculació d'ESTUDIANT"
 msgstr "You don't have STUDENT binding"
 
@@ -396,7 +396,7 @@ msgstr "PRISMA code"
 msgid "PRISMA id"
 msgstr "RISMA id"
 
-#: ../utils.py:328
+#: ../utils.py:324
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "PRISMA id not found at PRISMA. %s"
 
@@ -437,7 +437,7 @@ msgstr "What search offers?"
 msgid "Register"
 msgstr "Register"
 
-#: ../content/templates/market_view.pt:622
+#: ../content/templates/market_view.pt:623
 msgid "Request the offer"
 msgstr "Request the offer"
 
@@ -483,7 +483,7 @@ msgstr "Select the market where you want to import the offers."
 msgid "Settings"
 msgstr "Settings"
 
-#: ../content/templates/market_view.pt:628
+#: ../content/templates/market_view.pt:629
 msgid "Show applications"
 msgstr "Show applications"
 
@@ -620,7 +620,7 @@ msgstr "User"
 msgid "User to connect to the bus"
 msgstr "User to connect to the bus"
 
-#: ../utils.py:334
+#: ../utils.py:330
 msgid "Usuari no trobat en el Ldap"
 msgstr "User not found in LDAP"
 
@@ -640,7 +640,11 @@ msgstr "Workload"
 msgid "Yes"
 msgstr "Yes"
 
-#: ../utils.py:251
+#: ../utils.py:69
+msgid "You don't have permission for create a application."
+msgstr "You don't have permission for create a application."
+
+#: ../utils.py:91
 msgid "You have already created an application. You can see it at the top of the market page."
 msgstr "You have already created an application. You can see it at the top of the market page."
 
