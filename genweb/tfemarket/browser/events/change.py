@@ -73,6 +73,8 @@ def applicationChanged(application, event):
         subject = _(u'Sol·licita')
         msg = M1[lang].format(**data)
         portalMsg = _(u'A5')
+        request = getRequest()
+        request.response.redirect(application.getParentNode().getParentNode().absolute_url())
     else:
         if event.transition.id == 'request':
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
@@ -80,6 +82,8 @@ def applicationChanged(application, event):
             subject = _(u'Sol·licita')
             msg = M1[lang].format(**data)
             portalMsg = _(u'A5')
+            request = getRequest()
+            request.response.redirect(application.getParentNode().getParentNode().absolute_url())
         elif event.transition.id == 'accept':
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = student_mail
@@ -108,6 +112,7 @@ def applicationChanged(application, event):
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = teacher_mail
             subject = 'Cancela'
+            portalMsg = _(u'A7')
             msg = M6[lang].format(**data)
 
     if not fromMsg == '':

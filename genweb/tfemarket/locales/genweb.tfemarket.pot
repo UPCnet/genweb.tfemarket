@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-09-12 14:26+0000\n"
+"POT-Creation-Date: 2018-09-13 06:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,6 +39,10 @@ msgstr ""
 
 #: ../browser/events/change.py:89
 msgid "A6"
+msgstr ""
+
+#: ../browser/events/change.py:111
+msgid "A7"
 msgstr ""
 
 #: ../controlpanel.py:217
@@ -541,11 +545,11 @@ msgstr ""
 msgid "The current offer contains an accepted application."
 msgstr ""
 
-#: ../browser/events/change.py:150
+#: ../browser/events/change.py:152
 msgid "The offer can't be canceled if it contains active applications."
 msgstr ""
 
-#: ../browser/events/change.py:160
+#: ../browser/events/change.py:162
 msgid "The offer can't be deleted."
 msgstr ""
 

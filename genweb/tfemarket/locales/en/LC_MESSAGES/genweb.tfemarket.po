@@ -34,6 +34,10 @@ msgstr "Request filed. You will receive an email with the data of your request a
 msgid "A6"
 msgstr "There are currently other pending applications, it is recommended to reject them because they do not have the rest of the students waiting."
 
+#: ../browser/events/change.py:111
+msgid "A7"
+msgstr "The request is canceled."
+
 #: ../controlpanel.py:217
 msgid "APIKEY"
 msgstr "APIKEY"
@@ -534,11 +538,11 @@ msgstr "Text to search"
 msgid "The current offer contains an accepted application."
 msgstr "The current offer contains an accepted application."
 
-#: ../browser/events/change.py:150
+#: ../browser/events/change.py:152
 msgid "The offer can't be canceled if it contains active applications."
 msgstr "The offer can't be canceled if it contains active applications."
 
-#: ../browser/events/change.py:160
+#: ../browser/events/change.py:162
 msgid "The offer can't be deleted."
 msgstr "The offer can't be deleted."
 

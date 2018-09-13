@@ -36,6 +36,10 @@ msgstr "Sol·licitud presentada. Rebràs un missatge de correu amb les dades de 
 msgid "A6"
 msgstr "Actualment hi ha altres sol·licituds pendents, es recomana rebutjar-les per no tenir la resta d'estudiants a l'espera."
 
+#: ../browser/events/change.py:111
+msgid "A7"
+msgstr "La sol·licitud a sigut cancel·lada."
+
 #: ../controlpanel.py:217
 msgid "APIKEY"
 msgstr "Clau API"
@@ -536,11 +540,11 @@ msgstr "Text a cercar"
 msgid "The current offer contains an accepted application."
 msgstr "L'oferta actual conté una sol·licitud acceptada."
 
-#: ../browser/events/change.py:150
+#: ../browser/events/change.py:152
 msgid "The offer can't be canceled if it contains active applications."
 msgstr "L'oferta no es pot cancelar si conté sol·licituds actives."
 
-#: ../browser/events/change.py:160
+#: ../browser/events/change.py:162
 msgid "The offer can't be deleted."
 msgstr "L'oferta no es pot eliminar, te sol·licituds actives."
 
