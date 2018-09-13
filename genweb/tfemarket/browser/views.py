@@ -102,7 +102,7 @@ class changeActualState(grok.View):
                 self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
                 redirectToMarket(self)
         except BusError as err:
-            self.context.plone_utils.addPortalMessage(_(u'Connection error') + ': ' + err.value.status_code, 'error')
+            self.context.plone_utils.addPortalMessage(_(u'Connection error') + ': ' + str(err.value.status_code), 'error')
             redirectToMarket(self)
         except:
             self.context.plone_utils.addPortalMessage(_(u'Error you can\'t perform the action.'), 'error')
