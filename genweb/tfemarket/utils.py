@@ -317,7 +317,7 @@ def getStudentData(self, item, cn):
                             student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
 
                     if 'degree_id' not in student_data:
-                        self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la ofeta", 'error')
+                        self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
                         return None
                 else:
                     self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
