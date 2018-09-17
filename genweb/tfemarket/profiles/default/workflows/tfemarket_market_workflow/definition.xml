@@ -12,56 +12,56 @@
   <exit-transition transition_id="reject"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Student</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Student</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Add portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Delete objects" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="List folder contents" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Student</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Student</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -72,45 +72,45 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Student</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Student</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Add portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Delete objects" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="List folder contents" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -118,11 +118,11 @@
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Student</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Student</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -133,7 +133,7 @@
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -141,7 +141,7 @@
   <permission-map name="Add portal content" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -149,7 +149,7 @@
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -157,7 +157,7 @@
   <permission-map name="Delete objects" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -165,7 +165,7 @@
   <permission-map name="List folder contents" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -173,7 +173,7 @@
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -181,7 +181,7 @@
   <permission-map name="View" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
@@ -193,7 +193,7 @@
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>Editor</guard-role>
-   <guard-role>Market Manager</guard-role>
+   <guard-role>TFE Manager</guard-role>
   </guard>
  </transition>
  <transition transition_id="publishtointranet" title="Publish To Intranet" new_state="intranet" trigger="USER" before_script="" after_script="">
@@ -202,14 +202,14 @@
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>Editor</guard-role>
-   <guard-role>Market Manager</guard-role>
+   <guard-role>TFE Manager</guard-role>
   </guard>
  </transition>
  <transition transition_id="reject" title="Reviewer sends content back for re-drafting" new_state="visible" trigger="USER" before_script="" after_script="">
   <description>Send the item back to draft.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=reject" category="workflow" icon="">Send to draft</action>
   <guard>
-   <guard-role>Manager, Editor, Market Manager</guard-role>
+   <guard-role>Manager, Editor, TFE Manager</guard-role>
   </guard>
  </transition>
  <transition transition_id="retracttointranet" title="Retract To Intranet" new_state="intranet" trigger="USER" before_script="" after_script="">
@@ -218,7 +218,7 @@
   <guard>
    <guard-role>Manager</guard-role>
    <guard-role>Editor</guard-role>
-   <guard-role>Market Manager</guard-role>
+   <guard-role>TFE Manager</guard-role>
   </guard>
  </transition>
  <worklist worklist_id="reviewer_queue" title="">

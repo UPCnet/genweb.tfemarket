@@ -30,7 +30,6 @@ def FieldsetFieldWidget(field, request):
     return z3c.form.widget.FieldWidget(field, FieldsetWidget(request))
 
 
-
 class ITeacherInputWidget(z3c.form.interfaces.ITextWidget):
     pass
 
@@ -46,17 +45,17 @@ class TeacherInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
 
     def hasPermissions(self):
         roles = api.user.get_roles()
-        return 'Market Manager' in roles or 'Manager' in roles
+        return 'TFE Manager' in roles or 'Manager' in roles
 
     def ifTeacher(self):
         roles = api.user.get_roles()
         return 'Teacher' in roles
 
+
 @zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
 def TeacherInputFieldWidget(field, request):
     return z3c.form.widget.FieldWidget(field, TeacherInputWidget(request))
-
 
 
 class IReadOnlyInputWidget(z3c.form.interfaces.ITextWidget):
@@ -79,7 +78,6 @@ def ReadOnlyInputFieldWidget(field, request):
     return z3c.form.widget.FieldWidget(field, ReadOnlyInputWidget(request))
 
 
-
 class IStudentInputWidget(z3c.form.interfaces.ITextWidget):
     pass
 
@@ -98,7 +96,6 @@ class StudentInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
 def StudentInputFieldWidget(field, request):
     return z3c.form.widget.FieldWidget(field, StudentInputWidget(request))
-
 
 
 class ISelectModalityInputWidget(z3c.form.interfaces.ISelectWidget):

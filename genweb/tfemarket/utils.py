@@ -64,7 +64,7 @@ def getLdapUserData(user, typology=None):
 def checkPermissionCreateApplications(self, context, errors=False):
     roles = api.user.get_roles()
 
-    if 'Market Manager' in roles or 'Manager' in roles or 'Teacher' in roles:
+    if 'TFE Manager' in roles or 'Manager' in roles or 'TFE Teacher' in roles:
         if errors:
             self.context.plone_utils.addPortalMessage(_(u"You don't have permission for create a application."), 'error')
         return False
@@ -230,16 +230,16 @@ def LDAPSearch(self, query, isQueryAlreadyMade=False):
 def isTeachersOffer(offer):
     user = api.user.get_current()
     user_roles = user.getRoles()
-    if 'Manager' in user_roles or 'Market Manager' in user_roles:
+    if 'Manager' in user_roles or 'TFE Manager' in user_roles:
         return True
     else:
-        if 'Teacher' in user_roles:
+        if 'TFE Teacher' in user_roles:
             if user.id in offer.creators:
                 return True
     return False
 
 
-def getStudentData(self, item, cn):
+def getStudentData(self, item, user):
     registry = queryUtility(IRegistry)
     bussoa_tool = registry.forInterface(IBUSSOASettings)
     tfe_tool = registry.forInterface(ITfemarketSettings)
@@ -251,8 +251,10 @@ def getStudentData(self, item, cn):
     student_data = {}
     keys = ['segmentation', 'unit', 'typology', 'idorigen']
     vinculacio = []
-    result = LDAPSearch(self, cn)
+    result = LDAPSearch(self, user)
+
     if result['ok']:
+
         if not checkPermissionCreateApplications(self, item, True):
             return None
 

@@ -7,9 +7,9 @@
         <role name="Editor"/>
         <role name="Manager"/>
         <role name="Member"/>
-        <role name="Teacher"/>
-        <role name="Student"/>
-        <role name="Market Manager"/>
+        <role name="TFE Teacher"/>
+        <role name="TFE Student"/>
+        <role name="TFE Manager"/>
         <role name="Owner"/>
         <role name="Reader"/>
         <role name="Reviewer"/>
@@ -19,17 +19,17 @@
     <permissions>
         <permission name="Genweb TFEMarket: Add Application" acquire="True">
           <role name="Manager"/>
-          <role name="Student"/>
+          <role name="TFE Student"/>
         </permission>
         <permission name="Genweb TFEMarket: Add Market" acquire="True">
           <role name="Manager"/>
-          <role name="Market Manager"/>
+          <role name="TFE Manager"/>
           <role name="WebMaster"/>
         </permission>
         <permission name="Genweb TFEMarket: Add Offer" acquire="True">
           <role name="Manager"/>
-          <role name="Market Manager"/>
-          <role name="Teacher"/>
+          <role name="TFE Manager"/>
+          <role name="TFE Teacher"/>
         </permission>
     </permissions>
 </rolemap>

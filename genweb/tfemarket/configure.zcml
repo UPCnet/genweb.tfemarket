@@ -26,7 +26,7 @@
                 title="Genweb TFEMarket: Edit Controlpanel">
         <role name="WebMaster"/>
         <role name="Manager"/>
-        <role name="Market Manager"/>
+        <role name="TFE Manager"/>
     </permission>
 
     <permission

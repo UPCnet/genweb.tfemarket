@@ -9,31 +9,31 @@
   <exit-transition transition_id="confirm"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -41,30 +41,30 @@
   <exit-transition transition_id="request"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -72,31 +72,31 @@
   <exit-transition transition_id="request"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -105,30 +105,30 @@
   <exit-transition transition_id="request"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -136,30 +136,30 @@
   <exit-transition transition_id="request"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -169,32 +169,32 @@
   <exit-transition transition_id="cancel"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
-   <permission-role>Market Manager</permission-role>
+   <permission-role>TFE Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Site Administrator</permission-role>
-   <permission-role>Teacher</permission-role>
+   <permission-role>TFE Teacher</permission-role>
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
@@ -204,8 +204,8 @@
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
-   <guard-role>Market Manager</guard-role>
-   <guard-role>Teacher</guard-role>
+   <guard-role>TFE Manager</guard-role>
+   <guard-role>TFE Teacher</guard-role>
   </guard>
  </transition>
  <transition transition_id="cancel" title="cancel" new_state="cancelled" trigger="USER" before_script="" after_script="">
@@ -214,8 +214,8 @@
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
-   <guard-role>Market Manager</guard-role>
-   <guard-role>Student</guard-role>
+   <guard-role>TFE Manager</guard-role>
+   <guard-role>TFE Student</guard-role>
   </guard>
  </transition>
  <transition transition_id="confirm" title="confirm" new_state="confirmed" trigger="USER" before_script="" after_script="">
@@ -224,8 +224,8 @@
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
-   <guard-role>Market Manager</guard-role>
-   <guard-role>Student</guard-role>
+   <guard-role>TFE Manager</guard-role>
+   <guard-role>TFE Student</guard-role>
   </guard>
  </transition>
  <transition transition_id="reject" title="rebutja" new_state="rejected" trigger="USER" before_script="" after_script="">
@@ -234,8 +234,8 @@
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
-   <guard-role>Market Manager</guard-role>
-   <guard-role>Teacher</guard-role>
+   <guard-role>TFE Manager</guard-role>
+   <guard-role>TFE Teacher</guard-role>
   </guard>
  </transition>
  <transition transition_id="renounce" title="renounce" new_state="renounced" trigger="USER" before_script="" after_script="">
@@ -244,8 +244,8 @@
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
-   <guard-role>Market Manager</guard-role>
-   <guard-role>Student</guard-role>
+   <guard-role>TFE Manager</guard-role>
+   <guard-role>TFE Student</guard-role>
   </guard>
  </transition>
  <transition transition_id="request" title="request" new_state="requested" trigger="USER" before_script="" after_script="">
@@ -253,7 +253,7 @@
   <guard>
    <guard-role>Site Administrator</guard-role>
    <guard-role>Manager</guard-role>
-   <guard-role>Market Manager</guard-role>
+   <guard-role>TFE Manager</guard-role>
   </guard>
  </transition>
  <worklist worklist_id="reviewer_queue" title="">

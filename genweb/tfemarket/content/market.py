@@ -481,8 +481,8 @@ class View(grok.View):
 
     def currentUserIsAloneTeacher(self):
         user_roles = api.user.get_current().getRoles()
-        if 'Teacher' in user_roles:
-            if 'Manager' in user_roles or 'Market Manager' in user_roles:
+        if 'TFE Teacher' in user_roles:
+            if 'Manager' in user_roles or 'TFE Manager' in user_roles:
                 return False
             else:
                 return True
@@ -491,7 +491,7 @@ class View(grok.View):
 
     def showErrorBusSOA(self):
         user_roles = api.user.get_current().getRoles()
-        if 'Manager' in user_roles or 'Market Manager' in user_roles:
+        if 'Manager' in user_roles or 'TFE Manager' in user_roles:
             registry = queryUtility(IRegistry)
             bussoa_tool = registry.forInterface(IBUSSOASettings)
             if bussoa_tool.bus_url and bussoa_tool.bus_user and bussoa_tool.bus_password and bussoa_tool.bus_apikey:
