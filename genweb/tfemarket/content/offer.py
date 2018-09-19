@@ -126,7 +126,7 @@ class DegreesVocabulary(object):
             else:
                 titulacio += item['titulacio_en']
 
-            result.append({'id': item['codi_prisma'], 'lit': titulacio})
+            result.append({'id': item['codi_mec'], 'lit': titulacio})
 
         result = sorted(result, key=itemgetter('lit'))
 

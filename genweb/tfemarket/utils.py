@@ -126,7 +126,7 @@ def getDegrees():
             else:
                 titulacio += item['titulacio_en']
 
-            result.append({'id': item['codi_prisma'], 'lit': titulacio})
+            result.append({'id': item['codi_mec'], 'lit': titulacio})
 
     result = sorted(result, key=itemgetter('lit'))
     result.insert(0, {'id': 'a', 'lit': _(u"All")})
@@ -281,7 +281,8 @@ def getStudentData(self, item, user):
 
         # TODO Para hacer pruebas
         # if True:
-        if True in isStudent:
+
+        if True:  # in isStudent:
 
             for vinc in vinculacio:
                 if vinc['typology'] == 'EST':
@@ -292,9 +293,7 @@ def getStudentData(self, item, user):
             id_prisma = student_data['id_prisma']
             numDocument = student_data['dni']
 
-            list_test = [{'id_prisma': '2866124', 'numDocument': '44522242S'},
-                         {'id_prisma': '2708530', 'numDocument': '47405847H'},
-                         {'id_prisma': '2550963', 'numDocument': '48031179A'}]
+            list_test = [{'id_prisma': '2866124', 'numDocument': '44522242S'}]
 
             from random import randint
             test_user = list_test[randint(0, len(list_test) - 1)]
@@ -302,6 +301,8 @@ def getStudentData(self, item, user):
             numDocument = test_user['numDocument']
 
             res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+
+            import ipdb; ipdb.set_trace()
 
             if res_data.ok:
                 data = res_data.json()
