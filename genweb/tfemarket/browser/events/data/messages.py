@@ -14,7 +14,7 @@ També pots accedir al Mercat de TFE {linkMarket} de l’escola directament.
 
 Atentament,
 
-{firm}
+{signature}
 """,
 
 'en' : """\
@@ -28,7 +28,7 @@ You can also access the TFE Market {linkMarket} of the school directly.
 
 Yours faithfully,
 
-{firm}
+{signature}
 """,
 
 'es' : """\
@@ -42,7 +42,7 @@ También puedes acceder al Mercado de TFE {linkMarket} de la escuela directament
 
 Atentamente,
 
-{firm}
+{signature}
 """,
 }
 
@@ -58,7 +58,7 @@ Un cop la confirmis, les teves dades arribaran a PRISMA per tal de realitzar la 
 
 Atentament,
 
-{firm}
+{signature}
 """,
 
 'en' : """\
@@ -70,7 +70,7 @@ Once confirmed, your information will reach PRISMA in order to register the work
 
 Yours faithfully,
 
-{firm}
+{signature}
 """,
 
 'es' : """\
@@ -82,7 +82,7 @@ Una vez la confirmes, tus datos llegarán a PRISMA para realizar la inscripción
 
 Atentamente,
 
-{firm}
+{signature}
 """,
 }
 
@@ -96,7 +96,7 @@ La teva sol·licitud per a l’oferta {num} - {title} ha estat rebutjada. Pot po
 
 Atentament,
 
-{firm}
+{signature}
 """,
 
 'en' : """\
@@ -106,7 +106,7 @@ Your request for the offer {num} - {title} has been rejected. You can contact th
 
 Yours faithfully,
 
-{firm}
+{signature}
 """,
 
 'es' : """\
@@ -116,7 +116,7 @@ Tu solicitud para la oferta {num} - {title} ha sido rechazada. Puede ponerse en 
 
 Atentamente,
 
-{firm}
+{signature}
 """,
 }
 
@@ -136,7 +136,7 @@ Les dades es traspasaran a PRISMA per tal de realitzar l’inscripció del treba
 
 Atentament,
 
-{firm}
+{signature}
 """,
 
 'en' : """\
@@ -152,7 +152,7 @@ The data is transferred to PRISMA in order to register the work.
 
 Yours faithfully,
 
-{firm}
+{signature}
 """,
 
 'es' : """\
@@ -168,7 +168,7 @@ Los datos se traspasan a PRISMA para realizar la inscripción del trabajo.
 
 Atentamente,
 
-{firm}
+{signature}
 """,
 }
 
@@ -182,7 +182,7 @@ Benvolgut / Benvolguda,
 
 Atentament,
 
-{firm}
+{signature}
 """,
 
 'en' : """\
@@ -192,7 +192,7 @@ Dear / Dear,
 
 Yours faithfully,
 
-{firm}
+{signature}
 """,
 
 'es' : """\
@@ -202,7 +202,7 @@ Estimado / Estimada,
 
 Atentamente,
 
-{firm}
+{signature}
 """,
 }
 
@@ -216,7 +216,7 @@ Benvolgut / Benvolguda,
 
 Atentament,
 
-{firm}
+{signature}
 """,
 
 'en' : """\
@@ -226,7 +226,7 @@ Dear / Dear,
 
 Yours faithfully,
 
-{firm}
+{signature}
 """,
 
 'es' : """\
@@ -236,6 +236,6 @@ Estimado / Estimada,
 
 Atentamente,
 
-{firm}
+{signature}
 """,
 }

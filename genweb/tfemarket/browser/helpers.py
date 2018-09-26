@@ -173,6 +173,6 @@ class importOfertes(grok.View):
     def checkNotValidDegrees(self, degrees):
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
-        allDegrees = [x['codi_prisma'] for x in tfe_tool.titulacions_table]
+        allDegrees = [x['codi_mec'] for x in tfe_tool.titulacions_table]
         notValid = [x for x in degrees if x not in allDegrees]
         return notValid

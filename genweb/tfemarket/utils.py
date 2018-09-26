@@ -248,7 +248,9 @@ def getStudentData(self, item, user):
     bussoa_pass = bussoa_tool.bus_password
     bussoa_apikey = bussoa_tool.bus_apikey
     tipus_alta = tfe_tool.enroll_type
+
     student_data = {}
+
     keys = ['segmentation', 'unit', 'typology', 'idorigen']
     vinculacio = []
     result = LDAPSearch(self, user)
@@ -264,9 +266,9 @@ def getStudentData(self, item, user):
             'offer_title': item.title,
             'fullname': user['fullname'],
             'dni': user['dni'],
-            'email': user['email'],
-            'id_prisma': '',
+            'email': user['email']
         }
+
         if 'telephoneNumber' in user:
             student_data.update({'phone': user['phone']})
 
@@ -279,10 +281,7 @@ def getStudentData(self, item, user):
 
         isStudent = (True for item in vinculacio if item['typology'] == 'EST')
 
-        # TODO Para hacer pruebas
-        # if True:
-
-        if True:  # in isStudent:
+        if True in isStudent:
 
             for vinc in vinculacio:
                 if vinc['typology'] == 'EST':
@@ -293,16 +292,7 @@ def getStudentData(self, item, user):
             id_prisma = student_data['id_prisma']
             numDocument = student_data['dni']
 
-            list_test = [{'id_prisma': '2866124', 'numDocument': '44522242S'}]
-
-            from random import randint
-            test_user = list_test[randint(0, len(list_test) - 1)]
-            id_prisma = test_user['id_prisma']
-            numDocument = test_user['numDocument']
-
             res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
-
-            import ipdb; ipdb.set_trace()
 
             if res_data.ok:
                 data = res_data.json()
@@ -314,9 +304,6 @@ def getStudentData(self, item, user):
                             student_data.update({'degree_id': exp['codiMecPrograma']})
                             student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
 
-                    # TODO Para hacer pruebas
-                    # student_data.update({'degree_id': '555'})
-                    # student_data.update({'degree_title': '555'})
                     if 'degree_id' not in student_data:
                         self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
                         return None

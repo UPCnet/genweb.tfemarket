@@ -82,6 +82,12 @@
     />
 
     <subscriber
+      for=".content.application.IApplication
+           Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+      handler=".browser.events.change.applicationRegistered"
+    />
+
+    <subscriber
       for=".content.offer.IOffer
            Products.DCWorkflow.interfaces.IAfterTransitionEvent"
       handler=".browser.events.change.offerChanged"
@@ -91,12 +97,6 @@
       for=".content.offer.IOffer
            Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
       handler=".browser.events.change.offerCanceled"
-    />
-
-    <subscriber
-      for=".content.offer.IOffer
-           Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
-      handler=".browser.events.change.offerRegistered"
     />
 
     <subscriber
