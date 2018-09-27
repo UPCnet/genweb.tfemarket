@@ -165,79 +165,81 @@ def offerDeleted(offer, event):
 def applicationRegistered(application, event):
     """ If genweb.tfemarket.offer change WF, checks if registered.
     """
-    if event.transition.id == 'confirm':
-        registry = queryUtility(IRegistry)
-        tfe_tool = registry.forInterface(ITfemarketSettings)
-        bussoa_tool = registry.forInterface(IBUSSOASettings)
 
-        bussoa_url = bussoa_tool.bus_url
-        bussoa_user = bussoa_tool.bus_user
-        bussoa_pass = bussoa_tool.bus_password
-        bussoa_apikey = bussoa_tool.bus_apikey
+    if event.transition is not None:
+        if event.transition.id == 'confirm':
+            registry = queryUtility(IRegistry)
+            tfe_tool = registry.forInterface(ITfemarketSettings)
+            bussoa_tool = registry.forInterface(IBUSSOASettings)
 
-        tipus_alta = tfe_tool.enroll_type
-        offer = application.aq_parent
-        id_prisma = "2866124"  # application.prisma_id
+            bussoa_url = bussoa_tool.bus_url
+            bussoa_user = bussoa_tool.bus_user
+            bussoa_pass = bussoa_tool.bus_password
+            bussoa_apikey = bussoa_tool.bus_apikey
 
-        data = json.dumps({
-            "codiExpedient": application.prisma_id,
-            "codiPrograma": application.degree_id,
-            "codiOferta": application.offer_id,
-            "titol": application.offer_title,
-            "modalitat": offer.modality,
-            "director": offer.teacher_manager,
-            "departament": offer.dept,
-            "numDocument": application.dni,
-            "descripcio": offer.get('description', ''),
-            "idiomaTreball": offer.lang,
-            "propostaAmbitCooperacio": offer.scope_cooperation,
-            "tematicaAmbiental": offer.environmental_theme,
-            "centre": offer.center,
-            "codirector": offer.get('comanager', ''),
-            "empresa": offer.get('company', ''),
-            "personaContacteEmpresa": offer.get('company_contact', ''),
-            "confidencial": offer.confidential,
-            "tipusAltaTFE": tipus_alta
-        })
+            tipus_alta = tfe_tool.enroll_type
+            offer = application.aq_parent
+            id_prisma = application.prisma_id
 
-        res_aplic = requests.put(bussoa_url + "/%s" % id_prisma, data, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+            data = json.dumps({
+                "codiExpedient": id_prisma,
+                "codiPrograma": application.degree_id,
+                "codiOferta": application.offer_id,
+                "titol": application.offer_title,
+                "modalitat": offer.modality,
+                "director": offer.teacher_manager,
+                "departament": offer.dept,
+                "numDocument": application.dni,
+                "descripcio": offer.get('description', ''),
+                "idiomaTreball": offer.lang,
+                "propostaAmbitCooperacio": offer.scope_cooperation,
+                "tematicaAmbiental": offer.environmental_theme,
+                "centre": offer.center,
+                "codirector": offer.get('comanager', ''),
+                "empresa": offer.get('company', ''),
+                "personaContacteEmpresa": offer.get('company_contact', ''),
+                "confidencial": offer.confidential,
+                "tipusAltaTFE": tipus_alta
+            })
 
-        if res_aplic.status_code != 200:
-            error = json.loads(res_aplic.content)
-            raise BusError(error)
-        else:
+            res_aplic = requests.put(bussoa_url + "/%s" % id_prisma, data, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
-            lang = api.portal.get_current_language()
-            if lang not in ['ca', 'en', 'es']:
-                lang = 'en'
-            data = {
-                'student': application.title,
-                'degree': application.degree_title,
-                'num': application.getParentNode().offer_id,
-                'title': application.getParentNode().title,
-                'linkApplication': application.absolute_url(),
-                'linkOffer': application.getParentNode().absolute_url(),
-                'linkMarket': application.getParentNode().getParentNode().absolute_url(),
-                'signature': 'TFE Mercat',
-            }
+            if res_aplic.status_code != 200:
+                error = json.loads(res_aplic.content)
+                raise BusError(error)
+            else:
 
-            teacher_mail = application.getParentNode().teacher_email
-            portal = api.portal.get()
-            sender_email = portal.getProperty('email_from_address')
-            sender_name = portal.getProperty('email_from_name').encode('utf-8')
-            email_charset = portal.getProperty('email_charset')
+                lang = api.portal.get_current_language()
+                if lang not in ['ca', 'en', 'es']:
+                    lang = 'en'
+                data = {
+                    'student': application.title,
+                    'degree': application.degree_title,
+                    'num': application.getParentNode().offer_id,
+                    'title': application.getParentNode().title,
+                    'linkApplication': application.absolute_url(),
+                    'linkOffer': application.getParentNode().absolute_url(),
+                    'linkMarket': application.getParentNode().getParentNode().absolute_url(),
+                    'signature': 'TFE Mercat',
+                }
 
-            fromMsg = toMsg = subject = msg = portalMsg = ''
-            fromMsg = sender_name + ' ' + '<' + sender_email + '>'
-            toMsg = teacher_mail
-            subject = 'Confirma'
-            msg = M4[lang].format(**data)
-            portalMsg = _(u'A3')
+                teacher_mail = application.getParentNode().teacher_email
+                portal = api.portal.get()
+                sender_email = portal.getProperty('email_from_address')
+                sender_name = portal.getProperty('email_from_name').encode('utf-8')
+                email_charset = portal.getProperty('email_charset')
 
-            if not fromMsg == '':
-                sendMessage(application, fromMsg, toMsg, subject, msg, email_charset)
+                fromMsg = toMsg = subject = msg = portalMsg = ''
+                fromMsg = sender_name + ' ' + '<' + sender_email + '>'
+                toMsg = teacher_mail
+                subject = 'Confirma'
+                msg = M4[lang].format(**data)
+                portalMsg = _(u'A3')
 
-            if not portalMsg == '':
-                application.plone_utils.addPortalMessage(portalMsg, 'info')
+                if not fromMsg == '':
+                    sendMessage(application, fromMsg, toMsg, subject, msg, email_charset)
 
-        return res_aplic
+                if not portalMsg == '':
+                    application.plone_utils.addPortalMessage(portalMsg, 'info')
+
+            return res_aplic
