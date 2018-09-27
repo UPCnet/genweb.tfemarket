@@ -593,10 +593,6 @@
                                               <span class="sign">+</span>
                                               <span>Info</span>
                                             </button>
-                                            <button class="label" data-toggle="modal""
-                                                    tal:attributes="data-target string:#modalApplication${app/UID}">
-                                                Matricula
-                                            </button>
                                             <div tal:attributes="id string:modalApplication${app/UID}" class="modal fade" role="dialog">
                                               <div class="modal-dialog">
                                                 <div class="modal-content">
