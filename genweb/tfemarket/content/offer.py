@@ -4,21 +4,26 @@ from five import grok
 from operator import itemgetter
 from plone import api
 from plone.autoform import directives
-from plone.directives import dexterity, form
+from plone.directives import dexterity
+from plone.directives import form
 from plone.registry.interfaces import IRegistry
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import queryUtility
+from zope.i18n import translate
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
-
 from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.validations import validateEmail
-from genweb.tfemarket.z3cwidget import FieldsetFieldWidget, ReadOnlyInputFieldWidget, SelectModalityInputFieldWidget, TeacherInputFieldWidget
+from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
+from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
+from genweb.tfemarket.z3cwidget import SelectModalityInputFieldWidget
+from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
 
 import transaction
 import unicodedata
@@ -33,20 +38,21 @@ class LangsVocabulary(object):
     def __call__(self, context):
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
-        results = ()
+        results = tfe_tool.languages
+
+        current = api.user.get_current()
+        lang = current.language
+
         languages = []
-
-        langs = tfe_tool.languages
-        if langs:
-            results = langs.split("\r\n")
-
         for item in results:
             if isinstance(item, str):
                 flattened = unicodedata.normalize('NFKD', item.decode(
                     'utf-8')).encode('ascii', errors='ignore')
             else:
                 flattened = unicodedata.normalize('NFKD', item).encode('ascii', errors='ignore')
-            languages.append(SimpleVocabulary.createTerm(item, flattened, item))
+
+            itemTranslate = translate(msgid=item, domain='genweb.tfemarket', target_language=lang)
+            languages.append(SimpleVocabulary.createTerm(item, flattened, itemTranslate))
 
         return SimpleVocabulary(languages)
 

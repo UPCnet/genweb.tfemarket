@@ -346,7 +346,7 @@ class View(grok.View):
     def getLanguages(self):
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
-        return tfe_tool.languages.split('\r\n')
+        return tfe_tool.languages
 
     def getModalities(self):
         return [{'id': 'c', 'lit': _(u"Company")},

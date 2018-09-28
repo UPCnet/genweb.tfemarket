@@ -239,7 +239,7 @@
                             <span tal:repeat="lang view/getLanguages">
                               <tal:block tal:define="selected python: save.has_key('language') and view.flattenedString(lang) in save['language']">
                                 <input type="checkbox" name="language" tal:attributes="value lang; checked python: True if selected else False" />
-                                <span tal:content="lang">Language</span>
+                                <span i18n:translate="" tal:content="lang">Language</span>
                               </tal:block>
                             </span>
                           </span>
@@ -420,13 +420,13 @@
                                           <p class="language" tal:condition="not: offer/multiple_langs">
                                             <span class="field"><span i18n:translate="">Language work elaboration</span>: </span>
                                             <tal:block tal:repeat="lang offer/langs">
-                                              <span class="lang" tal:content="lang">Language</span>
+                                              <span class="lang" i18n:translate="" tal:content="lang">Language</span>
                                             </tal:block>
                                           </p>
                                           <div class="language" tal:condition="offer/multiple_langs">
                                             <span class="field"><span i18n:translate="">Languages work elaboration</span>: </span>
                                             <ul tal:repeat="lang offer/langs">
-                                              <li class="lang" tal:content="lang">Language</li>
+                                              <li class="lang" i18n:translate="" tal:content="lang">Language</li>
                                             </ul>
                                           </div>
                                         </div>

@@ -7,6 +7,7 @@ from plone.app.registry.browser import controlpanel
 from plone.autoform import directives
 from plone.directives import form
 from plone.supermodel import model
+from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.interfaces import IVocabularyFactory
@@ -68,6 +69,21 @@ class EnrollVocabulary(object):
 
 
 grok.global_utility(EnrollVocabulary, name=u"genweb.tfemarket.Enrolls")
+
+
+class AllLanguageVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        languages = []
+        languages.append(SimpleVocabulary.createTerm(u'CA', 'CA', _(u'CA')))
+        languages.append(SimpleVocabulary.createTerm(u'ES', 'ES', _(u'ES')))
+        languages.append(SimpleVocabulary.createTerm(u'EN', 'EN', _(u'EN')))
+        languages.append(SimpleVocabulary.createTerm(u'FR', 'FR', _(u'FR')))
+        return SimpleVocabulary(languages)
+
+
+grok.global_utility(AllLanguageVocabulary, name=u"genweb.tfemarket.AllLanguages")
 
 
 class ITfemarketSettings(model.Schema):
@@ -140,10 +156,11 @@ class ITfemarketSettings(model.Schema):
         required=False,
     )
 
-    languages = schema.Text(
+    form.widget(languages=CheckBoxFieldWidget)
+    languages = schema.List(
         title=_(u"Development languages"),
-        default=_(u"Català"),
         description=_(u'Add languages one per line'),
+        value_type=schema.Choice(source=u"genweb.tfemarket.AllLanguages"),
         required=False,
     )
 
