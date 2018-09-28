@@ -1,7 +1,0 @@
-<tal:block tal:condition="viewlet/viewInfoTfeMarket" i18n:domain="genweb.tfemarket">
-  <div class="pull-right infoTfemarket">
-    <a i18n:attributes="alt info; title info" tal:attributes="href viewlet/urlInfo">
-      <i class="fa fa-info-circle"></i>
-    </a>
-  </div>
-</tal:block>
