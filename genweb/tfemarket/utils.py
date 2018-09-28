@@ -286,10 +286,10 @@ def getStudentData(self, item, user):
         #     for vinc in vinculacio:
         #         if vinc['typology'] == 'EST':
         #             id_prisma = vinc['idorigen']
-        #             student_data.update({'idPrisma': id_prisma})
+        #             student_data.update({'prisma_id': id_prisma})
         #             break
         #
-        #         id_prisma = student_data['idPrisma']
+        #         id_prisma = student_data['prisma_id']
         #         numDocument = student_data['dni']
 
         # ##### TEST USERS
@@ -384,7 +384,7 @@ def getStudentData(self, item, user):
         id_prisma = test_user['id_prisma']
         numDocument = test_user['numDocument']
 
-        student_data.update({'idPrisma': id_prisma})
+        student_data.update({'prisma_id': id_prisma})
         student_data.update({'dni': numDocument})
         student_data.update({'fullname': 'USUARI DE TEST'})
 

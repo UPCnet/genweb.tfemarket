@@ -181,6 +181,8 @@ def applicationRegistered(application, event):
             offer = application.aq_parent
             id_prisma = application.prisma_id
 
+            import ipdb; ipdb.set_trace()
+
             data = json.dumps({
                 "codiExpedient": id_prisma,
                 "codiPrograma": application.degree_id,
@@ -190,14 +192,14 @@ def applicationRegistered(application, event):
                 "director": offer.teacher_manager,
                 "departament": offer.dept,
                 "numDocument": application.dni,
-                "descripcio": offer.get('description', ''),
-                "idiomaTreball": offer.lang,
+                "descripcio": getattr(offer, 'description', ''),
+                "idiomaTreball": 'CA',  # TEST: offer.lang,
                 "propostaAmbitCooperacio": offer.scope_cooperation,
                 "tematicaAmbiental": offer.environmental_theme,
-                "centre": offer.center,
-                "codirector": offer.get('comanager', ''),
-                "empresa": offer.get('company', ''),
-                "personaContacteEmpresa": offer.get('company_contact', ''),
+                "centre": '295',  # TEST:  offer.center,
+                "codirector": getattr(offer, 'comanager', ''),
+                "empresa": getattr(offer, 'company', ''),
+                "personaContacteEmpresa": getattr(offer, 'company_contact', ''),
                 "confidencial": offer.confidential,
                 "tipusAltaTFE": tipus_alta
             })
