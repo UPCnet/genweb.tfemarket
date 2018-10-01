@@ -525,7 +525,7 @@ msgstr "Nom del professor"
 
 #: ../content/templates/market_view.pt:380
 msgid "Teacher manager"
-msgstr "Profesor director"
+msgstr "Professor director"
 
 #: ../content/application.py:59
 #: ../content/templates/market_view.pt:94
