@@ -49,8 +49,7 @@
                      i18n:attributes="title genweb-logout"
                      class="btn btn-danger" href="#" role="button">
                     <span class="icon-off icon-white"></span>
-                    <tal:logout i18n:translate="genweb-logout">
-                          Logout</tal:logout>
+                    <tal:logout i18n:translate="">Logout</tal:logout>
                   </a>
                 </li>
               </ul>

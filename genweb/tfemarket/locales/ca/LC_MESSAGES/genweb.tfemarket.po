@@ -40,15 +40,15 @@ msgstr "Actualment hi ha altres sol·licituds pendents, es recomana rebutjar-les
 msgid "A7"
 msgstr "La sol·licitud a sigut cancel·lada."
 
-#: ../controlpanel.py:232
+#: ../controlpanel.py:234
 msgid "APIKEY"
 msgstr "Clau API"
 
-#: ../controlpanel.py:160
+#: ../controlpanel.py:162
 msgid "Add languages one per line"
 msgstr "Afegeix un idioma per línea"
 
-#: ../controlpanel.py:154
+#: ../controlpanel.py:155
 msgid "Add tags one per line"
 msgstr "Afegeix un tag per línea"
 
@@ -60,7 +60,7 @@ msgstr "Afegeix el fitxer .csv separat per , amb les titulacions per escola:"
 msgid "Add the .csv file separated by , with the offers:"
 msgstr "Afegiu el fitxer .csv separat per , amb les ofertes:"
 
-#: ../controlpanel.py:148
+#: ../controlpanel.py:149
 msgid "Add topics one per line"
 msgstr "Afegeix un tema per línea"
 
@@ -78,7 +78,7 @@ msgstr "Totes"
 msgid "Assign the offer"
 msgstr "Assigna l'oferta"
 
-#: ../controlpanel.py:239
+#: ../controlpanel.py:241
 msgid "BUS SOA TFE"
 msgstr "BUS SOA TFE"
 
@@ -87,11 +87,11 @@ msgstr "BUS SOA TFE"
 msgid "Body"
 msgstr "Comentaris"
 
-#: ../controlpanel.py:78
+#: ../controlpanel.py:79
 msgid "CA"
 msgstr "Català"
 
-#: ../controlpanel.py:120
+#: ../controlpanel.py:121
 msgid "Center code"
 msgstr "Codi del centre"
 
@@ -99,28 +99,28 @@ msgstr "Codi del centre"
 msgid "Close"
 msgstr "Tancar"
 
-#: ../content/offer.py:289
+#: ../content/offer.py:295
 #: ../content/templates/market_view.pt:489
 msgid "CoManager"
 msgstr "Contacte"
 
-#: ../content/offer.py:223
+#: ../content/offer.py:229
 #: ../content/templates/market_view.pt:508
 msgid "Codirector"
 msgstr "Codirector"
 
 #: ../content/market.py:352
-#: ../content/offer.py:294
+#: ../content/offer.py:300
 #: ../content/templates/market_view.pt:196
 msgid "Company"
 msgstr "Empresa"
 
-#: ../content/offer.py:299
+#: ../content/offer.py:305
 #: ../content/templates/market_view.pt:497
 msgid "Company Contact"
 msgstr "Dades de contacte de l'empresa"
 
-#: ../content/offer.py:304
+#: ../content/offer.py:310
 #: ../content/templates/market_view.pt:501
 msgid "Company Email"
 msgstr "Adreça de correu de l'empresa"
@@ -154,7 +154,7 @@ msgstr "Dates"
 msgid "Degree"
 msgstr "Titulació"
 
-#: ../controlpanel.py:22
+#: ../controlpanel.py:23
 msgid "Degree code at PRISMA"
 msgstr "Codi del grau a PRISMA"
 
@@ -175,7 +175,7 @@ msgstr "Titulacions"
 msgid "Departament"
 msgstr "Departament"
 
-#: ../content/offer.py:166
+#: ../content/offer.py:172
 #: ../content/templates/market_view.pt:67
 msgid "Description"
 msgstr "Descripció"
@@ -188,19 +188,19 @@ msgstr "Desplega tot <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 msgid "Developer language"
 msgstr "Idioma de treball"
 
-#: ../controlpanel.py:159
+#: ../controlpanel.py:161
 msgid "Development languages"
 msgstr "Idiomes d'elaboració del treball"
 
-#: ../content/offer.py:194
+#: ../content/offer.py:200
 msgid "Direction"
 msgstr "Direcció"
 
-#: ../controlpanel.py:80
+#: ../controlpanel.py:81
 msgid "EN"
 msgstr "Àngles"
 
-#: ../controlpanel.py:79
+#: ../controlpanel.py:80
 msgid "ES"
 msgstr "Castellà"
 
@@ -210,15 +210,15 @@ msgstr "Castellà"
 msgid "Email"
 msgstr "Correu"
 
-#: ../controlpanel.py:65
+#: ../controlpanel.py:66
 msgid "Enroll"
 msgstr "Inscripció"
 
-#: ../controlpanel.py:138
+#: ../controlpanel.py:139
 msgid "Enroll type "
 msgstr "Tipus d'inscripció"
 
-#: ../content/offer.py:330
+#: ../content/offer.py:336
 msgid "Environmental Theme"
 msgstr "Temàtica ambiental"
 
@@ -234,7 +234,7 @@ msgstr "No pots realitzar aquesta acció."
 msgid "Expiration date"
 msgstr "Caducitat"
 
-#: ../controlpanel.py:81
+#: ../controlpanel.py:82
 msgid "FR"
 msgstr "Francès"
 
@@ -260,11 +260,7 @@ msgstr "Amagar cercador"
 msgid "Identifier Offer TFE"
 msgstr "Identificador de l'oferta"
 
-#: ../browser/views.py:218
-msgid "If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter."
-msgstr "Si està realitzant la següent acció és perquè has eliminat totes les ofertes dels mercats. Fes clic al següent  <a href=\"reset_count_offers?confirm\">enllaç</a> per confirmar el reseteig del comptador d'ofertes."
-
-#: ../controlpanel.py:187
+#: ../controlpanel.py:189
 msgid "Import offers"
 msgstr "Importar ofertes"
 
@@ -308,11 +304,11 @@ msgstr "Última setmana"
 msgid "MAll"
 msgstr "Tots"
 
-#: ../controlpanel.py:31
+#: ../controlpanel.py:32
 msgid "MEC code"
 msgstr "Codi MEC"
 
-#: ../controlpanel.py:33
+#: ../controlpanel.py:34
 msgid "MEC degree code"
 msgstr "Codi MEC del Grau"
 
@@ -320,16 +316,16 @@ msgstr "Codi MEC del Grau"
 msgid "Mobile"
 msgstr "Mòbil"
 
-#: ../content/offer.py:275
+#: ../content/offer.py:281
 #: ../content/templates/market_view.pt:249
 msgid "Modality"
 msgstr "Modalitat"
 
-#: ../controlpanel.py:179
+#: ../controlpanel.py:181
 msgid "Months until expiration"
 msgstr "Mesos fins a la caducitat"
 
-#: ../controlpanel.py:180
+#: ../controlpanel.py:182
 msgid "Months until the offer expires automatically"
 msgstr "Mesos fins que l'oferta caduqui automàticament"
 
@@ -341,7 +337,7 @@ msgstr "Més info"
 msgid "Name"
 msgstr "Nom"
 
-#: ../controlpanel.py:126
+#: ../controlpanel.py:127
 msgid "Name center"
 msgstr "Nom del centre"
 
@@ -358,25 +354,25 @@ msgstr "No s'han trobat resultats."
 msgid "No tens número d'expedient a Prisma"
 msgstr "No tens número d'expedient a Prisma"
 
-#: ../controlpanel.py:194
+#: ../controlpanel.py:196
 msgid "Number of offers created"
 msgstr "Nombre d'ofertes creades"
 
-#: ../content/offer.py:236
+#: ../content/offer.py:242
 #: ../content/templates/market_view.pt:458
 msgid "Number of students"
 msgstr "Nombre d'estudiants"
 
-#: ../content/offer.py:237
+#: ../content/offer.py:243
 msgid "Number of students for the TFE (1 to 10)"
 msgstr "Nombre d'estudiants (1 fins a 10)"
 
-#: ../controlpanel.py:107
+#: ../controlpanel.py:108
 msgid "Ofertes"
 msgstr "Ofertes"
 
 #: ../content/application.py:36
-#: ../content/offer.py:156
+#: ../content/offer.py:162
 #: ../content/templates/market_view.pt:72
 msgid "Offer id"
 msgstr "Identificador de l'oferta"
@@ -386,15 +382,15 @@ msgstr "Identificador de l'oferta"
 msgid "Offer title"
 msgstr "Títol de l'oferta"
 
-#: ../content/offer.py:313
+#: ../content/offer.py:319
 msgid "Options"
 msgstr "Opcions"
 
-#: ../content/offer.py:231
+#: ../content/offer.py:237
 msgid "Other data"
 msgstr "Altres dades"
 
-#: ../controlpanel.py:20
+#: ../controlpanel.py:21
 msgid "PRISMA code"
 msgstr "Codi PRISMA"
 
@@ -406,15 +402,15 @@ msgstr "ID de PRISMA"
 msgid "PRISMA id not found at PRISMA. %s"
 msgstr "L'identificador PRISMA no s'ha trobat a PRISMA. %s"
 
-#: ../controlpanel.py:139
+#: ../controlpanel.py:140
 msgid "Parameter to post the student enroll"
 msgstr "Paràmetre per inscriure a l'alumne"
 
-#: ../controlpanel.py:228
+#: ../controlpanel.py:230
 msgid "Password"
 msgstr "Contrasenya"
 
-#: ../controlpanel.py:37
+#: ../controlpanel.py:38
 msgid "Plan year"
 msgstr "Any del plà"
 
@@ -422,12 +418,12 @@ msgstr "Any del plà"
 msgid "Plega tot <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr "Plega tot <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 
-#: ../content/offer.py:318
+#: ../content/offer.py:324
 #: ../content/templates/market_view.pt:414
 msgid "Possibility of scholarship"
 msgstr "Possibilitat de beca/finançament"
 
-#: ../controlpanel.py:26
+#: ../controlpanel.py:27
 msgid "Program type"
 msgstr "Tipus de programa"
 
@@ -439,7 +435,7 @@ msgstr "Publicació"
 msgid "Quines ofertes cerques?"
 msgstr "Quines ofertes cerques?"
 
-#: ../controlpanel.py:66
+#: ../controlpanel.py:67
 msgid "Register"
 msgstr "Registre"
 
@@ -451,7 +447,7 @@ msgstr "Sol·licitar l'oferta"
 msgid "Requirements"
 msgstr "Requisits"
 
-#: ../controlpanel.py:131
+#: ../controlpanel.py:132
 msgid "Review State"
 msgstr "Estat de revisió actiu"
 
@@ -459,7 +455,7 @@ msgstr "Estat de revisió actiu"
 msgid "SOA bus not configured. Contact the site administrator."
 msgstr "Bus SOA no configurat. Posis en contacte amb l'administrador del lloc."
 
-#: ../content/offer.py:336
+#: ../content/offer.py:342
 #: ../content/templates/market_view.pt:524
 msgid "Scope of cooperation"
 msgstr "Ambit de cooperació"
@@ -477,7 +473,7 @@ msgstr "Cerca el professor"
 msgid "Search_teacher"
 msgstr "Cerca el professor"
 
-#: ../controlpanel.py:133
+#: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr "Seleccionar si és necessari el rol de revisió"
 
@@ -485,7 +481,7 @@ msgstr "Seleccionar si és necessari el rol de revisió"
 msgid "Select the market where you want to import the offers."
 msgstr "Seleccioneu el mercat on voleu importar les ofertes."
 
-#: ../controlpanel.py:95
+#: ../controlpanel.py:96
 msgid "Settings"
 msgstr "Configuració"
 
@@ -505,12 +501,12 @@ msgstr "Sol·licita"
 msgid "State"
 msgstr "Estat"
 
-#: ../content/offer.py:200
+#: ../content/offer.py:206
 #: ../content/templates/market_view.pt:170
 msgid "TFEteacher"
 msgstr "Professor"
 
-#: ../controlpanel.py:153
+#: ../controlpanel.py:154
 msgid "Tags"
 msgstr "Llistat de paraules clau"
 
@@ -518,12 +514,12 @@ msgstr "Llistat de paraules clau"
 msgid "Targets"
 msgstr "Objectius"
 
-#: ../content/offer.py:212
+#: ../content/offer.py:218
 #: ../content/templates/market_view.pt:384
 msgid "Teacher Email"
 msgstr "Email del professor"
 
-#: ../content/offer.py:206
+#: ../content/offer.py:212
 msgid "Teacher Fullname"
 msgstr "Nom del professor"
 
@@ -552,7 +548,7 @@ msgstr "L'oferta no es pot cancelar si conté sol·licituds actives."
 msgid "The offer can't be deleted."
 msgstr "L'oferta no es pot eliminar, te sol·licituds actives."
 
-#: ../content/offer.py:161
+#: ../content/offer.py:167
 msgid "Title"
 msgstr "Títol"
 
@@ -560,52 +556,52 @@ msgstr "Títol"
 msgid "Title of the degree with which you request the offer"
 msgstr "Titulació amb la que solicites l'oferta"
 
-#: ../controlpanel.py:101
+#: ../controlpanel.py:102
 msgid "Titulacions"
 msgstr "Titulacions"
 
-#: ../controlpanel.py:48
+#: ../controlpanel.py:49
 msgid "Titulacions CA"
 msgstr "Titulacions CA"
 
-#: ../controlpanel.py:54
+#: ../controlpanel.py:55
 msgid "Titulacions EN"
 msgstr "Titulacions EN"
 
-#: ../controlpanel.py:42
+#: ../controlpanel.py:43
 msgid "Titulacions ES"
 msgstr "Titulacions ES"
 
-#: ../controlpanel.py:188
+#: ../controlpanel.py:190
 msgid "To import the offers access the following <a href=\"import_ofertes\">link</a>."
 msgstr "Per importar les ofertes accedeixi al següent <a href=\"import_ofertes\">enllaç</a>."
 
-#: ../controlpanel.py:195
-msgid "To reset the counter access the following <a href=\"reset_count_offers\">link</a>."
-msgstr "Per restablir el comptador accedeixi al següent <a href=\"reset_count_offers\">enllaç</a>."
+#: ../controlpanel.py:197
+msgid "To reset the counter access the following <a href=\"reset_offers_counter\">link</a>."
+msgstr "Per restablir el comptador accedeixi al següent <a href=\"reset_offers_counter\">enllaç</a>."
 
 #: ../content/templates/market_view.pt:454
 msgid "Topic"
 msgstr "Tema"
 
-#: ../controlpanel.py:147
+#: ../controlpanel.py:148
 msgid "Topics of the TFE"
 msgstr "Temàtiques principals dels TFE's"
 
 #: ../configure.zcml:53
-#: ../controlpanel.py:204
+#: ../controlpanel.py:206
 msgid "UPC Mercat TFE"
 msgstr "UPC Mercat TFE (genweb.tfemarket)"
 
-#: ../controlpanel.py:218
+#: ../controlpanel.py:220
 msgid "URL"
 msgstr "URL"
 
-#: ../controlpanel.py:219
+#: ../controlpanel.py:221
 msgid "URL to access the bus"
 msgstr "URL per accedir al bus"
 
-#: ../content/offer.py:284
+#: ../content/offer.py:290
 msgid "Universitat"
 msgstr "Universitat"
 
@@ -613,16 +609,16 @@ msgstr "Universitat"
 msgid "University"
 msgstr "Universitat"
 
-#: ../content/offer.py:218
+#: ../content/offer.py:224
 msgid "University department"
 msgstr "Departament"
 
-#: ../controlpanel.py:223
+#: ../controlpanel.py:225
 #: ../z3cwidget/text_input_teacher.pt:65
 msgid "User"
 msgstr "Usuari"
 
-#: ../controlpanel.py:224
+#: ../controlpanel.py:226
 msgid "User to connect to the bus"
 msgstr "Usuari per conectar-se al bus"
 
@@ -667,15 +663,20 @@ msgstr "La teva sol·licitud"
 msgid "application"
 msgstr "Sol·licitud"
 
-#: ../controlpanel.py:113
+#: ../controlpanel.py:114
 msgid "classifications"
 msgstr "Classificacions"
 
-#: ../content/offer.py:324
+#: ../content/offer.py:330
 msgid "confidential"
 msgstr "Confidencial"
 
-#: ../content/offer.py:179
+#. Default: "Are you sure you want to reset the offers counter?"
+#: ../browser/views_templates/reset_offers_counter.pt:22
+msgid "confirm_reset_counter"
+msgstr "Confirma que vols reiniciar el contador d'ofertes. Has esborrat o arxivat totes les ofertes?"
+
+#: ../content/offer.py:185
 msgid "degree"
 msgstr "Titulació"
 
@@ -698,16 +699,15 @@ msgid "help_expiration_date"
 msgstr "La data en què vencerà l'element."
 
 #. Default: "Imported dades from csv"
-#: ../controlpanel.py:169
+#: ../controlpanel.py:171
 msgid "help_titulacions_table"
 msgstr "Dades importades mitjançant un fitxer .csv. Pot importar les titulacions desde el següent <a href=\"import_titulacions\">enllaç</a>."
 
-#: ../browser/viewlets_templates/infoTfemarket.pt:3
 #: ../content/templates/market_view.pt:140
 msgid "info"
 msgstr "Informació"
 
-#: ../content/offer.py:186
+#: ../content/offer.py:192
 msgid "keys"
 msgstr "Paraules clau"
 
@@ -716,7 +716,7 @@ msgstr "Paraules clau"
 msgid "market"
 msgstr "Mercat"
 
-#: ../content/offer.py:281
+#: ../content/offer.py:287
 msgid "modality"
 msgstr "Modalitat"
 
@@ -729,34 +729,39 @@ msgstr "nom.cognom"
 msgid "offer"
 msgstr "Oferta"
 
-#: ../content/offer.py:149
+#: ../content/offer.py:155
 msgid "offer_center"
 msgstr "Centre"
 
-#: ../content/offer.py:255
+#: ../content/offer.py:261
 msgid "offer_features"
 msgstr "Característiques"
 
-#: ../content/offer.py:250
+#: ../content/offer.py:256
 msgid "offer_targets"
 msgstr "Objectius"
 
-#: ../content/offer.py:171
+#: ../content/offer.py:177
 msgid "offer_topic"
 msgstr "Tema"
 
-#: ../content/offer.py:245
+#: ../content/offer.py:251
 msgid "offer_workload"
 msgstr "Càrrega de treball"
 
-#: ../content/offer.py:260
+#: ../content/offer.py:266
 msgid "requirements"
 msgstr "Requisits"
 
-#: ../content/offer.py:267
+#. Default: "Reset counter"
+#: ../browser/views_templates/reset_offers_counter.pt:25
+msgid "reset_counter"
+msgstr "Reinicia el contador"
+
+#: ../content/offer.py:273
 msgid "tfe_lang"
 msgstr "Idioma del treball"
 
-#: ../controlpanel.py:171
+#: ../controlpanel.py:173
 msgid "titulacionstable"
 msgstr "Taula de titulacións"

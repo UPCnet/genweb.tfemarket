@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+    <head>
+        <metal:block fill-slot="top_slot"/>
+    </head>
+
+    <body>
+
+        <metal:main fill-slot="content">
+            <tal:main-macro metal:define-macro="main">
+
+                <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+                     Status message
+                </div>
+
+                <div class="alert alert-info" i18n:translate="confirm_reset_counter">Are you sure you want to reset the offers counter?</div>
+
+                <div>
+                    <a class="btn btn-large btn-primary" href="reset_offers_counter?confirm" i18n:translate="reset_counter">Reset counter</a>
+                </div>
+                <br />
+
+            </tal:main-macro>
+
+        </metal:main>
+
+    </body>
+</html>

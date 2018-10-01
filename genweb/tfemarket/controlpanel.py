@@ -194,7 +194,7 @@ class ITfemarketSettings(model.Schema):
     directives.mode(count_offers="display")
     count_offers = schema.Int(
         title=_(u"Number of offers created"),
-        description=_(u'To reset the counter access the following <a href=\"reset_count_offers\">link</a>.'),
+        description=_(u'To reset the counter access the following <a href=\"reset_offers_counter\">link</a>.'),
         required=False,
         default=0,
     )

@@ -197,26 +197,19 @@ class getInfoCreateApplication(grok.View):
 
 
 class resetCountOffers(grok.View):
-    grok.name('reset_count_offers')
+    grok.name('reset_offers_counter')
     grok.context(Interface)
+    grok.template('reset_offers_counter')
     grok.require('cmf.ManagePortal')
     grok.layer(IGenwebTfemarketLayer)
 
-    def render(self):
+    def update(self):
         if 'confirm' in self.request.form:
             registry = queryUtility(IRegistry)
             tfe_tool = registry.forInterface(ITfemarketSettings)
             tfe_tool.count_offers = 0
             transaction.commit()
             self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
-        else:
-            current = api.user.get_current()
-            lang = current.language
-            if lang or lang == '':
-                portal_state = self.context.unrestrictedTraverse("@@plone_portal_state")
-                lang = portal_state.default_language()
-            value = _(u'If you are doing the next action, it is because you have eliminated all the offers from the markets. Click on the following <a href=\"reset_count_offers?confirm\">link</a> to confirm the reset of the offers counter.')
-            return translate(msgid=value, domain='genweb.tfemarket', target_language=lang)
 
 
 class dynamicTfeCSS(grok.View):
