@@ -67,7 +67,7 @@ def applicationChanged(application, event):
 
     fromMsg = toMsg = subject = msg = portalMsg = ''
     if event.transition is None:
-        # Añadir comprovación de la titulación, en caso de no tener enviar un
+        # Añadir comprobación de la titulación, en caso de no tener que enviar un
         # portal message _(u'A1')
         fromMsg = sender_name + ' ' + '<' + sender_email + '>'
         toMsg = teacher_mail
@@ -141,7 +141,7 @@ def offerChanged(offer, event):
 
 
 def offerCanceled(offer, event):
-    """ If genweb.tfemarket.offer change WF, checks if can canceled.
+    """ If genweb.tfemarket.offer change WF, checks if can be canceled.
     """
 
     if event.transition is not None:
@@ -193,10 +193,10 @@ def applicationRegistered(application, event):
                 "departament": offer.dept,
                 "numDocument": application.dni,
                 "descripcio": getattr(offer, 'description', ''),
-                "idiomaTreball": 'CA',  # TEST: offer.lang,
+                "idiomaTreball": offer.lang,
                 "propostaAmbitCooperacio": offer.scope_cooperation,
                 "tematicaAmbiental": offer.environmental_theme,
-                "centre": '295',  # TEST:  offer.center,
+                "centre": offer.center,
                 "codirector": getattr(offer, 'comanager', ''),
                 "empresa": getattr(offer, 'company', ''),
                 "personaContacteEmpresa": getattr(offer, 'company_contact', ''),

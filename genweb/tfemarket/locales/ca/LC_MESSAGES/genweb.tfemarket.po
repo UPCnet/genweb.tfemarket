@@ -38,7 +38,7 @@ msgstr "Actualment hi ha altres sol·licituds pendents, es recomana rebutjar-les
 
 #: ../browser/events/change.py:110
 msgid "A7"
-msgstr "La sol·licitud a sigut cancel·lada."
+msgstr "La sol·licitud ha estat cancel·lada."
 
 #: ../controlpanel.py:234
 msgid "APIKEY"

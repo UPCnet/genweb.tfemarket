@@ -279,143 +279,50 @@ def getStudentData(self, item, user):
                 except IndexError:
                     vinculacio.append({key: i})
 
-        # isStudent = (True for item in vinculacio if item['typology'] == 'EST')
+        isStudent = (True for item in vinculacio if item['typology'] == 'EST')
 
-        # if True in isStudent:
+        if True in isStudent:
 
-        #     for vinc in vinculacio:
-        #         if vinc['typology'] == 'EST':
-        #             id_prisma = vinc['idorigen']
-        #             student_data.update({'prisma_id': id_prisma})
-        #             break
-        #
-        #         id_prisma = student_data['prisma_id']
-        #         numDocument = student_data['dni']
+            for vinc in vinculacio:
+                if vinc['typology'] == 'EST':
+                    id_prisma = vinc['idorigen']
+                    student_data.update({'prisma_id': id_prisma})
+                    break
 
-        # ##### TEST USERS
+                id_prisma = student_data['prisma_id']
+                numDocument = student_data['dni']
+                fullname = student_data['fullname']
 
-        list_test = [{'id_prisma': '2998045', 'numDocument': '8159297'},
-                     {'id_prisma': '2982486', 'numDocument': '77622127W'},
-                     {'id_prisma': '2967147', 'numDocument': '47938723F'},
-                     {'id_prisma': '2961841', 'numDocument': '41563763A'},
-                     {'id_prisma': '2961785', 'numDocument': 'AU291007'},
-                     {'id_prisma': '2961784', 'numDocument': 'AT568277'},
-                     {'id_prisma': '2961767', 'numDocument': 'G25336680'},
-                     {'id_prisma': '2961765', 'numDocument': '02740852B'},
-                     {'id_prisma': '2961713', 'numDocument': '46627876E'},
-                     {'id_prisma': '2961712', 'numDocument': '52886228M'},
-                     {'id_prisma': '2951347', 'numDocument': 'L42366646'},
-                     {'id_prisma': '2951346', 'numDocument': 'Y5844115J'},
-                     {'id_prisma': '2951342', 'numDocument': '46556388H'},
-                     {'id_prisma': '2940875', 'numDocument': '39959762E'},
-                     {'id_prisma': '2935735', 'numDocument': 'YB0249756'},
-                     {'id_prisma': '2935708', 'numDocument': 'Y5556099A'},
-                     {'id_prisma': '2930505', 'numDocument': '29206385L'},
-                     {'id_prisma': '2930372', 'numDocument': 'E84238756'},
-                     {'id_prisma': '2919893', 'numDocument': 'Y5686213Y'},
-                     {'id_prisma': '2914799', 'numDocument': 'Y5716521T'},
-                     {'id_prisma': '2399710', 'numDocument': '23820394F'},
-                     {'id_prisma': '2904226', 'numDocument': '48099022L'},
-                     {'id_prisma': '2904225', 'numDocument': '46499140V'},
-                     {'id_prisma': '2904224', 'numDocument': 'X3870598C'},
-                     {'id_prisma': '2904222', 'numDocument': '49950509Y'},
-                     {'id_prisma': '2904221', 'numDocument': '45128621E'},
-                     {'id_prisma': '2904219', 'numDocument': 'X7747565S'},
-                     {'id_prisma': '2904218', 'numDocument': '48060556D'},
-                     {'id_prisma': '2904217', 'numDocument': '41012702E'},
-                     {'id_prisma': '2904216', 'numDocument': 'X8639060F'},
-                     {'id_prisma': '2904215', 'numDocument': 'X7270981Z'},
-                     {'id_prisma': '2904213', 'numDocument': '26296240H'},
-                     {'id_prisma': '2904212', 'numDocument': '21785587X'},
-                     {'id_prisma': '2904211', 'numDocument': '49896766Z'},
-                     {'id_prisma': '2904210', 'numDocument': '49220782T'},
-                     {'id_prisma': '2904209', 'numDocument': '43576278H'},
-                     {'id_prisma': '2904208', 'numDocument': '53338642D'},
-                     {'id_prisma': '2904207', 'numDocument': '47665484P'},
-                     {'id_prisma': '2904206', 'numDocument': '39410088W'},
-                     {'id_prisma': '2904205', 'numDocument': '21783945R'},
-                     {'id_prisma': '2904204', 'numDocument': '49242735B'},
-                     {'id_prisma': '2904203', 'numDocument': '49286498M'},
-                     {'id_prisma': '2904202', 'numDocument': '47986461C'},
-                     {'id_prisma': '2904201', 'numDocument': '23922430S'},
-                     {'id_prisma': '2904199', 'numDocument': '49188088N'},
-                     {'id_prisma': '2904198', 'numDocument': '49550281R'},
-                     {'id_prisma': '2904197', 'numDocument': '46420112V'},
-                     {'id_prisma': '2904195', 'numDocument': '53839907N'},
-                     {'id_prisma': '2904194', 'numDocument': '26611655B'},
-                     {'id_prisma': '2904193', 'numDocument': 'X8793173C'},
-                     {'id_prisma': '2904189', 'numDocument': '21776934M'},
-                     {'id_prisma': '2904188', 'numDocument': '41015682N'},
-                     {'id_prisma': '2904187', 'numDocument': '54805136T'},
-                     {'id_prisma': '2904186', 'numDocument': '46489014B'},
-                     {'id_prisma': '2904185', 'numDocument': '41015835G'},
-                     {'id_prisma': '2898608', 'numDocument': 'L1CC9644G'},
-                     {'id_prisma': '2898462', 'numDocument': '110723998'},
-                     {'id_prisma': '2898446', 'numDocument': 'AR686284'},
-                     {'id_prisma': '2898372', 'numDocument': '49884929E'},
-                     {'id_prisma': '2898371', 'numDocument': '77620741L'},
-                     {'id_prisma': '2898370', 'numDocument': 'Y4322442C'},
-                     {'id_prisma': '2898316', 'numDocument': 'G24908009'},
-                     {'id_prisma': '2898315', 'numDocument': 'Y5352690Y'},
-                     {'id_prisma': '2898299', 'numDocument': '29219070P'},
-                     {'id_prisma': '2898292', 'numDocument': 'L36Y3ZM8P'},
-                     {'id_prisma': '2898291', 'numDocument': 'Y5699778R'},
-                     {'id_prisma': '2898290', 'numDocument': '70079742F'},
-                     {'id_prisma': '2898289', 'numDocument': '43592574F'},
-                     {'id_prisma': '2898286', 'numDocument': '34939140'},
-                     {'id_prisma': '2898282', 'numDocument': 'X9339129W'},
-                     {'id_prisma': '2898281', 'numDocument': '53766960K'},
-                     {'id_prisma': '2898280', 'numDocument': '72806060C'},
-                     {'id_prisma': '2898277', 'numDocument': 'G24770892'},
-                     {'id_prisma': '2399709', 'numDocument': '78102902P'},
-                     {'id_prisma': '2399708', 'numDocument': 'X7038956J'},
-                     {'id_prisma': '2399705', 'numDocument': '23818976S'},
-                     {'id_prisma': '2399704', 'numDocument': '78856215W'},
-                     {'id_prisma': '2399702', 'numDocument': '46492011H'},
-                     {'id_prisma': '2399698', 'numDocument': '39424479H'},
-                     {'id_prisma': '2399697', 'numDocument': '53835049F'},
-                     {'id_prisma': '2399696', 'numDocument': '39425307H'},
-                     {'id_prisma': '2399695', 'numDocument': '48130820P'},
-                     {'id_prisma': '2399694', 'numDocument': '48168326R'},
-                     {'id_prisma': '2399693', 'numDocument': '47923214T'}]
+            student_data.update({'prisma_id': id_prisma})
+            student_data.update({'dni': numDocument})
+            student_data.update({'fullname': fullname})
 
-        from random import randint
-        test_user = list_test[randint(0, len(list_test) - 1)]
-        id_prisma = test_user['id_prisma']
-        numDocument = test_user['numDocument']
+            res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
-        student_data.update({'prisma_id': id_prisma})
-        student_data.update({'dni': numDocument})
-        student_data.update({'fullname': 'USUARI DE TEST'})
+            if res_data.ok:
+                data = res_data.json()
+                num_expedients = data['llistatExpedients']
 
-        # #####
+                if num_expedients:
+                    for exp in num_expedients:
+                        if exp['codiMecPrograma'] in item.degree:
+                            student_data.update({'degree_id': exp['codiMecPrograma']})
+                            student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
 
-        res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
-
-        if res_data.ok:
-            data = res_data.json()
-            num_expedients = data['llistatExpedients']
-
-            if num_expedients:
-                for exp in num_expedients:
-                    if exp['codiMecPrograma'] in item.degree:
-                        student_data.update({'degree_id': exp['codiMecPrograma']})
-                        student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
-
-                if 'degree_id' not in student_data.keys():
-                    self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
+                    if 'degree_id' not in student_data.keys():
+                        self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
+                        return None
+                else:
+                    self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
                     return None
             else:
-                self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
+                status_code = res_data.status_code
+                reason = res_data.reason
+                self.context.plone_utils.addPortalMessage(_(u"PRISMA id not found at PRISMA. %s" % (str(status_code) + ' ' + reason)), 'error')
                 return None
         else:
-            status_code = res_data.status_code
-            reason = res_data.reason
-            self.context.plone_utils.addPortalMessage(_(u"PRISMA id not found at PRISMA. %s" % (str(status_code) + ' ' + reason)), 'error')
+            self.context.plone_utils.addPortalMessage(_(u"No tens viculació d'ESTUDIANT"), 'error')
             return None
-        # else:
-        #     self.context.plone_utils.addPortalMessage(_(u"No tens viculació d'ESTUDIANT"), 'error')
-        #     return None
     else:
         self.context.plone_utils.addPortalMessage(_(u"Usuari no trobat en el Ldap"), 'error')
         return None
