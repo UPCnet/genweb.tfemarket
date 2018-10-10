@@ -287,27 +287,26 @@ class View(grok.View):
                          Creator=api.user.get_current().id)
 
         for item in values:
-            if item.review_state not in ['cancelled', 'rejected', 'renounced']:
-                application = item.getObject()
-                workflowActions = wf_tool.listActionInfos(object=application)
-                workflows = tools.workflow().getWorkflowsFor(application)[0]
+            application = item.getObject()
+            workflowActions = wf_tool.listActionInfos(object=application)
+            workflows = tools.workflow().getWorkflowsFor(application)[0]
 
-                results.append(dict(UID=item.UID,
-                                    title=item.Title,
-                                    state=workflows['states'][item.review_state].title,
-                                    url=item.getURL(),
-                                    item_path='/'.join(application.getPhysicalPath()[2:]),
-                                    dni=application.dni,
-                                    name=application.title,
-                                    email=application.email,
-                                    phone=application.phone,
-                                    offer_id=application.offer_id,
-                                    offer_title=application.offer_title,
-                                    degree_title=application.degree_title,
-                                    body=application.body,
-                                    workflows=workflowActions,
-                                    can_edit=checkPermission('cmf.ModifyPortalContent', application),
-                                    ))
+            results.append(dict(UID=item.UID,
+                                title=item.Title,
+                                state=workflows['states'][item.review_state].title,
+                                url=item.getURL(),
+                                item_path='/'.join(application.getPhysicalPath()[2:]),
+                                dni=application.dni,
+                                name=application.title,
+                                email=application.email,
+                                phone=application.phone,
+                                offer_id=application.offer_id,
+                                offer_title=application.offer_title,
+                                degree_title=application.degree_title,
+                                body=application.body,
+                                workflows=workflowActions,
+                                can_edit=checkPermission('cmf.ModifyPortalContent', application),
+                                ))
         return results
 
     def getApplications(self, offer):
