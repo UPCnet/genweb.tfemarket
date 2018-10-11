@@ -170,7 +170,7 @@ class IOffer(form.Schema):
 
     description = schema.Text(
         title=_(u'Description'),
-        required=False,
+        required=True,
     )
 
     topic = schema.Choice(
