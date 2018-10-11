@@ -293,22 +293,22 @@ class IOffer(form.Schema):
 
     co_manager = schema.TextLine(
         title=_(u'CoManager'),
-        required=False,
+        required=True,
     )
 
     company = schema.TextLine(
         title=_(u'Company'),
-        required=False,
+        required=True,
     )
 
     company_contact = schema.TextLine(
         title=_(u'Company Contact'),
-        required=False,
+        required=True,
     )
 
     company_email = schema.TextLine(
         title=_(u'Company Email'),
-        required=False,
+        required=True,
         constraint=validateEmail,
     )
 
