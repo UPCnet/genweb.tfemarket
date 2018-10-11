@@ -158,7 +158,7 @@
                         <label i18n:translate="">Degree</label>
                         <select id="searchDegree" name="degree">
                           <tal:block tal:condition="view/getDegrees" tal:repeat="degree view/getDegrees">
-                            <tal:block tal:define="selected python: save.has_key('degree') and not save['degree'] == 'a' and degree['id'] == int(save['degree'])">
+                            <tal:block tal:define="selected python: save.has_key('degree') and not save['degree'] == 'a' and degree['id'] == save['degree']">
                               <option tal:attributes="value degree/id; selected python: True if selected else False" tal:content="degree/lit">Degree</option>
                             </tal:block>
                           </tal:block>

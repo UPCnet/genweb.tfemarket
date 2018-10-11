@@ -72,7 +72,7 @@ class View(grok.View):
                 continue
 
             # Filter degree
-            if filters['degree'] != 'a' and ('degrees' not in item or int(filters['degree']) not in item['degrees']):
+            if filters['degree'] != 'a' and ('degrees' not in item or filters['degree'] not in item['degrees']):
                 delete.append(index)
                 continue
 
