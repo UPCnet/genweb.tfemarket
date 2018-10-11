@@ -181,8 +181,6 @@ def applicationRegistered(application, event):
             offer = application.aq_parent
             id_prisma = application.prisma_id
 
-            import ipdb; ipdb.set_trace()
-
             data = json.dumps({
                 "codiExpedient": id_prisma,
                 "codiPrograma": application.degree_id,
