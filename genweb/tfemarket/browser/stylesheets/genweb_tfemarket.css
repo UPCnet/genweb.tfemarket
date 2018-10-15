@@ -724,6 +724,12 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   margin: 5px 0px !important;
 }
 
+#offersList .titleSpan h3 span,
+#offerData .titleSpan h3 span{
+  color: #cbcbcb;
+}
+
+
 #offersList .offerdesc,
 #offerData .offerdesc {
   text-align: justify;

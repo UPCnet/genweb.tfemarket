@@ -316,6 +316,7 @@
                                 <div class="titleSpan">
                                     <h3>
                                         <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
+                                        <span tal:condition="offer/is_expired" i18n:translate="">expired</span>
                                     </h3>
                                 </div>
                               </div>
@@ -329,6 +330,7 @@
                                   <span tal:content="offer/expiration_date">2018/04/29</span>
                                 </p>
                               </div>
+
                               <div class="rightInfoOffer actions span2">
                                 <span class="workflowsAction">
                                   <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="offer/workflows">
@@ -371,6 +373,15 @@
                                    </a>
                                 </div>
                               </tal:block>
+                              <div class="alert alert-alert offerInfo" role="alert" tal:condition="offer/is_expired">
+                                 <button data-dismiss="alert" class="close" type="button">×</button>
+                                 <strong i18n:translate="">
+                                 Alert
+                                 </strong>
+                                 <tal:msg i18n:translate="">
+                                    The offer is expired.
+                                 </tal:msg>
+                              </div>
                               <div class="data" tal:define="view_applications python: view.openApplicationsTav() and applications">
                                 <div class="informacioTFE">
                                   <div class="row-fluid">
