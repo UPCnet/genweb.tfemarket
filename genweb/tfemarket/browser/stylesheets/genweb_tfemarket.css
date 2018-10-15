@@ -1218,3 +1218,9 @@ p.effectiveDate {
 .configlets > li {
   margin-bottom: -2px;
 }
+
+body.template-import_ofertes .alert-error {
+  white-space: pre-line;
+  display: table;
+  width: 100%;
+}

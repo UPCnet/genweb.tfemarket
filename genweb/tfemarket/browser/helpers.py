@@ -81,11 +81,14 @@ class importOfertes(grok.View):
 
             if filename != '' and filename.endswith('.csv'):
                 # self.importConfigurationFields(fitxer)
-                self.createOffers(fitxer, marketUID)
-                self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
+                msgError = self.createOffers(fitxer, marketUID)
+                if msgError != []:
+                    IStatusMessage(self.request).addStatusMessage('\n'.join(msgError), type='error')
+                else:
+                    self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
             else:
                 message = (u"Falta afegir el fitxer csv.")
-                IStatusMessage(self.request).addStatusMessage(message, type='error')
+                IStatusMessage(self.request).addStatusMessage(message, type='alert')
 
     def importConfigurationFields(self, fitxer):
         strTopics = ''
@@ -116,6 +119,7 @@ class importOfertes(grok.View):
         catalog = api.portal.get_tool(name='portal_catalog')
         market = catalog(UID=marketUID)[0].getObject()
 
+        msgError = []
         csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
         csv_file.next()  # Ignore header for csv
         for count, row in enumerate(csv_file):
@@ -154,11 +158,17 @@ class importOfertes(grok.View):
                     offer.setEffectiveDate(dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1)))
                     offer.setExpirationDate(dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365)))
                     offer.reindexObject()
-                    print str(count) + ": Done - " + row[0].decode("utf-8")
+                    print str(count + 1) + ": Done - " + row[0].decode("utf-8")
                 else:
-                    print str(count) + ": Error - Teacher (" + row[5].decode("utf-8") + ") not exist."
+                    msg = row[0].decode("utf-8") + " - Teacher (" + row[5].decode("utf-8") + ") not exist."
+                    print str(count + 1) + ": Error - " + msg
+                    msgError.append(str(count + 1) + ": " + msg)
             else:
-                print str(count) + ": Error - Degree (" + " ".join(notValidDegrees) + ") not valid."
+                msg = row[0].decode("utf-8") + " - Degree (" + " - ".join(notValidDegrees) + ") not valid."
+                print str(count + 1) + ": Error - " + msg
+                msgError.append(str(count + 1) + ": " + msg)
+
+        return msgError
 
     def getMarkets(self):
         markets = []
