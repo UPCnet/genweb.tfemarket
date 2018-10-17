@@ -157,7 +157,6 @@
   </permission-map>
  </state>
  <state state_id="inscritaintranet" title="Inscrita (intranet)">
-  <exit-transition transition_id="totcorrecteprimaintranet"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>TFE Manager</permission-role>
@@ -276,84 +275,6 @@
    <permission-role>WebMaster</permission-role>
   </permission-map>
  </state>
- <state state_id="okprisma" title="Treball inscrit">
-  <exit-transition transition_id="retiraaesborranymanager"/>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Anonymous</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>TFE Student</permission-role>
-   <permission-role>TFE Teacher</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="Add portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="Change portal events" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Anonymous</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>TFE Student</permission-role>
-   <permission-role>TFE Teacher</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
- </state>
- <state state_id="okprismaintranet" title="Treball inscrit (intranet)">
-  <exit-transition transition_id="retiraaesborranymanager"/>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>TFE Student</permission-role>
-   <permission-role>TFE Teacher</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="Add portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="Change portal events" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>TFE Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Site Administrator</permission-role>
-   <permission-role>TFE Student</permission-role>
-   <permission-role>TFE Teacher</permission-role>
-   <permission-role>WebMaster</permission-role>
-  </permission-map>
- </state>
  <state state_id="pending" title="En revisió">
   <exit-transition transition_id="publicaalintranet"/>
   <exit-transition transition_id="publicaloferta"/>
@@ -436,7 +357,6 @@
   </permission-map>
  </state>
  <state state_id="registered" title="Inscrita">
-  <exit-transition transition_id="prisma_ok"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
    <permission-role>Manager</permission-role>
@@ -503,7 +423,7 @@
   </guard>
  </transition>
  <transition transition_id="caducaloferta" title="Caduca l'oferta" new_state="expired" trigger="USER" before_script="" after_script="">
-
+  
   <guard>
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
@@ -516,18 +436,6 @@
  </transition>
  <transition transition_id="cancellaloferta" title="Cancel·la l'oferta" new_state="canceled" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=cancellaloferta" category="workflow" icon="">Cancel·la l'oferta</action>
-  <guard>
-   <guard-permission>Modify portal content</guard-permission>
-   <guard-permission>Access contents information</guard-permission>
-   <guard-permission>View</guard-permission>
-   <guard-role>Site Administrator</guard-role>
-   <guard-role>Manager</guard-role>
-   <guard-role>TFE Manager</guard-role>
-   <guard-role>Owner</guard-role>
-  </guard>
- </transition>
- <transition transition_id="prisma_ok" title="Tot correcte a PRISMA" new_state="okprisma" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=prisma_ok" category="workflow" icon="">Tot correcte a PRISMA</action>
   <guard>
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
@@ -598,31 +506,8 @@
    <guard-role>Owner</guard-role>
   </guard>
  </transition>
- <transition transition_id="retiraaesborranymanager" title="Retira a esborrany" new_state="offered" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=retiraaesborrany" category="workflow" icon="">Retira a esborrany</action>
-  <guard>
-   <guard-permission>Modify portal content</guard-permission>
-   <guard-permission>Access contents information</guard-permission>
-   <guard-permission>View</guard-permission>
-   <guard-role>Site Administrator</guard-role>
-   <guard-role>Manager</guard-role>
-   <guard-role>TFE Manager</guard-role>
-  </guard>
- </transition>
  <transition transition_id="sendtoreview" title="Envia a revisió" new_state="pending" trigger="USER" before_script="" after_script="">
   <action url="%(content_url)s/content_status_modify?workflow_action=sendtoreview" category="workflow" icon="">Envia a revisió</action>
-  <guard>
-   <guard-permission>Modify portal content</guard-permission>
-   <guard-permission>Access contents information</guard-permission>
-   <guard-permission>View</guard-permission>
-   <guard-role>Site Administrator</guard-role>
-   <guard-role>Manager</guard-role>
-   <guard-role>TFE Manager</guard-role>
-   <guard-role>Owner</guard-role>
-  </guard>
- </transition>
- <transition transition_id="totcorrecteprimaintranet" title="Tot correcte PRISMA (intranet)" new_state="okprismaintranet" trigger="USER" before_script="" after_script="">
-  <action url="%(content_url)s/content_status_modify?workflow_action=totcorrecteprimaintranet" category="workflow" icon="">Tot correcte PRIMA (intranet)</action>
   <guard>
    <guard-permission>Modify portal content</guard-permission>
    <guard-permission>Access contents information</guard-permission>
@@ -644,7 +529,7 @@
  <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
   <description>Previous transition</description>
   <default>
-
+   
    <expression>transition/getId|nothing</expression>
   </default>
   <guard>
@@ -653,7 +538,7 @@
  <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
   <description>The ID of the user who performed the previous transition</description>
   <default>
-
+   
    <expression>user/getId</expression>
   </default>
   <guard>
@@ -662,7 +547,7 @@
  <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
   <description>Comment about the last transition</description>
   <default>
-
+   
    <expression>python:state_change.kwargs.get('comment', '')</expression>
   </default>
   <guard>
@@ -671,7 +556,7 @@
  <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
   <description>Provides access to workflow history</description>
   <default>
-
+   
    <expression>state_change/getHistory</expression>
   </default>
   <guard>
@@ -682,7 +567,7 @@
  <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
   <description>When the previous transition was performed</description>
   <default>
-
+   
    <expression>state_change/getDateTime</expression>
   </default>
   <guard>

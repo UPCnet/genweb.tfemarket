@@ -300,20 +300,25 @@ def getStudentData(self, item, user):
             res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
             if res_data.ok:
+
                 data = res_data.json()
                 num_expedients = data['llistatExpedients']
 
-                if num_expedients:
-                    for exp in num_expedients:
-                        if exp['codiMecPrograma'] in item.degree:
-                            student_data.update({'degree_id': exp['codiMecPrograma']})
-                            student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
+                if data['potMatricularTFE'] == 'S':
+                    if num_expedients:
+                        for exp in num_expedients:
+                            if exp['codiMecPrograma'] in item.degree:
+                                student_data.update({'degree_id': exp['codiMecPrograma']})
+                                student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
 
-                    if 'degree_id' not in student_data.keys():
-                        self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
+                        if 'degree_id' not in student_data.keys():
+                            self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
+                            return None
+                    else:
+                        self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
                         return None
                 else:
-                    self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
+                    self.context.plone_utils.addPortalMessage(_(u"Requisits per optar al treball de final d'estudis insuficients. Contacta amb la secretaria del teu centre."), 'error')
                     return None
             else:
                 status_code = res_data.status_code
