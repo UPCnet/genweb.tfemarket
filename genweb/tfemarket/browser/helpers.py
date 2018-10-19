@@ -78,10 +78,10 @@ class importOfertes(grok.View):
             marketUID = self.request.form['market']
             fitxer = self.request.form['offersfile']
             filename = fitxer.filename
+            hasHeaders = 'csv_headers' in self.request.form
 
             if filename != '' and filename.endswith('.csv'):
-                # self.importConfigurationFields(fitxer)
-                msgError = self.createOffers(fitxer, marketUID)
+                msgError = self.createOffers(hasHeaders, fitxer, marketUID)
                 if msgError != []:
                     IStatusMessage(self.request).addStatusMessage('\n'.join(msgError), type='error')
                 else:
@@ -90,39 +90,34 @@ class importOfertes(grok.View):
                 message = (u"Falta afegir el fitxer csv.")
                 IStatusMessage(self.request).addStatusMessage(message, type='alert')
 
-    def importConfigurationFields(self, fitxer):
+    def createOffers(self, hasHeaders, fitxer, marketUID):
         strTopics = ''
         strTags = ''
-        strLanguages = ''
-
-        csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
-        csv_file.next()  # Ignore header for csv
-        for row in csv_file:
-            strTopics += row[2].decode("utf-8") + ","
-            strTags += row[4].decode("utf-8") + ","
-            strLanguages += row[11].decode("utf-8") + ","
-
-        topics = list(dict.fromkeys(strTopics.split(",")[:-1]))
-        tags = list(dict.fromkeys(strTags.split(",")[:-1]))
-        languages = list(dict.fromkeys(strLanguages.split(",")[:-1]))
-
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
 
-        tfe_tool.topics = "\r\n".join(topics)
-        tfe_tool.tags = "\r\n".join(tags)
-        tfe_tool.languages = " \r\n".join(languages)
-
-        transaction.commit()
-
-    def createOffers(self, fitxer, marketUID):
         catalog = api.portal.get_tool(name='portal_catalog')
         market = catalog(UID=marketUID)[0].getObject()
 
         msgError = []
         csv_file = csv.reader(fitxer, delimiter=',', quotechar='"')
-        csv_file.next()  # Ignore header for csv
+
+        if hasHeaders:
+            csv_file.next()  # Ignore header for csv
         for count, row in enumerate(csv_file):
+
+            # Importa topics y tags
+            strTopics += row[2].decode("utf-8") + ","
+            strTags += row[4].decode("utf-8") + ","
+            topics = list(dict.fromkeys(strTopics.split(",")[:-1]))
+            tags = list(dict.fromkeys(strTags.split(",")[:-1]))
+            tfe_tool.topics = "\r\n".join(topics)
+            tfe_tool.tags = "\r\n".join(tags)
+
+            transaction.commit()
+
+            # Importa ofertas
+
             notValidDegrees = self.checkNotValidDegrees(row[3].decode("utf-8").split(","))
             if len(notValidDegrees) == 0:
                 teacher = getLdapExactUserData(row[5].decode("utf-8"))

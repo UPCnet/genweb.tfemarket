@@ -29,6 +29,9 @@
         </select>
         <br>
         <br>
+        <label>El fitxer té capçaleres?</label><br>
+        <input name="csv_headers" type="checkbox" value="yes"> Sí<br>
+        <br />
         <label i18n:translate="">Add the .csv file separated by , with the offers:</label>
         <input name="offersfile" type="file" />
         <button name="save" type="submit" i18n:translate="">Import the offers</button>

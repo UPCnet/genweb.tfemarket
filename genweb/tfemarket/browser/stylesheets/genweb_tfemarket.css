@@ -1112,6 +1112,9 @@ td.actions{
   width: 165px;
 }
 
+input[type="radio"], input[type="checkbox"] {
+  margin: 0 0 0 !important;
+}
 
 /*FIN KO & IAGO CSS*/
 

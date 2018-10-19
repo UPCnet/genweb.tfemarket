@@ -287,49 +287,46 @@ def getStudentData(self, item, user):
                 if vinc['typology'] == 'EST':
                     id_prisma = vinc['idorigen']
                     student_data.update({'prisma_id': id_prisma})
+                    numDocument = student_data['dni']
                     break
 
-                id_prisma = student_data['prisma_id']
-                numDocument = student_data['dni']
-                fullname = student_data['fullname']
+            res_data = requests.get(bussoa_url + "/%s" % '2399693' + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % '47923214T', headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
-            student_data.update({'prisma_id': id_prisma})
-            student_data.update({'dni': numDocument})
-            student_data.update({'fullname': fullname})
+            # res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+            data = res_data.json()
 
-            res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+            import ipdb; ipdb.set_trace()
 
             if res_data.ok:
 
-                data = res_data.json()
-                num_expedients = data['llistatExpedients']
+                llistat_expedients = data['llistatExpedients']
 
-                if data['potMatricularTFE'] == 'S':
-                    if num_expedients:
-                        for exp in num_expedients:
-                            if exp['codiMecPrograma'] in item.degree:
-                                student_data.update({'degree_id': exp['codiMecPrograma']})
-                                student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
+                for expedient in llistat_expedients:
+                    if expedient['potMatricularTFE'] == 'S':
+                        if llistat_expedients:
+                            for exp in llistat_expedients:
+                                if exp['codiMecPrograma'] in item.degree:
+                                    student_data.update({'degree_id': exp['codiMecPrograma']})
+                                    student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
 
-                        if 'degree_id' not in student_data.keys():
-                            self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
+                            if 'degree_id' not in student_data.keys():
+                                self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
+                                return None
+                        else:
+                            self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
                             return None
                     else:
-                        self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
+                        self.context.plone_utils.addPortalMessage(_(u"Requisits per optar al treball de final d'estudis insuficients. Contacta amb la secretaria del teu centre."), 'error')
                         return None
-                else:
-                    self.context.plone_utils.addPortalMessage(_(u"Requisits per optar al treball de final d'estudis insuficients. Contacta amb la secretaria del teu centre."), 'error')
-                    return None
             else:
-                status_code = res_data.status_code
-                reason = res_data.reason
-                self.context.plone_utils.addPortalMessage(_(u"PRISMA id not found at PRISMA. %s" % (str(status_code) + ' ' + reason)), 'error')
+                reason = data['resultat']
+                self.context.plone_utils.addPortalMessage(_(u"PRISMA: %s" % reason), 'error')
                 return None
         else:
-            self.context.plone_utils.addPortalMessage(_(u"No tens viculació d'ESTUDIANT"), 'error')
+            self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No tens viculació d'ESTUDIANT"), 'error')
             return None
     else:
-        self.context.plone_utils.addPortalMessage(_(u"Usuari no trobat en el Ldap"), 'error')
+        self.context.plone_utils.addPortalMessage(_(u"DIRECTORI: Usuari no trobat en al directori"), 'error')
         return None
 
     return student_data

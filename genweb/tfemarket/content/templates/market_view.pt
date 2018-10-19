@@ -401,13 +401,7 @@
                                         </p>
                                       </div>
                                       <div class="leftInfoOffer">
-                                        <p class="degrees" tal:condition="not: offer/multiple_degrees">
-                                          <span class="field"><span i18n:translate="">Degree</span>: </span>
-                                          <tal:block tal:repeat="degree offer/degrees">
-                                            <span tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</span>
-                                          </tal:block>
-                                        </p>
-                                        <div class="degrees" tal:condition="offer/multiple_degrees">
+                                        <div class="degrees">
                                           <span class="field"><span i18n:translate="">Degrees</span>: </span>
                                           <ul tal:repeat="degree offer/degrees">
                                             <li class="degree" tal:content="python: view.getDegreeLiteralFromId(degree)">Degree</li>
