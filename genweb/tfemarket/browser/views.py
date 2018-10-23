@@ -8,7 +8,6 @@ from plone.registry.interfaces import IRegistry
 from scss import Scss
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from zope.i18n import translate
 from zope.interface import Interface
 from zope.interface import alsoProvides
 
