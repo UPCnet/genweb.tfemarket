@@ -202,7 +202,7 @@ msgstr "Direcció"
 
 #: ../controlpanel.py:81
 msgid "EN"
-msgstr "Àngles"
+msgstr "Anglès"
 
 #: ../controlpanel.py:80
 msgid "ES"
