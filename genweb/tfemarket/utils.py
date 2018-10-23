@@ -290,12 +290,8 @@ def getStudentData(self, item, user):
                     numDocument = student_data['dni']
                     break
 
-            res_data = requests.get(bussoa_url + "/%s" % '2399693' + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % '47923214T', headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
-
-            # res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+            res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
             data = res_data.json()
-
-            import ipdb; ipdb.set_trace()
 
             if res_data.ok:
 
