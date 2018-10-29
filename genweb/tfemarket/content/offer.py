@@ -17,6 +17,9 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
+from zope.interface import invariant
+from zope.interface import Invalid
+
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.validations import validateEmail
@@ -293,24 +296,29 @@ class IOffer(form.Schema):
 
     co_manager = schema.TextLine(
         title=_(u'CoManager'),
-        required=True,
+        required=False,
     )
 
     company = schema.TextLine(
         title=_(u'Company'),
-        required=True,
+        required=False,
     )
 
     company_contact = schema.TextLine(
         title=_(u'Company Contact'),
-        required=True,
+        required=False,
     )
 
     company_email = schema.TextLine(
         title=_(u'Company Email'),
-        required=True,
+        required=False,
         constraint=validateEmail,
     )
+
+    @invariant
+    def validate_isFull(data):
+        if data.modality == 'Empresa' and not (data.co_manager and data.company and data.company_contact and data.company_email):
+            raise Invalid(_(u"Falta omplir les dades d'empresa"))
 
     ############################################################################
 
