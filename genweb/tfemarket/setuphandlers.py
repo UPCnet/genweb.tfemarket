@@ -30,7 +30,7 @@ def uninstall(context):
     ldap_acl_users = getattr(portal.acl_users, 'ldapUPC').acl_users
     LDAPUserFolder.manage_deleteLDAPSchemaItems(
         ldap_acl_users,
-        ldap_names=['unit', 'unitCode', 'segmentation', 'typology', 'DNIpassport', 'telephoneNumber', 'mail'],
+        ldap_names=['sn1', 'sn2', 'aliesnom', 'unit', 'unitCode', 'segmentation', 'typology', 'DNIpassport', 'telephoneNumber', 'mail'],
         REQUEST=None)
 
 
@@ -45,6 +45,15 @@ def setupLdapMarket(context):
 
     portal = context.getSite()
     ldap_acl_users = getattr(portal.acl_users, 'ldapUPC').acl_users
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='sn1', friendly_name='Surname 1',
+        public_name='sn1', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='sn2', friendly_name='Surname 2',
+        public_name='sn2', multivalued=True)
+    LDAPUserFolder.manage_addLDAPSchemaItem(
+        ldap_acl_users, ldap_name='aliesnom', friendly_name='Name',
+        public_name='aliesnom', multivalued=True)
     LDAPUserFolder.manage_addLDAPSchemaItem(
         ldap_acl_users, ldap_name='unit', friendly_name='Unit',
         public_name='unit', multivalued=True)

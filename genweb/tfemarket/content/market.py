@@ -367,6 +367,9 @@ class View(grok.View):
     def getAllOffers(self):
         return self.context.contentValues({'portal_type': 'genweb.tfemarket.offer'})
 
+    def getLiteral(self, elem):
+        return elem['lit']
+
     def getTeachers(self):
         results = []
         for offer in self.getAllOffers():
@@ -377,9 +380,9 @@ class View(grok.View):
                         teacherNotInList = False
                         break
                 if teacherNotInList:
-                    results.append({'id': offer.teacher_manager, 'lit': offer.teacher_fullname + " (" + offer.teacher_manager + ")"})
+                    results.append({'id': offer.teacher_manager, 'lit': offer.teacher_fullname})
 
-        return sorted(list(results))
+        return sorted(list(results), key=self.getLiteral)
 
     def getDepartaments(self):
         results = []
