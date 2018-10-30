@@ -77,3 +77,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   border-color: darken($genwebPrimary, 10%) !important;
 
 }
+
+#market .loader {
+  border-top: 8px solid $genwebPrimary !important;
+}
