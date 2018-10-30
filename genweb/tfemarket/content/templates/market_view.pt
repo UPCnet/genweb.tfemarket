@@ -455,8 +455,8 @@
                                 </div>
                                 <div class="informacioTFE">
                                   <div class="moreInfo hide">
-                                    <div class="leftInfoOffer" tal:condition="offer/topic">
-                                       <p class="topic">
+                                    <div class="leftInfoOffer">
+                                       <p class="topic" tal:condition="offer/topic">
                                           <span class="field"><span i18n:translate="">Topic</span>: </span>
                                           <span tal:content="offer/topic">Topic</span>
                                        </p>
