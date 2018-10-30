@@ -1,8 +1,12 @@
-1.2 (unreleased)
+1.2 (2018-10-30)
 ----------------
 
-- Nothing changed yet.
-
+* Buscador: ordenar lista profesores por apellido (carga masiva) [iago.lopez]
+* Buscador: ordenar lista profesores por apellido [iago.lopez]
+* Company data required only when Modality is Empresa [Corina Riba]
+* Add transition to "esborrany" to market workflow [Corina Riba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.tfemarket into develop [Corina Riba]
+* Fix translation [Corina Riba]
 
 1.1 (2018-10-23)
 ----------------
