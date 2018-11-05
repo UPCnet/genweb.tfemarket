@@ -126,7 +126,7 @@ class getTeacher(grok.View):
                     listTeachers.append({
                         'user': teacher['id'],
                         'email': teacher['mail'],
-                        'fullname': teacher['sn1'] + teacher['sn2'] + ', ' + teacher['givenName'],
+                        'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'],
                         'dept': teacherDept
                     })
                 except:
@@ -151,7 +151,7 @@ class getExactTeacher(grok.View):
             data = {
                 'user': teacher['id'],
                 'email': teacher['mail'],
-                'fullname': teacher['sn1'] + teacher['sn2'] + ', ' + teacher['givenName'],
+                'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'],
                 'dept': teacherDept
             }
             return json.dumps(data)
