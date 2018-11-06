@@ -243,7 +243,7 @@ class IOffer(form.Schema):
 
     num_students = schema.Int(
         title=_(u'Number of students'),
-        description=_(u'Number of students for the TFE (1 to 10)'),
+        description=_(u'Màxim segons normativa del centre'),
         default=1,
         min=1,
         max=10,

@@ -529,7 +529,7 @@ msgstr "Email de la professora/professor"
 
 #: ../content/offer.py:212
 msgid "Teacher Fullname"
-msgstr "Nom del professora/professor"
+msgstr "Nom de la professora/professor"
 
 #: ../content/templates/market_view.pt:391
 msgid "Teacher manager"
