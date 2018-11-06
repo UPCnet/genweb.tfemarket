@@ -26,7 +26,7 @@ msgstr "Has confirmat l’assignació d’aquesta oferta. Les teves dades i les 
 
 #: ../browser/events/change.py:105
 msgid "A4"
-msgstr "Has renunciat a l’oferta i s’ha comunicat al professora/professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
+msgstr "Has renunciat a l’oferta i s’ha comunicat a la professora/professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
 
 #: ../browser/events/change.py:76
 msgid "A5"
@@ -475,11 +475,11 @@ msgstr "Cerca"
 
 #: ../z3cwidget/text_input_teacher.pt:46
 msgid "Search teacher"
-msgstr "Cerca el professora/professor"
+msgstr "Cerca la professora/professor"
 
 #: ../z3cwidget/text_input_teacher.pt:37
 msgid "Search_teacher"
-msgstr "Cerca el professora/professor"
+msgstr "Cerca la professora/professor"
 
 #: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
@@ -525,7 +525,7 @@ msgstr "Objectius"
 #: ../content/offer.py:218
 #: ../content/templates/market_view.pt:395
 msgid "Teacher Email"
-msgstr "Email del professora/professor"
+msgstr "Email de la professora/professor"
 
 #: ../content/offer.py:212
 msgid "Teacher Fullname"
@@ -533,7 +533,7 @@ msgstr "Nom del professora/professor"
 
 #: ../content/templates/market_view.pt:391
 msgid "Teacher manager"
-msgstr "Professora/professor director"
+msgstr "Directora/director"
 
 #: ../content/application.py:59
 #: ../content/templates/market_view.pt:94
