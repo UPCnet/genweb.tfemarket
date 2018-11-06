@@ -26,7 +26,7 @@ msgstr "Has confirmat l’assignació d’aquesta oferta. Les teves dades i les 
 
 #: ../browser/events/change.py:105
 msgid "A4"
-msgstr "Has renunciat a l’oferta i s’ha comunicat al professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
+msgstr "Has renunciat a l’oferta i s’ha comunicat al professora/professor. Si vols tornar a sol·licitar-la has d’omplir una nova sol·licitud."
 
 #: ../browser/events/change.py:76
 msgid "A5"
@@ -110,8 +110,8 @@ msgstr "Contacte"
 
 #: ../content/offer.py:229
 #: ../content/templates/market_view.pt:519
-msgid "Codirector"
-msgstr "Codirector"
+msgid "Codirectora/codirector"
+msgstr "Codirectora/codirector"
 
 #: ../content/market.py:353
 #: ../content/offer.py:300
@@ -373,7 +373,7 @@ msgstr "Nombre d'estudiants"
 
 #: ../content/offer.py:243
 msgid "Number of students for the TFE (1 to 10)"
-msgstr "Nombre d'estudiants (1 fins a 10)"
+msgstr ""
 
 #: ../controlpanel.py:108
 msgid "Ofertes"
@@ -475,11 +475,11 @@ msgstr "Cerca"
 
 #: ../z3cwidget/text_input_teacher.pt:46
 msgid "Search teacher"
-msgstr "Cerca el professor"
+msgstr "Cerca el professora/professor"
 
 #: ../z3cwidget/text_input_teacher.pt:37
 msgid "Search_teacher"
-msgstr "Cerca el professor"
+msgstr "Cerca el professora/professor"
 
 #: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
@@ -512,7 +512,7 @@ msgstr "Estat"
 #: ../content/offer.py:206
 #: ../content/templates/market_view.pt:170
 msgid "TFEteacher"
-msgstr "Professor"
+msgstr "Professora/professor"
 
 #: ../controlpanel.py:154
 msgid "Tags"
@@ -525,15 +525,15 @@ msgstr "Objectius"
 #: ../content/offer.py:218
 #: ../content/templates/market_view.pt:395
 msgid "Teacher Email"
-msgstr "Email del professor"
+msgstr "Email del professora/professor"
 
 #: ../content/offer.py:212
 msgid "Teacher Fullname"
-msgstr "Nom del professor"
+msgstr "Nom del professora/professor"
 
 #: ../content/templates/market_view.pt:391
 msgid "Teacher manager"
-msgstr "Professor director"
+msgstr "Professora/professor director"
 
 #: ../content/application.py:59
 #: ../content/templates/market_view.pt:94
