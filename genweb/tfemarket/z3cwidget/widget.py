@@ -49,7 +49,7 @@ class TeacherInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
 
     def ifTeacher(self):
         roles = api.user.get_roles()
-        return 'Teacher' in roles
+        return 'TFE Teacher' in roles
 
 
 @zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)

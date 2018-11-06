@@ -126,7 +126,7 @@ class getTeacher(grok.View):
                     listTeachers.append({
                         'user': teacher['id'],
                         'email': teacher['mail'],
-                        'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'],
+                        'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
                         'dept': teacherDept
                     })
                 except:
@@ -144,14 +144,14 @@ class getExactTeacher(grok.View):
 
     def render(self):
         # TODO Cambiar PERSONAL por PDI
-        # teacher = getLdapExactUserData(self.request.form['teacher'], typology='PERSONAL')
-        teacher = getLdapExactUserData(self.request.form['teacher'])
-        if teacher and 'sn' in teacher:
+        # teacher = getLdapExactUserData(api.user.get_current().id, typology='PERSONAL')
+        teacher = getLdapExactUserData(api.user.get_current().id)
+        if teacher:
             teacherDept = teacher['unitCode'] + "-" + teacher['unit']
             data = {
                 'user': teacher['id'],
                 'email': teacher['mail'],
-                'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'],
+                'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
                 'dept': teacherDept
             }
             return json.dumps(data)

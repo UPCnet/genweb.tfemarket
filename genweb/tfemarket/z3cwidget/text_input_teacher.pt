@@ -136,7 +136,6 @@
      if($("#form-widgets-teacher_manager").val() == ""){
       $.ajax({
         type: 'POST',
-        data: { "teacher" : $("#user-name").html().trim() },
         url: 'getExactTeacher',
         success: function(data){
           result = $.parseJSON(data);
