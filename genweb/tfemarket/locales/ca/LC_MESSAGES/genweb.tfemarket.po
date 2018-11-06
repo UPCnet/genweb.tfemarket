@@ -475,11 +475,11 @@ msgstr "Cerca"
 
 #: ../z3cwidget/text_input_teacher.pt:46
 msgid "Search teacher"
-msgstr "Cerca la professora/professor"
+msgstr "Cerca"
 
 #: ../z3cwidget/text_input_teacher.pt:37
 msgid "Search_teacher"
-msgstr "Cerca la professora/professor"
+msgstr "Cerca"
 
 #: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
