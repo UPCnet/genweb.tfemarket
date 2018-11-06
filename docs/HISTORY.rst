@@ -1,8 +1,18 @@
-1.3 (unreleased)
+1.3 (2018-11-06)
 ----------------
 
-- Nothing changed yet.
-
+* Llenguatge inclusiu [Corina Riba]
+* Datos profesor [iago.lopez]
+* Merge branch 'develop' of github.com:UPCnet/genweb.tfemarket into develop [root muntanyeta]
+* Llenguatge inclusiu [Corina Riba]
+* Merge remote-tracking branch 'remotes/origin/develop' into develop [root muntanyeta]
+* Llenguatge inclusiu [Corina Riba]
+* Llenguatge inclusiu [Corina Riba]
+* Añadir espacio entre apellidos [iago.lopez]
+* Añadir espacio entre apellidos [iago.lopez]
+* aliesnom -> givenName [iago.lopez]
+* Mostrar numero de estudiantes [iago.lopez]
+* Añadir icono de carga [iago.lopez]
 
 1.2 (2018-10-30)
 ----------------
