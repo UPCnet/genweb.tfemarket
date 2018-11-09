@@ -1,8 +1,8 @@
-1.4 (unreleased)
-----------------
+1.3.1 (2018-11-09)
+------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Corina Riba]
+* Add file for custom styles and solve some bugs [Corina Riba]
 
 1.3 (2018-11-06)
 ----------------
