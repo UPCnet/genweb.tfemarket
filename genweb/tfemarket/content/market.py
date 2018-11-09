@@ -502,3 +502,16 @@ class View(grok.View):
                 return False
             return True
         return False
+
+    def showErrorNotConfigured(self):
+        user_roles = api.user.get_current().getRoles()
+
+        if 'Manager' in user_roles or 'TFE Manager' in user_roles or 'TFE Teacher' in user_roles:
+            registry = queryUtility(IRegistry)
+            tfe_tool = registry.forInterface(ITfemarketSettings)
+            titulacions = tfe_tool.titulacions_table
+
+            if titulacions:
+                return False
+            return True
+        return False

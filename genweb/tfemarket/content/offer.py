@@ -28,6 +28,7 @@ from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import SelectModalityInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
 
+
 import transaction
 import unicodedata
 
@@ -126,24 +127,29 @@ class DegreesVocabulary(object):
         current_language = api.portal.get_current_language()
 
         result = []
-        for item in tfe_tool.titulacions_table:
-            titulacio = str(item['plan_year']) + " - "
-            if current_language == 'ca':
-                titulacio += item['titulacio_ca']
-            elif current_language == 'es':
-                titulacio += item['titulacio_es']
-            else:
-                titulacio += item['titulacio_en']
-
-            result.append({'id': item['codi_mec'], 'lit': titulacio})
-
-        result = sorted(result, key=itemgetter('lit'))
-
         titulacions = []
-        for item in result:
-            titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
 
-        return SimpleVocabulary(titulacions)
+        try:
+            for item in tfe_tool.titulacions_table:
+                titulacio = str(item['plan_year']) + " - "
+                if current_language == 'ca':
+                    titulacio += item['titulacio_ca']
+                elif current_language == 'es':
+                    titulacio += item['titulacio_es']
+                else:
+                    titulacio += item['titulacio_en']
+
+                result.append({'id': item['codi_mec'], 'lit': titulacio})
+
+            result = sorted(result, key=itemgetter('lit'))
+
+            for item in result:
+                titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
+
+            return SimpleVocabulary(titulacions)
+
+        except:
+            context.plone_utils.addPortalMessage(_(u'No està configurat'), 'error')
 
 
 grok.global_utility(DegreesVocabulary, name=u"genweb.tfemarket.Titulacions")

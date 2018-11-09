@@ -12,6 +12,7 @@
     <i18n:registerTranslations directory="locales" />
 
     <cmf:registerDirectory name="tfetheme_images" recursive="True" />
+    <cmf:registerDirectory name="tfetheme_styles" recursive="True" />
 
     <five:registerPackage package="." initialize=".initialize" />
 

@@ -132,8 +132,8 @@ msgid "Confidential"
 msgstr "Confidential"
 
 #: ../content/templates/market_view.pt:124
-msgid "Create a offer"
-msgstr "Create a offer"
+msgid "Create an offer"
+msgstr "Create an offer"
 
 #: ../content/application.py:48
 #: ../content/templates/market_view.pt:86
