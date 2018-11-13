@@ -192,7 +192,7 @@ class IOffer(form.Schema):
     degree = schema.List(
         value_type=schema.Choice(source=u"genweb.tfemarket.Titulacions"),
         title=_(u'degree'),
-        required=False,
+        required=True,
     )
 
     form.widget(keys=CheckBoxFieldWidget)
@@ -256,7 +256,7 @@ class IOffer(form.Schema):
         required=True,
     )
 
-    workload = schema.Text(
+    workload = schema.TextLine(
         title=_(u'offer_workload'),
         required=False,
     )
