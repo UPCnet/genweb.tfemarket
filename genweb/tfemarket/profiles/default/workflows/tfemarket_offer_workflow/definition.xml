@@ -157,6 +157,7 @@
   </permission-map>
  </state>
  <state state_id="inscritaintranet" title="Inscrita (intranet)">
+  <exit-transition transition_id="retiraaesborranymanager"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>TFE Manager</permission-role>
@@ -357,6 +358,7 @@
   </permission-map>
  </state>
  <state state_id="registered" title="Inscrita">
+  <exit-transition transition_id="retiraaesborranymanager"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
    <permission-role>Manager</permission-role>
@@ -504,6 +506,17 @@
    <guard-role>Manager</guard-role>
    <guard-role>TFE Manager</guard-role>
    <guard-role>Owner</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="retiraaesborranymanager" title="Retira a esborrany" new_state="offered" trigger="USER" before_script="" after_script="">
+  <action url="%(content_url)s/content_status_modify?workflow_action=retiraaesborrany" category="workflow" icon="">Retira a esborrany</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-permission>Access contents information</guard-permission>
+   <guard-permission>View</guard-permission>
+   <guard-role>Site Administrator</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Market Manager</guard-role>
   </guard>
  </transition>
  <transition transition_id="sendtoreview" title="Envia a revisió" new_state="pending" trigger="USER" before_script="" after_script="">
