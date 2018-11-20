@@ -5,6 +5,7 @@
     lang="ca"
     metal:use-macro="context/main_template/macros/master"
     i18n:domain="genweb.tfemarket">
+
     <body>
         <metal:override fill-slot="top_slot"
         tal:define="disable_column_one python:request.set('disable_plone.leftcolumn',1);"/>
@@ -12,7 +13,7 @@
         <metal:block define-macro="content-core"
         tal:define="offers view/getOffers">
         <div metal:use-macro="context/batch_macros/macros/navigation" />
-            <div id="market" tal:define="save view/saveFilters; userApplications view/userApplications">
+            <div id="market" tal:define="save view/saveFilters; userApplications view/userApplications; isConfigured view/showErrorNotConfigured">
                 <div class="loaderContainer"><div class="loader"></div></div>
                 <div class="offerInfo alert alert-error" role="alert" tal:condition="view/showErrorBusSOA">
                     <button data-dismiss="alert" class="close" type="button">×</button>
@@ -118,7 +119,7 @@
                     <div class="clearfix"></div>
                     <div id="offersList" tal:define="classViewSearch view/classViewSearch">
                         <div id="headerListOffers">
-                            <div class="offerInfo alert alert-error" role="alert" tal:condition="view/showErrorNotConfigured">
+                            <div class="offerInfo alert alert-error" role="alert" tal:condition="isConfigured">
                                 <button data-dismiss="alert" class="close" type="button">×</button>
                                 <strong>Error</strong>
                                 <span i18n:translate="">Falta carregar les titulacions.</span>

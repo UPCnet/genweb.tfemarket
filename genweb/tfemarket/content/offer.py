@@ -129,27 +129,24 @@ class DegreesVocabulary(object):
         result = []
         titulacions = []
 
-        try:
-            for item in tfe_tool.titulacions_table:
-                titulacio = str(item['plan_year']) + " - "
-                if current_language == 'ca':
-                    titulacio += item['titulacio_ca']
-                elif current_language == 'es':
-                    titulacio += item['titulacio_es']
-                else:
-                    titulacio += item['titulacio_en']
+        for item in tfe_tool.titulacions_table:
+            print item
+            titulacio = str(item['plan_year']) + " - "
+            if current_language == 'ca':
+                titulacio += item['titulacio_ca']
+            elif current_language == 'es':
+                titulacio += item['titulacio_es']
+            else:
+                titulacio += item['titulacio_en']
 
-                result.append({'id': item['codi_mec'], 'lit': titulacio})
+            result.append({'id': item['codi_mec'], 'lit': titulacio})
 
-            result = sorted(result, key=itemgetter('lit'))
+        result = sorted(result, key=itemgetter('lit'))
 
-            for item in result:
-                titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
+        for item in result:
+            titulacions.append(SimpleTerm(value=item['id'], title=item['lit']))
 
-            return SimpleVocabulary(titulacions)
-
-        except:
-            context.plone_utils.addPortalMessage(_(u'No està configurat'), 'error')
+        return SimpleVocabulary(titulacions)
 
 
 grok.global_utility(DegreesVocabulary, name=u"genweb.tfemarket.Titulacions")
@@ -403,4 +400,7 @@ class Add(dexterity.AddForm):
     grok.name('offer')
 
     def updateWidgets(self):
-        super(Add, self).updateWidgets()
+        try:
+            super(Add, self).updateWidgets()
+        except:
+            self.context.plone_utils.addPortalMessage(_(u'No està correctament configurat'), 'error')
