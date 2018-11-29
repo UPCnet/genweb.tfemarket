@@ -1,8 +1,10 @@
-1.3.2 (unreleased)
+1.3.2 (2018-11-29)
 ------------------
 
-- Nothing changed yet.
-
+* border-radius for tfe market in clean-theme and fix  error in message error [Corina Riba]
+* Add error message if not configurated [Corina Riba]
+* Workflow transicion retiraaesborranymanager [Iago López Fernández]
+* Cambiar schema oferta: Titulacion requerida y Carga de trabajo solo una linea [Iago López Fernández]
 
 1.3.1 (2018-11-09)
 ------------------
