@@ -103,7 +103,7 @@ def checkPermissionCreateOffers(self, context):
 
 
 def checkPermissionCreateObject(self, context, objectID):
-    if checkPermission('cmf.AddPortalContent', context) and not self.showErrorNotConfigured():
+    if checkPermission('cmf.AddPortalContent', context):
         for item in _allowedTypes(self.request, context):
             if item.id == objectID:
                 return True

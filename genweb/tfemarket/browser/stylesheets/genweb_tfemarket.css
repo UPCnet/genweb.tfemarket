@@ -588,7 +588,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 }
 
 #formSearchOffers label.switch .slider.round {
-  border-radius: 34px;
+  border-radius: 34px !important;
 }
 
 #formSearchOffers label.switch .slider.round:before {
@@ -721,7 +721,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 
 #offersList .titleSpan h3,
 #offerData .titleSpan h3 {
-  margin: 5px 0px !important;
+  margin: 5px 0px 5px 37px !important;
 }
 
 #offersList .titleSpan h3 span,
