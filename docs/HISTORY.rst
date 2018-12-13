@@ -1,8 +1,7 @@
-1.3.3 (unreleased)
+1.3.3 (2018-12-13)
 ------------------
 
-- Nothing changed yet.
-
+* Add configuration error type and delete print [Corina Riba]
 
 1.3.2 (2018-11-29)
 ------------------
