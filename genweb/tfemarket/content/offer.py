@@ -130,7 +130,6 @@ class DegreesVocabulary(object):
         titulacions = []
 
         for item in tfe_tool.titulacions_table:
-            print item
             titulacio = str(item['plan_year']) + " - "
             if current_language == 'ca':
                 titulacio += item['titulacio_ca']
@@ -402,5 +401,5 @@ class Add(dexterity.AddForm):
     def updateWidgets(self):
         try:
             super(Add, self).updateWidgets()
-        except:
-            self.context.plone_utils.addPortalMessage(_(u'No està correctament configurat'), 'error')
+        except ValueError as err:
+            self.context.plone_utils.addPortalMessage(_("No està correctament configurat: '%s'") % err, 'error')

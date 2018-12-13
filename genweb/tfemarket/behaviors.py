@@ -35,7 +35,7 @@ class IPublicationOffer(model.Schema):
         description=_(
             u'help_effective_date',
             default=u"The date the item will be published."),
-        required=True
+        required=False
     )
 
     expired = schema.Datetime(
