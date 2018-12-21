@@ -254,6 +254,7 @@ class IOffer(form.Schema):
 
     workload = schema.TextLine(
         title=_(u'offer_workload'),
+        description=_(u'Un crèdit ECTS equival a 25 hores de treball'),
         required=False,
     )
 
