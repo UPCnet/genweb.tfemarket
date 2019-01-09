@@ -22,7 +22,8 @@ from genweb.tfemarket.utils import BusError
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 from genweb.tfemarket.utils import isTeachersOffer
-from genweb.tfemarket.utils import getStudentData
+from genweb.tfemarket.utils import getStudentDat
+from genweb.tfemarket.utils import checkOfferhasAssign
 
 import json
 import pkg_resources
@@ -82,6 +83,12 @@ class changeActualState(grok.View):
             isCreator = api.user.get_current().id in currentItem.creators
             if currentItem and (isTeachersOffer(currentItem.getParentNode()) or isCreator):
                 if currentItem.portal_type == 'genweb.tfemarket.offer':
+                    if estat in ['assign', 'assignalofertaintranet']:
+                        if not checkOfferhasAssign(currentItem):
+                            self.context.plone_utils.addPortalMessage(_(u"The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"), 'info')
+                            redirectToMarket(self)
+                            return None
+
                     wf_tool = getToolByName(self.context, 'portal_workflow')
                     tools = getMultiAdapter((self.context, self.request), name='plone_tools')
                     market = currentItem.getParentNode()

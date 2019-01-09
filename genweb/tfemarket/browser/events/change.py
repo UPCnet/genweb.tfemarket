@@ -19,7 +19,6 @@ from genweb.tfemarket.browser.events.data.messages import M6
 from genweb.tfemarket.controlpanel import IBUSSOASettings, ITfemarketSettings
 from genweb.tfemarket.utils import BusError
 from genweb.tfemarket.utils import checkOfferhasValidApplications
-from genweb.tfemarket.utils import checkOfferhasAssign
 from genweb.tfemarket.utils import sendMessage
 
 import requests
@@ -139,11 +138,6 @@ def offerChanged(offer, event):
             else:
                 wftool.doActionFor(offer, 'caducaloferta')
                 transaction.commit()
-        elif event.transition.id in ['assign', 'assignalofertaintranet']:
-            if checkOfferhasAssign(offer):
-                offer.plone_utils.addPortalMessage(_(u"The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"), 'info')
-                request = getRequest()
-                request.response.redirect(offer.absolute_url())
 
 
 def offerCanceled(offer, event):
