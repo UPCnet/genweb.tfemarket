@@ -164,6 +164,19 @@ def checkOfferhasValidApplications(offer):
     return False
 
 
+def checkOfferhasAssign(offer):
+    confirmed = False
+    wf_tool = getToolByName(offer, 'portal_workflow')
+    for item in getApplicationsFromContent(offer):
+        application_workflow = wf_tool.getWorkflowsFor(item)[0].id
+        application_status = wf_tool.getStatusOf(application_workflow, item)
+        if application_status['review_state'] == 'accepted' or application_status['review_state'] == 'requested':
+            return False
+        elif application_status['review_state'] == 'confirmed':
+            confirmed = True
+    return confirmed
+
+
 def checkOfferhasConfirmedApplications(offer):
     for item in getAllApplicationsFromOffer(offer):
         if item.review_state == 'confirmed':

@@ -403,4 +403,4 @@ class Add(dexterity.AddForm):
         try:
             super(Add, self).updateWidgets()
         except ValueError as err:
-            self.context.plone_utils.addPortalMessage(_("No està correctament configurat: '%s'") % err, 'error')
+            self.context.plone_utils.addPortalMessage(_("No esta correctament configurat: '%s'") % err, 'error')
