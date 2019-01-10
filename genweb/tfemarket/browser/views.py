@@ -22,7 +22,7 @@ from genweb.tfemarket.utils import BusError
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 from genweb.tfemarket.utils import isTeachersOffer
-from genweb.tfemarket.utils import getStudentDat
+from genweb.tfemarket.utils import getStudentData
 from genweb.tfemarket.utils import checkOfferhasAssign
 
 import json
