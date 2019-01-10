@@ -1,8 +1,14 @@
-1.3.4 (unreleased)
-------------------
+1.4 (2019-01-10)
+----------------
 
-- Nothing changed yet.
-
+* Fix translations [Corina Riba]
+* Merge branch 'develop' of github.com:UPCnet/genweb.tfemarket into develop [Corina Riba]
+* Add busso identitat digital [Corina Riba]
+* Fix import [Iago López Fernández]
+* Asignar oferta solo si tiene solicitud confirmada [Iago López Fernández]
+* Asignar oferta solo si tiene solicitud confirmada [Iago López Fernández]
+* Add description offer field [Corina Riba]
+* Add css for loader in cleantheme [Corina Riba]
 
 1.3.3 (2018-12-13)
 ------------------
