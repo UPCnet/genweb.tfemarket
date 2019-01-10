@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import ldap
-
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from email.mime.multipart import MIMEMultipart
@@ -20,6 +18,25 @@ from Products.CMFPlone.utils import safe_unicode
 
 from genweb.tfemarket.controlpanel import IBUSSOASettings
 import requests
+
+from z3c.suds import get_suds_client
+from suds.wsse import UsernameToken
+from suds.wsse import Security
+
+
+def getDadesEst(self, cn):
+    bussoa_user = 'apl.genweb'
+    bussoa_password = 'G3nw3B4Pl3Xp'
+
+    WSDL_PERSONES_URL = 'https://bus-soa.upc.edu/GestioIdentitat/Personesv8?wsdl'
+    client = get_suds_client(WSDL_PERSONES_URL)
+    security = Security()
+    token = UsernameToken(bussoa_user, bussoa_password)
+    security.tokens.append(token)
+    client.set_options(wsse=security)
+    usuari = client.service.obtenirDadesPersona(commonName=cn)
+
+    return usuari
 
 
 class BusError(Exception):
@@ -64,7 +81,7 @@ def getLdapUserData(user, typology=None):
 def checkPermissionCreateApplications(self, context, errors=False):
     roles = api.user.get_roles()
 
-    if 'TFE Manager' in roles or 'Manager' in roles or 'TFE Teacher' in roles:
+    if 'TFE Manager' in roles or 'TFE Teacher' in roles:
         if errors:
             self.context.plone_utils.addPortalMessage(_(u"You don't have permission for create a application."), 'error')
         return False
@@ -72,6 +89,7 @@ def checkPermissionCreateApplications(self, context, errors=False):
     wf_tool = getToolByName(context, 'portal_workflow')
     offer_workflow = wf_tool.getWorkflowsFor(context)[0].id
     offer_status = wf_tool.getStatusOf(offer_workflow, context)
+
     if 'Anonymous' in roles and offer_status['review_state'] == 'public':
         return True
 
@@ -184,62 +202,6 @@ def checkOfferhasConfirmedApplications(offer):
     return False
 
 
-def LDAPSearch(self, query, isQueryAlreadyMade=False):
-    def return_dict(ok, content):
-        return {'ok': ok, 'content': content}
-
-    def create_query(query):
-        fields = ['sn', 'cn']
-        return '(|' + ''.join('(%s=%s)' % (fieldname, query) for fieldname in fields) + ')'
-
-    if not query:
-        return return_dict(False, 'Query should not be empty')
-
-    result_set = []
-    acl_users = getToolByName(self.context, 'acl_users').ldapUPC.acl_users
-    ldap_pwd = acl_users._bindpwd
-    ldap_binduid = acl_users._binduid
-    ldap_server = acl_users.getServers()[0]
-    server = "%s://%s:%s" % (ldap_server['protocol'], ldap_server['host'], ldap_server['port'])
-    try:
-        ldapservice = ldap.initialize(server)
-        ldapservice.simple_bind_s(ldap_binduid, ldap_pwd)
-        ldapservice.protocol_version = ldap.VERSION3
-        ldapservice.op_timeout = ldap_server['op_timeout']
-        ldap_result_id = ldapservice.search(
-            acl_users.users_base,
-            acl_users.users_scope,
-            query if isQueryAlreadyMade else create_query(query),
-            None
-        )
-        while True:
-            result_type, result_data = ldapservice.result(ldap_result_id, 0)
-            if result_data == []:
-                break
-            else:
-                if result_type == ldap.RES_SEARCH_ENTRY:
-                    person_info = result_data[0][1]
-                    returnfields = [
-                        ('username', 'cn'),
-                        ('dni', 'DNIpassport'),
-                        ('segmentation', 'segmentation'),
-                        ('typology', 'typology'),
-                        ('unit', 'unit'),
-                        ('idorigen', 'idorigen'),
-                        ('fullname', 'sn'),
-                        ('email', 'mail'),
-                        ('phone', 'telephoneNumber')
-                    ]
-                    result_set.append({key: person_info.get(value, ['']) for key, value in returnfields})
-
-    except ldap.LDAPError as e:
-        return return_dict(False, e[0])
-    else:
-        return return_dict(True, result_set)
-    finally:
-        ldapservice.unbind_s()
-
-
 def isTeachersOffer(offer):
     user = api.user.get_current()
     user_roles = user.getRoles()
@@ -253,6 +215,10 @@ def isTeachersOffer(offer):
 
 
 def getStudentData(self, item, user):
+
+    if not checkPermissionCreateApplications(self, item, True):
+        return None
+
     registry = queryUtility(IRegistry)
     bussoa_tool = registry.forInterface(IBUSSOASettings)
     tfe_tool = registry.forInterface(ITfemarketSettings)
@@ -264,78 +230,52 @@ def getStudentData(self, item, user):
 
     student_data = {}
 
-    keys = ['segmentation', 'unit', 'typology', 'idorigen']
-    vinculacio = []
-    result = LDAPSearch(self, user)
+    result = getDadesEst(self, user)
 
-    if result['ok']:
+    if result.ok:
 
-        if not checkPermissionCreateApplications(self, item, True):
-            return None
+        est_colectius = result.llistaColectius.colectiu
 
-        user = result['content'][0]
-        student_data = {
-            'offer_id': item.offer_id,
-            'offer_title': item.title,
-            'fullname': user['fullname'],
-            'dni': user['dni'],
-            'email': user['email']
-        }
+        for col in est_colectius:
+            if col.idTipusPersonal == 'EST':
+                student_data = {
+                    'offer_id': item.offer_id,
+                    'offer_title': item.title,
+                    'fullname': str(result.nom + ' ' + result.cognom1 + ' ' + result.cognom2),
+                    'dni': str(result.numeroDocument),
+                    'email': str(result.emailPreferent),
+                    'idPrisma': str(col.idOrigen)
+                }
 
-        if 'telephoneNumber' in user:
-            student_data.update({'phone': user['phone']})
+                id_prisma = student_data['idPrisma']
+                numDocument = student_data['dni']
 
-        for key in keys:
-            for ind, i in enumerate(user[key]):
-                try:
-                    vinculacio[ind].update({key: i})
-                except IndexError:
-                    vinculacio.append({key: i})
+                res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
-        isStudent = (True for item in vinculacio if item['typology'] == 'EST')
+                data = res_data.json()
 
-        if True in isStudent:
+                if res_data.ok:
 
-            for vinc in vinculacio:
-                if vinc['typology'] == 'EST':
-                    id_prisma = vinc['idorigen']
-                    student_data.update({'prisma_id': id_prisma})
-                    numDocument = student_data['dni']
-                    break
+                    llistat_expedients = data['llistatExpedients']
 
-            res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
-            data = res_data.json()
+                    for expedient in llistat_expedients:
+                        if expedient['potMatricularTFE'] == 'S':
+                            if expedient['codiMecPrograma'] in item.degree:
+                                student_data.update({'degree_id': expedient['codiMecPrograma']})
+                                student_data.update({'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma'])})
+                                student_data.update({'codi_expedient': expedient['codiExpedient']})
 
-            if res_data.ok:
+                                return student_data
 
-                llistat_expedients = data['llistatExpedients']
+                    self.context.plone_utils.addPortalMessage(_(u"Requisits per optar al treball de final d'estudis insuficients. Contacta amb la secretaria del teu centre."), 'error')
+                    return None
+                else:
+                    reason = data['resultat']
+                    self.context.plone_utils.addPortalMessage(_(u"PRISMA: %s" % reason), 'error')
+                    return None
 
-                for expedient in llistat_expedients:
-                    if expedient['potMatricularTFE'] == 'S':
-                        if llistat_expedients:
-                            for exp in llistat_expedients:
-                                if exp['codiMecPrograma'] in item.degree:
-                                    student_data.update({'degree_id': exp['codiMecPrograma']})
-                                    student_data.update({'degree_title': getDegreeLiteralFromId(exp['codiMecPrograma'])})
-
-                            if 'degree_id' not in student_data.keys():
-                                self.context.plone_utils.addPortalMessage("Ninguna de tus titulaciones coincide con la de la oferta", 'error')
-                                return None
-                        else:
-                            self.context.plone_utils.addPortalMessage(_(u"No tens número d'expedient a Prisma"), 'error')
-                            return None
-                    else:
-                        self.context.plone_utils.addPortalMessage(_(u"Requisits per optar al treball de final d'estudis insuficients. Contacta amb la secretaria del teu centre."), 'error')
-                        return None
-            else:
-                reason = data['resultat']
-                self.context.plone_utils.addPortalMessage(_(u"PRISMA: %s" % reason), 'error')
-                return None
-        else:
-            self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No tens viculació d'ESTUDIANT"), 'error')
-            return None
+        self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No tens viculació d'ESTUDIANT"), 'error')
+        return None
     else:
         self.context.plone_utils.addPortalMessage(_(u"DIRECTORI: Usuari no trobat en al directori"), 'error')
         return None
-
-    return student_data

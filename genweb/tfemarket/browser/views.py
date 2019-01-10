@@ -22,7 +22,7 @@ from genweb.tfemarket.utils import BusError
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 from genweb.tfemarket.utils import isTeachersOffer
-from genweb.tfemarket.utils import getStudentDat
+from genweb.tfemarket.utils import getStudentData
 from genweb.tfemarket.utils import checkOfferhasAssign
 
 import json
@@ -85,7 +85,7 @@ class changeActualState(grok.View):
                 if currentItem.portal_type == 'genweb.tfemarket.offer':
                     if estat in ['assign', 'assignalofertaintranet']:
                         if not checkOfferhasAssign(currentItem):
-                            self.context.plone_utils.addPortalMessage(_(u"The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"), 'info')
+                            self.context.plone_utils.addPortalMessage(_(u"The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"), 'error')
                             redirectToMarket(self)
                             return None
 

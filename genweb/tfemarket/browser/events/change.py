@@ -180,9 +180,10 @@ def applicationRegistered(application, event):
             tipus_alta = tfe_tool.enroll_type
             offer = application.aq_parent
             id_prisma = application.prisma_id
+            tfe_tool = registry.forInterface(ITfemarketSettings)
 
             data = json.dumps({
-                "codiExpedient": id_prisma,
+                "codiExpedient": application.codi_expedient,
                 "codiPrograma": application.degree_id,
                 "codiOferta": application.offer_id,
                 "titol": application.offer_title,
@@ -191,10 +192,10 @@ def applicationRegistered(application, event):
                 "departament": offer.dept,
                 "numDocument": application.dni,
                 "descripcio": getattr(offer, 'description', ''),
-                "idiomaTreball": offer.lang,
+                "idiomaTreball": '',
                 "propostaAmbitCooperacio": offer.scope_cooperation,
                 "tematicaAmbiental": offer.environmental_theme,
-                "centre": offer.center,
+                "centre": tfe_tool.center_code,
                 "codirector": getattr(offer, 'comanager', ''),
                 "empresa": getattr(offer, 'company', ''),
                 "personaContacteEmpresa": getattr(offer, 'company_contact', ''),
@@ -208,7 +209,6 @@ def applicationRegistered(application, event):
                 error = json.loads(res_aplic.content)
                 raise BusError(error)
             else:
-
                 lang = api.portal.get_current_language()
                 if lang not in ['ca', 'en', 'es']:
                     lang = 'en'

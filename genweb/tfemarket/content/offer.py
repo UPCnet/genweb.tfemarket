@@ -158,7 +158,6 @@ class IOffer(form.Schema):
     form.mode(center='hidden')
     center = schema.TextLine(
         title=_(u'offer_center'),
-        default=u"el centro",
         required=False,
     )
 

@@ -72,6 +72,12 @@ class IApplication(form.Schema):
         required=False,
     )
 
+    form.mode(codi_expedient='hidden')
+    codi_expedient = schema.TextLine(
+        title=_(u'Codi Expedient'),
+        required=False,
+    )
+
     body = schema.Text(
         title=_(u'Body'),
         required=False,
