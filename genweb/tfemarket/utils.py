@@ -25,8 +25,12 @@ from suds.wsse import Security
 
 
 def getDadesEst(self, cn):
-    bussoa_user = 'apl.genweb'
-    bussoa_password = 'G3nw3B4Pl3Xp'
+
+    registry = queryUtility(IRegistry)
+    bussoa_tool = registry.forInterface(IBUSSOASettings)
+
+    bussoa_user = bussoa_tool.bus_user
+    bussoa_password = bussoa_tool.bus_password
 
     WSDL_PERSONES_URL = 'https://bus-soa.upc.edu/GestioIdentitat/Personesv8?wsdl'
     client = get_suds_client(WSDL_PERSONES_URL)
@@ -243,7 +247,7 @@ def getStudentData(self, item, user):
                     'offer_title': item.title,
                     'fullname': str(result.nom + ' ' + result.cognom1 + ' ' + result.cognom2),
                     'dni': str(result.numeroDocument),
-                    'email': str(result.emailPreferent),
+                    'email': str(col.email),
                     'idPrisma': str(col.idOrigen)
                 }
 

@@ -192,14 +192,14 @@ def applicationRegistered(application, event):
                 "departament": offer.dept,
                 "numDocument": application.dni,
                 "descripcio": getattr(offer, 'description', ''),
-                "idiomaTreball": '',
-                "propostaAmbitCooperacio": offer.scope_cooperation,
-                "tematicaAmbiental": offer.environmental_theme,
+                "idiomaTreball": '',  # Vacío porque PRISMA espera un valor único
+                "propostaAmbitCooperacio": 'S' if offer.scope_cooperation else 'N',
+                "tematicaAmbiental": 'S' if offer.environmental_theme else 'N',
                 "centre": tfe_tool.center_code,
                 "codirector": getattr(offer, 'comanager', ''),
                 "empresa": getattr(offer, 'company', ''),
                 "personaContacteEmpresa": getattr(offer, 'company_contact', ''),
-                "confidencial": offer.confidential,
+                "confidencial": 'S' if offer.confidential else 'N',
                 "tipusAltaTFE": tipus_alta
             })
 
