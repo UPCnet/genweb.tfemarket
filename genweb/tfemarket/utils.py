@@ -38,6 +38,7 @@ def getDadesEst(self, cn):
     token = UsernameToken(bussoa_user, bussoa_password)
     security.tokens.append(token)
     client.set_options(wsse=security)
+
     usuari = client.service.obtenirDadesPersona(commonName=cn)
 
     return usuari
@@ -241,15 +242,22 @@ def getStudentData(self, item, user):
         est_colectius = result.llistaColectius.colectiu
 
         for col in est_colectius:
-            if col.idTipusPersonal == 'EST':
+            if col.idTipusPersonal in ['EST', 'ESTMASTER']:
                 student_data = {
                     'offer_id': item.offer_id,
                     'offer_title': item.title,
-                    'fullname': str(result.nom + ' ' + result.cognom1 + ' ' + result.cognom2),
                     'dni': str(result.numeroDocument),
                     'email': str(col.email),
                     'idPrisma': str(col.idOrigen)
                 }
+
+                if result.cognom2:
+                    fullname = str(result.nom) + ' ' + str(result.cognom1) + ' ' + str(result.cognom2)
+                    student_data.update({'fullname': fullname})
+
+                else:
+                    fullname = str(result.nom) + ' ' + str(result.cognom1)
+                    student_data.update({'fullname': fullname})
 
                 id_prisma = student_data['idPrisma']
                 numDocument = student_data['dni']
@@ -263,22 +271,22 @@ def getStudentData(self, item, user):
                     llistat_expedients = data['llistatExpedients']
 
                     for expedient in llistat_expedients:
-                        if expedient['potMatricularTFE'] == 'S':
-                            if expedient['codiMecPrograma'] in item.degree:
-                                student_data.update({'degree_id': expedient['codiMecPrograma']})
-                                student_data.update({'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma'])})
-                                student_data.update({'codi_expedient': expedient['codiExpedient']})
 
-                                return student_data
+                        if expedient['codiMecPrograma'] in item.degree:
+                            student_data.update({'degree_id': expedient['codiMecPrograma']})
+                            student_data.update({'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma'])})
+                            student_data.update({'codi_expedient': expedient['codiExpedient']})
 
-                    self.context.plone_utils.addPortalMessage(_(u"Requisits per optar al treball de final d'estudis insuficients. Contacta amb la secretaria del teu centre."), 'error')
+                            return student_data
+
+                    self.context.plone_utils.addPortalMessage(_(u"El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."), 'error')
                     return None
                 else:
                     reason = data['resultat']
                     self.context.plone_utils.addPortalMessage(_(u"PRISMA: %s" % reason), 'error')
                     return None
 
-        self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No tens viculació d'ESTUDIANT"), 'error')
+        self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."), 'error')
         return None
     else:
         self.context.plone_utils.addPortalMessage(_(u"DIRECTORI: Usuari no trobat en al directori"), 'error')
