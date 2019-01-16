@@ -242,7 +242,7 @@ def getStudentData(self, item, user):
         est_colectius = result.llistaColectius.colectiu
 
         for col in est_colectius:
-            if col.idTipusPersonal in ['EST', 'ESTMASTER']:
+            if col.idTipusPersonal in ['EST','ESTMASTER']:
                 student_data = {
                     'offer_id': item.offer_id,
                     'offer_title': item.title,
