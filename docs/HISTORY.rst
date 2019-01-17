@@ -1,8 +1,10 @@
-1.5 (unreleased)
-----------------
+1.4.1 (2019-01-17)
+------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.tfemarket into develop [Corina Riba]
+* Fullname without cognom2 [Corina Riba]
+* Update utils.py [Corina Riba]
+* Fix data for PRISMA inscription [Corina Riba]
 
 1.4 (2019-01-10)
 ----------------
