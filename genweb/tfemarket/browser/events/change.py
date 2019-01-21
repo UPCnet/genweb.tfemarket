@@ -241,5 +241,3 @@ def applicationRegistered(application, event):
 
                 if not portalMsg == '':
                     application.plone_utils.addPortalMessage(portalMsg, 'info')
-
-            return res_aplic
