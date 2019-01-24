@@ -205,10 +205,10 @@ def applicationRegistered(application, event):
 
                 res_aplic = requests.put(bussoa_url + "/%s" % id_prisma, data, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
             else:
-                application.plone_utils.addPortalMessage(_(u"ATENCIÓ: Aquesta titulació requereix que et posis en contacte amb el Servei d'Atenció a l'Usuari https://sau.eseiaat.upc.edu"), 'warning')
+                application.plone_utils.addPortalMessage(_(u"El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"), 'warning')
                 request = getRequest()
                 request.response.redirect(application.getParentNode().getParentNode().absolute_url())
-                return
+                return None
 
             if res_aplic.status_code != 200:
                 error = json.loads(res_aplic.content)

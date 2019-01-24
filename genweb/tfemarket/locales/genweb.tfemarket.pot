@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-01-24 11:21+0000\n"
+"POT-Creation-Date: 2019-01-24 12:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,10 +49,6 @@ msgstr ""
 msgid "APIKEY"
 msgstr ""
 
-#: ../browser/events/change.py:208
-msgid "ATENCIÓ: Aquesta titulació requereix que et posis en contacte amb el Servei d'Atenció a l'Usuari https://sau.eseiaat.upc.edu"
-msgstr ""
-
 #: ../controlpanel.py:162
 msgid "Add languages one per line"
 msgstr ""
@@ -83,7 +79,7 @@ msgstr ""
 
 #: ../content/market.py:357
 #: ../content/templates/market_view.pt:201
-#: ../utils.py:155
+#: ../utils.py:157
 msgid "All"
 msgstr ""
 
@@ -150,7 +146,7 @@ msgstr ""
 msgid "Create an offer"
 msgstr ""
 
-#: ../utils.py:294
+#: ../utils.py:296
 msgid "DIRECTORI: Usuari no trobat en al directori"
 msgstr ""
 
@@ -179,7 +175,7 @@ msgstr ""
 msgid "Degree code at PRISMA"
 msgstr ""
 
-#: ../utils.py:161
+#: ../utils.py:163
 msgid "Degree deleted"
 msgstr ""
 
@@ -221,7 +217,11 @@ msgstr ""
 msgid "ES"
 msgstr ""
 
-#: ../utils.py:284
+#: ../browser/events/change.py:208
+msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"
+msgstr ""
+
+#: ../utils.py:286
 msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."
 msgstr ""
 
@@ -431,7 +431,7 @@ msgstr ""
 msgid "PRISMA id"
 msgstr ""
 
-#: ../utils.py:288
+#: ../utils.py:290
 msgid "PRISMA: %s"
 msgstr ""
 
@@ -570,7 +570,7 @@ msgid "Text to search"
 msgstr ""
 
 #: ../content/templates/market_view.pt:362
-msgid "The current offer contains an accepted application."
+msgid "The current offer contains a confirmed application."
 msgstr ""
 
 #: ../browser/views.py:88
@@ -667,7 +667,7 @@ msgstr ""
 msgid "User to connect to the bus"
 msgstr ""
 
-#: ../utils.py:291
+#: ../utils.py:293
 msgid "VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
 msgstr ""
 
@@ -687,11 +687,11 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: ../utils.py:91
+#: ../utils.py:93
 msgid "You don't have permission for create a application."
 msgstr ""
 
-#: ../utils.py:114
+#: ../utils.py:116
 msgid "You have already created an application. You can see it at the top of the market page."
 msgstr ""
 
