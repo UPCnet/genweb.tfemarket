@@ -360,7 +360,7 @@
                                         Info
                                         </strong>
                                         <tal:msg i18n:translate="">
-                                        The current offer contains an accepted application.
+                                        The current offer contains a confirmed application.
                                         </tal:msg>
                                         <a class="btn btn-success" i18n:translate=""
                                             tal:attributes="href string:changeActualState?estat=${offer/assign_offer}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">

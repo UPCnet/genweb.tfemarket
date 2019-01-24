@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2019-01-24 12:44+0100\n"
+"PO-Revision-Date: 2019-01-24 13:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -44,10 +44,6 @@ msgstr "La sol·licitud ha estat cancel·lada."
 msgid "APIKEY"
 msgstr "Clau API"
 
-#: ../browser/events/change.py:208
-msgid "ATENCIÓ: Aquesta titulació requereix que et posis en contacte amb el Servei d'Atenció a l'Usuari https://sau.eseiaat.upc.edu"
-msgstr "ATENCIÓ: Aquesta titulació requereix que et posis en contacte amb el Servei d'Atenció a l'Usuari https://sau.eseiaat.upc.edu"
-
 #: ../controlpanel.py:162
 msgid "Add languages one per line"
 msgstr "Afegeix un idioma per línia"
@@ -77,7 +73,7 @@ msgid "Alert"
 msgstr "Alerta"
 
 #: ../content/market.py:357 ../content/templates/market_view.pt:201
-#: ../utils.py:155
+#: ../utils.py:157
 msgid "All"
 msgstr "Totes"
 
@@ -138,7 +134,7 @@ msgstr "Confidencial"
 msgid "Create an offer"
 msgstr "Crear oferta"
 
-#: ../utils.py:294
+#: ../utils.py:296
 msgid "DIRECTORI: Usuari no trobat en al directori"
 msgstr "DIRECTORI: Usuari no trobat en al directori"
 
@@ -166,7 +162,7 @@ msgstr "Titulació"
 msgid "Degree code at PRISMA"
 msgstr "Codi del grau a PRISMA"
 
-#: ../utils.py:161
+#: ../utils.py:163
 msgid "Degree deleted"
 msgstr "Titulació eliminada"
 
@@ -207,7 +203,11 @@ msgstr "Anglès"
 msgid "ES"
 msgstr "Espanyol"
 
-#: ../utils.py:284
+#: ../browser/events/change.py:208
+msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"
+msgstr "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"
+
+#: ../utils.py:286
 msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."
 msgstr "El treball que vols sol·licitar no està oferit per a la titulació que curses. Contacta amb la secretaria del teu centre."
 
@@ -411,7 +411,7 @@ msgstr "Codi PRISMA"
 msgid "PRISMA id"
 msgstr "ID de PRISMA"
 
-#: ../utils.py:288
+#: ../utils.py:290
 msgid "PRISMA: %s"
 msgstr "PRISMA: %s"
 
@@ -545,8 +545,8 @@ msgid "Text to search"
 msgstr "Text a cercar"
 
 #: ../content/templates/market_view.pt:362
-msgid "The current offer contains an accepted application."
-msgstr "L'oferta actual conté una sol·licitud acceptada."
+msgid "The current offer contains a confirmed application."
+msgstr "Aquesta oferta conté sol·licituds confirmades."
 
 #: ../browser/views.py:88
 msgid "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
@@ -640,7 +640,7 @@ msgstr "Usuari"
 msgid "User to connect to the bus"
 msgstr "Usuari per conectar-se al bus"
 
-#: ../utils.py:291
+#: ../utils.py:293
 msgid "VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
 msgstr "VINCULACIÓ: No hem trobat la teva vinculació d'ESTUDIANT. Contacta amb la teva secretaria."
 
@@ -660,11 +660,11 @@ msgstr "Càrrega de treball"
 msgid "Yes"
 msgstr "Si"
 
-#: ../utils.py:91
+#: ../utils.py:93
 msgid "You don't have permission for create a application."
 msgstr "No teniu permisos per crear una sol·licitud."
 
-#: ../utils.py:114
+#: ../utils.py:116
 msgid "You have already created an application. You can see it at the top of the market page."
 msgstr "Ja has fet una sol·licitud. Pots visualitzar-la a la part superior de la pàgina."
 
