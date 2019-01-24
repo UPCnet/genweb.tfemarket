@@ -1,8 +1,11 @@
-1.4.2 (unreleased)
+1.4.2 (2019-01-24)
 ------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Corina Riba]
+* Fix translations [Corina Riba]
+* Merge remote-tracking branch 'origin/develop' [Corina Riba]
+* Fix bugs, enable project registration, add error messages, correct spelling [Corina Riba]
+* Add selectable degree to apply [Corina Riba]
 
 1.4.1 (2019-01-17)
 ------------------
