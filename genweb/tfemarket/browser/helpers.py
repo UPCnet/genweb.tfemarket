@@ -49,11 +49,11 @@ class importTitulacions(grok.View):
                     data = {
                         'codi_prisma': int(row[1].decode("utf-8")),
                         'progam_type': row[2].decode("utf-8"),
-                        'codi_mec': int(row[3].decode("utf-8")),
+                        'codi_mec': row[3].decode("utf-8"),
                         'plan_year': int(row[4].decode("utf-8")),
-                        'titulacio_es': row[5].decode("utf-8"),
-                        'titulacio_ca': row[7].decode("utf-8"),
-                        'titulacio_en': row[9].decode("utf-8"),
+                        'titulacio_es': row[6].decode("utf-8"),
+                        'titulacio_ca': row[5].decode("utf-8"),
+                        'titulacio_en': row[7].decode("utf-8"),
                     }
 
                     tfe_tool.titulacions_table.append(data)

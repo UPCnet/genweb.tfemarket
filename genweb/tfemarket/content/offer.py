@@ -277,7 +277,13 @@ class IOffer(form.Schema):
         value_type=schema.Choice(vocabulary=u"genweb.tfemarket.Langs"),
         title=_(u'tfe_lang'),
         required=True,
+        default=['CA']
     )
+
+    @invariant
+    def validate_isFull(data):
+        if not data.lang:
+            raise Invalid(_(u'Falta omplir "Idioma del treball"'))
 
     ############################################################################
 
