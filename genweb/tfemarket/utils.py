@@ -242,13 +242,14 @@ def getStudentData(self, item, user):
         est_colectius = result.llistaColectius.colectiu
 
         for col in est_colectius:
-            if col.idTipusPersonal in ['EST','ESTMASTER']:
+            if col.idTipusPersonal in ['EST', 'ESTMASTER']:
                 student_data = {
                     'offer_id': item.offer_id,
                     'offer_title': item.title,
                     'dni': str(result.numeroDocument),
                     'email': str(col.email),
-                    'idPrisma': str(col.idOrigen)
+                    'idPrisma': str(col.idOrigen),
+                    'degrees': []
                 }
 
                 if result.cognom2:
@@ -273,9 +274,10 @@ def getStudentData(self, item, user):
                     for expedient in llistat_expedients:
 
                         if expedient['codiMecPrograma'] in item.degree:
-                            student_data.update({'degree_id': expedient['codiMecPrograma']})
-                            student_data.update({'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma'])})
-                            student_data.update({'codi_expedient': expedient['codiExpedient']})
+                            student_data['degrees'].append({
+                                'degree_id': expedient['codiMecPrograma'],
+                                'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma']),
+                                'codi_expedient': expedient['codiExpedient']})
 
                             return student_data
 

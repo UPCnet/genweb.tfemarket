@@ -8,26 +8,64 @@ from zope import schema
 
 from genweb.tfemarket import _
 from genweb.tfemarket.utils import checkPermissionCreateApplications
+from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import StudentInputFieldWidget
 
+from zope.globalrequest import getRequest
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.interfaces import IContextSourceBinder
+
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+
+from z3c.form.interfaces import IEditForm
+
+import ast
 
 grok.templatedir("templates")
+
+
+def getCookie():
+    request = getRequest()
+    cookie = {}
+    try:
+        data = request.cookies.get('APPLICATION_DATA')
+        cookie = ast.literal_eval(data)
+        return cookie
+    except:
+        pass
+
+
+@grok.provider(IContextSourceBinder)
+def getDregees(context):
+    titulacions = []
+    try:
+        result = getCookie()
+        degrees = result['degrees']
+
+        for item in degrees:
+            titulacions.append(SimpleTerm(value=item['degree_id'], title=item['degree_title']))
+        return SimpleVocabulary(titulacions)
+    except:
+        titulacions.append(SimpleTerm(value=context.degree_id, title=context.degree_title))
+        return SimpleVocabulary(titulacions)
 
 
 class IApplication(form.Schema):
     """ Application for an offer
     """
-
-    form.mode(degree_id='hidden')
-    degree_id = schema.TextLine(
-        title=_(u'Degree id'),
-        required=True,
-    )
-
-    form.widget('degree_title', ReadOnlyInputFieldWidget)
+    form.mode(degree_title='hidden')
     degree_title = schema.TextLine(
         title=_(u'Title of the degree with which you request the offer'),
+        required=False,
+    )
+
+    form.mode(IEditForm, degree_id='display')
+    degree_id = schema.Choice(
+        title=_(u'Title of the degree with which you request the offer'),
+        source=getDregees,
         required=True,
     )
 
@@ -82,6 +120,27 @@ class IApplication(form.Schema):
         title=_(u'Body'),
         required=False,
     )
+
+
+@grok.subscribe(IApplication, IObjectModifiedEvent)
+@grok.subscribe(IApplication, IObjectAddedEvent)
+def defineDregreecode(application, event):
+    application.degree_title = getDegreeLiteralFromId(application.degree_id)
+    application.reindexObject()
+
+
+@grok.subscribe(IApplication, IObjectAddedEvent)
+def getCodiExpedient(application, event):
+    result = getCookie()
+    degrees = result['degrees']
+    codiexpedient = (item['codi_expedient'] for item in degrees if item['degree_id'] == application.degree_id)
+
+    for x in codiexpedient:
+        application.codi_expedient = x
+
+    application.reindexObject()
+    request = getRequest()
+    request.response.expireCookie('APPLICATION_DATA', path='/')
 
 
 class Add(dexterity.AddForm):

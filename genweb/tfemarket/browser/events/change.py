@@ -166,44 +166,49 @@ def applicationRegistered(application, event):
     """ If genweb.tfemarket.offer change WF, checks if registered.
     """
 
-    if event.transition is not None:
+    if event.transition:
         if event.transition.id == 'confirm':
-            registry = queryUtility(IRegistry)
-            tfe_tool = registry.forInterface(ITfemarketSettings)
-            bussoa_tool = registry.forInterface(IBUSSOASettings)
+            if application.degree_id[:2] not in ['DG', 'DM']:
+                registry = queryUtility(IRegistry)
+                tfe_tool = registry.forInterface(ITfemarketSettings)
+                bussoa_tool = registry.forInterface(IBUSSOASettings)
 
-            bussoa_url = bussoa_tool.bus_url
-            bussoa_user = bussoa_tool.bus_user
-            bussoa_pass = bussoa_tool.bus_password
-            bussoa_apikey = bussoa_tool.bus_apikey
+                bussoa_url = bussoa_tool.bus_url
+                bussoa_user = bussoa_tool.bus_user
+                bussoa_pass = bussoa_tool.bus_password
+                bussoa_apikey = bussoa_tool.bus_apikey
 
-            tipus_alta = tfe_tool.enroll_type
-            offer = application.aq_parent
-            id_prisma = application.prisma_id
-            tfe_tool = registry.forInterface(ITfemarketSettings)
+                tipus_alta = tfe_tool.enroll_type
+                offer = application.aq_parent
+                id_prisma = application.prisma_id
 
-            data = json.dumps({
-                "codiExpedient": application.codi_expedient,
-                "codiPrograma": application.degree_id,
-                "codiOferta": application.offer_id,
-                "titol": application.offer_title,
-                "modalitat": offer.modality,
-                "director": offer.teacher_manager,
-                "departament": offer.dept,
-                "numDocument": application.dni,
-                "descripcio": getattr(offer, 'description', ''),
-                "idiomaTreball": '',  # Vacío porque PRISMA espera un valor único
-                "propostaAmbitCooperacio": 'S' if offer.scope_cooperation else 'N',
-                "tematicaAmbiental": 'S' if offer.environmental_theme else 'N',
-                "centre": tfe_tool.center_code,
-                "codirector": getattr(offer, 'comanager', ''),
-                "empresa": getattr(offer, 'company', ''),
-                "personaContacteEmpresa": getattr(offer, 'company_contact', ''),
-                "confidencial": 'S' if offer.confidential else 'N',
-                "tipusAltaTFE": tipus_alta
-            })
+                data = json.dumps({
+                    "codiExpedient": application.codi_expedient,
+                    "codiPrograma": application.degree_id,
+                    "codiOferta": application.offer_id,
+                    "titol": application.offer_title,
+                    "modalitat": offer.modality,
+                    "director": offer.teacher_manager,
+                    "departament": offer.dept,
+                    "numDocument": application.dni,
+                    "descripcio": getattr(offer, 'description', ''),
+                    "idiomaTreball": '',  # Vacío porque PRISMA espera un valor único
+                    "propostaAmbitCooperacio": 'S' if offer.scope_cooperation else 'N',
+                    "tematicaAmbiental": 'S' if offer.environmental_theme else 'N',
+                    "centre": tfe_tool.center_code,
+                    "codirector": getattr(offer, 'comanager', ''),
+                    "empresa": getattr(offer, 'company', ''),
+                    "personaContacteEmpresa": getattr(offer, 'company_contact', ''),
+                    "confidencial": 'S' if offer.confidential else 'N',
+                    "tipusAltaTFE": tipus_alta
+                })
 
-            res_aplic = requests.put(bussoa_url + "/%s" % id_prisma, data, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+                res_aplic = requests.put(bussoa_url + "/%s" % id_prisma, data, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+            else:
+                application.plone_utils.addPortalMessage(_(u"ATENCIÓ: Aquesta titulació requereix que et posis en contacte amb el Servei d'Atenció a l'Usuari https://sau.eseiaat.upc.edu"), 'warning')
+                request = getRequest()
+                request.response.redirect(application.getParentNode().getParentNode().absolute_url())
+                return
 
             if res_aplic.status_code != 200:
                 error = json.loads(res_aplic.content)
@@ -241,5 +246,3 @@ def applicationRegistered(application, event):
 
                 if not portalMsg == '':
                     application.plone_utils.addPortalMessage(portalMsg, 'info')
-
-            return res_aplic
