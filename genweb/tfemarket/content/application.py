@@ -49,8 +49,11 @@ def getDregees(context):
             titulacions.append(SimpleTerm(value=item['degree_id'], title=item['degree_title']))
         return SimpleVocabulary(titulacions)
     except:
-        titulacions.append(SimpleTerm(value=context.degree_id, title=context.degree_title))
-        return SimpleVocabulary(titulacions)
+        if context.degree_id:
+            titulacions.append(SimpleTerm(value=context.degree_id, title=context.degree_title))
+            return SimpleVocabulary(titulacions)
+        else:
+            context.plone_utils.addPortalMessage(_(u"Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"), 'error')
 
 
 class IApplication(form.Schema):

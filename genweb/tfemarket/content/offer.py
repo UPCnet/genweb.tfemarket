@@ -44,8 +44,7 @@ class LangsVocabulary(object):
         tfe_tool = registry.forInterface(ITfemarketSettings)
         results = tfe_tool.languages
 
-        current = api.user.get_current()
-        lang = current.language
+        lang = api.portal.get_current_language()
 
         languages = []
         for item in results:
@@ -280,11 +279,6 @@ class IOffer(form.Schema):
         default=['CA']
     )
 
-    @invariant
-    def validate_isFull(data):
-        if not data.lang:
-            raise Invalid(_(u'Falta omplir "Idioma del treball"'))
-
     ############################################################################
 
     form.widget('fieldset_mod', FieldsetFieldWidget)
@@ -327,6 +321,8 @@ class IOffer(form.Schema):
     def validate_isFull(data):
         if data.modality == 'Empresa' and not (data.co_manager and data.company and data.company_contact and data.company_email):
             raise Invalid(_(u"Falta omplir les dades d'empresa"))
+        if not data.lang:
+            raise Invalid(_(u'Falta omplir "Idioma del treball"'))
 
     ############################################################################
 
