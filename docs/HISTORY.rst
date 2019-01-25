@@ -1,8 +1,7 @@
-1.4.3 (unreleased)
+1.4.3 (2019-01-25)
 ------------------
 
-- Nothing changed yet.
-
+* Fix bug language and degree_id [Corina Riba]
 
 1.4.2 (2019-01-24)
 ------------------
