@@ -1,8 +1,7 @@
-1.4.4 (unreleased)
+1.4.4 (2019-01-28)
 ------------------
 
-- Nothing changed yet.
-
+* Fix not degree_id error [Corina Riba]
 
 1.4.3 (2019-01-25)
 ------------------
