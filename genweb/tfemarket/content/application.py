@@ -41,19 +41,23 @@ def getCookie():
 @grok.provider(IContextSourceBinder)
 def getDregees(context):
     titulacions = []
-    try:
-        result = getCookie()
+    result = getCookie()
+    if result:
         degrees = result['degrees']
 
         for item in degrees:
             titulacions.append(SimpleTerm(value=item['degree_id'], title=item['degree_title']))
         return SimpleVocabulary(titulacions)
-    except:
-        if context.degree_id:
-            titulacions.append(SimpleTerm(value=context.degree_id, title=context.degree_title))
-            return SimpleVocabulary(titulacions)
+    else:
+        if getattr(context, 'degree_id', False):
+            if context.degree_id:
+                titulacions.append(SimpleTerm(value=context.degree_id, title=context.degree_title))
+                return SimpleVocabulary(titulacions)
+            else:
+                context.plone_utils.addPortalMessage(_(u"Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"), 'error')
         else:
-            context.plone_utils.addPortalMessage(_(u"Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"), 'error')
+            titulacions.append(SimpleTerm(value='None', title=''))
+            return SimpleVocabulary(titulacions)
 
 
 class IApplication(form.Schema):
