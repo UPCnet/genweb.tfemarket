@@ -128,11 +128,7 @@ msgstr "Company Email"
 
 #: ../content/application.py:57
 msgid "Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"
-<<<<<<< Updated upstream
 msgstr "Make sure that your degree is the same as the one that offers the job"
-=======
-msgstr ""
->>>>>>> Stashed changes
 
 #: ../content/templates/market_view.pt:519
 msgid "Confidential"
@@ -649,13 +645,8 @@ msgid "User to connect to the bus"
 msgstr "User to connect to the bus"
 
 #: ../utils.py:291
-<<<<<<< Updated upstream
 msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
 msgstr "LINKING: We did not found your linking as STUDENT. Contact your secretary"
-=======
-msgid "VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
-msgstr ""
->>>>>>> Stashed changes
 
 #: ../content/templates/market_view.pt:282
 msgid "View all offers"
@@ -799,4 +790,5 @@ msgstr "Work language"
 
 #: ../controlpanel.py:173
 msgid "titulacionstable"
-msgstr "XXXXXXXXXXX"
+msgstr "Degree table"
+
