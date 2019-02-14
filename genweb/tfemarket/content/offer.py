@@ -374,7 +374,7 @@ def numOfferDefaultValue(offer, event):
 @grok.subscribe(IOffer, IObjectModifiedEvent)
 @grok.subscribe(IOffer, IObjectAddedEvent)
 def defineTeacherAsEditor(offer, event):
-    creator = offer.getOwner()._id
+    creator = getattr(offer.getOwner(), '_id', None)
     teacher = offer.teacher_manager
 
     for user in offer.get_local_roles():

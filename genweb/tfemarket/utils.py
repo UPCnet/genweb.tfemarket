@@ -288,7 +288,7 @@ def getStudentData(self, item, user):
                     self.context.plone_utils.addPortalMessage(_(u"PRISMA: %s" % reason), 'error')
                     return None
 
-        self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."), 'error')
+        self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."), 'error')
         return None
     else:
         self.context.plone_utils.addPortalMessage(_(u"DIRECTORI: Usuari no trobat en al directori"), 'error')
