@@ -1,8 +1,9 @@
-1.4.5 (unreleased)
+1.4.5 (2019-02-14)
 ------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Corina Riba]
+* Add translations ES and EN [Corina Riba]
+* traduccion a en done [r.ventura]
 
 1.4.4 (2019-01-28)
 ------------------
