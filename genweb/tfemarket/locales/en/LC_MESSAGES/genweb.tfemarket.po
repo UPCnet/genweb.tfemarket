@@ -4,17 +4,17 @@ msgstr ""
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "PO-Revision-Date: 2019-02-14 10:57+0100\n"
 "Last-Translator: r.ventura\n"
-"Language-Team: plone team <plone.team@upcnet.es>\n"
+"Language-Team: English\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: genweb.tfemarket\n"
 "Language: en\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../z3cwidget/text_input_teacher.pt:55
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
@@ -128,7 +128,11 @@ msgstr "Company Email"
 
 #: ../content/application.py:57
 msgid "Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"
+<<<<<<< Updated upstream
 msgstr "Make sure that your degree is the same as the one that offers the job"
+=======
+msgstr ""
+>>>>>>> Stashed changes
 
 #: ../content/templates/market_view.pt:519
 msgid "Confidential"
@@ -413,7 +417,7 @@ msgstr "PRISMA code"
 
 #: ../content/application.py:116
 msgid "PRISMA id"
-msgstr "RISMA id"
+msgstr "PRISMA id"
 
 #: ../utils.py:288
 msgid "PRISMA: %s"
@@ -645,8 +649,13 @@ msgid "User to connect to the bus"
 msgstr "User to connect to the bus"
 
 #: ../utils.py:291
+<<<<<<< Updated upstream
 msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
 msgstr "LINKING: We did not found your linking as STUDENT. Contact your secretary"
+=======
+msgid "VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
+msgstr ""
+>>>>>>> Stashed changes
 
 #: ../content/templates/market_view.pt:282
 msgid "View all offers"
@@ -696,7 +705,7 @@ msgstr "Confidential"
 #. Default: "Are you sure you want to reset the offers counter?"
 #: ../browser/views_templates/reset_offers_counter.pt:22
 msgid "confirm_reset_counter"
-msgstr "Are you sure you want to reset the offers counter?\""
+msgstr "Are you sure you want to reset the offers counter?"
 
 #: ../content/offer.py:188
 msgid "degree"

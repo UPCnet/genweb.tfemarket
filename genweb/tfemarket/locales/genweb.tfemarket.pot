@@ -672,7 +672,11 @@ msgid "User to connect to the bus"
 msgstr ""
 
 #: ../utils.py:291
+<<<<<<< Updated upstream
 msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
+=======
+msgid "VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
+>>>>>>> Stashed changes
 msgstr ""
 
 #: ../content/templates/market_view.pt:282

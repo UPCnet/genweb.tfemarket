@@ -1,42 +1,44 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2019-02-14 11:12+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../z3cwidget/text_input_teacher.pt:55
 msgid "<b>Error:</b> The format is incorrect. <b>name.lastname</b>"
-msgstr "<b>Error:</b> El formato es incorrecto. <b>nombre.apellido</b>"
+msgstr "<b>Error:</b> El formato es incorrecto: <b>nombre.apellido</b>"
 
 #: ../browser/events/change.py:242
 msgid "A3"
-msgstr "Has confirmado la asignación de esta oferta. Tus datos y los de la oferta se traspasarán a PRISMA para formalizar la matrícula. Si tienes cualquier duda puedes dirigirte a tu secretaría."
+msgstr "Has confirmado la asignación de esta oferta. Tus datos y los de la oferta se traspasarán a PRISMA para formalizar la matrícula. Si tienes cualquier duda puedes dirigirte a tu secretaría"
 
 #: ../browser/events/change.py:105
 msgid "A4"
-msgstr "Has renunciado a la oferta y se ha comunicado al profesor. Si quieres volver a solicitarla debes rellenar una nueva solicitud."
+msgstr "Has renunciado a la oferta y se ha comunicado al profesor. Si quieres volver a solicitarla debes rellenar una nueva solicitud"
 
 #: ../browser/events/change.py:76
 msgid "A5"
-msgstr "Solicitud presentada. Recibirás un mensaje de correo con los datos de tu solicitud y un enlace a la misma, a través del cual podrás consultar su estado. Los cambios de estado de tu solicitud se comunican también mediante el correo electrónico."
+msgstr "Solicitud presentada. Recibirás un mensaje de correo con los datos de tu solicitud y un enlace a la misma, a través del cual podrás consultar su estado. Los cambios de estado de tu solicitud se comunican también mediante el correo electrónico"
 
 #: ../browser/events/change.py:94
 msgid "A6"
-msgstr "Actualmente hay otras solicitudes pendientes, se recomienda rechazarlas por no tener al resto de estudiantes a la espera."
+msgstr "Actualmente hay otras solicitudes pendientes, se recomienda rechazarlas por no tener al resto de estudiantes a la espera"
 
 #: ../browser/events/change.py:110
 msgid "A7"
-msgstr "La solicitud a sido cancelada."
+msgstr "La solicitud ha sido cancelada"
 
 #: ../controlpanel.py:234
 msgid "APIKEY"
@@ -48,15 +50,15 @@ msgstr "Añade un idioma por línea"
 
 #: ../controlpanel.py:155
 msgid "Add tags one per line"
-msgstr "Añade un tag por línea"
+msgstr "Añade una etiqueta por línea"
 
 #: ../browser/helpers_templates/import_titulacions.pt:23
 msgid "Add the .csv file separated by , with the degrees by school:"
-msgstr "Añade el archivo .csv separado por, con las titulaciones por escuela:"
+msgstr "Añade el archivo csv, con las titulaciones por escuela:"
 
 #: ../browser/helpers_templates/import_ofertes.pt:35
 msgid "Add the .csv file separated by , with the offers:"
-msgstr "Agregue el archivo .csv separado por , con las ofertas:"
+msgstr "Agregue el archivo csv con las ofertas:"
 
 #: ../controlpanel.py:149
 msgid "Add topics one per line"
@@ -72,6 +74,7 @@ msgstr "Alerta"
 
 #: ../content/market.py:357
 #: ../content/templates/market_view.pt:201
+
 #: ../utils.py:155
 msgid "All"
 msgstr "Todas"
@@ -86,12 +89,13 @@ msgstr "BUS SOA TFE"
 
 #: ../content/application.py:127
 #: ../content/templates/market_view.pt:101
+
 msgid "Body"
 msgstr "Comentarios"
 
 #: ../controlpanel.py:79
 msgid "CA"
-msgstr "Catalan"
+msgstr "Catalán"
 
 #: ../controlpanel.py:121
 msgid "Center code"
@@ -108,18 +112,17 @@ msgstr "Contacto"
 
 #: ../content/application.py:122
 msgid "Codi Expedient"
-msgstr ""
+msgstr "Código espediente"
 
 #: ../content/offer.py:232
 #: ../content/templates/market_view.pt:508
 msgid "Codirector"
 msgstr "Coodirector"
 
-#: ../content/market.py:353
-#: ../content/offer.py:305
 #: ../content/templates/market_view.pt:199
 msgid "Company"
 msgstr "Empresa"
+
 
 #: ../content/offer.py:310
 #: ../content/templates/market_view.pt:497
@@ -133,7 +136,7 @@ msgstr "Dirección de correo de la empresa"
 
 #: ../content/application.py:57
 msgid "Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"
-msgstr ""
+msgstr "Comprueba que tu titulación corresponde a la titulación para la que se oferta el trabajo"
 
 #: ../content/templates/market_view.pt:519
 msgid "Confidential"
@@ -145,7 +148,7 @@ msgstr "Crear oferta"
 
 #: ../utils.py:294
 msgid "DIRECTORI: Usuari no trobat en al directori"
-msgstr ""
+msgstr "DIRECTORIO: Usuario no encontrado en el directorio"
 
 #: ../content/application.py:93
 #: ../content/templates/market_view.pt:87
@@ -200,7 +203,7 @@ msgstr "Idioma de trabajo"
 
 #: ../controlpanel.py:161
 msgid "Development languages"
-msgstr "Idiomas de eleboración del trabajo"
+msgstr "Idiomas de elaboración del trabajo"
 
 #: ../content/offer.py:203
 msgid "Direction"
@@ -216,11 +219,11 @@ msgstr "Spanish"
 
 #: ../browser/events/change.py:208
 msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"
-msgstr ""
+msgstr "Tu trabajo todavía no se ha inscrito.esta titulación requiere que te pongas en contacto con la secretaría de tu centro"
 
 #: ../utils.py:284
 msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."
-msgstr ""
+msgstr "El trabajo que quieres solicitar no está ofertado para la titulación que cursas. contacta con la secretaría de tu centro."
 
 #: ../content/application.py:110
 #: ../content/templates/market_view.pt:91
@@ -234,7 +237,7 @@ msgstr "Inscripción"
 
 #: ../controlpanel.py:139
 msgid "Enroll type "
-msgstr "Tipo de inscripción"
+msgstr "Tipo de inscripción "
 
 #: ../content/offer.py:348
 msgid "Environmental Theme"
@@ -258,15 +261,15 @@ msgstr "French"
 
 #: ../content/templates/market_view.pt:125
 msgid "Falta carregar les titulacions."
-msgstr ""
+msgstr "Falta cargar las titulaciones."
 
 #: ../content/offer.py:325
 msgid "Falta omplir \"Idioma del treball\""
-msgstr ""
+msgstr "Falta rellenar el idioma del trabajo."
 
 #: ../content/offer.py:323
 msgid "Falta omplir les dades d'empresa"
-msgstr ""
+msgstr "Falta rellenar las datos de la empresa"
 
 #: ../content/templates/market_view.pt:476
 msgid "Features"
@@ -308,7 +311,7 @@ msgstr "Información"
 
 #: ../configure.zcml:54
 msgid "Installs the genweb.tfemarket add-on."
-msgstr "Instalar Genweb Mercado de TFE"
+msgstr "Instalar Genweb Mercado de TFE."
 
 #: ../content/templates/market_view.pt:267
 msgid "Keywords"
@@ -365,7 +368,7 @@ msgstr "Más info"
 
 #: ../content/offer.py:246
 msgid "Màxim segons normativa del centre"
-msgstr ""
+msgstr "Máximo según la normativa del centro"
 
 #: ../content/templates/market_view.pt:544
 msgid "Name"
@@ -381,7 +384,7 @@ msgstr "No"
 
 #: ../content/offer.py:407
 msgid "No esta correctament configurat: '%s'"
-msgstr ""
+msgstr "No está correctamente configurado: '%s'"
 
 #: ../content/templates/market_view.pt:293
 #: ../z3cwidget/text_input_teacher.pt:59
@@ -430,7 +433,7 @@ msgstr "ID de PRISMA"
 
 #: ../utils.py:288
 msgid "PRISMA: %s"
-msgstr ""
+msgstr "PRISMA: %s"
 
 #: ../controlpanel.py:140
 msgid "Parameter to post the student enroll"
@@ -568,11 +571,11 @@ msgstr "Texto a buscar"
 
 #: ../content/templates/market_view.pt:362
 msgid "The current offer contains a confirmed application."
-msgstr ""
+msgstr "Esta oferta contiene una solicitud confirmada."
 
 #: ../browser/views.py:88
 msgid "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
-msgstr "La oferta no puede ser asignada. Debe haber al menos una solicitud confirmada y las otras canceladas, renegadas o rechazadas"
+msgstr "La oferta no puede ser asignada. Debe haber al menos una solicitud confirmada y las otras canceladas, rechazadas o renunciadas."
 
 #: ../browser/events/change.py:150
 msgid "The offer can't be canceled if it contains active applications."
@@ -580,7 +583,7 @@ msgstr "La oferta no se puede cancelar si contiene solicitudes activas."
 
 #: ../browser/events/change.py:160
 msgid "The offer can't be deleted."
-msgstr "LA oferta no se puede eliminar, tiene solicitudes activas."
+msgstr "La oferta no se puede eliminar, tiene solicitudes activas."
 
 #: ../content/templates/market_view.pt:376
 msgid "The offer is expired."
@@ -626,8 +629,7 @@ msgstr "Tema"
 msgid "Topics of the TFE"
 msgstr "Temas principales de los TFE's"
 
-#: ../configure.zcml:54
-#: ../controlpanel.py:206
+#: ../configure.zcml:54 ../controlpanel.py:206
 msgid "UPC Mercat TFE"
 msgstr "Mercado de trabajos de final de estudios de la UPC"
 
@@ -641,7 +643,7 @@ msgstr "URL para acceder al bus"
 
 #: ../content/offer.py:255
 msgid "Un crèdit ECTS equival a 25 hores de treball"
-msgstr ""
+msgstr "Un crédito ECTS equivale a 25 horas de trabajo"
 
 #: ../content/offer.py:295
 msgid "Universitat"
@@ -655,8 +657,7 @@ msgstr "Universidad"
 msgid "University department"
 msgstr "Departamento"
 
-#: ../controlpanel.py:225
-#: ../z3cwidget/text_input_teacher.pt:65
+#: ../controlpanel.py:225 ../z3cwidget/text_input_teacher.pt:65
 msgid "User"
 msgstr "Usuario"
 
@@ -665,8 +666,8 @@ msgid "User to connect to the bus"
 msgstr "Usuario para conectarse al bus"
 
 #: ../utils.py:291
-msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
-msgstr ""
+msgid "VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
+msgstr "VINCULACIÓN: No hemos encontrado tu vinculación como ESTUDIANTE. Contacta con tu secretaría."
 
 #: ../content/templates/market_view.pt:282
 msgid "View all offers"
@@ -682,11 +683,11 @@ msgstr "Carga de trabajo"
 
 #: ../content/templates/market_view.pt:415
 msgid "Yes"
-msgstr "Si"
+msgstr "Sí"
 
 #: ../utils.py:91
 msgid "You don't have permission for create a application."
-msgstr "No tienes permisos para crear una solicitud"
+msgstr "No tienes permisos para crear una solicitud."
 
 #: ../utils.py:114
 msgid "You have already created an application. You can see it at the top of the market page."
@@ -747,7 +748,7 @@ msgstr "La fecha en que vencerá el elemento."
 #. Default: "Imported dades from csv"
 #: ../controlpanel.py:171
 msgid "help_titulacions_table"
-msgstr "Datos importados mediante un archivo .csv. Puede importar las titulaciones desde el siguiente <a href=\"import_titulacions\"> enlace </a>."
+msgstr "Datos importados mediante un archivo csv. Puede importar las titulaciones desde el siguiente <a href=\"import_titulacions\"> enlace </a>."
 
 #: ../content/templates/market_view.pt:148
 msgid "info"
@@ -810,4 +811,4 @@ msgstr "Idioma del trabajo"
 
 #: ../controlpanel.py:173
 msgid "titulacionstable"
-msgstr "XXXXXXXXXXX"
+msgstr "Tabla de titulaciones"

@@ -667,8 +667,8 @@ msgid "User to connect to the bus"
 msgstr "Usuari per conectar-se al bus"
 
 #: ../utils.py:291
-msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
-msgstr ""
+msgid "VINCULACIÓ: No hem trobat la teva viculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
+msgstr "VINCULACIÓ: No hem trobat la teva vinculació d'ESTUDIANT. Contacta amb la teva secretaria."
 
 #: ../content/templates/market_view.pt:282
 msgid "View all offers"
