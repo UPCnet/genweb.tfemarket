@@ -211,11 +211,11 @@ msgstr "Dirección"
 
 #: ../controlpanel.py:81
 msgid "EN"
-msgstr "English"
+msgstr "Inglés"
 
 #: ../controlpanel.py:80
 msgid "ES"
-msgstr "Spanish"
+msgstr "Español"
 
 #: ../browser/events/change.py:208
 msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"
@@ -257,7 +257,7 @@ msgstr "Caducidad"
 
 #: ../controlpanel.py:82
 msgid "FR"
-msgstr "French"
+msgstr "Francés"
 
 #: ../content/templates/market_view.pt:125
 msgid "Falta carregar les titulacions."

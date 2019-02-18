@@ -91,7 +91,7 @@ msgstr "Comments"
 
 #: ../controlpanel.py:79
 msgid "CA"
-msgstr "Catalán"
+msgstr "Catalan"
 
 #: ../controlpanel.py:121
 msgid "Center code"
@@ -201,11 +201,11 @@ msgstr "Direction"
 
 #: ../controlpanel.py:81
 msgid "EN"
-msgstr "Ingles"
+msgstr "English"
 
 #: ../controlpanel.py:80
 msgid "ES"
-msgstr "Español"
+msgstr "Spanish"
 
 #: ../browser/events/change.py:208
 msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que et posis en contacte amb la secretaria del teu centre"
@@ -246,7 +246,7 @@ msgstr "Expiration"
 
 #: ../controlpanel.py:82
 msgid "FR"
-msgstr "Francés"
+msgstr "French"
 
 #: ../content/templates/market_view.pt:125
 msgid "Falta carregar les titulacions."
