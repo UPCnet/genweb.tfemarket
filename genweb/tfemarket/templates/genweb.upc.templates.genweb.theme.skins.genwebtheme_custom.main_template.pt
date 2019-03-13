@@ -50,6 +50,11 @@
         <tal:comment replace="nothing">
             Various slots where you can insert elements in the header from a template.
         </tal:comment>
+        <div tal:replace="structure provider:genweb.css" />
+        <!--[if !IE]><!-->
+          <link rel="stylesheet" tal:attributes="href string:${portal_url}/++genwebupc++stylesheets/genwebupc.css">
+        <!--<![endif]-->
+
         <metal:topslot define-slot="top_slot" />
         <metal:headslot define-slot="head_slot" />
         <metal:styleslot define-slot="style_slot" />
@@ -64,12 +69,8 @@
         <link rel="apple-touch-icon" sizes="114x114" tal:attributes="href string:${portal_url}/apple-touch-icon-114x114-precomposed.png" /> <tal:comment replace="nothing"> <!-- iPhone 2x --> </tal:comment>
         <link rel="apple-touch-icon" sizes="144x144" tal:attributes="href string:${portal_url}/apple-touch-icon-144x144-precomposed.png" /> <tal:comment replace="nothing"> <!-- iPad 2x --> </tal:comment>
 
-        <div tal:replace="structure provider:genweb.css" />
 
         <tal:comment content="nothing"> <!-- Splitting CSS only for IE, the rest the common CSS --> </tal:comment>
-        <!--[if !IE]><!-->
-          <link rel="stylesheet" tal:attributes="href string:${portal_url}/++genwebupc++stylesheets/genwebupc.css">
-        <!--<![endif]-->
 
         <tal:splittedCSS4IE tal:replace="structure string:&lt;!--[if lt IE 10]&gt;&lt;link rel='stylesheet' href='${portal_url}/++genwebupc++stylesheets/genwebupc-ie.css'&gt;&lt;![endif]--&gt;" />
 
