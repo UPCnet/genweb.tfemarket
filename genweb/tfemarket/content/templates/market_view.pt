@@ -91,7 +91,8 @@
                                                             </p>
                                                             <p class="email">
                                                                 <span class="field"><span i18n:translate="">Email</span>: </span>
-                                                                <span tal:content="app/email"></span>
+                                                                <a tal:content="app/email"
+                                                                      tal:attributes="href string:mailto:${app/email}"></a>
                                                             </p>
                                                             <p class="telephone">
                                                                 <span class="field"><span i18n:translate="">Telephone</span>: </span>
@@ -390,7 +391,8 @@
                                                             </p>
                                                             <p class="teacherEmail">
                                                                 <span class="field"><span i18n:translate="">Teacher Email</span>: </span>
-                                                                <span tal:content="offer/teacher_email">???@???.???</span>
+                                                                <a tal:content="offer/teacher_email"
+                                                                   tal:attributes="href string:mailto:${offer/teacher_email}">???@???.???</a>
                                                             </p>
                                                             <p class="departament">
                                                                 <span class="field"><span i18n:translate="">Departament</span>: </span>
@@ -555,7 +557,10 @@
                                                             <tr tal:repeat="app applications">
                                                                 <td tal:content="app/dni">DNI</td>
                                                                 <td tal:content="app/name">Name</td>
-                                                                <td tal:content="app/email">Email</td>
+                                                                <td>
+                                                                    <a tal:content="app/email"
+                                                                    tal:attributes="href string:mailto:${app/email}">Email</a>
+                                                                </td>
                                                                 <td tal:content="app/phone">Mobile</td>
                                                                 <td tal:content="app/degree_title">Degree</td>
                                                                 <td tal:define="a app/offer_id;
