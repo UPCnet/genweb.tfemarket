@@ -6,19 +6,19 @@ from plone import api
 from plone.autoform import directives
 from plone.directives import dexterity
 from plone.directives import form
+from plone.indexer import indexer
 from plone.registry.interfaces import IRegistry
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import queryUtility
 from zope.i18n import translate
+from zope.interface import Invalid
+from zope.interface import invariant
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-
-from zope.interface import invariant
-from zope.interface import Invalid
 
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
@@ -27,7 +27,6 @@ from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import SelectModalityInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
-
 
 import transaction
 import unicodedata
@@ -405,3 +404,67 @@ class Add(dexterity.AddForm):
             super(Add, self).updateWidgets()
         except ValueError as err:
             self.context.plone_utils.addPortalMessage(_("No esta correctament configurat: '%s'") % err, 'error')
+
+
+@indexer(IOffer)
+def degree(context):
+    return context.degree
+
+
+grok.global_adapter(degree, name='TFEdegree')
+
+
+@indexer(IOffer)
+def teacher_manager(context):
+    return context.teacher_manager
+
+
+grok.global_adapter(teacher_manager, name='TFEteacher_manager')
+
+
+@indexer(IOffer)
+def dept(context):
+    return context.dept
+
+
+grok.global_adapter(dept, name='TFEdept')
+
+
+@indexer(IOffer)
+def company(context):
+    return context.company
+
+
+grok.global_adapter(company, name='TFEcompany')
+
+
+@indexer(IOffer)
+def grant(context):
+    return context.grant
+
+
+grok.global_adapter(grant, name='TFEgrant')
+
+
+@indexer(IOffer)
+def modality(context):
+    return context.modality
+
+
+grok.global_adapter(modality, name='TFEmodality')
+
+
+@indexer(IOffer)
+def keys(context):
+    return context.keys
+
+
+grok.global_adapter(keys, name='TFEkeys')
+
+
+@indexer(IOffer)
+def lang(context):
+    return context.lang
+
+
+grok.global_adapter(lang, name='TFElang')
