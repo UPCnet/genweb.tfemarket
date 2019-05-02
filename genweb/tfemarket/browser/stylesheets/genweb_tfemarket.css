@@ -217,6 +217,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   border-radius: 10px !important;
   border: 1px solid #666666;
   margin-left: 5px;
+  margin-bottom: 5px;
 }
 
 .informacioTFE .keyword:first-of-type {
@@ -311,7 +312,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   padding: 20px;
   border-radius: 2px !important;
   border: 1px solid #eaeaea;
-  width: 95.7%;
+  width: 96.2%;
   position: relative;
 }
 
@@ -967,6 +968,35 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-offer #portal-header .logoPropi,
 .portaltype-genweb-tfemarket-application #portal-header .logoPropi {
   padding: 0px;
+}
+
+
+/* Tfemarket utils */
+body.template-tfemarket-utils #utils {
+  display: grid;
+}
+
+body.template-tfemarket-utils #utils .configlets .fa {
+  float: right;
+}
+
+body[class^="template-tfemarket-utils"] .documentDescription {
+  font-weight: normal;
+}
+
+body[class^="template-tfemarket-utils"] #s2id_offer {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+body[class^="template-tfemarket-utils"] .select2-disabled > div {
+  cursor: not-allowed;
+}
+
+body[class^="template-tfemarket-utils"] label,
+body[class^="template-tfemarket-utils"] input[type="text"] {
+  display: block;
+  width: 99%;
 }
 
 @media only screen and (max-width: 640px) {

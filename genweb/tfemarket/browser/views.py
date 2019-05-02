@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-
 from Products.CMFCore.utils import getToolByName
+from Products.statusmessages.interfaces import IStatusMessage
+
 from five import grok
 from plone import api
+from plone.dexterity.utils import createContentInContainer
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
 from scss import Scss
@@ -19,11 +21,13 @@ from genweb.tfemarket.content.offer import IOffer
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.utils import BusError
+from genweb.tfemarket.utils import checkOfferhasAssign
+from genweb.tfemarket.utils import checkOfferhasValidApplications
+from genweb.tfemarket.utils import getApplicationsFromContent
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
-from genweb.tfemarket.utils import isTeachersOffer
 from genweb.tfemarket.utils import getStudentData
-from genweb.tfemarket.utils import checkOfferhasAssign
+from genweb.tfemarket.utils import isTeachersOffer
 
 import json
 import pkg_resources
@@ -202,6 +206,21 @@ class getInfoCreateApplication(grok.View):
         return json.dumps(eval(data))
 
 
+class getInfoRenameOffer(grok.View):
+    grok.context(Interface)
+    grok.name('getInfoRenameOffer')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        pc = api.portal.get_tool('portal_catalog')
+        offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                  'UID': self.request.form['UID']})
+        if len(offer) > 0:
+            offer = offer[0]
+            return json.dumps({'title': offer.Title, 'shortname': offer.id})
+
+
 class resetCountOffers(grok.View):
     grok.name('reset_offers_counter')
     grok.context(Interface)
@@ -257,3 +276,184 @@ class dynamicTfeCSS(grok.View):
         dynamic_scss = ''.join([variables_scss, scssfile.read()])
 
         return css.compile(dynamic_scss)
+
+
+class tfemarketUtils(grok.View):
+    grok.context(Interface)
+    grok.name('tfemarket-utils')
+    grok.template('tfemarket_utils')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+
+class tfemarketUtilsCopyOffer(grok.View):
+    grok.context(Interface)
+    grok.name('tfemarket-utils-copy-offer')
+    grok.template('tfemarket_utils_copy_offer')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+    def getOffers(self):
+        return getAllOffers(self)
+
+    def update(self):
+        if 'submit' in self.request.form:
+            pc = api.portal.get_tool('portal_catalog')
+            offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                      'UID': self.request.form['offer']})
+            if len(offer) > 0:
+                offer = offer[0].getObject()
+                market = offer.getParentNode()
+                try:
+                    data = {
+                        'title': 'Copy of ' + offer.title,
+                        'description': offer.description,
+                        'topic': offer.topic,
+                        'degree': offer.degree,
+                        'keys': offer.keys,
+                        'teacher_manager': offer.teacher_manager,
+                        'teacher_fullname': offer.teacher_fullname,
+                        'teacher_email': offer.teacher_email,
+                        'dept': offer.dept,
+                        'codirector': offer.codirector,
+                        'num_students': offer.num_students,
+                        'workload': offer.workload,
+                        'targets': offer.targets,
+                        'features': offer.features,
+                        'requirements': offer.requirements,
+                        'lang': offer.lang,
+                        'modality': offer.modality,
+                        'co_manager': offer.co_manager,
+                        'company': offer.company,
+                        'company_contact': offer.company_contact,
+                        'company_email': offer.company_email,
+                        'grant': offer.grant,
+                        'confidential': offer.confidential,
+                        'environmental_theme': offer.environmental_theme,
+                        'scope_cooperation': offer.scope_cooperation,
+                    }
+                    copyOffer = createContentInContainer(market, "genweb.tfemarket.offer", **data)
+                    copyOffer.setEffectiveDate(offer.effective_date)
+                    copyOffer.setExpirationDate(offer.expiration_date)
+                    copyOffer.reindexObject()
+
+                    IStatusMessage(self.request).addStatusMessage(_(u"The offer has been copied."), 'info')
+                    self.request.response.redirect(self.context.absolute_url() + "/@@tfemarket-utils-rename-offer?offer=" + copyOffer.UID())
+                except:
+                    IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be copied."), 'error')
+            else:
+                IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be copied."), 'error')
+
+
+class tfemarketUtilsRenameOffer(grok.View):
+    grok.context(Interface)
+    grok.name('tfemarket-utils-rename-offer')
+    grok.template('tfemarket_utils_rename_offer')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+    def getOffers(self):
+        return getAllOffers(self)
+
+    def update(self):
+        if 'submit' in self.request.form:
+            pc = api.portal.get_tool('portal_catalog')
+            offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                      'UID': self.request.form['offer']})
+            if len(offer) > 0:
+                offer = offer[0].getObject()
+                offer.title = self.request.form['newTitle']
+                parent = offer.getParentNode()
+                try:
+                    parent.manage_renameObject(offer.id, self.request.form['newShortname'])
+                    offer.reindexObject()
+
+                    for application in getApplicationsFromContent(offer):
+                        application.offer_title = self.request.form['newTitle']
+                        application.reindexObject()
+                    IStatusMessage(self.request).addStatusMessage(_(u"The offer has been modified."), 'info')
+                except:
+                    IStatusMessage(self.request).addStatusMessage(_(u"Error the identifier exists."), 'error')
+            else:
+                IStatusMessage(self.request).addStatusMessage(_(u"Error the identifier exists."), 'error')
+
+
+class tfemarketUtilsDeleteOffer(grok.View):
+    grok.context(Interface)
+    grok.name('tfemarket-utils-delete-offer')
+    grok.template('tfemarket_utils_delete_offer')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+    def getOffers(self):
+        pc = api.portal.get_tool('portal_catalog')
+        filters = {'portal_type': 'genweb.tfemarket.offer',
+                   'review_state': ('intranet', 'offered', 'public', 'pending'),
+                   'sort_on': 'sortable_title',
+                   'sort_order': 'ascending'}
+
+        if 'TFE Teacher' in api.user.get_current().getRoles() and api.user.get_current().id != "admin":
+            filters.update({'Creator': api.user.get_current().id})
+
+        offers = pc.searchResults(**filters)
+        res = {'ok': [], 'ko': []}
+        for offer in offers:
+            data = {'UID': offer.UID,
+                    'Title': offer.Title,
+                    'offer_id': offer.getObject().offer_id}
+
+            if checkOfferhasValidApplications(offer.getObject()):
+                res['ko'].append(data)
+            else:
+                res['ok'].append(data)
+        return res
+
+    def update(self):
+        if 'submit' in self.request.form:
+            pc = api.portal.get_tool('portal_catalog')
+            offer = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                      'UID': self.request.form['offer']})
+            if len(offer) > 0:
+                offer = offer[0]
+                parent = offer.getObject().aq_parent
+                try:
+                    parent.manage_delObjects([offer.id])
+                    IStatusMessage(self.request).addStatusMessage(_(u"The offer has been removed."), 'info')
+                except:
+                    IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be removed."), 'error')
+            else:
+                IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be removed."), 'error')
+
+
+def getUrlAllTFE(self):
+    pc = api.portal.get_tool('portal_catalog')
+    return pc.searchResults({'portal_type': 'genweb.tfemarket.market'})
+
+
+def getAllOffers(self):
+    pc = api.portal.get_tool('portal_catalog')
+    filters = {'portal_type': 'genweb.tfemarket.offer',
+               'sort_on': 'sortable_title',
+               'sort_order': 'ascending'}
+    if 'TFE Teacher' in api.user.get_current().getRoles() and api.user.get_current().id != "admin":
+        filters.update({'Creator': api.user.get_current().id})
+
+    offers = pc.searchResults(**filters)
+    res = []
+    for offer in offers:
+        res.append({'UID': offer.UID,
+                    'Title': offer.Title,
+                    'offer_id': offer.getObject().offer_id})
+    return res

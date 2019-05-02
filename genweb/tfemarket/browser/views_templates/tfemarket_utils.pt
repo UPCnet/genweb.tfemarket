@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+  <head>
+      <metal:block fill-slot="top_slot"/>
+  </head>
+  <body>
+    <metal:main fill-slot="content">
+      <tal:main-macro metal:define-macro="main">
+
+        <div id="utils"
+             tal:define="portal_url context/@@plone_portal_state/portal_url;">
+          <h1 class="documentFirstHeading"
+              i18n:translate="">
+            Tools of the TFE
+          </h1>
+          <p class="documentDescription">
+            <tal:block tal:repeat="tfe view/getTFEs">
+              <span i18n:translate="">Return to market </span>
+              <a tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+            </tal:block>
+          </p>
+          <div>
+            <div style="float:left; margin-right: 1em; width: 29%">
+              <ul class="configlets">
+                <li>
+                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-copy-offer">
+                    <span class="fa fa-copy"></span>
+                    <span i18n:translate="">Copy offer</span>
+                  </a>
+                </li>
+                <li>
+                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-rename-offer">
+                    <span class="fa fa-edit"></span>
+                    <span i18n:translate="">Rename offer</span>
+                  </a>
+                </li>
+                 <li>
+                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-delete-offer">
+                    <span class="fa fa-trash"></span>
+                    <span i18n:translate="">Delete offer</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </tal:main-macro>
+    </metal:main>
+  </body>
+</html>

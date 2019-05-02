@@ -410,6 +410,12 @@
                                                     </div>
                                                     <div class="span6">
                                                         <div class="leftInfoOffer">
+                                                            <p class="offer_id">
+                                                                <span class="field"><span i18n:translate="">Offer id</span>: </span>
+                                                                <span tal:content="offer/offer_id">Identificador</span>
+                                                            </p>
+                                                        </div>
+                                                        <div class="leftInfoOffer">
                                                             <p class="modality">
                                                                 <span class="field"><span i18n:translate="">Modality</span>: </span>
                                                                 <span tal:content="offer/modality">Modalitat</span>
