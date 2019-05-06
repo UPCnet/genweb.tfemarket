@@ -19,12 +19,13 @@
               i18n:translate="">
             Tools of the TFE
           </h1>
-          <p class="documentDescription">
-            <tal:block tal:repeat="tfe view/getTFEs">
+          <div class="documentDescription">
+            <p tal:repeat="tfe view/getTFEs">
               <span i18n:translate="">Return to market </span>
-              <a tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
-            </tal:block>
-          </p>
+              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+            </p>
+          </div>
+
           <div>
             <div style="float:left; margin-right: 1em; width: 29%">
               <ul class="configlets">

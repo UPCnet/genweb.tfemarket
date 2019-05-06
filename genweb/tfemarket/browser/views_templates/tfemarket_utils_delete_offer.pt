@@ -19,12 +19,12 @@
             <tal:block i18n:translate="">Tools of the TFE</tal:block> -
             <tal:block i18n:translate="">Delete offer</tal:block>
           </h1>
-          <p class="documentDescription">
-            <tal:block tal:repeat="tfe view/getTFEs">
+          <div class="documentDescription">
+            <p tal:repeat="tfe view/getTFEs">
               <span i18n:translate="">Return to market </span>
-              <a tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
-            </tal:block>
-          </p>
+              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+            </p>
+          </div>
 
           <div metal:use-macro="context/global_statusmessage/macros/portal_message">
             Status message
