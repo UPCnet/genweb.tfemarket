@@ -49,6 +49,17 @@
                 </li>
               </ul>
             </div>
+
+            <div style="float:left; margin-right: 1em; width: 29%">
+              <ul class="configlets">
+                <li>
+                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-stats">
+                    <span class="fa fa-area-chart"></span>
+                    <span i18n:translate="">Stats</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

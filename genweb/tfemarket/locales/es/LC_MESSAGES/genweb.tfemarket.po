@@ -828,6 +828,10 @@ msgstr "Tu solicitud"
 msgid "application"
 msgstr "Solicitud"
 
+#: ../browser/views_templates/tfemarket_utils_stats.pt:80
+msgid "choose_tfe"
+msgstr "Elije un TFE"
+
 #: ../controlpanel.py:114
 msgid "classifications"
 msgstr "Clasificaciones"

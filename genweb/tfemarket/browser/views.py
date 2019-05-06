@@ -24,6 +24,7 @@ from genweb.tfemarket.utils import BusError
 from genweb.tfemarket.utils import checkOfferhasAssign
 from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import getApplicationsFromContent
+from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 from genweb.tfemarket.utils import getStudentData
@@ -436,6 +437,69 @@ class tfemarketUtilsDeleteOffer(grok.View):
                     IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be removed."), 'error')
             else:
                 IStatusMessage(self.request).addStatusMessage(_(u"The offer could not be removed."), 'error')
+
+
+class tfemarketUtilsStats(grok.View):
+    grok.context(Interface)
+    grok.name('tfemarket-utils-stats')
+    grok.template('tfemarket_utils_stats')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+    def getStates(self):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        review_state = tfe_tool.review_state
+
+        results = []
+        results.append({'id': 'offered', 'lit': 'Proposta'})
+
+        if review_state:
+            results.append({'id': 'pending', 'lit': 'En revisió'})
+
+        results.append({'id': 'public', 'lit': 'Pública'})
+        results.append({'id': 'intranet', 'lit': 'Intranet'})
+        results.append({'id': 'assigned', 'lit': 'Assignada'})
+        results.append({'id': 'assignadaintranet', 'lit': 'Assignada (intranet)'})
+        results.append({'id': 'registered', 'lit': 'Inscrita'})
+        results.append({'id': 'inscritaintranet', 'lit': 'Inscrita (intranet)'})
+        results.append({'id': 'expired', 'lit': 'Caducada'})
+        return results
+
+    def getDegreesInfo(self):
+        pc = api.portal.get_tool('portal_catalog')
+        res = []
+        for degree in getDegrees():
+            if degree['id'] != 'a':
+                info = {'id': degree['id'], 'title': degree['lit']}
+                for state in self.getStates():
+                    data = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                             'TFEdegree': degree['id'],
+                                             'review_state': state['id']})
+                    info.update({state['id']: len(data)})
+
+                data = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                         'TFEdegree': degree['id']})
+                info.update({'total': len(data)})
+                res.append(info)
+
+        return res
+
+    def getTotalInfo(self):
+        pc = api.portal.get_tool('portal_catalog')
+        info = {'title': u"Total"}
+        for state in self.getStates():
+            data = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                     'review_state': state['id']})
+            info.update({state['id']: len(data)})
+
+        data = pc.searchResults({'portal_type': 'genweb.tfemarket.offer'})
+        info.update({'total': len(data)})
+
+        return info
 
 
 def getUrlAllTFE(self):

@@ -999,13 +999,54 @@ body[class^="template-tfemarket-utils"] input[type="text"] {
   width: 99%;
 }
 
+body.template-tfemarket-utils-stats table.dataTable thead th,
+body.template-tfemarket-utils-stats table.dataTable tfoot th,
+body.template-tfemarket-utils-stats table.dataTable tbody td {
+  vertical-align: middle;
+  border-bottom: 0px;
+}
+
+body.template-tfemarket-utils-stats table.dataTable thead th:not(:first-child),
+body.template-tfemarket-utils-stats table.dataTable tfoot th:not(:first-child),
+body.template-tfemarket-utils-stats table.dataTable tbody td:not(:first-child) {
+  text-align: center;
+}
+
+body.template-tfemarket-utils-stats .returnTFE,
+body.template-tfemarket-utils-stats table.dataTable tbody td:not(:first-child),
+body.template-tfemarket-utils-stats table.dataTable tfoot th:not(:first-child) {
+  cursor: pointer;
+}
+
+body.template-tfemarket-utils-stats .returnTFE:hover,
+body.template-tfemarket-utils-stats table.dataTable tbody td:not(:first-child):hover,
+body.template-tfemarket-utils-stats table.dataTable tfoot th:not(:first-child):hover {
+  font-weight: bold;
+  color: #000;
+}
+
+body.template-tfemarket-utils-stats table.dataTable tbody td.dataTables_empty {
+  text-align: left;
+}
+
+body.template-tfemarket-utils-stats #dialogTFE {
+  display: none;
+  min-height: initial !important;
+}
+
+body.template-tfemarket-utils-stats .ui-dialog-titlebar-close::before {
+  content: "x";
+  display: block;
+  margin-top: -2px;
+}
+
 @media only screen and (max-width: 640px) {
   #offersList .puntTitle,
   #offerData .puntTitle {
     display: inline;
   }
 
-   .puntTitle .actions.span2,
+  .puntTitle .actions.span2,
   .puntTitle .dates.span2 {
     width: 50% !important;
   }
@@ -1177,6 +1218,10 @@ input[type="radio"], input[type="checkbox"] {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+#form-widgets-workload {
+  width: 100%;
 }
 
 /*FIN KO & IAGO CSS*/

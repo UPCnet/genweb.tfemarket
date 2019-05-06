@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+  <head>
+      <metal:block fill-slot="top_slot"/>
+  </head>
+  <body>
+    <metal:main fill-slot="content">
+      <tal:main-macro metal:define-macro="main">
+
+        <link rel="stylesheet" type="text/css"
+              href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8"
+                src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+        <div id="utils"
+             tal:define="portal_url context/@@plone_portal_state/portal_url;
+                         tfes view/getTFEs">
+          <h1 class="documentFirstHeading">
+            <tal:block i18n:translate="">Tools of the TFE</tal:block> -
+            <tal:block i18n:translate="">Stats</tal:block>
+          </h1>
+          <div class="documentDescription">
+            <p tal:repeat="tfe tfes">
+              <span i18n:translate="">Return to market </span>
+              <a tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+            </p>
+          </div>
+
+          <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+            Status message
+          </div>
+
+          <div>
+            <table id="statsTable" class="table table-striped table-bordered table-sm"
+                   cellspacing="0" width="100%"
+                   tal:define="states view/getStates">
+              <thead>
+                <tr>
+                  <th class="th-sm" i18n:translate="">Degree</th>
+                  <th class="th-sm" tal:repeat="state states"
+                      tal:content="state/lit">
+                    State
+                  </th>
+                  <th class="th-sm" i18n:translate="">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr tal:repeat="degree view/getDegreesInfo">
+                  <td tal:content="degree/title">Degree</td>
+                  <td class="redirect" tal:repeat="state states" tal:content="python:degree[state['id']]"
+                      tal:attributes="data-filters string:?search&degree=${degree/id}&state=${state/id}">
+                    Count
+                  </td>
+                  <td class="redirect" tal:content="degree/total"
+                      tal:attributes="data-filters string:?search&degree=${degree/id}">
+                    Degree
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr tal:define="total view/getTotalInfo">
+                  <th tal:content="total/title">Degree</th>
+                  <th class="redirect" tal:repeat="state states" tal:content="python:total[state['id']]"
+                      tal:attributes="data-filters string:?search&state=${state/id}">
+                    Count
+                  </th>
+                  <th class="redirect" tal:content="total/total" data-filters="?allOffers">
+                    Degree
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+
+            <div id="dialogTFE" i18n:attributes="title choose_tfe">
+              <p tal:repeat="tfe tfes">
+                <span class="returnTFE" tal:attributes="data-href tfe/getURL" tal:content="tfe/Title">URL</span>
+              </p>
+            </div>
+
+            <br>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          $(document).ready(function () {
+
+            urlLang = "https://datatables.net/plug-ins/i18n/English";
+            lang = $('html').attr('lang');
+            if(lang == 'ca'){
+              urlLang = "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Catalan.json"
+            }
+
+            if(lang == 'es'){
+              urlLang = "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+            }
+
+            $('#statsTable').DataTable({
+              'paging': false,
+              'language': {
+                'url': urlLang,
+              }
+            });
+
+            tfe = $('.returnTFE')
+            $('.redirect').on('click', function(){
+              filters = $(this).attr('data-filters');
+
+              if(tfe.length == 1){
+                urlTFE = tfe.attr('href') + filters;
+                window.open(urlTFE);
+              }else{
+                urlTFE = []
+                $.each(tfe, function(){
+                  urlTFE.push($(this).attr('href') + filters);
+                });
+                $('#dialogTFE').dialog({modal: true});
+
+                $('.returnTFE').on('click', function(){
+                  urlTFE = $(this).attr('data-href') + filters;
+                  $("#dialogTFE").dialog('close');
+                  window.open(urlTFE);
+                });
+              }
+            });
+
+          });
+        </script>
+
+      </tal:main-macro>
+    </metal:main>
+  </body>
+</html>
