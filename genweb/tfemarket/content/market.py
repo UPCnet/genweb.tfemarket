@@ -102,7 +102,7 @@ class View(grok.View):
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
             filters = {'portal_type': 'genweb.tfemarket.offer',
-                       'path': self.context.getPhysicalPath()}
+                       'path': {"query": '/'.join(self.context.getPhysicalPath())}}
 
             # if 'allOffers' not in self.request.form:
             #     filters.update({'sort_limit': 50})
