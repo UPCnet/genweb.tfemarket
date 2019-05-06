@@ -464,6 +464,10 @@
                                                             <span class="field"><span i18n:translate="">Topic</span>: </span>
                                                             <span tal:content="offer/topic">Topic</span>
                                                         </p>
+                                                        <p class="topic" tal:condition="offer/offer_type">
+                                                            <span class="field"><span i18n:translate="">Type</span>: </span>
+                                                            <span tal:content="offer/offer_type">Type</span>
+                                                        </p>
                                                         <p class="numStudents">
                                                             <span class="field"><span i18n:translate="">Number of students</span>: </span>
                                                             <span tal:content="offer/num_students">1</span>

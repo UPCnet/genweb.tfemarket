@@ -108,7 +108,7 @@ class importOfertes(grok.View):
 
             # Importa topics y tags
             strTopics += row[2].decode("utf-8") + ","
-            strTags += row[4].decode("utf-8") + ","
+            strTags += row[5].decode("utf-8") + ","
             topics = list(dict.fromkeys(strTopics.split(",")[:-1]))
             tags = list(dict.fromkeys(strTags.split(",")[:-1]))
             tfe_tool.topics = "\r\n".join(topics)
@@ -118,36 +118,37 @@ class importOfertes(grok.View):
 
             # Importa ofertas
 
-            notValidDegrees = self.checkNotValidDegrees(row[3].decode("utf-8").split(","))
+            notValidDegrees = self.checkNotValidDegrees(row[4].decode("utf-8").split(","))
             if len(notValidDegrees) == 0:
-                teacher = getLdapExactUserData(row[5].decode("utf-8"))
+                teacher = getLdapExactUserData(row[6].decode("utf-8"))
                 if teacher:
                     data = {
                         'title': row[0].decode("utf-8"),
                         'description': row[1].decode("utf-8"),
                         'topic': row[2].decode("utf-8"),
-                        'degree': row[3].decode("utf-8").split(","),
-                        'keys': row[4].decode("utf-8").split(","),
+                        'offer_type': row[3].decode("utf-8"),
+                        'degree': row[4].decode("utf-8").split(","),
+                        'keys': row[5].decode("utf-8").split(","),
                         'teacher_manager': teacher['id'],
                         'teacher_fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
                         'teacher_email': teacher['mail'],
                         'dept': teacher['unitCode'] + "-" + teacher['unit'],
-                        'codirector': row[6].decode("utf-8"),
-                        'num_students': int(row[7].decode("utf-8")),
-                        'workload': row[8].decode("utf-8"),
-                        'targets': row[9].decode("utf-8"),
-                        'features': row[10].decode("utf-8"),
-                        'requirements': row[11].decode("utf-8"),
-                        'lang': row[12].decode("utf-8").split(","),
-                        'modality': row[13].decode("utf-8"),
-                        'co_manager': row[14].decode("utf-8"),
-                        'company': row[15].decode("utf-8"),
-                        'company_contact': row[16].decode("utf-8"),
-                        'company_email': row[17].decode("utf-8"),
-                        'grant': bool(row[18].decode("utf-8") == "True"),
-                        'confidential': bool(row[19].decode("utf-8") == "True"),
-                        'environmental_theme': bool(row[20].decode("utf-8") == "True"),
-                        'scope_cooperation': bool(row[21].decode("utf-8") == "True"),
+                        'codirector': row[7].decode("utf-8"),
+                        'num_students': int(row[8].decode("utf-8")),
+                        'workload': row[9].decode("utf-8"),
+                        'targets': row[10].decode("utf-8"),
+                        'features': row[11].decode("utf-8"),
+                        'requirements': row[12].decode("utf-8"),
+                        'lang': row[13].decode("utf-8").split(","),
+                        'modality': row[14].decode("utf-8"),
+                        'co_manager': row[15].decode("utf-8"),
+                        'company': row[16].decode("utf-8"),
+                        'company_contact': row[17].decode("utf-8"),
+                        'company_email': row[18].decode("utf-8"),
+                        'grant': bool(row[19].decode("utf-8") == "True"),
+                        'confidential': bool(row[20].decode("utf-8") == "True"),
+                        'environmental_theme': bool(row[21].decode("utf-8") == "True"),
+                        'scope_cooperation': bool(row[22].decode("utf-8") == "True"),
                     }
                     offer = createContentInContainer(market, "genweb.tfemarket.offer", **data)
                     offer.setEffectiveDate(dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1)))
@@ -155,7 +156,7 @@ class importOfertes(grok.View):
                     offer.reindexObject()
                     print str(count + 1) + ": Done - " + row[0].decode("utf-8")
                 else:
-                    msg = row[0].decode("utf-8") + " - Teacher (" + row[5].decode("utf-8") + ") not exist."
+                    msg = row[0].decode("utf-8") + " - Teacher (" + row[6].decode("utf-8") + ") not exist."
                     print str(count + 1) + ": Error - " + msg
                     msgError.append(str(count + 1) + ": " + msg)
             else:

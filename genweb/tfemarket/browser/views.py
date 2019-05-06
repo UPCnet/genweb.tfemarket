@@ -315,6 +315,7 @@ class tfemarketUtilsCopyOffer(grok.View):
                         'title': 'Copy of ' + offer.title,
                         'description': offer.description,
                         'topic': offer.topic,
+                        'offer_type': offer.offer_type if 'offer_type' in offer else _(u'Project'),
                         'degree': offer.degree,
                         'keys': offer.keys,
                         'teacher_manager': offer.teacher_manager,

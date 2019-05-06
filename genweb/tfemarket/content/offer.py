@@ -116,6 +116,21 @@ class TopicsVocabulary(object):
 grok.global_utility(TopicsVocabulary, name=u"genweb.tfemarket.Topics")
 
 
+class OfferTypesVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'Study', 'Study', _(u'Study')))
+        types.append(SimpleVocabulary.createTerm(u'Project', 'Project', _(u'Project')))
+        types.append(SimpleVocabulary.createTerm(u'Design', 'Design', _(u'Design')))
+        types.append(SimpleVocabulary.createTerm(u'Others', 'Others', _(u'Others')))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(OfferTypesVocabulary, name=u"genweb.tfemarket.OfferTypes")
+
+
 class DegreesVocabulary(object):
     grok.implements(IVocabularyFactory)
 
@@ -178,6 +193,13 @@ class IOffer(form.Schema):
     topic = schema.Choice(
         title=_(u'offer_topic'),
         vocabulary=u"genweb.tfemarket.Topics",
+        required=False
+    )
+
+    offer_type = schema.Choice(
+        title=_(u'offer_type'),
+        vocabulary=u"genweb.tfemarket.OfferTypes",
+        default=_(u'Project'),
         required=False
     )
 
@@ -253,7 +275,7 @@ class IOffer(form.Schema):
         title=_(u'offer_workload'),
         description=_(u'Un crèdit ECTS equival a 25 hores de treball'),
         default=_(u'La càrrega de treball s\'adptarà als crèdits de la titulació.'),
-        required=False,
+        required=True,
     )
 
     targets = schema.Text(
@@ -405,6 +427,14 @@ class Add(dexterity.AddForm):
             super(Add, self).updateWidgets()
         except ValueError as err:
             self.context.plone_utils.addPortalMessage(_("No esta correctament configurat: '%s'") % err, 'error')
+
+
+@indexer(IOffer)
+def offer_type(context):
+    return context.offer_type
+
+
+grok.global_adapter(offer_type, name='TFEoffer_type')
 
 
 @indexer(IOffer)

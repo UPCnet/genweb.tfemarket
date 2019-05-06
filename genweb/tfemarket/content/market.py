@@ -221,6 +221,7 @@ class View(grok.View):
                                             confidential=offer.confidential,
                                             scope_cooperation=offer.scope_cooperation,
                                             topic=offer.topic,
+                                            offer_type=offer.type_offer if 'offer_type' in offer else None,
                                             if_propietary=isTeachersOffer(offer),
                                             assign_offer=self.assignOffer(offer, offerState.id),
                                             is_expired=offer.isExpired()
