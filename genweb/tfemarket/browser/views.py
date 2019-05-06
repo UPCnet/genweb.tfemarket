@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
+from StringIO import StringIO
 
 from five import grok
 from plone import api
@@ -30,6 +31,7 @@ from genweb.tfemarket.utils import getLdapUserData
 from genweb.tfemarket.utils import getStudentData
 from genweb.tfemarket.utils import isTeachersOffer
 
+import csv
 import json
 import pkg_resources
 import transaction
@@ -500,6 +502,124 @@ class tfemarketUtilsStats(grok.View):
         info.update({'total': len(data)})
 
         return info
+
+
+class tfemarketUtilsDownloadCSV(grok.View):
+    grok.context(Interface)
+    grok.name('tfemarket-utils-download-csv')
+    grok.template('tfemarket_utils_download_csv')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getTFEs(self):
+        return getUrlAllTFE(self)
+
+
+class tfemarketUtilsExportCSV(grok.View):
+    grok.context(Interface)
+    grok.name('tfemarket-utils-export-csv')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        tools = getMultiAdapter((self.context, self.request), name='plone_tools')
+
+        output_file = StringIO()
+        writer = csv.writer(output_file, delimiter=',')
+
+        pc = api.portal.get_tool('portal_catalog')
+        market = pc.searchResults({'portal_type': 'genweb.tfemarket.market',
+                                   'UID': self.request.form['UID']})[0]
+
+        if 'submit_offers' in self.request.form:
+            data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'Degrees', 'Keys',
+                           'Teacher ID', 'Teacher fullname', 'Teacher email', 'University department',
+                           'Codirector', 'Number of students', 'Workload', 'Targets', 'Features',
+                           'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
+                           'Company contact', 'Company email', 'Possibility of scholarship',
+                           'Confidential', 'Environmental theme', 'Scope of cooperation',
+                           'Publication date', 'Expiration date', 'Expired', 'State']
+
+            writer.writerow(data_header)
+
+            offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer',
+                                       'path': {"query": market.getPath()}})
+
+            for data in offers:
+                offer = data.getObject()
+
+                offerWorkflow = tools.workflow().getWorkflowsFor(offer)[0]
+                offerStatus = wf_tool.getStatusOf(offerWorkflow.id, offer)
+                offerState = offerWorkflow['states'][offerStatus['review_state']]
+
+                writer.writerow([
+                    offer.offer_id.encode('utf-8'),
+                    offer.title.encode('utf-8'),
+                    offer.description.encode('utf-8'),
+                    offer.topic.encode('utf-8') if offer.topic else "",
+                    offer.offer_type.encode('utf-8') if offer.offer_type else "",
+                    '\n'.join(offer.degree) if offer.degree else "",
+                    '\n'.join(offer.keys) if offer.keys else "",
+                    offer.teacher_manager.encode('utf-8'),
+                    offer.teacher_fullname.encode('utf-8'),
+                    offer.teacher_email.encode('utf-8'),
+                    offer.dept.encode('utf-8'),
+                    offer.codirector.encode('utf-8') if offer.codirector else "",
+                    offer.num_students or "",
+                    offer.workload.encode('utf-8') if offer.workload else "",
+                    offer.targets.encode('utf-8') if offer.targets else "",
+                    offer.features.encode('utf-8') if offer.features else "",
+                    offer.requirements.encode('utf-8') if offer.requirements else "",
+                    '\n'.join(offer.lang) if offer.lang else "",
+                    offer.modality.encode('utf-8'),
+                    offer.co_manager.encode('utf-8') if offer.co_manager else "",
+                    offer.company.encode('utf-8') if offer.company else "",
+                    offer.company_contact.encode('utf-8') if offer.company_contact else "",
+                    offer.company_email.encode('utf-8') if offer.company_email else "",
+                    'Yes' if offer.grant else 'No',
+                    'Yes' if offer.confidential else 'No',
+                    'Yes' if offer.environmental_theme else 'No',
+                    'Yes' if offer.scope_cooperation else 'No',
+                    offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
+                    offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
+                    'Yes' if offer.isExpired() else 'No',
+                    offerState.title.encode('utf-8')])
+
+            filename = market.id + "-offers.csv"
+        else:
+            data_header = ['Offer ID', 'Degree ID', 'DNI', 'Fullname', 'Telephone', 'Email',
+                           'PRISMA ID', 'Expedient ID', 'Body', 'State']
+
+            writer.writerow(data_header)
+
+            requests = pc.searchResults({'portal_type': 'genweb.tfemarket.application',
+                                         'path': {"query": market.getPath()}})
+
+            for data in requests:
+                app = data.getObject()
+
+                appWorkflow = tools.workflow().getWorkflowsFor(app)[0]
+                appStatus = wf_tool.getStatusOf(appWorkflow.id, app)
+                appState = appWorkflow['states'][appStatus['review_state']]
+
+                writer.writerow([
+                    app.offer_id.encode('utf-8'),
+                    app.degree_id.encode('utf-8'),
+                    app.dni.encode('utf-8'),
+                    app.title.encode('utf-8'),
+                    app.phone.encode('utf-8') if app.phone else "",
+                    app.email.encode('utf-8'),
+                    app.prisma_id.encode('utf-8') if app.prisma_id else "",
+                    app.codi_expedient.encode('utf-8') if app.codi_expedient else "",
+                    app.body.encode('utf-8') if app.body else "",
+                    appState.title.encode('utf-8')])
+
+            filename = market.id + "-applications.csv"
+
+        self.request.response.setHeader('Content-Type', 'text/csv')
+        self.request.response.setHeader('Content-Disposition', 'attachment; filename="%s"' % filename)
+        return output_file.getvalue()
 
 
 def getUrlAllTFE(self):

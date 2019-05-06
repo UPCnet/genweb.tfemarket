@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+  <head>
+      <metal:block fill-slot="top_slot"/>
+  </head>
+  <body>
+    <metal:main fill-slot="content">
+      <tal:main-macro metal:define-macro="main">
+
+        <div id="utils"
+             tal:define="portal_url context/@@plone_portal_state/portal_url;
+                         tfes view/getTFEs">
+          <h1 class="documentFirstHeading">
+            <tal:block i18n:translate="">Tools of the TFE</tal:block> -
+            <tal:block i18n:translate="">Download CSV</tal:block>
+          </h1>
+          <div class="documentDescription">
+            <p tal:repeat="tfe tfes">
+              <span i18n:translate="">Return to market </span>
+              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+            </p>
+          </div>
+
+          <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+            Status message
+          </div>
+
+          <div>
+            <form id="formTFE" action="@@tfemarket-utils-export-csv" method="post">
+              <label i18n:translate="">Select the market from which you want to export the data.</label>
+              <select name="UID" required>
+                <tal:block tal:repeat="tfe tfes">
+                  <option tal:attributes="value tfe/UID" tal:content="tfe/Title"></option>
+                </tal:block>
+              </select>
+
+              <br>
+              <br>
+
+              <input type="submit" name="submit_offers" i18n:attributes="value download_offers">
+              <input type="submit" name="submit_applications" i18n:attributes="value download_applications">
+            </form>
+          </div>
+        </div>
+
+      </tal:main-macro>
+    </metal:main>
+  </body>
+</html>

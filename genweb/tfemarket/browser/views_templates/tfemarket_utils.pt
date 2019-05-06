@@ -58,6 +58,12 @@
                     <span i18n:translate="">Stats</span>
                   </a>
                 </li>
+                <li>
+                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils-download-csv">
+                    <span class="fa fa-download"></span>
+                    <span i18n:translate="">Download CSV</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

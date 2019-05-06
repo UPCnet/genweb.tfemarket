@@ -135,7 +135,7 @@ msgstr "Adreça de correu de l'empresa"
 
 #: ../content/application.py:57
 msgid "Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"
-msgstr ""
+msgstr "Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"
 
 #: ../content/templates/market_view.pt:533
 msgid "Confidential"
@@ -235,6 +235,11 @@ msgstr "Idiomes d'elaboració del treball"
 msgid "Direction"
 msgstr "Direcció"
 
+#: ../browser/views_templates/tfemarket_utils.pt:64
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:21
+msgid "Download CSV"
+msgstr "Descàrregar CSV"
+
 #: ../controlpanel.py:81
 msgid "EN"
 msgstr "Anglès"
@@ -273,11 +278,11 @@ msgstr "Temàtica ambiental"
 msgid "Environmental theme"
 msgstr "Temàtica ambiental"
 
-#: ../browser/views.py:387
+#: ../browser/views.py:389
 msgid "Error the identifier exists."
 msgstr "Error l'identificador ja existeix."
 
-#: ../browser/views.py:105
+#: ../browser/views.py:107
 msgid "Error you can't perform the action."
 msgstr "No pots realitzar aquesta acció."
 
@@ -349,7 +354,7 @@ msgstr "Paraules clau"
 
 #: ../content/offer.py:277
 msgid "La càrrega de treball s'adptarà als crèdits de la titulació."
-msgstr ""
+msgstr "La càrrega de treball s'adptarà als crèdits de la titulació."
 
 #: ../content/templates/market_view.pt:431
 msgid "Language work elaboration"
@@ -502,7 +507,7 @@ msgstr "Possibilitat de beca/finançament"
 msgid "Program type"
 msgstr "Tipus de programa"
 
-#: ../browser/views.py:319
+#: ../browser/views.py:321
 #: ../content/offer.py:125
 msgid "Project"
 msgstr "Projecte"
@@ -567,6 +572,10 @@ msgstr "Cerca"
 #: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr "Seleccionar si és necessari el rol de revisió"
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:36
+msgid "Select the market from which you want to export the data."
+msgstr "Seleccioneu el mercat del qual voleu exportar l'informació."
 
 #: ../browser/helpers_templates/import_ofertes.pt:23
 msgid "Select the market where you want to import the offers."
@@ -650,7 +659,7 @@ msgstr "Text a cercar"
 msgid "The current offer contains a confirmed application."
 msgstr "Aquesta oferta conté sol·licituds confirmades."
 
-#: ../browser/views.py:93
+#: ../browser/views.py:95
 msgid "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
 msgstr "L'oferta no es pot assignar. Hi ha d'haver almenys una sol·licitud confirmada i la resta cancel·lada, rebutjada o renunciada."
 
@@ -662,23 +671,23 @@ msgstr "L'oferta no es pot cancel·lar si conté sol·licituds actives."
 msgid "The offer can't be deleted."
 msgstr "L'oferta no es pot eliminar, té sol·licituds actives."
 
-#: ../browser/views.py:351
+#: ../browser/views.py:353
 msgid "The offer could not be copied."
 msgstr "L'oferta no s'ha pogut copiar."
 
-#: ../browser/views.py:437
+#: ../browser/views.py:439
 msgid "The offer could not be removed."
 msgstr "L'oferta no s'ha pogut eliminar."
 
-#: ../browser/views.py:348
+#: ../browser/views.py:350
 msgid "The offer has been copied."
 msgstr "L'oferta ha sigut copiada."
 
-#: ../browser/views.py:385
+#: ../browser/views.py:387
 msgid "The offer has been modified."
 msgstr "L'oferta a sigut modificada."
 
-#: ../browser/views.py:435
+#: ../browser/views.py:437
 msgid "The offer has been removed."
 msgstr "L'oferta a sigut eliminada."
 
@@ -781,7 +790,7 @@ msgstr "Usuari per conectar-se al bus"
 
 #: ../utils.py:291
 msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
-msgstr ""
+msgstr "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
 
 #: ../content/templates/market_view.pt:285
 msgid "View all offers"
@@ -849,6 +858,14 @@ msgstr "Confirma que vols reiniciar el contador d'ofertes. Has esborrat o arxiva
 msgid "degree"
 msgstr "Titulació"
 
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:47
+msgid "download_applications"
+msgstr "Exportar sol·licituds"
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:46
+msgid "download_offers"
+msgstr "Exportar ofertes"
+
 #: ../content/templates/market_view.pt:57
 msgid "edit"
 msgstr "Edita"
@@ -899,7 +916,7 @@ msgstr "nom.cognom"
 
 #: ../browser/viewlets_templates/personal_bar.pt:135
 msgid "obrir_link_finestra_nova"
-msgstr ""
+msgstr "Obrir enllaç en una finestra nova"
 
 #. Default: "offer"
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:35

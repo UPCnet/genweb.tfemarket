@@ -235,6 +235,11 @@ msgstr "Idiomas de elaboración del trabajo"
 msgid "Direction"
 msgstr "Dirección"
 
+#: ../browser/views_templates/tfemarket_utils.pt:64
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:21
+msgid "Download CSV"
+msgstr "Descargar CSV"
+
 #: ../controlpanel.py:81
 msgid "EN"
 msgstr "Inglés"
@@ -273,11 +278,11 @@ msgstr "Temática ambiental"
 msgid "Environmental theme"
 msgstr "Temática ambiental"
 
-#: ../browser/views.py:387
+#: ../browser/views.py:389
 msgid "Error the identifier exists."
 msgstr "Error el identificador ya existe."
 
-#: ../browser/views.py:105
+#: ../browser/views.py:107
 msgid "Error you can't perform the action."
 msgstr "No puedes realizar esta acción."
 
@@ -502,7 +507,7 @@ msgstr "Posibilidad de beca / subvención"
 msgid "Program type"
 msgstr "Tipo de programa"
 
-#: ../browser/views.py:319
+#: ../browser/views.py:321
 #: ../content/offer.py:125
 msgid "Project"
 msgstr "Proyecto"
@@ -567,6 +572,10 @@ msgstr "Busca el profesor"
 #: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr "Seleccionar si es necesario el rol de revisión"
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:36
+msgid "Select the market from which you want to export the data."
+msgstr "Seleccione el mercado del cual desea exportar la información."
 
 #: ../browser/helpers_templates/import_ofertes.pt:23
 msgid "Select the market where you want to import the offers."
@@ -650,7 +659,7 @@ msgstr "Texto a buscar"
 msgid "The current offer contains a confirmed application."
 msgstr "Esta oferta contiene una solicitud confirmada."
 
-#: ../browser/views.py:93
+#: ../browser/views.py:95
 msgid "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
 msgstr "La oferta no puede ser asignada. Debe haber al menos una solicitud confirmada y las otras canceladas, rechazadas o renunciadas."
 
@@ -662,23 +671,23 @@ msgstr "La oferta no se puede cancelar si contiene solicitudes activas."
 msgid "The offer can't be deleted."
 msgstr "La oferta no se puede eliminar, tiene solicitudes activas."
 
-#: ../browser/views.py:351
+#: ../browser/views.py:353
 msgid "The offer could not be copied."
 msgstr "No se ha podido copiar la oferta."
 
-#: ../browser/views.py:437
+#: ../browser/views.py:439
 msgid "The offer could not be removed."
 msgstr "No se ha podido eliminar la oferta."
 
-#: ../browser/views.py:348
+#: ../browser/views.py:350
 msgid "The offer has been copied."
 msgstr "La oferta se ha copiado."
 
-#: ../browser/views.py:385
+#: ../browser/views.py:387
 msgid "The offer has been modified."
 msgstr "La oferta a sido modificada."
 
-#: ../browser/views.py:435
+#: ../browser/views.py:437
 msgid "The offer has been removed."
 msgstr "La oferta a sido eliminada."
 
@@ -781,7 +790,7 @@ msgstr "Usuario para conectarse al bus"
 
 #: ../utils.py:291
 msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
-msgstr ""
+msgstr "VINCULACIÓN: No hemos encontrado tu vinculación como de ESTUDIANTE. Contacta con tu secretaría."
 
 #: ../content/templates/market_view.pt:285
 msgid "View all offers"
@@ -849,6 +858,14 @@ msgstr "¿Estás seguro de reiniciar el contador de ofertas?"
 msgid "degree"
 msgstr "Grado"
 
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:47
+msgid "download_applications"
+msgstr "Exportar solicitudes"
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:46
+msgid "download_offers"
+msgstr "Exportar ofertas"
+
 #: ../content/templates/market_view.pt:57
 msgid "edit"
 msgstr "Editar"
@@ -899,7 +916,7 @@ msgstr "nombre.apellido"
 
 #: ../browser/viewlets_templates/personal_bar.pt:135
 msgid "obrir_link_finestra_nova"
-msgstr ""
+msgstr "Abrir enlace en una pestaña nueva"
 
 #. Default: "offer"
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:35

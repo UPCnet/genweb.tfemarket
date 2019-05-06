@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-05-06 06:15+0000\n"
+"POT-Creation-Date: 2019-05-06 12:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -240,6 +240,11 @@ msgstr ""
 msgid "Direction"
 msgstr ""
 
+#: ../browser/views_templates/tfemarket_utils.pt:64
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:21
+msgid "Download CSV"
+msgstr ""
+
 #: ../controlpanel.py:81
 msgid "EN"
 msgstr ""
@@ -278,11 +283,11 @@ msgstr ""
 msgid "Environmental theme"
 msgstr ""
 
-#: ../browser/views.py:387
+#: ../browser/views.py:389
 msgid "Error the identifier exists."
 msgstr ""
 
-#: ../browser/views.py:105
+#: ../browser/views.py:107
 msgid "Error you can't perform the action."
 msgstr ""
 
@@ -507,7 +512,7 @@ msgstr ""
 msgid "Program type"
 msgstr ""
 
-#: ../browser/views.py:319
+#: ../browser/views.py:321
 #: ../content/offer.py:125
 msgid "Project"
 msgstr ""
@@ -571,6 +576,10 @@ msgstr ""
 
 #: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
+msgstr ""
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:36
+msgid "Select the market from which you want to export the data."
 msgstr ""
 
 #: ../browser/helpers_templates/import_ofertes.pt:23
@@ -655,7 +664,7 @@ msgstr ""
 msgid "The current offer contains a confirmed application."
 msgstr ""
 
-#: ../browser/views.py:93
+#: ../browser/views.py:95
 msgid "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
 msgstr ""
 
@@ -667,23 +676,23 @@ msgstr ""
 msgid "The offer can't be deleted."
 msgstr ""
 
-#: ../browser/views.py:351
+#: ../browser/views.py:353
 msgid "The offer could not be copied."
 msgstr ""
 
-#: ../browser/views.py:437
+#: ../browser/views.py:439
 msgid "The offer could not be removed."
 msgstr ""
 
-#: ../browser/views.py:348
+#: ../browser/views.py:350
 msgid "The offer has been copied."
 msgstr ""
 
-#: ../browser/views.py:385
+#: ../browser/views.py:387
 msgid "The offer has been modified."
 msgstr ""
 
-#: ../browser/views.py:435
+#: ../browser/views.py:437
 msgid "The offer has been removed."
 msgstr ""
 
@@ -851,6 +860,14 @@ msgstr ""
 
 #: ../content/offer.py:209
 msgid "degree"
+msgstr ""
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:47
+msgid "download_applications"
+msgstr ""
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:46
+msgid "download_offers"
 msgstr ""
 
 #: ../content/templates/market_view.pt:57

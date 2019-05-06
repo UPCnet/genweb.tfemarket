@@ -235,6 +235,11 @@ msgstr "Development languages"
 msgid "Direction"
 msgstr "Direction"
 
+#: ../browser/views_templates/tfemarket_utils.pt:64
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:21
+msgid "Download CSV"
+msgstr "Download CSV"
+
 #: ../controlpanel.py:81
 msgid "EN"
 msgstr "English"
@@ -273,11 +278,11 @@ msgstr "Environmental Theme"
 msgid "Environmental theme"
 msgstr "Environmental Theme"
 
-#: ../browser/views.py:387
+#: ../browser/views.py:389
 msgid "Error the identifier exists."
 msgstr "Error the identifier exists."
 
-#: ../browser/views.py:105
+#: ../browser/views.py:107
 msgid "Error you can't perform the action."
 msgstr "You can't perform the action."
 
@@ -502,7 +507,7 @@ msgstr "Possibility of scholarship / financing"
 msgid "Program type"
 msgstr "Program type"
 
-#: ../browser/views.py:319
+#: ../browser/views.py:321
 #: ../content/offer.py:125
 msgid "Project"
 msgstr "Project"
@@ -567,6 +572,10 @@ msgstr "Search teacher"
 #: ../controlpanel.py:134
 msgid "Select if you want to add \"Reviewer\" role"
 msgstr "Select if you want to add \"Reviewer\" role"
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:36
+msgid "Select the market from which you want to export the data."
+msgstr "Select the market from which you want to export the data."
 
 #: ../browser/helpers_templates/import_ofertes.pt:23
 msgid "Select the market where you want to import the offers."
@@ -650,7 +659,7 @@ msgstr "Text to search"
 msgid "The current offer contains a confirmed application."
 msgstr "The current offer contains a confirmed application."
 
-#: ../browser/views.py:93
+#: ../browser/views.py:95
 msgid "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
 msgstr "The offer can't be assign. There must be at least one confirmed application and the others cancelled, rejected or renounced"
 
@@ -662,23 +671,23 @@ msgstr "The offer can't be canceled if it contains active applications."
 msgid "The offer can't be deleted."
 msgstr "The offer can't be deleted."
 
-#: ../browser/views.py:351
+#: ../browser/views.py:353
 msgid "The offer could not be copied."
 msgstr "The offer could not be copied."
 
-#: ../browser/views.py:437
+#: ../browser/views.py:439
 msgid "The offer could not be removed."
 msgstr "The offer could not be removed."
 
-#: ../browser/views.py:348
+#: ../browser/views.py:350
 msgid "The offer has been copied."
 msgstr "The offer has been copied."
 
-#: ../browser/views.py:385
+#: ../browser/views.py:387
 msgid "The offer has been modified."
 msgstr "The offer has been modified."
 
-#: ../browser/views.py:435
+#: ../browser/views.py:437
 msgid "The offer has been removed."
 msgstr "The offer has been removed."
 
@@ -849,6 +858,14 @@ msgstr "Are you sure you want to reset the offers counter?"
 msgid "degree"
 msgstr "Degree"
 
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:47
+msgid "download_applications"
+msgstr "Export applications"
+
+#: ../browser/views_templates/tfemarket_utils_download_csv.pt:46
+msgid "download_offers"
+msgstr "Export offers"
+
 #: ../content/templates/market_view.pt:57
 msgid "edit"
 msgstr "edit"
@@ -899,7 +916,7 @@ msgstr "name.surname"
 
 #: ../browser/viewlets_templates/personal_bar.pt:135
 msgid "obrir_link_finestra_nova"
-msgstr ""
+msgstr "Open link in new window"
 
 #. Default: "offer"
 #: ../browser/views_templates/tfemarket_utils_copy_offer.pt:35

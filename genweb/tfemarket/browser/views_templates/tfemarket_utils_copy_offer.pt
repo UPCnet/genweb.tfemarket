@@ -33,7 +33,7 @@
           <div>
             <form id="formTFE" action="@@tfemarket-utils-copy-offer" method="post">
               <label i18n:translate="">offer</label>
-              <select id="offer" name="offer" style="width: 100" required="required"">
+              <select id="offer" name="offer" style="width: 100" required="required">
                 <option selected value i18n:translate=""></option>
                 <option tal:repeat="offer view/getOffers"
                         tal:attributes="value offer/UID"
