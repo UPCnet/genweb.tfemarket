@@ -185,13 +185,25 @@
                                             </tal:block>
                                         </select>
                                     </div>
-                                    <div class="span6">
+                                    <div class="span3">
                                         <label i18n:translate="">Departament</label>
                                         <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
                                             <option value="a" i18n:translate="">MAll</option>
                                             <tal:block tal:repeat="departament view/getDepartaments">
                                                 <tal:block tal:define="selected python: save.has_key('departament') and not save['departament'] == 'a' and departament == save['departament']">
                                                     <option tal:attributes="value departament; selected python: True if selected else False" tal:content="departament">Departament</option>
+                                                </tal:block>
+                                            </tal:block>
+                                        </select>
+                                    </div>
+                                    <div class="span3">
+                                        <label i18n:translate="">Type</label>
+                                        <select id="searchType" name="type" tal:attributes="value save/type|nothing">
+                                            <tal:block tal:repeat="type view/getTypes">
+                                                <tal:block tal:define="selected python: save.has_key('type') and type['id'] == save['type']">
+                                                    <option tal:attributes="value type/id; selected python: True if selected else False" tal:content="type/lit">
+                                                        Type
+                                                    </option>
                                                 </tal:block>
                                             </tal:block>
                                         </select>
@@ -464,9 +476,9 @@
                                                             <span class="field"><span i18n:translate="">Topic</span>: </span>
                                                             <span tal:content="offer/topic">Topic</span>
                                                         </p>
-                                                        <p class="topic" tal:condition="offer/offer_type">
+                                                        <p class="type" tal:condition="offer/offer_type">
                                                             <span class="field"><span i18n:translate="">Type</span>: </span>
-                                                            <span tal:content="offer/offer_type">Type</span>
+                                                            <span i18n:translate="" tal:content="offer/offer_type">Type</span>
                                                         </p>
                                                         <p class="numStudents">
                                                             <span class="field"><span i18n:translate="">Number of students</span>: </span>

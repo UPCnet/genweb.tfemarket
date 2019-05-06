@@ -124,6 +124,9 @@ class View(grok.View):
                 if 'departament' in self.request.form and self.request.form['departament'] != 'a':
                     filters.update({'TFEdept': self.request.form['departament']})
 
+                if 'type' in self.request.form and self.request.form['type'] != 'a':
+                    filters.update({'TFEoffer_type': self.request.form['type']})
+
                 if 'company' in self.request.form and self.request.form['company'] != 'a':
                     filters.update({'TFEcompany': self.request.form['company']})
 
@@ -221,7 +224,7 @@ class View(grok.View):
                                             confidential=offer.confidential,
                                             scope_cooperation=offer.scope_cooperation,
                                             topic=offer.topic,
-                                            offer_type=offer.type_offer if 'offer_type' in offer else None,
+                                            offer_type=offer.offer_type,
                                             if_propietary=isTeachersOffer(offer),
                                             assign_offer=self.assignOffer(offer, offerState.id),
                                             is_expired=offer.isExpired()
@@ -316,6 +319,13 @@ class View(grok.View):
         return [{'id': 'a', 'lit': _(u"All")},
                 {'id': 'w', 'lit': _(u"Last week")},
                 {'id': 'm', 'lit': _(u"Last month")}]
+
+    def getTypes(self):
+        return [{'id': 'a', 'lit': _(u"MAll")},
+                {'id': 'Study', 'lit': _(u"Study")},
+                {'id': 'Project', 'lit': _(u"Project")},
+                {'id': 'Design', 'lit': _(u"Design")},
+                {'id': 'Others', 'lit': _(u"Others")}]
 
     def getDegrees(self):
         return getDegrees()
