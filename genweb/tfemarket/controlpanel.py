@@ -106,7 +106,7 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Ofertes',
         _(u'Ofertes'),
-        fields=['life_period', 'import_offers', 'count_offers']
+        fields=['life_period', 'view_num_students', 'import_offers', 'count_offers']
     )
 
     model.fieldset(
@@ -182,6 +182,13 @@ class ITfemarketSettings(model.Schema):
         description=_('Months until the offer expires automatically'),
         required=True,
         default=12,
+    )
+
+    view_num_students = schema.Bool(
+        title=_(u'View number of students'),
+        description=_('Uncheck this option if you do not want to see the number of students in an offer'),
+        required=False,
+        default=True,
     )
 
     directives.mode(import_offers="display")

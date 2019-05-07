@@ -484,3 +484,8 @@ class View(grok.View):
                 return False
             return True
         return False
+
+    def showNumEstudiants(self):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        return tfe_tool.view_num_students

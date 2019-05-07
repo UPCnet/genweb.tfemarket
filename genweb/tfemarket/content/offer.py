@@ -8,6 +8,7 @@ from plone.directives import dexterity
 from plone.directives import form
 from plone.indexer import indexer
 from plone.registry.interfaces import IRegistry
+from z3c.form import field
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import queryUtility
@@ -421,6 +422,13 @@ class View(dexterity.DisplayForm):
 
 class Add(dexterity.AddForm):
     grok.name('offer')
+
+    def updateFields(self):
+        super(Add, self).updateFields()
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        if not tfe_tool.view_num_students:
+            self.fields = self.fields.omit('num_students')
 
     def updateWidgets(self):
         try:

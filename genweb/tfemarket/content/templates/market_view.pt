@@ -480,7 +480,7 @@
                                                             <span class="field"><span i18n:translate="">Type</span>: </span>
                                                             <span i18n:translate="" tal:content="offer/offer_type">Type</span>
                                                         </p>
-                                                        <p class="numStudents">
+                                                        <p class="numStudents" tal:condition="view/showNumEstudiants">
                                                             <span class="field"><span i18n:translate="">Number of students</span>: </span>
                                                             <span tal:content="offer/num_students">1</span>
                                                         </p>

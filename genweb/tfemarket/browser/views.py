@@ -533,13 +533,25 @@ class tfemarketUtilsExportCSV(grok.View):
                                    'UID': self.request.form['UID']})[0]
 
         if 'submit_offers' in self.request.form:
-            data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'Degrees', 'Keys',
-                           'Teacher ID', 'Teacher fullname', 'Teacher email', 'University department',
-                           'Codirector', 'Number of students', 'Workload', 'Targets', 'Features',
-                           'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
-                           'Company contact', 'Company email', 'Possibility of scholarship',
-                           'Confidential', 'Environmental theme', 'Scope of cooperation',
-                           'Publication date', 'Expiration date', 'Expired', 'State']
+            registry = queryUtility(IRegistry)
+            tfe_tool = registry.forInterface(ITfemarketSettings)
+
+            if tfe_tool.view_num_students:
+                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'Degrees', 'Keys',
+                               'Teacher ID', 'Teacher fullname', 'Teacher email', 'University department',
+                               'Codirector', 'Number of students', 'Workload', 'Targets', 'Features',
+                               'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
+                               'Company contact', 'Company email', 'Possibility of scholarship',
+                               'Confidential', 'Environmental theme', 'Scope of cooperation',
+                               'Publication date', 'Expiration date', 'Expired', 'State']
+            else:  # Omit Num Students
+                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'Degrees', 'Keys',
+                               'Teacher ID', 'Teacher fullname', 'Teacher email', 'University department',
+                               'Codirector', 'Workload', 'Targets', 'Features',
+                               'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
+                               'Company contact', 'Company email', 'Possibility of scholarship',
+                               'Confidential', 'Environmental theme', 'Scope of cooperation',
+                               'Publication date', 'Expiration date', 'Expired', 'State']
 
             writer.writerow(data_header)
 
@@ -553,38 +565,71 @@ class tfemarketUtilsExportCSV(grok.View):
                 offerStatus = wf_tool.getStatusOf(offerWorkflow.id, offer)
                 offerState = offerWorkflow['states'][offerStatus['review_state']]
 
-                writer.writerow([
-                    offer.offer_id.encode('utf-8'),
-                    offer.title.encode('utf-8'),
-                    offer.description.encode('utf-8'),
-                    offer.topic.encode('utf-8') if offer.topic else "",
-                    offer.offer_type.encode('utf-8') if offer.offer_type else "",
-                    '\n'.join(offer.degree) if offer.degree else "",
-                    '\n'.join(offer.keys) if offer.keys else "",
-                    offer.teacher_manager.encode('utf-8'),
-                    offer.teacher_fullname.encode('utf-8'),
-                    offer.teacher_email.encode('utf-8'),
-                    offer.dept.encode('utf-8'),
-                    offer.codirector.encode('utf-8') if offer.codirector else "",
-                    offer.num_students or "",
-                    offer.workload.encode('utf-8') if offer.workload else "",
-                    offer.targets.encode('utf-8') if offer.targets else "",
-                    offer.features.encode('utf-8') if offer.features else "",
-                    offer.requirements.encode('utf-8') if offer.requirements else "",
-                    '\n'.join(offer.lang) if offer.lang else "",
-                    offer.modality.encode('utf-8'),
-                    offer.co_manager.encode('utf-8') if offer.co_manager else "",
-                    offer.company.encode('utf-8') if offer.company else "",
-                    offer.company_contact.encode('utf-8') if offer.company_contact else "",
-                    offer.company_email.encode('utf-8') if offer.company_email else "",
-                    'Yes' if offer.grant else 'No',
-                    'Yes' if offer.confidential else 'No',
-                    'Yes' if offer.environmental_theme else 'No',
-                    'Yes' if offer.scope_cooperation else 'No',
-                    offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
-                    offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
-                    'Yes' if offer.isExpired() else 'No',
-                    offerState.title.encode('utf-8')])
+                if tfe_tool.view_num_students:
+                    writer.writerow([
+                        offer.offer_id.encode('utf-8'),
+                        offer.title.encode('utf-8'),
+                        offer.description.encode('utf-8'),
+                        offer.topic.encode('utf-8') if offer.topic else "",
+                        offer.offer_type.encode('utf-8') if offer.offer_type else "",
+                        '\n'.join(offer.degree) if offer.degree else "",
+                        '\n'.join(offer.keys) if offer.keys else "",
+                        offer.teacher_manager.encode('utf-8'),
+                        offer.teacher_fullname.encode('utf-8'),
+                        offer.teacher_email.encode('utf-8'),
+                        offer.dept.encode('utf-8'),
+                        offer.codirector.encode('utf-8') if offer.codirector else "",
+                        offer.num_students or "",
+                        offer.workload.encode('utf-8') if offer.workload else "",
+                        offer.targets.encode('utf-8') if offer.targets else "",
+                        offer.features.encode('utf-8') if offer.features else "",
+                        offer.requirements.encode('utf-8') if offer.requirements else "",
+                        '\n'.join(offer.lang) if offer.lang else "",
+                        offer.modality.encode('utf-8'),
+                        offer.co_manager.encode('utf-8') if offer.co_manager else "",
+                        offer.company.encode('utf-8') if offer.company else "",
+                        offer.company_contact.encode('utf-8') if offer.company_contact else "",
+                        offer.company_email.encode('utf-8') if offer.company_email else "",
+                        'Yes' if offer.grant else 'No',
+                        'Yes' if offer.confidential else 'No',
+                        'Yes' if offer.environmental_theme else 'No',
+                        'Yes' if offer.scope_cooperation else 'No',
+                        offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
+                        offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
+                        'Yes' if offer.isExpired() else 'No',
+                        offerState.title.encode('utf-8')])
+                else:  # Omit Num Students
+                    writer.writerow([
+                        offer.offer_id.encode('utf-8'),
+                        offer.title.encode('utf-8'),
+                        offer.description.encode('utf-8'),
+                        offer.topic.encode('utf-8') if offer.topic else "",
+                        offer.offer_type.encode('utf-8') if offer.offer_type else "",
+                        '\n'.join(offer.degree) if offer.degree else "",
+                        '\n'.join(offer.keys) if offer.keys else "",
+                        offer.teacher_manager.encode('utf-8'),
+                        offer.teacher_fullname.encode('utf-8'),
+                        offer.teacher_email.encode('utf-8'),
+                        offer.dept.encode('utf-8'),
+                        offer.codirector.encode('utf-8') if offer.codirector else "",
+                        offer.workload.encode('utf-8') if offer.workload else "",
+                        offer.targets.encode('utf-8') if offer.targets else "",
+                        offer.features.encode('utf-8') if offer.features else "",
+                        offer.requirements.encode('utf-8') if offer.requirements else "",
+                        '\n'.join(offer.lang) if offer.lang else "",
+                        offer.modality.encode('utf-8'),
+                        offer.co_manager.encode('utf-8') if offer.co_manager else "",
+                        offer.company.encode('utf-8') if offer.company else "",
+                        offer.company_contact.encode('utf-8') if offer.company_contact else "",
+                        offer.company_email.encode('utf-8') if offer.company_email else "",
+                        'Yes' if offer.grant else 'No',
+                        'Yes' if offer.confidential else 'No',
+                        'Yes' if offer.environmental_theme else 'No',
+                        'Yes' if offer.scope_cooperation else 'No',
+                        offer.effective_date.strftime('%d/%m/%Y') if offer.effective_date else "",
+                        offer.expiration_date.strftime('%d/%m/%Y') if offer.expiration_date else "",
+                        'Yes' if offer.isExpired() else 'No',
+                        offerState.title.encode('utf-8')])
 
             filename = market.id + "-offers.csv"
         else:
