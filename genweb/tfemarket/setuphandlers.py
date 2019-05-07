@@ -10,6 +10,7 @@ import logging
 
 PROFILE_ID = 'profile-genweb.tfemarket:default'
 INDEXES = (('TFEoffer_type', 'FieldIndex'),
+           ('TFEtfgm', 'KeywordIndex'),
            ('TFEdegree', 'KeywordIndex'),
            ('TFEteacher_manager', 'FieldIndex'),
            ('TFEdept', 'FieldIndex'),

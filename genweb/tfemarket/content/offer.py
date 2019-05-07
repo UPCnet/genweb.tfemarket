@@ -132,6 +132,19 @@ class OfferTypesVocabulary(object):
 grok.global_utility(OfferTypesVocabulary, name=u"genweb.tfemarket.OfferTypes")
 
 
+class TFGMVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'TFG', 'TFG', u'TFG'))
+        types.append(SimpleVocabulary.createTerm(u'TFM', 'TFM', u'TFM'))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(TFGMVocabulary, name=u"genweb.tfemarket.TFGM")
+
+
 class DegreesVocabulary(object):
     grok.implements(IVocabularyFactory)
 
@@ -202,6 +215,13 @@ class IOffer(form.Schema):
         vocabulary=u"genweb.tfemarket.OfferTypes",
         default=_(u'Project'),
         required=False
+    )
+
+    form.widget(tfgm=CheckBoxFieldWidget)
+    tfgm = schema.List(
+        value_type=schema.Choice(source=u"genweb.tfemarket.TFGM"),
+        title=_(u'tfgm'),
+        required=True,
     )
 
     form.widget(degree=CheckBoxFieldWidget)
@@ -443,6 +463,14 @@ def offer_type(context):
 
 
 grok.global_adapter(offer_type, name='TFEoffer_type')
+
+
+@indexer(IOffer)
+def tfgm(context):
+    return context.tfgm
+
+
+grok.global_adapter(tfgm, name='TFEtfgm')
 
 
 @indexer(IOffer)

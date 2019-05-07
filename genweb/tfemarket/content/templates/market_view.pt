@@ -163,15 +163,27 @@
                                     <label i18n:translate="">Text to search</label>
                                     <input type="text" id="searchTitle" name="title" tal:attributes="value save/title|nothing" />
                                 </div>
-                                <div>
-                                    <label i18n:translate="">Degree</label>
-                                    <select id="searchDegree" name="degree">
-                                        <tal:block tal:condition="view/getDegrees" tal:repeat="degree view/getDegrees">
-                                            <tal:block tal:define="selected python: save.has_key('degree') and not save['degree'] == 'a' and degree['id'] == save['degree']">
-                                                <option tal:attributes="value degree/id; selected python: True if selected else False" tal:content="degree/lit">Degree</option>
+                                <div class="row-fluid">
+                                    <div class="span9">
+                                        <label i18n:translate="">Degree</label>
+                                        <select id="searchDegree" name="degree">
+                                            <tal:block tal:condition="view/getDegrees" tal:repeat="degree view/getDegrees">
+                                                <tal:block tal:define="selected python: save.has_key('degree') and not save['degree'] == 'a' and degree['id'] == save['degree']">
+                                                    <option tal:attributes="value degree/id; selected python: True if selected else False" tal:content="degree/lit">Degree</option>
+                                                </tal:block>
                                             </tal:block>
-                                        </tal:block>
-                                    </select>
+                                        </select>
+                                    </div>
+                                    <div class="span3">
+                                        <label>TFG/TGM</label>
+                                        <select id="searchDegree" name="tfgm">
+                                            <tal:block tal:condition="view/getTFGM" tal:repeat="tfgm view/getTFGM">
+                                                <tal:block tal:define="selected python: save.has_key('tfgm') and not save['tfgm'] == 'a' and tfgm['id'] == save['tfgm']">
+                                                    <option tal:attributes="value tfgm/id; selected python: True if selected else False" tal:content="tfgm/lit">TFGM</option>
+                                                </tal:block>
+                                            </tal:block>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row-fluid">
                                     <div class="span6">
@@ -236,7 +248,7 @@
                                     <div class="span3">
                                         <label i18n:translate="">State</label>
                                         <select id="searchState" name="state">
-                                            <option value="a" i18n:translate="">All</option>
+                                            <option value="a" i18n:translate="">MAll</option>
                                             <tal:block tal:repeat="state view/getStates">
                                                 <tal:block tal:define="selected python: save.has_key('state') and state['id'] == save['state']">
                                                     <option tal:attributes="value state/id; selected python: True if selected else False" tal:content="state/lit">
@@ -312,33 +324,34 @@
                             <tal:offers repeat="offer offers">
                                 <li class="unstyled offer" tal:define="applications python:view.getApplications(offer)">
                                     <div class="puntTitle row-fluid">
-                                        <div class="span8">
-                                            <div class="fletxaSpan">
-                                                <button type="button" class="expand"
-                                                    data-original-title="Expand"
-                                                    tal:attributes="id offer/offer_id">
-                                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                                </button>
-                                                <button type="button" class="notexpand"
-                                                    data-original-title="Collapse">
-                                                <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                            <div class="titleSpan">
-                                                <h3>
-                                                    <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
-                                                    <span tal:condition="offer/is_expired" i18n:translate="">expired</span>
-                                                </h3>
-                                            </div>
+                                        <div class="fletxa span1">
+                                            <button type="button" class="expand"
+                                                data-original-title="Expand"
+                                                tal:attributes="id offer/offer_id">
+                                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                            </button>
+                                            <button type="button" class="notexpand"
+                                                data-original-title="Collapse">
+                                            <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                                            </button>
                                         </div>
-                                        <div class="dates span2">
-                                            <p class="effectiveDate" tal:condition="offer/effective_date">
-                                                <span class="field"><span i18n:translate="">Publication date</span>: </span>
-                                                <span tal:content="offer/effective_date">2018/01/29</span>
+                                        <div class="title span5">
+                                            <h3>
+                                                <tal:omit-tag tal:content="offer/title">Item Title</tal:omit-tag>
+                                                <span tal:condition="offer/is_expired" i18n:translate="">expired</span>
+                                            </h3>
+                                        </div>
+                                        <div class="type span1">
+                                            <p class="field" tal:repeat="tfgm offer/tfgm" tal:content="tfgm">TFG</p>
+                                        </div>
+                                        <div class="top span3">
+                                            <p class="teacher">
+                                                <span class="field"><span i18n:translate="">Teacher manager</span>: </span>
+                                                <span tal:content="offer/teacher_fullname">Aureli Condogvia</span>
                                             </p>
-                                            <p class="expirationDate" tal:condition="offer/expiration_date">
-                                                <span class="field"><span i18n:translate="">Expiration date</span>: </span>
-                                                <span tal:content="offer/expiration_date">2018/04/29</span>
+                                            <p class="codirector" tal:condition="offer/codirector">
+                                                <span class="field"><span i18n:translate="">Codirector</span>: </span>
+                                                <span tal:content="offer/codirector">Codirector</span>
                                             </p>
                                         </div>
                                         <div class="rightInfoOffer actions span2">
@@ -552,6 +565,16 @@
                                                             <span tal:condition="not: offer/scope_cooperation" i18n:translate="">No</span>
                                                         </p>
                                                     </div>
+                                                    <div class="leftInfoOffer">
+                                                        <p class="effectiveDate" tal:condition="offer/effective_date">
+                                                            <span class="field"><span i18n:translate="">Publication date</span>: </span>
+                                                            <span tal:content="offer/effective_date">expirationDate</span>
+                                                        </p>
+                                                        <p class="expirationDate" tal:condition="offer/expiration_date">
+                                                            <span class="field"><span i18n:translate="">Expiration date</span>: </span>
+                                                            <span tal:content="offer/expiration_date">2018/04/29</span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                                 <div class="buttonsOfferInfo">
                                                     <span class="offerMoreInfo">
@@ -693,14 +716,14 @@
 
                     $('.expand').click(function() {
                         $(this).hide();
-                        $(this).parent().parent().find('.notexpand').show();
-                        $(this).parent().parent().parent().parent().find('.offerData').slideDown();
+                        $(this).parent().find('.notexpand').show();
+                        $(this).parent().parent().parent().find('.offerData').slideDown();
                     });
 
                     $('.notexpand').click(function() {
                         $(this).hide();
-                        $(this).parent().parent().find('.expand').show();
-                        $(this).parent().parent().parent().parent().find('.offerData').slideUp();
+                        $(this).parent().find('.expand').show();
+                        $(this).parent().parent().parent().find('.offerData').slideUp();
                     });
 
                     $("#buttonsSearch").click(function() {
@@ -716,10 +739,10 @@
                     });
 
                     $("#expandAll").click(function() {
-                        $(".expand").parent().parent().parent().parent().slideDown();
+                        $(".expand").parent().parent().parent().slideDown();
                         $(".expand").hide();
                         $(".notexpand").show();
-                        $(".expand").parent().parent().parent().parent().find('.offerData').slideDown();
+                        $(".expand").parent().parent().parent().find('.offerData').slideDown();
                         $("#expandAll").hide();
                         $("#collapseAll").show();
                     });
@@ -728,7 +751,7 @@
                         $(".notexpand").slideUp();
                         $(".notexpand").hide();
                         $(".expand").show();
-                        $(".expand").parent().parent().parent().parent().find('.offerData').slideUp();
+                        $(".expand").parent().parent().parent().find('.offerData').slideUp();
                         $("#expandAll").show();
                         $("#collapseAll").hide();
                     });

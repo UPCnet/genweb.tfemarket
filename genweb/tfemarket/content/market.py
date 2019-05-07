@@ -63,28 +63,27 @@ class View(grok.View):
 
     def filterResultsForDate(self, results):
         filters = self.request.form
-        if 'date' in filters:
-            delete = []
-            for index, item in enumerate(results, start=0):
 
-                # Filter date
-                if filters['date'] != 'a':
-                    if 'effective_date' in item and item['effective_date']:
-                        today = date.today()
-                        effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
-                        diff_days = today - effective_date
-                        diff_days = diff_days.days
-                        if filters['date'] == 'w' and diff_days > 7 \
-                           or filters['date'] == 'm' and diff_days > 30:
-                            delete.append(index)
-                            continue
-                    else:
-                        delete.append(index)
-                        continue
+        delete = []
+        for index, item in enumerate(results, start=0):
 
-            delete.reverse()
-            for item in delete:
-                results.pop(item)
+            # Filter date
+            if 'effective_date' in item and item['effective_date']:
+                today = date.today()
+                effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
+                diff_days = today - effective_date
+                diff_days = diff_days.days
+                if filters['date'] == 'w' and diff_days > 7 \
+                   or filters['date'] == 'm' and diff_days > 30:
+                    delete.append(index)
+                    continue
+            else:
+                delete.append(index)
+                continue
+
+        delete.reverse()
+        for item in delete:
+            results.pop(item)
 
         return results
 
@@ -114,6 +113,9 @@ class View(grok.View):
             if 'search' in self.request.form:
                 if 'title' in self.request.form and self.request.form['title'] != 'a':
                     filters.update({'Title': self.request.form['title']})
+
+                if 'tfgm' in self.request.form and self.request.form['tfgm'] != 'a':
+                    filters.update({'TFEtfgm': self.request.form['tfgm']})
 
                 if 'degree' in self.request.form and self.request.form['degree'] != 'a':
                     filters.update({'TFEdegree': self.request.form['degree']})
@@ -204,6 +206,7 @@ class View(grok.View):
                                             multiple_langs=len(offer.lang) > 1,
                                             environmental_theme=offer.environmental_theme,
                                             grant=offer.grant,
+                                            tfgm=offer.tfgm,
                                             degrees=offer.degree,
                                             multiple_degrees=len(offer.degree) > 1,
                                             keywords=offer.keys,
@@ -231,7 +234,8 @@ class View(grok.View):
                                             ))
 
             if 'search' in self.request.form or 'searchFilters' in self.request.form:
-                results = self.filterResultsForDate(results)
+                if 'date' in self.request.form and self.request.form['date'] != 'a':
+                    results = self.filterResultsForDate(results)
                 self.request.response.setCookie('MERCAT_TFE', self.clearFiltersCookie(), path='/')
 
             if 'searchOffer' in self.request.form and 'offer' in self.request.form:
@@ -326,6 +330,11 @@ class View(grok.View):
                 {'id': 'Project', 'lit': _(u"Project")},
                 {'id': 'Design', 'lit': _(u"Design")},
                 {'id': 'Others', 'lit': _(u"Others")}]
+
+    def getTFGM(self):
+        return [{'id': 'a', 'lit': _(u"MAll")},
+                {'id': 'TFG', 'lit': u"TFG"},
+                {'id': 'TFM', 'lit': u"TFM"}]
 
     def getDegrees(self):
         return getDegrees()

@@ -341,6 +341,7 @@ class tfemarketUtilsCopyOffer(grok.View):
                         'confidential': offer.confidential,
                         'environmental_theme': offer.environmental_theme,
                         'scope_cooperation': offer.scope_cooperation,
+                        'tfgm': offer.tfgm,
                     }
                     copyOffer = createContentInContainer(market, "genweb.tfemarket.offer", **data)
                     copyOffer.setEffectiveDate(offer.effective_date)
@@ -537,7 +538,7 @@ class tfemarketUtilsExportCSV(grok.View):
             tfe_tool = registry.forInterface(ITfemarketSettings)
 
             if tfe_tool.view_num_students:
-                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'Degrees', 'Keys',
+                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'TFG/TFM', 'Degrees', 'Keys',
                                'Teacher ID', 'Teacher fullname', 'Teacher email', 'University department',
                                'Codirector', 'Number of students', 'Workload', 'Targets', 'Features',
                                'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
@@ -545,7 +546,7 @@ class tfemarketUtilsExportCSV(grok.View):
                                'Confidential', 'Environmental theme', 'Scope of cooperation',
                                'Publication date', 'Expiration date', 'Expired', 'State']
             else:  # Omit Num Students
-                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'Degrees', 'Keys',
+                data_header = ['Offer ID', 'Title', 'Description', 'Topic', 'Type', 'TFG/TFM', 'Degrees', 'Keys',
                                'Teacher ID', 'Teacher fullname', 'Teacher email', 'University department',
                                'Codirector', 'Workload', 'Targets', 'Features',
                                'Requirements', 'Languages', 'Modality', 'CoManager', 'Company',
@@ -572,6 +573,7 @@ class tfemarketUtilsExportCSV(grok.View):
                         offer.description.encode('utf-8'),
                         offer.topic.encode('utf-8') if offer.topic else "",
                         offer.offer_type.encode('utf-8') if offer.offer_type else "",
+                        '\n'.join(offer.tfgm) if offer.tfgm else "",
                         '\n'.join(offer.degree) if offer.degree else "",
                         '\n'.join(offer.keys) if offer.keys else "",
                         offer.teacher_manager.encode('utf-8'),
@@ -605,6 +607,7 @@ class tfemarketUtilsExportCSV(grok.View):
                         offer.description.encode('utf-8'),
                         offer.topic.encode('utf-8') if offer.topic else "",
                         offer.offer_type.encode('utf-8') if offer.offer_type else "",
+                        '\n'.join(offer.tfgm) if offer.tfgm else "",
                         '\n'.join(offer.degree) if offer.degree else "",
                         '\n'.join(offer.keys) if offer.keys else "",
                         offer.teacher_manager.encode('utf-8'),
@@ -687,3 +690,41 @@ def getAllOffers(self):
                     'Title': offer.Title,
                     'offer_id': offer.getObject().offer_id})
     return res
+
+
+class fillEmptyTFGMOffers(grok.View):
+    grok.context(Interface)
+    grok.name('fillEmptyTFGMOffers')
+    grok.require('zope2.View')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def getDegreesProgramType(self):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+
+        result = {}
+        if tfe_tool.titulacions_table:
+            for item in tfe_tool.titulacions_table:
+                result.update({item['codi_mec']: item['progam_type']})
+
+        return result
+
+    def render(self):
+        degrees = self.getDegreesProgramType()
+
+        pc = api.portal.get_tool('portal_catalog')
+        offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer'})
+        for data in offers:
+            offer = data.getObject()
+            if not offer.tfgm:
+                tfgm = []
+                for degree in offer.degree:
+                    if degree in degrees:
+                        if degrees[degree] == 'MA' and 'TFM' not in tfgm:
+                            tfgm.append('TFM')
+                        elif degrees[degree] == 'GR' and 'TFG' not in tfgm:
+                            tfgm.append('TFG')
+            offer.tfgm = tfgm
+            offer.reindexObject()
+
+        return 'Finished'
