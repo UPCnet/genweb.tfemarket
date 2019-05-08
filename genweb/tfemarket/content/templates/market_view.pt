@@ -38,9 +38,16 @@
                                         tal:attributes="href python:'?searchOffer&offer=' + app['offer_id']">Identifier Offer TFE</a></td>
                                     <td class="actions">
                                         <span class="workflowsAction">
-                                            <span class="workflow notclick label" tal:content="app/state" tal:condition="not: app/workflows">State</span>
+                                            <span class="workflow notclick label" tal:content="app/state"
+                                                  i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                  tal:condition="not: app/workflows">
+                                                State
+                                            </span>
                                             <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
-                                            <span tal:content="app/state">State</span>
+                                            <span i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                  tal:content="app/state">
+                                                State
+                                            </span>
                                             <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
@@ -48,7 +55,10 @@
                                                 <tal:block repeat="estat app/workflows">
                                                     <li>
                                                         <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${app/item_path}&${view/filtersString}">
-                                                        <span tal:content="estat/title">Estat</span>
+                                                            <span i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                                  tal:content="estat/title">
+                                                                Estat
+                                                        </span>
                                                         </a>
                                                     </li>
                                                 </tal:block>
@@ -251,7 +261,7 @@
                                             <option value="a" i18n:translate="">MAll</option>
                                             <tal:block tal:repeat="state view/getStates">
                                                 <tal:block tal:define="selected python: save.has_key('state') and state['id'] == save['state']">
-                                                    <option tal:attributes="value state/id; selected python: True if selected else False" tal:content="state/lit">
+                                                    <option tal:attributes="value state/id; selected python: True if selected else False" tal:content="state/lit" i18n:domain="genweb.tfemarket.workflow" i18n:translate="">
                                                         State
                                                     </option>
                                                 </tal:block>
@@ -357,16 +367,26 @@
                                         <div class="rightInfoOffer actions span2">
                                             <span class="workflowsAction">
                                                 <button class="label dropdown-toggle bullet-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="offer/workflows">
-                                                    <span tal:content="offer/state">State</span>
+                                                    <span i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                          tal:content="offer/state">
+                                                          State
+                                                      </span>
                                                     <span class="caret"></span>
                                                 </button>
-                                                <span class="workflow notclick label" tal:content="offer/state" tal:condition="not: offer/workflows">State</span>
+                                                <span class="workflow notclick label" tal:content="offer/state"
+                                                      i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                      tal:condition="not: offer/workflows">
+                                                  State
+                                              </span>
                                                 <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
                                                     tal:condition="offer/workflows">
                                                     <tal:block repeat="estat offer/workflows">
                                                         <li>
                                                             <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${offer/item_path}&offer=${offer/offer_id}${view/getActualView}">
-                                                                <span tal:content="estat/title">Estat</span>
+                                                                <span i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                                      tal:content="estat/title">
+                                                                    Estat
+                                                                </span>
                                                             </a>
                                                         </li>
                                                     </tal:block>
@@ -615,17 +635,26 @@
                                                                     <span class="workflowsAction">
                                                                         <button tal:attributes="class string:${app/style} label dropdown-toggle bullet-toggle"
                                                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tal:condition="app/workflows">
-                                                                            <span tal:content="app/state">State</span>
+                                                                            <span i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                                                  tal:content="app/state">
+                                                                                State
+                                                                            </span>
                                                                             <span class="caret"></span>
                                                                         </button>
                                                                         <span tal:attributes="class string:${app/style} workflow notclick label"
-                                                                            tal:content="app/state" tal:condition="not: app/workflows">State</span>
+                                                                            tal:content="app/state" tal:condition="not: app/workflows"
+                                                                            i18n:domain="genweb.tfemarket.workflow" i18n:translate="">
+                                                                            State
+                                                                        </span>
                                                                         <ul class="dropdown-menu estatsToggle" role="menu" aria-labelledby="estats"
                                                                             tal:condition="app/workflows">
                                                                             <tal:block repeat="estat app/workflows">
                                                                                 <li>
                                                                                     <a tal:attributes="href string:changeActualState?estat=${estat/id}&id=${app/item_path}&offer=${offer/offer_id}&open${view/getActualView}">
-                                                                                        <span tal:content="estat/title">Estat</span>
+                                                                                        <span i18n:domain="genweb.tfemarket.workflow" i18n:translate=""
+                                                                                              tal:content="estat/title">
+                                                                                            Estat
+                                                                                        </span>
                                                                                     </a>
                                                                                 </li>
                                                                             </tal:block>

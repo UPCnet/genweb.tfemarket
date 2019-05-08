@@ -145,6 +145,19 @@ class TFGMVocabulary(object):
 grok.global_utility(TFGMVocabulary, name=u"genweb.tfemarket.TFGM")
 
 
+class ModalityVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'Universitat', 'Universitat', _(u'Universitat')))
+        types.append(SimpleVocabulary.createTerm(u'Empresa', 'Empresa', _(u'Empresa')))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(ModalityVocabulary, name=u"genweb.tfemarket.Modality")
+
+
 class DegreesVocabulary(object):
     grok.implements(IVocabularyFactory)
 
@@ -333,8 +346,7 @@ class IOffer(form.Schema):
     form.widget('modality', SelectModalityInputFieldWidget)
     modality = schema.Choice(
         title=_(u'modality'),
-        values=[u'Universitat',
-                u'Empresa'],
+        vocabulary=u"genweb.tfemarket.Modality",
         default=_(u'Universitat'),
         required=True,
     )

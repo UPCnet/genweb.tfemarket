@@ -55,7 +55,7 @@ def applicationChanged(application, event):
         'linkApplication': application.absolute_url(),
         'linkOffer': application.getParentNode().absolute_url(),
         'linkMarket': application.getParentNode().getParentNode().absolute_url(),
-        'signature': 'TFE Mercat',
+        'signature': _(u'TFE Mercat'),
     }
 
     student_mail = application.email
@@ -88,25 +88,25 @@ def applicationChanged(application, event):
         elif event.transition.id == 'accept':
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = student_mail
-            subject = 'Aceptada'
+            subject = _(u'Aceptada')
             msg = M2[lang].format(**data)
             if offerHasAnotherApplicationsPending(application):
                 portalMsg = _(u'A6')
         elif event.transition.id == 'reject':
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = student_mail
-            subject = 'Rebutjada'
+            subject = _(u'Rebutjada')
             msg = M3[lang].format(**data)
         elif event.transition.id == 'renounce':
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = teacher_mail
-            subject = 'Renuncia'
+            subject = _(u'Renuncia')
             msg = M5[lang].format(**data)
             portalMsg = _(u'A4')
         elif event.transition.id == 'cancel':
             fromMsg = sender_name + ' ' + '<' + sender_email + '>'
             toMsg = teacher_mail
-            subject = 'Cancela'
+            subject = _(u'Cancela')
             portalMsg = _(u'A7')
             msg = M6[lang].format(**data)
 

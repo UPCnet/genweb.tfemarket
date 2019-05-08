@@ -44,6 +44,10 @@ msgstr "The request is canceled."
 msgid "APIKEY"
 msgstr "APIKEY"
 
+#: ../browser/events/change.py:91
+msgid "Aceptada"
+msgstr "Aceptada"
+
 #: ../controlpanel.py:162
 msgid "Add languages one per line"
 msgstr "Add languages one for line"
@@ -68,17 +72,17 @@ msgstr "Add topics one for line"
 msgid "Adds effective date and expiration date fields required."
 msgstr "Adds effective date and expiration date fields required."
 
-#: ../content/templates/market_view.pt:401
+#: ../content/templates/market_view.pt:421
 msgid "Alert"
 msgstr "Alert"
 
 #: ../content/market.py:323
-#: ../content/templates/market_view.pt:228
+#: ../content/templates/market_view.pt:238
 #: ../utils.py:155
 msgid "All"
 msgstr "All"
 
-#: ../content/templates/market_view.pt:393
+#: ../content/templates/market_view.pt:413
 msgid "Assign the offer"
 msgstr "Assign the offer"
 
@@ -87,7 +91,7 @@ msgid "BUS SOA TFE"
 msgstr "BUS SOA TFE"
 
 #: ../content/application.py:127
-#: ../content/templates/market_view.pt:104
+#: ../content/templates/market_view.pt:114
 msgid "Body"
 msgstr "Comments"
 
@@ -95,16 +99,20 @@ msgstr "Comments"
 msgid "CA"
 msgstr "Catalan"
 
+#: ../browser/events/change.py:109
+msgid "Cancela"
+msgstr "Cancela"
+
 #: ../controlpanel.py:121
 msgid "Center code"
 msgstr "Center code"
 
-#: ../content/templates/market_view.pt:110
+#: ../content/templates/market_view.pt:120
 msgid "Close"
 msgstr "Close"
 
-#: ../content/offer.py:343
-#: ../content/templates/market_view.pt:528
+#: ../content/offer.py:355
+#: ../content/templates/market_view.pt:548
 msgid "CoManager"
 msgstr "Contact"
 
@@ -112,24 +120,24 @@ msgstr "Contact"
 msgid "Codi Expedient"
 msgstr "Expedient Code"
 
-#: ../content/offer.py:274
-#: ../content/templates/market_view.pt:353
+#: ../content/offer.py:287
+#: ../content/templates/market_view.pt:363
 msgid "Codirector"
 msgstr "Co-director"
 
 #: ../content/market.py:319
-#: ../content/offer.py:348
-#: ../content/templates/market_view.pt:226
+#: ../content/offer.py:360
+#: ../content/templates/market_view.pt:236
 msgid "Company"
 msgstr "Company"
 
-#: ../content/offer.py:353
-#: ../content/templates/market_view.pt:536
+#: ../content/offer.py:365
+#: ../content/templates/market_view.pt:556
 msgid "Company Contact"
 msgstr "Company Contact"
 
-#: ../content/offer.py:358
-#: ../content/templates/market_view.pt:540
+#: ../content/offer.py:370
+#: ../content/templates/market_view.pt:560
 msgid "Company Email"
 msgstr "Company Email"
 
@@ -137,7 +145,7 @@ msgstr "Company Email"
 msgid "Comprova que la teva titulació correspon a la titulació per a la qual s'oferta el treball"
 msgstr "Make sure that your degree is the same as the one that offers the job"
 
-#: ../content/templates/market_view.pt:558
+#: ../content/templates/market_view.pt:578
 msgid "Confidential"
 msgstr "Confidential"
 
@@ -158,7 +166,7 @@ msgstr "Confirm the rename of offer."
 msgid "Copy offer"
 msgstr "Copy offer"
 
-#: ../content/templates/market_view.pt:134
+#: ../content/templates/market_view.pt:144
 msgid "Create an offer"
 msgstr "Create an offer"
 
@@ -167,11 +175,11 @@ msgid "DIRECTORI: Usuari no trobat en al directori"
 msgstr "DIRECTORY: User not found at the directory"
 
 #: ../content/application.py:93
-#: ../content/templates/market_view.pt:89
+#: ../content/templates/market_view.pt:99
 msgid "DNI"
 msgstr "DNI"
 
-#: ../content/templates/market_view.pt:237
+#: ../content/templates/market_view.pt:247
 msgid "Date"
 msgstr "Date"
 
@@ -196,7 +204,7 @@ msgstr "Degree code at PRISMA"
 msgid "Degree deleted"
 msgstr "Degree deleted"
 
-#: ../content/templates/market_view.pt:429
+#: ../content/templates/market_view.pt:449
 msgid "Degrees"
 msgstr "Degrees"
 
@@ -205,13 +213,13 @@ msgstr "Degrees"
 msgid "Delete offer"
 msgstr "Delete offer"
 
-#: ../content/templates/market_view.pt:201
+#: ../content/templates/market_view.pt:211
 #: ../z3cwidget/text_input_teacher.pt:68
 msgid "Departament"
 msgstr "Departament"
 
-#: ../content/offer.py:203
-#: ../content/templates/market_view.pt:70
+#: ../content/offer.py:216
+#: ../content/templates/market_view.pt:80
 msgid "Description"
 msgstr "Description"
 
@@ -220,11 +228,11 @@ msgstr "Description"
 msgid "Design"
 msgstr "Design"
 
-#: ../content/templates/market_view.pt:147
+#: ../content/templates/market_view.pt:157
 msgid "Desplega tot <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 msgstr "Show all <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 
-#: ../content/templates/market_view.pt:264
+#: ../content/templates/market_view.pt:274
 msgid "Developer language"
 msgstr "Developer language"
 
@@ -232,7 +240,7 @@ msgstr "Developer language"
 msgid "Development languages"
 msgstr "Development languages"
 
-#: ../content/offer.py:245
+#: ../content/offer.py:258
 msgid "Direction"
 msgstr "Direction"
 
@@ -258,10 +266,14 @@ msgid "El treball que vols sol·licitar no està ofertat per a la titulació que
 msgstr "The job that you want to apply for the degree that you are studying. Contact the secretary of your center"
 
 #: ../content/application.py:110
-#: ../content/templates/market_view.pt:93
+#: ../content/templates/market_view.pt:103
 #: ../z3cwidget/text_input_teacher.pt:67
 msgid "Email"
 msgstr "Email"
+
+#: ../content/offer.py:154
+msgid "Empresa"
+msgstr "Company"
 
 #: ../controlpanel.py:66
 msgid "Enroll"
@@ -271,11 +283,11 @@ msgstr "Enroll"
 msgid "Enroll type "
 msgstr "Enroll type"
 
-#: ../content/offer.py:391
+#: ../content/offer.py:403
 msgid "Environmental Theme"
 msgstr "Environmental Theme"
 
-#: ../content/templates/market_view.pt:553
+#: ../content/templates/market_view.pt:573
 msgid "Environmental theme"
 msgstr "Environmental Theme"
 
@@ -287,7 +299,7 @@ msgstr "Error the identifier exists."
 msgid "Error you can't perform the action."
 msgstr "You can't perform the action."
 
-#: ../content/templates/market_view.pt:574
+#: ../content/templates/market_view.pt:594
 msgid "Expiration date"
 msgstr "Expiration"
 
@@ -295,33 +307,33 @@ msgstr "Expiration"
 msgid "FR"
 msgstr "French"
 
-#: ../content/templates/market_view.pt:128
+#: ../content/templates/market_view.pt:138
 msgid "Falta carregar les titulacions."
 msgstr "Missing degree qualifications"
 
-#: ../content/offer.py:368
+#: ../content/offer.py:380
 msgid "Falta omplir \"Idioma del treball\""
 msgstr "Missing \"Work Language\""
 
-#: ../content/offer.py:366
+#: ../content/offer.py:378
 msgid "Falta omplir les dades d'empresa"
 msgstr "Missing company data"
 
-#: ../content/templates/market_view.pt:515
+#: ../content/templates/market_view.pt:535
 msgid "Features"
 msgstr "Features"
 
 #: ../content/application.py:99
-#: ../content/templates/market_view.pt:85
+#: ../content/templates/market_view.pt:95
 #: ../z3cwidget/text_input_teacher.pt:66
 msgid "Fullname"
 msgstr "Fullname"
 
-#: ../content/templates/market_view.pt:685
+#: ../content/templates/market_view.pt:714
 msgid "Hide applications"
 msgstr "Hide applications"
 
-#: ../content/templates/market_view.pt:143
+#: ../content/templates/market_view.pt:153
 msgid "Hide search"
 msgstr "Hide search"
 
@@ -341,7 +353,7 @@ msgstr "Import the degrees"
 msgid "Import the offers"
 msgstr "Import the offers"
 
-#: ../content/templates/market_view.pt:387
+#: ../content/templates/market_view.pt:407
 msgid "Info"
 msgstr "Information"
 
@@ -349,19 +361,19 @@ msgstr "Information"
 msgid "Installs the genweb.tfemarket add-on."
 msgstr "Installs the genweb.tfemarket add-on."
 
-#: ../content/templates/market_view.pt:294
+#: ../content/templates/market_view.pt:304
 msgid "Keywords"
 msgstr "Keywords"
 
-#: ../content/offer.py:298
+#: ../content/offer.py:311
 msgid "La càrrega de treball s'adptarà als crèdits de la titulació."
 msgstr "The workload will be adapted to the credits of the degree."
 
-#: ../content/templates/market_view.pt:456
+#: ../content/templates/market_view.pt:476
 msgid "Language work elaboration"
 msgstr "Language work elaboration"
 
-#: ../content/templates/market_view.pt:462
+#: ../content/templates/market_view.pt:482
 msgid "Languages work elaboration"
 msgstr "Languages work elaboration"
 
@@ -374,7 +386,7 @@ msgid "Last week"
 msgstr "Last week"
 
 #: ../content/market.py:328
-#: ../content/templates/market_view.pt:192
+#: ../content/templates/market_view.pt:202
 msgid "MAll"
 msgstr "All"
 
@@ -390,12 +402,12 @@ msgstr "MEC degree code"
 msgid "Market of TFE"
 msgstr "Market of TFE"
 
-#: ../content/templates/market_view.pt:595
+#: ../content/templates/market_view.pt:615
 msgid "Mobile"
 msgstr "Mobile"
 
-#: ../content/offer.py:329
-#: ../content/templates/market_view.pt:275
+#: ../content/offer.py:342
+#: ../content/templates/market_view.pt:285
 msgid "Modality"
 msgstr "Modality"
 
@@ -407,15 +419,15 @@ msgstr "Months until expiration"
 msgid "Months until the offer expires automatically"
 msgstr "Months until the offer expires automatically"
 
-#: ../content/templates/market_view.pt:581
+#: ../content/templates/market_view.pt:601
 msgid "More info"
 msgstr "More info"
 
-#: ../content/offer.py:288
+#: ../content/offer.py:301
 msgid "Màxim segons normativa del centre"
 msgstr "Maximum according to the regulations of the center"
 
-#: ../content/templates/market_view.pt:593
+#: ../content/templates/market_view.pt:613
 msgid "Name"
 msgstr "Name"
 
@@ -423,15 +435,15 @@ msgstr "Name"
 msgid "Name center"
 msgstr "Name center"
 
-#: ../content/templates/market_view.pt:451
+#: ../content/templates/market_view.pt:471
 msgid "No"
 msgstr "No"
 
-#: ../content/offer.py:457
+#: ../content/offer.py:469
 msgid "No esta correctament configurat: '%s'"
 msgstr "Not correctly configured: '%s'"
 
-#: ../content/templates/market_view.pt:320
+#: ../content/templates/market_view.pt:330
 #: ../z3cwidget/text_input_teacher.pt:59
 msgid "No results found."
 msgstr "No results found."
@@ -440,8 +452,8 @@ msgstr "No results found."
 msgid "Number of offers created"
 msgstr "Number of offers created"
 
-#: ../content/offer.py:287
-#: ../content/templates/market_view.pt:497
+#: ../content/offer.py:300
+#: ../content/templates/market_view.pt:517
 msgid "Number of students"
 msgstr "Number of students"
 
@@ -450,21 +462,21 @@ msgid "Ofertes"
 msgstr "Offers"
 
 #: ../content/application.py:81
-#: ../content/offer.py:193
-#: ../content/templates/market_view.pt:75
+#: ../content/offer.py:206
+#: ../content/templates/market_view.pt:85
 msgid "Offer id"
 msgstr "Offer id"
 
 #: ../content/application.py:87
-#: ../content/templates/market_view.pt:79
+#: ../content/templates/market_view.pt:89
 msgid "Offer title"
 msgstr "Offer title"
 
-#: ../content/offer.py:374
+#: ../content/offer.py:386
 msgid "Options"
 msgstr "Options"
 
-#: ../content/offer.py:282
+#: ../content/offer.py:295
 msgid "Other data"
 msgstr "Other data"
 
@@ -497,12 +509,12 @@ msgstr "Password"
 msgid "Plan year"
 msgstr "Plan year"
 
-#: ../content/templates/market_view.pt:148
+#: ../content/templates/market_view.pt:158
 msgid "Plega tot <i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
 msgstr "Hide all <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
 
-#: ../content/offer.py:379
-#: ../content/templates/market_view.pt:449
+#: ../content/offer.py:391
+#: ../content/templates/market_view.pt:469
 msgid "Possibility of scholarship"
 msgstr "Possibility of scholarship / financing"
 
@@ -516,13 +528,17 @@ msgstr "Program type"
 msgid "Project"
 msgstr "Project"
 
-#: ../content/templates/market_view.pt:570
+#: ../content/templates/market_view.pt:590
 msgid "Publication date"
 msgstr "Publication"
 
-#: ../content/templates/market_view.pt:161
+#: ../content/templates/market_view.pt:171
 msgid "Quines ofertes cerques?"
 msgstr "What search offers?"
+
+#: ../browser/events/change.py:98
+msgid "Rebutjada"
+msgstr "Renegada"
 
 #: ../controlpanel.py:67
 msgid "Register"
@@ -533,11 +549,15 @@ msgstr "Register"
 msgid "Rename offer"
 msgstr "Rename offer"
 
-#: ../content/templates/market_view.pt:675
+#: ../browser/events/change.py:103
+msgid "Renuncia"
+msgstr "Renuncia"
+
+#: ../content/templates/market_view.pt:704
 msgid "Request the offer"
 msgstr "Request the offer"
 
-#: ../content/templates/market_view.pt:521
+#: ../content/templates/market_view.pt:541
 msgid "Requirements"
 msgstr "Requirements"
 
@@ -555,12 +575,12 @@ msgstr "Review State"
 msgid "SOA bus not configured. Contact the site administrator."
 msgstr "SOA bus not configured. Contact the site administrator."
 
-#: ../content/offer.py:397
-#: ../content/templates/market_view.pt:563
+#: ../content/offer.py:409
+#: ../content/templates/market_view.pt:583
 msgid "Scope of cooperation"
 msgstr "Scope of cooperation"
 
-#: ../content/templates/market_view.pt:315
+#: ../content/templates/market_view.pt:325
 #: ../z3cwidget/text_input_teacher.pt:52
 msgid "Search"
 msgstr "Search"
@@ -593,11 +613,11 @@ msgstr "Settings"
 msgid "Shortname"
 msgstr "Shortname"
 
-#: ../content/templates/market_view.pt:681
+#: ../content/templates/market_view.pt:710
 msgid "Show applications"
 msgstr "Show applications"
 
-#: ../content/templates/market_view.pt:140
+#: ../content/templates/market_view.pt:150
 msgid "Show search"
 msgstr "Show search"
 
@@ -605,7 +625,7 @@ msgstr "Show search"
 msgid "Sol·licita"
 msgstr "Request"
 
-#: ../content/templates/market_view.pt:249
+#: ../content/templates/market_view.pt:259
 msgid "State"
 msgstr "State"
 
@@ -625,8 +645,12 @@ msgstr "Study"
 msgid "Submit"
 msgstr "Submit"
 
-#: ../content/offer.py:251
-#: ../content/templates/market_view.pt:190
+#: ../browser/events/change.py:58
+msgid "TFE Mercat"
+msgstr "TFE Mercado"
+
+#: ../content/offer.py:264
+#: ../content/templates/market_view.pt:200
 msgid "TFEteacher"
 msgstr "Teacher"
 
@@ -634,33 +658,33 @@ msgstr "Teacher"
 msgid "Tags"
 msgstr "Tags"
 
-#: ../content/templates/market_view.pt:509
+#: ../content/templates/market_view.pt:529
 msgid "Targets"
 msgstr "Targets"
 
-#: ../content/offer.py:263
-#: ../content/templates/market_view.pt:418
+#: ../content/offer.py:276
+#: ../content/templates/market_view.pt:438
 msgid "Teacher Email"
 msgstr "Teacher email"
 
-#: ../content/offer.py:257
+#: ../content/offer.py:270
 msgid "Teacher Fullname"
 msgstr "Teacher fullname"
 
-#: ../content/templates/market_view.pt:349
+#: ../content/templates/market_view.pt:359
 msgid "Teacher manager"
 msgstr "Teacher manager"
 
 #: ../content/application.py:104
-#: ../content/templates/market_view.pt:98
+#: ../content/templates/market_view.pt:108
 msgid "Telephone"
 msgstr "Telephone"
 
-#: ../content/templates/market_view.pt:163
+#: ../content/templates/market_view.pt:173
 msgid "Text to search"
 msgstr "Text to search"
 
-#: ../content/templates/market_view.pt:390
+#: ../content/templates/market_view.pt:410
 msgid "The current offer contains a confirmed application."
 msgstr "The current offer contains a confirmed application."
 
@@ -696,12 +720,12 @@ msgstr "The offer has been modified."
 msgid "The offer has been removed."
 msgstr "The offer has been removed."
 
-#: ../content/templates/market_view.pt:404
+#: ../content/templates/market_view.pt:424
 msgid "The offer is expired."
 msgstr "The offer is expired."
 
 #: ../browser/views_templates/tfemarket_utils_rename_offer.pt:45
-#: ../content/offer.py:198
+#: ../content/offer.py:211
 msgid "Title"
 msgstr "Title"
 
@@ -739,7 +763,7 @@ msgstr "To reset the counter access the following <a href=\"reset_offers_counter
 msgid "Tools of the TFE"
 msgstr "Tools of the TFE"
 
-#: ../content/templates/market_view.pt:489
+#: ../content/templates/market_view.pt:509
 msgid "Topic"
 msgstr "Topic"
 
@@ -751,7 +775,7 @@ msgstr "Topics of the TFE"
 msgid "Total"
 msgstr "Total"
 
-#: ../content/templates/market_view.pt:212
+#: ../content/templates/market_view.pt:222
 msgid "Type"
 msgstr "Type"
 
@@ -768,7 +792,7 @@ msgstr "URL"
 msgid "URL to access the bus"
 msgstr "URL to access the bus"
 
-#: ../content/offer.py:297
+#: ../content/offer.py:310
 msgid "Un crèdit ECTS equival a 25 hores de treball"
 msgstr "An ECTS credit equals 25 hours of work"
 
@@ -776,7 +800,7 @@ msgstr "An ECTS credit equals 25 hours of work"
 msgid "Uncheck this option if you do not want to see the number of students in an offer"
 msgstr "Uncheck this option if you do not want to see the number of students in an offer"
 
-#: ../content/offer.py:338
+#: ../content/offer.py:153
 msgid "Universitat"
 msgstr "University"
 
@@ -784,7 +808,7 @@ msgstr "University"
 msgid "University"
 msgstr "University"
 
-#: ../content/offer.py:269
+#: ../content/offer.py:282
 msgid "University department"
 msgstr "University department"
 
@@ -801,11 +825,11 @@ msgstr "User to connect to the bus"
 msgid "VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."
 msgstr "LINKING: We did not found your linking as STUDENT. Contact your secretary"
 
-#: ../content/templates/market_view.pt:309
+#: ../content/templates/market_view.pt:319
 msgid "View all offers"
 msgstr "View all offers"
 
-#: ../content/templates/market_view.pt:305
+#: ../content/templates/market_view.pt:315
 msgid "View me offers"
 msgstr "View me offers"
 
@@ -817,11 +841,11 @@ msgstr "View number of students"
 msgid "When changing the title, the short name will be automatically updated."
 msgstr "When changing the title, the short name will be automatically updated."
 
-#: ../content/templates/market_view.pt:503
+#: ../content/templates/market_view.pt:523
 msgid "Workload"
 msgstr "Workload"
 
-#: ../content/templates/market_view.pt:450
+#: ../content/templates/market_view.pt:470
 msgid "Yes"
 msgstr "Yes"
 
@@ -858,7 +882,7 @@ msgstr "Choose TFE"
 msgid "classifications"
 msgstr "Classifications"
 
-#: ../content/offer.py:385
+#: ../content/offer.py:397
 msgid "confidential"
 msgstr "Confidential"
 
@@ -867,7 +891,7 @@ msgstr "Confidential"
 msgid "confirm_reset_counter"
 msgstr "Are you sure you want to reset the offers counter?"
 
-#: ../content/offer.py:230
+#: ../content/offer.py:243
 msgid "degree"
 msgstr "Degree"
 
@@ -879,15 +903,15 @@ msgstr "Export applications"
 msgid "download_offers"
 msgstr "Export offers"
 
-#: ../content/templates/market_view.pt:57
+#: ../content/templates/market_view.pt:67
 msgid "edit"
 msgstr "edit"
 
-#: ../content/templates/market_view.pt:341
+#: ../content/templates/market_view.pt:351
 msgid "expired"
 msgstr "expired"
 
-#: ../content/templates/market_view.pt:286
+#: ../content/templates/market_view.pt:296
 msgid "grant"
 msgstr "Scholarship / financing"
 
@@ -906,20 +930,20 @@ msgstr "The date that the item will expire."
 msgid "help_titulacions_table"
 msgstr "Imported dades from .csv. You can import the degrees from the following <a href=\"import_titulacions\">link</a>."
 
-#: ../content/templates/market_view.pt:151
+#: ../content/templates/market_view.pt:161
 msgid "info"
 msgstr "Information"
 
-#: ../content/offer.py:237
+#: ../content/offer.py:250
 msgid "keys"
-msgstr "keys"
+msgstr "Keys"
 
 #. Default: "market"
 #: ../profiles/default/types/genweb.tfemarket.market.xml
 msgid "market"
 msgstr "Market"
 
-#: ../content/offer.py:335
+#: ../content/offer.py:348
 msgid "modality"
 msgstr "Modality"
 
@@ -938,31 +962,31 @@ msgstr "Open link in new window"
 msgid "offer"
 msgstr "Offer"
 
-#: ../content/offer.py:187
+#: ../content/offer.py:200
 msgid "offer_center"
 msgstr "Center"
 
-#: ../content/offer.py:308
+#: ../content/offer.py:321
 msgid "offer_features"
 msgstr "Features"
 
-#: ../content/offer.py:303
+#: ../content/offer.py:316
 msgid "offer_targets"
 msgstr "Targets"
 
-#: ../content/offer.py:208
+#: ../content/offer.py:221
 msgid "offer_topic"
 msgstr "Topic"
 
-#: ../content/offer.py:214
+#: ../content/offer.py:227
 msgid "offer_type"
 msgstr "Type"
 
-#: ../content/offer.py:296
+#: ../content/offer.py:309
 msgid "offer_workload"
 msgstr "Workload"
 
-#: ../content/offer.py:313
+#: ../content/offer.py:326
 msgid "requirements"
 msgstr "Requirements"
 
@@ -971,11 +995,11 @@ msgstr "Requirements"
 msgid "reset_counter"
 msgstr "Reset counter"
 
-#: ../content/offer.py:320
+#: ../content/offer.py:333
 msgid "tfe_lang"
 msgstr "Work language"
 
-#: ../content/offer.py:223
+#: ../content/offer.py:236
 msgid "tfgm"
 msgstr "TFG/TFM"
 
