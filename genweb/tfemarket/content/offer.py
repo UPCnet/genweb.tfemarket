@@ -8,7 +8,6 @@ from plone.directives import dexterity
 from plone.directives import form
 from plone.indexer import indexer
 from plone.registry.interfaces import IRegistry
-from z3c.form import field
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import queryUtility
@@ -28,6 +27,7 @@ from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import SelectModalityInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
+from genweb.tfemarket.z3cwidget import CodirectorInputFieldWidget
 
 import transaction
 import unicodedata
@@ -191,6 +191,19 @@ class DegreesVocabulary(object):
 grok.global_utility(DegreesVocabulary, name=u"genweb.tfemarket.Titulacions")
 
 
+class TypeCodirectorVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'UPC', 'UPC', u'UPC'))
+        types.append(SimpleVocabulary.createTerm(u'External', 'External', _(u'External')))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(TypeCodirectorVocabulary, name=u"genweb.tfemarket.TypeCodirector")
+
+
 class IOffer(form.Schema):
     """ Folder that contains information about a TFE and its applications
     """
@@ -283,8 +296,32 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    codirector = schema.Text(
+    type_codirector = schema.Choice(
+        title=_(u'Type codirector'),
+        vocabulary=u'genweb.tfemarket.TypeCodirector',
+        required=False,
+    )
+
+    form.widget('codirector_id', CodirectorInputFieldWidget)
+    codirector_id = schema.TextLine(
         title=_(u'Codirector'),
+        required=False,
+    )
+
+    codirector = schema.TextLine(
+        title=_(u'Codirector Fullname'),
+        required=False,
+    )
+
+    form.widget('codirector_email', ReadOnlyInputFieldWidget)
+    codirector_email = schema.TextLine(
+        title=_(u'Codirector Email'),
+        required=False,
+    )
+
+    form.widget('codirector_dept', ReadOnlyInputFieldWidget)
+    codirector_dept = schema.TextLine(
+        title=_(u'Codirector University department'),
         required=False,
     )
 

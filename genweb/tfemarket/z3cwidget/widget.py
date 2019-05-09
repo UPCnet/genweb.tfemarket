@@ -58,6 +58,30 @@ def TeacherInputFieldWidget(field, request):
     return z3c.form.widget.FieldWidget(field, TeacherInputWidget(request))
 
 
+class ICodirectorInputWidget(z3c.form.interfaces.ITextWidget):
+    pass
+
+
+class CodirectorInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelectionWidget):
+    zope.interface.implementsOnly(ICodirectorInputWidget)
+
+    klass = u'codirector-input-widget'
+
+    def update(self):
+        super(z3c.form.browser.text.TextWidget, self).update()
+        z3c.form.browser.widget.addFieldClass(self)
+
+    def hasPermissions(self):
+        roles = api.user.get_roles()
+        return 'TFE Manager' in roles or 'Manager' in roles
+
+
+@zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)
+@zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
+def CodirectorInputFieldWidget(field, request):
+    return z3c.form.widget.FieldWidget(field, CodirectorInputWidget(request))
+
+
 class IReadOnlyInputWidget(z3c.form.interfaces.ITextWidget):
     pass
 

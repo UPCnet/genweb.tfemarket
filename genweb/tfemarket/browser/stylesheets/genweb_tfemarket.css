@@ -327,47 +327,55 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 }
 
 table.tableApplications,
-table#form-widgets-teacher_manager-hint {
+table#form-widgets-teacher_manager-hint,
+table#form-widgets-codirector-hint {
   border-top: 5px solid #c35a0a;
 }
 
 table.tableApplications thead th,
-table#form-widgets-teacher_manager-hint thead th {
+table#form-widgets-teacher_manager-hint thead th,
+table#form-widgets-codirector-hint thead th {
   background-color: #efefef;
   text-align: left;
   padding: 5px;
 }
 
 table.tableApplications tbody tr:nth-child(odd),
-table#form-widgets-teacher_manager-hint tbody tr:nth-child(odd) {
+table#form-widgets-teacher_manager-hint tbody tr:nth-child(odd),
+table#form-widgets-codirector-hint tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
 
 table.tableApplications tbody tr,
-table#form-widgets-teacher_manager-hint tbody tr {
+table#form-widgets-teacher_manager-hint tbody tr,
+table#form-widgets-codirector-hint tbody tr {
   border-bottom: 1px solid #dcdcdc;
   border-top: 1px solid #dcdcdc;
 }
 
 
 table.tableApplications tbody td,
-table#form-widgets-teacher_manager-hint tbody td {
+table#form-widgets-teacher_manager-hint tbody td,
+table#form-widgets-codirector-hint tbody td {
   text-align: left;
   padding: 5px;
 }
 
 table.tableApplications tbody .actions,
-table#form-widgets-teacher_manager-hint tbody .actions {
+table#form-widgets-teacher_manager-hint tbody .actions,
+table#form-widgets-codirector-hint tbody .actions {
   text-align: right;
 }
 
 table.tableApplications tbody .actions .modal,
-table#form-widgets-teacher_manager-hint tbody .actions .modal {
+table#form-widgets-teacher_manager-hint tbody .actions .modal,
+table#form-widgets-codirector-hint tbody .actions .modal {
   text-align: left;
 }
 
 table.tableApplications tbody .actions .modal .modal-body,
-table#form-widgets-teacher_manager-hint tbody .actions .modal .modal-body {
+table#form-widgets-teacher_manager-hint tbody .actions .modal .modal-body,
+table#form-widgets-codirector-hint tbody .actions .modal .modal-body {
   white-space: initial;
 }
 
@@ -384,7 +392,8 @@ table#form-widgets-teacher_manager-hint tbody .actions .modal .modal-body {
 #market .rightInfoOffer.actions > a,
 table.tableApplications tbody .actions button,
 table.tableApplications tbody .actions > a,
-table#form-widgets-teacher_manager-hint tbody .actions > a {
+table#form-widgets-teacher_manager-hint tbody .actions > a,
+table#form-widgets-codirector-hint tbody .actions > a {
   background-color: #FFF;
   border: 1px solid #adadad;
   color: #c35a0a;
@@ -396,7 +405,8 @@ table#form-widgets-teacher_manager-hint tbody .actions > a {
 #market .rightInfoOffer.actions > a.ignore,
 table.tableApplications tbody .actions button.ignore,
 table.tableApplications tbody .actions > a.ignore,
-table#form-widgets-teacher_manager-hint tbody .actions > a.ignore {
+table#form-widgets-teacher_manager-hint tbody .actions > a.ignore,
+table#form-widgets-codirector-hint tbody .actions > a.ignore {
   color: #800000 !important;
 }
 
@@ -426,7 +436,8 @@ table.tableApplications tbody .actions .workflowsAction .ignore.workflow.notclic
 
 #market .rightInfoOffer.actions a,
 table.tableApplications tbody .actions a,
-table#form-widgets-teacher_manager-hint tbody .actions a {
+table#form-widgets-teacher_manager-hint tbody .actions a,
+table#form-widgets-codirector-hint tbody .actions a {
   transition: none;
 }
 
@@ -438,14 +449,16 @@ table.tableApplications tbody .actions > a.edit {
 
 #market .rightInfoOffer.actions .caret,
 table.tableApplications tbody .actions .caret,
-table#form-widgets-teacher_manager-hint tbody .actions .caret {
+table#form-widgets-teacher_manager-hint tbody .actions .caret,
+table#form-widgets-codirector-hint tbody .actions .caret {
   border-top: 4px solid #c35a0a;
   vertical-align: middle;
 }
 
 #market .rightInfoOffer.actions .ignore .caret,
 table.tableApplications tbody .actions .ignore .caret,
-table#form-widgets-teacher_manager-hint tbody .actions .ignore .caret {
+table#form-widgets-teacher_manager-hint tbody .actions .ignore .caret,
+table#form-widgets-codirector-hint tbody .actions .ignore .caret {
   border-top: 4px solid #800000 !important;
 }
 
@@ -467,7 +480,8 @@ table.tableApplications tbody .actions button.disabled:hover {
 
 #market .rightInfoOffer.actions > a:hover,
 table.tableApplications tbody .actions > a:hover,
-table#form-widgets-teacher_manager-hint tbody .actions > a:hover {
+table#form-widgets-teacher_manager-hint tbody .actions > a:hover,
+table#form-widgets-codirector-hint tbody .actions > a:hover {
   background-color: #c35a0a;
   color: #FFF !important;
   border: 1px solid #c35a0a;
@@ -733,27 +747,34 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   margin-top: 35px;
 }
 
-#form-widgets-teacher_manager-modal {
+#form-widgets-teacher_manager-modal,
+#form-widgets-codirector-modal {
   width: 70% !important;
   left: 37% !important;
 }
 
 #form-widgets-teacher_manager-btn-modal,
-#form-widgets-teacher_manager-btn {
+#form-widgets-teacher_manager-btn,
+#form-widgets-codirector-btn-modal,
+#form-widgets-codirector-btn {
   margin-bottom: 9px;
 }
 
-#form-widgets-teacher_manager-error {
+#form-widgets-teacher_manager-error,
+#form-widgets-codirector-error {
   color: #FF0000;
   display: none
 }
 
 #form-widgets-teacher_manager-error.viewError,
-#form-widgets-teacher_manager-warn.viewWarn {
+#form-widgets-teacher_manager-warn.viewWarn,
+#form-widgets-codirector-error.viewError,
+#form-widgets-codirector-warn.viewWarn {
   display: block
 }
 
-#form-widgets-teacher_manager-warn {
+#form-widgets-teacher_manager-warn,
+#form-widgets-codirector-warn {
   display: none
 }
 

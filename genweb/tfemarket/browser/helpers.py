@@ -117,7 +117,6 @@ class importOfertes(grok.View):
             transaction.commit()
 
             # Importa ofertas
-
             notValidDegrees = self.checkNotValidDegrees(row[5].decode("utf-8").split(","))
             if len(notValidDegrees) == 0:
                 teacher = getLdapExactUserData(row[7].decode("utf-8"))
@@ -134,23 +133,42 @@ class importOfertes(grok.View):
                         'teacher_fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
                         'teacher_email': teacher['mail'],
                         'dept': teacher['unitCode'] + "-" + teacher['unit'],
-                        'codirector': row[8].decode("utf-8"),
-                        'num_students': int(row[9].decode("utf-8")),
-                        'workload': row[10].decode("utf-8"),
-                        'targets': row[11].decode("utf-8"),
-                        'features': row[12].decode("utf-8"),
-                        'requirements': row[13].decode("utf-8"),
-                        'lang': row[14].decode("utf-8").split(","),
-                        'modality': row[15].decode("utf-8"),
-                        'co_manager': row[16].decode("utf-8"),
-                        'company': row[17].decode("utf-8"),
-                        'company_contact': row[18].decode("utf-8"),
-                        'company_email': row[19].decode("utf-8"),
-                        'grant': bool(row[20].decode("utf-8") == "True"),
-                        'confidential': bool(row[21].decode("utf-8") == "True"),
-                        'environmental_theme': bool(row[22].decode("utf-8") == "True"),
-                        'scope_cooperation': bool(row[23].decode("utf-8") == "True"),
+                        'num_students': int(row[10].decode("utf-8")),
+                        'workload': row[11].decode("utf-8"),
+                        'targets': row[12].decode("utf-8"),
+                        'features': row[13].decode("utf-8"),
+                        'requirements': row[14].decode("utf-8"),
+                        'lang': row[15].decode("utf-8").split(","),
+                        'modality': row[16].decode("utf-8"),
+                        'co_manager': row[17].decode("utf-8"),
+                        'company': row[18].decode("utf-8"),
+                        'company_contact': row[19].decode("utf-8"),
+                        'company_email': row[20].decode("utf-8"),
+                        'grant': bool(row[21].decode("utf-8") == "True"),
+                        'confidential': bool(row[22].decode("utf-8") == "True"),
+                        'environmental_theme': bool(row[23].decode("utf-8") == "True"),
+                        'scope_cooperation': bool(row[24].decode("utf-8") == "True"),
                     }
+
+                    type_codirector = row[8].decode("utf-8")
+                    data.update({'type_codirector': type_codirector})
+                    if type_codirector == 'UPC':
+                        codirector = getLdapExactUserData(row[9].decode("utf-8"))
+                        if codirector:
+                            data.update({
+                                'codirector_id': codirector['id'],
+                                'codirector': codirector['sn1'] + ' ' + codirector['sn2'] + ', ' + codirector['givenName'] if 'sn2' in codirector else codirector['sn1'] + ', ' + codirector['givenName'],
+                                'codirector_email': codirector['mail'],
+                                'codirector_dept': codirector['unitCode'] + "-" + codirector['unit']
+                            })
+                        else:
+                            msg = row[0].decode("utf-8") + " - Codirector (" + row[9].decode("utf-8") + ") not exist."
+                            print str(count + 1) + ": Error - " + msg
+                            msgError.append(str(count + 1) + ": " + msg)
+                            continue
+                    else:
+                        data.update({'codirector': row[9].decode("utf-8")})
+
                     offer = createContentInContainer(market, "genweb.tfemarket.offer", **data)
                     offer.setEffectiveDate(dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1)))
                     offer.setExpirationDate(dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365)))

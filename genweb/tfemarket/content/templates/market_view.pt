@@ -208,7 +208,7 @@
                                         </select>
                                     </div>
                                     <div class="span3">
-                                        <label i18n:translate="">Departament</label>
+                                        <label i18n:translate="">TFEdepartament</label>
                                         <select id="searchDepartament" name="departament" tal:attributes="value save/departament|nothing">
                                             <option value="a" i18n:translate="">MAll</option>
                                             <tal:block tal:repeat="departament view/getDepartaments">
@@ -444,6 +444,22 @@
                                                                 <span tal:content="offer/dept">Departament</span>
                                                             </p>
                                                         </div>
+
+                                                        <div class="leftInfoOffer">
+                                                            <p class="codirector" tal:condition="offer/codirector">
+                                                                <span class="field"><span i18n:translate="">Codirector</span>: </span>
+                                                                <span tal:content="offer/codirector">Aureli Condogvia</span>
+                                                            </p>
+                                                            <p class="codirectorEmail" tal:condition="offer/codirector_email">
+                                                                <span class="field"><span i18n:translate="">Codirector Email</span>: </span>
+                                                                <a tal:content="offer/codirector_email"
+                                                                   tal:attributes="href string:mailto:${offer/codirector_email}">???@???.???</a>
+                                                            </p>
+                                                            <p class="codirectorDepartament" tal:condition="offer/codirector_dept">
+                                                                <span class="field"><span i18n:translate="">Departament</span>: </span>
+                                                                <span tal:content="offer/codirector_dept">Departament</span>
+                                                            </p>
+                                                        </div>
                                                         <div class="leftInfoOffer">
                                                             <div class="degrees">
                                                                 <span class="field"><span i18n:translate="">Degrees</span>: </span>
@@ -561,12 +577,6 @@
                                                                 <span tal:content="offer/company_email">Company Email</span>
                                                             </p>
                                                         </tal:block>
-                                                    </div>
-                                                    <div class="leftInfoOffer">
-                                                        <div class="observations" tal:condition="offer/codirector">
-                                                            <span class="field"><span i18n:translate="">Codirector</span>: </span>
-                                                            <p tal:content="offer/codirector"></p>
-                                                        </div>
                                                     </div>
                                                     <div class="leftInfoOffer">
                                                         <p class="environmentalTheme">
