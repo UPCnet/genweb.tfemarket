@@ -129,7 +129,7 @@ class importOfertes(grok.View):
                         'offer_type': row[3].decode("utf-8"),
                         'tfgm': row[4].decode("utf-8").split(","),
                         'degree': row[5].decode("utf-8").split(","),
-                        'keys': row[7].decode("utf-8").split(","),
+                        'keys': row[6].decode("utf-8").split(","),
                         'teacher_manager': teacher['id'],
                         'teacher_fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
                         'teacher_email': teacher['mail'],
