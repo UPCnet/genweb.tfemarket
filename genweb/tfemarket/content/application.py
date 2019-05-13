@@ -12,7 +12,6 @@ from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import StudentInputFieldWidget
 
-from zope.globalrequest import getRequest
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.interfaces import IContextSourceBinder
@@ -22,26 +21,23 @@ from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 
 from z3c.form.interfaces import IEditForm
 
-import ast
-
 grok.templatedir("templates")
 
 
-def getCookie():
-    request = getRequest()
-    cookie = {}
+def getSession(context):
+    session = {}
     try:
-        data = request.cookies.get('APPLICATION_DATA')
-        cookie = ast.literal_eval(data)
-        return cookie
+        sdm = context.session_data_manager
+        session = sdm.getSessionData(create=True)
+        return session.get('APPLICATION_DATA')
     except:
         pass
 
 
 @grok.provider(IContextSourceBinder)
-def getDregees(context):
+def getDegrees(context):
     titulacions = []
-    result = getCookie()
+    result = getSession(context)
     if result:
         degrees = result['degrees']
 
@@ -72,7 +68,7 @@ class IApplication(form.Schema):
     form.mode(IEditForm, degree_id='display')
     degree_id = schema.Choice(
         title=_(u'Title of the degree with which you request the offer'),
-        source=getDregees,
+        source=getDegrees,
         required=True,
     )
 
@@ -138,7 +134,7 @@ def defineDregreecode(application, event):
 
 @grok.subscribe(IApplication, IObjectAddedEvent)
 def getCodiExpedient(application, event):
-    result = getCookie()
+    result = getSession(application)
     degrees = result['degrees']
     codiexpedient = (item['codi_expedient'] for item in degrees if item['degree_id'] == application.degree_id)
 
@@ -146,8 +142,9 @@ def getCodiExpedient(application, event):
         application.codi_expedient = x
 
     application.reindexObject()
-    request = getRequest()
-    request.response.expireCookie('APPLICATION_DATA', path='/')
+    sdm = application.session_data_manager
+    session = sdm.getSessionData(create=True)
+    session.delete('APPLICATION_DATA')
 
 
 class Add(dexterity.AddForm):

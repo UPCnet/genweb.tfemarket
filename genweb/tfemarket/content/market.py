@@ -29,7 +29,6 @@ from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import isTeachersOffer
 
-import ast
 import unicodedata
 import urllib
 
@@ -88,13 +87,16 @@ class View(grok.View):
         return results
 
     def getOffers(self):
-        searchMarket = self.request.cookies.get('MERCAT_TFE')
+        sdm = self.context.session_data_manager
+        session = sdm.getSessionData(create=True)
+
+        searchMarket = session.get('MERCAT_TFE')
         if searchMarket and not searchMarket == "":
             if 'searchFilters' in self.request.form:
-                self.request.form = ast.literal_eval(searchMarket)
+                self.request.form = searchMarket
             else:
                 if 'search' not in self.request.form:
-                    self.request.response.setCookie('MERCAT_TFE', "", path='/')
+                    session.delete('MERCAT_TFE')
 
         if self.checkPermissionCreateOffers() or self.request.form != {} and 'form.button.confirm' not in self.request.form:
             wf_tool = getToolByName(self.context, 'portal_workflow')
@@ -238,7 +240,8 @@ class View(grok.View):
             if 'search' in self.request.form or 'searchFilters' in self.request.form:
                 if 'date' in self.request.form and self.request.form['date'] != 'a':
                     results = self.filterResultsForDate(results)
-                self.request.response.setCookie('MERCAT_TFE', self.clearFiltersCookie(), path='/')
+
+                session.set('MERCAT_TFE', self.clearFiltersCookie())
 
             if 'searchOffer' in self.request.form and 'offer' in self.request.form:
                 for offer in results:
