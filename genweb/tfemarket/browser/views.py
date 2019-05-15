@@ -13,6 +13,7 @@ from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.interface import Interface
 from zope.interface import alsoProvides
+from zope.security import checkPermission
 
 from genweb.core.utils import genweb_config
 from genweb.theme.browser.views import _render_cachekey
@@ -290,18 +291,21 @@ class tfemarketUtils(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils')
     grok.template('tfemarket_utils')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.utils')
     grok.layer(IGenwebTfemarketLayer)
 
     def getTFEs(self):
         return getUrlAllTFE(self)
+
+    def canManageTFE(self):
+        return checkPermission("genweb.tfemarket.controlpanel", self)
 
 
 class tfemarketUtilsCopyOffer(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils-copy-offer')
     grok.template('tfemarket_utils_copy_offer')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.utils')
     grok.layer(IGenwebTfemarketLayer)
 
     def getTFEs(self):
@@ -369,7 +373,7 @@ class tfemarketUtilsRenameOffer(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils-rename-offer')
     grok.template('tfemarket_utils_rename_offer')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.utils')
     grok.layer(IGenwebTfemarketLayer)
 
     def getTFEs(self):
@@ -405,7 +409,7 @@ class tfemarketUtilsDeleteOffer(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils-delete-offer')
     grok.template('tfemarket_utils_delete_offer')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.utils')
     grok.layer(IGenwebTfemarketLayer)
 
     def getTFEs(self):
@@ -455,7 +459,7 @@ class tfemarketUtilsStats(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils-stats')
     grok.template('tfemarket_utils_stats')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.controlpanel')
     grok.layer(IGenwebTfemarketLayer)
 
     def getTFEs(self):
@@ -518,7 +522,7 @@ class tfemarketUtilsDownloadCSV(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils-download-csv')
     grok.template('tfemarket_utils_download_csv')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.controlpanel')
     grok.layer(IGenwebTfemarketLayer)
 
     def getTFEs(self):
@@ -528,7 +532,7 @@ class tfemarketUtilsDownloadCSV(grok.View):
 class tfemarketUtilsExportCSV(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils-export-csv')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.controlpanel')
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
@@ -714,7 +718,7 @@ def getAllOffers(self):
 class fillEmptyTFGMOffers(grok.View):
     grok.context(Interface)
     grok.name('fillEmptyTFGMOffers')
-    grok.require('zope2.View')
+    grok.require('genweb.tfemarket.controlpanel')
     grok.layer(IGenwebTfemarketLayer)
 
     def getDegreesProgramType(self):

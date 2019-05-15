@@ -21,7 +21,13 @@
     <include package=".browser" />
     <include package=".z3cwidget" />
 
-    <grok:grok package="." />
+    <permission id="genweb.tfemarket.utils"
+                title="Genweb TFEMarket: View utils">
+        <role name="WebMaster"/>
+        <role name="Manager"/>
+        <role name="TFE Manager"/>
+        <role name="TFE Teacher"/>
+    </permission>
 
     <permission id="genweb.tfemarket.controlpanel"
                 title="Genweb TFEMarket: Edit Controlpanel">
@@ -29,6 +35,8 @@
         <role name="Manager"/>
         <role name="TFE Manager"/>
     </permission>
+
+    <grok:grok package="." />
 
     <permission
         id="genweb.tfemarket.add.market"
