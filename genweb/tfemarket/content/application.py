@@ -166,6 +166,6 @@ class View(grok.View):
         roles = api.user.get_current().getRoles()
         market_path = self.context.getParentNode().getParentNode().absolute_url()
         if 'Manager' in roles or 'TFE Manager' in roles:
-            self.redirect(market_path + "?offer=" + self.context.offer_id + "&open=Y")
+            self.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id + "&open=Y")
         else:
             self.redirect(market_path)

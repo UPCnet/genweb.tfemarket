@@ -112,6 +112,9 @@ class View(grok.View):
                 if 'search' not in self.request.form and 'allOffers' not in self.request.form:
                     filters.update({'Creator': api.user.get_current().id})
 
+            if 'searchOffer' in self.request.form and 'offer' in self.request.form:
+                filters.update({'TFEoffer_id': self.request.form['offer']})
+
             if 'search' in self.request.form:
                 if 'title' in self.request.form and self.request.form['title'] != 'a':
                     filters.update({'Title': self.request.form['title']})

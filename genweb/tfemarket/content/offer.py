@@ -486,7 +486,7 @@ class View(dexterity.DisplayForm):
 
     def redirectToMarket(self):
         market_path = self.context.getParentNode().absolute_url()
-        self.redirect(market_path + "?offer=" + self.context.offer_id)
+        self.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id)
 
 
 class Add(dexterity.AddForm):
@@ -504,6 +504,14 @@ class Add(dexterity.AddForm):
             super(Add, self).updateWidgets()
         except ValueError as err:
             self.context.plone_utils.addPortalMessage(_("No esta correctament configurat: '%s'") % err, 'error')
+
+
+@indexer(IOffer)
+def offer_id(context):
+    return context.offer_id
+
+
+grok.global_adapter(offer_id, name='TFEoffer_id')
 
 
 @indexer(IOffer)
