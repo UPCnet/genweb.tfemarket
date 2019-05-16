@@ -91,8 +91,6 @@ class importOfertes(grok.View):
                 IStatusMessage(self.request).addStatusMessage(message, type='alert')
 
     def createOffers(self, hasHeaders, fitxer, marketUID):
-        strTopics = ''
-        strTags = ''
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
 
@@ -104,18 +102,8 @@ class importOfertes(grok.View):
 
         if hasHeaders:
             csv_file.next()  # Ignore header for csv
+
         for count, row in enumerate(csv_file):
-
-            # Importa topics y tags
-            strTopics += row[2].decode("utf-8") + ","
-            strTags += row[6].decode("utf-8") + ","
-            topics = list(dict.fromkeys(strTopics.split(",")[:-1]))
-            tags = list(dict.fromkeys(strTags.split(",")[:-1]))
-            tfe_tool.topics = "\r\n".join(topics)
-            tfe_tool.tags = "\r\n".join(tags)
-
-            transaction.commit()
-
             # Importa ofertas
             notValidDegrees = self.checkNotValidDegrees(row[5].decode("utf-8").split(","))
             if len(notValidDegrees) == 0:
@@ -173,6 +161,24 @@ class importOfertes(grok.View):
                     offer.setEffectiveDate(dt_start_of_day(datetime.datetime.today() + datetime.timedelta(1)))
                     offer.setExpirationDate(dt_end_of_day(datetime.datetime.today() + datetime.timedelta(365)))
                     offer.reindexObject()
+
+                    # Importa topics y tags
+                    strTopics = row[2].decode("utf-8") + ","
+                    topics = list(dict.fromkeys(strTopics.split(",")[:-1]))
+                    actualTopics = tfe_tool.topics.split('\r\n')
+                    newTopics = "\r\n".join([topic for topic in topics if topic not in actualTopics])
+                    if newTopics:
+                        tfe_tool.topics += "\r\n" + newTopics
+
+                    strTags = row[6].decode("utf-8") + ","
+                    tags = list(dict.fromkeys(strTags.split(",")[:-1]))
+                    actualTags = tfe_tool.tags.split('\r\n')
+                    newTags = "\r\n".join([tag for tag in tags if tag not in actualTags])
+                    if newTags:
+                        tfe_tool.tags += "\r\n" + newTags
+
+                    transaction.commit()
+
                     print str(count + 1) + ": Done - " + row[0].decode("utf-8")
                 else:
                     msg = row[0].decode("utf-8") + " - Teacher (" + row[7].decode("utf-8") + ") not exist."
