@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+  <head>
+      <metal:block fill-slot="top_slot"/>
+  </head>
+  <body>
+    <metal:main fill-slot="content">
+      <tal:main-macro metal:define-macro="main">
+
+        <div id="utils"
+             tal:define="portal_url context/@@plone_portal_state/portal_url;">
+          <h1 class="documentFirstHeading">
+            <tal:block i18n:translate="">Tools of the TFE</tal:block> -
+            <tal:block i18n:translate="">Rename offer</tal:block>
+          </h1>
+          <div class="documentDescription">
+            <p tal:repeat="tfe view/getTFEs">
+              <span i18n:translate="">Return to market </span>
+              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+            </p>
+          </div>
+
+          <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+            Status message
+          </div>
+
+          <div>
+            <form id="formTFE" action="@@tfemarket-utils-rename-offer" method="post">
+              <label i18n:translate="">offer</label>
+              <select id="offer" name="offer" style="width: 100" required="required">
+                <option selected value i18n:translate=""></option>
+                <option tal:repeat="offer view/getOffers"
+                        tal:attributes="value offer/UID"
+                        tal:content="string:[${offer/offer_id}] ${offer/Title}">
+                  Option
+                </option>
+              </select>
+
+              <label i18n:translate="">Title</label>
+              <span class="formHelp" i18n:translate="">
+                When changing the title, the short name will be automatically updated.
+              </span>
+              <input id="newTitle" name="newTitle" type="text" required="required">
+
+              <br>
+
+              <label i18n:translate="">Shortname</label>
+              <input id="newShortname" name="newShortname" type="text" required="required">
+
+              <br>
+
+              <input id="confirm" type="checkbox" required="required">
+              <span i18n:translate="">Confirm the rename of offer.</span>
+
+              <br>
+              <br>
+
+              <input type="submit" name="submit" i18n:attributes="value Submit">
+            </form>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+
+          var normalize = (function() {
+            var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç",
+                to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+                mapping = {};
+
+            for(var i = 0, j = from.length; i < j; i++ )
+                mapping[ from.charAt( i ) ] = to.charAt( i );
+
+            return function( str ) {
+                var ret = [];
+                for( var i = 0, j = str.length; i < j; i++ ) {
+                    var c = str.charAt( i );
+                    if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                        ret.push( mapping[ c ] );
+                    else
+                        ret.push( c );
+                }
+                return ret.join( '' );
+            }
+
+          })();
+
+          $.urlParam = function(name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results ? results[1] : false;
+          }
+
+          $('#offer').on('change', function(){
+            $.ajax({
+              type: 'POST',
+              data: {'UID': $('#offer').val()},
+              url: 'getInfoRenameOffer',
+              success: function(data){
+                result = $.parseJSON(data);
+                if(result != null){
+                  $("#newTitle").val(result['title']);
+                  $("#newShortname").val(result['shortname']);
+                }
+              }
+            });
+
+            $("#confirm").prop("checked", false);
+          });
+
+          $(document).ready(function() {
+            $('#offer').select2();
+
+            var offer = $.urlParam('offer');
+            if (offer) {
+              $('#offer').select2("val", offer);
+              $('#offer option[value=' + offer + ']').prop('selected', true);
+              $('#offer').change();
+            }
+
+            $('#newTitle').keyup(function(){
+              $("#newShortname").val(normalize($(this).val()).replace(/  +/g, ' ').replace(/[\ .\/]/g, "-").replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase());
+            });
+          });
+        </script>
+
+      </tal:main-macro>
+    </metal:main>
+  </body>
+</html>

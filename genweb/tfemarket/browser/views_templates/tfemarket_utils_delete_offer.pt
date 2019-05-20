@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="genweb.tfemarket">
+
+  <head>
+      <metal:block fill-slot="top_slot"/>
+  </head>
+  <body>
+    <metal:main fill-slot="content">
+      <tal:main-macro metal:define-macro="main">
+
+        <div id="utils"
+             tal:define="portal_url context/@@plone_portal_state/portal_url;">
+          <h1 class="documentFirstHeading">
+            <tal:block i18n:translate="">Tools of the TFE</tal:block> -
+            <tal:block i18n:translate="">Delete offer</tal:block>
+          </h1>
+          <div class="documentDescription">
+            <p tal:repeat="tfe view/getTFEs">
+              <span i18n:translate="">Return to market </span>
+              <a class="returnTFE" tal:attributes="href tfe/getURL" tal:content="tfe/Title">URL</a>
+            </p>
+          </div>
+
+          <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+            Status message
+          </div>
+
+          <div>
+            <form id="formTFE" action="@@tfemarket-utils-delete-offer" method="post">
+              <label i18n:translate="">offer</label>
+              <span class="formHelp" i18n:translate="">
+                You will only be able to eliminate those offers that you face will not be assigned and have no active requests.
+              </span>
+              <select id="offer" name="offer" style="width: 100" required="required"
+                      tal:define="offers view/getOffers">
+                <option selected value i18n:translate=""></option>
+                <option tal:repeat="offer offers/ok"
+                        tal:attributes="value offer/UID"
+                        tal:content="string:[${offer/offer_id}] ${offer/Title}">
+                  Option
+                </option>
+                <option tal:repeat="offer offers/ko"
+                        tal:attributes="value offer/UID"
+                        tal:content="string:[${offer/offer_id}] ${offer/Title}"
+                        disabled="disabled">
+                  Option
+                </option>
+              </select>
+
+              <input id="confirm" type="checkbox" required="required">
+              <span i18n:translate="">Confirm removal of offer.</span>
+
+              <br>
+              <br>
+
+              <input type="submit" name="submit" i18n:attributes="value Submit">
+            </form>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $('#offer').select2();
+
+            $('#offer').on('change', function(){
+              $("#confirm").prop("checked", false);
+            });
+          });
+        </script>
+
+      </tal:main-macro>
+    </metal:main>
+  </body>
+</html>

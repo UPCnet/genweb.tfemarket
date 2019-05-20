@@ -129,9 +129,17 @@
                         tal:attributes="src string:${portal_url}/++resource++cpgenweb.png" />
                   </a>
                 </li>
-                <li role="menuitem" tal:condition="view/canManageTFE">
+                <li role="menuitem" tal:condition="view/canManageTFE" i18n:domain="genweb.tfemarket">
                   <a tal:attributes="href string:${portal_url}/@@tfemarket-settings">
-                          Mercat de TFE
+                    <span i18n:translate="">Market of TFE</span>
+                    <img i18n:attributes="alt obrir_link_finestra_nova"
+                        class="img_blank"
+                        tal:attributes="src string:${portal_url}/++resource++cpgenweb.png" />
+                  </a>
+                </li>
+                <li role="menuitem" tal:condition="view/canManageUtilsTFE" i18n:domain="genweb.tfemarket">
+                  <a tal:attributes="href string:${portal_url}/@@tfemarket-utils">
+                    <span i18n:translate="">Tools of the TFE</span>
                     <img i18n:attributes="alt obrir_link_finestra_nova"
                         class="img_blank"
                         tal:attributes="src string:${portal_url}/++resource++cpgenweb.png" />

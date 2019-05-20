@@ -1,0 +1,114 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2019-05-08 06:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: genweb.tfemarket.workflow\n"
+
+msgid "Assignada (intranet)"
+msgstr ""
+
+msgid "Assignada"
+msgstr ""
+
+msgid "Caducada"
+msgstr ""
+
+msgid "Inscrita (intranet)"
+msgstr ""
+
+msgid "Inscrita"
+msgstr ""
+
+msgid "Intranet"
+msgstr ""
+
+msgid "Proposta"
+msgstr ""
+
+msgid "Cancel·lada"
+msgstr ""
+
+msgid "En revisió"
+msgstr ""
+
+msgid "Pública"
+msgstr ""
+
+msgid "Assigna l'oferta"
+msgstr ""
+
+msgid "Assigna l'oferta (intranet)"
+msgstr ""
+
+msgid "Caduca l'oferta"
+msgstr ""
+
+msgid "Cancel·la l'oferta"
+msgstr ""
+
+msgid "Publica a l'intranet"
+msgstr ""
+
+msgid "Publica l'oferta"
+msgstr ""
+
+msgid "Registra l'oferta"
+msgstr ""
+
+msgid "Registra l'oferta (intranet)"
+msgstr ""
+
+msgid "Retira a esborrany"
+msgstr ""
+
+msgid "Envia a revisió"
+msgstr ""
+
+msgid "Acceptada"
+msgstr ""
+
+msgid "Anul·lada"
+msgstr ""
+
+msgid "Confirmada"
+msgstr ""
+
+msgid "Rebutjada"
+msgstr ""
+
+msgid "Renunciada"
+msgstr ""
+
+msgid "Sol·licitada"
+msgstr ""
+
+msgid "Accepta"
+msgstr ""
+
+msgid "Cancel·la"
+msgstr ""
+
+msgid "Confirma"
+msgstr ""
+
+msgid "Rebutja"
+msgstr ""
+
+msgid "Renuncia"
+msgstr ""
+
+msgid "Sol·licita"
+msgstr ""

@@ -17,6 +17,8 @@
       template="fieldset.pt"
       />
 
+
+
   <class class=".widget.TeacherInputWidget">
     <require
         permission="zope.Public"
@@ -30,6 +32,24 @@
       layer="z3c.form.interfaces.IFormLayer"
       template="text_input_teacher.pt"
       />
+
+
+
+  <class class=".widget.CodirectorInputWidget">
+    <require
+        permission="zope.Public"
+        interface=".widget.ICodirectorInputWidget"
+        />
+  </class>
+
+  <z3c:widgetTemplate
+      mode="input"
+      widget=".widget.ICodirectorInputWidget"
+      layer="z3c.form.interfaces.IFormLayer"
+      template="text_input_codirector.pt"
+      />
+
+
 
   <class class=".widget.ReadOnlyInputWidget">
     <require

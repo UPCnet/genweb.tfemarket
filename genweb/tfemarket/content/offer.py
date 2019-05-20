@@ -6,19 +6,19 @@ from plone import api
 from plone.autoform import directives
 from plone.directives import dexterity
 from plone.directives import form
+from plone.indexer import indexer
 from plone.registry.interfaces import IRegistry
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from zope import schema
 from zope.component import queryUtility
 from zope.i18n import translate
+from zope.interface import Invalid
+from zope.interface import invariant
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-
-from zope.interface import invariant
-from zope.interface import Invalid
 
 from genweb.tfemarket import _
 from genweb.tfemarket.controlpanel import ITfemarketSettings
@@ -27,7 +27,7 @@ from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import SelectModalityInputFieldWidget
 from genweb.tfemarket.z3cwidget import TeacherInputFieldWidget
-
+from genweb.tfemarket.z3cwidget import CodirectorInputFieldWidget
 
 import transaction
 import unicodedata
@@ -117,6 +117,47 @@ class TopicsVocabulary(object):
 grok.global_utility(TopicsVocabulary, name=u"genweb.tfemarket.Topics")
 
 
+class OfferTypesVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'Study', 'Study', _(u'Study')))
+        types.append(SimpleVocabulary.createTerm(u'Project', 'Project', _(u'Project')))
+        types.append(SimpleVocabulary.createTerm(u'Design', 'Design', _(u'Design')))
+        types.append(SimpleVocabulary.createTerm(u'Others', 'Others', _(u'Others')))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(OfferTypesVocabulary, name=u"genweb.tfemarket.OfferTypes")
+
+
+class TFGMVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'TFG', 'TFG', u'TFG'))
+        types.append(SimpleVocabulary.createTerm(u'TFM', 'TFM', u'TFM'))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(TFGMVocabulary, name=u"genweb.tfemarket.TFGM")
+
+
+class ModalityVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'Universitat', 'Universitat', _(u'Universitat')))
+        types.append(SimpleVocabulary.createTerm(u'Empresa', 'Empresa', _(u'Empresa')))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(ModalityVocabulary, name=u"genweb.tfemarket.Modality")
+
+
 class DegreesVocabulary(object):
     grok.implements(IVocabularyFactory)
 
@@ -150,6 +191,19 @@ class DegreesVocabulary(object):
 grok.global_utility(DegreesVocabulary, name=u"genweb.tfemarket.Titulacions")
 
 
+class TypeCodirectorVocabulary(object):
+    grok.implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        types = []
+        types.append(SimpleVocabulary.createTerm(u'UPC', 'UPC', u'UPC'))
+        types.append(SimpleVocabulary.createTerm(u'External', 'External', _(u'External')))
+        return SimpleVocabulary(types)
+
+
+grok.global_utility(TypeCodirectorVocabulary, name=u"genweb.tfemarket.TypeCodirector")
+
+
 class IOffer(form.Schema):
     """ Folder that contains information about a TFE and its applications
     """
@@ -180,6 +234,20 @@ class IOffer(form.Schema):
         title=_(u'offer_topic'),
         vocabulary=u"genweb.tfemarket.Topics",
         required=False
+    )
+
+    offer_type = schema.Choice(
+        title=_(u'offer_type'),
+        vocabulary=u"genweb.tfemarket.OfferTypes",
+        default=_(u'Project'),
+        required=False
+    )
+
+    form.widget(tfgm=CheckBoxFieldWidget)
+    tfgm = schema.List(
+        value_type=schema.Choice(source=u"genweb.tfemarket.TFGM"),
+        title=_(u'tfgm'),
+        required=True,
     )
 
     form.widget(degree=CheckBoxFieldWidget)
@@ -228,8 +296,32 @@ class IOffer(form.Schema):
         required=False,
     )
 
-    codirector = schema.Text(
+    type_codirector = schema.Choice(
+        title=_(u'Type codirector'),
+        vocabulary=u'genweb.tfemarket.TypeCodirector',
+        required=False,
+    )
+
+    form.widget('codirector_id', CodirectorInputFieldWidget)
+    codirector_id = schema.TextLine(
         title=_(u'Codirector'),
+        required=False,
+    )
+
+    codirector = schema.TextLine(
+        title=_(u'Codirector Fullname'),
+        required=False,
+    )
+
+    form.widget('codirector_email', ReadOnlyInputFieldWidget)
+    codirector_email = schema.TextLine(
+        title=_(u'Codirector Email'),
+        required=False,
+    )
+
+    form.widget('codirector_dept', ReadOnlyInputFieldWidget)
+    codirector_dept = schema.TextLine(
+        title=_(u'Codirector University department'),
         required=False,
     )
 
@@ -253,7 +345,8 @@ class IOffer(form.Schema):
     workload = schema.TextLine(
         title=_(u'offer_workload'),
         description=_(u'Un crèdit ECTS equival a 25 hores de treball'),
-        required=False,
+        default=_(u'La càrrega de treball s\'adptarà als crèdits de la titulació.'),
+        required=True,
     )
 
     targets = schema.Text(
@@ -290,8 +383,7 @@ class IOffer(form.Schema):
     form.widget('modality', SelectModalityInputFieldWidget)
     modality = schema.Choice(
         title=_(u'modality'),
-        values=[u'Universitat',
-                u'Empresa'],
+        vocabulary=u"genweb.tfemarket.Modality",
         default=_(u'Universitat'),
         required=True,
     )
@@ -394,14 +486,109 @@ class View(dexterity.DisplayForm):
 
     def redirectToMarket(self):
         market_path = self.context.getParentNode().absolute_url()
-        self.redirect(market_path + "?offer=" + self.context.offer_id)
+        self.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id)
 
 
 class Add(dexterity.AddForm):
     grok.name('offer')
+
+    def updateFields(self):
+        super(Add, self).updateFields()
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        if not tfe_tool.view_num_students:
+            self.fields = self.fields.omit('num_students')
 
     def updateWidgets(self):
         try:
             super(Add, self).updateWidgets()
         except ValueError as err:
             self.context.plone_utils.addPortalMessage(_("No esta correctament configurat: '%s'") % err, 'error')
+
+
+@indexer(IOffer)
+def offer_id(context):
+    return context.offer_id
+
+
+grok.global_adapter(offer_id, name='TFEoffer_id')
+
+
+@indexer(IOffer)
+def offer_type(context):
+    return context.offer_type
+
+
+grok.global_adapter(offer_type, name='TFEoffer_type')
+
+
+@indexer(IOffer)
+def tfgm(context):
+    return context.tfgm
+
+
+grok.global_adapter(tfgm, name='TFEtfgm')
+
+
+@indexer(IOffer)
+def degree(context):
+    return context.degree
+
+
+grok.global_adapter(degree, name='TFEdegree')
+
+
+@indexer(IOffer)
+def teacher_manager(context):
+    return context.teacher_manager
+
+
+grok.global_adapter(teacher_manager, name='TFEteacher_manager')
+
+
+@indexer(IOffer)
+def dept(context):
+    return context.dept
+
+
+grok.global_adapter(dept, name='TFEdept')
+
+
+@indexer(IOffer)
+def company(context):
+    return context.company
+
+
+grok.global_adapter(company, name='TFEcompany')
+
+
+@indexer(IOffer)
+def grant(context):
+    return context.grant
+
+
+grok.global_adapter(grant, name='TFEgrant')
+
+
+@indexer(IOffer)
+def modality(context):
+    return context.modality
+
+
+grok.global_adapter(modality, name='TFEmodality')
+
+
+@indexer(IOffer)
+def keys(context):
+    return context.keys
+
+
+grok.global_adapter(keys, name='TFEkeys')
+
+
+@indexer(IOffer)
+def lang(context):
+    return context.lang
+
+
+grok.global_adapter(lang, name='TFElang')

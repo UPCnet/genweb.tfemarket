@@ -1,0 +1,113 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2019-01-24 13:17+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Language: en\n"
+"X-Generator: Poedit 2.0.6\n"
+
+msgid "Assignada (intranet)"
+msgstr "Assigned (intranet)"
+
+msgid "Assignada"
+msgstr "Assigned"
+
+msgid "Caducada"
+msgstr "Expired"
+
+msgid "Inscrita (intranet)"
+msgstr "Registered (intranet)"
+
+msgid "Inscrita"
+msgstr "Registered"
+
+msgid "Intranet"
+msgstr "Intranet"
+
+msgid "Proposta"
+msgstr "Proposal"
+
+msgid "Cancel·lada"
+msgstr "Canceled"
+
+msgid "En revisió"
+msgstr "In review"
+
+msgid "Pública"
+msgstr "Public"
+
+msgid "Assigna l'oferta"
+msgstr "Assign the offer"
+
+msgid "Assigna l'oferta (intranet)"
+msgstr "Assign the offer (intranet)"
+
+msgid "Caduca l'oferta"
+msgstr "Expires offer"
+
+msgid "Cancel·la l'oferta"
+msgstr "Cancel the offer"
+
+msgid "Publica a l'intranet"
+msgstr "Post to the intranet"
+
+msgid "Publica l'oferta"
+msgstr "Post the offer"
+
+msgid "Registra l'oferta"
+msgstr "Register the offer"
+
+msgid "Registra l'oferta (intranet)"
+msgstr "Register the offer (intranet)"
+
+msgid "Retira a esborrany"
+msgstr "Reject the draft"
+
+msgid "Envia a revisió"
+msgstr "Send to review"
+
+msgid "Acceptada"
+msgstr "Accepted"
+
+msgid "Anul·lada"
+msgstr "Canceled"
+
+msgid "Confirmada"
+msgstr "Confirmed"
+
+msgid "Rebutjada"
+msgstr "Declined"
+
+msgid "Renunciada"
+msgstr "Resigned"
+
+msgid "Sol·licitada"
+msgstr "Requested"
+
+msgid "Accepta"
+msgstr "Accept"
+
+msgid "Cancel·la"
+msgstr "Cancel"
+
+msgid "Confirma"
+msgstr "Confirm"
+
+msgid "Rebutja"
+msgstr "Refuse"
+
+msgid "Renuncia"
+msgstr "Resignation"
+
+msgid "Sol·licita"
+msgstr "Request"

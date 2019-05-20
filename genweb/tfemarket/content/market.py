@@ -61,106 +61,25 @@ class View(grok.View):
         filters.pop('_authenticator', None)
         return filters
 
-    def filterResults(self, results):
-        filters = self.saveFilters()
+    def filterResultsForDate(self, results):
+        filters = self.request.form
+
         delete = []
         for index, item in enumerate(results, start=0):
 
-            # Filter text
-            if len(filters['title']) > 0 and not filters['title'].lower() in item['title'].lower():
-                delete.append(index)
-                continue
-
-            # Filter degree
-            if filters['degree'] != 'a' and ('degrees' not in item or filters['degree'] not in item['degrees']):
-                delete.append(index)
-                continue
-
-            # Filter teacher
-            if filters['teacher'] != 'a' and ('teacher_manager' not in item or filters['teacher'] != item['teacher_manager']):
-                delete.append(index)
-                continue
-
-            # Filter departament
-            if filters['departament'] != 'a' and ('dept' not in item or filters['departament'] != item['dept']):
-                delete.append(index)
-                continue
-
-            # Filter company
-            if filters['company'] != 'a' and ('company' not in item or filters['company'] != item['company']):
-                delete.append(index)
-                continue
-
             # Filter date
-            if filters['date'] != 'a':
-                if 'effective_date' in item and item['effective_date']:
-                    today = date.today()
-                    effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
-                    diff_days = today - effective_date
-                    diff_days = diff_days.days
-                    if filters['date'] == 'w' and diff_days > 7 \
-                       or filters['date'] == 'm' and diff_days > 30:
-                        delete.append(index)
-                        continue
-                else:
+            if 'effective_date' in item and item['effective_date']:
+                today = date.today()
+                effective_date = datetime.strptime(item['effective_date'], '%d/%m/%Y').date()
+                diff_days = today - effective_date
+                diff_days = diff_days.days
+                if filters['date'] == 'w' and diff_days > 7 \
+                   or filters['date'] == 'm' and diff_days > 30:
                     delete.append(index)
                     continue
-
-            # Filters status
-            if filters['state'] != 'a' and filters['state'] != item['state_id']:
+            else:
                 delete.append(index)
                 continue
-
-            # Filters keys
-            if 'key' in filters:
-                if 'keywords' in item and item['keywords']:
-                    flattenedKeys = self.flattenedList(item['keywords'])
-                    if isinstance(filters['key'], list):
-                        deletedItem = True
-                        for key in filters['key']:
-                            if key in flattenedKeys:
-                                deletedItem = False
-                                break
-
-                        if deletedItem:
-                            delete.append(index)
-                            continue
-                    else:
-                        if filters['key'] not in flattenedKeys:
-                            delete.append(index)
-                            continue
-                else:
-                    delete.append(index)
-                    continue
-
-            # Filter grant
-            if 'grant' in filters:
-                if not item['grant']:
-                    delete.append(index)
-                    continue
-
-            # Filter language
-            if 'langs' in item:
-                flattenedListanguages = self.flattenedList(item['langs'])
-                if isinstance(filters['language'], list):
-                    deletedItem = True
-                    for lang in filters['language']:
-                        if lang in flattenedListanguages:
-                            deletedItem = False
-
-                    if deletedItem:
-                        delete.append(index)
-                        continue
-                else:
-                    if filters['language'] not in flattenedListanguages:
-                        delete.append(index)
-                        continue
-
-            # FIlter modality
-            if 'modality' in item and len(filters['modality']) != 2:
-                if (filters['modality'] == 'u' and item['modality'] != 'Universitat') or (filters['modality'] == 'c' and item['modality'] != 'Empresa'):
-                    delete.append(index)
-                    continue
 
         delete.reverse()
         for item in delete:
@@ -181,19 +100,68 @@ class View(grok.View):
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
-            filters = {'portal_type': 'genweb.tfemarket.offer'}
+            filters = {'portal_type': 'genweb.tfemarket.offer',
+                       'path': {"query": '/'.join(self.context.getPhysicalPath())}}
+
+            # if 'allOffers' not in self.request.form:
+            #     filters.update({'sort_limit': 50})
+
             if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
                 if 'search' not in self.request.form and 'allOffers' not in self.request.form:
                     filters.update({'Creator': api.user.get_current().id})
 
-            values = self.context.contentValues(filters)
+            if 'search' in self.request.form:
+                if 'title' in self.request.form and self.request.form['title'] != 'a':
+                    filters.update({'Title': self.request.form['title']})
+
+                if 'tfgm' in self.request.form and self.request.form['tfgm'] != 'a':
+                    filters.update({'TFEtfgm': self.request.form['tfgm']})
+
+                if 'degree' in self.request.form and self.request.form['degree'] != 'a':
+                    filters.update({'TFEdegree': self.request.form['degree']})
+
+                if 'teacher' in self.request.form and self.request.form['teacher'] != 'a':
+                    filters.update({'TFEteacher_manager': self.request.form['teacher']})
+
+                if 'departament' in self.request.form and self.request.form['departament'] != 'a':
+                    filters.update({'TFEdept': self.request.form['departament']})
+
+                if 'type' in self.request.form and self.request.form['type'] != 'a':
+                    filters.update({'TFEoffer_type': self.request.form['type']})
+
+                if 'company' in self.request.form and self.request.form['company'] != 'a':
+                    filters.update({'TFEcompany': self.request.form['company']})
+
+                if 'state' in self.request.form and self.request.form['state'] != 'a':
+                    filters.update({'review_state': self.request.form['state']})
+
+                if 'language' in self.request.form:
+                    filters.update({'TFElang': self.request.form['language']})
+
+                if 'modality' in self.request.form and len(self.request.form['modality']) == 1:
+                    filters.update({'TFEmodality': 'Universitat' if self.request.form['modality'] == 'u' else 'Empresa'})
+
+                if 'grant' in self.request.form:
+                    filters.update({'TFEgrant': self.request.form['grant'] == 'on'})
+
+                if 'key' in self.request.form:
+                    filters.update({'TFEkeys': self.request.form['key']})
+
+            pc = api.portal.get_tool('portal_catalog')
+            values = pc.searchResults(**filters)
+
             values = sort(values, sort=(
                 ('Date', 'cmp', 'desc'),
                 ('Title', 'cmp', 'asc')
             ))
 
+            marketWorkflow = tools.workflow().getWorkflowsFor(self.context)[0]
+            marketStatus = wf_tool.getStatusOf(marketWorkflow.id, self.context)
+            marketState = marketWorkflow['states'][marketStatus['review_state']]
+
             results = []
             for offer in values:
+                offer = offer.getObject()
                 if checkPermission('zope2.View', offer):
                     workflowActions = wf_tool.listActionInfos(object=offer)
                     offerWorkflow = tools.workflow().getWorkflowsFor(offer)[0]
@@ -211,11 +179,6 @@ class View(grok.View):
 
                     if offerState.id == 'pending' and self.currentUserIsAloneTeacher():
                         workflowActions = []
-
-                    market = offer.getParentNode()
-                    marketWorkflow = tools.workflow().getWorkflowsFor(market)[0]
-                    marketStatus = wf_tool.getStatusOf(marketWorkflow.id, market)
-                    marketState = marketWorkflow['states'][marketStatus['review_state']]
 
                     if marketState.id == 'published':
                         workflowActions = [x for x in workflowActions if x.get('id') != 'publicaalintranet']
@@ -237,12 +200,15 @@ class View(grok.View):
                                             teacher_fullname=offer.teacher_fullname,
                                             teacher_email=offer.teacher_email,
                                             codirector=offer.codirector,
+                                            codirector_email=offer.codirector_email,
+                                            codirector_dept=offer.codirector_dept,
                                             modality=offer.modality,
                                             description=offer.description,
                                             langs=offer.lang,
                                             multiple_langs=len(offer.lang) > 1,
                                             environmental_theme=offer.environmental_theme,
                                             grant=offer.grant,
+                                            tfgm=offer.tfgm,
                                             degrees=offer.degree,
                                             multiple_degrees=len(offer.degree) > 1,
                                             keywords=offer.keys,
@@ -263,14 +229,17 @@ class View(grok.View):
                                             confidential=offer.confidential,
                                             scope_cooperation=offer.scope_cooperation,
                                             topic=offer.topic,
+                                            offer_type=offer.offer_type,
                                             if_propietary=isTeachersOffer(offer),
                                             assign_offer=self.assignOffer(offer, offerState.id),
                                             is_expired=offer.isExpired()
                                             ))
 
-            if 'search' in self.request.form or 'searchFilters' in self.request.form:
-                results = self.filterResults(results)
+            if 'search' in self.request.form:
                 self.request.response.setCookie('MERCAT_TFE', self.clearFiltersCookie(), path='/')
+
+                if 'date' in self.request.form and self.request.form['date'] != 'a':
+                    results = self.filterResultsForDate(results)
 
             if 'searchOffer' in self.request.form and 'offer' in self.request.form:
                 for offer in results:
@@ -357,6 +326,18 @@ class View(grok.View):
         return [{'id': 'a', 'lit': _(u"All")},
                 {'id': 'w', 'lit': _(u"Last week")},
                 {'id': 'm', 'lit': _(u"Last month")}]
+
+    def getTypes(self):
+        return [{'id': 'a', 'lit': _(u"MAll")},
+                {'id': 'Study', 'lit': _(u"Study")},
+                {'id': 'Project', 'lit': _(u"Project")},
+                {'id': 'Design', 'lit': _(u"Design")},
+                {'id': 'Others', 'lit': _(u"Others")}]
+
+    def getTFGM(self):
+        return [{'id': 'a', 'lit': _(u"MAll")},
+                {'id': 'TFG', 'lit': u"TFG"},
+                {'id': 'TFM', 'lit': u"TFM"}]
 
     def getDegrees(self):
         return getDegrees()
@@ -515,3 +496,8 @@ class View(grok.View):
                 return False
             return True
         return False
+
+    def showNumEstudiants(self):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        return tfe_tool.view_num_students

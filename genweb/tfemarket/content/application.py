@@ -4,23 +4,20 @@ from five import grok
 from plone import api
 from plone.directives import dexterity
 from plone.directives import form
+from z3c.form.interfaces import IEditForm
 from zope import schema
+from zope.globalrequest import getRequest
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.schema.interfaces import IContextSourceBinder
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
 from genweb.tfemarket import _
 from genweb.tfemarket.utils import checkPermissionCreateApplications
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import StudentInputFieldWidget
-
-from zope.globalrequest import getRequest
-from zope.schema.vocabulary import SimpleTerm
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.schema.interfaces import IContextSourceBinder
-
-from zope.lifecycleevent.interfaces import IObjectAddedEvent
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
-
-from z3c.form.interfaces import IEditForm
 
 import ast
 
@@ -39,7 +36,7 @@ def getCookie():
 
 
 @grok.provider(IContextSourceBinder)
-def getDregees(context):
+def getDegrees(context):
     titulacions = []
     result = getCookie()
     if result:
@@ -72,7 +69,7 @@ class IApplication(form.Schema):
     form.mode(IEditForm, degree_id='display')
     degree_id = schema.Choice(
         title=_(u'Title of the degree with which you request the offer'),
-        source=getDregees,
+        source=getDegrees,
         required=True,
     )
 
@@ -169,6 +166,6 @@ class View(grok.View):
         roles = api.user.get_current().getRoles()
         market_path = self.context.getParentNode().getParentNode().absolute_url()
         if 'Manager' in roles or 'TFE Manager' in roles:
-            self.redirect(market_path + "?offer=" + self.context.offer_id + "&open=Y")
+            self.redirect(market_path + "?searchOffer&offer=" + self.context.offer_id + "&open=Y")
         else:
             self.redirect(market_path)
