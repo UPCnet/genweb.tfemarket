@@ -193,9 +193,7 @@ class requestOffer(grok.View):
         currentUser = api.user.get_current()
         data = getStudentData(self, currentItem, currentUser)
         if data:
-            sdm = self.context.session_data_manager
-            session = sdm.getSessionData(create=True)
-            session.set('APPLICATION_DATA', data)
+            self.request.response.setCookie('APPLICATION_DATA', data, path='/')
             self.request.response.redirect(currentItem.absolute_url() + '/++add++genweb.tfemarket.application')
         else:
             redirectToMarket(self)
@@ -208,11 +206,8 @@ class getInfoCreateApplication(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
-        sdm = self.context.session_data_manager
-        session = sdm.getSessionData(create=True)
-        data = session.get('APPLICATION_DATA')
-        session.delete('APPLICATION_DATA')
-        return json.dumps(data)
+        data = self.request.cookies.pop('APPLICATION_DATA')
+        return json.dumps(eval(data))
 
 
 class getInfoRenameOffer(grok.View):

@@ -4,7 +4,14 @@ from five import grok
 from plone import api
 from plone.directives import dexterity
 from plone.directives import form
+from z3c.form.interfaces import IEditForm
 from zope import schema
+from zope.globalrequest import getRequest
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.schema.interfaces import IContextSourceBinder
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
 from genweb.tfemarket import _
 from genweb.tfemarket.utils import checkPermissionCreateApplications
@@ -12,24 +19,18 @@ from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.z3cwidget import ReadOnlyInputFieldWidget
 from genweb.tfemarket.z3cwidget import StudentInputFieldWidget
 
-from zope.schema.vocabulary import SimpleTerm
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.schema.interfaces import IContextSourceBinder
-
-from zope.lifecycleevent.interfaces import IObjectAddedEvent
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
-
-from z3c.form.interfaces import IEditForm
+import ast
 
 grok.templatedir("templates")
 
 
-def getSession(context):
-    session = {}
+def getCookie():
+    request = getRequest()
+    cookie = {}
     try:
-        sdm = context.session_data_manager
-        session = sdm.getSessionData(create=True)
-        return session.get('APPLICATION_DATA')
+        data = request.cookies.get('APPLICATION_DATA')
+        cookie = ast.literal_eval(data)
+        return cookie
     except:
         pass
 
@@ -37,7 +38,7 @@ def getSession(context):
 @grok.provider(IContextSourceBinder)
 def getDegrees(context):
     titulacions = []
-    result = getSession(context)
+    result = getCookie()
     if result:
         degrees = result['degrees']
 
@@ -134,7 +135,7 @@ def defineDregreecode(application, event):
 
 @grok.subscribe(IApplication, IObjectAddedEvent)
 def getCodiExpedient(application, event):
-    result = getSession(application)
+    result = getCookie()
     degrees = result['degrees']
     codiexpedient = (item['codi_expedient'] for item in degrees if item['degree_id'] == application.degree_id)
 
@@ -142,9 +143,8 @@ def getCodiExpedient(application, event):
         application.codi_expedient = x
 
     application.reindexObject()
-    sdm = application.session_data_manager
-    session = sdm.getSessionData(create=True)
-    session.delete('APPLICATION_DATA')
+    request = getRequest()
+    request.response.expireCookie('APPLICATION_DATA', path='/')
 
 
 class Add(dexterity.AddForm):

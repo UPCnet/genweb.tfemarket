@@ -29,6 +29,7 @@ from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import isTeachersOffer
 
+import ast
 import unicodedata
 import urllib
 
@@ -87,16 +88,13 @@ class View(grok.View):
         return results
 
     def getOffers(self):
-        sdm = self.context.session_data_manager
-        session = sdm.getSessionData(create=True)
-
-        searchMarket = session.get('MERCAT_TFE')
+        searchMarket = self.request.cookies.get('MERCAT_TFE')
         if searchMarket and not searchMarket == "":
             if 'searchFilters' in self.request.form:
-                self.request.form = searchMarket
+                self.request.form = ast.literal_eval(searchMarket)
             else:
                 if 'search' not in self.request.form:
-                    session.delete('MERCAT_TFE')
+                    self.request.response.setCookie('MERCAT_TFE', "", path='/')
 
         if self.checkPermissionCreateOffers() or self.request.form != {} and 'form.button.confirm' not in self.request.form:
             wf_tool = getToolByName(self.context, 'portal_workflow')
@@ -111,9 +109,6 @@ class View(grok.View):
             if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
                 if 'search' not in self.request.form and 'allOffers' not in self.request.form:
                     filters.update({'Creator': api.user.get_current().id})
-
-            if 'searchOffer' in self.request.form and 'offer' in self.request.form:
-                filters.update({'TFEoffer_id': self.request.form['offer']})
 
             if 'search' in self.request.form:
                 if 'title' in self.request.form and self.request.form['title'] != 'a':
@@ -240,11 +235,11 @@ class View(grok.View):
                                             is_expired=offer.isExpired()
                                             ))
 
-            if 'search' in self.request.form or 'searchFilters' in self.request.form:
+            if 'search' in self.request.form:
+                self.request.response.setCookie('MERCAT_TFE', self.clearFiltersCookie(), path='/')
+
                 if 'date' in self.request.form and self.request.form['date'] != 'a':
                     results = self.filterResultsForDate(results)
-
-                session.set('MERCAT_TFE', self.clearFiltersCookie())
 
             if 'searchOffer' in self.request.form and 'offer' in self.request.form:
                 for offer in results:
