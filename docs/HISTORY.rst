@@ -1,8 +1,27 @@
-1.4.7 (unreleased)
-------------------
+1.5 (2019-05-20)
+----------------
 
-- Nothing changed yet.
-
+* Mejora gestion topics y tags al importar ofertas [Iago López Fernández]
+* Añadir permisos a los utils del TFE [Iago López Fernández]
+* Mejora velocidad del mercado [Iago López Fernández]
+* Añadir funcionalidad codirector como UPC o Externo [Iago López Fernández]
+* Arreglar error importación ofertas [Iago López Fernández]
+* Traducciones [Iago López Fernández]
+* Añadir campo TFG/TFM a la oferta - Y modificar vista del mercado [Iago López Fernández]
+* Añadir configuración para omitir el campo de la oferta Nombre de estudiantes [Iago López Fernández]
+* Añadir nuevo campo Tipo de la oferta en el buscador y en la ficha de información [Iago López Fernández]
+* Añadir utilidad del TFE Exportar CSV [Iago López Fernández]
+* Añadir utilidad del TFE Estadísticas [Iago López Fernández]
+* Fix: Ver correctamente todos los mercados en las vistas de utilidades del TFE [Iago López Fernández]
+* Añadir nuevo campo Tipo a la oferta [Iago López Fernández]
+* Añadir compatibilidad para multiples mercados [Iago López Fernández]
+* Añadir herramientas para gestionar las ofertas del TFE (copiar - renombrar - eliminar) [Iago López Fernández]
+* Añadir mailto [Iago López Fernández]
+* Carga de trabajo: añadir texto por defecto [Iago López Fernández]
+* Tabular pt [Iago López Fernández]
+* Mejorar velocidad del buscador [Iago López Fernández]
+* Evitar Redraw y aplicar estilos al inicio [alberto.duran]
+* Add translations [Corina Riba]
 
 1.4.6 (2019-02-14)
 ------------------
