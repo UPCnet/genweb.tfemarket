@@ -1,8 +1,11 @@
-1.5.1 (unreleased)
+1.5.1 (2019-05-23)
 ------------------
 
-- Nothing changed yet.
-
+* Arreglar busqueda widget Codirector [Iago López Fernández]
+* Eliminar o renombrar ofertas, profesores solo pueden si no hay solicitudes y los gestores siempre [Iago López Fernández]
+* Los gestores no ven todas las ofertas por defecto [Iago López Fernández]
+* Buscar por tema + Quitar búsqueda por TFGM [Iago López Fernández]
+* Carga de trabajo: Quitar valor por defecto y añadirlo a la descripción. [Iago López Fernández]
 
 1.5 (2019-05-20)
 ----------------
