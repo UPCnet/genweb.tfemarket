@@ -344,8 +344,7 @@ class IOffer(form.Schema):
 
     workload = schema.TextLine(
         title=_(u'offer_workload'),
-        description=_(u'Un crèdit ECTS equival a 25 hores de treball'),
-        default=_(u'La càrrega de treball s\'adptarà als crèdits de la titulació.'),
+        description=_(u'Un crèdit ECTS equival a 25 hores de treball. La càrrega de treball s\'adaptarà als crèdits de la titulació.'),
         required=True,
     )
 
