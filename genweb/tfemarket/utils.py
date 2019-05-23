@@ -219,6 +219,12 @@ def isTeachersOffer(offer):
     return False
 
 
+def isManager():
+    user = api.user.get_current()
+    user_roles = user.getRoles()
+    return user.id == 'admin' or 'Manager' in user_roles or 'TFE Manager' in user_roles
+
+
 def getStudentData(self, item, user):
 
     if not checkPermissionCreateApplications(self, item, True):

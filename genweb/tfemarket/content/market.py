@@ -27,6 +27,7 @@ from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreate
 from genweb.tfemarket.utils import checkPermissionCreateOffers as CPCreateOffers
 from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getDegrees
+from genweb.tfemarket.utils import isManager
 from genweb.tfemarket.utils import isTeachersOffer
 
 import ast
@@ -96,15 +97,12 @@ class View(grok.View):
                 if 'search' not in self.request.form:
                     self.request.response.setCookie('MERCAT_TFE', "", path='/')
 
-        if self.checkPermissionCreateOffers() or self.request.form != {} and 'form.button.confirm' not in self.request.form:
+        if not isManager() and self.checkPermissionCreateOffers() or self.request.form != {} and 'form.button.confirm' not in self.request.form:
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
             filters = {'portal_type': 'genweb.tfemarket.offer',
                        'path': {"query": '/'.join(self.context.getPhysicalPath())}}
-
-            # if 'allOffers' not in self.request.form:
-            #     filters.update({'sort_limit': 50})
 
             if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
                 if 'search' not in self.request.form and 'allOffers' not in self.request.form:
@@ -247,6 +245,9 @@ class View(grok.View):
                         return [offer, ]
 
             return results
+
+        else:
+            return []
 
     def userApplications(self):
         catalog = api.portal.get_tool(name='portal_catalog')
@@ -463,7 +464,7 @@ class View(grok.View):
             return ''
 
     def classViewSearch(self):
-        if self.checkPermissionCreateOffers() and self.request.form == {}:
+        if not isManager() and self.checkPermissionCreateOffers() and self.request.form == {}:
             return {'collapse': ' hide', 'expand': ''}
         else:
             return {'collapse': '', 'expand': ' hide'}
