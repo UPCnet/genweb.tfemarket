@@ -33,11 +33,18 @@
           <div>
             <form id="formTFE" action="@@tfemarket-utils-rename-offer" method="post">
               <label i18n:translate="">offer</label>
-              <select id="offer" name="offer" style="width: 100" required="required">
+              <select id="offer" name="offer" style="width: 100" required="required"
+                      tal:define="offers view/getOffers">
                 <option selected value i18n:translate=""></option>
-                <option tal:repeat="offer view/getOffers"
+                <option tal:repeat="offer offers/ok"
                         tal:attributes="value offer/UID"
                         tal:content="string:[${offer/offer_id}] ${offer/Title}">
+                  Option
+                </option>
+                <option tal:repeat="offer offers/ko"
+                        tal:attributes="value offer/UID"
+                        tal:content="string:[${offer/offer_id}] ${offer/Title}"
+                        disabled="disabled">
                   Option
                 </option>
               </select>

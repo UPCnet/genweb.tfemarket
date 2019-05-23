@@ -24,13 +24,13 @@ from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
 from genweb.tfemarket.utils import BusError
 from genweb.tfemarket.utils import checkOfferhasAssign
-from genweb.tfemarket.utils import checkOfferhasValidApplications
 from genweb.tfemarket.utils import getApplicationsFromContent
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import getLdapExactUserData
 from genweb.tfemarket.utils import getLdapUserData
 from genweb.tfemarket.utils import getStudentData
 from genweb.tfemarket.utils import isTeachersOffer
+from genweb.tfemarket.utils import isManager
 
 import csv
 import json
@@ -375,7 +375,27 @@ class tfemarketUtilsRenameOffer(grok.View):
         return getUrlAllTFE(self)
 
     def getOffers(self):
-        return getAllOffers(self)
+        pc = api.portal.get_tool('portal_catalog')
+        filters = {'portal_type': 'genweb.tfemarket.offer',
+                   'review_state': ('intranet', 'offered', 'public', 'pending'),
+                   'sort_on': 'sortable_title',
+                   'sort_order': 'ascending'}
+
+        if 'TFE Teacher' in api.user.get_current().getRoles() and api.user.get_current().id != "admin":
+            filters.update({'Creator': api.user.get_current().id})
+
+        offers = pc.searchResults(**filters)
+        res = {'ok': [], 'ko': []}
+        for offer in offers:
+            data = {'UID': offer.UID,
+                    'Title': offer.Title,
+                    'offer_id': offer.getObject().offer_id}
+
+            if isManager() or not checkOfferhasApplications(offer.getObject()):
+                res['ok'].append(data)
+            else:
+                res['ko'].append(data)
+        return res
 
     def update(self):
         if 'submit' in self.request.form:
@@ -427,10 +447,10 @@ class tfemarketUtilsDeleteOffer(grok.View):
                     'Title': offer.Title,
                     'offer_id': offer.getObject().offer_id}
 
-            if checkOfferhasValidApplications(offer.getObject()):
-                res['ko'].append(data)
-            else:
+            if isManager() or not checkOfferhasApplications(offer.getObject()):
                 res['ok'].append(data)
+            else:
+                res['ko'].append(data)
         return res
 
     def update(self):
@@ -708,6 +728,10 @@ def getAllOffers(self):
                     'Title': offer.Title,
                     'offer_id': offer.getObject().offer_id})
     return res
+
+
+def checkOfferhasApplications(offer):
+    return len(getApplicationsFromContent(offer)) > 0
 
 
 class fillEmptyTFGMOffers(grok.View):
