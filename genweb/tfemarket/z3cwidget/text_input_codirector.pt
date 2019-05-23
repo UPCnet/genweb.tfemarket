@@ -3,7 +3,7 @@
      tal:omit-tag=""
      i18n:domain="genweb.tfemarket">
 
-  <input type="text" autocomplete="no"
+  <input type="text" autocomplete="no" readonly
          tal:attributes="id view/id;
                          name view/name;
                          class view/klass;
@@ -132,11 +132,11 @@
     $("#form-widgets-codirector-btn").on("click", function(){
       hideElementsCodirector();
       var regexCodirector = new RegExp('^[a-zA-ZñÑçÇ]{2,}\\.[a-zA-Z0-9-.ñÑçÇ]{2,}$');
-      var codirectorUser = $("#form-widgets-codirector_id-input").val();
+      var codirectorUser = $("#form-widgets-codirector-input").val();
       if(regexCodirector.test(codirectorUser)){
         $.ajax({
           type: 'POST',
-          data: { "teacher" : $("#form-widgets-codirector_id-input").val() },
+          data: { "teacher" : $("#form-widgets-codirector-input").val() },
           url: 'getTeacher',
           success: function(data){
             results = $.parseJSON(data);
