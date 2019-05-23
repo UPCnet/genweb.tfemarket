@@ -185,11 +185,12 @@
                                         </select>
                                     </div>
                                     <div class="span3">
-                                        <label>TFG/TGM</label>
-                                        <select id="searchDegree" name="tfgm">
-                                            <tal:block tal:condition="view/getTFGM" tal:repeat="tfgm view/getTFGM">
-                                                <tal:block tal:define="selected python: save.has_key('tfgm') and not save['tfgm'] == 'a' and tfgm['id'] == save['tfgm']">
-                                                    <option tal:attributes="value tfgm/id; selected python: True if selected else False" tal:content="tfgm/lit">TFGM</option>
+                                        <label i18n:translate="">Topic</label>
+                                        <select id="searchDegree" name="topic" tal:define="topics view/getTopics">
+                                            <option value="a" i18n:translate="">MAll</option>
+                                            <tal:block tal:condition="topics" tal:repeat="topic topics">
+                                                <tal:block tal:define="selected python: save.has_key('topic') and not save['topic'] == 'a' and topic == save['topic']">
+                                                    <option tal:attributes="value topic; selected python: True if selected else False" tal:content="topic">Topic</option>
                                                 </tal:block>
                                             </tal:block>
                                         </select>

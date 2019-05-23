@@ -9,9 +9,10 @@ from zope.interface import implementer
 import logging
 
 PROFILE_ID = 'profile-genweb.tfemarket:default'
-INDEXES = (('TFEoffer_id', 'KeywordIndex'),
+INDEXES = (('TFEoffer_id', 'FieldIndex'),
            ('TFEoffer_type', 'FieldIndex'),
            ('TFEtfgm', 'KeywordIndex'),
+           ('TFEtopic', 'FieldIndex'),
            ('TFEdegree', 'KeywordIndex'),
            ('TFEteacher_manager', 'FieldIndex'),
            ('TFEdept', 'FieldIndex'),

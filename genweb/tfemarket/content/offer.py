@@ -591,3 +591,11 @@ def lang(context):
 
 
 grok.global_adapter(lang, name='TFElang')
+
+
+@indexer(IOffer)
+def topic(context):
+    return context.topic
+
+
+grok.global_adapter(topic, name='TFEtopic')

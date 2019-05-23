@@ -114,8 +114,8 @@ class View(grok.View):
                 if 'title' in self.request.form and self.request.form['title'] != 'a':
                     filters.update({'Title': self.request.form['title']})
 
-                if 'tfgm' in self.request.form and self.request.form['tfgm'] != 'a':
-                    filters.update({'TFEtfgm': self.request.form['tfgm']})
+                if 'topic' in self.request.form and self.request.form['topic'] != 'a':
+                    filters.update({'TFEtopic': self.request.form['topic']})
 
                 if 'degree' in self.request.form and self.request.form['degree'] != 'a':
                     filters.update({'TFEdegree': self.request.form['degree']})
@@ -405,6 +405,18 @@ class View(grok.View):
 
         tags.sort()
         return tags
+
+    def getTopics(self):
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        topics = []
+
+        keys = tfe_tool.topics
+        if keys:
+            topics = keys.split("\r\n")
+
+        topics.sort()
+        return topics
 
     def saveFilters(self):
         filters = self.request.form
