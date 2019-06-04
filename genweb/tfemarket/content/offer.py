@@ -474,8 +474,10 @@ def defineTeacherAsEditor(offer, event):
 
     offer.creators = tuple([creator, teacher])
     offer.manage_setLocalRoles(teacher, ["Owner"])
+    offer.setCreators('jaume.figueras')
     offer.addCreator(teacher)
-    offer.reindexObject()
+    offer.reindexObjectSecurity()
+    transaction.commit()
 
 
 class View(dexterity.DisplayForm):
