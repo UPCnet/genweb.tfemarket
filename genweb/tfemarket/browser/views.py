@@ -380,10 +380,11 @@ class tfemarketUtilsRenameOffer(grok.View):
                    'sort_on': 'sortable_title',
                    'sort_order': 'ascending'}
 
-        if api.user.get_current().id != "admin":
+        roles = api.user.get_current().getRoles()
+        if api.user.get_current().id != "admin" and 'TFE Manager' not in roles:
             filters.update({'review_state': ('intranet', 'offered', 'public', 'pending')})
 
-        if 'TFE Teacher' in api.user.get_current().getRoles() and api.user.get_current().id != "admin":
+        if 'TFE Teacher' in roles and api.user.get_current().id != "admin":
             filters.update({'Creator': api.user.get_current().id})
 
         offers = pc.searchResults(**filters)
