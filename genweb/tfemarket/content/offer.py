@@ -474,7 +474,7 @@ def defineTeacherAsEditor(offer, event):
 
     offer.creators = tuple([creator, teacher])
     offer.manage_setLocalRoles(teacher, ["Owner"])
-    offer.setCreators('jaume.figueras')
+    offer.setCreators(teacher)
     offer.addCreator(teacher)
     offer.reindexObjectSecurity()
     transaction.commit()
