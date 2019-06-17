@@ -133,7 +133,7 @@ def offerChanged(offer, event):
                     wftool.doActionFor(offer, 'caducaloferta')
                     transaction.commit()
                 else:
-                    offer.effective_date = datetime.now()
+                    offer.effective_date = datetime.utcnow()
                     offer.reindexObject()
             else:
                 wftool.doActionFor(offer, 'caducaloferta')
