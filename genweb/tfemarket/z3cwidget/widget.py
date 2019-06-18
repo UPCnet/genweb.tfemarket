@@ -71,10 +71,6 @@ class CodirectorInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelect
         super(z3c.form.browser.text.TextWidget, self).update()
         z3c.form.browser.widget.addFieldClass(self)
 
-    def hasPermissions(self):
-        roles = api.user.get_roles()
-        return 'TFE Manager' in roles or 'Manager' in roles
-
 
 @zope.component.adapter(zope.schema.interfaces.IField, z3c.form.interfaces.IFormLayer)
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)

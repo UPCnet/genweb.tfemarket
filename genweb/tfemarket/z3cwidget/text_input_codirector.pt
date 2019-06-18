@@ -36,7 +36,7 @@
 
   <input id="form-widgets-codirector-btn-modal" type="button"
          data-toggle="modal" data-target="#form-widgets-codirector-modal"
-         i18n:attributes="value Search_codirector" tal:condition="view/hasPermissions"/>
+         i18n:attributes="value Search_codirector"/>
 
   <div id="form-widgets-codirector-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -131,7 +131,7 @@
 
     $("#form-widgets-codirector-btn").on("click", function(){
       hideElementsCodirector();
-      var regexCodirector = new RegExp('^[a-zA-ZñÑçÇ]{2,}\\.[a-zA-Z0-9-.ñÑçÇ]{2,}$');
+      var regexCodirector = new RegExp('^[a-zA-ZñÑçÇ]{1,}\\.[a-zA-Z0-9-.ñÑçÇ]{1,}$');
       var codirectorUser = $("#form-widgets-codirector-input").val();
       if(regexCodirector.test(codirectorUser)){
         $.ajax({
