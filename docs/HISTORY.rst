@@ -1,8 +1,13 @@
-1.5.2 (unreleased)
+1.5.2 (2019-06-18)
 ------------------
 
-- Nothing changed yet.
-
+* Professors poden cercar al coodirector al crear una oferta [Iago López Fernández]
+* Tener en cuenta el UTC en la fecha de publicacion [Iago López Fernández]
+* Regex campo profesor [Iago López Fernández]
+* TFE Manager puede renombrar cualquier oferta [Iago López Fernández]
+* Mejora asignacion del creador/profesor de una oferta [Iago López Fernández]
+* Mejora velocidad buscador por oferta especifica [Iago López Fernández]
+* Admin puede renombrar cualquier oferta [Iago López Fernández]
 
 1.5.1 (2019-05-23)
 ------------------
