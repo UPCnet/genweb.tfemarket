@@ -105,7 +105,7 @@ class View(grok.View):
                        'path': {"query": '/'.join(self.context.getPhysicalPath())}}
 
             if self.checkPermissionCreateOffers() and api.user.get_current().id != "admin":
-                if 'search' not in self.request.form and 'allOffers' not in self.request.form:
+                if 'searchOffer' not in self.request.form and 'search' not in self.request.form and 'allOffers' not in self.request.form:
                     filters.update({'Creator': api.user.get_current().id})
 
             if 'searchOffer' in self.request.form and 'offer' in self.request.form:
