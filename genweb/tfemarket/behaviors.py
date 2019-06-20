@@ -12,6 +12,7 @@ from z3c.form.interfaces import IEditForm
 from zope import schema
 from zope.interface import alsoProvides
 
+
 from genweb.tfemarket import _
 from genweb.tfemarket.z3cwidget import FieldsetFieldWidget
 
@@ -47,9 +48,9 @@ class IPublicationOffer(model.Schema):
         defaultFactory=expiresDefaultValue,
     )
 
-    form.omitted('effective', 'expired')
-    form.no_omit(IEditForm, 'effective', 'expired')
-    form.no_omit(IAddForm, 'effective', 'expired')
+    form.omitted('effective')
+    form.no_omit(IEditForm, 'expired')
+    form.no_omit(IAddForm, 'expired')
 
 
 alsoProvides(IPublicationOffer, IFormFieldProvider)
