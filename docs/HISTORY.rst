@@ -1,8 +1,8 @@
-1.5.3 (unreleased)
+1.5.3 (2019-07-10)
 ------------------
 
-- Nothing changed yet.
-
+* Esconder campo fecha de publicación [Iago López Fernández]
+* Mejora del buscador [Iago López Fernández]
 
 1.5.2 (2019-06-18)
 ------------------
