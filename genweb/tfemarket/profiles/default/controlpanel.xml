@@ -22,4 +22,15 @@
         visible="True">
         <permission>Manage Portal</permission>
     </configlet>
+    <configlet
+        title="TFE Identitat Digital"
+        action_id="identitatdigital.tfemarket"
+        appId="identitatdigital.tfemarket"
+        category="Products"
+        condition_expr=""
+        url_expr="string:${portal_url}/identitatdigital-settings"
+        icon_expr="string:${portal_url}/++resource++cpgenweb.png"
+        visible="True">
+        <permission>Manage Portal</permission>
+    </configlet>
 </object>

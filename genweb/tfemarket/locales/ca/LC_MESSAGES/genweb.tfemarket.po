@@ -588,8 +588,8 @@ msgid "Review State"
 msgstr "Estat de revisió actiu"
 
 #: ../content/templates/market_view.pt:22
-msgid "SOA bus not configured. Contact the site administrator."
-msgstr "Bus SOA no configurat. Posis en contacte amb l'administrador del lloc."
+msgid "SOA bus or Digital Identity not configured. Contact the site administrator."
+msgstr "Bus SOA o Identitat Digital no configurat. Posis en contacte amb l'administrador del lloc."
 
 #: ../content/offer.py:445
 #: ../content/templates/market_view.pt:593
