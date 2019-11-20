@@ -112,12 +112,12 @@
               filters = $(this).attr('data-filters');
 
               if(tfe.length == 1){
-                urlTFE = tfe.attr('href') + filters;
+                urlTFE = tfe.attr('data-href') + filters;
                 window.open(urlTFE);
               }else{
                 urlTFE = []
                 $.each(tfe, function(){
-                  urlTFE.push($(this).attr('href') + filters);
+                  urlTFE.push($(this).attr('data-href') + filters);
                 });
                 $('#dialogTFE').dialog({modal: true});
 
