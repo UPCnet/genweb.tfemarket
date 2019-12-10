@@ -387,30 +387,14 @@ class IOffer(form.Schema):
         required=True,
     )
 
-    co_manager = schema.TextLine(
-        title=_(u'CoManager'),
-        required=False,
-    )
-
     company = schema.TextLine(
         title=_(u'Company'),
         required=False,
     )
 
-    company_contact = schema.TextLine(
-        title=_(u'Company Contact'),
-        required=False,
-    )
-
-    company_email = schema.TextLine(
-        title=_(u'Company Email'),
-        required=False,
-        constraint=validateEmail,
-    )
-
     @invariant
     def validate_isFull(data):
-        if data.modality == 'Empresa' and not (data.co_manager and data.company and data.company_contact and data.company_email):
+        if data.modality == 'Empresa' and not data.company:
             raise Invalid(_(u"Falta omplir les dades d'empresa"))
         if not data.lang:
             raise Invalid(_(u'Falta omplir "Idioma del treball"'))

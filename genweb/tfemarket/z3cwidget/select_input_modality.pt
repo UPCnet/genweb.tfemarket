@@ -51,17 +51,11 @@
 
     <script type="text/javascript">
         function show_fields_modality_offer(){
-            $("#formfield-form-widgets-co_manager").show();
             $("#formfield-form-widgets-company").show();
-            $("#formfield-form-widgets-company_contact").show();
-            $("#formfield-form-widgets-company_email").show();
         }
 
         function hide_fields_modality_offer(){
-            $("#formfield-form-widgets-co_manager").hide();
             $("#formfield-form-widgets-company").hide();
-            $("#formfield-form-widgets-company_contact").hide();
-            $("#formfield-form-widgets-company_email").hide();
         }
 
         function update_modality_offer(selected_option) {

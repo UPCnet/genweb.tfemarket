@@ -317,7 +317,7 @@
                                         i18n:translate="">
                                     View me offers
                                     </a>
-                                    <a href="?allOffers" class="btnTFE"
+                                    <a href="?allOffers" class="btnTFE secundaryBtnTFE"
                                         i18n:translate="">
                                     View all offers
                                     </a>
@@ -482,6 +482,12 @@
                                                                 <span class="field"><span i18n:translate="">Modality</span>: </span>
                                                                 <span tal:content="offer/modality">Modalitat</span>
                                                             </p>
+                                                            <tal:block tal:condition="offer/if_modality_company">
+                                                                <p class="company">
+                                                                    <span class="field"><span i18n:translate="">Company</span>: </span>
+                                                                    <span tal:content="offer/company">Company</span>
+                                                                </p>
+                                                            </tal:block>
                                                             <p class="grant">
                                                                 <span class="field"><span i18n:translate="">Possibility of scholarship</span>: </span>
                                                                 <span tal:condition="offer/grant" i18n:translate="">Yes</span>
@@ -558,26 +564,6 @@
                                                             <span class="field"><span i18n:translate="">Requirements</span>: </span>
                                                             <p tal:content="offer/requirements"></p>
                                                         </div>
-                                                    </div>
-                                                    <div class="leftInfoOffer">
-                                                        <tal:block tal:condition="offer/if_modality_company">
-                                                            <p class="coManager">
-                                                                <span class="field"><span i18n:translate="">CoManager</span>: </span>
-                                                                <span tal:content="offer/co_manager">CoManager</span>
-                                                            </p>
-                                                            <p class="company">
-                                                                <span class="field"><span i18n:translate="">Company</span>: </span>
-                                                                <span tal:content="offer/company">Company</span>
-                                                            </p>
-                                                            <p class="companyContact">
-                                                                <span class="field"><span i18n:translate="">Company Contact</span>: </span>
-                                                                <span tal:content="offer/company_contact">Company Contact</span>
-                                                            </p>
-                                                            <p class="companyEmail">
-                                                                <span class="field"><span i18n:translate="">Company Email</span>: </span>
-                                                                <span tal:content="offer/company_email">Company Email</span>
-                                                            </p>
-                                                        </tal:block>
                                                     </div>
                                                     <div class="leftInfoOffer">
                                                         <p class="environmentalTheme">
