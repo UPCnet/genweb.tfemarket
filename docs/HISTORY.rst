@@ -1,8 +1,10 @@
-1.5.4 (unreleased)
+1.5.4 (2019-12-10)
 ------------------
 
-- Nothing changed yet.
-
+* Quitar datos de la empresa [Iago López Fernández]
+* Hacer menos visible el boton de ver todas las ofertas [Iago López Fernández]
+* Profesores pueden ver sus ofertas caducadas + Solucion error al cambiar de estado de una oferta despues de hacer una busqueda [Iago López Fernández]
+* TFE Estadisticas: Arregalr redirección [Iago López Fernández]
 
 1.5.3 (2019-07-10)
 ------------------
