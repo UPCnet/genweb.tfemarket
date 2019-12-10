@@ -21,7 +21,6 @@ from zope.sequencesort.ssort import sort
 from genweb.tfemarket import _
 from genweb.tfemarket.content.application import IApplication
 from genweb.tfemarket.controlpanel import IBUSSOASettings
-from genweb.tfemarket.controlpanel import IIdentitatDigitalSettings
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.utils import checkOfferhasConfirmedApplications
 from genweb.tfemarket.utils import checkPermissionCreateApplications as CPCreateApplications
@@ -30,7 +29,6 @@ from genweb.tfemarket.utils import getDegreeLiteralFromId
 from genweb.tfemarket.utils import getDegrees
 from genweb.tfemarket.utils import isManager
 from genweb.tfemarket.utils import isTeachersOffer
-from genweb.tfemarket.utils import getTokenIdentitatDigital
 
 import ast
 import unicodedata
@@ -486,12 +484,12 @@ class View(grok.View):
         else:
             return False
 
-    def showErrorConfiguration(self):
+    def showErrorBusSOA(self):
         user_roles = api.user.get_current().getRoles()
         if 'Manager' in user_roles or 'TFE Manager' in user_roles:
             registry = queryUtility(IRegistry)
             bussoa_tool = registry.forInterface(IBUSSOASettings)
-            if bussoa_tool.bus_url and bussoa_tool.bus_user and bussoa_tool.bus_password and bussoa_tool.bus_apikey and getTokenIdentitatDigital().status_code == 201:
+            if bussoa_tool.bus_url and bussoa_tool.bus_user and bussoa_tool.bus_password and bussoa_tool.bus_apikey:
                 return False
             return True
         return False

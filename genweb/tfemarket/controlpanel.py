@@ -250,27 +250,3 @@ class BUSSOASettingsEditForm(controlpanel.RegistryEditForm):
 
 class BUSSOASettingsControlPanel(controlpanel.ControlPanelFormWrapper):
     form = BUSSOASettingsEditForm
-
-
-class IIdentitatDigitalSettings(model.Schema):
-    """ Global Identitat Digital TFE Market settings. This describes records stored in the
-    configuration registry and obtainable via plone.registry.
-    """
-    identitat_url = schema.TextLine(
-        title=_(u'URL'),
-        description=_(u'URL to access the digital identity'),
-        required=True)
-
-    identitat_apikey = schema.Password(
-        title=_(u'APIKEY'),
-        required=True)
-
-
-class IdentitatDigitalSettingsEditForm(controlpanel.RegistryEditForm):
-
-    schema = IIdentitatDigitalSettings
-    label = _(u'Identitat Digital TFE')
-
-
-class IdentitatDigitalSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
-    form = IdentitatDigitalSettingsEditForm

@@ -84,12 +84,6 @@
         class=".controlpanel.BUSSOASettingsControlPanel"
         permission="cmf.ManagePortal"/>
 
-    <browser:page
-        name="identitatdigital-settings"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".controlpanel.IdentitatDigitalSettingsControlPanel"
-        permission="cmf.ManagePortal"/>
-
     <subscriber
       for=".content.application.IApplication
            Products.DCWorkflow.interfaces.IBeforeTransitionEvent"

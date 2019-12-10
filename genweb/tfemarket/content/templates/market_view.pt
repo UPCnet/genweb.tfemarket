@@ -16,10 +16,10 @@
                     <div class="loaderContainer">
                         <div class="loader"></div>
                     </div>
-                    <div class="offerInfo alert alert-error" role="alert" tal:condition="view/showErrorConfiguration">
+                    <div class="offerInfo alert alert-error" role="alert" tal:condition="view/showErrorBusSOA">
                         <button data-dismiss="alert" class="close" type="button">×</button>
                         <strong>Error</strong>
-                        <span i18n:translate="">SOA bus or Digital Identity not configured. Contact the site administrator.</span>
+                        <span i18n:translate="">SOA bus not configured. Contact the site administrator.</span>
                     </div>
                     <div id="userApplication" tal:condition="userApplications">
                         <h2 i18n:translate="">Your application</h2>
