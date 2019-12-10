@@ -810,6 +810,10 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
   font-weight: 600;
 }
 
+.btnTFE.secundaryBtnTFE {
+  opacity: 0.6;
+}
+
 .btnTFE {
   height: 20px;
 }
