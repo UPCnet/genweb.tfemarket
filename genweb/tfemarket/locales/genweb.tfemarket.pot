@@ -593,7 +593,7 @@ msgid "Review State"
 msgstr ""
 
 #: ../content/templates/market_view.pt:22
-msgid "SOA bus not configured. Contact the site administrator."
+msgid "SOA bus or Digital Identity not configured. Contact the site administrator."
 msgstr ""
 
 #: ../content/offer.py:445
