@@ -2,46 +2,44 @@
 
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode
+
+from cgi import escape
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from operator import itemgetter
 from plone import api
 from plone.app.content.browser.folderfactories import _allowedTypes
+from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
+from time import time
 from zope.component import queryUtility
 from zope.security import checkPermission
 
 from genweb.tfemarket import _
-from genweb.tfemarket.controlpanel import ITfemarketSettings
-from cgi import escape
-from Products.CMFPlone.utils import safe_unicode
-
 from genweb.tfemarket.controlpanel import IBUSSOASettings
+from genweb.tfemarket.controlpanel import IIdentitatDigitalSettings
+from genweb.tfemarket.controlpanel import ITfemarketSettings
+
+import json
 import requests
 
-from z3c.suds import get_suds_client
-from suds.wsse import UsernameToken
-from suds.wsse import Security
 
-
-def getDadesEst(self, cn):
-
+# @ram.cache(lambda *args: time() // (60 * 60))
+def getTokenIdentitatDigital():
     registry = queryUtility(IRegistry)
-    bussoa_tool = registry.forInterface(IBUSSOASettings)
+    identitat_digital_tool = registry.forInterface(IIdentitatDigitalSettings)
+    urlGetToken = identitat_digital_tool.identitat_url + '/gcontrol/rest/acls/processos?idProces='
+    idProces = identitat_digital_tool.identitat_apikey
+    return requests.post(urlGetToken + idProces)
 
-    bussoa_user = bussoa_tool.bus_user
-    bussoa_password = bussoa_tool.bus_password
 
-    WSDL_PERSONES_URL = 'https://bus-soa.upc.edu/GestioIdentitat/Personesv8?wsdl'
-    client = get_suds_client(WSDL_PERSONES_URL)
-    security = Security()
-    token = UsernameToken(bussoa_user, bussoa_password)
-    security.tokens.append(token)
-    client.set_options(wsse=security)
-
-    usuari = client.service.obtenirDadesPersona(commonName=cn)
-
-    return usuari
+def getDadesEst(self, cn, token):
+    registry = queryUtility(IRegistry)
+    identitat_digital_tool = registry.forInterface(IIdentitatDigitalSettings)
+    urlGetPerson = identitat_digital_tool.identitat_url + '/gcontrol/rest/externs/persones/' + cn.id + '/cn'
+    headers = {'TOKEN': token}
+    return requests.get(urlGetPerson, headers=headers)
 
 
 class BusError(Exception):
@@ -230,72 +228,76 @@ def getStudentData(self, item, user):
     if not checkPermissionCreateApplications(self, item, True):
         return None
 
-    registry = queryUtility(IRegistry)
-    bussoa_tool = registry.forInterface(IBUSSOASettings)
-    tfe_tool = registry.forInterface(ITfemarketSettings)
-    bussoa_url = bussoa_tool.bus_url
-    bussoa_user = bussoa_tool.bus_user
-    bussoa_pass = bussoa_tool.bus_password
-    bussoa_apikey = bussoa_tool.bus_apikey
-    tipus_alta = tfe_tool.enroll_type
+    result = getTokenIdentitatDigital()
+    if result.status_code == 201:
+        token = json.loads(result.content)['tokenAcl']
 
-    student_data = {}
+        result = getDadesEst(self, user, token)
+        if result.status_code == 200:
+            est = json.loads(result.content)
+            est_colectius = est['uePerfil']
 
-    result = getDadesEst(self, user)
+            for col in est_colectius:
+                if col['perfilId'] in ['EST', 'ESTMASTER']:
+                    student_data = {
+                        'offer_id': item.offer_id,
+                        'offer_title': item.title,
+                        'dni': str(est['document']),
+                        'email': str(est['emailPreferent']),
+                        'idPrisma': str(col['idOrigen']),
+                        'degrees': []
+                    }
 
-    if result.ok:
+                    if 'cognom2' in est:
+                        fullname = str(est['nom']) + ' ' + str(est['cognom1']) + ' ' + str(est['cognom2'])
+                        student_data.update({'fullname': fullname})
 
-        est_colectius = result.llistaColectius.colectiu
+                    else:
+                        fullname = str(est['nom']) + ' ' + str(est['cognom1'])
+                        student_data.update({'fullname': fullname})
 
-        for col in est_colectius:
-            if col.idTipusPersonal in ['EST', 'ESTMASTER']:
-                student_data = {
-                    'offer_id': item.offer_id,
-                    'offer_title': item.title,
-                    'dni': str(result.numeroDocument),
-                    'email': str(col.email),
-                    'idPrisma': str(col.idOrigen),
-                    'degrees': []
-                }
+                    id_prisma = student_data['idPrisma']
+                    numDocument = student_data['dni']
 
-                if result.cognom2:
-                    fullname = str(result.nom) + ' ' + str(result.cognom1) + ' ' + str(result.cognom2)
-                    student_data.update({'fullname': fullname})
+                    registry = queryUtility(IRegistry)
+                    bussoa_tool = registry.forInterface(IBUSSOASettings)
+                    tfe_tool = registry.forInterface(ITfemarketSettings)
+                    bussoa_url = bussoa_tool.bus_url
+                    bussoa_user = bussoa_tool.bus_user
+                    bussoa_pass = bussoa_tool.bus_password
+                    bussoa_apikey = bussoa_tool.bus_apikey
+                    tipus_alta = tfe_tool.enroll_type
 
-                else:
-                    fullname = str(result.nom) + ' ' + str(result.cognom1)
-                    student_data.update({'fullname': fullname})
+                    res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
-                id_prisma = student_data['idPrisma']
-                numDocument = student_data['dni']
+                    data = res_data.json()
 
-                res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
+                    if res_data.ok:
 
-                data = res_data.json()
+                        llistat_expedients = data['llistatExpedients']
 
-                if res_data.ok:
+                        for expedient in llistat_expedients:
 
-                    llistat_expedients = data['llistatExpedients']
+                            if expedient['codiMecPrograma'] in item.degree:
+                                student_data['degrees'].append({
+                                    'degree_id': expedient['codiMecPrograma'],
+                                    'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma']),
+                                    'codi_expedient': expedient['codiExpedient']})
 
-                    for expedient in llistat_expedients:
+                                return student_data
 
-                        if expedient['codiMecPrograma'] in item.degree:
-                            student_data['degrees'].append({
-                                'degree_id': expedient['codiMecPrograma'],
-                                'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma']),
-                                'codi_expedient': expedient['codiExpedient']})
+                        self.context.plone_utils.addPortalMessage(_(u"El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."), 'error')
+                        return None
+                    else:
+                        reason = data['resultat']
+                        self.context.plone_utils.addPortalMessage(_(u"PRISMA: %s" % reason), 'error')
+                        return None
 
-                            return student_data
-
-                    self.context.plone_utils.addPortalMessage(_(u"El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."), 'error')
-                    return None
-                else:
-                    reason = data['resultat']
-                    self.context.plone_utils.addPortalMessage(_(u"PRISMA: %s" % reason), 'error')
-                    return None
-
-        self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."), 'error')
-        return None
+            self.context.plone_utils.addPortalMessage(_(u"VINCULACIÓ: No hem trobat la teva vinculació com a d'ESTUDIANT. Contacta amb la teva secretaria."), 'error')
+            return None
+        else:
+            self.context.plone_utils.addPortalMessage(_(u"DIRECTORI: Usuari no trobat en al directori"), 'error')
+            return None
     else:
-        self.context.plone_utils.addPortalMessage(_(u"DIRECTORI: Usuari no trobat en al directori"), 'error')
+        self.context.plone_utils.addPortalMessage(_(u"IDENTITAT DIGITAL: %s" % result.status_code), 'error')
         return None

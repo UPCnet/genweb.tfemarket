@@ -6,4 +6,7 @@
     <records
     interface="genweb.tfemarket.controlpanel.IBUSSOASettings"
     purge="False"/>
+    <records
+    interface="genweb.tfemarket.controlpanel.IIdentitatDigitalSettings"
+    purge="False"/>
 </registry>
