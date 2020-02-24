@@ -1,8 +1,8 @@
-1.5.5 (unreleased)
+1.5.5 (2020-02-24)
 ------------------
 
-- Nothing changed yet.
-
+* Merge remote-tracking branch 'origin/develop' [Iago López Fernández]
+* Identitat Digital [Iago López Fernández]
 
 1.5.4 (2019-12-10)
 ------------------
