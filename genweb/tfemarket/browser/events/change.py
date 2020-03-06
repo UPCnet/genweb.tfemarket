@@ -198,7 +198,7 @@ def applicationRegistered(application, event):
                     "centre": tfe_tool.center_code,
                     "codirector": getattr(offer, 'comanager', ''),
                     "empresa": getattr(offer, 'company', ''),
-                    "personaContacteEmpresa": getattr(offer, 'company_contact', ''),
+                    "personaContacteEmpresa": '',
                     "confidencial": 'S' if offer.confidential else 'N',
                     "tipusAltaTFE": tipus_alta
                 })
