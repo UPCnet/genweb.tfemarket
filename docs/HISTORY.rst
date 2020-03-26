@@ -1,8 +1,7 @@
-1.5.6 (unreleased)
+1.5.6 (2020-03-26)
 ------------------
 
-- Nothing changed yet.
-
+* Quitar datos de la empresa [Iago López Fernández]
 
 1.5.5 (2020-02-24)
 ------------------
