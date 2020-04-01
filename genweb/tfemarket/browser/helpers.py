@@ -128,11 +128,11 @@ class importOfertes(grok.View):
                         'requirements': row[14].decode("utf-8"),
                         'lang': row[15].decode("utf-8").split(","),
                         'modality': row[16].decode("utf-8"),
-                        'company': row[18].decode("utf-8"),
-                        'grant': bool(row[21].decode("utf-8") == "True"),
-                        'confidential': bool(row[22].decode("utf-8") == "True"),
-                        'environmental_theme': bool(row[23].decode("utf-8") == "True"),
-                        'scope_cooperation': bool(row[24].decode("utf-8") == "True"),
+                        'company': row[17].decode("utf-8"),
+                        'grant': bool(row[18].decode("utf-8") == "True"),
+                        'confidential': bool(row[19].decode("utf-8") == "True"),
+                        'environmental_theme': bool(row[20].decode("utf-8") == "True"),
+                        'scope_cooperation': bool(row[21].decode("utf-8") == "True"),
                     }
 
                     type_codirector = row[8].decode("utf-8")
