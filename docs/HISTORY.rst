@@ -1,8 +1,7 @@
-1.5.7 (unreleased)
+1.5.7 (2020-04-06)
 ------------------
 
-- Nothing changed yet.
-
+* Modificar import ofertas por csv [Iago López Fernández]
 
 1.5.6 (2020-03-26)
 ------------------
