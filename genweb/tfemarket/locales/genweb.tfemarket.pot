@@ -282,7 +282,7 @@ msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que e
 msgstr ""
 
 #: ../utils.py:284
-msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."
+msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses o ja has sol·licitat una amb aquesta mateixa titulació. Contacta amb la secretaria del teu centre."
 msgstr ""
 
 #: ../content/application.py:107

@@ -277,8 +277,8 @@ msgid "El teu treball encara no s'ha inscrit. Aquesta titulació requereix que e
 msgstr "Your job is not yet registered. This degree requires you to contact the secretary of your center"
 
 #: ../utils.py:284
-msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."
-msgstr "The job that you want to apply for the degree that you are studying. Contact the secretary of your center"
+msgid "El treball que vols sol·licitar no està ofertat per a la titulació que curses o ja has sol·licitat una amb aquesta mateixa titulació. Contacta amb la secretaria del teu centre."
+msgstr "The job that you want to apply for the degree that you are studying or you have already applied for one with this same degree. Contact the secretary of your center"
 
 #: ../content/application.py:107
 #: ../content/templates/market_view.pt:103

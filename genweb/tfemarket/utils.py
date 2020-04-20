@@ -96,27 +96,7 @@ def checkPermissionCreateApplications(self, context, errors=False):
     if 'Anonymous' in roles and offer_status['review_state'] == 'public':
         return True
 
-    if checkPermissionCreateObject(self, context, 'genweb.tfemarket.application'):
-        catalog = api.portal.get_tool(name='portal_catalog')
-        from genweb.tfemarket.content.application import IApplication
-        items = catalog(object_provides=IApplication.__identifier__,
-                        Creator=api.user.get_current().id)
-
-        results = []
-        for item in items:
-            if item.review_state not in ['cancelled', 'rejected', 'renounced']:
-                results.append(item)
-
-        if len(results) > 0:
-            if errors:
-                self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it at the top of the market page."), 'error')
-            return False
-        else:
-            return True
-    else:
-        if errors:
-            self.context.plone_utils.addPortalMessage(_(u"You don't have permission for create a application."), 'error')
-        return False
+    return checkPermissionCreateObject(self, context, 'genweb.tfemarket.application')
 
 
 def checkPermissionCreateOffers(self, context):
@@ -271,14 +251,23 @@ def getStudentData(self, item, user):
                     res_data = requests.get(bussoa_url + "/%s" % id_prisma + '?tipusAltaTFE=' + "%s" % tipus_alta + '&numDocument=' + "%s" % numDocument, headers={'apikey': bussoa_apikey}, auth=(bussoa_user, bussoa_pass))
 
                     data = res_data.json()
-
                     if res_data.ok:
 
                         llistat_expedients = data['llistatExpedients']
 
+                        catalog = api.portal.get_tool(name='portal_catalog')
+                        from genweb.tfemarket.content.application import IApplication
+                        items = catalog(object_provides=IApplication.__identifier__,
+                                        Creator=api.user.get_current().id)
+
+                        llistat_solicituds_actives_usuari = []
+                        for useritem in items:
+                            if useritem.review_state not in ['cancelled', 'rejected', 'renounced']:
+                                llistat_solicituds_actives_usuari.append(useritem.getObject().degree_id)
+
                         for expedient in llistat_expedients:
 
-                            if expedient['codiMecPrograma'] in item.degree:
+                            if expedient['codiMecPrograma'] in item.degree and expedient['potMatricularTFE'] == 'S' and expedient['codiMecPrograma'] not in llistat_solicituds_actives_usuari:
                                 student_data['degrees'].append({
                                     'degree_id': expedient['codiMecPrograma'],
                                     'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma']),
@@ -286,7 +275,7 @@ def getStudentData(self, item, user):
 
                                 return student_data
 
-                        self.context.plone_utils.addPortalMessage(_(u"El treball que vols sol·licitar no està ofertat per a la titulació que curses. Contacta amb la secretaria del teu centre."), 'error')
+                        self.context.plone_utils.addPortalMessage(_(u"El treball que vols sol·licitar no està ofertat per a la titulació que curses o ja has sol·licitat una amb aquesta mateixa titulació. Contacta amb la secretaria del teu centre."), 'error')
                         return None
                     else:
                         reason = data['resultat']
