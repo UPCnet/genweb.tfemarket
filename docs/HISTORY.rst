@@ -1,8 +1,7 @@
-1.5.8 (unreleased)
+1.5.8 (2020-06-15)
 ------------------
 
-- Nothing changed yet.
-
+* Habilitar la possibilitat de sol·licitar més d'una oferta mentre que no siguin de la mateixa titulació [Iago López Fernández]
 
 1.5.7 (2020-04-06)
 ------------------
