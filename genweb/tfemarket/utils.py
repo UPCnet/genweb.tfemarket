@@ -267,7 +267,7 @@ def getStudentData(self, item, user):
 
                         for expedient in llistat_expedients:
 
-                            if expedient['codiMecPrograma'] in item.degree and expedient['potMatricularTFE'] == 'S' and expedient['codiMecPrograma'] not in llistat_solicituds_actives_usuari:
+                            if expedient['codiMecPrograma'] in item.degree and expedient['codiMecPrograma'] not in llistat_solicituds_actives_usuari:
                                 student_data['degrees'].append({
                                     'degree_id': expedient['codiMecPrograma'],
                                     'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma']),
