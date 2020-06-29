@@ -1,8 +1,7 @@
-1.5.9 (unreleased)
+1.5.9 (2020-06-29)
 ------------------
 
-- Nothing changed yet.
-
+* Quitar condicion con una variable de prisma que no se utiliza [Iago López Fernández]
 
 1.5.8 (2020-06-15)
 ------------------
