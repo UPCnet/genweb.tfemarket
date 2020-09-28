@@ -962,10 +962,10 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image,
 .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image {
   background-image: url(../background-tfe.jpg);
-  height: 66px;
+  height: 38px;
   background-size: cover;
   width: 100%;
-  padding: 44px 0px 0px 0px;
+  padding: 16px 0px 0px 0px;
   display: block !important;
   text-align: right;
 }
