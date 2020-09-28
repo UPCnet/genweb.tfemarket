@@ -1,8 +1,7 @@
-1.5.10 (unreleased)
+1.5.10 (2020-09-28)
 -------------------
 
-- Nothing changed yet.
-
+* Logo 50 aniversario UPC [Iago López Fernández]
 
 1.5.9 (2020-06-29)
 ------------------
