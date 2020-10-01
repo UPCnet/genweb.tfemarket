@@ -764,3 +764,25 @@ class fillEmptyTFGMOffers(grok.View):
             offer.reindexObject()
 
         return 'Finished'
+
+
+class changeUPCCodirectorValues(grok.View):
+    grok.context(Interface)
+    grok.name('changeUPCCodirectorValues')
+    grok.require('genweb.tfemarket.controlpanel')
+    grok.layer(IGenwebTfemarketLayer)
+
+    def render(self):
+        pc = api.portal.get_tool('portal_catalog')
+        offers = pc.searchResults({'portal_type': 'genweb.tfemarket.offer'})
+        result = {}
+        for data in offers:
+            offer = data.getObject()
+            if offer.type_codirector == 'UPC':
+                if offer.codirector_id and ' ' in offer.codirector_id:
+                    result.update({offer.codirector_id: offer.codirector})
+                    codirector_tmp = offer.codirector_id
+                    offer.codirector_id = offer.codirector
+                    offer.codirector = codirector_tmp
+                    offer.reindexObject()
+        return json.dumps(result)

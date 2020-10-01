@@ -86,8 +86,8 @@
 
     var addCodirector = function(codirector){
       parent = $(codirector).parent().parent();
-      $("#form-widgets-codirector").val($(parent).children('.codirector').html());
-      $("#form-widgets-codirector_id").val($(parent).children('.fullname').html());
+      $("#form-widgets-codirector").val($(parent).children('.fullname').html());
+      $("#form-widgets-codirector_id").val($(parent).children('.codirector').html());
       $("#form-widgets-codirector_email").val($(parent).children('.email').html());
       $("#form-widgets-codirector_dept").val($(parent).children('.dept').html());
       $('#form-widgets-codirector-modal').modal('toggle');
