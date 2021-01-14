@@ -196,7 +196,7 @@ def applicationRegistered(application, event):
                     "propostaAmbitCooperacio": 'S' if offer.scope_cooperation else 'N',
                     "tematicaAmbiental": 'S' if offer.environmental_theme else 'N',
                     "centre": tfe_tool.center_code,
-                    "codirector": getattr(offer, 'comanager', ''),
+                    "codirector": getattr(offer, 'codirector_id', ''),
                     "empresa": getattr(offer, 'company', ''),
                     "personaContacteEmpresa": '',
                     "confidencial": 'S' if offer.confidential else 'N',
