@@ -1,8 +1,7 @@
-1.5.12 (unreleased)
+1.5.12 (2021-02-02)
 -------------------
 
-- Nothing changed yet.
-
+* Fix bug codirector [Iago López Fernández]
 
 1.5.11 (2020-11-23)
 -------------------
