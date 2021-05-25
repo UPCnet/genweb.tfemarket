@@ -26,8 +26,8 @@ from genweb.tfemarket.utils import BusError
 from genweb.tfemarket.utils import checkOfferhasAssign
 from genweb.tfemarket.utils import getApplicationsFromContent
 from genweb.tfemarket.utils import getDegrees
-from genweb.tfemarket.utils import getLdapExactUserData
-from genweb.tfemarket.utils import getLdapUserData
+from genweb.tfemarket.utils import getExactUserData
+from genweb.tfemarket.utils import getUserData
 from genweb.tfemarket.utils import getStudentData
 from genweb.tfemarket.utils import isTeachersOffer
 from genweb.tfemarket.utils import isManager
@@ -130,22 +130,21 @@ class getTeacher(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
-        # TODO Cambiar PERSONAL por PDI
-        # teachers = getLdapUserData(self.request.form['teacher'], typology='PERSONAL')
-        teachers = getLdapUserData(self.request.form['teacher'])
-        if len(teachers) > 0:
+        teachers = getUserData(self.request.form['teacher'])
+        if teachers and len(teachers['identitats']) > 0:
             listTeachers = []
-            for teacher in teachers:
-                try:
-                    teacherDept = teacher['unitCode'] + "-" + teacher['unit']
-                    listTeachers.append({
-                        'user': teacher['id'],
-                        'email': teacher['mail'],
-                        'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
-                        'dept': teacherDept
-                    })
-                except:
-                    pass
+            for teacher in teachers['identitats']:
+                for teacherInfo in teacher['uePerfil']:
+                    try:
+                        teacherDept = teacherInfo['ueId'] + '-' + teacherInfo['ueAcronim']
+                        listTeachers.append({
+                            'user': teacher['commonName'],
+                            'email': teacher['emailPreferent'],
+                            'fullname': teacher['cognom1'].capitalize() + ' ' + teacher['cognom2'].capitalize() + ', ' + teacher['nom'].capitalize() if 'cognom2' in teacher else teacher['cognom1'].capitalize() + ', ' + teacher['nom'].capitalize(),
+                            'dept': teacherDept
+                        })
+                    except:
+                        pass
             return json.dumps(listTeachers)
         else:
             return None
@@ -158,15 +157,13 @@ class getExactTeacher(grok.View):
     grok.layer(IGenwebTfemarketLayer)
 
     def render(self):
-        # TODO Cambiar PERSONAL por PDI
-        # teacher = getLdapExactUserData(api.user.get_current().id, typology='PERSONAL')
-        teacher = getLdapExactUserData(api.user.get_current().id)
+        teacher = getExactUserData(api.user.get_current().id)
         if teacher:
-            teacherDept = teacher['unitCode'] + "-" + teacher['unit']
+            teacherDept = teacher['uePerfil'][0]['ueId'] + '-' + teacher['uePerfil'][0]['ueAcronim']
             data = {
-                'user': teacher['id'],
-                'email': teacher['mail'],
-                'fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
+                'user': teacher['commonName'],
+                'email': teacher['emailPreferent'],
+                'fullname': teacher['cognom1'].capitalize() + ' ' + teacher['cognom2'].capitalize() + ', ' + teacher['nom'].capitalize() if 'cognom2' in teacher else teacher['cognom1'].capitalize() + ', ' + teacher['nom'].capitalize(),
                 'dept': teacherDept
             }
             return json.dumps(data)

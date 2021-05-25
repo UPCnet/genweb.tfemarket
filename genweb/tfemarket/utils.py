@@ -64,21 +64,28 @@ def sendMessage(context, fromMsg, toMsg, subject, message, email_charset):
     mailhost.send(msg)
 
 
-def getLdapExactUserData(user, typology=None):
-    users = getLdapUserData(user, typology)
-    for userLDAP in users:
-        if userLDAP['id'] == user:
-            return userLDAP
+def getExactUserData(user, typology=None):
+    teachers = getUserData(user, typology)
+    if teachers and len(teachers['identitats']) > 0:
+        for teacherLDAP in teachers['identitats']:
+            if teacherLDAP['commonName'] == user:
+                return teacherLDAP
     return None
 
 
-def getLdapUserData(user, typology=None):
-    acl_users = api.portal.get_tool(name='acl_users')
-    if not typology:
-        search_result = acl_users.searchUsers(id=user, exactMatch=True)
-    else:
-        search_result = acl_users.searchUsers(id=user, exactMatch=True, typology=typology)
-    return search_result
+def getUserData(user, typology=None):
+    result = getTokenIdentitatDigital()
+    if result.status_code == 201:
+        token = json.loads(result.content)['tokenAcl']
+
+        registry = queryUtility(IRegistry)
+        identitat_digital_tool = registry.forInterface(IIdentitatDigitalSettings)
+        urlGetPerson = identitat_digital_tool.identitat_url + '/gcontrol/rest/externs/identitats?cn=' + user + '&vistaTipus=DETALL_UEDETALL&perfil=PDI&perfil=PAS&perfil=PERSONAL&inactius=false'
+        headers = {'TOKEN': token}
+        result = requests.get(urlGetPerson, headers=headers)
+        if result.status_code == 200:
+            return json.loads(result.content)
+    return None
 
 
 def checkPermissionCreateApplications(self, context, errors=False):

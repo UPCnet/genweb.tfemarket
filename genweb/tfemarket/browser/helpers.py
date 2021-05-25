@@ -12,7 +12,7 @@ from zope.interface import Interface
 from genweb.tfemarket.content import IMarket
 from genweb.tfemarket.controlpanel import ITfemarketSettings
 from genweb.tfemarket.interfaces import IGenwebTfemarketLayer
-from genweb.tfemarket.utils import getLdapExactUserData
+from genweb.tfemarket.utils import getExactUserData
 
 import csv
 import datetime
@@ -107,7 +107,7 @@ class importOfertes(grok.View):
             # Importa ofertas
             notValidDegrees = self.checkNotValidDegrees(row[5].decode("utf-8").split(","))
             if len(notValidDegrees) == 0:
-                teacher = getLdapExactUserData(row[7].decode("utf-8"))
+                teacher = getExactUserData(row[7].decode("utf-8"))
                 if teacher:
                     data = {
                         'title': row[0].decode("utf-8"),
@@ -138,7 +138,7 @@ class importOfertes(grok.View):
                     type_codirector = row[8].decode("utf-8")
                     data.update({'type_codirector': type_codirector})
                     if type_codirector == 'UPC':
-                        codirector = getLdapExactUserData(row[9].decode("utf-8"))
+                        codirector = getExactUserData(row[9].decode("utf-8"))
                         if codirector:
                             data.update({
                                 'codirector_id': codirector['id'],
