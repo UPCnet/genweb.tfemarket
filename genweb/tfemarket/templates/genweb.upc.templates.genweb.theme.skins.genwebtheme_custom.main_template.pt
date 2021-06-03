@@ -5,6 +5,7 @@
             context_state context/@@plone_context_state;
             plone_view context/@@plone;
             genweb_config context/@@gwconfig;
+            gwutils context/@@genweb.utils;
             lang portal_state/language;
             view nocall:view | nocall: plone_view;
             dummy python: plone_view.mark_view(view);
@@ -76,6 +77,22 @@
 
         <link rel="stylesheet" tal:attributes="href string:${portal_url}/dynamic.css">
         <link rel="stylesheet" tal:attributes="href string:${portal_url}/dynamic_tfe.css">
+        <tal:cookiebot tal:condition="gwutils/isEnableCookiebot">
+            <script data-cookieconsent="ignore">
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag("consent", "default", {
+                    ad_storage: "granted",
+                    analytics_storage: "granted",
+                    wait_for_update: 500
+                });
+                gtag("set", "ads_data_redaction", false);
+            </script>
+
+            <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="5a89d4e3-8b4b-458c-a9dc-7cdc9072bbf3" data-blockingmode="auto" type="text/javascript"></script>
+        </tal:cookiebot>
     </tal:notajax>
 </head>
 
