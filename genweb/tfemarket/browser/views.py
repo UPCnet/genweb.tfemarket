@@ -246,48 +246,6 @@ class resetCountOffers(grok.View):
             transaction.commit()
             self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
 
-
-class dynamicTfeCSS(grok.View):
-    grok.name('dynamic_tfe.css')
-    grok.context(Interface)
-    grok.layer(IGenwebTfemarketLayer)
-
-    def update(self):
-        self.especific1 = genweb_config().especific1
-        self.especific2 = genweb_config().especific2
-
-    def render(self):
-        self.request.response.setHeader('Content-Type', 'text/css')
-        self.request.response.addHeader('Cache-Control', 'must-revalidate, max-age=0, no-cache, no-store')
-        if self.especific1 and self.especific2:
-            return self.compile_scss(especific1=self.especific1, especific2=self.especific2)
-
-    @ram.cache(_render_cachekey)
-    def compile_scss(self, **kwargs):
-        genwebtfeegg = pkg_resources.get_distribution('genweb.tfemarket')
-
-        scssfile = open('{}/genweb/tfemarket/browser/stylesheets/dynamic_tfe.scss'.format(genwebtfeegg.location))
-
-        settings = dict(especific1=self.especific1,
-                        especific2=self.especific2)
-
-        variables_scss = """
-
-        $genwebPrimary: {especific1};
-        $genwebTitles: {especific2};
-
-        """.format(**settings)
-
-        css = Scss(scss_opts={
-                   'compress': False,
-                   'debug_info': False,
-                   })
-
-        dynamic_scss = ''.join([variables_scss, scssfile.read()])
-
-        return css.compile(dynamic_scss)
-
-
 class tfemarketUtils(grok.View):
     grok.context(Interface)
     grok.name('tfemarket-utils')

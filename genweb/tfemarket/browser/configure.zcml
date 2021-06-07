@@ -4,11 +4,10 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="genweb.tfemarket">
 
-    <!-- ++resource++genweb.tfemarket.stylesheets/genweb_tfemarket.css -->
-    <!-- ++resource++genweb.tfemarket.stylesheets/dynamic_tfe.scss -->
+    <!-- ++resource++genweb.tfemarket.assets/genweb_tfemarket.css -->
     <browser:resourceDirectory
-        name="genweb.tfemarket.stylesheets"
-        directory="stylesheets"
+        name="genweb.tfemarket.assets"
+        directory="assets"
         />
 
 </configure>
