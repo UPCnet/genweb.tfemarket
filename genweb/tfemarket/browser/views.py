@@ -50,20 +50,29 @@ def redirectToMarket(self):
     elif self.context.portal_type == 'genweb.tfemarket.market':
         if 'allOffers' not in self.request.form and 'search' not in self.request.form:
             url = self.context.absolute_url()
+
             if 'offer' in self.request.form:
-                url += "?offer=" + self.request.form.get('offer')
+                url += "?searchOffer&offer=" + self.request.form.get('offer')
+
                 if 'open' in self.request.form:
                     url += "&open=Y"
+
             self.request.response.redirect(url)
         else:
             if 'allOffers' in self.request.form:
                 url = self.context.absolute_url() + "?allOffers"
             elif 'search' in self.request.form:
                 url = self.context.absolute_url() + "?searchFilters"
+
             if 'offer' in self.request.form:
-                url += "&offer=" + self.request.form.get('offer')
+                if 'allOffers' in self.request.form or 'search' in self.request.form:
+                    url += "&offer=" + self.request.form.get('offer')
+                else:
+                    url += "?searchOffer&offer=" + self.request.form.get('offer')
+
                 if 'open' in self.request.form:
                     url += "&open=Y"
+
             self.request.response.redirect(url)
     else:
         self.request.response.redirect(self.context.absolute_url())
