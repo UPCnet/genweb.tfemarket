@@ -1,8 +1,9 @@
-1.5.13 (unreleased)
+1.5.13 (2021-06-07)
 -------------------
 
-- Nothing changed yet.
-
+* Reordenar estilos e imagenes para evitar chocar con robtheme [alberto.duran]
+* Redirecciones [Iago López Fernández]
+* Cambiar consulta usuario de LDAP a identitat digital [Iago López Fernández]
 
 1.5.12 (2021-02-02)
 -------------------
