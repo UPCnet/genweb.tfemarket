@@ -784,15 +784,17 @@
 
                     var offer = $.urlParam('offer');
                     if (offer) {
-                        $(".alert[role='alert']:not(.offerInfo)").appendTo("#" + offer + "-info");
-                        $('html, body').animate({
-                            scrollTop: $("#" + offer).offset().top - 50
-                        }, 1000);
-                        $("#" + offer).trigger('click');
-                        if ($.urlParam('open')) {
-                            setTimeout(function() {
-                                $("#" + offer + "-applications").trigger('click');
-                            }, 500);
+                        if($("#" + offer).length > 0){
+                            $(".alert[role='alert']:not(.offerInfo)").appendTo("#" + offer + "-info");
+                            $('html, body').animate({
+                                scrollTop: $("#" + offer).offset().top - 50
+                            }, 1000);
+                            $("#" + offer).trigger('click');
+                            if ($.urlParam('open')) {
+                                setTimeout(function() {
+                                    $("#" + offer + "-applications").trigger('click');
+                                }, 500);
+                            }
                         }
                     }
 
