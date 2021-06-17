@@ -1,8 +1,7 @@
-1.5.14 (unreleased)
+1.5.14 (2021-06-17)
 -------------------
 
-- Nothing changed yet.
-
+* Evitar que pete el js [Iago López Fernández]
 
 1.5.13 (2021-06-07)
 -------------------
