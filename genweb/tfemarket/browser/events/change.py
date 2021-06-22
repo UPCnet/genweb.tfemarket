@@ -182,6 +182,11 @@ def applicationRegistered(application, event):
                 offer = application.aq_parent
                 id_prisma = application.prisma_id
 
+                if offer.type_codirector == 'UPC':
+                    codirector = getattr(offer, 'codirector_id', '')
+                else:
+                    codirector = getattr(offer, 'codirector', '')
+
                 data = json.dumps({
                     "codiExpedient": application.codi_expedient,
                     "codiPrograma": application.degree_id,
@@ -196,7 +201,7 @@ def applicationRegistered(application, event):
                     "propostaAmbitCooperacio": 'S' if offer.scope_cooperation else 'N',
                     "tematicaAmbiental": 'S' if offer.environmental_theme else 'N',
                     "centre": tfe_tool.center_code,
-                    "codirector": getattr(offer, 'codirector_id', ''),
+                    "codirector": codirector,
                     "empresa": getattr(offer, 'company', ''),
                     "personaContacteEmpresa": '',
                     "confidencial": 'S' if offer.confidential else 'N',
