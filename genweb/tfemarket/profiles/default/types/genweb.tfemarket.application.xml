@@ -16,7 +16,7 @@ xmlns:i18n="http://xml.zope.org/namespaces/i18n">
     </property>
     <property name="default_view_fallback">False</property>
     <property name="add_permission">genweb.tfemarket.add.application</property>
-    <property name="klass">plone.dexterity.content.Item</property>
+    <property name="klass">genweb.tfemarket.content.Application</property>
     <property name="behaviors">
         <element value="plone.app.content.interfaces.INameFromTitle"/>
     </property>
