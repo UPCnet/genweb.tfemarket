@@ -227,6 +227,7 @@ class IOffer(form.Schema):
 
     description = schema.Text(
         title=_(u'Description'),
+        description=_(u'Breu explicació dels aspectes bàsics del treball'),
         required=True,
     )
 
@@ -350,6 +351,7 @@ class IOffer(form.Schema):
 
     targets = schema.Text(
         title=_(u'offer_targets'),
+        description=_(u'Resultat esperat d’aquest treball'),
         required=False,
     )
 
@@ -360,6 +362,7 @@ class IOffer(form.Schema):
 
     requirements = schema.Text(
         title=_(u'requirements'),
+        description=_(u'Coneixements previs necessaris per portar a terme el treball'),
         required=False,
     )
 
