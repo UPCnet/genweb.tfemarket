@@ -163,6 +163,12 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
   margin-bottom: 0px;
 }
 
+#headerListOffers .buttonsLang {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
 #headerListOffers #buttonsSearch,
 #headerListOffers #buttonsAllOffers {
   margin-right: 15px;
@@ -233,6 +239,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 }
 
 .btnTFE,
+.buttonsLang button.link,
 .buttonsRight button.link,
 .informacioTFE .bottomLinks button.link {
   background: #c35a0a;
@@ -240,6 +247,7 @@ body.portaltype-genweb-tfemarket-offer .documentDescription {
 }
 
 .btnTFE,
+.buttonsLang button.link,
 .buttonsRight a button.link {
   text-shadow: none;
   text-decoration: none;
@@ -803,6 +811,7 @@ table.tableApplications tbody .actions .estatsToggle li a:focus {
 }
 
 .informacioTFE .buttonsOffer button:hover,
+.buttonsLang button.link:hover,
 .buttonsRight a button.link:hover,
 #formSearchOffers button:hover,
 .btnTFE:hover,
@@ -1400,6 +1409,7 @@ body.template-import_ofertes .alert-error {
 }
 
 .btnTFE,
+.buttonsLang button.link,
 .buttonsRight button.link,
 .informacioTFE .bottomLinks button.link {
   background: #FF784D !important;

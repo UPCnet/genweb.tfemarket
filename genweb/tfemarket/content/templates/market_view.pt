@@ -137,6 +137,18 @@
                                     <strong>Error</strong>
                                 <span i18n:translate="">Falta carregar les titulacions.</span>
                             </div>
+                            <div class="buttonsLang">
+                                <button type="submit" class="link setLangCA">
+                                    <span>Català</span>
+                                </button>
+                                <button type="submit" class="link setLangES">
+                                    <span>Español</span>
+                                </button>
+                                <button type="submit" class="link setLangEN">
+                                    <span>English</span>
+                                </button>
+                            </div>
+                            <br>
                             <div class="buttonsRight documentDescription">
                                 <tal:co condition="view/checkPermissionCreateOffers">
                                     <a href="++add++genweb.tfemarket.offer">
@@ -722,7 +734,28 @@
                     return results ? results[1] : false;
                 }
 
+                function setCookie(key, value, expiry) {
+                    var expires = new Date();
+                    expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+                    document.cookie = key + '=' + value + ';path=/' + ';expires=' + expires.toUTCString();
+                }
+
                 $(function() {
+                    $('.setLangCA').click(function() {
+                        setCookie('MERCAT_TFE_LANG', 'ca');
+                        location.reload();
+                    });
+
+                    $('.setLangEN').click(function() {
+                        setCookie('MERCAT_TFE_LANG', 'en');
+                        location.reload();
+                    });
+
+                    $('.setLangES').click(function() {
+                        setCookie('MERCAT_TFE_LANG', 'es');
+                        location.reload();
+                    });
+
                     $('input[name="language"]').click(function() {
                         if ($('input[name="language"]:checked').length == 0) {
                             $(this).prop('checked', true);
