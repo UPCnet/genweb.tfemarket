@@ -685,7 +685,7 @@ msgstr "Departament"
 #: ../content/offer.py:278
 #: ../content/templates/market_view.pt:208
 msgid "TFEteacher"
-msgstr "Professora/professor"
+msgstr "Professor/a"
 
 #: ../controlpanel.py:154
 msgid "Tags"
