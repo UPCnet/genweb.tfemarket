@@ -336,7 +336,7 @@ msgstr "Falta omplir les dades d'empresa"
 
 #: ../content/templates/market_view.pt:565
 msgid "Features"
-msgstr "Tasques a realitzar/Característiques"
+msgstr "Tasques a realitzar / Característiques"
 
 #: ../content/application.py:96
 #: ../content/templates/market_view.pt:95

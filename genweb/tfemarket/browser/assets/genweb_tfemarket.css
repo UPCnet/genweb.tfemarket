@@ -966,13 +966,30 @@ span.icon-genweb-tfemarket-market{
 .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
 .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
 .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
-  content: "Ofertes de treballs de final d'estudis";
   color: white;
   text-shadow: 2px 2px 10px black;
   text-align: right;
   padding-right: 20px;
   font-size: 33px;
   font-weight: 600;
+}
+
+html[lang='ca'] .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
+html[lang='ca'] .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
+html[lang='ca'] .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
+  content: "Ofertes de treballs de final d'estudis";
+}
+
+html[lang='es'] .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
+html[lang='es'] .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
+html[lang='es'] .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
+  content: "Ofertas de trabajos de final de estudios";
+}
+
+html[lang='en'] .portaltype-genweb-tfemarket-market #portal-header .header-image.l3-image:after,
+html[lang='en'] .portaltype-genweb-tfemarket-offer #portal-header .header-image.l3-image:after,
+html[lang='en'] .portaltype-genweb-tfemarket-application #portal-header .header-image.l3-image:after {
+  content: "Master thesis proposals";
 }
 
 .portaltype-genweb-tfemarket-market #portal-header .logoPropi,

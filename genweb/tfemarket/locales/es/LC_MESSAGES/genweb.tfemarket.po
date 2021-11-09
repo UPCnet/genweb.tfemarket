@@ -415,7 +415,7 @@ msgstr "Código MEC"
 
 #: ../controlpanel.py:34
 msgid "MEC degree code"
-msgstr "Código MEC del grado"
+msgstr "Código MEC de la titulación"
 
 #: ../content/templates/market_view.pt:619
 msgid "Mobile"
@@ -550,7 +550,7 @@ msgstr "Publicación"
 
 #: ../content/templates/market_view.pt:178
 msgid "Quines ofertes cerques?"
-msgstr "Que ofertas buscas?"
+msgstr "¿Qué ofertas buscas?"
 
 #: ../browser/events/change.py:98
 msgid "Rebutjada"
@@ -931,7 +931,7 @@ msgstr "¿Estás seguro de reiniciar el contador de ofertas?"
 
 #: ../content/offer.py:257
 msgid "degree"
-msgstr "Grado"
+msgstr "Titulación"
 
 #: ../browser/views_templates/tfemarket_utils_download_csv.pt:47
 msgid "download_applications"
