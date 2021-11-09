@@ -231,6 +231,17 @@ class IOffer(form.Schema):
         required=True,
     )
 
+    targets = schema.Text(
+        title=_(u'offer_targets'),
+        description=_(u'Resultat esperat d’aquest treball'),
+        required=False,
+    )
+
+    features = schema.Text(
+        title=_(u'offer_features'),
+        required=False,
+    )
+
     topic = schema.Choice(
         title=_(u'offer_topic'),
         vocabulary=u"genweb.tfemarket.Topics",
@@ -347,17 +358,6 @@ class IOffer(form.Schema):
         title=_(u'offer_workload'),
         description=_(u'Un crèdit ECTS equival a 25 hores de treball. La càrrega de treball s\'adaptarà als crèdits de la titulació.'),
         required=True,
-    )
-
-    targets = schema.Text(
-        title=_(u'offer_targets'),
-        description=_(u'Resultat esperat d’aquest treball'),
-        required=False,
-    )
-
-    features = schema.Text(
-        title=_(u'offer_features'),
-        required=False,
     )
 
     requirements = schema.Text(
