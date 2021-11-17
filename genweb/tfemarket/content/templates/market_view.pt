@@ -289,7 +289,7 @@
                                             </span>
                                         </span>
                                     </div>
-                                    <div id="searchModality" class="multicheck span3">
+                                    <!-- <div id="searchModality" class="multicheck span3">
                                         <label i18n:translate="">Modality</label>
                                         <span class="multicheckOptions">
                                             <span tal:repeat="modality view/getModalities">
@@ -299,7 +299,7 @@
                                                 </tal:block>
                                             </span>
                                         </span>
-                                    </div>
+                                    </div> -->
                                     <div id="searchGrants" class="span3">
                                         <label i18n:translate="">grant</label>
                                         <label class="switch">

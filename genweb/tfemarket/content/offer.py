@@ -151,7 +151,7 @@ class ModalityVocabulary(object):
     def __call__(self, context):
         types = []
         types.append(SimpleVocabulary.createTerm(u'Universitat', 'Universitat', _(u'Universitat')))
-        types.append(SimpleVocabulary.createTerm(u'Empresa', 'Empresa', _(u'Empresa')))
+        # types.append(SimpleVocabulary.createTerm(u'Empresa', 'Empresa', _(u'Empresa')))
         return SimpleVocabulary(types)
 
 
