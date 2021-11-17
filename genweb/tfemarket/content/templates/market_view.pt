@@ -531,6 +531,18 @@
                                                         <p tal:content="offer/description">Nam fermentum tellus vel tellus imperdiet, consectetur finibus sem mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur eu maximus nulla, vitae rhoncus sem. Pellentesque efficitur, tellus vel luctus dictum, nunc tellus cursus nulla, eget aliquam lacus lacus non lectus. Nam molestie ex dolor, quis pulvinar tortor volutpat rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec ligula sit amet quam hendrerit vestibulum. Nunc ut mauris lorem. Praesent non sollicitudin eros, non vestibulum erat. Nulla facilisi.</p>
                                                     </div>
                                                 </div>
+                                                <div class="leftInfoOffer" tal:condition="offer/targets">
+                                                    <div class="targets">
+                                                        <span class="field"><span i18n:translate="">Targets</span>: </span>
+                                                        <p tal:content="offer/targets"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="leftInfoOffer" tal:condition="offer/features">
+                                                    <div class="features">
+                                                        <span class="field"><span i18n:translate="">Features</span>: </span>
+                                                        <p  tal:content="offer/features"></p>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="informacioTFE">
                                                 <div class="moreInfo hide">
@@ -552,18 +564,6 @@
                                                         <div class="workload" tal:condition="offer/workload">
                                                             <span class="field"><span i18n:translate="">Workload</span>: </span>
                                                             <p tal:content="offer/workload">Workload</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="leftInfoOffer" tal:condition="offer/targets">
-                                                        <div class="targets">
-                                                            <span class="field"><span i18n:translate="">Targets</span>: </span>
-                                                            <p tal:content="offer/targets"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="leftInfoOffer" tal:condition="offer/features">
-                                                        <div class="features">
-                                                            <span class="field"><span i18n:translate="">Features</span>: </span>
-                                                            <p  tal:content="offer/features"></p>
                                                         </div>
                                                     </div>
                                                     <div class="leftInfoOffer" tal:condition="offer/requirements">
