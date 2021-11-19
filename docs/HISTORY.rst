@@ -1,8 +1,14 @@
-1.5.16 (unreleased)
+1.5.16 (2021-11-19)
 -------------------
 
-- Nothing changed yet.
-
+* Subir campos [Iago López Fernández]
+* Treure modalitat empresa y cerca per aquest camp [Iago López Fernández]
+* Traducciones [Iago López Fernández]
+* Subir campos targets y features [Iago López Fernández]
+* Modificar literal [Iago López Fernández]
+* Cambiar idioma dentro del mercado [Iago López Fernández]
+* Modificar literales y añadir descripciones [Iago López Fernández]
+* Modificado xml contenidos [Iago López Fernández]
 
 1.5.15 (2021-06-30)
 -------------------
