@@ -743,17 +743,17 @@
                 $(function() {
                     $('.setLangCA').click(function() {
                         setCookie('MERCAT_TFE_LANG', 'ca');
-                        location.reload();
+                        setTimeout(function(){ location.reload(); }, 1000);
                     });
 
                     $('.setLangEN').click(function() {
                         setCookie('MERCAT_TFE_LANG', 'en');
-                        location.reload();
+                        setTimeout(function(){ location.reload(); }, 1000);
                     });
 
                     $('.setLangES').click(function() {
                         setCookie('MERCAT_TFE_LANG', 'es');
-                        location.reload();
+                        setTimeout(function(){ location.reload(); }, 1000);
                     });
 
                     $('input[name="language"]').click(function() {
