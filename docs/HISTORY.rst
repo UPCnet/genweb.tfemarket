@@ -1,8 +1,7 @@
-1.6.1 (unreleased)
+1.6.1 (2021-11-30)
 ------------------
 
-- Nothing changed yet.
-
+* Add timeout change languange TFE [ilopezsmx]
 
 1.6.0 (2021-11-30)
 ------------------
