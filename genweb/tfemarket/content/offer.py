@@ -482,6 +482,11 @@ class Add(dexterity.AddForm):
 
     def updateFields(self):
         super(Add, self).updateFields()
+        lang = self.request.get("MERCAT_TFE_LANG", 'ca')
+        if lang in ['ca', 'en', 'es']:
+            self.request['LANGUAGE'] = lang
+            self.request.LANGUAGE_TOOL.LANGUAGE = lang
+
         registry = queryUtility(IRegistry)
         tfe_tool = registry.forInterface(ITfemarketSettings)
         if not tfe_tool.view_num_students:
@@ -490,6 +495,28 @@ class Add(dexterity.AddForm):
     def updateWidgets(self):
         try:
             super(Add, self).updateWidgets()
+        except ValueError as err:
+            self.context.plone_utils.addPortalMessage(_("No esta correctament configurat: '%s'") % err, 'error')
+
+
+class Edit(dexterity.EditForm):
+    grok.context(IOffer)
+
+    def updateFields(self):
+        super(Edit, self).updateFields()
+        lang = self.request.get("MERCAT_TFE_LANG", 'ca')
+        if lang in ['ca', 'en', 'es']:
+            self.request['LANGUAGE'] = lang
+            self.request.LANGUAGE_TOOL.LANGUAGE = lang
+
+        registry = queryUtility(IRegistry)
+        tfe_tool = registry.forInterface(ITfemarketSettings)
+        if not tfe_tool.view_num_students:
+            self.fields = self.fields.omit('num_students')
+
+    def updateWidgets(self):
+        try:
+            super(Edit, self).updateWidgets()
         except ValueError as err:
             self.context.plone_utils.addPortalMessage(_("No esta correctament configurat: '%s'") % err, 'error')
 

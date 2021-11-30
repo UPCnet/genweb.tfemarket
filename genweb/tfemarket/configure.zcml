@@ -112,17 +112,6 @@
       handler=".browser.events.change.offerDeleted"
     />
 
-    <subscriber
-      for="ZPublisher.interfaces.IPubAfterTraversal"
-      handler=".browser.language_negotiation.Negotiator"
-    />
-
-    <adapter
-      for="* *"
-      name="genweb.tfemarket.language"
-      factory=".browser.language_negotiation.Negotiator"
-      provides="ZPublisher.interfaces.IPubAfterTraversal" />
-
     <genericsetup:importStep
       name="tfe.market"
       title="TFE Market Ldap setup"

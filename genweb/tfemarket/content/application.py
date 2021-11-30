@@ -152,6 +152,26 @@ class Add(dexterity.AddForm):
 
     def updateWidgets(self):
         super(Add, self).updateWidgets()
+        lang = self.request.get("MERCAT_TFE_LANG", 'ca')
+        if lang in ['ca', 'en', 'es']:
+            self.request['LANGUAGE'] = lang
+            self.request.LANGUAGE_TOOL.LANGUAGE = lang
+
+        if not checkPermissionCreateApplications(self, self.context, False):
+            self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it on the main page of the market."), 'error')
+            self.redirect(self.context.absolute_url())
+
+
+class Edit(dexterity.EditForm):
+    grok.context(IApplication)
+
+    def updateWidgets(self):
+        super(Edit, self).updateWidgets()
+        lang = self.request.get("MERCAT_TFE_LANG", 'ca')
+        if lang in ['ca', 'en', 'es']:
+            self.request['LANGUAGE'] = lang
+            self.request.LANGUAGE_TOOL.LANGUAGE = lang
+
         if not checkPermissionCreateApplications(self, self.context, False):
             self.context.plone_utils.addPortalMessage(_(u"You have already created an application. You can see it on the main page of the market."), 'error')
             self.redirect(self.context.absolute_url())

@@ -57,6 +57,12 @@ class View(grok.View):
     grok.context(IMarket)
     grok.template('market_view')
 
+    def update(self):
+        lang = self.request.get("MERCAT_TFE_LANG", 'ca')
+        if lang in ['ca', 'en', 'es']:
+            self.request['LANGUAGE'] = lang
+            self.request.LANGUAGE_TOOL.LANGUAGE = lang
+
     def clearFiltersCookie(self):
         filters = self.request.form
         filters.pop('estat', None)
