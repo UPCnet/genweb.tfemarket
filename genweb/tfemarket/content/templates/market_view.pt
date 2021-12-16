@@ -740,20 +740,55 @@
                     document.cookie = key + '=' + value + ';path=/' + ';expires=' + expires.toUTCString();
                 }
 
+                function updateURLParameter(url, param, paramVal){
+                    var newAdditionalURL = "";
+                    var tempArray = url.split("?");
+                    var baseURL = tempArray[0];
+                    var additionalURL = tempArray[1];
+                    var temp = "";
+                    if (additionalURL) {
+                        tempArray = additionalURL.split("&");
+                        for (var i=0; i<tempArray.length; i++){
+                            if(tempArray[i].split('=')[0] != param){
+                                newAdditionalURL += temp + tempArray[i];
+                                temp = "&";
+                            }
+                        }
+                    }
+
+                    var rows_txt = temp + "" + param + "=" + paramVal;
+                    return baseURL + "?" + newAdditionalURL + rows_txt;
+                }
+
+                function changeLangAndReload(lang){
+                    setCookie('MERCAT_TFE_LANG', lang);
+                    var versionUpdate = (new Date()).getTime();
+                    if (window.location.href.indexOf("?") > -1) {
+                        if (window.location.href.indexOf("&search") > -1 || window.location.href.indexOf("?search") > -1) {
+                            $('#formSearchOffers').submit();
+                        }else{
+                            if (window.location.href.indexOf("&ts") > -1 || window.location.href.indexOf("?ts") > -1) {
+                                window.location = updateURLParameter(window.location.href, 'ts', versionUpdate);
+                            }else{
+                                window.location = window.location.href + '&ts=' + versionUpdate;
+                            }
+                        }
+                    }else{
+                        window.location = window.location.href + '?ts=' + versionUpdate;
+                    }
+                }
+
                 $(function() {
                     $('.setLangCA').click(function() {
-                        setCookie('MERCAT_TFE_LANG', 'ca');
-                        setTimeout(function(){ location.reload(); }, 1000);
+                        changeLangAndReload('ca');
                     });
 
                     $('.setLangEN').click(function() {
-                        setCookie('MERCAT_TFE_LANG', 'en');
-                        setTimeout(function(){ location.reload(); }, 1000);
+                        changeLangAndReload('en');
                     });
 
                     $('.setLangES').click(function() {
-                        setCookie('MERCAT_TFE_LANG', 'es');
-                        setTimeout(function(){ location.reload(); }, 1000);
+                        changeLangAndReload('es');
                     });
 
                     $('input[name="language"]').click(function() {

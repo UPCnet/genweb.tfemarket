@@ -65,6 +65,7 @@ class View(grok.View):
 
     def clearFiltersCookie(self):
         filters = self.request.form
+        filters.pop('ts', None)
         filters.pop('estat', None)
         filters.pop('id', None)
         filters.pop('_authenticator', None)
@@ -106,6 +107,9 @@ class View(grok.View):
                     self.request.response.setCookie('MERCAT_TFE', "", path='/')
 
         if not isManager() and self.checkPermissionCreateOffers() or self.request.form != {} and 'form.button.confirm' not in self.request.form:
+            if len(self.request.form.keys()) == 1 and self.request.form.get('ts', False):
+                return []
+
             wf_tool = getToolByName(self.context, 'portal_workflow')
             tools = getMultiAdapter((self.context, self.request), name='plone_tools')
 
