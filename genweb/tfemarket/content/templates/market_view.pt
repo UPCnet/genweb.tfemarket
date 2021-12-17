@@ -764,7 +764,7 @@
                     setCookie('MERCAT_TFE_LANG', lang);
                     var versionUpdate = (new Date()).getTime();
                     if (window.location.href.indexOf("?") > -1) {
-                        if (window.location.href.indexOf("&search") > -1 || window.location.href.indexOf("?search") > -1) {
+                        if (window.location.href.indexOf("searchOffer") == -1 && (window.location.href.indexOf("&search") > -1 || window.location.href.indexOf("?search")) > -1) {
                             $('#formSearchOffers').submit();
                         }else{
                             if (window.location.href.indexOf("&ts") > -1 || window.location.href.indexOf("?ts") > -1) {
