@@ -47,7 +47,7 @@ msgstr "APIKEY"
 
 #: ../browser/events/change.py:91
 msgid "Aceptada"
-msgstr "Aceptada"
+msgstr "Accepted"
 
 #: ../controlpanel.py:162
 msgid "Add languages one per line"
@@ -177,7 +177,7 @@ msgstr "Copy proposal"
 
 #: ../content/templates/market_view.pt:156
 msgid "Create an offer"
-msgstr "Create an proposal"
+msgstr "Create a proposal"
 
 #: ../utils.py:295
 msgid "DIRECTORI: Usuari no trobat en al directori"
