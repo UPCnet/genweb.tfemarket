@@ -1,8 +1,9 @@
-1.6.2 (unreleased)
+1.6.2 (2021-12-20)
 ------------------
 
-- Nothing changed yet.
-
+* Traduccions [ilopezsmx]
+* Traduccions EN [ilopezsmx]
+* Fix lang TFE [ilopezsmx]
 
 1.6.1 (2021-11-30)
 ------------------
