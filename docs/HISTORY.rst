@@ -1,8 +1,7 @@
-1.6.3 (unreleased)
+1.6.3 (2022-01-11)
 ------------------
 
-- Nothing changed yet.
-
+* Quitar logo 50 aniversari UPC [ilopezsmx]
 
 1.6.2 (2021-12-20)
 ------------------
