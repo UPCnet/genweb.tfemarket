@@ -280,7 +280,8 @@ def getStudentData(self, item, user):
                                     'degree_title': getDegreeLiteralFromId(expedient['codiMecPrograma']),
                                     'codi_expedient': expedient['codiExpedient']})
 
-                                return student_data
+                        if len(student_data['degrees']) > 0:
+                            return student_data
 
                         self.context.plone_utils.addPortalMessage(_(u"El treball que vols sol·licitar no està ofertat per a la titulació que curses o ja has sol·licitat una amb aquesta mateixa titulació. Contacta amb la secretaria del teu centre."), 'error')
                         return None
