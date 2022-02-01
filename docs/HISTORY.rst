@@ -1,8 +1,7 @@
-1.6.4 (unreleased)
+1.6.4 (2022-02-01)
 ------------------
 
-- Nothing changed yet.
-
+* Solucionar error que evitaba que los estudiantes no pudieran seleccionar sobre que titulan cuando tienen multiples opciones [ilopezsmx]
 
 1.6.3 (2022-01-11)
 ------------------
