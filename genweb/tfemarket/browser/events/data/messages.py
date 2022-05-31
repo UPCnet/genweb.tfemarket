@@ -4,6 +4,9 @@
 
 M1 = {
 'ca' : """\
+
+** Atenció, no respondre a aquest missatge, s'ha enviat de forma automàtica.**
+
 Benvolgut / Benvolguda,
 
 {student} que cursa {degree}, ha sol·licitat el treball de final d’estudis {num} - {title} que tens ofertat.
@@ -18,6 +21,9 @@ Atentament,
 """,
 
 'en' : """\
+
+** Warning, no reply to this message has been sent automatically. **
+
 Dear / Dear,
 
 {student} who attended {degree}, has requested the final study work {num} - {title} that you have offered.
@@ -32,6 +38,9 @@ Yours faithfully,
 """,
 
 'es' : """\
+
+** Atención, no responder a este mensaje, se ha enviado de forma automática.**
+
 Estimado / Estimada,
 
 {student} que cursa {degree}, ha solicitado el trabajo de final de estudios {num} - {title} que tienes ofertado.
@@ -50,6 +59,9 @@ Atentamente,
 
 M2 = {
 'ca' : """\
+
+** Atenció, no respondre a aquest missatge, s'ha enviat de forma automàtica.**
+
 Benvolgut / Benvolguda,
 
 Et comuniquem que la teva sol·licitud per al següent treball de final d’estudis {num} - {title} ha estat acceptada. Recorda que per tal de finalitzar el procés d’assignació, has de confirmar-la o renunciar-hi des del següent enllaç {linkApplication}.
@@ -62,6 +74,9 @@ Atentament,
 """,
 
 'en' : """\
+
+** Warning, no reply to this message has been sent automatically. **
+
 Dear / Dear,
 
 We inform you that your request for the following work of the study {num} - {title} has been accepted. Remember that in order to finalize the assignment process, you must confirm or resign from the following link {linkApplication}.
@@ -74,6 +89,9 @@ Yours faithfully,
 """,
 
 'es' : """\
+
+** Atención, no responder a este mensaje, se ha enviado de forma automática.**
+
 Estimado / Estimada,
 
 Te comunicamos que tu solicitud para el siguiente trabajo de fin de estudios {num} - {title} ha sido aceptada. Recuerda que para finalizar el proceso de asignación, debes confirmarla o renunciar desde el siguiente enlace {linkApplication}.
@@ -90,6 +108,9 @@ Atentamente,
 
 M3 = {
 'ca' : """\
+
+** Atenció, no respondre a aquest missatge, s'ha enviat de forma automàtica.**
+
 Benvolgut / Benvolguda,
 
 La teva sol·licitud per a l’oferta {num} - {title} ha estat rebutjada. Pot posar-te en contacte amb el professor per a qualsevol informació addicional.
@@ -100,6 +121,9 @@ Atentament,
 """,
 
 'en' : """\
+
+** Warning, no reply to this message has been sent automatically. **
+
 Dear / Dear,
 
 Your request for the offer {num} - {title} has been rejected. You can contact the teacher for any additional information.
@@ -110,6 +134,9 @@ Yours faithfully,
 """,
 
 'es' : """\
+
+** Atención, no responder a este mensaje, se ha enviado de forma automática.**
+
 Estimado / Estimada,
 
 Tu solicitud para la oferta {num} - {title} ha sido rechazada. Puede ponerse en contacto con el profesor para cualquier información adicional.
@@ -124,6 +151,9 @@ Atentamente,
 
 M4 = {
 'ca' : """\
+
+** Atenció, no respondre a aquest missatge, s'ha enviat de forma automàtica.**
+
 Benvolgut / Benvolguda,
 
 {student} ha confirmat la sol·licitud del treball de final d’estudis {num} - {title}.
@@ -140,6 +170,9 @@ Atentament,
 """,
 
 'en' : """\
+
+** Warning, no reply to this message has been sent automatically. **
+
 Dear / Dear,
 
 {student} has confirmed the application for the final study work {num} - {title}.
@@ -156,6 +189,9 @@ Yours faithfully,
 """,
 
 'es' : """\
+
+** Atención, no responder a este mensaje, se ha enviado de forma automática.**
+
 Estimado / Estimada,
 
 {student} confirmó la solicitud del trabajo de final de estudios {num} - {title}.
@@ -176,6 +212,9 @@ Atentamente,
 
 M5 = {
 'ca' : """\
+
+** Atenció, no respondre a aquest missatge, s'ha enviat de forma automàtica.**
+
 Benvolgut / Benvolguda,
 
 {student} que va realitzar una sol·licitud a l’oferta {num} - {title} ha renunciat a la mateixa.
@@ -186,6 +225,9 @@ Atentament,
 """,
 
 'en' : """\
+
+** Warning, no reply to this message has been sent automatically. **
+
 Dear / Dear,
 
 {student} who made a request to the offer {num} - {title} has renounced it.
@@ -196,6 +238,9 @@ Yours faithfully,
 """,
 
 'es' : """\
+
+** Atención, no responder a este mensaje, se ha enviado de forma automática.**
+
 Estimado / Estimada,
 
 {student} que realizó una solicitud a la oferta {num} - {title} ha renunciado a la misma.
@@ -210,6 +255,9 @@ Atentamente,
 
 M6 = {
 'ca' : """\
+
+** Atenció, no respondre a aquest missatge, s'ha enviat de forma automàtica.**
+
 Benvolgut / Benvolguda,
 
 {student} ha anul·lat la seva sol·licitud a l’oferta {num} - {title}.
@@ -220,6 +268,9 @@ Atentament,
 """,
 
 'en' : """\
+
+** Warning, no reply to this message has been sent automatically. **
+
 Dear / Dear,
 
 {student} has canceled your request to the offer {num} - {title}.
@@ -230,6 +281,9 @@ Yours faithfully,
 """,
 
 'es' : """\
+
+** Atención, no responder a este mensaje, se ha enviado de forma automática.**
+
 Estimado / Estimada,
 
 {student} ha anulado su solicitud a la oferta {num} - {title}.
