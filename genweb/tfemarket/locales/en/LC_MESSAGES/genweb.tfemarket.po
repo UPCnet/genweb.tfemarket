@@ -163,7 +163,7 @@ msgstr "Prior knowledge needed to carry out the work"
 
 #: ../content/templates/market_view.pt:582
 msgid "Confidential"
-msgstr "Confidential"
+msgstr "Confidential (informative)"
 
 #: ../browser/views_templates/tfemarket_utils_delete_offer.pt:56
 msgid "Confirm removal of offer."
@@ -935,7 +935,7 @@ msgstr "Classifications"
 
 #: ../content/offer.py:420
 msgid "confidential"
-msgstr "Confidential"
+msgstr "Confidential (informative)"
 
 #. Default: "Are you sure you want to reset the offers counter?"
 #: ../browser/views_templates/reset_offers_counter.pt:22
