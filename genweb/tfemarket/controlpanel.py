@@ -94,7 +94,7 @@ class ITfemarketSettings(model.Schema):
     model.fieldset(
         'Settings',
         _(u'Settings'),
-        fields=['center_code', 'center_name', 'review_state', 'enroll_type'],
+        fields=['center_code', 'center_name', 'review_state', 'enroll_type', 'alternative_email', 'alternative_email_name'],
     )
 
     model.fieldset(
@@ -141,6 +141,18 @@ class ITfemarketSettings(model.Schema):
         vocabulary=u"genweb.tfemarket.Enrolls",
         default=u'I',
         required=True)
+
+    alternative_email = schema.TextLine(
+        title=_(u"Alternative email"),
+        description=_(u'If this field is not filled in, the default Genweb email will be taken'),
+        required=False,
+    )
+
+    alternative_email_name = schema.TextLine(
+        title=_(u"Alternative email name"),
+        description=_(u'If this field is not filled in, the default Genweb email name will be taken'),
+        required=False,
+    )
 
     # CLASSIFICATIONS
 

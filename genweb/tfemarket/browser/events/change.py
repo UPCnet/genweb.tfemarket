@@ -58,11 +58,20 @@ def applicationChanged(application, event):
         'signature': _(u'TFE Mercat'),
     }
 
+    registry = queryUtility(IRegistry)
+    tfe_tool = registry.forInterface(ITfemarketSettings)
+
     student_mail = application.email
     teacher_mail = application.getParentNode().teacher_email
     portal = api.portal.get()
-    sender_email = portal.getProperty('email_from_address')
-    sender_name = portal.getProperty('email_from_name').encode('utf-8')
+
+    if tfe_tool.alternative_email:
+        sender_email = tfe_tool.alternative_email
+        sender_name = tfe_tool.alternative_email_name if tfe_tool.alternative_email_name else ''
+    else:
+        sender_email = portal.getProperty('email_from_address')
+        sender_name = portal.getProperty('email_from_name').encode('utf-8')
+
     email_charset = portal.getProperty('email_charset')
 
     fromMsg = toMsg = subject = msg = portalMsg = ''
@@ -235,8 +244,14 @@ def applicationRegistered(application, event):
 
                 teacher_mail = application.getParentNode().teacher_email
                 portal = api.portal.get()
-                sender_email = portal.getProperty('email_from_address')
-                sender_name = portal.getProperty('email_from_name').encode('utf-8')
+
+                if tfe_tool.alternative_email:
+                    sender_email = tfe_tool.alternative_email
+                    sender_name = tfe_tool.alternative_email_name if tfe_tool.alternative_email_name else ''
+                else:
+                    sender_email = portal.getProperty('email_from_address')
+                    sender_name = portal.getProperty('email_from_name').encode('utf-8')
+
                 email_charset = portal.getProperty('email_charset')
 
                 fromMsg = toMsg = subject = msg = portalMsg = ''
