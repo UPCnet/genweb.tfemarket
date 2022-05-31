@@ -367,7 +367,7 @@ msgstr ""
 
 #: ../controlpanel.py:153
 msgid "If this field is not filled in, the default Genweb email name will be taken"
-msgstr "Si no s'omple aquest camp s'agafarà el nom de correu per defecte del Genweb"
+msgstr "Si no s'omple el camp de correu s'agafarà el nom de correu per defecte del Genweb"
 
 #: ../controlpanel.py:147
 msgid "If this field is not filled in, the default Genweb email will be taken"
