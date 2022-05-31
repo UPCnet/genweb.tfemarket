@@ -169,6 +169,9 @@ class getExactTeacher(grok.View):
         teacher = getExactUserData(api.user.get_current().id)
         if teacher:
             teacherDept = teacher['uePerfil'][0]['ueId'] + '-' + teacher['uePerfil'][0]['ueAcronim']
+            for perfil in teacher['uePerfil']:
+                if 'PDI' in perfil['perfilId']:
+                    teacherDept = perfil['ueId'] + '-' + perfil['ueAcronim']
             data = {
                 'user': teacher['commonName'],
                 'email': teacher['emailPreferent'],
@@ -245,6 +248,7 @@ class resetCountOffers(grok.View):
             tfe_tool.count_offers = 0
             transaction.commit()
             self.request.response.redirect(self.context.absolute_url() + "/tfemarket-settings#fieldsetlegend-2")
+
 
 class tfemarketUtils(grok.View):
     grok.context(Interface)

@@ -43,6 +43,9 @@ class TeacherInputWidget(z3c.form.browser.text.TextWidget, AutocompleteSelection
         super(z3c.form.browser.text.TextWidget, self).update()
         z3c.form.browser.widget.addFieldClass(self)
 
+    def getId(self):
+        return api.user.get_current().id
+
     def hasPermissions(self):
         roles = api.user.get_roles()
         return 'TFE Manager' in roles or 'Manager' in roles

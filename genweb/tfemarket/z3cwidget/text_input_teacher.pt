@@ -36,9 +36,10 @@
 
   <input id="form-widgets-teacher_manager-btn-modal" type="button"
          data-toggle="modal" data-target="#form-widgets-teacher_manager-modal"
-         i18n:attributes="value Search_teacher" tal:condition="view/hasPermissions"/>
+         i18n:attributes="value Search_teacher" />
 
-  <div id="form-widgets-teacher_manager-modal" class="modal fade" role="dialog">
+  <div id="form-widgets-teacher_manager-modal" class="modal fade" role="dialog"
+       tal:attributes="data-user view/getId">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -46,11 +47,14 @@
           <h4 class="modal-title" i18n:translate="">Search teacher</h4>
         </div>
         <div class="modal-body">
-          <input id="form-widgets-teacher_manager-input" type="text" autocomplete="no"
-                 i18n:attributes="placeholder name.surname"/>
 
-          <input id="form-widgets-teacher_manager-btn" type="button"
-                 i18n:attributes="value Search"/>
+          <tal:block tal:condition="view/hasPermissions">
+            <input id="form-widgets-teacher_manager-input" type="text" autocomplete="no"
+                   i18n:attributes="placeholder name.surname" />
+
+            <input id="form-widgets-teacher_manager-btn" type="button"
+                   i18n:attributes="value Search" />
+          </tal:block>
 
           <p id="form-widgets-teacher_manager-error" i18n:translate="">
             <b>Error:</b> The format is incorrect. <b>name.lastname</b>
@@ -148,6 +152,35 @@
         }
       });
     }
+
+    $.ajax({
+      type: 'POST',
+      data: { "teacher" : $("#form-widgets-teacher_manager-modal").data("user") },
+      url: 'getTeacher',
+      success: function(data){
+        results = $.parseJSON(data);
+        if(results != null && results.length > 0){
+          $("#form-widgets-teacher_manager-hint > tbody").html("");
+          $.each( results, function( key, value ){
+            $("#form-widgets-teacher_manager-hint").show();
+            field = "<tr>";
+            field += "<td class='teacher'>" + value['user'] + "</td>";
+            field += "<td class='fullname'>" + value['fullname'] + "</td>";
+            field += "<td class='email'>" + value['email'] + "</td>";
+            field += "<td class='dept'>" + value['dept'] + "</td>";
+            field += "<td class='actions'>";
+            field += "<a class='label add' i18n:attributes='alt add' onclick='addTeacher(this)'>";
+            field += "<span class='fa fa-plus' aria-hidden='true'></span>";
+            field += "</a>";
+            field += "</td>";
+            field += "</tr>";
+            $("#form-widgets-teacher_manager-hint").append(field);
+          });
+        }else{
+          $("#form-widgets-teacher_manager-warn").addClass("viewWarn");
+        }
+      }
+    });
   </script>
 
 </html>

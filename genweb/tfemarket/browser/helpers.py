@@ -109,6 +109,10 @@ class importOfertes(grok.View):
             if len(notValidDegrees) == 0:
                 teacher = getExactUserData(row[7].decode("utf-8"))
                 if teacher:
+                    teacherDept = teacher['uePerfil'][0]['ueId'] + '-' + teacher['uePerfil'][0]['ueAcronim']
+                    for perfil in teacher['uePerfil']:
+                        if 'PDI' in perfil['perfilId']:
+                            teacherDept = perfil['ueId'] + '-' + perfil['ueAcronim']
                     data = {
                         'title': row[0].decode("utf-8"),
                         'description': row[1].decode("utf-8"),
@@ -117,10 +121,10 @@ class importOfertes(grok.View):
                         'tfgm': row[4].decode("utf-8").split(","),
                         'degree': row[5].decode("utf-8").split(","),
                         'keys': row[6].decode("utf-8").split(","),
-                        'teacher_manager': teacher['id'],
-                        'teacher_fullname': teacher['sn1'] + ' ' + teacher['sn2'] + ', ' + teacher['givenName'] if 'sn2' in teacher else teacher['sn1'] + ', ' + teacher['givenName'],
-                        'teacher_email': teacher['mail'],
-                        'dept': teacher['unitCode'] + "-" + teacher['unit'],
+                        'teacher_manager': teacher['commonName'],
+                        'teacher_fullname': teacher['cognom1'].capitalize() + ' ' + teacher['cognom2'].capitalize() + ', ' + teacher['nom'].capitalize() if 'cognom2' in teacher else teacher['cognom1'].capitalize() + ', ' + teacher['nom'].capitalize(),
+                        'teacher_email': teacher['emailPreferent'],
+                        'dept': teacherDept,
                         'num_students': int(row[10].decode("utf-8")),
                         'workload': row[11].decode("utf-8"),
                         'targets': row[12].decode("utf-8"),
@@ -140,11 +144,15 @@ class importOfertes(grok.View):
                     if type_codirector == 'UPC':
                         codirector = getExactUserData(row[9].decode("utf-8"))
                         if codirector:
+                            codirectorDept = codirector['uePerfil'][0]['ueId'] + '-' + codirector['uePerfil'][0]['ueAcronim']
+                            for perfil in codirector['uePerfil']:
+                                if 'PDI' in perfil['perfilId']:
+                                    codirectorDept = perfil['ueId'] + '-' + perfil['ueAcronim']
                             data.update({
-                                'codirector_id': codirector['id'],
-                                'codirector': codirector['sn1'] + ' ' + codirector['sn2'] + ', ' + codirector['givenName'] if 'sn2' in codirector else codirector['sn1'] + ', ' + codirector['givenName'],
-                                'codirector_email': codirector['mail'],
-                                'codirector_dept': codirector['unitCode'] + "-" + codirector['unit']
+                                'codirector_id': codirector['commonName'],
+                                'codirector': codirector['cognom1'].capitalize() + ' ' + codirector['cognom2'].capitalize() + ', ' + codirector['nom'].capitalize() if 'cognom2' in codirector else codirector['cognom1'].capitalize() + ', ' + codirector['nom'].capitalize(),
+                                'codirector_email': codirector['emailPreferent'],
+                                'codirector_dept': codirectorDept
                             })
                         else:
                             msg = row[0].decode("utf-8") + " - Codirector (" + row[9].decode("utf-8") + ") not exist."
