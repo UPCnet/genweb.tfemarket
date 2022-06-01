@@ -1,8 +1,11 @@
-1.6.5 (unreleased)
+1.6.5 (2022-06-01)
 ------------------
 
-- Nothing changed yet.
-
+* Literales [Iago López]
+* Multiple vinculacion de los profesores [Iago López]
+* Traduccion [Iago López]
+* Añadir campos al controlpanel para tener un correo alternativo [Iago López]
+* Añadir aviso de no responder a los mensajes [Iago López]
 
 1.6.4 (2022-02-01)
 ------------------
